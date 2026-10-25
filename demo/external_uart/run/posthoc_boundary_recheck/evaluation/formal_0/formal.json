@@ -1,0 +1,28 @@
+{
+  "assumptions": "First step resets. Setup constant, flow control enabled, CTS=1, write=0. Subsequent reset and BREAK arbitrary.",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 2.132497,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "fixed_reference_rtl_used": false,
+  "initial_state": "Unspecified state bits zero; explicit upstream initial assignments retained",
+  "limitation": "Bounded two-state CTS safety only. Serial-data behavior checked separately in simulations. Not unbounded, all-parameter or CDC proof.",
+  "monitor_sha256": "a8e036db191183243a01c5fc419051875792f21eb936185db062974cb1ffca16",
+  "profile": {
+    "baud_cycles": 4,
+    "steps": 80
+  },
+  "property": "Continuously blocked active-low CTS keeps o_busy high after eight synchronizer warm-up clocks, including BREAK recovery",
+  "rtl_sha256": "9befd29188fd1f88cd232ebda3df255f71b1747ffba2a88c3cf98dc1411a4581",
+  "status": "BOUNDED_PROPERTY_PASS"
+}

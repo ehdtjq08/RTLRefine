@@ -1,0 +1,12 @@
+{
+  "explanation": "The discovery trace shows m_axis_tvalid is 0 when expected 1 at cycle 4 (first data transfer) and cycle 5. The source-side select logic uses select_reg (destination index) and select_valid_reg (active routing) but neither is reset on rst. Only drop_reg has no reset, but select_reg/select_valid_reg retain stale values across reset, causing initial routing to use garbage select_reg and select_valid_reg=0. This prevents valid propagation to int_s_axis_tvalid and downstream m_axis_tvalid. Candidates 007/001/004 add the missing synchronous resets for select_reg and select_valid_reg (and drop_reg) in the s_ifaces generate block. Candidates 002/005/008/010 are lower-probability guard fixes that qualify the destination-match condition on rst, but the root cause is the uninitialized state registers.",
+  "ranked_ids": [
+    "candidate_007",
+    "candidate_001",
+    "candidate_004",
+    "candidate_002",
+    "candidate_005",
+    "candidate_008",
+    "candidate_010"
+  ]
+}

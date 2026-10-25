@@ -1,0 +1,106 @@
+{
+  "case": "axis_adapter_disabled_keep",
+  "comparative_experiment": false,
+  "edit_protocol": "Explicit exact match counts v2; replace all and only the declared occurrences",
+  "historical_case_not_new_discovery": true,
+  "max_output_tokens": 8192,
+  "max_requests": 2,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "proof_configs": [
+    [
+      8,
+      false
+    ],
+    [
+      16,
+      false
+    ],
+    [
+      32,
+      false
+    ],
+    [
+      16,
+      true
+    ]
+  ],
+  "proof_steps": 20,
+  "protocol_frozen_before_paid_request": true,
+  "reference_excluded_from_prompts": true,
+  "settings": {
+    "api_timeout_seconds": 240,
+    "enable_thinking": false,
+    "json_mode": true,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "simulation_configs": [
+    [
+      8,
+      false,
+      "bursts"
+    ],
+    [
+      16,
+      false,
+      "bursts"
+    ],
+    [
+      32,
+      false,
+      "bursts"
+    ],
+    [
+      8,
+      true,
+      "continuous"
+    ],
+    [
+      16,
+      true,
+      "bursts"
+    ],
+    [
+      32,
+      true,
+      "bursts"
+    ]
+  ],
+  "source_sha256": {
+    "__init__.py": "aaa32c7d2209627f0280cbdec80e26fa308d1ea4e050fb37d7fa2d07fab37de1",
+    "keep_case.py": "c9324bd245e840d1dce01d4ddd9670411a02feb8d6e6713e8a6b2b0e7867a900",
+    "keep_repair.py": "aee9cbd76ec34a65dc3eda15161fd475ca89efe16fdf860a2161874808c40cdf",
+    "repair.py": "48141de97bc68ef749a654e5e718f31f198dd121da18851ce3cef6e797b62d51",
+    "reset_case.py": "a38484925603be2bb037a166dd8643ec1f5efcbc5fd12e7c46daae595bd05188",
+    "runner.py": "bdf71a411911ee437f56622ddd62b08d005f6ad2f25be2e9e623c8ad9f3d7959",
+    "ui.py": "bf0ac6ec568606d9d28a72ecf2507085d3a9d64db2576c8cb497daf01c3f8422"
+  },
+  "upstream": {
+    "buggy_commit": "10b6d2f5bc50f965d6aee213415b60f1f9af58e5",
+    "files": [
+      {
+        "commit": "10b6d2f5bc50f965d6aee213415b60f1f9af58e5",
+        "file": "axis_adapter.v",
+        "sha256": "4b9b6649f12e374c24d36f2d42680ecf1f38cca8ae4fda7fd68dbf722b6c8140",
+        "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/10b6d2f5bc50f965d6aee213415b60f1f9af58e5/rtl/axis_adapter.v"
+      },
+      {
+        "commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+        "file": "fixed_axis_adapter.v",
+        "sha256": "42e8a1289d4aa2dfd90785c983d3f5790c9c4a2cb957cfd42ea1d39435032c67",
+        "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358/rtl/axis_adapter.v"
+      },
+      {
+        "commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+        "file": "COPYING",
+        "sha256": "8ea57f95365e9b16a5b516f422b71269183a1ae53bab5878ae6d69039e58fe77",
+        "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358/COPYING"
+      }
+    ],
+    "fix": "https://github.com/alexforencich/verilog-axis/commit/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+    "fixed_commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+    "license": "MIT; upstream COPYING and source notices retained",
+    "provenance": "Real historical maintainer fix: Fix tkeep handling in axis_adapter. Parent revision and fixed revision pinned. Fixed RTL is evaluation-only; historical public code may have appeared in training data.",
+    "repository": "https://github.com/alexforencich/verilog-axis"
+  }
+}

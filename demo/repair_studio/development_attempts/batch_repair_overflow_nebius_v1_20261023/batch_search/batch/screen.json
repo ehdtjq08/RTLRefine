@@ -1,0 +1,1208 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_fifo",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0327,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_fifo.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8684,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "control_commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_fifo",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0327,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_fifo.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8687,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "fallback_ids": [
+    "candidate_004",
+    "candidate_008",
+    "candidate_011",
+    "candidate_014",
+    "candidate_016",
+    "candidate_017",
+    "candidate_018",
+    "candidate_019"
+  ],
+  "fallback_reasons": {
+    "candidate_004": "Constant elaboration or unsupported statement context",
+    "candidate_008": "Constant elaboration or unsupported statement context",
+    "candidate_011": "Constant elaboration or unsupported statement context",
+    "candidate_014": "Constant elaboration or unsupported statement context",
+    "candidate_016": "Constant elaboration or unsupported statement context",
+    "candidate_017": "Constant elaboration or unsupported statement context",
+    "candidate_018": "Constant elaboration or unsupported statement context",
+    "candidate_019": "Constant elaboration or unsupported statement context"
+  },
+  "inactive_selector_exact_output_match": true,
+  "new_model_calls": 0,
+  "original_source_sha256": "06b56f304a376856f1c9505e30d15b2c77f73c69db1ec2d07628c15f06851665",
+  "results": {
+    "candidate_001": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [],
+      "mismatch_count": 0,
+      "passed": true
+    },
+    "candidate_002": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_003": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 0,
+          "expected": 1,
+          "port": "s_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 5,
+          "expected": 0,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 6,
+          "expected": 0,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 7,
+          "expected": 0,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 8,
+          "expected": 0,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 9,
+      "passed": false
+    },
+    "candidate_005": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_006": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_007": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 1,
+          "expected": 1,
+          "port": "s_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 2,
+          "expected": 1,
+          "port": "s_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 3,
+          "expected": 1,
+          "port": "s_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "s_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 42,
+      "passed": false
+    },
+    "candidate_009": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_010": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_012": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_013": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_020": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        }
+      ],
+      "mismatch_count": 27,
+      "passed": false
+    },
+    "candidate_021": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_022": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        }
+      ],
+      "mismatch_count": 27,
+      "passed": false
+    },
+    "candidate_023": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_024": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tid"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tdata"
+        }
+      ],
+      "mismatch_count": 27,
+      "passed": false
+    },
+    "candidate_025": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_026": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_027": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_028": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_029": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_030": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_031": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_032": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_033": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_034": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 6,
+          "cycle": 10,
+          "expected": 2,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 10,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "mismatch_count": 2,
+      "passed": false
+    },
+    "candidate_035": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_036": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_037": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 6,
+          "cycle": 10,
+          "expected": 2,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 10,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 5,
+      "passed": false
+    },
+    "candidate_038": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_039": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 6,
+          "cycle": 10,
+          "expected": 2,
+          "port": "m_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 10,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 5,
+      "passed": false
+    },
+    "candidate_040": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_041": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_042": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_043": {
+      "comparisons": 80,
+      "cycles": 16,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 13,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 1,
+          "cycle": 15,
+          "expected": 0,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    }
+  },
+  "screening_is_not_final_admission": true,
+  "status": "COMPLETE",
+  "supported": 34,
+  "wall_seconds": 4.597003528964706
+}

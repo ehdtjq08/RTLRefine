@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.034721,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "3056ded780fe4314808005fc114bb04a",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_03cf2d2c8b87",
+    "patch_0c325e5e2337",
+    "patch_15ae8a9243d8",
+    "patch_9a7462ea2101",
+    "patch_bebc8cd2915d",
+    "patch_171aea9942d8",
+    "patch_55de7eef4688",
+    "patch_f98cd079ac46"
+  ],
+  "proposal": {
+    "explanation": "The observed failures are all cycle-exact mismatches on o_mosi starting at cycle 484124, indicating the SPI byte stream is misaligned from the moment a new command is accepted. The root causes are premature state transitions in the command/response state machines (pre_cmd_state pulse without ll_cmd_stb clearance, cmd_state steps without pre_cmd_state or r_have_resp gating, and FIFO write/read completion conditions missing direction/completion guards). Each selected patch adds a precise qualifying condition at the cited source line to restrict a transition to the exact cycle where the hardware handshake is complete, restoring the published trace. Patches targeting byte-order or unrelated datapaths do not affect the MOSI timing and are deprioritized.",
+    "ranking": [
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_03cf2d2c8b87",
+        "mechanism": "The pre_cmd_state pulse fires while the previous command is still active (!ll_cmd_stb false), so the SPI datapath executes the new command sequence prematurely and shifts the byte stream out of alignment with the trace. Adding the guard restricts the datapath to the cycle where the previous command has fully cleared, restoring cycle-exact MOSI timing.",
+        "source_line": 291
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_0c325e5e2337",
+        "mechanism": "The FIFO read transition condition currently checks (r_use_fifo && r_fifo_wr) without confirming that the low-level read has actually completed, so the state machine advances while ll_fifo_rd_complete is still low and emits the wrong SPI bytes. Adding the completion flag forces the transition only after the FIFO read finishes, aligning the MOSI output with the expected trace.",
+        "source_line": 334
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_15ae8a9243d8",
+        "mechanism": "The cmd_state == 1 transition runs every cycle instead of only when pre_cmd_state pulses, so the SPI command bytes are shifted one cycle early relative to the trace. Requiring pre_cmd_state gates the transition to the exact cycle where the low-level interface is idle and ready, restoring the correct MOSI sequence.",
+        "source_line": 305
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_9a7462ea2101",
+        "mechanism": "The cmd_state == 4 branch currently advances unconditionally, but it should only proceed when r_have_resp is asserted so that the CRC byte is transmitted at the correct cycle. Qualifying with r_have_resp aligns the command-response handshake and fixes the MOSI trace mismatch.",
+        "source_line": 320
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_bebc8cd2915d",
+        "mechanism": "The cmd_state == 5 transition unconditionally enables FIFO write (ll_fifo_wr) without checking that the command is a read (!r_use_fifo). The guard prevents spurious FIFO write activation on write commands, which otherwise corrupts the SPI datapath and the MOSI output.",
+        "source_line": 324
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_171aea9942d8",
+        "mechanism": "The secondary response state machine expects the GETTOKEN state only when a FIFO write is in progress and a response token is available. Qualifying the assignment with r_have_resp ensures the state machine enters the correct wait-for-token path, preventing premature completion that misaligns MOSI.",
+        "source_line": 334
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_55de7eef4688",
+        "mechanism": "The FIFO write completion condition in r_rsp_state == WRITING lacks a r_use_fifo guard, so non-FIFO commands incorrectly trigger the completion path and deassert ll_cmd_stb early. Adding the guard keeps the command active until the FIFO write actually finishes, preserving MOSI timing.",
+        "source_line": 337
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_f98cd079ac46",
+        "mechanism": "The r_have_start_token flag is set on the falling edge of a write command without confirming the FIFO direction. The !r_use_fifo qualifier ensures the start token is only captured for FIFO read operations, preventing the state machine from diverging on write commands and correcting the MOSI stream.",
+        "source_line": 327
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 7.9004
+}

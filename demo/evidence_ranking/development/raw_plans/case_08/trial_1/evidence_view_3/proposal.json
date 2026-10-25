@@ -1,0 +1,53 @@
+{
+  "explanation": "The test shows m_axis_tvalid stuck at 0 for cycles 4-5 (expected 1) while all sources assert tvalid on cycle 1 and m_axis_tready is high. This pattern indicates the first frame is not being granted through the switch. The most direct cause is stale state in the per-source s_iface state machine (select_reg, drop_reg, select_valid_reg) carrying over from reset. Patches that add synchronous reset of drop_reg/select_reg at line 223 (patch_09b2f4ca228b, patch_35cdbadc2436, patch_c1a2f86ca667) directly address this by ensuring clean state on the first post-reset cycle. Secondary root cause is premature destination matching while rst is still asserted; patches adding !rst guards at lines 204/210 (patch_0cffe2701cd6, patch_e81217535d95, patch_8ed0fa2ec0d1, patch_3d29d686a962) prevent spurious select_valid assertion. The acknowledge index-width fix (patch_8cea8cdcd28f) is a plausible handshake correction but less directly tied to the two-cycle symptom. All cited failures reference m_axis_tvalid cycles 4-5 from the discovery trace.",
+  "ranking": [
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_09b2f4ca228b",
+      "mechanism": "Adds synchronous reset of drop_reg and select_reg (line 223). In the test, reset deasserts on cycle 0 while s_axis_tvalid asserts on cycle 1. Without resetting drop_reg and select_reg on cycle 1, the s_iface state machine can carry stale drop=1 into the first valid frame, causing int_axis_tvalid to stay low for cycles 4-5. This patch clears that state on reset, allowing the first frame to route correctly.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_35cdbadc2436",
+      "mechanism": "Adds synchronous reset of drop_reg only (line 223). The test failure is consistent with stale drop_reg suppressing the first frame. Clearing drop_reg on the first post-reset cycle permits select_valid_reg to assert, enabling int_axis_tvalid and the arbiter grant that drives m_axis_tvalid high on cycles 4-5.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_c1a2f86ca667",
+      "mechanism": "Adds synchronous reset of select_reg only (line 223). If select_reg holds a stale index, select_valid_reg will not re-evaluate the destination for the first valid frame, so the grant remains invalid and m_axis_tvalid stays low. Resetting select_reg forces correct destination selection on the first frame.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_0cffe2701cd6",
+      "mechanism": "Guards destination-range match with !rst (line 210). During reset deassertion, rst may still be high for the first cycle where inputs appear; without this guard, a spurious match can set drop_next=0 and select_valid_next=1 while the pipeline is not yet active, corrupting the first-frame state. Adding !rst prevents that premature transition.",
+      "source_line": 210
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_3d29d686a962",
+      "mechanism": "Guards destination-range match with rst (line 210). Variant of the same guard intent; if rst is active during the first input cycle, requiring rst=1 for the match is likely incorrect, so this patch is less plausible than the !rst version but shares the same root cause: premature destination matching before pipeline readiness.",
+      "source_line": 210
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_8ed0fa2ec0d1",
+      "mechanism": "Guards M_BASE exact match with rst (line 204). Same rationale as patch_0cffe2701cd6 but for the M_TOP==0 branch. Prevents spurious select_valid assertion during reset deassertion that would corrupt the first frame's routing state.",
+      "source_line": 204
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_e81217535d95",
+      "mechanism": "Guards M_BASE exact match with !rst (line 204). Mirrors patch_0cffe2701cd6 for the M_TOP==0 branch; prevents premature select_valid assertion while rst is still high during the first input cycle.",
+      "source_line": 204
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_8cea8cdcd28f",
+      "mechanism": "Changes acknowledge index width from M_COUNT to CL_M_COUNT in the m_iface generate block (line 312). A width mismatch here could misalign the grant/acknowledge handshake, stalling the arbiter and delaying m_axis_tvalid. The test shows only a two-cycle delay, so this is a secondary candidate after the primary reset-state fixes.",
+      "source_line": 312
+    }
+  ]
+}

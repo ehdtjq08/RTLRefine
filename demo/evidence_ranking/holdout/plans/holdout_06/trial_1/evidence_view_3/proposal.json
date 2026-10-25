@@ -1,0 +1,37 @@
+{
+  "explanation": "The first failing sample (cycle 20, m_axis_tdata=207 vs expected 0) shows the module emitting a data byte before the output pipeline is ready. The state machine enters STATE_OUTPUT_DATA and drives m_axis_tvalid_int=1 while m_axis_tready_int_reg=0. Patches that gate S1 entry or store_output on m_axis_tready_int_reg or m_axis_tvalid_next (patch_dd60dfd654c6, patch_69ccf5c47bf8, patch_bf3e4f0d750f) directly prevent this premature emission. Patch_25e2bb6b9fbe fixes the same symptom in S2 by making m_axis_tvalid_int conditional on output-path grant. The remaining candidates either substitute unrelated registers or modify later pipeline stages.",
+  "ranking": [
+    {
+      "id": "patch_dd60dfd654c6",
+      "mechanism": "S1 guards store_output by m_axis_tvalid_next (which requires output path readiness), preventing store_output=1 when m_axis_tready_int_reg=0. This stops the illegal early output of the first data byte at cycle 20."
+    },
+    {
+      "id": "patch_69ccf5c47bf8",
+      "mechanism": "S1 entry requires both trigger and !m_axis_tready_int_reg, so store_output and first-byte emission happen only when the output register can accept data. This prevents the cycle-20 m_axis_tdata mismatch."
+    },
+    {
+      "id": "patch_bf3e4f0d750f",
+      "mechanism": "S1 store_output gated by m_axis_tvalid_next, which only asserts when the output pipeline can accept the first byte. This avoids premature store_output=1 when m_axis_tready_int_reg=0."
+    },
+    {
+      "id": "patch_25e2bb6b9fbe",
+      "mechanism": "S2 m_axis_tvalid_int driven by store_axis_int_to_output (output-path grant) instead of constant 1. Prevents valid assertion when downstream not ready, fixing early data emission."
+    },
+    {
+      "id": "patch_c92f21851f42",
+      "mechanism": "S2 m_axis_tuser_int tied to busy flag, aligning user signaling with actual frame activity rather than constant zero. Secondary fix for user-field protocol."
+    },
+    {
+      "id": "patch_0ef623a0d576",
+      "mechanism": "Substitutes frame_count_output_reg for tick_count_reg in S1 reset path; wrong counter source but touches the tick-count datapath used in first-byte selection."
+    },
+    {
+      "id": "patch_6ccd792d465f",
+      "mechanism": "Replaces offset constant with frame_count_next in S2 byte-selection logic; affects later payload bytes, not the first-byte error at cycle 20."
+    },
+    {
+      "id": "patch_8c0a90c6fab4",
+      "mechanism": "Replaces constant 1 with busy for store_axis_temp_to_output; affects skid-buffer draining, not the initial trigger-to-output sequencing."
+    }
+  ]
+}

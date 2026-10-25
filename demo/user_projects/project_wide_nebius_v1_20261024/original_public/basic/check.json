@@ -1,0 +1,114 @@
+{
+  "checks": 0,
+  "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+  "commands": [
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-E",
+        "-o",
+        "__rtlrefine/design.v",
+        "./rtl/word_math.sv",
+        "./rtl/customer_top.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "preprocess",
+      "status": "PASS",
+      "wall_seconds": 0.016596140922047198
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-t",
+        "null",
+        "-s",
+        "customer_top",
+        "-Pcustomer_top.WIDTH=129",
+        "./__rtlrefine/design.v"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "elaborate",
+      "status": "PASS",
+      "wall_seconds": 0.01689656893722713
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-s",
+        "tb_public",
+        "-o",
+        "__rtlrefine/simulation.vvp",
+        "-I.",
+        "./__rtlrefine/design.v",
+        "./tests/public.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "compile",
+      "status": "PASS",
+      "wall_seconds": 0.016704104957170784
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/vvp",
+        "__rtlrefine/simulation.vvp"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 1,
+      "stage": "simulate",
+      "status": "FAIL",
+      "wall_seconds": 0.016618021996691823
+    }
+  ],
+  "id": "basic",
+  "interface": [
+    {
+      "instance": "dut",
+      "ports": [
+        {
+          "direction": "INPUT",
+          "index": 0,
+          "name": "a",
+          "width": 129
+        },
+        {
+          "direction": "INPUT",
+          "index": 1,
+          "name": "b",
+          "width": 129
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 2,
+          "name": "result",
+          "width": 129
+        }
+      ]
+    }
+  ],
+  "log_tail": "FATAL: ./tests/public.sv:10: SUM mismatch actual=000000000000000000000000000000003 expected=000000000000000000000000000000007\n       Time: 1000 Scope: tb_public\n",
+  "oracle": "User-supplied immutable self-checking testbench",
+  "passed": false,
+  "phase": "public",
+  "source_hashes": {
+    "rtl/customer_top.sv": "48eed9e08e55350d5f80c2600cec4aceb6c55c09999919febcd2856364caa2ab",
+    "rtl/word_math.sv": "47bafd8d3e2fba30496a91996f3aca43d4420e47d2fe3ebd16ba3c9b16dcfdb1"
+  },
+  "status": "ASSERTION_FAILED",
+  "testbench_marker_transforms": [],
+  "top": "tb_public",
+  "verification_hashes": {
+    "rtlrefine_check.vh": "cb46469b4c1bf5f2eb98140930901f3581c2bde417906c9531ce64b0a20e0b67",
+    "tests/public.sv": "9e6292aaa3f51063de7f2125f12f7f0ccc30fcefc61d28c0134e943e85ce783d"
+  },
+  "wall_seconds": 0.06681483681313694
+}

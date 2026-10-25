@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"ranking\": [{\"id\": \"patch_5e3af25f023e\", \"failure_port\": \"frame_len\", \"source_line\": 81, \"mechanism\": \"Clears frame_len_next to 0 when frame_len_valid_reg asserted, directly addressing the over-count (actual=3 vs expected=1) by preventing carryover into the next frame window.\"}], \"explanation\": \"The discovery trace shows frame_len=3 at cycle 5 when the oracle expects 1. In the original code, frame_len_reg is only reset on rst; it accumulates across consecutive valid-ready cycles and is not cleared after frame_len_valid pulses. Patch 5e3af25f023e adds `if (frame_len_valid_reg) frame_len_next = 0;` at the top of the combinational block (line 81), so the completed frame's length is emitted for one cycle and then the counter resets. This matches the spec \\\"report each completed frame\\\" and eliminates the stale accumulation that produced the mismatch. Other candidates only add extra gating to existing conditions and do not reset the counter, so they cannot fix the over-count observed at cycle 5.\"}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754479,
+  "id": "chatcmpl-d7d4dabfa6504e689e714a6f5287fb3f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 258,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 10208,
+    "prompt_tokens": 10208,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 10466
+  }
+}

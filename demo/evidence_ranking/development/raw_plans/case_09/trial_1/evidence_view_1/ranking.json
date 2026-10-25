@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.019335,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "2fdf73874de44927baa95fbebc33b217",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_260cd2a94865",
+    "patch_2091b2021c83",
+    "patch_eed1c85249a0",
+    "patch_0df996e92b1b",
+    "patch_9d300784e043",
+    "patch_c388b437f780",
+    "patch_a1c3e97c658c",
+    "patch_5ca8f64228ff"
+  ],
+  "proposal": {
+    "explanation": "The two root causes exposed by the trace are: (1) reset does not clear wr_ptr_cur and drop_frame in the write-pointer block, causing false drop_frame=1 at cycles 13-14; (2) reset does not clear data_out_reg in the read-pointer block, causing stale output_axis_tdata=6 at cycle 16. Patch_260cd2a94865 and patch_2091b2021c83 directly fix these omissions in the exact blocks where the state lives. The remaining patches attempt to mask symptoms by gating conditions but leave the uninitialized state intact, so they are ranked lower.",
+    "ranking": [
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_260cd2a94865",
+        "mechanism": "The reset handler for the write pointer block (line 99) clears wr_ptr but leaves wr_ptr_cur and drop_frame unreset. After a reset pulse (cycle 8), wr_ptr_cur retains a stale non-zero value. When input traffic resumes, the 'full_cur' check (line 83) sees wr_ptr_cur != wr_ptr and may assert drop_frame=1 even though the FIFO is empty. Patch_260cd2a94865 adds `wr_ptr_cur <= 0; drop_frame <= 0;` to the same reset block, directly clearing the two state bits that caused the false drop_frame=1 at cycles 13-14 and the subsequent data mismatch at cycle 16.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "output_axis_tdata",
+        "id": "patch_2091b2021c83",
+        "mechanism": "The read-pointer reset block (line 127) clears rd_ptr but does not clear data_out_reg. After reset, data_out_reg holds stale payload (0x06). When the output side becomes ready, this stale word is presented on output_axis_tdata at cycle 16 instead of the expected 0x00. Patch_2091b2021c83 adds `data_out_reg <= 0;` to the same block, eliminating the stale-data mismatch.",
+        "source_line": 127
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_eed1c85249a0",
+        "mechanism": "The commit branch (line 103) advances wr_ptr on input_axis_tlast even when the FIFO is full (full=1). In DROP_WHEN_FULL=1 mode this lets wr_ptr wrap and corrupts full/empty accounting, causing drop_frame to stick at 1. Changing the guard to `(input_axis_tlast) && (!full)` prevents the commit when full, preserving correct full/empty state and allowing drop_frame to de-assert.",
+        "source_line": 103
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_0df996e92b1b",
+        "mechanism": "The drop-frame entry condition (line 100) fires on `full | full_cur | drop_frame` for any write. When the FIFO is empty, full_cur can be true due to stale wr_ptr_cur, causing an immediate drop_frame=1. Qualifying with `input_axis_tlast` restricts drop-frame entry to the last beat of a frame, matching the design intent that drop-frame is a per-frame decision.",
+        "source_line": 100
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_9d300784e043",
+        "mechanism": "Identical failure anchors as patch_260cd2a94865 but only resets drop_frame, leaving wr_ptr_cur stale. The stale wr_ptr_cur keeps full_cur asserted, so drop_frame re-asserts on the next write. Incomplete compared to patch_260cd2a94865.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_c388b437f780",
+        "mechanism": "Guards the commit with `!full_cur` instead of `!full`. Since full_cur tracks wr_ptr_cur vs wr_ptr, it prevents commit when the current frame overflowed, but does not protect against the global full condition that actually stalls the FIFO. Less directly tied to the observed full/empty corruption.",
+        "source_line": 103
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_a1c3e97c658c",
+        "mechanism": "Changes the write-block enable to `write && full_cur`, effectively disabling normal writes whenever wr_ptr_cur != wr_ptr. This over-constrains the write path and does not address the reset initialization of wr_ptr_cur or drop_frame.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_5ca8f64228ff",
+        "mechanism": "Changes the write-block enable to `write && rst`, which only allows writes during reset \u2014 clearly incorrect for functional operation and does not fix the missing reset initialization.",
+        "source_line": 99
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 10.4836
+}

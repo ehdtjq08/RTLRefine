@@ -1,0 +1,127 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\axis_frame_fifo'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dependencies.v
+Parsing SystemVerilog input from `dependencies.v' to AST representation.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \axis_frame_fifo
+
+3.2. Analyzing design hierarchy..
+Top module:  \axis_frame_fifo
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$candidate.v:134$40 in module axis_frame_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:124$37 in module axis_frame_fifo.
+Marked 4 switch rules as full_case in process $proc$candidate.v:96$20 in module axis_frame_fifo.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 9 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\axis_frame_fifo.$proc$candidate.v:74$49'.
+  Set init value: \output_axis_tvalid_reg = 1'0
+Found init rule in `\axis_frame_fifo.$proc$candidate.v:67$47'.
+  Set init value: \data_out_reg = 10'0000000000
+Found init rule in `\axis_frame_fifo.$proc$candidate.v:63$46'.
+  Set init value: \rd_ptr = 3'000
+Found init rule in `\axis_frame_fifo.$proc$candidate.v:62$45'.
+  Set init value: \wr_ptr_cur = 3'000
+Found init rule in `\axis_frame_fifo.$proc$candidate.v:61$44'.
+  Set init value: \wr_ptr = 3'000
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:74$49'.
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:72$48'.
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:67$47'.
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:63$46'.
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:62$45'.
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:61$44'.
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:134$40'.
+     1/1: $0\output_axis_tvalid_reg[0:0]
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:124$37'.
+     1/2: $0\data_out_reg[9:0]
+     2/2: $0\rd_ptr[2:0]
+Creating decoders for process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+     1/12: $3$memwr$\mem$candidate.v:108$1_EN[9:0]$34
+     2/12: $3$memwr$\mem$candidate.v:108$1_DATA[9:0]$33
+     3/12: $3$memwr$\mem$candidate.v:108$1_ADDR[1:0]$32
+     4/12: $2$memwr$\mem$candidate.v:108$1_EN[9:0]$29
+     5/12: $2$memwr$\mem$candidate.v:108$1_DATA[9:0]$28
+     6/12: $2$memwr$\mem$candidate.v:108$1_ADDR[1:0]$27
+     7/12: $1$memwr$\mem$candidate.v:108$1_EN[9:0]$26
+     8/12: $1$memwr$\mem$candidate.v:108$1_DATA[9:0]$25
+     9/12: $1$memwr$\mem$candidate.v:108$1_ADDR[1:0]$24
+    10/12: $0\wr_ptr_cur[2:0]
+    11/12: $0\wr_ptr[2:0]
+    12/12: $0\drop_frame[0:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\axis_frame_fifo.\output_read' from process `\axis_frame_fifo.$proc$candidate.v:72$48'.
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\axis_frame_fifo.\output_axis_tvalid_reg' using process `\axis_frame_fifo.$proc$candidate.v:134$40'.
+  created $dff cell `$procdff$161' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.\rd_ptr' using process `\axis_frame_fifo.$proc$candidate.v:124$37'.
+  created $dff cell `$procdff$162' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.\data_out_reg' using process `\axis_frame_fifo.$proc$candidate.v:124$37'.
+  created $dff cell `$procdff$163' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.\drop_frame' using process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+  created $dff cell `$procdff$164' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.\wr_ptr' using process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+  created $dff cell `$procdff$165' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.\wr_ptr_cur' using process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+  created $dff cell `$procdff$166' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.$memwr$\mem$candidate.v:108$1_ADDR' using process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+  created $dff cell `$procdff$167' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.$memwr$\mem$candidate.v:108$1_DATA' using process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+  created $dff cell `$procdff$168' with positive edge clock.
+Creating register for signal `\axis_frame_fifo.$memwr$\mem$candidate.v:108$1_EN' using process `\axis_frame_fifo.$proc$candidate.v:96$20'.
+  created $dff cell `$procdff$169' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `axis_frame_fifo.$proc$candidate.v:74$49'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:72$48'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:67$47'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:63$46'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:62$45'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:61$44'.
+Found and cleaned up 2 empty switches in `\axis_frame_fifo.$proc$candidate.v:134$40'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:134$40'.
+Found and cleaned up 2 empty switches in `\axis_frame_fifo.$proc$candidate.v:124$37'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:124$37'.
+Found and cleaned up 6 empty switches in `\axis_frame_fifo.$proc$candidate.v:96$20'.
+Removing empty process `axis_frame_fifo.$proc$candidate.v:96$20'.
+Cleaned up 10 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module axis_frame_fifo.
+
+5. Executing FLATTEN pass (flatten design).
+
+6. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7. Executing JSON backend.

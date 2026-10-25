@@ -1,0 +1,37 @@
+{
+  "explanation": "Ranking prioritizes edits that directly target the failing bus_active register (patch_b426c357ff1e, patch_58d634fc40e4) or modify signals feeding bus control sequencing (patch_64d2bd7aca6b, patch_1eaa912ddb03, patch_047dea8ef5d8, patch_c1bf34953ab3, patch_dd3edbcc7820, patch_4d9541c17aad). All are rhs_substitution of same-width signals at lines implicated by dependency analysis. No RTL, test results, or confidence probabilities are included.",
+  "ranking": [
+    {
+      "id": "patch_64d2bd7aca6b",
+      "mechanism": "Alters phy_tx_data constant 1'b1 to missed_ack_next in PHY_STATE_WRITE_BIT_3; changes data driven onto SDA during write bit phase, potentially affecting bus control timing and downstream bus_active generation."
+    },
+    {
+      "id": "patch_1eaa912ddb03",
+      "mechanism": "Replaces missed_ack_reg default 1'b0 with scl_negedge; couples missed ACK detection to SCL falling edge which may shift bus control sequencing and influence bus_active assertion cycles."
+    },
+    {
+      "id": "patch_b426c357ff1e",
+      "mechanism": "Directly substitutes bus_active_reg initialization from 1'b0 to s_axis_cmd_start; since bus_active is the failing port, this edit targets the exact register driving the mismatched output."
+    },
+    {
+      "id": "patch_58d634fc40e4",
+      "mechanism": "Sets bus_active_reg default from 1'b0 to mode_write_multiple_reg; mode_write_multiple_reg reflects multi-byte write intent and may cause earlier bus_active assertion aligned with expected trace."
+    },
+    {
+      "id": "patch_047dea8ef5d8",
+      "mechanism": "Changes phy_tx_data from constant 1'b1 to delay_sda_next in PHY_STATE_START_1; modifies SDA data during repeated start sequence, potentially altering bus arbitration timing that feeds bus_active."
+    },
+    {
+      "id": "patch_c1bf34953ab3",
+      "mechanism": "Replaces delay_scl_next constant 1'b1 with scl_t in PHY_STATE_WRITE_BIT_2; ties SCL delay release to output enable, which could shift phy_state progression and bus_active timing."
+    },
+    {
+      "id": "patch_dd3edbcc7820",
+      "mechanism": "Substitutes sda_o_next constant 1'b1 with missed_ack_next in PHY_STATE_STOP_2; modifies SDA release during stop, possibly affecting bus handover and bus_active deassertion alignment."
+    },
+    {
+      "id": "patch_4d9541c17aad",
+      "mechanism": "Replaces phy_stop_bit constant 1'b0 with scl_t; ties stop condition to SCL output enable, which may cause premature or delayed stop sequencing impacting bus_active."
+    }
+  ]
+}

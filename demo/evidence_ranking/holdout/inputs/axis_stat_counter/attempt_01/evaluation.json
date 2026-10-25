@@ -1,0 +1,522 @@
+{
+  "accepted": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_stat_counter",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0338,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_stat_counter.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8694,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": false,
+  "rtl_sha256": "b4c7bd40aaab3748a722799a65e3a28fe29ca650178f32555996e76c6e90c871",
+  "status": "DISCOVERY_FAILED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_stat_counter"
+        ],
+        "elapsed_seconds": 0.0167,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 896,
+      "cycles": 256,
+      "expected_sha256": "e815797c8ea8b89e0cc8e11be2b819d35a01dcc7773b25345f3433bc1ae3f6ec",
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 65,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 66,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 101,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 172,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "m_axis_tready",
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst",
+            "tag",
+            "trigger"
+          ],
+          "samples": [
+            [
+              1,
+              15,
+              0,
+              1,
+              1,
+              0,
+              44538,
+              0
+            ],
+            [
+              1,
+              31,
+              1,
+              1,
+              1,
+              0,
+              49045,
+              0
+            ],
+            [
+              0,
+              3,
+              0,
+              1,
+              1,
+              0,
+              61469,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              13572,
+              0
+            ],
+            [
+              1,
+              15,
+              0,
+              1,
+              1,
+              0,
+              15067,
+              0
+            ],
+            [
+              1,
+              15,
+              0,
+              1,
+              1,
+              0,
+              22264,
+              0
+            ],
+            [
+              0,
+              127,
+              0,
+              1,
+              1,
+              0,
+              29232,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              0,
+              0,
+              0,
+              46674,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              33853,
+              0
+            ]
+          ],
+          "start_cycle": 57
+        },
+        {
+          "inputs": [
+            "m_axis_tready",
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst",
+            "tag",
+            "trigger"
+          ],
+          "samples": [
+            [
+              1,
+              31,
+              1,
+              1,
+              1,
+              0,
+              49045,
+              0
+            ],
+            [
+              0,
+              3,
+              0,
+              1,
+              1,
+              0,
+              61469,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              13572,
+              0
+            ],
+            [
+              1,
+              15,
+              0,
+              1,
+              1,
+              0,
+              15067,
+              0
+            ],
+            [
+              1,
+              15,
+              0,
+              1,
+              1,
+              0,
+              22264,
+              0
+            ],
+            [
+              0,
+              127,
+              0,
+              1,
+              1,
+              0,
+              29232,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              0,
+              0,
+              0,
+              46674,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              33853,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              1,
+              0,
+              52482,
+              0
+            ]
+          ],
+          "start_cycle": 58
+        },
+        {
+          "inputs": [
+            "m_axis_tready",
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst",
+            "tag",
+            "trigger"
+          ],
+          "samples": [
+            [
+              1,
+              7,
+              0,
+              1,
+              1,
+              0,
+              57779,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              8059,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              1,
+              0,
+              14520,
+              0
+            ],
+            [
+              0,
+              31,
+              1,
+              1,
+              1,
+              0,
+              42705,
+              0
+            ],
+            [
+              1,
+              7,
+              0,
+              1,
+              0,
+              0,
+              46822,
+              0
+            ],
+            [
+              1,
+              15,
+              0,
+              1,
+              1,
+              0,
+              31102,
+              0
+            ],
+            [
+              0,
+              63,
+              0,
+              0,
+              1,
+              0,
+              21801,
+              0
+            ],
+            [
+              1,
+              63,
+              0,
+              1,
+              1,
+              0,
+              60830,
+              0
+            ],
+            [
+              1,
+              255,
+              0,
+              1,
+              1,
+              0,
+              41816,
+              0
+            ]
+          ],
+          "start_cycle": 93
+        },
+        {
+          "inputs": [
+            "m_axis_tready",
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst",
+            "tag",
+            "trigger"
+          ],
+          "samples": [
+            [
+              1,
+              1,
+              0,
+              1,
+              1,
+              0,
+              55402,
+              0
+            ],
+            [
+              1,
+              63,
+              0,
+              1,
+              0,
+              0,
+              58154,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              1,
+              0,
+              61352,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              1644,
+              0
+            ],
+            [
+              1,
+              31,
+              0,
+              0,
+              0,
+              0,
+              25245,
+              0
+            ],
+            [
+              1,
+              127,
+              0,
+              1,
+              1,
+              0,
+              49941,
+              0
+            ],
+            [
+              0,
+              63,
+              1,
+              1,
+              1,
+              0,
+              46986,
+              0
+            ],
+            [
+              1,
+              3,
+              0,
+              1,
+              0,
+              0,
+              50845,
+              0
+            ],
+            [
+              1,
+              127,
+              1,
+              0,
+              1,
+              0,
+              33849,
+              0
+            ]
+          ],
+          "start_cycle": 164
+        }
+      ],
+      "mismatch_count": 4,
+      "passed": false,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "a07faf9f5a6114af61478b1a2db2ba602cdaa0d4e59d0b8810e7c088ed90f4f9",
+      "trace_label": "discovery"
+    }
+  ]
+}

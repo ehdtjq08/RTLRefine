@@ -1,0 +1,47 @@
+{
+  "algorithm_hashes": {
+    "configs/budget.json": "915447a9fdee019db7e6ccb1fb74cad5a0583140f055933c669ad47c86263dd2",
+    "configs/pricing.json": "6d0c219e3c023cc76b13732b1a594b9b15b9b9eb5711f41dee863a0007f32a3e",
+    "rtl_agent/budget.py": "99fa5be7fc3067423969a0fe88a3404d7ad28e2ad015e0e9a96908f2d4263fd2",
+    "rtl_agent/evidence_ranking/__init__.py": "9df595babfe377ac6af7156d29edc5b9b8e44c5602e1e2d198ab8945a96a590b",
+    "rtl_agent/evidence_ranking/aggregate.py": "9c3cfecafd5e70a808e6b3c3efbb035d1fd7e4dc6fea4f18aa18e9995bd490eb",
+    "rtl_agent/evidence_ranking/evaluate.py": "a40fc39276869e52aeb8002d91dd56c83bf846ce78ddd7ab40523c1498306d4c",
+    "rtl_agent/evidence_ranking/features.py": "103ffb678ed01906d9fd9d7df0d413cff10b585eef236c18525860509ccd1f00",
+    "rtl_agent/evidence_ranking/holdout_tools.py": "9e2eacfa9e7b9bf7fc5490b05d90351675c1c54c3f179b8755363b9a9a8644dc",
+    "rtl_agent/evidence_ranking/model.py": "6f779f430994a2a50c9553cc311c49b44a36002e26dd2e1fedd9d8542e692466",
+    "rtl_agent/evidence_ranking/model_ids.py": "33d0378ce2b50361581534c3a391fb14fd236cbb13f3158bdc651544eea526bd",
+    "rtl_agent/model_client.py": "375935c18f8cbce43038a10179b35a308b2cf30608bdef32bb31d3e6955c50e1",
+    "rtl_agent/model_settings.py": "0ce64b548fd67b31f2b3d67a9d39536cc89f999937cdf99df3a7054066d06ff7",
+    "scripts/build_holdout_catalog.py": "fed7c5dd7aecefc8c86d7e50821d73f9a4f83f2dcaa0d45f6d7025915c624297",
+    "scripts/prepare_ranking_holdout.py": "7765f2d15faeb6aa22214a324562aba05faeb30a80f9d642d874e15112c5b369",
+    "scripts/run_holdout_ranking_plans.py": "c7d8cc18cb283092aa8efa768d6bd4970e2aa2adc7c29b4a3360923f53ceb208"
+  },
+  "candidate_outcomes_available_to_ranker": false,
+  "confidence_limit": "Stability is not correctness probability. All source/dependency facts are machine-owned; model mechanism text is unverified",
+  "consensus": "Top-eight Borda; content-hash tie break with fixed heuristic; below .35 mean top-eight Jaccard falls back to heuristic",
+  "estimated_spend_cap": 4.0,
+  "evidence_features": "Original static dependency overapproximation, direct changed targets, related-site scope completeness, edit size",
+  "forced_prefix": 0,
+  "heuristic_weights": {
+    "dependency_relevance": 4,
+    "direct_failure_target": 2,
+    "minimality": 0.5,
+    "structural_completeness": 2
+  },
+  "inputs_manifest_sha256": "1a5c7cf0b06b089d5c12eb283d2aa762753dc8c2d8a3febf8706ce78b296e57e",
+  "max_output_tokens": 6144,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "private_catalog_may_be_scored_only_after_all_plans": true,
+  "raw_views_per_trial": 1,
+  "same_candidate_cap": 8,
+  "scope": "New-module synthetic ranking, conditional on seeded known-positive candidate pools. Not historical bugs, grammar coverage, model-training holdout or general RTL superiority.",
+  "settings": {
+    "api_timeout_seconds": 240,
+    "enable_thinking": false,
+    "json_mode": true,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "trials": 1,
+  "views_per_evidence_trial": 3
+}

@@ -1,0 +1,2061 @@
+
+-- Executing script file `bounded.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\txuart'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: properties.v
+Parsing formal SystemVerilog input from `properties.v' to AST representation.
+Generating RTLIL representation for module `\property_top'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     \txuart
+Parameter \INITIAL_SETUP = 31'0000000000000000000000000000101
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\txuart'.
+Parameter \INITIAL_SETUP = 31'0000000000000000000000000000101
+Generating RTLIL representation for module `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101
+
+3.4. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101
+Removing unused module `\txuart'.
+Removed 1 unused modules.
+Module property_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$candidate.v:398$115 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 5 switch rules as full_case in process $proc$candidate.v:368$103 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 4 switch rules as full_case in process $proc$candidate.v:311$97 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 3 switch rules as full_case in process $proc$candidate.v:291$93 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 1 switch rules as full_case in process $proc$candidate.v:270$91 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 12 switch rules as full_case in process $proc$candidate.v:181$76 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 15 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\property_top.$proc$properties.v:8$69'.
+  Set init value: \past_valid = 1'0
+Found init rule in `\property_top.$proc$properties.v:7$68'.
+  Set init value: \stable_age = 4'0000
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$126'.
+  Set init value: \last_state = 1'0
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$125'.
+  Set init value: \baud_counter = 28'0000000000000000000000000101
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$124'.
+  Set init value: \zero_baud_counter = 1'0
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$123'.
+  Set init value: \calc_parity = 1'0
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$122'.
+  Set init value: \lcl_data = 8'11111111
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$121'.
+  Set init value: \r_setup = 31'0000000000000000000000000000101
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$120'.
+  Set init value: \state = 4'1111
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$119'.
+  Set init value: \r_busy = 1'1
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$118'.
+  Set init value: \o_uart_tx = 1'1
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\property_top.$proc$properties.v:8$69'.
+Creating decoders for process `\property_top.$proc$properties.v:7$68'.
+Creating decoders for process `\property_top.$proc$properties.v:16$66'.
+Creating decoders for process `\property_top.$proc$properties.v:13$61'.
+     1/1: $assume$properties.v:13$63_EN
+Creating decoders for process `\property_top.$proc$properties.v:9$58'.
+     1/1: $0\stable_age[3:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$126'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$125'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$124'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$123'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$122'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$121'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$120'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$119'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$118'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$115'.
+     1/1: $0\last_state[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$103'.
+     1/2: $0\baud_counter[27:0]
+     2/2: $0\zero_baud_counter[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$97'.
+     1/1: $0\calc_parity[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$93'.
+     1/1: $0\o_uart_tx[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$91'.
+     1/1: $0\lcl_data[7:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$89'.
+     1/1: $0\r_setup[30:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$76'.
+     1/2: $0\r_busy[0:0]
+     2/2: $0\state[3:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:175$72'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$71'.
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\property_top.\stable_age' using process `\property_top.$proc$properties.v:9$58'.
+  created $dff cell `$procdff$256' with positive edge clock.
+Creating register for signal `\property_top.\past_valid' using process `\property_top.$proc$properties.v:9$58'.
+  created $dff cell `$procdff$257' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\last_state' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$115'.
+  created $dff cell `$procdff$258' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\baud_counter' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$103'.
+  created $dff cell `$procdff$259' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\zero_baud_counter' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$103'.
+  created $dff cell `$procdff$260' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\calc_parity' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$97'.
+  created $dff cell `$procdff$261' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\o_uart_tx' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$93'.
+  created $dff cell `$procdff$262' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\lcl_data' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$91'.
+  created $dff cell `$procdff$263' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\r_setup' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$89'.
+  created $dff cell `$procdff$264' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\state' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$76'.
+  created $dff cell `$procdff$265' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\r_busy' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$76'.
+  created $dff cell `$procdff$266' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\ck_cts' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:175$72'.
+  created $dff cell `$procdff$267' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\q_cts_n' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$71'.
+  created $dff cell `$procdff$268' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\qq_cts_n' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$71'.
+  created $dff cell `$procdff$269' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `property_top.$proc$properties.v:8$69'.
+Removing empty process `property_top.$proc$properties.v:7$68'.
+Removing empty process `property_top.$proc$properties.v:16$66'.
+Found and cleaned up 1 empty switch in `\property_top.$proc$properties.v:13$61'.
+Removing empty process `property_top.$proc$properties.v:13$61'.
+Found and cleaned up 1 empty switch in `\property_top.$proc$properties.v:9$58'.
+Removing empty process `property_top.$proc$properties.v:9$58'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$126'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$125'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$124'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$123'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$122'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$121'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$120'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$119'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$118'.
+Found and cleaned up 1 empty switch in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$115'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$115'.
+Found and cleaned up 6 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$103'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$103'.
+Found and cleaned up 6 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$97'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$97'.
+Found and cleaned up 4 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$93'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$93'.
+Found and cleaned up 2 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$91'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$91'.
+Found and cleaned up 1 empty switch in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$89'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$89'.
+Found and cleaned up 12 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$76'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$76'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:175$72'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$71'.
+Cleaned up 34 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+Optimizing module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 14 cells.
+
+6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\dut.$procmux$165.
+Removed 1 multiplexer ports.
+
+6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$256 ($dff) from module property_top (D = $add$properties.v:11$60_Y, Q = \stable_age).
+Adding SRST signal on $flatten\dut.$procdff$266 ($dff) from module property_top (D = $flatten\dut.$procmux$207_Y, Q = \dut.r_busy, rval = 1'1).
+Adding SRST signal on $flatten\dut.$procdff$265 ($dff) from module property_top (D = $flatten\dut.$procmux$251_Y [0], Q = \dut.state [0], rval = 1'1).
+Adding SRST signal on $flatten\dut.$procdff$265 ($dff) from module property_top (D = $flatten\dut.$procmux$248_Y [3:1], Q = \dut.state [3:1], rval = 3'111).
+Adding EN signal on $auto$ff.cc:266:slice$278 ($sdff) from module property_top (D = $flatten\dut.$procmux$245_Y [3:1], Q = \dut.state [3:1]).
+Adding EN signal on $auto$ff.cc:266:slice$277 ($sdff) from module property_top (D = $flatten\dut.$procmux$251_Y [0], Q = \dut.state [0]).
+Adding EN signal on $flatten\dut.$procdff$264 ($dff) from module property_top (D = 31'0000000000000000000000000000101, Q = \dut.r_setup).
+Adding SRST signal on $flatten\dut.$procdff$263 ($dff) from module property_top (D = $flatten\dut.$procmux$193_Y, Q = \dut.lcl_data, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:266:slice$294 ($sdff) from module property_top (D = { 1'0 \dut.lcl_data [7:1] }, Q = \dut.lcl_data).
+Adding SRST signal on $flatten\dut.$procdff$262 ($dff) from module property_top (D = $flatten\dut.$procmux$188_Y, Q = \dut.o_uart_tx, rval = 1'1).
+Adding EN signal on $auto$ff.cc:266:slice$296 ($sdff) from module property_top (D = $flatten\dut.$procmux$188_Y, Q = \dut.o_uart_tx).
+Adding SRST signal on $flatten\dut.$procdff$261 ($dff) from module property_top (D = $flatten\dut.$procmux$176_Y, Q = \dut.calc_parity, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$300 ($sdff) from module property_top (D = $flatten\dut.$procmux$176_Y, Q = \dut.calc_parity).
+Adding SRST signal on $flatten\dut.$procdff$260 ($dff) from module property_top (D = $flatten\dut.$procmux$160_Y, Q = \dut.zero_baud_counter, rval = 1'0).
+Adding SRST signal on $flatten\dut.$procdff$259 ($dff) from module property_top (D = $flatten\dut.$procmux$146_Y [3:0], Q = \dut.baud_counter [3:0], rval = 4'0000).
+Setting constant 1-bit at position 0 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 1-bit at position 2 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 17 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$293 ($dffe) from module property_top.
+Setting constant 1-bit at position 0 on $flatten\dut.$procdff$268 ($dff) from module property_top.
+
+6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 15 unused cells and 117 unused wires.
+
+6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 1 cells.
+
+6.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$310 ($dff) from module property_top (D = $flatten\dut.$procmux$146_Y [27:4], Q = \dut.baud_counter [27:4], rval = 24'000000000000000000000101).
+Setting constant 1-bit at position 0 on $flatten\dut.$procdff$269 ($dff) from module property_top.
+
+6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 2 unused cells and 12 unused wires.
+
+6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.20. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $flatten\dut.$procdff$267 ($dff) from module property_top.
+
+6.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 0 unused cells and 1 unused wires.
+
+6.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 0 unused cells and 2 unused wires.
+
+6.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.30. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.31. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.32. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.33. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.34. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.35. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+
+6.36. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.37. Finished OPT passes. (There is nothing left to do.)
+
+7. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import set-constraint from init attribute: \dut.baud_counter = 28'0000000000000000000000000101
+Import set-constraint from init attribute: \dut.calc_parity = 1'0
+Import set-constraint from init attribute: \dut.last_state = 1'0
+Import set-constraint from init attribute: \dut.lcl_data = 8'11111111
+Import set-constraint from init attribute: \dut.o_uart_tx = 1'1
+Import set-constraint from init attribute: \dut.r_busy = 1'1
+Import set-constraint from init attribute: \dut.state = 4'1111
+Import set-constraint from init attribute: \dut.zero_baud_counter = 1'0
+Import set-constraint from init attribute: \past_valid = 1'0
+Import set-constraint from init attribute: \stable_age = 4'0000
+Final init constraint equation: { \stable_age \past_valid \dut.zero_baud_counter \dut.state \dut.r_busy \dut.o_uart_tx \dut.lcl_data \dut.last_state \dut.calc_parity \dut.baud_counter } = 50'00000011111111111111000000000000000000000000000101
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 21:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 22:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 23:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 24:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 25:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 26:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 27:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 28:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 29:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 30:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 31:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 32:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 33:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 34:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 35:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 36:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 37:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 38:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 39:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 40:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 41:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 42:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 43:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 44:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 45:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 46:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 47:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 48:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 49:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 50:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 51:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 52:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 53:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 54:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 55:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 56:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 57:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 58:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 59:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 60:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 61:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 62:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 63:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 64:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 65:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 66:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 67:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 68:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 69:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 70:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 71:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 72:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 73:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 74:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 75:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 76:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 77:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 78:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 79:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 80:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 81:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 82:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 83:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 84:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 85:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 86:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 87:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 88:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 89:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 90:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 91:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 92:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 93:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 94:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 95:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+
+Setting up time step 96:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 66 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$63_EN.
+Import proof for assert: \property_blocked when 1'1.
+Import show expression: \i_break
+Import show expression: \i_clk
+Import show expression: \i_reset
+Import show expression: \age
+Import show expression: \o_busy
+Import show expression: \o_uart_tx
+Import show expression: \property_blocked
+
+Solving problem with 609032 variables and 1667397 clauses..
+SAT proof finished - model found: FAIL!
+
+   ______                   ___       ___       _ _            _ _ 
+  (_____ \                 / __)     / __)     (_) |          | | |
+   _____) )___ ___   ___ _| |__    _| |__ _____ _| | _____  __| | |
+  |  ____/ ___) _ \ / _ (_   __)  (_   __|____ | | || ___ |/ _  |_|
+  | |   | |  | |_| | |_| || |       | |  / ___ | | || ____( (_| |_ 
+  |_|   |_|   \___/ \___/ |_|       |_|  \_____|_|\_)_____)\____|_|
+
+
+  Time Signal Name                         Dec       Hex                             Bin
+  ---- --------------------------- ----------- --------- -------------------------------
+  init \dut.baud_counter                     5         5    0000000000000000000000000101
+  init \dut.calc_parity                      0         0                               0
+  init \dut.last_state                       0         0                               0
+  init \dut.lcl_data                       255        ff                        11111111
+  init \dut.o_uart_tx                        1         1                               1
+  init \dut.r_busy                           1         1                               1
+  init \dut.state [0]                        1         1                               1
+  init \dut.state [3:1]                      7         7                             111
+  init \dut.zero_baud_counter                0         0                               0
+  init \past_valid                           0         0                               0
+  init \stable_age                           0         0                            0000
+  ---- --------------------------- ----------- --------- -------------------------------
+     1 \age                                  0         0                            0000
+     1 \i_break                              0         0                               0
+     1 \i_clk                                0         0                               0
+     1 \i_reset                              1         1                               1
+     1 \o_busy                               1         1                               1
+     1 \o_uart_tx                            1         1                               1
+     1 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     2 \age                                  1         1                            0001
+     2 \i_break                              1         1                               1
+     2 \i_clk                                0         0                               0
+     2 \i_reset                              0         0                               0
+     2 \o_busy                               1         1                               1
+     2 \o_uart_tx                            1         1                               1
+     2 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     3 \age                                  2         2                            0010
+     3 \i_break                              0         0                               0
+     3 \i_clk                                0         0                               0
+     3 \i_reset                              1         1                               1
+     3 \o_busy                               1         1                               1
+     3 \o_uart_tx                            0         0                               0
+     3 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     4 \age                                  3         3                            0011
+     4 \i_break                              1         1                               1
+     4 \i_clk                                0         0                               0
+     4 \i_reset                              0         0                               0
+     4 \o_busy                               1         1                               1
+     4 \o_uart_tx                            1         1                               1
+     4 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     5 \age                                  4         4                            0100
+     5 \i_break                              0         0                               0
+     5 \i_clk                                0         0                               0
+     5 \i_reset                              0         0                               0
+     5 \o_busy                               1         1                               1
+     5 \o_uart_tx                            0         0                               0
+     5 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     6 \age                                  5         5                            0101
+     6 \i_break                              0         0                               0
+     6 \i_clk                                0         0                               0
+     6 \i_reset                              0         0                               0
+     6 \o_busy                               1         1                               1
+     6 \o_uart_tx                            0         0                               0
+     6 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     7 \age                                  6         6                            0110
+     7 \i_break                              0         0                               0
+     7 \i_clk                                0         0                               0
+     7 \i_reset                              0         0                               0
+     7 \o_busy                               1         1                               1
+     7 \o_uart_tx                            0         0                               0
+     7 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     8 \age                                  7         7                            0111
+     8 \i_break                              1         1                               1
+     8 \i_clk                                0         0                               0
+     8 \i_reset                              0         0                               0
+     8 \o_busy                               1         1                               1
+     8 \o_uart_tx                            0         0                               0
+     8 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+     9 \age                                  8         8                            1000
+     9 \i_break                              0         0                               0
+     9 \i_clk                                0         0                               0
+     9 \i_reset                              0         0                               0
+     9 \o_busy                               1         1                               1
+     9 \o_uart_tx                            0         0                               0
+     9 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    10 \age                                  9         9                            1001
+    10 \i_break                              0         0                               0
+    10 \i_clk                                0         0                               0
+    10 \i_reset                              0         0                               0
+    10 \o_busy                               1         1                               1
+    10 \o_uart_tx                            0         0                               0
+    10 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    11 \age                                 10         a                            1010
+    11 \i_break                              0         0                               0
+    11 \i_clk                                0         0                               0
+    11 \i_reset                              0         0                               0
+    11 \o_busy                               1         1                               1
+    11 \o_uart_tx                            0         0                               0
+    11 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    12 \age                                 11         b                            1011
+    12 \i_break                              0         0                               0
+    12 \i_clk                                0         0                               0
+    12 \i_reset                              0         0                               0
+    12 \o_busy                               1         1                               1
+    12 \o_uart_tx                            0         0                               0
+    12 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    13 \age                                 12         c                            1100
+    13 \i_break                              0         0                               0
+    13 \i_clk                                0         0                               0
+    13 \i_reset                              0         0                               0
+    13 \o_busy                               1         1                               1
+    13 \o_uart_tx                            0         0                               0
+    13 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    14 \age                                 13         d                            1101
+    14 \i_break                              0         0                               0
+    14 \i_clk                                0         0                               0
+    14 \i_reset                              0         0                               0
+    14 \o_busy                               1         1                               1
+    14 \o_uart_tx                            0         0                               0
+    14 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    15 \age                                 14         e                            1110
+    15 \i_break                              0         0                               0
+    15 \i_clk                                0         0                               0
+    15 \i_reset                              0         0                               0
+    15 \o_busy                               1         1                               1
+    15 \o_uart_tx                            0         0                               0
+    15 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    16 \age                                 15         f                            1111
+    16 \i_break                              0         0                               0
+    16 \i_clk                                0         0                               0
+    16 \i_reset                              0         0                               0
+    16 \o_busy                               1         1                               1
+    16 \o_uart_tx                            0         0                               0
+    16 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    17 \age                                 15         f                            1111
+    17 \i_break                              0         0                               0
+    17 \i_clk                                0         0                               0
+    17 \i_reset                              0         0                               0
+    17 \o_busy                               1         1                               1
+    17 \o_uart_tx                            0         0                               0
+    17 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    18 \age                                 15         f                            1111
+    18 \i_break                              0         0                               0
+    18 \i_clk                                0         0                               0
+    18 \i_reset                              0         0                               0
+    18 \o_busy                               1         1                               1
+    18 \o_uart_tx                            0         0                               0
+    18 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    19 \age                                 15         f                            1111
+    19 \i_break                              0         0                               0
+    19 \i_clk                                0         0                               0
+    19 \i_reset                              0         0                               0
+    19 \o_busy                               1         1                               1
+    19 \o_uart_tx                            0         0                               0
+    19 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    20 \age                                 15         f                            1111
+    20 \i_break                              0         0                               0
+    20 \i_clk                                0         0                               0
+    20 \i_reset                              0         0                               0
+    20 \o_busy                               1         1                               1
+    20 \o_uart_tx                            0         0                               0
+    20 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    21 \age                                 15         f                            1111
+    21 \i_break                              0         0                               0
+    21 \i_clk                                0         0                               0
+    21 \i_reset                              0         0                               0
+    21 \o_busy                               1         1                               1
+    21 \o_uart_tx                            0         0                               0
+    21 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    22 \age                                 15         f                            1111
+    22 \i_break                              0         0                               0
+    22 \i_clk                                0         0                               0
+    22 \i_reset                              0         0                               0
+    22 \o_busy                               1         1                               1
+    22 \o_uart_tx                            0         0                               0
+    22 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    23 \age                                 15         f                            1111
+    23 \i_break                              0         0                               0
+    23 \i_clk                                0         0                               0
+    23 \i_reset                              0         0                               0
+    23 \o_busy                               1         1                               1
+    23 \o_uart_tx                            0         0                               0
+    23 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    24 \age                                 15         f                            1111
+    24 \i_break                              0         0                               0
+    24 \i_clk                                0         0                               0
+    24 \i_reset                              0         0                               0
+    24 \o_busy                               1         1                               1
+    24 \o_uart_tx                            0         0                               0
+    24 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    25 \age                                 15         f                            1111
+    25 \i_break                              0         0                               0
+    25 \i_clk                                0         0                               0
+    25 \i_reset                              0         0                               0
+    25 \o_busy                               1         1                               1
+    25 \o_uart_tx                            0         0                               0
+    25 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    26 \age                                 15         f                            1111
+    26 \i_break                              0         0                               0
+    26 \i_clk                                0         0                               0
+    26 \i_reset                              0         0                               0
+    26 \o_busy                               1         1                               1
+    26 \o_uart_tx                            0         0                               0
+    26 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    27 \age                                 15         f                            1111
+    27 \i_break                              0         0                               0
+    27 \i_clk                                0         0                               0
+    27 \i_reset                              0         0                               0
+    27 \o_busy                               1         1                               1
+    27 \o_uart_tx                            0         0                               0
+    27 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    28 \age                                 15         f                            1111
+    28 \i_break                              0         0                               0
+    28 \i_clk                                0         0                               0
+    28 \i_reset                              0         0                               0
+    28 \o_busy                               1         1                               1
+    28 \o_uart_tx                            0         0                               0
+    28 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    29 \age                                 15         f                            1111
+    29 \i_break                              0         0                               0
+    29 \i_clk                                0         0                               0
+    29 \i_reset                              0         0                               0
+    29 \o_busy                               1         1                               1
+    29 \o_uart_tx                            0         0                               0
+    29 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    30 \age                                 15         f                            1111
+    30 \i_break                              0         0                               0
+    30 \i_clk                                0         0                               0
+    30 \i_reset                              0         0                               0
+    30 \o_busy                               1         1                               1
+    30 \o_uart_tx                            0         0                               0
+    30 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    31 \age                                 15         f                            1111
+    31 \i_break                              0         0                               0
+    31 \i_clk                                0         0                               0
+    31 \i_reset                              0         0                               0
+    31 \o_busy                               1         1                               1
+    31 \o_uart_tx                            0         0                               0
+    31 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    32 \age                                 15         f                            1111
+    32 \i_break                              0         0                               0
+    32 \i_clk                                0         0                               0
+    32 \i_reset                              0         0                               0
+    32 \o_busy                               1         1                               1
+    32 \o_uart_tx                            0         0                               0
+    32 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    33 \age                                 15         f                            1111
+    33 \i_break                              0         0                               0
+    33 \i_clk                                0         0                               0
+    33 \i_reset                              0         0                               0
+    33 \o_busy                               1         1                               1
+    33 \o_uart_tx                            0         0                               0
+    33 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    34 \age                                 15         f                            1111
+    34 \i_break                              0         0                               0
+    34 \i_clk                                0         0                               0
+    34 \i_reset                              0         0                               0
+    34 \o_busy                               1         1                               1
+    34 \o_uart_tx                            0         0                               0
+    34 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    35 \age                                 15         f                            1111
+    35 \i_break                              0         0                               0
+    35 \i_clk                                0         0                               0
+    35 \i_reset                              0         0                               0
+    35 \o_busy                               1         1                               1
+    35 \o_uart_tx                            0         0                               0
+    35 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    36 \age                                 15         f                            1111
+    36 \i_break                              0         0                               0
+    36 \i_clk                                0         0                               0
+    36 \i_reset                              0         0                               0
+    36 \o_busy                               1         1                               1
+    36 \o_uart_tx                            0         0                               0
+    36 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    37 \age                                 15         f                            1111
+    37 \i_break                              0         0                               0
+    37 \i_clk                                0         0                               0
+    37 \i_reset                              0         0                               0
+    37 \o_busy                               1         1                               1
+    37 \o_uart_tx                            0         0                               0
+    37 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    38 \age                                 15         f                            1111
+    38 \i_break                              0         0                               0
+    38 \i_clk                                0         0                               0
+    38 \i_reset                              0         0                               0
+    38 \o_busy                               1         1                               1
+    38 \o_uart_tx                            0         0                               0
+    38 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    39 \age                                 15         f                            1111
+    39 \i_break                              0         0                               0
+    39 \i_clk                                0         0                               0
+    39 \i_reset                              0         0                               0
+    39 \o_busy                               1         1                               1
+    39 \o_uart_tx                            0         0                               0
+    39 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    40 \age                                 15         f                            1111
+    40 \i_break                              0         0                               0
+    40 \i_clk                                0         0                               0
+    40 \i_reset                              0         0                               0
+    40 \o_busy                               1         1                               1
+    40 \o_uart_tx                            0         0                               0
+    40 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    41 \age                                 15         f                            1111
+    41 \i_break                              0         0                               0
+    41 \i_clk                                0         0                               0
+    41 \i_reset                              0         0                               0
+    41 \o_busy                               1         1                               1
+    41 \o_uart_tx                            0         0                               0
+    41 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    42 \age                                 15         f                            1111
+    42 \i_break                              0         0                               0
+    42 \i_clk                                0         0                               0
+    42 \i_reset                              0         0                               0
+    42 \o_busy                               1         1                               1
+    42 \o_uart_tx                            0         0                               0
+    42 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    43 \age                                 15         f                            1111
+    43 \i_break                              0         0                               0
+    43 \i_clk                                0         0                               0
+    43 \i_reset                              0         0                               0
+    43 \o_busy                               1         1                               1
+    43 \o_uart_tx                            0         0                               0
+    43 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    44 \age                                 15         f                            1111
+    44 \i_break                              0         0                               0
+    44 \i_clk                                0         0                               0
+    44 \i_reset                              0         0                               0
+    44 \o_busy                               1         1                               1
+    44 \o_uart_tx                            0         0                               0
+    44 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    45 \age                                 15         f                            1111
+    45 \i_break                              0         0                               0
+    45 \i_clk                                0         0                               0
+    45 \i_reset                              0         0                               0
+    45 \o_busy                               1         1                               1
+    45 \o_uart_tx                            0         0                               0
+    45 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    46 \age                                 15         f                            1111
+    46 \i_break                              0         0                               0
+    46 \i_clk                                0         0                               0
+    46 \i_reset                              0         0                               0
+    46 \o_busy                               1         1                               1
+    46 \o_uart_tx                            0         0                               0
+    46 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    47 \age                                 15         f                            1111
+    47 \i_break                              0         0                               0
+    47 \i_clk                                0         0                               0
+    47 \i_reset                              0         0                               0
+    47 \o_busy                               1         1                               1
+    47 \o_uart_tx                            0         0                               0
+    47 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    48 \age                                 15         f                            1111
+    48 \i_break                              0         0                               0
+    48 \i_clk                                0         0                               0
+    48 \i_reset                              0         0                               0
+    48 \o_busy                               1         1                               1
+    48 \o_uart_tx                            0         0                               0
+    48 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    49 \age                                 15         f                            1111
+    49 \i_break                              0         0                               0
+    49 \i_clk                                0         0                               0
+    49 \i_reset                              0         0                               0
+    49 \o_busy                               1         1                               1
+    49 \o_uart_tx                            0         0                               0
+    49 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    50 \age                                 15         f                            1111
+    50 \i_break                              0         0                               0
+    50 \i_clk                                0         0                               0
+    50 \i_reset                              0         0                               0
+    50 \o_busy                               1         1                               1
+    50 \o_uart_tx                            0         0                               0
+    50 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    51 \age                                 15         f                            1111
+    51 \i_break                              0         0                               0
+    51 \i_clk                                0         0                               0
+    51 \i_reset                              0         0                               0
+    51 \o_busy                               1         1                               1
+    51 \o_uart_tx                            0         0                               0
+    51 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    52 \age                                 15         f                            1111
+    52 \i_break                              0         0                               0
+    52 \i_clk                                0         0                               0
+    52 \i_reset                              0         0                               0
+    52 \o_busy                               1         1                               1
+    52 \o_uart_tx                            0         0                               0
+    52 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    53 \age                                 15         f                            1111
+    53 \i_break                              0         0                               0
+    53 \i_clk                                0         0                               0
+    53 \i_reset                              0         0                               0
+    53 \o_busy                               1         1                               1
+    53 \o_uart_tx                            0         0                               0
+    53 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    54 \age                                 15         f                            1111
+    54 \i_break                              0         0                               0
+    54 \i_clk                                0         0                               0
+    54 \i_reset                              0         0                               0
+    54 \o_busy                               1         1                               1
+    54 \o_uart_tx                            0         0                               0
+    54 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    55 \age                                 15         f                            1111
+    55 \i_break                              0         0                               0
+    55 \i_clk                                0         0                               0
+    55 \i_reset                              0         0                               0
+    55 \o_busy                               1         1                               1
+    55 \o_uart_tx                            0         0                               0
+    55 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    56 \age                                 15         f                            1111
+    56 \i_break                              0         0                               0
+    56 \i_clk                                0         0                               0
+    56 \i_reset                              0         0                               0
+    56 \o_busy                               1         1                               1
+    56 \o_uart_tx                            0         0                               0
+    56 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    57 \age                                 15         f                            1111
+    57 \i_break                              0         0                               0
+    57 \i_clk                                0         0                               0
+    57 \i_reset                              0         0                               0
+    57 \o_busy                               1         1                               1
+    57 \o_uart_tx                            0         0                               0
+    57 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    58 \age                                 15         f                            1111
+    58 \i_break                              0         0                               0
+    58 \i_clk                                0         0                               0
+    58 \i_reset                              0         0                               0
+    58 \o_busy                               1         1                               1
+    58 \o_uart_tx                            0         0                               0
+    58 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    59 \age                                 15         f                            1111
+    59 \i_break                              0         0                               0
+    59 \i_clk                                0         0                               0
+    59 \i_reset                              0         0                               0
+    59 \o_busy                               1         1                               1
+    59 \o_uart_tx                            0         0                               0
+    59 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    60 \age                                 15         f                            1111
+    60 \i_break                              0         0                               0
+    60 \i_clk                                0         0                               0
+    60 \i_reset                              0         0                               0
+    60 \o_busy                               1         1                               1
+    60 \o_uart_tx                            0         0                               0
+    60 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    61 \age                                 15         f                            1111
+    61 \i_break                              0         0                               0
+    61 \i_clk                                0         0                               0
+    61 \i_reset                              0         0                               0
+    61 \o_busy                               1         1                               1
+    61 \o_uart_tx                            0         0                               0
+    61 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    62 \age                                 15         f                            1111
+    62 \i_break                              0         0                               0
+    62 \i_clk                                0         0                               0
+    62 \i_reset                              0         0                               0
+    62 \o_busy                               1         1                               1
+    62 \o_uart_tx                            0         0                               0
+    62 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    63 \age                                 15         f                            1111
+    63 \i_break                              0         0                               0
+    63 \i_clk                                0         0                               0
+    63 \i_reset                              0         0                               0
+    63 \o_busy                               1         1                               1
+    63 \o_uart_tx                            0         0                               0
+    63 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    64 \age                                 15         f                            1111
+    64 \i_break                              0         0                               0
+    64 \i_clk                                0         0                               0
+    64 \i_reset                              0         0                               0
+    64 \o_busy                               1         1                               1
+    64 \o_uart_tx                            0         0                               0
+    64 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    65 \age                                 15         f                            1111
+    65 \i_break                              0         0                               0
+    65 \i_clk                                0         0                               0
+    65 \i_reset                              0         0                               0
+    65 \o_busy                               1         1                               1
+    65 \o_uart_tx                            0         0                               0
+    65 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    66 \age                                 15         f                            1111
+    66 \i_break                              0         0                               0
+    66 \i_clk                                0         0                               0
+    66 \i_reset                              0         0                               0
+    66 \o_busy                               1         1                               1
+    66 \o_uart_tx                            0         0                               0
+    66 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    67 \age                                 15         f                            1111
+    67 \i_break                              0         0                               0
+    67 \i_clk                                0         0                               0
+    67 \i_reset                              0         0                               0
+    67 \o_busy                               1         1                               1
+    67 \o_uart_tx                            0         0                               0
+    67 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    68 \age                                 15         f                            1111
+    68 \i_break                              0         0                               0
+    68 \i_clk                                0         0                               0
+    68 \i_reset                              0         0                               0
+    68 \o_busy                               1         1                               1
+    68 \o_uart_tx                            0         0                               0
+    68 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    69 \age                                 15         f                            1111
+    69 \i_break                              0         0                               0
+    69 \i_clk                                0         0                               0
+    69 \i_reset                              0         0                               0
+    69 \o_busy                               1         1                               1
+    69 \o_uart_tx                            0         0                               0
+    69 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    70 \age                                 15         f                            1111
+    70 \i_break                              0         0                               0
+    70 \i_clk                                0         0                               0
+    70 \i_reset                              0         0                               0
+    70 \o_busy                               1         1                               1
+    70 \o_uart_tx                            0         0                               0
+    70 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    71 \age                                 15         f                            1111
+    71 \i_break                              0         0                               0
+    71 \i_clk                                0         0                               0
+    71 \i_reset                              0         0                               0
+    71 \o_busy                               1         1                               1
+    71 \o_uart_tx                            0         0                               0
+    71 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    72 \age                                 15         f                            1111
+    72 \i_break                              0         0                               0
+    72 \i_clk                                0         0                               0
+    72 \i_reset                              0         0                               0
+    72 \o_busy                               1         1                               1
+    72 \o_uart_tx                            0         0                               0
+    72 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    73 \age                                 15         f                            1111
+    73 \i_break                              0         0                               0
+    73 \i_clk                                0         0                               0
+    73 \i_reset                              0         0                               0
+    73 \o_busy                               1         1                               1
+    73 \o_uart_tx                            0         0                               0
+    73 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    74 \age                                 15         f                            1111
+    74 \i_break                              0         0                               0
+    74 \i_clk                                0         0                               0
+    74 \i_reset                              0         0                               0
+    74 \o_busy                               1         1                               1
+    74 \o_uart_tx                            0         0                               0
+    74 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    75 \age                                 15         f                            1111
+    75 \i_break                              0         0                               0
+    75 \i_clk                                0         0                               0
+    75 \i_reset                              0         0                               0
+    75 \o_busy                               1         1                               1
+    75 \o_uart_tx                            0         0                               0
+    75 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    76 \age                                 15         f                            1111
+    76 \i_break                              0         0                               0
+    76 \i_clk                                0         0                               0
+    76 \i_reset                              0         0                               0
+    76 \o_busy                               1         1                               1
+    76 \o_uart_tx                            0         0                               0
+    76 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    77 \age                                 15         f                            1111
+    77 \i_break                              0         0                               0
+    77 \i_clk                                0         0                               0
+    77 \i_reset                              0         0                               0
+    77 \o_busy                               1         1                               1
+    77 \o_uart_tx                            0         0                               0
+    77 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    78 \age                                 15         f                            1111
+    78 \i_break                              0         0                               0
+    78 \i_clk                                0         0                               0
+    78 \i_reset                              0         0                               0
+    78 \o_busy                               1         1                               1
+    78 \o_uart_tx                            0         0                               0
+    78 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    79 \age                                 15         f                            1111
+    79 \i_break                              0         0                               0
+    79 \i_clk                                0         0                               0
+    79 \i_reset                              0         0                               0
+    79 \o_busy                               1         1                               1
+    79 \o_uart_tx                            0         0                               0
+    79 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    80 \age                                 15         f                            1111
+    80 \i_break                              0         0                               0
+    80 \i_clk                                0         0                               0
+    80 \i_reset                              0         0                               0
+    80 \o_busy                               1         1                               1
+    80 \o_uart_tx                            0         0                               0
+    80 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    81 \age                                 15         f                            1111
+    81 \i_break                              0         0                               0
+    81 \i_clk                                0         0                               0
+    81 \i_reset                              0         0                               0
+    81 \o_busy                               1         1                               1
+    81 \o_uart_tx                            0         0                               0
+    81 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    82 \age                                 15         f                            1111
+    82 \i_break                              0         0                               0
+    82 \i_clk                                0         0                               0
+    82 \i_reset                              0         0                               0
+    82 \o_busy                               1         1                               1
+    82 \o_uart_tx                            0         0                               0
+    82 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    83 \age                                 15         f                            1111
+    83 \i_break                              0         0                               0
+    83 \i_clk                                0         0                               0
+    83 \i_reset                              0         0                               0
+    83 \o_busy                               1         1                               1
+    83 \o_uart_tx                            0         0                               0
+    83 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    84 \age                                 15         f                            1111
+    84 \i_break                              0         0                               0
+    84 \i_clk                                0         0                               0
+    84 \i_reset                              0         0                               0
+    84 \o_busy                               1         1                               1
+    84 \o_uart_tx                            0         0                               0
+    84 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    85 \age                                 15         f                            1111
+    85 \i_break                              0         0                               0
+    85 \i_clk                                0         0                               0
+    85 \i_reset                              0         0                               0
+    85 \o_busy                               1         1                               1
+    85 \o_uart_tx                            0         0                               0
+    85 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    86 \age                                 15         f                            1111
+    86 \i_break                              0         0                               0
+    86 \i_clk                                0         0                               0
+    86 \i_reset                              0         0                               0
+    86 \o_busy                               1         1                               1
+    86 \o_uart_tx                            0         0                               0
+    86 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    87 \age                                 15         f                            1111
+    87 \i_break                              0         0                               0
+    87 \i_clk                                0         0                               0
+    87 \i_reset                              0         0                               0
+    87 \o_busy                               1         1                               1
+    87 \o_uart_tx                            0         0                               0
+    87 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    88 \age                                 15         f                            1111
+    88 \i_break                              0         0                               0
+    88 \i_clk                                0         0                               0
+    88 \i_reset                              0         0                               0
+    88 \o_busy                               1         1                               1
+    88 \o_uart_tx                            0         0                               0
+    88 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    89 \age                                 15         f                            1111
+    89 \i_break                              0         0                               0
+    89 \i_clk                                0         0                               0
+    89 \i_reset                              0         0                               0
+    89 \o_busy                               1         1                               1
+    89 \o_uart_tx                            0         0                               0
+    89 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    90 \age                                 15         f                            1111
+    90 \i_break                              0         0                               0
+    90 \i_clk                                0         0                               0
+    90 \i_reset                              0         0                               0
+    90 \o_busy                               0         0                               0
+    90 \o_uart_tx                            1         1                               1
+    90 \property_blocked                     0         0                               0
+  ---- --------------------------- ----------- --------- -------------------------------
+    91 \age                                 15         f                            1111
+    91 \i_break                              0         0                               0
+    91 \i_clk                                0         0                               0
+    91 \i_reset                              0         0                               0
+    91 \o_busy                               1         1                               1
+    91 \o_uart_tx                            1         1                               1
+    91 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    92 \age                                 15         f                            1111
+    92 \i_break                              0         0                               0
+    92 \i_clk                                0         0                               0
+    92 \i_reset                              0         0                               0
+    92 \o_busy                               1         1                               1
+    92 \o_uart_tx                            1         1                               1
+    92 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    93 \age                                 15         f                            1111
+    93 \i_break                              0         0                               0
+    93 \i_clk                                0         0                               0
+    93 \i_reset                              0         0                               0
+    93 \o_busy                               1         1                               1
+    93 \o_uart_tx                            1         1                               1
+    93 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    94 \age                                 15         f                            1111
+    94 \i_break                              0         0                               0
+    94 \i_clk                                0         0                               0
+    94 \i_reset                              0         0                               0
+    94 \o_busy                               1         1                               1
+    94 \o_uart_tx                            1         1                               1
+    94 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    95 \age                                 15         f                            1111
+    95 \i_break                              0         0                               0
+    95 \i_clk                                0         0                               0
+    95 \i_reset                              1         1                               1
+    95 \o_busy                               1         1                               1
+    95 \o_uart_tx                            1         1                               1
+    95 \property_blocked                     1         1                               1
+  ---- --------------------------- ----------- --------- -------------------------------
+    96 \age                                 15         f                            1111
+    96 \i_break                              1         1                               1
+    96 \i_clk                                0         0                               0
+    96 \i_reset                              1         1                               1
+    96 \o_busy                               1         1                               1
+    96 \o_uart_tx                            1         1                               1
+    96 \property_blocked                     1         1                               1
+Dumping SAT model to VCD file counterexample.vcd
+Dumping SAT model to WaveJSON file 'counterexample.json'.

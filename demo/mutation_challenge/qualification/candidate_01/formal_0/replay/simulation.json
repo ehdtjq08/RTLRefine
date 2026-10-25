@@ -1,0 +1,306 @@
+{
+  "commands": [
+    {
+      "command": [
+        "iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb",
+        "-o",
+        "simulation.vvp",
+        "candidate.v",
+        "tb.v"
+      ],
+      "elapsed_seconds": 0.033979,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "compile_simulation",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "vvp",
+        "simulation.vvp"
+      ],
+      "elapsed_seconds": 0.017605,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS"
+    }
+  ],
+  "coverage": {
+    "accepted_inputs": 4,
+    "accepted_outputs": 2,
+    "flush_nonempty": 1,
+    "full_stalls": 1,
+    "simultaneous": 0
+  },
+  "first_violations": [
+    {
+      "actual": [
+        248,
+        1,
+        1
+      ],
+      "cycle": 11,
+      "expected": [
+        2,
+        0,
+        0
+      ],
+      "observed": {
+        "cycle": 11,
+        "m_data": "11111000",
+        "m_last": "1",
+        "m_ready": "0",
+        "m_user": "1",
+        "m_valid": "1",
+        "rst": "0",
+        "s_data": "11011011",
+        "s_last": "0",
+        "s_ready": "1",
+        "s_user": "0",
+        "s_valid": "0"
+      },
+      "property": "data_order_sidebands"
+    }
+  ],
+  "observations": [
+    {
+      "cycle": 0,
+      "m_data": "xxxxxxxx",
+      "m_last": "x",
+      "m_ready": "0",
+      "m_user": "x",
+      "m_valid": "0",
+      "rst": "1",
+      "s_data": "00000100",
+      "s_last": "0",
+      "s_ready": "0",
+      "s_user": "0",
+      "s_valid": "1"
+    },
+    {
+      "cycle": 1,
+      "m_data": "xxxxxxxx",
+      "m_last": "x",
+      "m_ready": "0",
+      "m_user": "x",
+      "m_valid": "0",
+      "rst": "0",
+      "s_data": "11111000",
+      "s_last": "1",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "1"
+    },
+    {
+      "cycle": 2,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "0",
+      "m_user": "1",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "11111000",
+      "s_last": "1",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "1"
+    },
+    {
+      "cycle": 3,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "0",
+      "m_user": "1",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "10010000",
+      "s_last": "1",
+      "s_ready": "0",
+      "s_user": "0",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 4,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "1",
+      "m_user": "1",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "01001010",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "0",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 5,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "0",
+      "m_user": "1",
+      "m_valid": "0",
+      "rst": "1",
+      "s_data": "10110101",
+      "s_last": "1",
+      "s_ready": "0",
+      "s_user": "0",
+      "s_valid": "1"
+    },
+    {
+      "cycle": 6,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "1",
+      "m_user": "1",
+      "m_valid": "0",
+      "rst": "0",
+      "s_data": "00001010",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "0",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 7,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "1",
+      "m_user": "1",
+      "m_valid": "0",
+      "rst": "0",
+      "s_data": "11111000",
+      "s_last": "1",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 8,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "1",
+      "m_user": "1",
+      "m_valid": "0",
+      "rst": "0",
+      "s_data": "10000011",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 9,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "1",
+      "m_user": "1",
+      "m_valid": "0",
+      "rst": "0",
+      "s_data": "00000010",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "0",
+      "s_valid": "1"
+    },
+    {
+      "cycle": 10,
+      "m_data": "00000010",
+      "m_last": "0",
+      "m_ready": "0",
+      "m_user": "0",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "01000000",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "0",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 11,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "0",
+      "m_user": "1",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "11011011",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "0",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 12,
+      "m_data": "00000010",
+      "m_last": "0",
+      "m_ready": "1",
+      "m_user": "0",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "00100100",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 13,
+      "m_data": "11111000",
+      "m_last": "1",
+      "m_ready": "0",
+      "m_user": "1",
+      "m_valid": "0",
+      "rst": "0",
+      "s_data": "00000010",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "0",
+      "s_valid": "1"
+    },
+    {
+      "cycle": 14,
+      "m_data": "00000010",
+      "m_last": "0",
+      "m_ready": "0",
+      "m_user": "0",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "00000011",
+      "s_last": "0",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "0"
+    },
+    {
+      "cycle": 15,
+      "m_data": "00000010",
+      "m_last": "0",
+      "m_ready": "0",
+      "m_user": "0",
+      "m_valid": "1",
+      "rst": "0",
+      "s_data": "11100100",
+      "s_last": "1",
+      "s_ready": "1",
+      "s_user": "1",
+      "s_valid": "0"
+    }
+  ],
+  "oracle": "Independent Python deque driven only by accepted interface transfers; no fixed RTL",
+  "passed": false,
+  "profile": {
+    "addr_width": 1,
+    "cycles": 16,
+    "source": "SAT input witness"
+  },
+  "rtl_sha256": "36402987b66a4cd61a3a2e6c8ed1ecb1fc5fda2dc454adef1d3ec072232b543b",
+  "testbench_sha256": "ff242dc100da1421705425c920657d12efc3fa51545ffd59d0c0395ce0ca964a",
+  "violation_count": 1
+}

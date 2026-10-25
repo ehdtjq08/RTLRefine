@@ -1,0 +1,592 @@
+[
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8726,
+        "old": "",
+        "replacement": "\n        drop_reg <= 0;\n    ",
+        "start": 8726
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_001",
+    "line": 223,
+    "note": "Reset same-block state: drop_reg",
+    "rtl_sha256": "35cdbadc243680f44c1e72fdc133f2cb7910662dbe47b6df379df531f207b558"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7906,
+        "old": "int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))",
+        "replacement": "(int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))) && (rst)",
+        "start": 7786
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_002",
+    "line": 204,
+    "note": "Qualify condition with nearby scalar rst",
+    "rtl_sha256": "8ed0fa2ec0d1251348ead2c694130c7285f4a37d2c64c21f0b93cd50c0bdcbea"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_003",
+    "line": 233,
+    "note": "Use CL_M_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "30724f58bcce793dc360901b1c91d4dad3483dc5b2a05d59b86405d57c0337af"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8726,
+        "old": "",
+        "replacement": "\n        select_reg <= 0;\n    ",
+        "start": 8726
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_004",
+    "line": 223,
+    "note": "Reset same-block state: select_reg",
+    "rtl_sha256": "c1a2f86ca667a1834e8bcc1ed5a4b74d1edd56eb50a1762c2f3bbf6e66169673"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7906,
+        "old": "int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))",
+        "replacement": "(int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))) && (!rst)",
+        "start": 7786
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_005",
+    "line": 204,
+    "note": "Qualify condition with nearby scalar !rst",
+    "rtl_sha256": "e81217535d95b5dad99121c6449766b3f168774c1377a6557b2a02f2771c9ba1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 9113
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_006",
+    "line": 233,
+    "note": "Use CL_S_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "bcd660a781f3d989755e03ed94d0d096f76d91e759c5255553ae6aeb5ed7ed32"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8726,
+        "old": "",
+        "replacement": "\n        drop_reg <= 0;\n        select_reg <= 0;\n    ",
+        "start": 8726
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_007",
+    "line": 223,
+    "note": "Reset same-block state: drop_reg, select_reg",
+    "rtl_sha256": "09b2f4ca228bf9969e328071d57090b71d12890cedd8f2ecf176f37678356aa8"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8355,
+        "old": "int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] >= M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] <= M_TOP[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))",
+        "replacement": "(int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] >= M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] <= M_TOP[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))) && (rst)",
+        "start": 8150
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_008",
+    "line": 210,
+    "note": "Qualify condition with nearby scalar rst",
+    "rtl_sha256": "3d29d686a962526e60cf389b6c80cdf24155d35e7f72d67547790ac800968296"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "S_COUNT",
+        "start": 9113
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_009",
+    "line": 233,
+    "note": "Use S_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "0954daa92ecd75ddb486244892f3abb6048422a1cb6536da5c99ee3bc60402fd"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8355,
+        "old": "int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] >= M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] <= M_TOP[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))",
+        "replacement": "(int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] >= M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] <= M_TOP[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))) && (!rst)",
+        "start": 8150
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_010",
+    "line": 210,
+    "note": "Qualify condition with nearby scalar !rst",
+    "rtl_sha256": "0cffe2701cd6d6a7e23cbe422251e6b502a5afd2c1d8e74cb4c2e07597d11ee9"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_011",
+    "line": 301,
+    "note": "Use CL_M_COUNT instead of S_COUNT in matrix index",
+    "rtl_sha256": "d4cc02256aa69a4b7713e94de855351bfb2d552f38ed8969eaa560c88017edf1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_012",
+    "line": 301,
+    "note": "Use CL_S_COUNT instead of S_COUNT in matrix index",
+    "rtl_sha256": "29a3f2743e765f45aca13b54dea858755446a7f382f898c1b0645f4ca174d1a6"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "M_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_013",
+    "line": 301,
+    "note": "Use M_COUNT instead of S_COUNT in matrix index",
+    "rtl_sha256": "cb8f956aee2dfc81a53c93f84431a20057176abd95bbb8a116c17271e262d5cf"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_014",
+    "line": 311,
+    "note": "Use CL_M_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "adb89eed4d257102c1b1596394e59d1c5f7df049105a4cb492e0ccec90e88b0b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_015",
+    "line": 311,
+    "note": "Use CL_S_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "1c6d751771aa192e16444bd9cb4e3c0229ab73d9e5539ec65c5c72c6fc43a07b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "S_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_016",
+    "line": 311,
+    "note": "Use S_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "63dde08e3f821918ef6163ea238d4de169fd4902fbd12db9df0dccc4abaff920"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 12494,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 12487
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_017",
+    "line": 312,
+    "note": "Use CL_M_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "8cea8cdcd28f4a7447aef9f6b2b68856392ba3ae22536874d879baca16a9e7a6"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 12494,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 12487
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_018",
+    "line": 312,
+    "note": "Use CL_S_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "b103d6504ee08a7f2520d1087e5bd937c15d54f96c3e30cfc1d8f184054648e4"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 12494,
+        "old": "M_COUNT",
+        "replacement": "S_COUNT",
+        "start": 12487
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_019",
+    "line": 312,
+    "note": "Use S_COUNT instead of M_COUNT in matrix index",
+    "rtl_sha256": "fb1bbc99fba32361b398a8aed1afd003bef2ed67fa6e8750711a61516208ef14"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_020",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "0551023abab511e8899af2237a08d843e1e791a52f95e169025fecd35f3e2296"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_021",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "a5ef2b70130caa8fd397201c171220c300e04c11f58871dae091eb1317fe4d92"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "M_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_022",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "45f288c6d707a83125d3c12f014ecdad588b98574f5c38882abb7e4997f1cb14"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_023",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "0992efbda9c1671a58332dbab73b4b18dcf664311397c86bb8b3b0eda6040190"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_024",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "af2778ae10dda290442018bab64a429b7ad7dbe2394a944c8773d195759719ef"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "S_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_025",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "d0889423d9796c51a6de91cf400481e53e7d2aa271508977003e477c5f07307f"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12494,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 12487
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_026",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "7294e1ca93617e849b647902efe4eb6160b53198a4eea864e978dbcc5008f823"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12494,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 12487
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_027",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "94a1bab35a17e93d7e3f588e97cd05e1e72bc73d77dc96aaf67ef2f012d2b17c"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12494,
+        "old": "M_COUNT",
+        "replacement": "S_COUNT",
+        "start": 12487
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_028",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "c499e1b693275bfd19d1e1e04d12a5ede07b0458784f2173eae32cc67705badc"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_029",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "b00008c7be19da29fa1c34a1736ce5ba1860ab7eb07c491ff8c0c4ea64a29254"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_030",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "61b4830137fbd119dbb2a259f8a154c7df5be91826a1fd16c1df9eb0cecade1d"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 11712,
+        "old": "S_COUNT",
+        "replacement": "M_COUNT",
+        "start": 11705
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_031",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "cb1771b6727b952ff37bb9986356f67fef2237d6f540a9a9216b78015b4aa8b9"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 9120,
+        "old": "M_COUNT",
+        "replacement": "CL_S_COUNT",
+        "start": 9113
+      },
+      {
+        "end": 12403,
+        "old": "M_COUNT",
+        "replacement": "CL_M_COUNT",
+        "start": 12396
+      }
+    ],
+    "family": "index_stride",
+    "id": "candidate_032",
+    "line": 233,
+    "note": "Coordinate two matrix-index stride substitutions",
+    "rtl_sha256": "503814cf2245a4f3a80f3d1c18c06e89e80a4ce15fa89fb2ba91884a602d6fe7"
+  }
+]

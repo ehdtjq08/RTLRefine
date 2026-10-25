@@ -1,0 +1,690 @@
+[
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7032,
+        "old": "1'b0",
+        "replacement": "drop_frame_reg",
+        "start": 7028
+      }
+    ],
+    "family": "state_retention",
+    "id": "candidate_001",
+    "line": 205,
+    "note": "Retain existing drop_frame state instead of a constant default",
+    "rtl_sha256": "e6cf9061c8301b378bf2566c07ce6e02ffa47f904f8002b7a3b1012961852294"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8853,
+        "old": "",
+        "replacement": "\n        wr_addr_reg <= 0;\n    ",
+        "start": 8853
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_002",
+    "line": 258,
+    "note": "Reset same-block state: wr_addr_reg",
+    "rtl_sha256": "f3235479526825c3131df4f42d67d520d54089ffefa25744536041462147c0d8"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5466,
+        "old": "FRAME_FIFO ? (!full_cur || full_wr || DROP_WHEN_FULL) : !full",
+        "replacement": "(FRAME_FIFO ? (!full_cur || full_wr || DROP_WHEN_FULL) : !full) && (!rst)",
+        "start": 5405
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_003",
+    "line": 167,
+    "note": "Qualify readiness with !rst",
+    "rtl_sha256": "d49e609b915e40bc8fa1a21d80acb95c24af12dfe8c55278a7e0cfe95160ea65"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5779,
+        "old": "DEST_ENABLE",
+        "replacement": "(DEST_ENABLE) && (s_axis_tready)",
+        "start": 5768
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_004",
+    "line": 174,
+    "note": "Qualify condition with nearby scalar s_axis_tready",
+    "rtl_sha256": "cbadcbef2f9a9c80c22f95c8b931e26cc45d9b83b52d35832d5d085ae4b6bcca"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7058,
+        "old": "1'b0",
+        "replacement": "overflow_reg",
+        "start": 7054
+      }
+    ],
+    "family": "state_retention",
+    "id": "candidate_005",
+    "line": 206,
+    "note": "Retain existing overflow state instead of a constant default",
+    "rtl_sha256": "c283d27d25300c8025abf100164148a73a2a65587bee34e9e71e8651b0fa9e00"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10033,
+        "old": "",
+        "replacement": "\n        mem_read_data_reg <= 0;\n    ",
+        "start": 10033
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_006",
+    "line": 305,
+    "note": "Reset same-block state: mem_read_data_reg",
+    "rtl_sha256": "df64054bcfd70b5719be105c849eff71db24b0ebd9d3353db7d5e0a644df3162"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5466,
+        "old": "FRAME_FIFO ? (!full_cur || full_wr || DROP_WHEN_FULL) : !full",
+        "replacement": "(FRAME_FIFO ? (!full_cur || full_wr || DROP_WHEN_FULL) : !full) && (rst)",
+        "start": 5405
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_007",
+    "line": 167,
+    "note": "Qualify readiness with rst",
+    "rtl_sha256": "7834a61da6c670e7cc8c37295db55e931b0c37de56a616504f7c7ce3de416355"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5779,
+        "old": "DEST_ENABLE",
+        "replacement": "(DEST_ENABLE) && (!s_axis_tready)",
+        "start": 5768
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_008",
+    "line": 174,
+    "note": "Qualify condition with nearby scalar !s_axis_tready",
+    "rtl_sha256": "b013a04cc2c5536168c01777f9da01c5cc7e358bc5bd85a2a801a3ea24a8beef"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7085,
+        "old": "1'b0",
+        "replacement": "bad_frame_reg",
+        "start": 7081
+      }
+    ],
+    "family": "state_retention",
+    "id": "candidate_009",
+    "line": 207,
+    "note": "Retain existing bad_frame state instead of a constant default",
+    "rtl_sha256": "863f4ec32e65ad2aa6a2ab7a6e45feea9a90fbfb34a447037c834cd788939563"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10033,
+        "old": "",
+        "replacement": "\n        rd_addr_reg <= 0;\n    ",
+        "start": 10033
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_010",
+    "line": 305,
+    "note": "Reset same-block state: rd_addr_reg",
+    "rtl_sha256": "4e6435726b71c81a894cf9d329c949b3f9529a2cc1c0d6883676f49cc8aa6dc1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5779,
+        "old": "DEST_ENABLE",
+        "replacement": "(DEST_ENABLE) && (s_axis_tvalid)",
+        "start": 5768
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_011",
+    "line": 174,
+    "note": "Qualify condition with nearby scalar s_axis_tvalid",
+    "rtl_sha256": "b64d3a75289ed5cc864725eee40a13e6497a1fa0c9b23201a458070dea65ec92"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7113,
+        "old": "1'b0",
+        "replacement": "good_frame_reg",
+        "start": 7109
+      }
+    ],
+    "family": "state_retention",
+    "id": "candidate_012",
+    "line": 208,
+    "note": "Retain existing good_frame state instead of a constant default",
+    "rtl_sha256": "7b712140b8881bbb1a6ace1f56b06f372d21fd7c475d31d2cae1f0d297515641"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10033,
+        "old": "",
+        "replacement": "\n        mem_read_data_reg <= 0;\n        rd_addr_reg <= 0;\n    ",
+        "start": 10033
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_013",
+    "line": 305,
+    "note": "Reset same-block state: mem_read_data_reg, rd_addr_reg",
+    "rtl_sha256": "66b9a94c3869f9056f087734dd6650c8d953925dd1a22331f174e51d0305800e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5779,
+        "old": "DEST_ENABLE",
+        "replacement": "(DEST_ENABLE) && (!s_axis_tvalid)",
+        "start": 5768
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_014",
+    "line": 174,
+    "note": "Qualify condition with nearby scalar !s_axis_tvalid",
+    "rtl_sha256": "fb20f7054af1d7e0782a2731d3719a3cb027c8ac094fbe77ee9fc2e1e8a2e958"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10617,
+        "old": "",
+        "replacement": "\n        m_axis_reg <= 0;\n    ",
+        "start": 10617
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_015",
+    "line": 332,
+    "note": "Reset same-block state: m_axis_reg",
+    "rtl_sha256": "bfe8471edc6d4895c6cfd325b2c762778e70ec10245f0487235f4f224dee3fc4"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5857,
+        "old": "USER_ENABLE",
+        "replacement": "(USER_ENABLE) && (s_axis_tready)",
+        "start": 5846
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_016",
+    "line": 175,
+    "note": "Qualify condition with nearby scalar s_axis_tready",
+    "rtl_sha256": "ad9c3f237cc3dbee44ab0b5274bfb8239445c3102c4355467bb3cb4e1218a179"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5857,
+        "old": "USER_ENABLE",
+        "replacement": "(USER_ENABLE) && (!s_axis_tready)",
+        "start": 5846
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_017",
+    "line": 175,
+    "note": "Qualify condition with nearby scalar !s_axis_tready",
+    "rtl_sha256": "bdae4e000e5d65f93c9479306eec5fad18e52e0d81d8d1a16c965bc2155d531c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5857,
+        "old": "USER_ENABLE",
+        "replacement": "(USER_ENABLE) && (s_axis_tvalid)",
+        "start": 5846
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_018",
+    "line": 175,
+    "note": "Qualify condition with nearby scalar s_axis_tvalid",
+    "rtl_sha256": "7dbfb0ba6ac99c894a0a5da2767cbc242a27cc059f71d410a115c0f149d00349"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5857,
+        "old": "USER_ENABLE",
+        "replacement": "(USER_ENABLE) && (!s_axis_tvalid)",
+        "start": 5846
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_019",
+    "line": 175,
+    "note": "Qualify condition with nearby scalar !s_axis_tvalid",
+    "rtl_sha256": "701132eb21412d890b2b62a6de8b89c96a21a3ca47ca55fe57f1c86d8c75f9bf"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7223,
+        "old": "s_axis_tready && s_axis_tvalid",
+        "replacement": "(s_axis_tready && s_axis_tvalid) && (full_cur)",
+        "start": 7193
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_020",
+    "line": 213,
+    "note": "Qualify condition with nearby scalar full_cur",
+    "rtl_sha256": "503a809c4c30708ba93b718736d0d647f796db1890f6640188410a5afb025204"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7223,
+        "old": "s_axis_tready && s_axis_tvalid",
+        "replacement": "(s_axis_tready && s_axis_tvalid) && (!full_cur)",
+        "start": 7193
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_021",
+    "line": 213,
+    "note": "Qualify condition with nearby scalar !full_cur",
+    "rtl_sha256": "eceb113ac890edcb61ff36f01f3bb835fe60ef16908e387c02ff22188ef5bd5f"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7223,
+        "old": "s_axis_tready && s_axis_tvalid",
+        "replacement": "(s_axis_tready && s_axis_tvalid) && (full_wr)",
+        "start": 7193
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_022",
+    "line": 213,
+    "note": "Qualify condition with nearby scalar full_wr",
+    "rtl_sha256": "33eda120828e48d81def9eb37bd70983172fadadb71ef22e8bfc1cecbf7976d0"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7223,
+        "old": "s_axis_tready && s_axis_tvalid",
+        "replacement": "(s_axis_tready && s_axis_tvalid) && (!full_wr)",
+        "start": 7193
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_023",
+    "line": 213,
+    "note": "Qualify condition with nearby scalar !full_wr",
+    "rtl_sha256": "bfd9d08b98f46a7bacd234aba9630cb3c02378b2c6b06cc2ea938afff3bd0773"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7223,
+        "old": "s_axis_tready && s_axis_tvalid",
+        "replacement": "(s_axis_tready && s_axis_tvalid) && (drop_frame_reg)",
+        "start": 7193
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_024",
+    "line": 213,
+    "note": "Qualify condition with nearby scalar drop_frame_reg",
+    "rtl_sha256": "4dbf02942cc180820ee7d956cef3d3b0cede2ef38e3607c7b0e7700c4f91b3a9"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7223,
+        "old": "s_axis_tready && s_axis_tvalid",
+        "replacement": "(s_axis_tready && s_axis_tvalid) && (!drop_frame_reg)",
+        "start": 7193
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_025",
+    "line": 213,
+    "note": "Qualify condition with nearby scalar !drop_frame_reg",
+    "rtl_sha256": "a1b8a0260a9fee952aa6bf6bb0e18de3f862a67d41382c15fa07cfe126fd48a8"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (s_axis_tready)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_026",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar s_axis_tready",
+    "rtl_sha256": "5c0b9ffe458484e3b5b24c71e63245ef7d6da7922c7f4877285f38df3929abec"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (!s_axis_tready)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_027",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar !s_axis_tready",
+    "rtl_sha256": "14560e30c11f41a2797901c5d914baf809722733a855d162dec2e7a8d887c4f4"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (s_axis_tvalid)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_028",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar s_axis_tvalid",
+    "rtl_sha256": "44c2dbb83e6a4bc93d18ca073fdd553fb6eee414859ef99cbd4fe0fc6a712e54"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (!s_axis_tvalid)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_029",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar !s_axis_tvalid",
+    "rtl_sha256": "a4f5abd3f82bce6fabd007230f1f6b31fdc69c90c0f4243fce7872f92f6d2284"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (full_cur)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_030",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar full_cur",
+    "rtl_sha256": "ab788e1def2d34c8ebc2ea991419e56d786941e72c1ead446f0c553fdc5920d7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (!full_cur)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_031",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar !full_cur",
+    "rtl_sha256": "6d0a3b3f5ecfd5f52f4296ec57a18280155901ed1960dee415160ac3cffea42d"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (full_wr)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_032",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar full_wr",
+    "rtl_sha256": "018be7c3f5daee0e282bf4f98a65ce192411062277146f5d1c6482eddea565cf"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7277,
+        "old": "!FRAME_FIFO",
+        "replacement": "(!FRAME_FIFO) && (!full_wr)",
+        "start": 7266
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_033",
+    "line": 215,
+    "note": "Qualify condition with nearby scalar !full_wr",
+    "rtl_sha256": "d13bc6261e3c2b7e0f6a98a2b2be2d511aa210a889ed60ec3b8f5812a5ad40ca"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7443,
+        "old": "full_cur || full_wr || drop_frame_reg",
+        "replacement": "(full_cur || full_wr || drop_frame_reg) && (s_axis_tlast)",
+        "start": 7406
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_034",
+    "line": 219,
+    "note": "Qualify condition with nearby scalar s_axis_tlast",
+    "rtl_sha256": "a60590ee9d4fa28df71497edd2fce3cc42f91ed493ca2c0c03fb2e99a77b998a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7443,
+        "old": "full_cur || full_wr || drop_frame_reg",
+        "replacement": "(full_cur || full_wr || drop_frame_reg) && (!s_axis_tlast)",
+        "start": 7406
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_035",
+    "line": 219,
+    "note": "Qualify condition with nearby scalar !s_axis_tlast",
+    "rtl_sha256": "2428910b6a74d7c87886b93a7b785dc6d1fee2298a85aa1a8027fd4fa2a9b999"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7443,
+        "old": "full_cur || full_wr || drop_frame_reg",
+        "replacement": "(full_cur || full_wr || drop_frame_reg) && (s_axis_tready)",
+        "start": 7406
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_036",
+    "line": 219,
+    "note": "Qualify condition with nearby scalar s_axis_tready",
+    "rtl_sha256": "a0670fec0539eea9cee8679aa1911fdbf4a000c7606eec54b4bd0a15d8cdab7a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7443,
+        "old": "full_cur || full_wr || drop_frame_reg",
+        "replacement": "(full_cur || full_wr || drop_frame_reg) && (!s_axis_tready)",
+        "start": 7406
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_037",
+    "line": 219,
+    "note": "Qualify condition with nearby scalar !s_axis_tready",
+    "rtl_sha256": "fdb25cd97ea7405eafdf0bfea4daa339d426f58aad208e0af2085331720cec22"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7443,
+        "old": "full_cur || full_wr || drop_frame_reg",
+        "replacement": "(full_cur || full_wr || drop_frame_reg) && (s_axis_tvalid)",
+        "start": 7406
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_038",
+    "line": 219,
+    "note": "Qualify condition with nearby scalar s_axis_tvalid",
+    "rtl_sha256": "22b3b83e1afe37f221cbace7ea4044469eb1435f8e9d8e43fe54727e705a63b0"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7443,
+        "old": "full_cur || full_wr || drop_frame_reg",
+        "replacement": "(full_cur || full_wr || drop_frame_reg) && (!s_axis_tvalid)",
+        "start": 7406
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_039",
+    "line": 219,
+    "note": "Qualify condition with nearby scalar !s_axis_tvalid",
+    "rtl_sha256": "bcf62ff584ff8e46bffe22c0508f9b2704c528ced3e24a34e814a05d23c987d9"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7607,
+        "old": "s_axis_tlast",
+        "replacement": "(s_axis_tlast) && (full_cur)",
+        "start": 7595
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_040",
+    "line": 223,
+    "note": "Qualify condition with nearby scalar full_cur",
+    "rtl_sha256": "87e9f03179c2ff05bfff581ddfb9697fbbf47e6cb1be33c65141378d62493b9e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7607,
+        "old": "s_axis_tlast",
+        "replacement": "(s_axis_tlast) && (!full_cur)",
+        "start": 7595
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_041",
+    "line": 223,
+    "note": "Qualify condition with nearby scalar !full_cur",
+    "rtl_sha256": "1a1030a1adc68370dba015e745cfef2ae03d7ddd750c1c45a37b4ae83e6db84a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7607,
+        "old": "s_axis_tlast",
+        "replacement": "(s_axis_tlast) && (full_wr)",
+        "start": 7595
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_042",
+    "line": 223,
+    "note": "Qualify condition with nearby scalar full_wr",
+    "rtl_sha256": "cac4f5704d7e2cbbd5ab7098ad484ee01f23d652c5ba2d8fb7864544b39d54fb"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7607,
+        "old": "s_axis_tlast",
+        "replacement": "(s_axis_tlast) && (!full_wr)",
+        "start": 7595
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_043",
+    "line": 223,
+    "note": "Qualify condition with nearby scalar !full_wr",
+    "rtl_sha256": "07a65f6c7ebd47a5e29bb6c042cd94658a86f7a3afb4f4d0e4a431c057cfdf36"
+  }
+]

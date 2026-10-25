@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_fifo",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.02,
+      "execution_mode": "bubblewrap",
+      "returncode": 1,
+      "stage": "translate",
+      "status": "FAIL",
+      "zero_initialization": true
+    }
+  ],
+  "comparisons": 0,
+  "compile_failed": true,
+  "cycles": 0,
+  "first_mismatches": [],
+  "mismatch_count": null,
+  "passed": false
+}

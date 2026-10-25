@@ -1,0 +1,7 @@
+read_verilog -formal -sv candidate.v golden.v miter.v
+hierarchy -check -top miter
+proc
+flatten
+opt
+chformal -lower
+sat -seq 20 -prove-asserts -set-init-def -set-def-inputs -set-at 1 rst 1 -set-at 1 s_axis_tvalid 0 -set-at 2 rst 0 -timeout 45 -show-ports -dump_json counterexample.json -dump_vcd counterexample.vcd

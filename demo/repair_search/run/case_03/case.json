@@ -1,0 +1,81 @@
+{
+  "arms": {
+    "nvidia_prioritized": {
+      "accepted": false,
+      "attempted_ids": [
+        "candidate_001",
+        "candidate_002",
+        "candidate_003",
+        "candidate_004",
+        "candidate_005",
+        "candidate_006",
+        "candidate_007",
+        "candidate_008"
+      ],
+      "discovery_pass_audit_rejected": false,
+      "logical_candidate_evaluations": 8,
+      "logical_discovery_tool_seconds": 11.737,
+      "selected_family": null,
+      "selected_id": null,
+      "selected_source": null,
+      "source_changed": false,
+      "status": "SEARCH_EXHAUSTED"
+    },
+    "static_search": {
+      "accepted": false,
+      "attempted_ids": [
+        "candidate_001",
+        "candidate_002",
+        "candidate_003",
+        "candidate_004",
+        "candidate_005",
+        "candidate_006",
+        "candidate_007",
+        "candidate_008"
+      ],
+      "discovery_pass_audit_rejected": false,
+      "logical_candidate_evaluations": 8,
+      "logical_discovery_tool_seconds": 11.737,
+      "selected_family": null,
+      "selected_id": null,
+      "selected_source": null,
+      "source_changed": false,
+      "status": "SEARCH_EXHAUSTED"
+    }
+  },
+  "audits_ran_only_after_both_selections": true,
+  "candidate_count": 32,
+  "case_id": "zipcpu-spi-c1-c3-d9_c1",
+  "families": [
+    "condition_gate"
+  ],
+  "opaque_id": "case_03",
+  "original_status": "DISCOVERY_TRACE_FAILED",
+  "physical_candidate_evaluations": 8,
+  "pool_candidates": 32,
+  "pool_sha256": "248b2266cee69de8eac4a2730b6680c9b7628cf69671c0ff12b63f92ac9a7cfe",
+  "ranking": {
+    "api_requests": 1,
+    "cost": {
+      "estimated_usd": 0.019617,
+      "phase": "development",
+      "pricing_verified_on": "2026-10-22",
+      "request_id": "7083d4349812468ab3f76cd2df3c2093",
+      "reserved_usd": 1.060864,
+      "state": "settled"
+    },
+    "explanation": "The first trace mismatch occurs at cycle 101 on o_sck, indicating a startup/clk timing issue. The llsdspi module's WAIT_FOR_STARTUP generate block controls the startup_hold signal which gates SPI clock generation and CS de-assertion. Candidates 001-004 directly modify the startup counter logic and clock toggling during startup. Candidates 005-008 add gating conditions to the startup counter increment edge detector (past_sclk/o_sclk transition), which could prevent premature startup exit if the edge detection is too sensitive. These eight candidates target the startup hold mechanism most likely to cause the early o_sck=1 mismatch.",
+    "ranked_ids": [
+      "candidate_001",
+      "candidate_002",
+      "candidate_003",
+      "candidate_004",
+      "candidate_005",
+      "candidate_006",
+      "candidate_007",
+      "candidate_008"
+    ],
+    "status": "VALID",
+    "wall_seconds": 2.9193
+  }
+}

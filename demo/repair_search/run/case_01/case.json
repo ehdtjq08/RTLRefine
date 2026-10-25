@@ -1,0 +1,75 @@
+{
+  "arms": {
+    "nvidia_prioritized": {
+      "accepted": true,
+      "attempted_ids": [
+        "candidate_001",
+        "candidate_002",
+        "candidate_005"
+      ],
+      "discovery_pass_audit_rejected": false,
+      "logical_candidate_evaluations": 3,
+      "logical_discovery_tool_seconds": 8.7206,
+      "selected_family": "ack_pipeline",
+      "selected_id": "candidate_005",
+      "selected_source": "case_01/candidate_005/candidate.v",
+      "source_changed": true,
+      "status": "ALL_SEALED_TRACES_PASS"
+    },
+    "static_search": {
+      "accepted": true,
+      "attempted_ids": [
+        "candidate_001",
+        "candidate_002",
+        "candidate_003",
+        "candidate_004",
+        "candidate_005"
+      ],
+      "discovery_pass_audit_rejected": false,
+      "logical_candidate_evaluations": 5,
+      "logical_discovery_tool_seconds": 14.5912,
+      "selected_family": "ack_pipeline",
+      "selected_id": "candidate_005",
+      "selected_source": "case_01/candidate_005/candidate.v",
+      "source_changed": true,
+      "status": "ALL_SEALED_TRACES_PASS"
+    }
+  },
+  "audits_ran_only_after_both_selections": true,
+  "candidate_count": 39,
+  "case_id": "zipcpu-spi-c1-c3-d9_c3",
+  "families": [
+    "ack_pipeline",
+    "condition_gate",
+    "word_byte_order"
+  ],
+  "opaque_id": "case_01",
+  "original_status": "DISCOVERY_TRACE_FAILED",
+  "physical_candidate_evaluations": 5,
+  "pool_candidates": 39,
+  "pool_sha256": "3433efc6a353ff5a998522634ee11f5badac19587bd134b14c64d889fefc816b",
+  "ranking": {
+    "api_requests": 1,
+    "cost": {
+      "estimated_usd": 0.019744,
+      "phase": "development",
+      "pricing_verified_on": "2026-10-22",
+      "request_id": "a649a28a9d964e3bbbf8acd557f6b48c",
+      "reserved_usd": 1.060864,
+      "state": "settled"
+    },
+    "explanation": "Discovery shows o_wb_ack mismatches starting at cycle 6, indicating acknowledgment timing is misaligned with bus cycles. Candidates 002 and 005 directly qualify o_wb_ack with i_wb_cyc to enforce cycle-exact acknowledgment behavior. Candidates 001/004/011/014/024/034 adjust command/FIFO state machine gating (pre_cmd_state, ll_cmd_stb) to prevent premature state transitions that could cascade into ack misalignment. Byte-order candidates (003,010,012) are deprioritized as no data-port mismatches were reported.",
+    "ranked_ids": [
+      "candidate_002",
+      "candidate_005",
+      "candidate_001",
+      "candidate_004",
+      "candidate_011",
+      "candidate_014",
+      "candidate_024",
+      "candidate_034"
+    ],
+    "status": "VALID",
+    "wall_seconds": 3.661
+  }
+}

@@ -1,0 +1,109 @@
+[
+  {
+    "case": "fifo_reset",
+    "contract": "Reset on either side flushes pre-reset traffic. New traffic preserves data, order, TLAST and TUSER across independent clocks.",
+    "historical_public_bug": true,
+    "maintainer_record": "fifo_reset/maintainer_control/review.json",
+    "new_discovery": false,
+    "original_record": "fifo_reset/original/review.json",
+    "proof_steps": 16,
+    "source": {
+      "buggy_commit": "87fe1a561f861366f8999a8ab5c1d3357290fc8a",
+      "files": [
+        {
+          "commit": "87fe1a561f861366f8999a8ab5c1d3357290fc8a",
+          "file": "axis_async_fifo.v",
+          "sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28"
+        },
+        {
+          "commit": "6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+          "file": "fixed_axis_async_fifo.v",
+          "sha256": "8aca6b233800c0a38fd14be88966741a57ede52bf2f81bf9d3aec2a1744914e4"
+        }
+      ],
+      "fix": "https://github.com/alexforencich/verilog-axis/commit/6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+      "fixed_commit": "6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+      "issue": "https://github.com/alexforencich/verilog-axis/issues/2",
+      "license": "MIT; upstream COPYING and source headers retained",
+      "provenance": "Historical real bug, not a new discovery. PR #4 was not merged; the maintainer fixed the issue independently. Fixed source is evaluation-only.",
+      "repository": "https://github.com/alexforencich/verilog-axis"
+    },
+    "title": "FIFO reset flush"
+  },
+  {
+    "case": "axis_keep",
+    "contract": "S_KEEP_ENABLE=0 means every source byte is valid regardless of s_axis_tkeep. Preserve frames, byte validity and ID/DEST/USER across 8-to-8/16/32-bit paths and stalls, including enabled source masks.",
+    "historical_public_bug": true,
+    "maintainer_record": "axis_keep/maintainer_control/review.json",
+    "new_discovery": false,
+    "original_record": "axis_keep/original/review.json",
+    "proof_steps": 20,
+    "source": {
+      "buggy_commit": "10b6d2f5bc50f965d6aee213415b60f1f9af58e5",
+      "files": [
+        {
+          "commit": "10b6d2f5bc50f965d6aee213415b60f1f9af58e5",
+          "file": "axis_adapter.v",
+          "sha256": "4b9b6649f12e374c24d36f2d42680ecf1f38cca8ae4fda7fd68dbf722b6c8140",
+          "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/10b6d2f5bc50f965d6aee213415b60f1f9af58e5/rtl/axis_adapter.v"
+        },
+        {
+          "commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+          "file": "fixed_axis_adapter.v",
+          "sha256": "42e8a1289d4aa2dfd90785c983d3f5790c9c4a2cb957cfd42ea1d39435032c67",
+          "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358/rtl/axis_adapter.v"
+        },
+        {
+          "commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+          "file": "COPYING",
+          "sha256": "8ea57f95365e9b16a5b516f422b71269183a1ae53bab5878ae6d69039e58fe77",
+          "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358/COPYING"
+        }
+      ],
+      "fix": "https://github.com/alexforencich/verilog-axis/commit/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+      "fixed_commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+      "license": "MIT; upstream COPYING and source notices retained",
+      "provenance": "Real historical maintainer fix: Fix tkeep handling in axis_adapter. Parent revision and fixed revision pinned. Fixed RTL is evaluation-only; historical public code may have appeared in training data.",
+      "repository": "https://github.com/alexforencich/verilog-axis"
+    },
+    "title": "AXI byte validity"
+  },
+  {
+    "case": "frame_fifo",
+    "contract": "A four-word FRAME_FIFO with DROP_WHEN_FULL=0 must preserve eight three-byte frames and sidebands while the receiver pauses and resumes. Every frame fits individually; backpressure must prevent overwriting unread data.",
+    "historical_public_bug": true,
+    "maintainer_record": "frame_fifo/maintainer_control/review.json",
+    "new_discovery": false,
+    "original_record": "frame_fifo/original/review.json",
+    "proof_steps": 12,
+    "source": {
+      "buggy_commit": "f9a5e6803b7cc963681896d2b2069c042719968f",
+      "files": [
+        {
+          "commit": "f9a5e6803b7cc963681896d2b2069c042719968f",
+          "file": "axis_fifo.v",
+          "sha256": "2be8c2bd7c702029504bcdee441d07a5f59eacaff3b20232c1ee49f61990bc70",
+          "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/f9a5e6803b7cc963681896d2b2069c042719968f/rtl/axis_fifo.v"
+        },
+        {
+          "commit": "3d90e80da8e60daf5727e003d3b059e9b21b41da",
+          "file": "fixed_axis_fifo.v",
+          "sha256": "f392a8ef44fa5204aae5ca9cdc284104de3d53f8db7ec484c3fb01bb5b61b1e2",
+          "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/3d90e80da8e60daf5727e003d3b059e9b21b41da/rtl/axis_fifo.v"
+        },
+        {
+          "commit": "3d90e80da8e60daf5727e003d3b059e9b21b41da",
+          "file": "COPYING",
+          "sha256": "8ea57f95365e9b16a5b516f422b71269183a1ae53bab5878ae6d69039e58fe77",
+          "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/3d90e80da8e60daf5727e003d3b059e9b21b41da/COPYING"
+        }
+      ],
+      "fix": "https://github.com/alexforencich/verilog-axis/commit/3d90e80da8e60daf5727e003d3b059e9b21b41da",
+      "fixed_commit": "3d90e80da8e60daf5727e003d3b059e9b21b41da",
+      "license": "MIT; upstream notices and COPYING preserved",
+      "provenance": "Historical maintainer fix: Fix frame FIFO full logic bug. Original is the fixed commit parent. Not a synthetic mutation, new discovery, or held-out training sample. Fixed RTL is evaluation-only.",
+      "repository": "https://github.com/alexforencich/verilog-axis"
+    },
+    "title": "Frame FIFO backpressure"
+  }
+]

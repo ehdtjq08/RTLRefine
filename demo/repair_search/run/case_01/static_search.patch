@@ -1,0 +1,17 @@
+--- original.v
++++ static_search.v
+@@ -579,8 +579,12 @@
+ 			o_wb_data <= fifo_b_reg;
+ 		endcase
+ 
+-	always @(posedge i_clk)
+-		o_wb_ack <= wb_stb;
++	reg __rtlrefine_ack_delay=0;
++initial o_wb_ack=0;
++always @(posedge i_clk) begin
++ if (!i_wb_cyc) begin __rtlrefine_ack_delay<=0; o_wb_ack<=0; end
++ else begin __rtlrefine_ack_delay<=wb_stb; o_wb_ack<=__rtlrefine_ack_delay; end
++end
+ 
+ 	initial	q_busy = 1'b1;
+ 	always @(posedge i_clk)

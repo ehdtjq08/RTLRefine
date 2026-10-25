@@ -1,0 +1,34 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.014399,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "2471b2f5139a47b18b8505a731c971b1",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_0cffe2701cd6",
+    "patch_09b2f4ca228b"
+  ],
+  "proposal": {
+    "explanation": "The trace shows m_axis_tvalid asserting one cycle early (cycle 4 vs expected 5). The failure originates in the source-side routing logic: the combinational destination match (lines 199-215) can activate select_valid_next/drop_next before the sequential registers have cleared reset, and the sequential block (lines 219-228) does not reset drop_reg/select_reg. Two minimal, independent fixes address these distinct mechanisms: (1) guard the combinational match with '&& (!rst)' so routing decisions are suppressed during reset (patch_0cffe2701cd6 at line 210); (2) add synchronous resets for drop_reg and select_reg so the handshake cannot start from a stale drop_reg=1 (patch_09b2f4ca228b at line 223). No other candidate directly affects the early-valid symptom; index-stride edits target unrelated array slicing, and the condition-gate patches with '&& (rst)' would invert the required polarity.",
+    "ranking": [
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_0cffe2701cd6",
+        "mechanism": "The combinational destination-matching logic for source-side routing (lines 199-215) sets select_next/select_valid_next/drop_next based on int_s_axis_tdest vs M_BASE/M_TOP and M_CONNECT while rst=0. In the first cycle after reset release, rst de-asserts but the state registers (select_reg, select_valid_reg, drop_reg) still hold reset values (select_valid_reg=0, drop_reg=0). The unguarded combinational block evaluates the new inputs and can drive select_valid_next=1 and drop_next=0, causing int_axis_tvalid to assert and int_s_axis_tready to de-assert on cycle 4 even though the pipeline registers have not yet advanced. Adding '&& (!rst)' to the destination-match condition (line 210) prevents the combinational path from selecting a destination while rst is asserted, eliminating the early m_axis_tvalid=1 on cycle 4 and aligning the first valid with cycle 5.",
+        "source_line": 210
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_09b2f4ca228b",
+        "mechanism": "The source-side always @(posedge clk) block (lines 219-228) only resets select_valid_reg. select_reg and drop_reg retain their pre-reset values (X/0) when rst=1. If drop_reg powers up as 1, int_s_axis_tready[m] becomes 1 via '|| drop_reg', causing the input register to accept data immediately after reset and propagating an extra beat to m_axis_tvalid on cycle 4. Explicitly resetting drop_reg and select_reg to 0 in the rst branch (line 223) ensures the handshake starts from a known-idle state, removing the premature valid.",
+        "source_line": 223
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 5.6715
+}

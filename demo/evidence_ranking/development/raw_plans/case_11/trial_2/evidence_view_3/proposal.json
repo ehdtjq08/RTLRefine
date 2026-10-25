@@ -1,0 +1,53 @@
+{
+  "explanation": "The root cause is over-counting: frame_len accumulates 3 instead of 1 by cycle 5. The trace shows at cycle 2 a valid/ready beat with tkeep=1 (bit_cnt=1) starts a frame; cycle 3 has tlast=1 but tvalid=0, yet the current logic may still treat it as a frame close and add bit_cnt=2; cycle 4 repeats tlast=1 with tvalid=1 adding more. The highest-ranked patch (5e3af25f023e) directly resets the counter after a valid pulse. The next tier (c158090d1b3c, e75a1cff7e0b, 4ac42f1009e7) adds missing valid/ready/frame-state guards to the frame-close and KEEP_ENABLE paths so spurious beats don't increment the counter. The remaining patches further isolate the first/last beat accounting to prevent double-counting on single-word frames or boundary beats.",
+  "ranking": [
+    {
+      "failure_port": "frame_len",
+      "id": "patch_5e3af25f023e",
+      "mechanism": "The failure shows frame_len=3 at cycle 5 when expected=1. This indicates the counter is accumulating across frame boundaries instead of resetting. The patch adds an explicit reset of frame_len_next to 0 when frame_len_valid_reg was asserted in the previous cycle, clearing the accumulated count after a frame completes. This directly addresses the observed over-counting by ensuring each frame starts from zero.",
+      "source_line": 81
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_c158090d1b3c",
+      "mechanism": "At line 84 the code checks only monitor_axis_tlast to mark frame completion. In the trace at cycle 3, tlast=1 but tvalid=0, so this condition would fire incorrectly and assert frame_len_valid_next while adding the tkeep bit count (2) to the length. Adding && monitor_axis_tvalid ensures the frame-close logic only triggers on a valid transfer, preventing spurious frame termination and length accumulation.",
+      "source_line": 84
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_4ac42f1009e7",
+      "mechanism": "The KEEP_ENABLE block at line 95 runs the bit-count loop on every valid/ready cycle regardless of frame state. When a new frame starts (frame_reg=0), the loop adds bit_cnt to frame_len_next which was just reset to 0, but the loop also runs on the first beat of a continuing frame. Guarding with && (!frame_reg) restricts the KEEP_ENABLE addition to the first beat of a frame only, preventing double-counting on subsequent beats.",
+      "source_line": 95
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_e75a1cff7e0b",
+      "mechanism": "Similar to patch_c158090d1b3c but using tready: the frame-close condition at line 84 requires both tlast and tready to be asserted. In the trace cycle 3, tlast=1 and tready=1 but tvalid=0, so this would still fire incorrectly. However it blocks the case where tlast arrives without tready, which is a valid protocol guard.",
+      "source_line": 84
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_a5fd054c48a1",
+      "mechanism": "The top-level valid/ready gate at line 81 currently allows the tlast beat to enter the counting logic. Adding && (!monitor_axis_tlast) excludes the last beat from the general counting path, forcing it through the dedicated tlast branch at line 84. This separates frame-close accounting from mid-frame counting and prevents the last beat's tkeep from being added twice.",
+      "source_line": 81
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_c9ea9c7aa521",
+      "mechanism": "Guards the KEEP_ENABLE bit-count loop with && frame_reg so it only runs when a frame is already open. This prevents the loop from executing on the very first beat before frame_reg is set, avoiding an extra addition when frame_len_next was just zeroed.",
+      "source_line": 95
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_6ae7345a2b8e",
+      "mechanism": "Guards the KEEP_ENABLE block with && (!monitor_axis_tlast) to skip the bit-count loop on the frame-final beat. The tlast beat should only trigger the frame-close path (line 84) which already adds the final count; running the loop again would double-count the last word's enabled bytes.",
+      "source_line": 95
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_158c82e15fb9",
+      "mechanism": "The new-frame branch at line 88 checks only !frame_reg. Adding && (!monitor_axis_tlast) prevents a beat that is simultaneously first and last (single-word frame) from taking this path, ensuring it follows the tlast branch instead for correct single-frame accounting.",
+      "source_line": 88
+    }
+  ]
+}

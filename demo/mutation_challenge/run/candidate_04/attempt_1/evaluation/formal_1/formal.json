@@ -1,0 +1,37 @@
+{
+  "assumptions": "First symbolic step resets; legal stable source while stalled; selector in 0..9 and constant. No assumptions force DUT ready or valid.",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 5.576937,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "fixed_reference_rtl_used": false,
+  "initial_state": "Unspecified state bits start at zero; explicit register initializers are retained",
+  "limitation": "Bounded two-state property check at fixed widths/depths; not unbounded correctness or a power-on/CDC proof",
+  "monitor_sha256": "8964cec4a5812e679666fe92de9f791808683fa294fc2e3ad5d73d8da25614e3",
+  "payload_method": "One unconstrained selector held constant over the bound covers every one of the 10 payload/sideband bits",
+  "profile": {
+    "addr_width": 2,
+    "data_width": 8,
+    "steps": 12
+  },
+  "properties": [
+    "valid_matches_occupancy",
+    "ready_matches_capacity",
+    "payload_order_sidebands",
+    "output_stability",
+    "capacity"
+  ],
+  "rtl_sha256": "d51d7f48aa32d701f5a34525197b7daa069a8e98be7a5b62755a05640504fbde",
+  "script_sha256": "e13f667cffe34d244387275a977e15a46c355aa6d6d73286e3eec35dd0119d5a",
+  "status": "BOUNDED_PROPERTY_PASS"
+}

@@ -1,0 +1,361 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_12707f7188ea": 16,
+          "patch_28182ef789d2": 15,
+          "patch_3732446a2223": 7,
+          "patch_413743f5dfd2": 5,
+          "patch_45b034608673": 0,
+          "patch_489a75ddcd7b": 7,
+          "patch_5eb30d5685b3": 7,
+          "patch_604d7c1ece0b": 0,
+          "patch_6f8298dc7749": 12,
+          "patch_70ab4c75caf9": 3,
+          "patch_70af02d61d6a": 0,
+          "patch_75fee056e22a": 0,
+          "patch_8c3779849796": 0,
+          "patch_b3939a92f2d2": 0,
+          "patch_b857ef3ece44": 2,
+          "patch_bdfb4e29768c": 0,
+          "patch_c05548e3a8e5": 6,
+          "patch_d09dad2fed72": 4,
+          "patch_dac5fb80c21c": 0,
+          "patch_dc6ce9ef83c3": 0,
+          "patch_e6e9f736fdb3": 8,
+          "patch_e926befa064b": 0,
+          "patch_fb1371cffbe8": 5,
+          "patch_fd49deeec05e": 11
+        },
+        "fallback_reason": "Insufficient valid or stable model views",
+        "order": [
+          "patch_3732446a2223",
+          "patch_5eb30d5685b3",
+          "patch_e6e9f736fdb3",
+          "patch_45b034608673",
+          "patch_70ab4c75caf9",
+          "patch_70af02d61d6a",
+          "patch_b3939a92f2d2",
+          "patch_bdfb4e29768c",
+          "patch_fb1371cffbe8",
+          "patch_8c3779849796",
+          "patch_413743f5dfd2",
+          "patch_c05548e3a8e5",
+          "patch_d09dad2fed72",
+          "patch_dac5fb80c21c",
+          "patch_e926befa064b",
+          "patch_604d7c1ece0b",
+          "patch_b857ef3ece44",
+          "patch_fd49deeec05e",
+          "patch_6f8298dc7749",
+          "patch_12707f7188ea",
+          "patch_28182ef789d2",
+          "patch_489a75ddcd7b",
+          "patch_75fee056e22a",
+          "patch_dc6ce9ef83c3"
+        ],
+        "raw_consensus_order": [
+          "patch_12707f7188ea",
+          "patch_28182ef789d2",
+          "patch_6f8298dc7749",
+          "patch_fd49deeec05e",
+          "patch_e6e9f736fdb3",
+          "patch_3732446a2223",
+          "patch_5eb30d5685b3",
+          "patch_489a75ddcd7b",
+          "patch_c05548e3a8e5",
+          "patch_fb1371cffbe8",
+          "patch_413743f5dfd2",
+          "patch_d09dad2fed72",
+          "patch_70ab4c75caf9",
+          "patch_b857ef3ece44",
+          "patch_45b034608673",
+          "patch_70af02d61d6a",
+          "patch_b3939a92f2d2",
+          "patch_bdfb4e29768c",
+          "patch_8c3779849796",
+          "patch_dac5fb80c21c",
+          "patch_e926befa064b",
+          "patch_604d7c1ece0b",
+          "patch_75fee056e22a",
+          "patch_dc6ce9ef83c3"
+        ],
+        "stability": 0.32454212454212455,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_12707f7188ea": 2,
+          "patch_28182ef789d2": 2,
+          "patch_3732446a2223": 2,
+          "patch_413743f5dfd2": 2,
+          "patch_45b034608673": 0,
+          "patch_489a75ddcd7b": 1,
+          "patch_5eb30d5685b3": 2,
+          "patch_604d7c1ece0b": 0,
+          "patch_6f8298dc7749": 2,
+          "patch_70ab4c75caf9": 2,
+          "patch_70af02d61d6a": 0,
+          "patch_75fee056e22a": 0,
+          "patch_8c3779849796": 0,
+          "patch_b3939a92f2d2": 0,
+          "patch_b857ef3ece44": 1,
+          "patch_bdfb4e29768c": 0,
+          "patch_c05548e3a8e5": 1,
+          "patch_d09dad2fed72": 1,
+          "patch_dac5fb80c21c": 0,
+          "patch_dc6ce9ef83c3": 0,
+          "patch_e6e9f736fdb3": 2,
+          "patch_e926befa064b": 0,
+          "patch_fb1371cffbe8": 1,
+          "patch_fd49deeec05e": 3
+        },
+        "used_model_order": false,
+        "valid_views": 3
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.012011,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "571fa229754b40a08f52cb3d124a1b13",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_12707f7188ea",
+          "patch_6f8298dc7749",
+          "patch_b857ef3ece44",
+          "patch_fd49deeec05e",
+          "patch_413743f5dfd2",
+          "patch_8c3779849796",
+          "patch_c05548e3a8e5",
+          "patch_70ab4c75caf9"
+        ],
+        "proposal": {
+          "explanation": "The first-mismatch trace shows m_axis_tvalid=0 at cycle 8 (expected 1) and s_axis_tready=1 at cycle 12 (expected 0), with m_axis_tdata/last/user diverging shortly after. This pattern points to the pause/rate-gating logic (acc_reg vs rate_num) and the early-ready handshake that drives store_axis_int_to_output vs store_axis_int_to_temp. Condition-gate edits on the acc_reg comparison (patch_12707f7188ea) and on the s_axis_tready&&s_axis_tvalid gate (patch_6f8298dc7749) directly affect when pause asserts and when input beats are accepted. The reset-gating on s_axis_tready_reg (patch_8c3779849796) and the m_axis_tready_int_reg qualification (patch_413743f5dfd2) control the initial pipeline fill and the skid-buffer forwarding that produces the early m_axis_tvalid pulse. The rhs_substitution patches (patch_c05548e3a8e5, patch_70ab4c75caf9) adjust the frame_next and m_axis_tready terms used in store_axis_int_to_output logic, which align with the subsequent data/last/user mismatches at cycles 13\u201316.",
+          "ranking": [
+            {
+              "id": "patch_12707f7188ea",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_6f8298dc7749",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_b857ef3ece44",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_fd49deeec05e",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_413743f5dfd2",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_8c3779849796",
+              "mechanism": "handshake_reset_gate"
+            },
+            {
+              "id": "patch_c05548e3a8e5",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_70ab4c75caf9",
+              "mechanism": "rhs_substitution"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 6.0549
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.018007,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "ec1cdc3068ba443a93744ca16b5b7ed7",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_28182ef789d2",
+            "patch_489a75ddcd7b",
+            "patch_c05548e3a8e5",
+            "patch_6f8298dc7749",
+            "patch_d09dad2fed72",
+            "patch_413743f5dfd2",
+            "patch_b857ef3ece44",
+            "patch_fd49deeec05e"
+          ],
+          "proposal": {
+            "explanation": "The ranking prioritizes patches that target the frame/pause logic and output storage controls around the first mismatch window (cycles 8-16). The top candidates substitute frame-related signals into store enables (patch_28182ef789d2, patch_c05548e3a8e5) and add temp register reset (patch_489a75ddcd7b), addressing the m_axis_tdata/m_axis_tlast/m_axis_tuser divergence at cycles 13-16. Mid-ranked patches gate the frame-advance condition on rate_by_frame (patch_6f8298dc7749) and qualify output-store enables with valid/ready/reset signals (patch_d09dad2fed72, patch_413743f5dfd2, patch_b857ef3ece44), which influence the pause/ready behavior seen at cycles 12-15. The last patch gates the pause condition on rate_by_frame (patch_fd49deeec05e). Patches directly modifying s_axis_tready_reg or m_axis_tvalid_reg initial values were deprioritized because they affect earlier cycles without explaining the frame-correlated data/last/user errors.",
+            "ranking": [
+              {
+                "id": "patch_28182ef789d2",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_489a75ddcd7b",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_c05548e3a8e5",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_6f8298dc7749",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_d09dad2fed72",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_413743f5dfd2",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_b857ef3ece44",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_fd49deeec05e",
+                "mechanism": "condition_gate"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 3.7418
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.018898,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "ff552bf361864792813166c05e0293ac",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_12707f7188ea",
+            "patch_6f8298dc7749",
+            "patch_fd49deeec05e",
+            "patch_fb1371cffbe8",
+            "patch_5eb30d5685b3",
+            "patch_e6e9f736fdb3",
+            "patch_70ab4c75caf9",
+            "patch_3732446a2223"
+          ],
+          "proposal": {
+            "explanation": "The first mismatches are m_axis_tvalid at cycle 8 (actual 0 vs expected 1) and s_axis_tready at cycle 12 (actual 1 vs expected 0), followed by data/user/last divergences. The rate-limiting core uses acc_reg, frame_reg, and a pause signal gated by LAST_ENABLE and rate_by_frame. Patches that modify the pause condition (patch_12707f7188ea, patch_fd49deeec05e), make frame updates conditional on rate_by_frame (patch_6f8298dc7749), or change initial ready/valid registers (patch_5eb30d5685b3, patch_3732446a2223, patch_70ab4c75caf9) directly affect the handshake timing at the observed cycles. The reset-path qualification (patch_fb1371cffbe8) and the keep-driven ready init (patch_e6e9f736fdb3) are secondary but plausible because they alter the ready/valid boundary conditions during the mismatch window.",
+            "ranking": [
+              {
+                "id": "patch_12707f7188ea",
+                "mechanism": "Gates the pause condition on s_axis_tready being low, which changes when acc_reg updates relative to consumer readiness; this matches the first divergence at cycle 8 (m_axis_tvalid) and the ready/valid toggle at cycle 12\u201313."
+              },
+              {
+                "id": "patch_6f8298dc7749",
+                "mechanism": "Makes the frame-next update depend on rate_by_frame, altering frame_reg evolution and thus the pause logic in frame-mode; the observed mismatch window is with rate_by_frame=1."
+              },
+              {
+                "id": "patch_fd49deeec05e",
+                "mechanism": "Qualifies the pause condition on !rate_by_frame, directly inverting frame-mode pausing behavior; the discovery trace uses rate_by_frame=1, so this flips the pause decision at the mismatch cycles."
+              },
+              {
+                "id": "patch_fb1371cffbe8",
+                "mechanism": "Qualifies a reset action on m_axis_tvalid_reg, coupling output valid state into reset path; this can shift ready/valid alignment at the observed mismatch boundaries."
+              },
+              {
+                "id": "patch_5eb30d5685b3",
+                "mechanism": "Initializes s_axis_tready_reg to m_axis_tready instead of 0, changing the first-cycle ready assertion and the downstream valid/ready handshake at cycles 8 and 12."
+              },
+              {
+                "id": "patch_e6e9f736fdb3",
+                "mechanism": "Uses m_axis_tkeep as the initial value for s_axis_tready_reg, introducing a data-dependent ready reset; the mismatch shows ready toggling when keep/user fields differ."
+              },
+              {
+                "id": "patch_70ab4c75caf9",
+                "mechanism": "Initializes m_axis_tready_int_reg to m_axis_tready, altering the internal ready-early signal that gates the output register load and the temp buffer bypass at cycles 8\u201316."
+              },
+              {
+                "id": "patch_3732446a2223",
+                "mechanism": "Initializes m_axis_tvalid_reg to s_axis_tvalid, changing the initial valid state seen by the output register logic; first mismatch is m_axis_tvalid at cycle 8."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 5.1037
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.019474,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "eedc3e0e9b0c4f188ee098804edf5419",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_12707f7188ea",
+            "patch_28182ef789d2",
+            "patch_3732446a2223",
+            "patch_e6e9f736fdb3",
+            "patch_fd49deeec05e",
+            "patch_5eb30d5685b3",
+            "patch_413743f5dfd2",
+            "patch_70ab4c75caf9"
+          ],
+          "proposal": {
+            "explanation": "The trace shows three primary deviations: m_axis_tvalid is 0 at cycle 8 (expected 1), s_axis_tready is 1 at cycle 12 (expected 0), and m_axis_tdata/m_axis_tuser shift starting cycle 13. The first two are handshake/startup issues; the data shift is a consequence of the altered handshake timing. Patches that reseed or gate the valid/ready registers during the first post-reset cycles (patch_3732446a2223, patch_413743f5dfd2, patch_28182ef789d2, patch_70ab4c75caf9) directly address the cycle-8 valid error. Patches that modify the pause/ready combinational logic (patch_12707f7188ea, patch_fd49deeec05e, patch_e6e9f736fdb3, patch_5eb30d5685b3) directly address the cycle-12 ready error. Structural-coverage is uniformly 1.0, so ranking follows failure-anchor proximity and mechanism specificity to the two key mismatches.",
+            "ranking": [
+              {
+                "id": "patch_12707f7188ea",
+                "mechanism": "Condition (acc_reg >= rate_num) ignores that s_axis_tready depends on m_axis_tready_int_early and pause; gating by !s_axis_tready in line 118 reduces premature pause during backpressure, aligning s_axis_tready behavior at cycle 12."
+              },
+              {
+                "id": "patch_28182ef789d2",
+                "mechanism": "Registering store_axis_temp_to_output using m_axis_tvalid_next (line 199) ensures the temp register valid flag matches the scheduled output valid, preventing the m_axis_tvalid glitch at cycle 8 and cycle 15."
+              },
+              {
+                "id": "patch_3732446a2223",
+                "mechanism": "At reset the initial m_axis_tvalid_reg is 1'b0, but s_axis_tvalid drives m_axis_tvalid_int; assigning s_axis_tvalid to m_axis_tvalid_reg (line 252) seeds the output pipeline with the first input valid, fixing the early m_axis_tvalid mismatch at cycle 8."
+              },
+              {
+                "id": "patch_e6e9f736fdb3",
+                "mechanism": "Assigning m_axis_tkeep (width KEEP_WIDTH) to s_axis_tready_reg (line 155) is a width/substitution error; however the diff is in the reset/initial block and the simulator reads s_axis_tready_reg from the always_ff block, so the practical effect is seeding s_axis_tready_reg from the rate logic instead of 0, which shifts the first ready pulse and alters s_axis_tready at cycle 12."
+              },
+              {
+                "id": "patch_fd49deeec05e",
+                "mechanism": "Adding !rate_by_frame to the pause condition (line 128) stops frame-independent pause when rate_by_frame=1, preventing the spurious s_axis_tready deassertion at cycle 12 seen in the trace where rate_by_frame=1."
+              },
+              {
+                "id": "patch_5eb30d5685b3",
+                "mechanism": "Assigning m_axis_tready to s_axis_tready_reg (line 155) directly feeds the downstream ready into the upstream ready register, collapsing the skid-buffer handshake timing and moving the first s_axis_tready assertion, which matches the cycle-12 mismatch."
+              },
+              {
+                "id": "patch_413743f5dfd2",
+                "mechanism": "Qualifying the m_axis_tready_int_reg handshake gate with !rst (line 201) prevents the skid-buffer state machine from advancing during reset, keeping m_axis_tvalid_reg at 0 until the first post-reset cycle and fixing the m_axis_tvalid glitch at cycle 8."
+              },
+              {
+                "id": "patch_70ab4c75caf9",
+                "mechanism": "Driving m_axis_tready_int_reg from m_axis_tready (line 253) replaces the combinational early-ready with the registered downstream ready, changing the skid-buffer push timing and affecting both m_axis_tvalid (cycle 8) and s_axis_tready (cycle 12)."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 6.1288
+        }
+      ]
+    }
+  ]
+}

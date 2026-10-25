@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    { \"id\": \"patch_bdf206843497\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_f46dec541b44\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_c73ed0d6214c\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_1d0fba8d5d53\", \"mechanism\": \"rhs_substitution\" },\n    { \"id\": \"patch_3642db1cc528\", \"mechanism\": \"rhs_substitution\" },\n    { \"id\": \"patch_302bdac6f760\", \"mechanism\": \"rhs_substitution\" },\n    { \"id\": \"patch_cde52ea68e59\", \"mechanism\": \"rhs_substitution\" },\n    { \"id\": \"patch_87d9d2ff8bbd\", \"mechanism\": \"condition_gate\" }\n  ],\n  \"explanation\": \"The first mismatch occurs at cycle 6 where m_axis_tvalid is 0 but should be 1. This indicates the rate limiting logic is pausing output incorrectly. The condition gate at line 128 (patch_bdf206843497) qualifies the pause condition with !rate_by_frame, which directly addresses the rate_by_frame=1 test scenario where frame-based rate limiting should behave differently. Patches f46dec541b44 and c73ed0d6214c further refine the frame pause condition with !rst and s_axis_tvalid qualifications respectively, preventing spurious pauses during reset or when input is invalid. The rhs_substitution patches (1d0fba8d5d53, 3642db1cc528, 302bdac6f760, cde52ea68e59) improve signal initialization and forwarding logic for the output pipeline registers, ensuring valid data propagates correctly when not paused. The condition_gate patch 87d9d2ff8bbd adds s_axis_tvalid check to the accumulator threshold comparison, preventing rate limiting from triggering on invalid input cycles.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755372,
+  "id": "chatcmpl-213e4e522317a161833499072531b75e",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 511,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 10123,
+    "prompt_tokens": 10123,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 10634
+  }
+}

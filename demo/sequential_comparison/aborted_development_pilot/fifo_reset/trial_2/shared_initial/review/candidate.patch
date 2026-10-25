@@ -1,0 +1,20 @@
+--- original.v
++++ candidate.v
+@@ -88,9 +88,9 @@
+ // (gray code equivalent of first MSB different but rest same)
+ wire full = ((wr_ptr_gray[ADDR_WIDTH] != rd_ptr_gray_sync2[ADDR_WIDTH]) &&
+              (wr_ptr_gray[ADDR_WIDTH-1] != rd_ptr_gray_sync2[ADDR_WIDTH-1]) &&
+-             (wr_ptr_gray[ADDR_WIDTH-2:0] == rd_ptr_gray_sync2[ADDR_WIDTH-2:0]));
++             (wr_ptr_gray[ADDR_WIDTH-2:0] == rd_ptr_gray_sync2[ADDR_WIDTH-2:0])) && !input_rst_sync2;
+ // empty when pointers match exactly
+-wire empty = rd_ptr_gray == wr_ptr_gray_sync2;
++wire empty = (rd_ptr_gray == wr_ptr_gray_sync2) || output_rst_sync2;
+ 
+ wire write = input_axis_tvalid & ~full;
+ wire read = (output_axis_tready | ~output_axis_tvalid_reg) & ~empty;
+@@ -178,4 +178,4 @@
+     end
+ end
+ 
+-endmodule
++endmodule

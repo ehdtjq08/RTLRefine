@@ -1,0 +1,116 @@
+{
+  "accepted_repairs": 6,
+  "cases": [
+    {
+      "accepted": true,
+      "accepted_source": "candidate_01/attempt_1/evaluation/candidate.v",
+      "attempts": 1,
+      "case_id": "candidate_01",
+      "injected_fault": true,
+      "kind": "read_while_stalled",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": [
+        "read_while_stalled"
+      ]
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_02/attempt_2/evaluation/candidate.v",
+      "attempts": 2,
+      "case_id": "candidate_02",
+      "injected_fault": true,
+      "kind": "over_accept_when_full",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": [
+        "over_accept_when_full"
+      ]
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_03/attempt_2/evaluation/candidate.v",
+      "attempts": 2,
+      "case_id": "candidate_03",
+      "injected_fault": false,
+      "kind": "clean_control",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": []
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_04/attempt_1/evaluation/candidate.v",
+      "attempts": 1,
+      "case_id": "candidate_04",
+      "injected_fault": true,
+      "kind": "sideband_swap",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": [
+        "sideband_swap"
+      ]
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_05/attempt_1/evaluation/candidate.v",
+      "attempts": 1,
+      "case_id": "candidate_05",
+      "injected_fault": true,
+      "kind": "combined_write_and_reset",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": [
+        "write_without_acceptance",
+        "reset_tail_retained"
+      ]
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_06/attempt_1/evaluation/candidate.v",
+      "attempts": 1,
+      "case_id": "candidate_06",
+      "injected_fault": false,
+      "kind": "equivalent_control",
+      "last_decision": "keep",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": []
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_07/attempt_1/evaluation/candidate.v",
+      "attempts": 1,
+      "case_id": "candidate_07",
+      "injected_fault": true,
+      "kind": "write_without_acceptance",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": [
+        "write_without_acceptance"
+      ]
+    },
+    {
+      "accepted": true,
+      "accepted_source": "candidate_08/attempt_2/evaluation/candidate.v",
+      "attempts": 2,
+      "case_id": "candidate_08",
+      "injected_fault": true,
+      "kind": "reset_tail_retained",
+      "last_decision": "repair",
+      "last_status": "VERIFIED_AGAINST_SPEC_WITHIN_BOUND",
+      "operators": [
+        "reset_tail_retained"
+      ]
+    }
+  ],
+  "controls_kept_unchanged": 1,
+  "estimated_api_cost_usd": 0.226926,
+  "fixed_reference_rtl_used_for_scoring": false,
+  "injected_cases": 6,
+  "normal_controls": 2,
+  "scope": "Eight constructed variants of one authored queue, including two controls. No real-world, external held-out, all-parameter or unbounded correctness claim; no general AI superiority claim.",
+  "status": "COMPLETE",
+  "unique_paid_calls": 11,
+  "unnecessary_control_repair_decisions": 1,
+  "unsettled_requests": 0
+}

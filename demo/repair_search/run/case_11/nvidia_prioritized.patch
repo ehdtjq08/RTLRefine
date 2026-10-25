@@ -1,0 +1,10 @@
+--- original.v
++++ nvidia_prioritized.v
+@@ -78,6 +78,7 @@
+     frame_len_valid_next = 1'b0;
+     frame_next = frame_reg;
+ 
++    if (frame_len_valid_reg) frame_len_next = 0;
+     if (monitor_axis_tready && monitor_axis_tvalid) begin
+         // valid transfer cycle
+ 

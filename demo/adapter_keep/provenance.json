@@ -1,0 +1,110 @@
+{
+  "case": {
+    "buggy_commit": "10b6d2f5bc50f965d6aee213415b60f1f9af58e5",
+    "files": [
+      {
+        "commit": "10b6d2f5bc50f965d6aee213415b60f1f9af58e5",
+        "file": "axis_adapter.v",
+        "sha256": "4b9b6649f12e374c24d36f2d42680ecf1f38cca8ae4fda7fd68dbf722b6c8140",
+        "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/10b6d2f5bc50f965d6aee213415b60f1f9af58e5/rtl/axis_adapter.v"
+      },
+      {
+        "commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+        "file": "fixed_axis_adapter.v",
+        "sha256": "42e8a1289d4aa2dfd90785c983d3f5790c9c4a2cb957cfd42ea1d39435032c67",
+        "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358/rtl/axis_adapter.v"
+      },
+      {
+        "commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+        "file": "COPYING",
+        "sha256": "8ea57f95365e9b16a5b516f422b71269183a1ae53bab5878ae6d69039e58fe77",
+        "url": "https://raw.githubusercontent.com/alexforencich/verilog-axis/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358/COPYING"
+      }
+    ],
+    "fix": "https://github.com/alexforencich/verilog-axis/commit/c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+    "fixed_commit": "c1c3dc0b66e98a186878b32a4d65cdcd00eaa358",
+    "license": "MIT; upstream COPYING and source notices retained",
+    "provenance": "Real historical maintainer fix: Fix tkeep handling in axis_adapter. Parent revision and fixed revision pinned. Fixed RTL is evaluation-only; historical public code may have appeared in training data.",
+    "repository": "https://github.com/alexforencich/verilog-axis"
+  },
+  "development_not_a_blind_or_comparative_benchmark": true,
+  "estimated_api_cost_usd": 0.164154,
+  "manual_code_repair": false,
+  "model_advantage_established": false,
+  "nvidia_repair_accepted": false,
+  "paid_attempts": [
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.052793,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "96464ec59ca24915a7efdc5919514d24",
+        "reserved_usd": 1.097728,
+        "state": "settled"
+      },
+      "error": "ValueError: Every before snippet must uniquely identify an original location",
+      "run": "first_pilot",
+      "status": "ERROR"
+    },
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.022699,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "fdef4e320f164948bf120019ede2b734",
+        "reserved_usd": 1.097728,
+        "state": "settled"
+      },
+      "error": "ValueError: Edit 3: before matches 2 locations; add exact local context",
+      "run": "bounded_edits",
+      "status": "ERROR"
+    },
+    {
+      "attempt": 2,
+      "cost": {
+        "estimated_usd": 0.053776,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "4b09078cc5044aab80a80f39ef791e93",
+        "reserved_usd": 1.097728,
+        "state": "settled"
+      },
+      "error": "ValueError: Repair response did not finish",
+      "run": "bounded_edits",
+      "status": "ERROR"
+    },
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.005228,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "c872b398b1cd4156972b7405b3a1608b",
+        "reserved_usd": 1.073152,
+        "state": "settled"
+      },
+      "error": null,
+      "run": "explicit_counts",
+      "status": "SIMULATION_FAILED"
+    },
+    {
+      "attempt": 2,
+      "cost": {
+        "estimated_usd": 0.029658,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "6e48a6eef72f40e9a8d9bdaa3391229f",
+        "reserved_usd": 1.073152,
+        "state": "settled"
+      },
+      "error": "ValueError: Repair response did not finish",
+      "run": "explicit_counts",
+      "status": "ERROR"
+    }
+  ],
+  "qualification_exclusion": "Earlier FIFO pipeline candidate passed data-conservation tests and was not qualified as a data-loss case. Qualification records remain under research/source_qualification.",
+  "scope": "Six fixed simulations; four 20-step reference comparisons. Historical public code; other parameterizations unverified.",
+  "selected_run": "explicit_counts"
+}

@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_89a8d0d71cf0\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 9010,\n      \"mechanism\": \"Guards the first command-state entry (state 0) with pre_cmd_state, which is asserted only when the low-level SPI is idle (ll_idle) and ll_cmd_stb is already high. This prevents the command FSM from advancing before the physical SPI engine can accept the first byte, eliminating the early o_mosi toggle observed at cycle 484125.\"\n    },\n    {\n      \"id\": \"patch_db4e5272cc97\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 8371,\n      \"mechanism\": \"Requires pre_cmd_state together with the negation of ll_cmd_stb for the response-state machine reset. This synchronises the rsp_state reset to the exact cycle the low-level transmitter becomes ready, avoiding a premature state machine launch that would drive o_mosi one cycle early.\"\n    },\n    {\n      \"id\": \"patch_2e6db5d7770e\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 9029,\n      \"mechanism\": \"Ands the first state transition with !ll_cmd_stb so the FSM does not leave IDLE until the low-level byte transmitter has actually been strobed. This directly blocks the spurious o_mosi transition that appears when the command state machine runs ahead of the SPI engine.\"\n    },\n    {\n      \"id\": \"patch_03cf2d2c8b87\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 8636,\n      \"mechanism\": \"Makes the pre_cmd_state pulse conditional on !ll_cmd_stb, ensuring the command FSM only samples ll_out_stb/ll_out_dat after the low-level transmitter has returned to idle. Prevents a phantom first byte from being interpreted as a valid R1 response, which would shift the whole MOSI timeline.\"\n    },\n    {\n      \"id\": \"patch_3a11c0f77d92\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 9820,\n      \"mechanism\": \"Qualifies the r_use_fifo branch with r_fifo_wr so the FSM only enters the token-wait state when a FIFO write is actually in progress. Stops an erroneous state hop that would make the transmitter send an extra 0xFF byte, appearing as an early o_mosi edge.\"\n    },\n    {\n      \"id\": \"patch_46c9544a2141\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 9820,\n      \"mechanism\": \"Requires r_have_resp together with r_use_fifo for the GETTOKEN state, ensuring the response token is only expected after the SD card has acknowledged the command. Removes a false token wait that would otherwise keep the SPI engine active one cycle longer.\"\n    },\n    {\n      \"id\": \"patch_fad6eb05ccdc\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 9820,\n      \"mechanism\": \"Blocks the GETTOKEN transition when r_have_resp is still low, preventing the FSM from advancing into a token wait before the physical R1 byte has arrived. Avoids an extra MOSI cycle driven by a premature state change.\"\n    },\n    {\n      \"id\": \"patch_171aea9942d8\",\n      \"failure_port\": \"o_mosi\",\n      \"source_line\": 9994,\n      \"mechanism\": \"Adds r_have_resp to the FIFO-write completion gate so ll_fifo_wr is not dropped until the command response has actually been received. Prevents the SPI engine from idling one cycle early, which would truncate the final MOSI bit.\"\n    }\n  ],\n  \"explanation\": \"All eight patches gate a state-machine transition with a signal that reflects the true readiness of the low-level SPI transmitter (pre_cmd_state, ll_cmd_stb, ll_idle, r_have_resp, r_fifo_wr). The public trace shows the very first o_mosi edge at cycle 484125 is one cycle early; every selected edit delays a FSM step until the physical SPI engine signals it can accept the next byte, aligning the MOSI timeline with the cycle-exact oracle. Patches that only reorder byte lanes (word_byte_order family) or qualify unrelated FIFO-CRC paths do not touch the command/response handshake and are therefore not ranked.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754080,
+  "id": "chatcmpl-209fba4d6014eeca037e42d3b8a84d2f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 1051,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 8704,
+    "prompt_cache_miss_tokens": 11780,
+    "prompt_tokens": 20484,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 8704,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 21535
+  }
+}

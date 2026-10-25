@@ -1,0 +1,24 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.020368,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "45d7e602b0f64202b19c11908d930c9b",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "explanation": "All first mismatches occur on o_mosi with bit-pattern inversions, indicating a consistent byte/bit ordering defect in the MOSI datapath. The public contract mandates preservation of serial bit order and FIFO word/byte order. Candidates 002, 006, 008, 010, 012, 014, and 016 each reverse byte lanes feeding o_mosi (via r_data_reg, fifo_a_reg, fifo_b_reg, or wb_data) and directly address the observed symptom. Candidate 004 reverses bytes in the command CRC path, which also feeds the low-level SPI transmitter. Condition-gate candidates (001, 003, 005, 007, 009, 011, 013, 015, 017\u2013040) only modify control-flow predicates and cannot correct a pure bit-order error.",
+  "ranked_ids": [
+    "candidate_002",
+    "candidate_006",
+    "candidate_008",
+    "candidate_010",
+    "candidate_012",
+    "candidate_014",
+    "candidate_016",
+    "candidate_004"
+  ],
+  "status": "VALID",
+  "wall_seconds": 3.7359
+}

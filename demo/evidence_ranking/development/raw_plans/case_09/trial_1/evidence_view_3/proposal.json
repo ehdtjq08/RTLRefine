@@ -1,0 +1,53 @@
+{
+  "explanation": "The discovery trace shows five mismatches starting at cycle 13 when rst=1: drop_frame=1 (expected 0) at cycles 13-14, then output_axis_tdata=1 (expected 6), output_axis_tlast=1 (expected 0), output_axis_tvalid=0 (expected 1) at cycle 16. All stem from the write-domain reset block (lines 97-99) which only resets wr_ptr, leaving wr_ptr_cur and drop_frame holding pre-reset values. The top three candidates (patch_06b184d83718, patch_15a85deae41e, patch_9d300784e043) directly address this by adding the missing resets at line 99. The remaining candidates either modify unrelated conditions, gate the wrong signals, or invert the enable logic, and do not fix the root cause observed at cycle 13 on drop_frame.",
+  "ranking": [
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_06b184d83718",
+      "mechanism": "At cycle 13, rst=1 triggers the write-domain reset. The original code resets only wr_ptr, leaving wr_ptr_cur and drop_frame uninitialized. The discovery trace shows drop_frame=1 at cycles 13-14 instead of expected 0. This patch adds explicit resets for drop_frame and wr_ptr_cur inside the write-domain reset block (line 99), ensuring both packet-state bits are cleared on reset alongside wr_ptr. Cited failure: drop_frame=1 at cycle 13 (expected 0).",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_15a85deae41e",
+      "mechanism": "Same write-domain reset block as above. The original code omits wr_ptr_cur reset; the testbench expects wr_ptr_cur=0 after reset so that subsequent frame writes use the correct base pointer. Resetting wr_ptr_cur here (line 99) aligns the commit pointer with the committed pointer on reset, preventing spurious drop_frame assertions caused by a stale wr_ptr_cur. Cited failure: drop_frame=1 at cycle 13 (expected 0).",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_9d300784e043",
+      "mechanism": "Minimal version of the same fix: only adds drop_frame <= 0 in the write-domain reset (line 99). The discovery trace shows drop_frame stuck at 1 after reset; clearing it here directly matches the expected 0 at cycles 13-14. Cited failure: drop_frame=1 at cycle 13 (expected 0).",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_5ca8f64228ff",
+      "mechanism": "Changes the write-domain condition from `if (write)` to `if (write && rst)`. This makes the write logic execute only when rst=1, which is the opposite of the intended reset behavior and will deadlock the FIFO. Not a viable fix. Cited failure: drop_frame=1 at cycle 13 (expected 0) \u2014 candidate anchored to same symptoms but wrong direction.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_0df996e92b1b",
+      "mechanism": "Restricts the drop-frame entry condition `(full | full_cur | drop_frame)` to only trigger when `input_axis_tlast` is asserted. The failure at cycle 13 occurs on a non-last beat during reset; this gate would not fire then, so it does not address the observed reset-time drop_frame assertion. Cited failure: drop_frame=1 at cycle 13 (expected 0) \u2014 condition not active at failure cycle.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_c162287a687b",
+      "mechanism": "Gates the `input_axis_tlast` branch with `!write`, but the failure is in the reset block (line 97-99), not in the frame-commit logic. The edit site is downstream of the actual bug. Cited failure: drop_frame=1 at cycle 13 (expected 0) \u2014 wrong block.",
+      "source_line": 103
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_6dd7aead91eb",
+      "mechanism": "Qualifies `input_axis_tready` with `rst`, making the FIFO appear not-ready during reset. The trace shows drop_frame errors, not tready errors; this edit changes an output port that is not cited as failing. Cited failure: drop_frame=1 at cycle 13 (expected 0) \u2014 unrelated port.",
+      "source_line": 92
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_4fb9f010f15d",
+      "mechanism": "Changes the write condition to `write && full`, which only allows writes when full \u2014 opposite of correct behavior. The failure is a reset-sequence bug, not a write-gating bug. Cited failure: drop_frame=1 at cycle 13 (expected 0) \u2014 wrong mechanism.",
+      "source_line": 99
+    }
+  ]
+}

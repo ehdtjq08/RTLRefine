@@ -1,0 +1,77 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "bench_top",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0333,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vbench_top.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8689,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "comparisons": 26,
+  "cycles": 10,
+  "first_mismatches": [
+    {
+      "actual": 1,
+      "cycle": 4,
+      "expected": 0,
+      "port": "input_axis_tready"
+    },
+    {
+      "actual": 1,
+      "cycle": 7,
+      "expected": 0,
+      "port": "output_axis_tvalid"
+    },
+    {
+      "actual": 2,
+      "cycle": 8,
+      "expected": 1,
+      "port": "output_axis_tdata"
+    },
+    {
+      "actual": 3,
+      "cycle": 9,
+      "expected": 2,
+      "port": "output_axis_tdata"
+    }
+  ],
+  "mismatch_count": 4,
+  "passed": false
+}

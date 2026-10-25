@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n    \"ranked_ids\": [\n        \"candidate_007\",\n        \"candidate_001\",\n        \"candidate_004\",\n        \"candidate_002\",\n        \"candidate_028\",\n        \"candidate_016\",\n        \"candidate_034\",\n        \"candidate_009\"\n    ],\n    \"explanation\": \"The trace shows drop_frame stuck high and output metadata corruption after reset. The write pointer block (line 97) lacks reset initialization for drop_frame and wr_ptr_cur, leaving them in unknown state. candidate_007 resets both in the rst block, fixing the root cause. candidate_001 and candidate_004 address each individually. candidate_002 gates input readiness with !rst to prevent spurious writes during reset. candidate_028 qualifies the drop-frame condition with !rst to avoid reset-era mis-evaluation. candidate_016 guards the write enable with !rst. candidate_034 qualifies the tlast check with !drop_frame to prevent false frame-end detection during drop. candidate_009 resets data_out_reg to clear stale output metadata.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792747146,
+  "id": "chatcmpl-621a24160fb3f84624af61862827da2c",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 262,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 5658,
+    "prompt_tokens": 5658,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 5920
+  }
+}

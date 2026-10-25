@@ -1,0 +1,13 @@
+{
+  "edits": [
+    {
+      "after": "// write\nalways @(posedge input_clk or posedge input_rst_sync2) begin\n    if (input_rst_sync2) begin\n        wr_ptr <= 0;\n        wr_ptr_gray <= 0;\n    end else if (write) begin\n        mem[wr_ptr[ADDR_WIDTH-1:0]] <= data_in;\n        wr_ptr_next = wr_ptr + 1;\n        wr_ptr <= wr_ptr_next;\n        wr_ptr_gray <= wr_ptr_next ^ (wr_ptr_next >> 1);\n    end\nend",
+      "before": "// write\nalways @(posedge input_clk or posedge input_rst_sync2) begin\n    if (input_rst_sync2) begin\n        wr_ptr <= 0;\n    end else if (write) begin\n        mem[wr_ptr[ADDR_WIDTH-1:0]] <= data_in;\n        wr_ptr_next = wr_ptr + 1;\n        wr_ptr <= wr_ptr_next;\n        wr_ptr_gray <= wr_ptr_next ^ (wr_ptr_next >> 1);\n    end\nend"
+    },
+    {
+      "after": "// read\nalways @(posedge output_clk or posedge output_rst_sync2) begin\n    if (output_rst_sync2) begin\n        rd_ptr <= 0;\n        rd_ptr_gray <= 0;\n    end else if (read) begin\n        data_out_reg <= mem[rd_ptr[ADDR_WIDTH-1:0]];\n        rd_ptr_next = rd_ptr + 1;\n        rd_ptr <= rd_ptr_next;\n        rd_ptr_gray <= rd_ptr_next ^ (rd_ptr_next >> 1);\n    end\nend",
+      "before": "// read\nalways @(posedge output_clk or posedge output_rst_sync2) begin\n    if (output_rst_sync2) begin\n        rd_ptr <= 0;\n    end else if (read) begin\n        data_out_reg <= mem[rd_ptr[ADDR_WIDTH-1:0]];\n        rd_ptr_next = rd_ptr + 1;\n        rd_ptr <= rd_ptr_next;\n        rd_ptr_gray <= rd_ptr_next ^ (rd_ptr_next >> 1);\n    end\nend"
+    }
+  ],
+  "explanation": "The gray code pointers (wr_ptr_gray and rd_ptr_gray) were not being reset during reset, causing the empty/full flags to be incorrect after reset. This led to stale data being read because the FIFO incorrectly indicated data was available (empty=false) when the pointers were not properly aligned. The fix resets both gray code pointers along with the binary pointers in their respective clock domains."
+}

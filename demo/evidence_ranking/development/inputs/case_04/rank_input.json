@@ -1,0 +1,2573 @@
+{
+  "cards": [
+    {
+      "changed_targets": [
+        "input_axis_tready_next"
+      ],
+      "dependency": null,
+      "direct_failure_target": true,
+      "edits": [
+        {
+          "end": 5050,
+          "old": "0",
+          "replacement": "input_axis_tready_reg",
+          "start": 5049
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "state_retention",
+      "heuristic_components": {
+        "direct_failure_target": 1,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.25,
+      "id": "patch_0517c5c2c927",
+      "legacy_id": "candidate_001",
+      "line": 148,
+      "note": "Retain existing input_axis_tready state instead of a constant default",
+      "rtl_sha256": "0517c5c2c927fc7f2cedc165bb741c5616855a78b154e06495d005943e70d953",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "input_axis_tready"
+      ],
+      "dependency": null,
+      "direct_failure_target": true,
+      "edits": [
+        {
+          "end": 4620,
+          "old": "input_axis_tready_reg",
+          "replacement": "(input_axis_tready_reg) && (!rst)",
+          "start": 4599
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "handshake_reset_gate",
+      "heuristic_components": {
+        "direct_failure_target": 1,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.25,
+      "id": "patch_4f3a96077aa5",
+      "legacy_id": "candidate_002",
+      "line": 130,
+      "note": "Qualify readiness with !rst",
+      "rtl_sha256": "4f3a96077aa59ce1da61b99ee1ab9fa9525ef0d3ea36075134ec43bd02853c10",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5181,
+          "old": "CYCLE_COUNT == 1",
+          "replacement": "(CYCLE_COUNT == 1) && (input_axis_tvalid)",
+          "start": 5165
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_e1b071d54052",
+      "legacy_id": "candidate_003",
+      "line": 153,
+      "note": "Qualify condition with nearby scalar input_axis_tvalid",
+      "rtl_sha256": "e1b071d54052c647741cc333a247c90c91cd719780324ad6cd84830c073df98d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "input_axis_tready"
+      ],
+      "dependency": null,
+      "direct_failure_target": true,
+      "edits": [
+        {
+          "end": 4620,
+          "old": "input_axis_tready_reg",
+          "replacement": "(input_axis_tready_reg) && (rst)",
+          "start": 4599
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "handshake_reset_gate",
+      "heuristic_components": {
+        "direct_failure_target": 1,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.25,
+      "id": "patch_db4c16e63e26",
+      "legacy_id": "candidate_004",
+      "line": 130,
+      "note": "Qualify readiness with rst",
+      "rtl_sha256": "db4c16e63e26a5fd3aea80740783f68b7a7285b0901f126a2d6c0bb43058032c",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5181,
+          "old": "CYCLE_COUNT == 1",
+          "replacement": "(CYCLE_COUNT == 1) && (!input_axis_tvalid)",
+          "start": 5165
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_f60cbee57538",
+      "legacy_id": "candidate_005",
+      "line": 153,
+      "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+      "rtl_sha256": "f60cbee57538498c41d13587330acf47562b6ebde41404deae0a1c0fd6403565",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5819,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (input_axis_tvalid)",
+          "start": 5809
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_cfc8ea21a9a5",
+      "legacy_id": "candidate_006",
+      "line": 167,
+      "note": "Qualify condition with nearby scalar input_axis_tvalid",
+      "rtl_sha256": "cfc8ea21a9a5cc39b815891e731ea45f7c2246d7341d18a28fcc2b1dac6fa6c0",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5819,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (!input_axis_tvalid)",
+          "start": 5809
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_36fbea9cee2d",
+      "legacy_id": "candidate_007",
+      "line": 167,
+      "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+      "rtl_sha256": "36fbea9cee2d661070f5d3e8d12a2081d31acf23af0c44f9f0ba4631397125be",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5819,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (input_axis_tlast)",
+          "start": 5809
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_86feac8aac1d",
+      "legacy_id": "candidate_008",
+      "line": 167,
+      "note": "Qualify condition with nearby scalar input_axis_tlast",
+      "rtl_sha256": "86feac8aac1dc6776360e7a55310786eaec2ba0d3f9c20233d77e36993037dcc",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5819,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (!input_axis_tlast)",
+          "start": 5809
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_1a6508cab211",
+      "legacy_id": "candidate_009",
+      "line": 167,
+      "note": "Qualify condition with nearby scalar !input_axis_tlast",
+      "rtl_sha256": "1a6508cab2115c33f6607d0d9f3972e7ca48739ace0fd0367a7da9a658ed08dd",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5984,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (input_axis_tlast)",
+          "start": 5967
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_deb7666bfed4",
+      "legacy_id": "candidate_010",
+      "line": 173,
+      "note": "Qualify condition with nearby scalar input_axis_tlast",
+      "rtl_sha256": "deb7666bfed49a028db1d0e5d8e42b05c1962e4eec7efea72c7e7f4b34a17f00",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5984,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (!input_axis_tlast)",
+          "start": 5967
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_585622aac098",
+      "legacy_id": "candidate_011",
+      "line": 173,
+      "note": "Qualify condition with nearby scalar !input_axis_tlast",
+      "rtl_sha256": "585622aac09804e14ce72e81da8dac79f0bd738f8545e5628f2ebb828488deed",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6519,
+          "old": "input_axis_tlast",
+          "replacement": "(input_axis_tlast) && (input_axis_tvalid)",
+          "start": 6503
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_b689ecffefee",
+      "legacy_id": "candidate_012",
+      "line": 185,
+      "note": "Qualify condition with nearby scalar input_axis_tvalid",
+      "rtl_sha256": "b689ecffefee258298cea9d52a43d1c25bf5571a905547028a0cbae07d2a2aa1",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6519,
+          "old": "input_axis_tlast",
+          "replacement": "(input_axis_tlast) && (!input_axis_tvalid)",
+          "start": 6503
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_d8e122b9d57a",
+      "legacy_id": "candidate_013",
+      "line": 185,
+      "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+      "rtl_sha256": "d8e122b9d57a626e5417b335c205b427413c40c6dbc252b64c416bfcc7934f92",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6519,
+          "old": "input_axis_tlast",
+          "replacement": "(input_axis_tlast) && (output_axis_tready_int)",
+          "start": 6503
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_3cb99864f502",
+      "legacy_id": "candidate_014",
+      "line": 185,
+      "note": "Qualify condition with nearby scalar output_axis_tready_int",
+      "rtl_sha256": "3cb99864f5021f5d5ca5f13b186b6a0748b4ee18eebd40664d8468adb83d99fd",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6519,
+          "old": "input_axis_tlast",
+          "replacement": "(input_axis_tlast) && (!output_axis_tready_int)",
+          "start": 6503
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_2a85c0d2ad99",
+      "legacy_id": "candidate_015",
+      "line": 185,
+      "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+      "rtl_sha256": "2a85c0d2ad995e107d1c22112495d4c88f0e032d5bbd9efcf3d7a1cb3fd912f7",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7230,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (input_axis_tlast)",
+          "start": 7213
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_ae44e878a6d3",
+      "legacy_id": "candidate_016",
+      "line": 203,
+      "note": "Qualify condition with nearby scalar input_axis_tlast",
+      "rtl_sha256": "ae44e878a6d30380b657916f6c149539ae87a5c2c07446c4063441a05eb25c74",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7230,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (!input_axis_tlast)",
+          "start": 7213
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_2809cde8141f",
+      "legacy_id": "candidate_017",
+      "line": 203,
+      "note": "Qualify condition with nearby scalar !input_axis_tlast",
+      "rtl_sha256": "2809cde8141f43554271d541bc71ce829fb6ec4f88fd5af26cfeb5d40c007a6a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7230,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (output_axis_tready_int)",
+          "start": 7213
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_6b110907b92c",
+      "legacy_id": "candidate_018",
+      "line": 203,
+      "note": "Qualify condition with nearby scalar output_axis_tready_int",
+      "rtl_sha256": "6b110907b92c1f2a9188b5c8cf723d304085de2986298179f3aae5b9eb91ff5d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7230,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (!output_axis_tready_int)",
+          "start": 7213
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_f007f011176d",
+      "legacy_id": "candidate_019",
+      "line": 203,
+      "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+      "rtl_sha256": "f007f011176d2dbef02906813bee1f58edaf0f38fb8e8a10fceb0cb9b0d1f7b5",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8254,
+          "old": "output_axis_tready_int",
+          "replacement": "(output_axis_tready_int) && (input_axis_tvalid)",
+          "start": 8232
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_7d6c69bf2e61",
+      "legacy_id": "candidate_020",
+      "line": 220,
+      "note": "Qualify condition with nearby scalar input_axis_tvalid",
+      "rtl_sha256": "7d6c69bf2e619adf939a710bff207a6c55056ed13dffef0bc2dd6809bf827405",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8254,
+          "old": "output_axis_tready_int",
+          "replacement": "(output_axis_tready_int) && (!input_axis_tvalid)",
+          "start": 8232
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_1f983d0a9bca",
+      "legacy_id": "candidate_021",
+      "line": 220,
+      "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+      "rtl_sha256": "1f983d0a9bca2e2f40d5784d21aae60f097553681c7ccecea27a3187ded11e7b",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8254,
+          "old": "output_axis_tready_int",
+          "replacement": "(output_axis_tready_int) && (input_axis_tlast)",
+          "start": 8232
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_c67689a4876b",
+      "legacy_id": "candidate_022",
+      "line": 220,
+      "note": "Qualify condition with nearby scalar input_axis_tlast",
+      "rtl_sha256": "c67689a4876b5fc4862025bb01bc619ba804fe211f81febf7f948c5a2995448a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8254,
+          "old": "output_axis_tready_int",
+          "replacement": "(output_axis_tready_int) && (!input_axis_tlast)",
+          "start": 8232
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_f927a53d2b54",
+      "legacy_id": "candidate_023",
+      "line": 220,
+      "note": "Qualify condition with nearby scalar !input_axis_tlast",
+      "rtl_sha256": "f927a53d2b54d9969ec4f2fac6a20d92ff1525cb43cffe379b19f4bd29c00678",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8939,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (output_axis_tready_int)",
+          "start": 8922
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_7936cc858aae",
+      "legacy_id": "candidate_024",
+      "line": 240,
+      "note": "Qualify condition with nearby scalar output_axis_tready_int",
+      "rtl_sha256": "7936cc858aaef97571b83923c12397a4df2ef75c1ea7f2b9220397d63a0d3379",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8939,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (!output_axis_tready_int)",
+          "start": 8922
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_628ff018d189",
+      "legacy_id": "candidate_025",
+      "line": 240,
+      "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+      "rtl_sha256": "628ff018d189d53df8a30cf2d47a5b28ac3ae36d0c87d3263a7b9bf37150cb1e",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8939,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (input_axis_tlast)",
+          "start": 8922
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_58b9f127d482",
+      "legacy_id": "candidate_026",
+      "line": 240,
+      "note": "Qualify condition with nearby scalar input_axis_tlast",
+      "rtl_sha256": "58b9f127d482e88407fa4cd6ad0c5b434c27dce7fe5505ad18131ea7c09b1183",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8939,
+          "old": "input_axis_tvalid",
+          "replacement": "(input_axis_tvalid) && (!input_axis_tlast)",
+          "start": 8922
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_e805e9a3d4c9",
+      "legacy_id": "candidate_027",
+      "line": 240,
+      "note": "Qualify condition with nearby scalar !input_axis_tlast",
+      "rtl_sha256": "e805e9a3d4c94999b103ee819ed3c2901698e69c86b7f6ae8163bf1c5b2a75b9",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 9488,
+          "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+          "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (input_axis_tvalid)",
+          "start": 9435
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_6c3f2cebb438",
+      "legacy_id": "candidate_028",
+      "line": 250,
+      "note": "Qualify condition with nearby scalar input_axis_tvalid",
+      "rtl_sha256": "6c3f2cebb4386dc083a54bbf260c131ce336cd316b58606b6a4f1192c5fb2845",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 9488,
+          "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+          "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (!input_axis_tvalid)",
+          "start": 9435
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_759e593ce41e",
+      "legacy_id": "candidate_029",
+      "line": 250,
+      "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+      "rtl_sha256": "759e593ce41e9829fbbab09a8177025af9711e4697425a8ee0d049b930977f71",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 9488,
+          "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+          "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (output_axis_tready_int)",
+          "start": 9435
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_4da73638e1ac",
+      "legacy_id": "candidate_030",
+      "line": 250,
+      "note": "Qualify condition with nearby scalar output_axis_tready_int",
+      "rtl_sha256": "4da73638e1ac52ac030a2ea8143140baff6c9ad9b89537dab82b3f3d29822302",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 9488,
+          "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+          "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (!output_axis_tready_int)",
+          "start": 9435
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_4366b56c71e4",
+      "legacy_id": "candidate_031",
+      "line": 250,
+      "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+      "rtl_sha256": "4366b56c71e4ccd189d9059a925a01029d777ea56c8da765ab6bcfd9a6f1264e",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 10187,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (input_axis_tlast)",
+          "start": 10177
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_f8c4b83d413c",
+      "legacy_id": "candidate_032",
+      "line": 267,
+      "note": "Qualify condition with nearby scalar input_axis_tlast",
+      "rtl_sha256": "f8c4b83d413c6cbef480967b06e210e31427cbcd73109b5a3e3718bbc7a4af0b",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 10187,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (!input_axis_tlast)",
+          "start": 10177
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_7123361951d8",
+      "legacy_id": "candidate_033",
+      "line": 267,
+      "note": "Qualify condition with nearby scalar !input_axis_tlast",
+      "rtl_sha256": "7123361951d815358ab987400e423978d9ccc69f3dd7f0cf4b9d2ab827c37e95",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 10187,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (output_axis_tready_int)",
+          "start": 10177
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_e7dee5af7c13",
+      "legacy_id": "candidate_034",
+      "line": 267,
+      "note": "Qualify condition with nearby scalar output_axis_tready_int",
+      "rtl_sha256": "e7dee5af7c1316bc48cc309848ac260734052f80fd7aceedde18fd486cbcc48d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 8,
+        "failure_port": "input_axis_tready",
+        "first_line": 150,
+        "last_line": 343,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 10187,
+          "old": "EXPAND_BUS",
+          "replacement": "(EXPAND_BUS) && (!output_axis_tready_int)",
+          "start": 10177
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_31ff37e82a23",
+      "legacy_id": "candidate_035",
+      "line": 267,
+      "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+      "rtl_sha256": "31ff37e82a237a922aa6a71f66dcbbf71dfa46da7a917d530998df3b2480807b",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    }
+  ],
+  "case_id": "axis-adapter-s3_s3",
+  "heuristic_order": [
+    "patch_0517c5c2c927",
+    "patch_4f3a96077aa5",
+    "patch_db4c16e63e26",
+    "patch_1a6508cab211",
+    "patch_1f983d0a9bca",
+    "patch_2809cde8141f",
+    "patch_2a85c0d2ad99",
+    "patch_31ff37e82a23",
+    "patch_36fbea9cee2d",
+    "patch_3cb99864f502",
+    "patch_4366b56c71e4",
+    "patch_4da73638e1ac",
+    "patch_585622aac098",
+    "patch_58b9f127d482",
+    "patch_628ff018d189",
+    "patch_6b110907b92c",
+    "patch_6c3f2cebb438",
+    "patch_7123361951d8",
+    "patch_759e593ce41e",
+    "patch_7936cc858aae",
+    "patch_7d6c69bf2e61",
+    "patch_86feac8aac1d",
+    "patch_ae44e878a6d3",
+    "patch_b689ecffefee",
+    "patch_c67689a4876b",
+    "patch_cfc8ea21a9a5",
+    "patch_d8e122b9d57a",
+    "patch_deb7666bfed4",
+    "patch_e1b071d54052",
+    "patch_e7dee5af7c13",
+    "patch_e805e9a3d4c9",
+    "patch_f007f011176d",
+    "patch_f60cbee57538",
+    "patch_f8c4b83d413c",
+    "patch_f927a53d2b54"
+  ],
+  "opaque_id": "case_04",
+  "original_discovery": {
+    "error": null,
+    "sampling_reminder": "Cycle numbers are testbench sample indices, not internal RTL states. Outputs sampled after current inputs settle and before rising clock edge.",
+    "status": "DISCOVERY_ONLY",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_adapter"
+          ],
+          "elapsed_seconds": 0.0168,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 46,
+        "cycles": 13,
+        "expected_sha256": "a030fe498da785fbae0b43507c177077cbe14e5a7e0eb28d0444277932a99305",
+        "first_mismatches": [
+          {
+            "actual": 0,
+            "cycle": 8,
+            "expected": 1,
+            "port": "input_axis_tready"
+          },
+          {
+            "actual": 0,
+            "cycle": 8,
+            "expected": 1,
+            "port": "output_axis_tlast"
+          },
+          {
+            "actual": 1,
+            "cycle": 9,
+            "expected": 0,
+            "port": "output_axis_tvalid"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "input_axis_tdata",
+              "input_axis_tkeep",
+              "input_axis_tlast",
+              "input_axis_tuser",
+              "input_axis_tvalid",
+              "output_axis_tready",
+              "rst"
+            ],
+            "samples": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "input_axis_tdata",
+              "input_axis_tkeep",
+              "input_axis_tlast",
+              "input_axis_tuser",
+              "input_axis_tvalid",
+              "output_axis_tready",
+              "rst"
+            ],
+            "samples": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "input_axis_tdata",
+              "input_axis_tkeep",
+              "input_axis_tlast",
+              "input_axis_tuser",
+              "input_axis_tvalid",
+              "output_axis_tready",
+              "rst"
+            ],
+            "samples": [
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                12379739850550389709,
+                31,
+                0,
+                0,
+                0,
+                1,
+                0
+              ]
+            ],
+            "start_cycle": 1
+          }
+        ],
+        "mismatch_count": 3,
+        "passed": false,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "daf23125694b3908d2c3f8cb6e8dd734acc974bb3f213031a3992369e0177f3a",
+        "trace_label": "published_discovery_trace"
+      }
+    ]
+  },
+  "original_discovery_pass": false,
+  "pool_sha256": "ffaa026611e447f7853815f6306f31556446abc28e6e106bc14198f4ba26e010",
+  "size_order": [
+    "patch_0517c5c2c927",
+    "patch_86feac8aac1d",
+    "patch_f8c4b83d413c",
+    "patch_1a6508cab211",
+    "patch_7123361951d8",
+    "patch_cfc8ea21a9a5",
+    "patch_36fbea9cee2d",
+    "patch_e7dee5af7c13",
+    "patch_31ff37e82a23",
+    "patch_db4c16e63e26",
+    "patch_4f3a96077aa5",
+    "patch_b689ecffefee",
+    "patch_e1b071d54052",
+    "patch_58b9f127d482",
+    "patch_ae44e878a6d3",
+    "patch_d8e122b9d57a",
+    "patch_deb7666bfed4",
+    "patch_f60cbee57538",
+    "patch_2809cde8141f",
+    "patch_585622aac098",
+    "patch_e805e9a3d4c9",
+    "patch_3cb99864f502",
+    "patch_2a85c0d2ad99",
+    "patch_6b110907b92c",
+    "patch_7936cc858aae",
+    "patch_628ff018d189",
+    "patch_f007f011176d",
+    "patch_c67689a4876b",
+    "patch_7d6c69bf2e61",
+    "patch_f927a53d2b54",
+    "patch_1f983d0a9bca",
+    "patch_6c3f2cebb438",
+    "patch_759e593ce41e",
+    "patch_4da73638e1ac",
+    "patch_4366b56c71e4"
+  ],
+  "source_order": [
+    "patch_0517c5c2c927",
+    "patch_4f3a96077aa5",
+    "patch_e1b071d54052",
+    "patch_db4c16e63e26",
+    "patch_f60cbee57538",
+    "patch_cfc8ea21a9a5",
+    "patch_36fbea9cee2d",
+    "patch_86feac8aac1d",
+    "patch_1a6508cab211",
+    "patch_deb7666bfed4",
+    "patch_585622aac098",
+    "patch_b689ecffefee",
+    "patch_d8e122b9d57a",
+    "patch_3cb99864f502",
+    "patch_2a85c0d2ad99",
+    "patch_ae44e878a6d3",
+    "patch_2809cde8141f",
+    "patch_6b110907b92c",
+    "patch_f007f011176d",
+    "patch_7d6c69bf2e61",
+    "patch_1f983d0a9bca",
+    "patch_c67689a4876b",
+    "patch_f927a53d2b54",
+    "patch_7936cc858aae",
+    "patch_628ff018d189",
+    "patch_58b9f127d482",
+    "patch_e805e9a3d4c9",
+    "patch_6c3f2cebb438",
+    "patch_759e593ce41e",
+    "patch_4da73638e1ac",
+    "patch_4366b56c71e4",
+    "patch_f8c4b83d413c",
+    "patch_7123361951d8",
+    "patch_e7dee5af7c13",
+    "patch_31ff37e82a23"
+  ],
+  "source_sha256": "8651350d4db3ec2c29589d0ba6a1b2ef1cab1034efbdc6a5ea4f3ca867dff775"
+}

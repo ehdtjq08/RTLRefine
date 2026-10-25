@@ -1,0 +1,23 @@
+{
+  "budget_scope": "Same eight candidate checks; model arms have unequal inference overhead and are not matched end-to-end compute",
+  "cohorts": {
+    "development": {
+      "catalog": "evidence_private_catalog_v1_20261023",
+      "inputs": "evidence_rank_inputs_v3_20261023",
+      "plans": "evidence_rank_ids_amended_v1_20261023",
+      "raw_plans": "evidence_rank_plans_v1_20261023",
+      "scores": "evidence_rank_scores_ids_v1_20261023",
+      "strict_scores": "evidence_rank_scores_strict_v1_20261023"
+    },
+    "holdout": {
+      "catalog": "ranking_holdout_catalog_v1_20261023",
+      "inputs": "ranking_holdout_inputs_v1_20261023",
+      "plans": "ranking_holdout_plans_v1_20261023",
+      "scores": "ranking_holdout_scores_v1_20261023"
+    }
+  },
+  "development_amendment": "ID-only interpretation recorded before opening outcome labels; original strict results retained",
+  "holdout_scope": "New-module synthetic known-positive pools; algorithm frozen before source use, one trial with three menu permutations, not model-training holdout or historical bugs",
+  "licenses": "Source headers and per-project license texts retained. Skidbuffer Apache 2.0; Alex Forencich modules MIT; development corpus licenses in external_cases/known_bugs_v2.",
+  "oracle_scope": "Fixed two-state golden trace agreement; first discovery pass chosen, audit passive; no retry after audit failure"
+}

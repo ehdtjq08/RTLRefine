@@ -1,0 +1,314 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\axis_stat_counter'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \axis_stat_counter
+
+2.2. Analyzing design hierarchy..
+Top module:  \axis_stat_counter
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `\axis_stat_counter.$proc$candidate.v:132$6'.
+Cleaned up 3 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$candidate.v:339$63 in module axis_stat_counter.
+Marked 3 switch rules as full_case in process $proc$candidate.v:311$60 in module axis_stat_counter.
+Marked 34 switch rules as full_case in process $proc$candidate.v:132$6 in module axis_stat_counter.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 38 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\axis_stat_counter.$proc$candidate.v:296$82'.
+  Set init value: \temp_m_axis_tuser_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:295$81'.
+  Set init value: \temp_m_axis_tlast_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:294$80'.
+  Set init value: \temp_m_axis_tvalid_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:293$79'.
+  Set init value: \temp_m_axis_tdata_reg = 8'00000000
+Found init rule in `\axis_stat_counter.$proc$candidate.v:291$78'.
+  Set init value: \m_axis_tuser_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:290$77'.
+  Set init value: \m_axis_tlast_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:289$76'.
+  Set init value: \m_axis_tvalid_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:288$75'.
+  Set init value: \m_axis_tdata_reg = 8'00000000
+Found init rule in `\axis_stat_counter.$proc$candidate.v:123$74'.
+  Set init value: \m_axis_tready_int_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:118$73'.
+  Set init value: \busy_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:116$72'.
+  Set init value: \frame_count_output_reg = 0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:115$71'.
+  Set init value: \byte_count_output_reg = 0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:114$70'.
+  Set init value: \tick_count_output_reg = 0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:112$69'.
+  Set init value: \frame_ptr_reg = 4'0000
+Found init rule in `\axis_stat_counter.$proc$candidate.v:109$68'.
+  Set init value: \frame_reg = 1'0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:108$67'.
+  Set init value: \frame_count_reg = 0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:107$66'.
+  Set init value: \byte_count_reg = 0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:106$65'.
+  Set init value: \tick_count_reg = 0
+Found init rule in `\axis_stat_counter.$proc$candidate.v:104$64'.
+  Set init value: \state_reg = 2'00
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:296$82'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:295$81'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:294$80'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:293$79'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:291$78'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:290$77'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:289$76'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:288$75'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:123$74'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:118$73'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:116$72'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:115$71'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:114$70'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:112$69'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:109$68'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:108$67'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:107$66'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:106$65'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:104$64'.
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:339$63'.
+     1/9: $0\temp_m_axis_tvalid_reg[0:0]
+     2/9: $0\m_axis_tready_int_reg[0:0]
+     3/9: $0\m_axis_tvalid_reg[0:0]
+     4/9: $0\temp_m_axis_tuser_reg[0:0]
+     5/9: $0\temp_m_axis_tlast_reg[0:0]
+     6/9: $0\temp_m_axis_tdata_reg[7:0]
+     7/9: $0\m_axis_tuser_reg[0:0]
+     8/9: $0\m_axis_tlast_reg[0:0]
+     9/9: $0\m_axis_tdata_reg[7:0]
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:311$60'.
+     1/12: $2\store_axis_temp_to_output[0:0]
+     2/12: $3\temp_m_axis_tvalid_next[0:0]
+     3/12: $3\m_axis_tvalid_next[0:0]
+     4/12: $2\store_axis_int_to_output[0:0]
+     5/12: $2\m_axis_tvalid_next[0:0]
+     6/12: $2\store_axis_int_to_temp[0:0]
+     7/12: $2\temp_m_axis_tvalid_next[0:0]
+     8/12: $1\store_axis_int_to_temp[0:0]
+     9/12: $1\store_axis_int_to_output[0:0]
+    10/12: $1\temp_m_axis_tvalid_next[0:0]
+    11/12: $1\m_axis_tvalid_next[0:0]
+    12/12: $1\store_axis_temp_to_output[0:0]
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:260$52'.
+     1/10: $0\busy_reg[0:0]
+     2/10: $0\frame_ptr_reg[3:0]
+     3/10: $0\frame_reg[0:0]
+     4/10: $0\frame_count_reg[31:0]
+     5/10: $0\byte_count_reg[31:0]
+     6/10: $0\tick_count_reg[31:0]
+     7/10: $0\state_reg[1:0]
+     8/10: $0\frame_count_output_reg[31:0]
+     9/10: $0\byte_count_output_reg[31:0]
+    10/10: $0\tick_count_output_reg[31:0]
+Creating decoders for process `\axis_stat_counter.$proc$candidate.v:132$6'.
+     1/79: $3\frame_next[0:0]
+     2/79: $5\frame_count_next[31:0]
+     3/79: $2\frame_next[0:0]
+     4/79: $4\frame_count_next[31:0]
+     5/79: $11\bit_cnt[31:0]
+     6/79: $10\bit_cnt[31:0]
+     7/79: $9\bit_cnt[31:0]
+     8/79: $8\bit_cnt[31:0]
+     9/79: $7\bit_cnt[31:0]
+    10/79: $6\bit_cnt[31:0]
+    11/79: $5\bit_cnt[31:0]
+    12/79: $4\bit_cnt[31:0]
+    13/79: $3\bit_cnt[31:0]
+    14/79: $4\byte_count_next[31:0]
+    15/79: $8\i[31:0]
+    16/79: $2\bit_cnt[31:0]
+    17/79: $1\frame_next[0:0]
+    18/79: $3\frame_count_next[31:0]
+    19/79: $1\bit_cnt[31:0]
+    20/79: $7\i[31:0]
+    21/79: $3\byte_count_next[31:0]
+    22/79: $4\state_next[1:0]
+    23/79: $3\m_axis_tlast_int[0:0]
+    24/79: $23\m_axis_tdata_int[7:0]
+    25/79: $22\m_axis_tdata_int[7:0]
+    26/79: $21\m_axis_tdata_int[7:0]
+    27/79: $20\m_axis_tdata_int[7:0]
+    28/79: $6\i[31:0]
+    29/79: $6\offset[31:0]
+    30/79: $19\m_axis_tdata_int[7:0]
+    31/79: $18\m_axis_tdata_int[7:0]
+    32/79: $17\m_axis_tdata_int[7:0]
+    33/79: $16\m_axis_tdata_int[7:0]
+    34/79: $15\m_axis_tdata_int[7:0]
+    35/79: $5\i[31:0]
+    36/79: $5\offset[31:0]
+    37/79: $14\m_axis_tdata_int[7:0]
+    38/79: $13\m_axis_tdata_int[7:0]
+    39/79: $12\m_axis_tdata_int[7:0]
+    40/79: $11\m_axis_tdata_int[7:0]
+    41/79: $10\m_axis_tdata_int[7:0]
+    42/79: $4\i[31:0]
+    43/79: $4\offset[31:0]
+    44/79: $9\m_axis_tdata_int[7:0]
+    45/79: $8\m_axis_tdata_int[7:0]
+    46/79: $7\m_axis_tdata_int[7:0]
+    47/79: $3\i[31:0]
+    48/79: $3\offset[31:0]
+    49/79: $6\m_axis_tdata_int[7:0]
+    50/79: $2\m_axis_tlast_int[0:0]
+    51/79: $3\state_next[1:0]
+    52/79: $2\i[31:0]
+    53/79: $2\offset[31:0]
+    54/79: $5\m_axis_tdata_int[7:0]
+    55/79: $4\m_axis_tvalid_int[0:0]
+    56/79: $4\frame_ptr_next[3:0]
+    57/79: $4\m_axis_tdata_int[7:0]
+    58/79: $3\m_axis_tvalid_int[0:0]
+    59/79: $3\m_axis_tdata_int[7:0]
+    60/79: $3\frame_ptr_next[3:0]
+    61/79: $2\state_next[1:0]
+    62/79: $2\m_axis_tvalid_int[0:0]
+    63/79: $2\m_axis_tdata_int[7:0]
+    64/79: $2\frame_ptr_next[3:0]
+    65/79: $2\frame_count_next[31:0]
+    66/79: $2\byte_count_next[31:0]
+    67/79: $2\tick_count_next[31:0]
+    68/79: $2\store_output[0:0]
+    69/79: $1\m_axis_tvalid_int[0:0]
+    70/79: $1\m_axis_tdata_int[7:0]
+    71/79: $1\frame_ptr_next[3:0]
+    72/79: $1\store_output[0:0]
+    73/79: $1\frame_count_next[31:0]
+    74/79: $1\byte_count_next[31:0]
+    75/79: $1\tick_count_next[31:0]
+    76/79: $1\state_next[1:0]
+    77/79: $1\i[31:0]
+    78/79: $1\offset[31:0]
+    79/79: $1\m_axis_tlast_int[0:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\axis_stat_counter.\m_axis_tvalid_next' from process `\axis_stat_counter.$proc$candidate.v:311$60'.
+No latch inferred for signal `\axis_stat_counter.\temp_m_axis_tvalid_next' from process `\axis_stat_counter.$proc$candidate.v:311$60'.
+No latch inferred for signal `\axis_stat_counter.\store_axis_int_to_output' from process `\axis_stat_counter.$proc$candidate.v:311$60'.
+No latch inferred for signal `\axis_stat_counter.\store_axis_int_to_temp' from process `\axis_stat_counter.$proc$candidate.v:311$60'.
+No latch inferred for signal `\axis_stat_counter.\store_axis_temp_to_output' from process `\axis_stat_counter.$proc$candidate.v:311$60'.
+No latch inferred for signal `\axis_stat_counter.\state_next' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\tick_count_next' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\byte_count_next' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\frame_count_next' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\frame_next' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\store_output' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\frame_ptr_next' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\m_axis_tdata_int' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\m_axis_tvalid_int' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\m_axis_tlast_int' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+No latch inferred for signal `\axis_stat_counter.\m_axis_tuser_int' from process `\axis_stat_counter.$proc$candidate.v:132$6'.
+Latch inferred for signal `\axis_stat_counter.\offset' from process `\axis_stat_counter.$proc$candidate.v:132$6': $auto$proc_dlatch.cc:432:proc_dlatch$738
+Latch inferred for signal `\axis_stat_counter.\i' from process `\axis_stat_counter.$proc$candidate.v:132$6': $auto$proc_dlatch.cc:432:proc_dlatch$767
+Latch inferred for signal `\axis_stat_counter.\bit_cnt' from process `\axis_stat_counter.$proc$candidate.v:132$6': $auto$proc_dlatch.cc:432:proc_dlatch$778
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\axis_stat_counter.\m_axis_tready_int_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$779' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\m_axis_tdata_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$780' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\m_axis_tvalid_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$781' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\m_axis_tlast_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$782' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\m_axis_tuser_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$783' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\temp_m_axis_tdata_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$784' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\temp_m_axis_tvalid_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$785' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\temp_m_axis_tlast_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$786' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\temp_m_axis_tuser_reg' using process `\axis_stat_counter.$proc$candidate.v:339$63'.
+  created $dff cell `$procdff$787' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\state_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$788' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\tick_count_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$789' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\byte_count_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$790' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\frame_count_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$791' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\frame_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$792' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\frame_ptr_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$793' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\tick_count_output_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$794' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\byte_count_output_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$795' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\frame_count_output_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$796' with positive edge clock.
+Creating register for signal `\axis_stat_counter.\busy_reg' using process `\axis_stat_counter.$proc$candidate.v:260$52'.
+  created $dff cell `$procdff$797' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `axis_stat_counter.$proc$candidate.v:296$82'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:295$81'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:294$80'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:293$79'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:291$78'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:290$77'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:289$76'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:288$75'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:123$74'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:118$73'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:116$72'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:115$71'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:114$70'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:112$69'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:109$68'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:108$67'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:107$66'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:106$65'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:104$64'.
+Found and cleaned up 4 empty switches in `\axis_stat_counter.$proc$candidate.v:339$63'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:339$63'.
+Found and cleaned up 3 empty switches in `\axis_stat_counter.$proc$candidate.v:311$60'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:311$60'.
+Found and cleaned up 2 empty switches in `\axis_stat_counter.$proc$candidate.v:260$52'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:260$52'.
+Found and cleaned up 34 empty switches in `\axis_stat_counter.$proc$candidate.v:132$6'.
+Removing empty process `axis_stat_counter.$proc$candidate.v:132$6'.
+Cleaned up 43 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module axis_stat_counter.
+
+4. Executing FLATTEN pass (flatten design).
+
+5. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+6. Executing JSON backend.

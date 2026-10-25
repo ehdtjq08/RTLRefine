@@ -1,0 +1,13 @@
+%Warning-WIDTH: candidate.v:67:39: Operator ASSIGN expects 10 bits on the Assign RHS, but Assign RHS's REPLICATE generates 9 bits.
+                                 : ... In instance axis_frame_fifo
+   67 | reg [DATA_WIDTH+2-1:0] data_out_reg = {1'b0, {DATA_WIDTH{1'b0}}};
+      |                                       ^
+                ... Use "/* verilator lint_off WIDTH */" and lint_on around source to disable this message.
+%Warning-WIDTH: candidate.v:76:33: Operator ASSIGNW expects 10 bits on the Assign RHS, but Assign RHS's REPLICATE generates 9 bits.
+                                 : ... In instance axis_frame_fifo
+   76 | wire [DATA_WIDTH+2-1:0] data_in = {input_axis_tlast, input_axis_tdata};
+      |                                 ^
+%Warning-WIDTH: candidate.v:90:47: Operator ASSIGNW expects 9 bits on the Assign RHS, but Assign RHS's VARREF 'data_out_reg' generates 10 bits.
+                                 : ... In instance axis_frame_fifo
+   90 | assign {output_axis_tlast, output_axis_tdata} = data_out_reg;
+      |                                               ^

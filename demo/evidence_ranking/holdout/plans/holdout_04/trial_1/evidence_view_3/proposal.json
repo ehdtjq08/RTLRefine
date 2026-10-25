@@ -1,0 +1,37 @@
+{
+  "explanation": "All first mismatches occur at m_axis_tlast (cycles 65, 66, 101, 172). The patches directly targeting m_axis_tlast_reg via rhs_substitution (patch_17422b8b1575, patch_2a431655333c, patch_2c8752251e37) and reset_completion (patch_bdd445d05642) are ranked highest because they modify the exact signal observed failing. The frame_last_int substitution (patch_316ca7f541a1) is next because m_axis_tlast_int feeds m_axis_tlast_reg. Then m_axis_tvalid_int substitutions (patch_eb7c01602e2a, patch_5900c28588fb) that affect valid/last sequencing. Finally, frame_count_output_reg substitution (patch_1b97a12f1d1e) due to its role in the output frame. Structural coverage and direct_failure_target flags support this ordering.",
+  "ranking": [
+    {
+      "id": "patch_17422b8b1575",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_2a431655333c",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_2c8752251e37",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_bdd445d05642",
+      "mechanism": "reset_completion"
+    },
+    {
+      "id": "patch_316ca7f541a1",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_eb7c01602e2a",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_5900c28588fb",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_1b97a12f1d1e",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

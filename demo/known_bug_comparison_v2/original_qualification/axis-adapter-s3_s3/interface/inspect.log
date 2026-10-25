@@ -1,0 +1,297 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\axis_adapter'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dependencies.v
+Parsing SystemVerilog input from `dependencies.v' to AST representation.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \axis_adapter
+
+3.2. Analyzing design hierarchy..
+Top module:  \axis_adapter
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\axis_adapter.$proc$candidate.v:134$3'.
+Cleaned up 4 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $proc$candidate.v:425$68 in module axis_adapter.
+Marked 1 switch rules as full_case in process $proc$candidate.v:380$59 in module axis_adapter.
+Marked 13 switch rules as full_case in process $proc$candidate.v:134$3 in module axis_adapter.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 8 redundant assignments.
+Promoted 33 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\axis_adapter.$proc$candidate.v:414$88'.
+  Set init value: \temp_axis_tuser_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:413$87'.
+  Set init value: \temp_axis_tlast_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:412$86'.
+  Set init value: \temp_axis_tvalid_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:411$85'.
+  Set init value: \temp_axis_tkeep_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:410$84'.
+  Set init value: \temp_axis_tdata_reg = 8'00000000
+Found init rule in `\axis_adapter.$proc$candidate.v:408$83'.
+  Set init value: \output_axis_tuser_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:407$82'.
+  Set init value: \output_axis_tlast_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:406$81'.
+  Set init value: \output_axis_tvalid_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:405$80'.
+  Set init value: \output_axis_tkeep_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:404$79'.
+  Set init value: \output_axis_tdata_reg = 8'00000000
+Found init rule in `\axis_adapter.$proc$candidate.v:130$78'.
+  Set init value: \input_axis_tready_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:125$77'.
+  Set init value: \output_axis_tready_int = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:118$76'.
+  Set init value: \temp_tuser_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:116$75'.
+  Set init value: \temp_tlast_reg = 1'0
+Found init rule in `\axis_adapter.$proc$candidate.v:114$74'.
+  Set init value: \temp_tkeep_reg = 8'00000000
+Found init rule in `\axis_adapter.$proc$candidate.v:112$73'.
+  Set init value: \temp_tdata_reg = 64'0000000000000000000000000000000000000000000000000000000000000000
+Found init rule in `\axis_adapter.$proc$candidate.v:107$72'.
+  Set init value: \cycle_count_reg = 8'00000000
+Found init rule in `\axis_adapter.$proc$candidate.v:104$71'.
+  Set init value: \state_reg = 3'000
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\axis_adapter.$proc$candidate.v:414$88'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:413$87'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:412$86'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:411$85'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:410$84'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:408$83'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:407$82'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:406$81'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:405$80'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:404$79'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:130$78'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:125$77'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:118$76'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:116$75'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:114$74'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:112$73'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:107$72'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:104$71'.
+Creating decoders for process `\axis_adapter.$proc$candidate.v:425$68'.
+     1/11: $0\output_axis_tready_int[0:0]
+     2/11: $0\temp_axis_tuser_reg[0:0]
+     3/11: $0\temp_axis_tlast_reg[0:0]
+     4/11: $0\temp_axis_tvalid_reg[0:0]
+     5/11: $0\temp_axis_tkeep_reg[0:0]
+     6/11: $0\temp_axis_tdata_reg[7:0]
+     7/11: $0\output_axis_tuser_reg[0:0]
+     8/11: $0\output_axis_tlast_reg[0:0]
+     9/11: $0\output_axis_tvalid_reg[0:0]
+    10/11: $0\output_axis_tkeep_reg[0:0]
+    11/11: $0\output_axis_tdata_reg[7:0]
+Creating decoders for process `\axis_adapter.$proc$candidate.v:380$59'.
+     1/7: $0\input_axis_tready_reg[0:0]
+     2/7: $0\temp_tuser_reg[0:0]
+     3/7: $0\temp_tlast_reg[0:0]
+     4/7: $0\temp_tkeep_reg[7:0]
+     5/7: $0\temp_tdata_reg[63:0]
+     6/7: $0\cycle_count_reg[7:0]
+     7/7: $0\state_reg[2:0]
+Creating decoders for process `\axis_adapter.$proc$candidate.v:134$3'.
+     1/88: $10\state_next[2:0]
+     2/88: $10\input_axis_tready_next[0:0]
+     3/88: $9\input_axis_tready_next[0:0]
+     4/88: $9\state_next[2:0]
+     5/88: $8\cycle_count_next[7:0]
+     6/88: $11\last_cycle[0:0]
+     7/88: $10\last_cycle[0:0]
+     8/88: $9\last_cycle[0:0]
+     9/88: $8\input_axis_tready_next[0:0]
+    10/88: $7\cycle_count_next[7:0]
+    11/88: $8\state_next[2:0]
+    12/88: $5\output_axis_tuser_int[0:0]
+    13/88: $5\output_axis_tlast_int[0:0]
+    14/88: $5\output_axis_tvalid_int[0:0]
+    15/88: $5\output_axis_tkeep_int[0:0]
+    16/88: $5\output_axis_tdata_int[7:0]
+    17/88: $8\last_cycle[0:0]
+    18/88: $7\state_next[2:0]
+    19/88: $7\input_axis_tready_next[0:0]
+    20/88: $6\input_axis_tready_next[0:0]
+    21/88: $6\state_next[2:0]
+    22/88: $6\cycle_count_next[7:0]
+    23/88: $5\temp_tuser_next[0:0]
+    24/88: $5\temp_tlast_next[0:0]
+    25/88: $5\temp_tkeep_next[7:0]
+    26/88: $2$bitselwrite$pos$candidate.v:264$2[31:0]$18
+    27/88: $5\temp_tdata_next[63:0]
+    28/88: $2$bitselwrite$pos$candidate.v:263$1[31:0]$17
+    29/88: $5\state_next[2:0]
+    30/88: $5\input_axis_tready_next[0:0]
+    31/88: $5\cycle_count_next[7:0]
+    32/88: $7\last_cycle[0:0]
+    33/88: $6\last_cycle[0:0]
+    34/88: $5\last_cycle[0:0]
+    35/88: $4\input_axis_tready_next[0:0]
+    36/88: $4\state_next[2:0]
+    37/88: $4\cycle_count_next[7:0]
+    38/88: $4\output_axis_tuser_int[0:0]
+    39/88: $4\output_axis_tlast_int[0:0]
+    40/88: $4\output_axis_tvalid_int[0:0]
+    41/88: $4\output_axis_tkeep_int[0:0]
+    42/88: $4\output_axis_tdata_int[7:0]
+    43/88: $4\temp_tuser_next[0:0]
+    44/88: $4\temp_tlast_next[0:0]
+    45/88: $4\temp_tkeep_next[7:0]
+    46/88: $4\temp_tdata_next[63:0]
+    47/88: $4\last_cycle[0:0]
+    48/88: $3\input_axis_tready_next[0:0]
+    49/88: $3\output_axis_tuser_int[0:0]
+    50/88: $3\output_axis_tlast_int[0:0]
+    51/88: $3\output_axis_tvalid_int[0:0]
+    52/88: $3\output_axis_tkeep_int[0:0]
+    53/88: $3\output_axis_tdata_int[7:0]
+    54/88: $3\temp_tuser_next[0:0]
+    55/88: $3\temp_tlast_next[0:0]
+    56/88: $3\temp_tkeep_next[7:0]
+    57/88: $3\temp_tdata_next[63:0]
+    58/88: $3\last_cycle[0:0]
+    59/88: $3\cycle_count_next[7:0]
+    60/88: $3\state_next[2:0]
+    61/88: $2\input_axis_tready_next[0:0]
+    62/88: $2\output_axis_tuser_int[0:0]
+    63/88: $2\output_axis_tlast_int[0:0]
+    64/88: $2\output_axis_tvalid_int[0:0]
+    65/88: $2\output_axis_tkeep_int[0:0]
+    66/88: $2\output_axis_tdata_int[7:0]
+    67/88: $2\temp_tuser_next[0:0]
+    68/88: $2\temp_tlast_next[0:0]
+    69/88: $2\temp_tkeep_next[7:0]
+    70/88: $2\temp_tdata_next[63:0]
+    71/88: $2\last_cycle[0:0]
+    72/88: $2\cycle_count_next[7:0]
+    73/88: $2\state_next[2:0]
+    74/88: $1\input_axis_tready_next[0:0]
+    75/88: $1\output_axis_tuser_int[0:0]
+    76/88: $1\output_axis_tlast_int[0:0]
+    77/88: $1\output_axis_tvalid_int[0:0]
+    78/88: $1\output_axis_tkeep_int[0:0]
+    79/88: $1\output_axis_tdata_int[7:0]
+    80/88: $1\temp_tuser_next[0:0]
+    81/88: $1\temp_tlast_next[0:0]
+    82/88: $1\temp_tkeep_next[7:0]
+    83/88: $1\temp_tdata_next[63:0]
+    84/88: $1\last_cycle[0:0]
+    85/88: $1\cycle_count_next[7:0]
+    86/88: $1\state_next[2:0]
+    87/88: $1$bitselwrite$pos$candidate.v:264$2[31:0]$7
+    88/88: $1$bitselwrite$pos$candidate.v:263$1[31:0]$6
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\axis_adapter.\state_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\cycle_count_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\temp_tdata_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\temp_tkeep_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\temp_tlast_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\temp_tuser_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\output_axis_tdata_int' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\output_axis_tkeep_int' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\output_axis_tvalid_int' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\output_axis_tlast_int' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\output_axis_tuser_int' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.\input_axis_tready_next' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.$bitselwrite$pos$candidate.v:263$1' from process `\axis_adapter.$proc$candidate.v:134$3'.
+No latch inferred for signal `\axis_adapter.$bitselwrite$pos$candidate.v:264$2' from process `\axis_adapter.$proc$candidate.v:134$3'.
+Latch inferred for signal `\axis_adapter.\last_cycle' from process `\axis_adapter.$proc$candidate.v:134$3': $auto$proc_dlatch.cc:432:proc_dlatch$809
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\axis_adapter.\output_axis_tready_int' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$810' with positive edge clock.
+Creating register for signal `\axis_adapter.\output_axis_tdata_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$811' with positive edge clock.
+Creating register for signal `\axis_adapter.\output_axis_tkeep_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$812' with positive edge clock.
+Creating register for signal `\axis_adapter.\output_axis_tvalid_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$813' with positive edge clock.
+Creating register for signal `\axis_adapter.\output_axis_tlast_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$814' with positive edge clock.
+Creating register for signal `\axis_adapter.\output_axis_tuser_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$815' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_axis_tdata_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$816' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_axis_tkeep_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$817' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_axis_tvalid_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$818' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_axis_tlast_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$819' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_axis_tuser_reg' using process `\axis_adapter.$proc$candidate.v:425$68'.
+  created $dff cell `$procdff$820' with positive edge clock.
+Creating register for signal `\axis_adapter.\state_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$821' with positive edge clock.
+Creating register for signal `\axis_adapter.\cycle_count_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$822' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_tdata_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$823' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_tkeep_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$824' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_tlast_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$825' with positive edge clock.
+Creating register for signal `\axis_adapter.\temp_tuser_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$826' with positive edge clock.
+Creating register for signal `\axis_adapter.\input_axis_tready_reg' using process `\axis_adapter.$proc$candidate.v:380$59'.
+  created $dff cell `$procdff$827' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `axis_adapter.$proc$candidate.v:414$88'.
+Removing empty process `axis_adapter.$proc$candidate.v:413$87'.
+Removing empty process `axis_adapter.$proc$candidate.v:412$86'.
+Removing empty process `axis_adapter.$proc$candidate.v:411$85'.
+Removing empty process `axis_adapter.$proc$candidate.v:410$84'.
+Removing empty process `axis_adapter.$proc$candidate.v:408$83'.
+Removing empty process `axis_adapter.$proc$candidate.v:407$82'.
+Removing empty process `axis_adapter.$proc$candidate.v:406$81'.
+Removing empty process `axis_adapter.$proc$candidate.v:405$80'.
+Removing empty process `axis_adapter.$proc$candidate.v:404$79'.
+Removing empty process `axis_adapter.$proc$candidate.v:130$78'.
+Removing empty process `axis_adapter.$proc$candidate.v:125$77'.
+Removing empty process `axis_adapter.$proc$candidate.v:118$76'.
+Removing empty process `axis_adapter.$proc$candidate.v:116$75'.
+Removing empty process `axis_adapter.$proc$candidate.v:114$74'.
+Removing empty process `axis_adapter.$proc$candidate.v:112$73'.
+Removing empty process `axis_adapter.$proc$candidate.v:107$72'.
+Removing empty process `axis_adapter.$proc$candidate.v:104$71'.
+Found and cleaned up 4 empty switches in `\axis_adapter.$proc$candidate.v:425$68'.
+Removing empty process `axis_adapter.$proc$candidate.v:425$68'.
+Found and cleaned up 1 empty switch in `\axis_adapter.$proc$candidate.v:380$59'.
+Removing empty process `axis_adapter.$proc$candidate.v:380$59'.
+Found and cleaned up 13 empty switches in `\axis_adapter.$proc$candidate.v:134$3'.
+Removing empty process `axis_adapter.$proc$candidate.v:134$3'.
+Cleaned up 18 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module axis_adapter.
+
+5. Executing JSON backend.

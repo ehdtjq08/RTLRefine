@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.036107,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "1b96d83840ce428297e9ae896ce7938a",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_03cf2d2c8b87",
+    "patch_80df3a8332b3",
+    "patch_b9cc3bb103f8",
+    "patch_0e09bc44ff7a",
+    "patch_2e6db5d7770e",
+    "patch_6278fcd13e60",
+    "patch_15ae8a9243d8",
+    "patch_3e6c1ef8f5ff"
+  ],
+  "proposal": {
+    "explanation": "The trace shows the first output divergence on o_mosi at cycle 484124. The SPI transmitter (llsdspi) drives o_mosi directly from its shift register; the mid-level sdspi FSM feeds it bytes via ll_cmd_stb/ll_cmd_dat. Patches that control when the FSM runs relative to ll_idle (patch_03cf2d2c8b87, patch_b9cc3bb103f8, patch_80df3a8332b3) have the most direct causal link to o_mosi timing. Patches that corrupt the byte payload fed to the transmitter (patch_0e09bc44ff7a, patch_3e6c1ef8f5ff) also produce immediate o_mosi errors. Patches that add redundant or restrictive guards inside the FSM (patch_2e6db5d7770e, patch_6278fcd13e60, patch_15ae8a9243d8) can stall or shorten the byte stream, also matching the early o_mosi transitions. The ranking orders by proximity to the FSM-to-transmitter handshake and payload formation.",
+    "ranking": [
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_03cf2d2c8b87",
+        "mechanism": "This patch adds `pre_cmd_state` as a guard on the single `if` that gates the entire command-response FSM (the `always @(posedge i_clk) if (!ll_cmd_stb) begin ... pre_cmd_state begin ... end`). The trace shows the first SPI-bit error at cycle 484124 on o_mosi, indicating the low-level transmitter started a frame with wrong data or timing. By ensuring the FSM body only executes when the low-level interface is idle (`pre_cmd_state = ll_cmd_stb && ll_idle`), the patch prevents the mid-level command sequence from advancing or emitting SPI bytes before the lower layer is ready, directly stabilizing o_mosi timing.",
+        "source_line": 291
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_80df3a8332b3",
+        "mechanism": "This patch inverts the guard on the same outer `if (!ll_cmd_stb)` block, changing the condition from `!ll_cmd_stb` to `(!ll_cmd_stb) && (!pre_cmd_state)`. That makes the command/response FSM run only when the low-level transmitter is NOT idle, which is the opposite of the required synchronization. It would cause the FSM to advance during active SPI transfers, corrupting the byte stream on o_mosi starting at cycle 484124.",
+        "source_line": 278
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_b9cc3bb103f8",
+        "mechanism": "This patch replaces the guard with `(!ll_cmd_stb) && (pre_cmd_state)`, identical in effect to patch_03cf2d2c8b87 (since `pre_cmd_state` is defined as `ll_cmd_stb && ll_idle`). It therefore provides the same correct synchronization: the mid-level FSM runs exactly when the low-level SPI engine is idle, preventing premature o_mosi transitions.",
+        "source_line": 278
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_0e09bc44ff7a",
+        "mechanism": "This patch byte-reverses the wishbone write data before loading `r_data_reg` (the command/argument register). The SD command bytes are then transmitted in reversed order, so the low-level SPI engine emits wrong bits on o_mosi from the very first command cycle (484124). The trace shows immediate o_mosi mismatches consistent with a byte-order error in the command payload.",
+        "source_line": 471
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_2e6db5d7770e",
+        "mechanism": "This patch adds `&& (!ll_cmd_stb)` to the `r_cmd_state == 3'h0` branch inside the FSM. Since the entire FSM is already guarded by `if (!ll_cmd_stb)`, the extra condition is redundant when true but would block the first command byte if `ll_cmd_stb` were asserted early, potentially stalling the command sequence and causing o_mosi to stay low/idle at cycle 484124 instead of transmitting the expected start bit.",
+        "source_line": 300
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_6278fcd13e60",
+        "mechanism": "This patch qualifies the `r_cmd_state == 3'h5` branch (idle-byte emission while waiting for response) with `&& (r_use_fifo)`. When `r_use_fifo` is low, the FSM would skip the idle-byte emission and jump to the next state, shortening the SPI frame and causing o_mosi to transition early, matching the observed early transitions at cycle 484124.",
+        "source_line": 324
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_15ae8a9243d8",
+        "mechanism": "This patch adds `&& (pre_cmd_state)` to the `r_cmd_state == 3'h1` branch (second command byte). It would stall the command-byte pipeline unless the low-level interface is idle, potentially causing the FSM to repeat or skip command bytes and corrupting the o_mosi stream from cycle 484124 onward.",
+        "source_line": 305
+      },
+      {
+        "failure_port": "o_mosi",
+        "id": "patch_3e6c1ef8f5ff",
+        "mechanism": "This patch coordinate-reverses `wb_data` for both FIFO-A and FIFO-B write lanes. While it targets FIFO data rather than the command register, any FIFO-backed command (when `r_use_fifo=1`) would transmit byte-reversed payload on o_mosi, producing the same symptom as patch_0e09bc44ff7a but only for FIFO-sourced commands. The trace mismatch at cycle 484124 could be explained if the failing command uses the FIFO path.",
+        "source_line": 741
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 11.489
+}

@@ -1,0 +1,53 @@
+{
+  "explanation": "All eight ranked patches target the o_wb_ack timing mismatch observed at cycles 6\u201325. The highest-ranked patch (ack_pipeline) directly registers the combinatorial ack signal to the bus cycle domain. The next three (a2aa4ed48156, c1fed5d49f35, 2e7dcb4295ae) gate command-entry and early transmit states with pre_cmd_state or r_use_fifo to align state transitions to qualified bus cycles. The remaining four (0443cf09f504, 436fc440e456, 9b3161bfb955, 587e23d8685c) add response-token and FIFO-direction guards in the later command states and response FSM, preventing premature r_cmd_busy deassertion that propagates to o_wb_ack. No patches modifying data byte order or FIFO memory mapping are ranked because the failure trace shows no o_wb_data mismatches.",
+  "ranking": [
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_a3e524527915",
+      "mechanism": "The original assigns o_wb_ack combinatorially from wb_stb without registering bus-cycle qualification (i_wb_cyc). The failure trace shows o_wb_ack toggling at cycles 6, 7, 11, 12, 15, 16, 19, 20, 24, 25 while the expected remains stable for several cycles. This patch inserts a one-cycle register between wb_stb and o_wb_ack, aligning acknowledgment to the bus cycle domain and stabilizing the trace.",
+      "source_line": 582
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_a2aa4ed48156",
+      "mechanism": "The top-level command acceptance block triggers on !ll_cmd_stb alone. The pre_cmd_state flag (captured ll_cmd_stb && ll_idle) indicates a qualified bus-cycle moment; gating the reset/initialization logic with pre_cmd_state prevents premature state clearing before the bus cycle completes, reducing spurious o_wb_ack pulses visible at cycles 6\u201325.",
+      "source_line": 278
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_c1fed5d49f35",
+      "mechanism": "The state machine entry at r_cmd_state == 3'h0 runs unconditionally when ll_cmd_stb is low. Adding pre_cmd_state ensures the state advance only occurs on a qualified bus cycle, avoiding extra transitions that propagate into o_wb_ack via r_cmd_busy.",
+      "source_line": 300
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_2e7dcb4295ae",
+      "mechanism": "In the command transmit state 3'h5, the patch adds r_use_fifo to the branch that decides FIFO read vs write completion. This prevents the state machine from taking the wrong FIFO path when a response arrives without FIFO involvement, which would otherwise extend r_cmd_busy and modulate o_wb_ack.",
+      "source_line": 324
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_0443cf09f504",
+      "mechanism": "At the FIFO write completion branch (r_cmd_state == 3'h6), the patch qualifies the r_use_fifo condition with r_have_resp. This ensures the FIFO write state only advances after a valid response token, preventing premature completion that would drop r_cmd_busy early and flip o_wb_ack.",
+      "source_line": 329
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_436fc440e456",
+      "mechanism": "The response-state transition from RSP_NONE to second_rsp_state currently fires on first non-0x80 byte without checking r_have_resp. Adding r_have_resp avoids advancing the response FSM on spurious SPI bytes, keeping r_cmd_busy asserted longer and stabilizing o_wb_ack.",
+      "source_line": 320
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_9b3161bfb955",
+      "mechanism": "When the command expects R1B (busy-wait response), the patch gates the branch on !r_use_fifo so FIFO logic does not interfere with the busy-polling path. This keeps r_cmd_busy asserted during the correct number of SPI cycles, avoiding early deassertion that toggles o_wb_ack.",
+      "source_line": 327
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_587e23d8685c",
+      "mechanism": "The transition to FIFO write state (r_cmd_state 3'h6) currently triggers on (r_use_fifo && r_fifo_wr) alone. Qualifying with !r_have_resp prevents entering FIFO write before the response token arrives, avoiding a state shortcut that shortens r_cmd_busy and corrupts o_wb_ack timing.",
+      "source_line": 334
+    }
+  ]
+}

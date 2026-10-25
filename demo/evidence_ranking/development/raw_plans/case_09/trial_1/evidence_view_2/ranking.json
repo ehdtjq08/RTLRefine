@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.019158,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "d0f829fbf70746f880a7d1759b02ce4c",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_06b184d83718",
+    "patch_15a85deae41e",
+    "patch_9d300784e043",
+    "patch_a0bad4f15d79",
+    "patch_c8cdd17adad4",
+    "patch_cc5c635bb718",
+    "patch_5d8c1cfb86b1",
+    "patch_e68873b48903"
+  ],
+  "proposal": {
+    "explanation": "The discovery trace shows rst asserted at cycle 8, then drop_frame incorrectly high at cycles 13-14, followed by output_axis_tdata/tlast/tvalid mismatches at cycle 16. The highest-leverage fixes are completing the reset block (patch_06b184d83718 covers both drop_frame and wr_ptr_cur; patch_15a85deae41e and patch_9d300784e043 each cover one), then guarding the drop-frame entry condition against reset (patch_a0bad4f15d79) and against spurious writes (patch_cc5c635bb718, patch_5d8c1cfb86b1, patch_e68873b48903). The ready gating (patch_c8cdd17adad4) is included as a secondary handshake fix. All cited patches reference line numbers in the original source and tie to the first failing port drop_frame at cycles 13-14.",
+    "ranking": [
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_06b184d83718",
+        "mechanism": "Reset block missing explicit initialization of drop_frame and wr_ptr_cur; discovery trace shows rst asserted at cycle 8 and drop_frame=1 at cycles 13-14. Adding both resets clears the partial-frame drop state and current write pointer together, directly addressing the first observed mismatches on drop_frame.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_15a85deae41e",
+        "mechanism": "Reset block initializes wr_ptr but not wr_ptr_cur; trace shows rst at cycle 8. Resetting wr_ptr_cur prevents stale current-write pointer from corrupting the first post-reset frame, which is consistent with the early drop_frame mismatches.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_9d300784e043",
+        "mechanism": "Reset block does not clear drop_frame; discovery shows rst at cycle 8 and drop_frame=1 at cycles 13-14. Adding drop_frame<=0 on reset directly clears the drop-state register that is observed high when it should be low.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_a0bad4f15d79",
+        "mechanism": "Drop-frame entry condition (full|full_cur|drop_frame) unguarded during reset; rst=1 at cycle 8. Qualifying with !rst prevents the drop logic from triggering on the reset cycle, which matches the first drop_frame mismatch at cycle 13 after reset release.",
+        "source_line": 100
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_c8cdd17adad4",
+        "mechanism": "input_axis_tready driven by (~full|DROP_WHEN_FULL) without rst gating; rst=1 at cycle 8. Adding &&(!rst) suppresses ready during reset so the upstream source cannot push data into a resetting FIFO, indirectly reducing spurious drop_frame activation.",
+        "source_line": 92
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_cc5c635bb718",
+        "mechanism": "Write-block guard 'write' lacks !drop_frame qualifier; trace shows drop_frame=1 at cycles 13-14. Changing to (write)&&(!drop_frame) stops new writes from entering the drop-frame handling path once drop_frame is set, limiting the window where drop_frame can be asserted.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_5d8c1cfb86b1",
+        "mechanism": "Drop-frame condition (full|full_cur|drop_frame) missing write qualification; cycles 13-14 show drop_frame=1. Adding &&(write) ensures the drop logic only evaluates on actual write cycles, aligning the condition with the write enable that drives pointer updates.",
+        "source_line": 100
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_e68873b48903",
+        "mechanism": "Same condition as above but qualified with write instead of !write; both target the drop-frame entry guard at line 100 where the first mismatches appear, ensuring drop_frame logic only runs when a write occurs.",
+        "source_line": 100
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 9.3839
+}

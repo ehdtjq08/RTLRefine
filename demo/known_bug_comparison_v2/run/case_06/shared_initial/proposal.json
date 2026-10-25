@@ -1,0 +1,11 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 106,
+      "replacement": "         bit_cnt = 0;\n         for (i = 0; i <= KEEP_WIDTH; i = i + 1) begin\n             if (monitor_axis_tkeep == ({KEEP_WIDTH{1'b1}}) >> (KEEP_WIDTH-i)) bit_cnt = i;\n         end\n         frame_len_next = frame_len_next + bit_cnt;",
+      "start_line": 98
+    }
+  ],
+  "explanation": "The original code uses KEEP_ENABLE to select between two counting methods: a bit-counting loop for contiguous TKEEP masks when KEEP_ENABLE=1, and a simple increment by 1 when KEEP_ENABLE=0. However, the contract requires counting enabled bytes for all supported TKEEP values (contiguous low-order ones including zero) regardless of DATA_WIDTH. When KEEP_ENABLE=0 (e.g., DATA_WIDTH=8), the else branch adds 1 per transfer even if tkeep=0, incorrectly counting a byte for a zero-enabled-byte transfer. The fix removes the conditional and always executes the bit-counting loop, which correctly yields the number of enabled bytes (0..KEEP_WIDTH) for supported masks and 0 for non-contiguous masks (outside contract)."
+}

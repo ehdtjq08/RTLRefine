@@ -1,0 +1,21 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 233,
+      "replacement": "assign int_s_axis_tready[m] = int_axis_tready[select_reg*S_COUNT+m] || drop_reg;",
+      "start_line": 233
+    },
+    {
+      "end_line": 301,
+      "replacement": "wire s_axis_tvalid_mux  = int_axis_tvalid[grant_encoded*M_COUNT+n] && grant_valid;",
+      "start_line": 301
+    },
+    {
+      "end_line": 308,
+      "replacement": "for (m = 0; m < S_COUNT; m = m + 1) begin\n       assign int_axis_tready[n*S_COUNT + m] = (grant_valid && s_axis_tready_mux) && (grant_encoded == m);\n   end",
+      "start_line": 308
+    }
+  ],
+  "explanation": "Fixed three functional defects in the axis_switch module: 1) In source interfaces, the ready signal read from int_axis_tready used an incorrect stride (M_COUNT instead of S_COUNT), causing misrouting when source and destination counts differ. 2) In destination interfaces, the valid signal mux used an incorrect stride (S_COUNT instead of M_COUNT) when reading from int_axis_tvalid. 3) The ready signal write to int_axis_tready used a shift of a 1-bit value, which cannot produce a one-hot vector; replaced with a generate-for loop that assigns each bit correctly. These changes ensure correct cycle-exact behavior for all parameterized configurations."
+}

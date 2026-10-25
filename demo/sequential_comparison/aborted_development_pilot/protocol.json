@@ -1,0 +1,62 @@
+{
+  "branch_order": "Alternate self-review first / checker-feedback first by case index plus trial index",
+  "cases": [
+    "fifo_reset",
+    "axis_keep",
+    "frame_fifo"
+  ],
+  "controller_sha256": {
+    "rtl_agent/budget.py": "99fa5be7fc3067423969a0fe88a3404d7ad28e2ad015e0e9a96908f2d4263fd2",
+    "rtl_agent/common.py": "2ea3cdfa66c0cdca13bf839dd8de1346ef0aeb07c8bfa82ad3c5c62abf2eeaff",
+    "rtl_agent/model_client.py": "375935c18f8cbce43038a10179b35a308b2cf30608bdef32bb31d3e6955c50e1",
+    "rtl_agent/model_settings.py": "0ce64b548fd67b31f2b3d67a9d39536cc89f999937cdf99df3a7054066d06ff7",
+    "rtl_agent/sequential/__init__.py": "aaa32c7d2209627f0280cbdec80e26fa308d1ea4e050fb37d7fa2d07fab37de1",
+    "rtl_agent/sequential/case_agent.py": "7ce649b2f9b6c7e45bfdfd20cb1c4c8c8bcabf7ddb9fa2d33d25e460c46e6ecb",
+    "rtl_agent/sequential/case_review.py": "f6c9d2f5d181c6e3d2de7eb9268f3349bdfac6ff76163b87b7583f206ceb66e3",
+    "rtl_agent/sequential/frame_case.py": "0db70a8f0076d3869219705787003e319e1f102469dfb567eda56e2007e85bad",
+    "rtl_agent/sequential/keep_case.py": "c9324bd245e840d1dce01d4ddd9670411a02feb8d6e6713e8a6b2b0e7867a900",
+    "rtl_agent/sequential/keep_repair.py": "aee9cbd76ec34a65dc3eda15161fd475ca89efe16fdf860a2161874808c40cdf",
+    "rtl_agent/sequential/repair.py": "48141de97bc68ef749a654e5e718f31f198dd121da18851ce3cef6e797b62d51",
+    "rtl_agent/sequential/reset_case.py": "a38484925603be2bb037a166dd8643ec1f5efcbc5fd12e7c46daae595bd05188",
+    "rtl_agent/sequential/runner.py": "bdf71a411911ee437f56622ddd62b08d005f6ad2f25be2e9e623c8ad9f3d7959",
+    "rtl_agent/sequential/ui.py": "bf0ac6ec568606d9d28a72ecf2507085d3a9d64db2576c8cb497daf01c3f8422",
+    "rtl_agent/tool_paths.py": "3cc3eb22cbf6f58fe2f123ae9dbccf801aba5f217547caf54cf70ab285e74a5f",
+    "rtl_agent/tool_runner.py": "15028b22793eeee90f1dd58e286274434efdfa91665b34dafeeac05e3a540c6b",
+    "scripts/run_sequential_comparison.py": "ccfa8b0e4e73b1345466e97b22bdde8c341500f297c3da51e8e8033eeb05bfef"
+  },
+  "cost_accounting": "Unique paid calls counted once. Per-arm attributed cost includes the shared initial request and cannot be summed across arms.",
+  "design": "Paired fork with shared first proposal; second call self-review versus simulation and symbolic-counterexample feedback",
+  "limitations": "Small development cohort of historical public bugs, potentially seen in model training. No held-out generalization, model superiority or unbounded proof implied. Symbolic input witnesses are not independently replayed.",
+  "max_output_tokens": 16384,
+  "max_unique_paid_calls": 27,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "not_a_blind_or_novel_bug_benchmark": true,
+  "per_arm_call_cap": 2,
+  "reference_source_excluded_from_prompts": true,
+  "same_initial_proposal_for_both_arms": true,
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "explanation": {
+        "type": "string"
+      },
+      "rtl": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "rtl",
+      "explanation"
+    ],
+    "type": "object"
+  },
+  "settings": {
+    "api_timeout_seconds": 240,
+    "enable_thinking": true,
+    "json_mode": true,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "stop_both_arms_if_initial_accepted": true,
+  "trials_per_case": 3
+}

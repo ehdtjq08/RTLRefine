@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranked_ids\": [\n    \"candidate_031\",\n    \"candidate_029\",\n    \"candidate_013\",\n    \"candidate_034\",\n    \"candidate_035\",\n    \"candidate_018\",\n    \"candidate_001\",\n    \"candidate_023\"\n  ],\n  \"explanation\": \"The failing traces show a mismatch at cycle 4 where input_axis_tready is 1 instead of 0 during async reset. Candidate 031 gates the write handshake with !output_rst_sync3, preventing premature writes during output reset. Candidate 029 ensures async_rst blocks writes, avoiding activity during reset. Candidate 013 prevents async_rst from enabling writes, aligning write enable with reset de-assertion. Candidates 034/035/023 add input/output reset sync qualification to handshake gates, ensuring readiness/validity respect domain reset completion. Candidate 018 ties input readiness to output reset state. Candidate 001 clears data_out_reg on output reset, fixing the output_axis_tdata mismatch at cycle 8/9.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792747109,
+  "id": "chatcmpl-8d4d4871ab6339b57ee6a4853984fc6a",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 256,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 9306,
+    "prompt_tokens": 9306,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 9562
+  }
+}

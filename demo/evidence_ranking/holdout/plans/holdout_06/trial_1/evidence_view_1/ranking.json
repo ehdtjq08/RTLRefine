@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.016585,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "62eb5289d220471c9fdd02b5a0970b73",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_69ccf5c47bf8",
+    "patch_2a431655333c",
+    "patch_07b5fef0b6d0",
+    "patch_2830e5edbd13",
+    "patch_c92f21851f42",
+    "patch_bf3e4f0d750f",
+    "patch_e97363bfcac1",
+    "patch_3b7cab0258e3"
+  ],
+  "proposal": {
+    "explanation": "The primary issue appears to be incorrect state transition logic at cycle 20 where trigger fires but output state machine doesn't properly gate on m_axis_tready_int_reg. Patch_69ccf5c47bf8 adds the missing ready check to prevent premature state transition. Patch_2a431655333c fixes frame pointer initialization which affects data sequencing. Patch_07b5fef0b6d0 corrects busy_reg assignment using the actual store signal rather than constant. The remaining patches address counter register assignments and output signal substitutions that may resolve the data value mismatches seen at cycles 20-22.",
+    "ranking": [
+      {
+        "id": "patch_69ccf5c47bf8",
+        "mechanism": "Qualify condition with nearby scalar !m_axis_tready_int_reg"
+      },
+      {
+        "id": "patch_2a431655333c",
+        "mechanism": "Use existing same-width signal frame_ptr_reg for frame_ptr_next"
+      },
+      {
+        "id": "patch_07b5fef0b6d0",
+        "mechanism": "Use existing same-width signal store_axis_int_to_temp for busy_reg"
+      },
+      {
+        "id": "patch_2830e5edbd13",
+        "mechanism": "Use existing same-width signal byte_count_reg for frame_count_reg"
+      },
+      {
+        "id": "patch_c92f21851f42",
+        "mechanism": "Use existing same-width signal busy for m_axis_tuser_int"
+      },
+      {
+        "id": "patch_bf3e4f0d750f",
+        "mechanism": "Use existing same-width signal m_axis_tvalid_next for store_output"
+      },
+      {
+        "id": "patch_e97363bfcac1",
+        "mechanism": "Use existing same-width signal tick_count_next for byte_count_reg"
+      },
+      {
+        "id": "patch_3b7cab0258e3",
+        "mechanism": "Use existing same-width signal frame_count_output_reg for tick_count_next"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.349
+}

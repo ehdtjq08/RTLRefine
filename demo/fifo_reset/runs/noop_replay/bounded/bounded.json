@@ -1,0 +1,27 @@
+{
+  "clock_model": "Independent symbolic clock levels, edge detection via clk2fflogic",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 1.868115,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "compared_output_bits": 12,
+  "data_comparison": "Payload and sidebands compared only when reference valid",
+  "limitation": "Bounded two-state reference comparison, not an unbounded proof or CDC/metastability sign-off",
+  "normalization": "Name the existing input_rst | output_rst expression as joint_rst for the two reset synchronizers",
+  "reference": "Historical upstream fix; excluded from model prompt",
+  "reference_sha256": "8aca6b233800c0a38fd14be88966741a57ede52bf2f81bf9d3aec2a1744914e4",
+  "rtl_sha256": "8aca6b233800c0a38fd14be88966741a57ede52bf2f81bf9d3aec2a1744914e4",
+  "script_sha256": "3bea7b3d428d1384b723431abbe4205357dde6977ca162aa3efb218441bf42ce",
+  "status": "BOUNDED_PASS",
+  "steps": 16
+}

@@ -1,0 +1,36 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 254,
+      "replacement": "\treg\tr_watchdog_err;",
+      "start_line": 254
+    },
+    {
+      "end_line": 688,
+      "replacement": "",
+      "start_line": 653
+    },
+    {
+      "end_line": 801,
+      "replacement": "",
+      "start_line": 721
+    },
+    {
+      "end_line": 949,
+      "replacement": "\t\t\t\tr_cmd_crc_ff <= (r_cmd_crc_ff)||(r_cmd_crc_stb);",
+      "start_line": 949
+    },
+    {
+      "end_line": 951,
+      "replacement": "\t\tend else if ((r_cmd_crc_stb)||(r_cmd_crc_ff))",
+      "start_line": 951
+    },
+    {
+      "end_line": 950,
+      "replacement": "\t\t\t\tr_cmd_crc_ff <= 1'b0;",
+      "start_line": 950
+    }
+  ],
+  "explanation": "Fixed three typos: (1) line 254 'r_watchdog_err' -> 'r_watchdog_err' to match usage at lines 426/972; (2-3) lines 949/951 'r_cmd_crc_stb' -> 'r_cmd_crc_stb' to match declaration at line 194. Removed two malformed duplicate always blocks: lines 653-688 (token handling duplicated from lines 477-499 with invalid reg declaration inside procedural code) and lines 721-801 (FIFO write logic duplicated from lines 406-472 causing multiple drivers on ll_fifo_wr, ll_cmd_stb, r_cmd_busy, fifo memories)."
+}

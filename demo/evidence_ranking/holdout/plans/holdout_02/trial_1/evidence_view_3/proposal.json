@@ -1,0 +1,37 @@
+{
+  "explanation": "The failure manifests as m_axis_tlast stuck at 0 instead of 1 at cycles 6,7,19,etc. The signal originates from m_axis_tlast_reg, driven by m_axis_tlast_int in combinational logic. patch_bdfb4e29768c directly assigns s_axis_tlast to m_axis_tlast_int (line 141), creating the most direct path. patch_73d0959c8d78 directly targets m_axis_tlast_reg initialization (line 163). Other patches affect the pause/frame_reg/s_axis_tready chain that controls frame_reg, which drives m_axis_tlast_int. patch_37b9d212adbe, patch_177e84f089b9, patch_390a7a67ed09 modify pause inputs; patch_05abffd461ff qualifies accumulator condition; patch_330141055bc5 qualifies pause condition; patch_de127ce49d29 qualifies reset. All ultimately influence frame_reg -> m_axis_tlast_int -> m_axis_tlast_reg.",
+  "ranking": [
+    {
+      "id": "patch_37b9d212adbe",
+      "mechanism": "temp_m_axis_tkeep_reg feeds pause logic at line 132, and pause gates s_axis_tready which controls frame_reg update. frame_reg directly drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+    },
+    {
+      "id": "patch_177e84f089b9",
+      "mechanism": "s_axis_tvalid feeds pause logic at line 132, and pause gates s_axis_tready which controls frame_reg update. frame_reg directly drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+    },
+    {
+      "id": "patch_390a7a67ed09",
+      "mechanism": "m_axis_tready feeds pause logic at line 132, and pause gates s_axis_tready which controls frame_reg update. frame_reg directly drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+    },
+    {
+      "id": "patch_05abffd461ff",
+      "mechanism": "s_axis_tready qualifies acc_reg >= rate_num condition at line 118, altering acc_next which controls pause at line 129. pause gates s_axis_tready which controls frame_reg update driving m_axis_tlast_int."
+    },
+    {
+      "id": "patch_330141055bc5",
+      "mechanism": "rate_by_frame qualifies pause condition at line 128, altering pause which gates s_axis_tready. s_axis_tready controls frame_reg update which drives m_axis_tlast_int for m_axis_tlast_reg at cycle 6."
+    },
+    {
+      "id": "patch_de127ce49d29",
+      "mechanism": "m_axis_tready_int_reg qualifies reset at line 152, potentially changing reset behavior of acc_reg and frame_reg. frame_reg drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+    },
+    {
+      "id": "patch_bdfb4e29768c",
+      "mechanism": "s_axis_tlast directly sets m_axis_tlast_int at line 141, which propagates to m_axis_tlast_reg at cycle 6. This is the most direct path to the failing port."
+    },
+    {
+      "id": "patch_73d0959c8d78",
+      "mechanism": "temp_m_axis_tlast_reg directly replaces m_axis_tlast_reg initialization at line 163, directly targeting the failing output port m_axis_tlast."
+    }
+  ]
+}

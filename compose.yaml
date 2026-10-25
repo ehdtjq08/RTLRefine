@@ -1,0 +1,18 @@
+services:
+  rtlrefine:
+    build: .
+    ports:
+      - "127.0.0.1:8501:8501"
+    environment:
+      RTLREFINE_ENABLE_LIVE_MODEL: "0"
+    security_opt:
+      - seccomp=unconfined
+      - apparmor=unconfined
+      - systempaths=unconfined
+    volumes:
+      - rtlrefine-results:/app/results
+      - rtlrefine-state:/app/.state
+    restart: unless-stopped
+volumes:
+  rtlrefine-results:
+  rtlrefine-state:

@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"diagnosis\": \"The write pointer reset block fails to clear the `drop_frame` and `wr_ptr_cur` registers, so they retain stale values after reset. These stale values cause the FIFO to incorrectly assert `drop_frame` and corrupt the first post-reset frame write, which subsequently produces wrong output data.\",\n  \"ranking\": [\n    {\n      \"id\": \"candidate_007\",\n      \"mechanism\": \"Resets both `drop_frame` and `wr_ptr_cur` to zero in the `rst` branch of the write-pointer always block, ensuring a clean state for the next frame after reset.\"\n    },\n    {\n      \"id\": \"candidate_001\",\n      \"mechanism\": \"Resets only `drop_frame` in the write-pointer reset branch, clearing the drop-state but leaving `wr_ptr_cur` stale.\"\n    },\n    {\n      \"id\": \"candidate_004\",\n      \"mechanism\": \"Resets only `wr_ptr_cur` in the write-pointer reset branch, aligning the current write pointer but leaving `drop_frame` asserted.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792765631,
+  "id": "chatcmpl-e8dfa2b3e6aff6ef2ea7d0f647a8bc0f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 241,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 4433,
+    "prompt_tokens": 4433,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 4674
+  }
+}

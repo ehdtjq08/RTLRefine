@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.02262,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "13f0fc10e90a40cfb4b0e153871c02d1",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_3d82912c89bf",
+    "patch_f7e6f5f52970",
+    "patch_422618d0dee5",
+    "patch_863a54b885b4",
+    "patch_de1628c0e786",
+    "patch_390e473ceb59",
+    "patch_3ffee8d0db7d",
+    "patch_0e09f46d1e35"
+  ],
+  "proposal": {
+    "explanation": "Ranking prioritizes patches that directly target the mismatched output ports (scl_o, scl_t, sda_o, sda_t) at the failure cycles (23, 27, 28, 29) with structural dependencies on the failing state edges. Patches patch_3d82912c89bf, patch_f7e6f5f52970, and patch_422618d0dee5 directly modify scl_o_next or sda_o_reg with evidence tied to the failing port scl_o (cycle 23) and sda_o (cycle 27). patch_863a54b885b4 modifies scl_o_next using last_scl_i_reg, which is structurally related to scl_o edge detection. patch_de1628c0e786 modifies scl_o_next with s_axis_cmd_write, also dependent on the same failure cycle. The remaining patches address secondary signals (delay_scl_reg, phy_read_bit, phy_release_bus) that may influence timing but are less directly connected to the primary output mismatches.",
+    "ranking": [
+      {
+        "id": "patch_3d82912c89bf",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_f7e6f5f52970",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_422618d0dee5",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_863a54b885b4",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_de1628c0e786",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_390e473ceb59",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_3ffee8d0db7d",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_0e09f46d1e35",
+        "mechanism": "rhs_substitution"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.2843
+}

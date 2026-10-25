@@ -1,0 +1,76 @@
+{
+  "accepted": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "i2c_master",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0338,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vi2c_master.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.9195,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": true,
+  "rtl_sha256": "67bc6b9d393f3c92cfe56a5195a2e3ece0f0ee7d2197574a380b3ffc623832d5",
+  "status": "DISCOVERY_PASS",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vi2c_master"
+        ],
+        "elapsed_seconds": 0.018,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 2816,
+      "cycles": 256,
+      "expected_sha256": "daa34dcefc781a8d88ba1a7427b470d7d037a179e45f01227bc5e10478c880e0",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "4a3bbd303295bce4f39b8aabe02c0cf10cc5da8bc72280c059ea8b7d29a4242b",
+      "trace_label": "discovery"
+    }
+  ]
+}

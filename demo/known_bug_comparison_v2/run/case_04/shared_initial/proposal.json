@@ -1,0 +1,31 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 117,
+      "replacement": "reg [7:0] cycle_count_reg = 0;\nreg [7:0] cycle_count_next;\n\nreg [DATA_WIDTH-1:0] temp_tdata_reg = 0;\nreg [DATA_WIDTH-1:0] temp_tdata_next;\nreg [KEEP_WIDTH-1:0] temp_tkeep_reg = 0;\nreg [KEEP_WIDTH-1:0] temp_tkeep_next;\nreg                  temp_tlast_reg = 0;\nreg                  temp_tlast_next;\nreg                  temp_tuser_reg = 0;\nreg                  temp_tuser_next;\n\nreg [2:0] last_keep_index_reg = 0;\nreg [2:0] last_keep_index_next;",
+      "start_line": 107
+    },
+    {
+      "end_line": 148,
+      "replacement": "always @* begin\n    state_next = STATE_IDLE;\n\n    cycle_count_next = cycle_count_reg;\n    last_keep_index_next = last_keep_index_reg;\n\n    temp_tdata_next = temp_tdata_reg;\n    temp_tkeep_next = temp_tkeep_reg;\n    temp_tlast_next = temp_tlast_reg;\n    temp_tuser_next = temp_tuser_reg;\n\n    output_axis_tdata_int = 0;\n    output_axis_tkeep_int = 0;\n    output_axis_tvalid_int = 0;\n    output_axis_tlast_int = 0;\n    output_axis_tuser_int = 0;\n\n    input_axis_tready_next = 0;",
+      "start_line": 132
+    },
+    {
+      "end_line": 217,
+      "replacement": "                    cycle_count_next = 0;\n\n                    \n                    temp_tdata_next = input_axis_tdata;\n                    temp_tkeep_next = input_axis_tkeep;\n                    temp_tlast_next = input_axis_tlast;\n                    temp_tuser_next = input_axis_tuser;\n\n                    // compute last keep index\n                    last_keep_index_next = 0;\n                    if (input_axis_tkeep[7]) last_keep_index_next = 7;\n                    else if (input_axis_tkeep[6]) last_keep_index_next = 6;\n                    else if (input_axis_tkeep[5]) last_keep_index_next = 5;\n                    else if (input_axis_tkeep[4]) last_keep_index_next = 4;\n                    else if (input_axis_tkeep[3]) last_keep_index_next = 3;\n                    else if (input_axis_tkeep[2]) last_keep_index_next = 2;\n                    else if (input_axis_tkeep[1]) last_keep_index_next = 1;\n                    else if (input_axis_tkeep[0]) last_keep_index_next = 0;\n\n                    \n                    output_axis_tdata_int = input_axis_tdata;\n                    output_axis_tkeep_int = input_axis_tkeep;\n                    output_axis_tvalid_int = 1;\n                    output_axis_tlast_int = input_axis_tlast & (last_keep_index_next == 0);\n                    output_axis_tuser_int = input_axis_tuser & (last_keep_index_next == 0);",
+      "start_line": 203
+    },
+    {
+      "end_line": 339,
+      "replacement": "            end else begin\n                \n                \n                input_axis_tready_next = 0;\n\n                \n                output_axis_tdata_int = temp_tdata_reg[cycle_count_reg*CYCLE_DATA_WIDTH +: CYCLE_DATA_WIDTH];\n                output_axis_tkeep_int = temp_tkeep_reg[cycle_count_reg*CYCLE_KEEP_WIDTH +: CYCLE_KEEP_WIDTH];\n                output_axis_tvalid_int = 1;\n                output_axis_tlast_int = temp_tlast_reg & (cycle_count_reg == last_keep_index_reg);\n                output_axis_tuser_int = temp_tuser_reg & (cycle_count_reg == last_keep_index_reg);\n\n                if (output_axis_tready_int) begin\n                    \n                    cycle_count_next = cycle_count_reg + 1;\n\n                    if (cycle_count_reg == CYCLE_COUNT-1) begin\n                        \n                        \n                        input_axis_tready_next = 1;\n                        state_next = STATE_IDLE;\n                    end else begin\n                        \n                        state_next = STATE_TRANSFER_OUT;\n                    end\n                end else begin\n                    state_next = STATE_TRANSFER_OUT;\n                end \n            end",
+      "start_line": 311
+    },
+    {
+      "end_line": 366,
+      "replacement": "always @(posedge clk) begin\n    if (rst) begin\n        state_reg <= STATE_IDLE;\n        cycle_count_reg <= 0;\n        temp_tdata_reg <= 0;\n        temp_tkeep_reg <= 0;\n        temp_tlast_reg <= 0;\n        temp_tuser_reg <= 0;\n        input_axis_tready_reg <= 0;\n        last_keep_index_reg <= 0;\n    end else begin\n        state_reg <= state_next;\n\n        input_axis_tready_reg <= input_axis_tready_next;\n\n        temp_tdata_reg <= temp_tdata_next;\n        temp_tkeep_reg <= temp_tkeep_next;\n        temp_tlast_reg <= temp_tlast_next;\n        temp_tuser_reg <= temp_tuser_next;\n\n        cycle_count_reg <= cycle_count_next;\n        last_keep_index_reg <= last_keep_index_next;\n    end\nend",
+      "start_line": 346
+    }
+  ],
+  "explanation": "The original axis_adapter had a functional defect in the narrowing path (64-bit to 8-bit). The tlast/tuser signals were incorrectly asserted on disabled bytes (keep=0) and the state machine would terminate early when encountering a keep=0 segment, causing data loss. The fix introduces a last_keep_index register that records the index of the last keep=1 in the input word. This index is computed combinationally when a new input word is accepted (in the IDLE state for narrowing). The tlast/tuser outputs are then asserted only when the current cycle matches this index. The termination condition in TRANSFER_OUT is simplified to only transition to IDLE after the last cycle (cycle_count_reg == CYCLE_COUNT-1), ensuring all bytes are transmitted. The changes are confined to the narrowing branch and preserve the existing expanding logic and parameterized structure."
+}

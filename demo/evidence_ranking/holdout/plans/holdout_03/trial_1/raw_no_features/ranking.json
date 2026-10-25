@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.011656,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "93f5f4d1003e41d1ba5c5cf4ddb6949b",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_bdf206843497",
+    "patch_f46dec541b44",
+    "patch_c73ed0d6214c",
+    "patch_1d0fba8d5d53",
+    "patch_3642db1cc528",
+    "patch_302bdac6f760",
+    "patch_cde52ea68e59",
+    "patch_87d9d2ff8bbd"
+  ],
+  "proposal": {
+    "explanation": "The first mismatch occurs at cycle 6 where m_axis_tvalid is 0 but should be 1. This indicates the rate limiting logic is pausing output incorrectly. The condition gate at line 128 (patch_bdf206843497) qualifies the pause condition with !rate_by_frame, which directly addresses the rate_by_frame=1 test scenario where frame-based rate limiting should behave differently. Patches f46dec541b44 and c73ed0d6214c further refine the frame pause condition with !rst and s_axis_tvalid qualifications respectively, preventing spurious pauses during reset or when input is invalid. The rhs_substitution patches (1d0fba8d5d53, 3642db1cc528, 302bdac6f760, cde52ea68e59) improve signal initialization and forwarding logic for the output pipeline registers, ensuring valid data propagates correctly when not paused. The condition_gate patch 87d9d2ff8bbd adds s_axis_tvalid check to the accumulator threshold comparison, preventing rate limiting from triggering on invalid input cycles.",
+    "ranking": [
+      {
+        "id": "patch_bdf206843497",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_f46dec541b44",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_c73ed0d6214c",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_1d0fba8d5d53",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_3642db1cc528",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_302bdac6f760",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_cde52ea68e59",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_87d9d2ff8bbd",
+        "mechanism": "condition_gate"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 3.4127
+}

@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranked_ids\": [\n    \"candidate_001\",\n    \"candidate_012\",\n    \"candidate_014\",\n    \"candidate_009\",\n    \"candidate_019\",\n    \"candidate_021\",\n    \"candidate_030\",\n    \"candidate_006\"\n  ],\n  \"explanation\": \"The trace reveals three mismatches at cycles 8-9: input_axis_tready stuck low, output_axis_tlast missing, and output_axis_tvalid spuriously high. Candidate_001 prevents hard-resetting tready to 0. Candidate_012 gates output tlast with input tvalid to avoid false last. Candidate_014 qualifies input tlast with output tready_int so last propagates only when output can accept. Candidate_009 gates expand-bus path with !tlast to avoid premature completion. Candidate_019 guards input_valid with output tready_int to prevent over-consumption under back-pressure. Candidate_021 qualifies input_valid with !tready_int to avoid double-valid. Candidate_030 adds output tready_int to the last-cycle completion gate. Candidate_006 adds input tvalid to the expand-bus gate.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792747098,
+  "id": "chatcmpl-4509716e47f4b796b5e4b2b6205d0ed5",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 277,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 8242,
+    "prompt_tokens": 8242,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 8519
+  }
+}

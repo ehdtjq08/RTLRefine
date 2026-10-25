@@ -1,0 +1,271 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_12fb0aa7572b": 8,
+          "patch_1b1b250a3141": 0,
+          "patch_1d0fba8d5d53": 0,
+          "patch_302bdac6f760": 0,
+          "patch_3642db1cc528": 0,
+          "patch_38f5e51918e0": 0,
+          "patch_486dd5f989c7": 0,
+          "patch_4fe020af08db": 0,
+          "patch_709d4b72f088": 1,
+          "patch_79e81bb21cc1": 0,
+          "patch_7c1fb3f808af": 0,
+          "patch_7f31b59c2569": 6,
+          "patch_81a895258238": 0,
+          "patch_87d9d2ff8bbd": 5,
+          "patch_8c4f93f7976c": 0,
+          "patch_9cbbf5dc49f3": 0,
+          "patch_a1f4a604d1ae": 0,
+          "patch_bdf206843497": 2,
+          "patch_bdfb4e29768c": 7,
+          "patch_c73ed0d6214c": 4,
+          "patch_c8f0ff63db96": 0,
+          "patch_cde52ea68e59": 0,
+          "patch_f46dec541b44": 3,
+          "patch_f9ee7ff14661": 0
+        },
+        "fallback_reason": "Insufficient valid or stable model views",
+        "order": [
+          "patch_12fb0aa7572b",
+          "patch_7f31b59c2569",
+          "patch_bdfb4e29768c",
+          "patch_38f5e51918e0",
+          "patch_7c1fb3f808af",
+          "patch_9cbbf5dc49f3",
+          "patch_709d4b72f088",
+          "patch_c8f0ff63db96",
+          "patch_3642db1cc528",
+          "patch_f9ee7ff14661",
+          "patch_1b1b250a3141",
+          "patch_81a895258238",
+          "patch_8c4f93f7976c",
+          "patch_4fe020af08db",
+          "patch_bdf206843497",
+          "patch_c73ed0d6214c",
+          "patch_f46dec541b44",
+          "patch_87d9d2ff8bbd",
+          "patch_1d0fba8d5d53",
+          "patch_302bdac6f760",
+          "patch_486dd5f989c7",
+          "patch_79e81bb21cc1",
+          "patch_a1f4a604d1ae",
+          "patch_cde52ea68e59"
+        ],
+        "raw_consensus_order": [
+          "patch_12fb0aa7572b",
+          "patch_bdfb4e29768c",
+          "patch_7f31b59c2569",
+          "patch_87d9d2ff8bbd",
+          "patch_c73ed0d6214c",
+          "patch_f46dec541b44",
+          "patch_bdf206843497",
+          "patch_709d4b72f088",
+          "patch_38f5e51918e0",
+          "patch_7c1fb3f808af",
+          "patch_9cbbf5dc49f3",
+          "patch_c8f0ff63db96",
+          "patch_3642db1cc528",
+          "patch_f9ee7ff14661",
+          "patch_1b1b250a3141",
+          "patch_81a895258238",
+          "patch_8c4f93f7976c",
+          "patch_4fe020af08db",
+          "patch_1d0fba8d5d53",
+          "patch_302bdac6f760",
+          "patch_486dd5f989c7",
+          "patch_79e81bb21cc1",
+          "patch_a1f4a604d1ae",
+          "patch_cde52ea68e59"
+        ],
+        "stability": 0.0,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_12fb0aa7572b": 1,
+          "patch_1b1b250a3141": 0,
+          "patch_1d0fba8d5d53": 0,
+          "patch_302bdac6f760": 0,
+          "patch_3642db1cc528": 0,
+          "patch_38f5e51918e0": 0,
+          "patch_486dd5f989c7": 0,
+          "patch_4fe020af08db": 0,
+          "patch_709d4b72f088": 1,
+          "patch_79e81bb21cc1": 0,
+          "patch_7c1fb3f808af": 0,
+          "patch_7f31b59c2569": 1,
+          "patch_81a895258238": 0,
+          "patch_87d9d2ff8bbd": 1,
+          "patch_8c4f93f7976c": 0,
+          "patch_9cbbf5dc49f3": 0,
+          "patch_a1f4a604d1ae": 0,
+          "patch_bdf206843497": 1,
+          "patch_bdfb4e29768c": 1,
+          "patch_c73ed0d6214c": 1,
+          "patch_c8f0ff63db96": 0,
+          "patch_cde52ea68e59": 0,
+          "patch_f46dec541b44": 1,
+          "patch_f9ee7ff14661": 0
+        },
+        "used_model_order": false,
+        "valid_views": 1
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.011656,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "93f5f4d1003e41d1ba5c5cf4ddb6949b",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_bdf206843497",
+          "patch_f46dec541b44",
+          "patch_c73ed0d6214c",
+          "patch_1d0fba8d5d53",
+          "patch_3642db1cc528",
+          "patch_302bdac6f760",
+          "patch_cde52ea68e59",
+          "patch_87d9d2ff8bbd"
+        ],
+        "proposal": {
+          "explanation": "The first mismatch occurs at cycle 6 where m_axis_tvalid is 0 but should be 1. This indicates the rate limiting logic is pausing output incorrectly. The condition gate at line 128 (patch_bdf206843497) qualifies the pause condition with !rate_by_frame, which directly addresses the rate_by_frame=1 test scenario where frame-based rate limiting should behave differently. Patches f46dec541b44 and c73ed0d6214c further refine the frame pause condition with !rst and s_axis_tvalid qualifications respectively, preventing spurious pauses during reset or when input is invalid. The rhs_substitution patches (1d0fba8d5d53, 3642db1cc528, 302bdac6f760, cde52ea68e59) improve signal initialization and forwarding logic for the output pipeline registers, ensuring valid data propagates correctly when not paused. The condition_gate patch 87d9d2ff8bbd adds s_axis_tvalid check to the accumulator threshold comparison, preventing rate limiting from triggering on invalid input cycles.",
+          "ranking": [
+            {
+              "id": "patch_bdf206843497",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_f46dec541b44",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_c73ed0d6214c",
+              "mechanism": "condition_gate"
+            },
+            {
+              "id": "patch_1d0fba8d5d53",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_3642db1cc528",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_302bdac6f760",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_cde52ea68e59",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_87d9d2ff8bbd",
+              "mechanism": "condition_gate"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 3.4127
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.017716,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "b83d630740594752aeee0bc299d3db37",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "error": "ValueError: Invalid patch ID",
+          "ids": [],
+          "status": "ERROR",
+          "wall_seconds": 4.8275
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.019534,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "17a7e219b8db4f0ebc3bbba660926071",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_12fb0aa7572b",
+            "patch_bdfb4e29768c",
+            "patch_7f31b59c2569",
+            "patch_87d9d2ff8bbd",
+            "patch_c73ed0d6214c",
+            "patch_f46dec541b44",
+            "patch_bdf206843497",
+            "patch_709d4b72f088"
+          ],
+          "proposal": {
+            "explanation": "The discovery trace shows mismatches starting at cycle 6-7: m_axis_tvalid stuck at 0 (expected 1), m_axis_tdata wrong (45 vs 224), m_axis_tlast stuck at 0 (expected 1). Root cause appears to be over-aggressive pausing/backpressure during the initial rst=1 prefix (cycles 0-5) where s_axis_tvalid=0. Patches 87d9d2ff8bbd, c73ed0d6214c, f46dec541b44, bdf206843497 all relax pause logic when s_axis_tvalid=0 or rst=1 or rate_by_frame=1, allowing s_axis_tready to assert earlier so the first valid beat at cycle 7 is accepted. Patches 12fb0aa7572b and bdfb4e29768c directly fix the reset-time assignment of m_axis_tvalid_reg so it can become 1 at cycle 7. Patch 7f31b59c2569 resets m_axis_tlast_reg explicitly. Patch 709d4b72f088 re-sources m_axis_tlast_reg from temp pipeline valid state. Ranking prioritizes patches that address the earliest observed failure (m_axis_tvalid at cycle 6/7) with minimal, structurally local changes.",
+            "ranking": [
+              {
+                "id": "patch_12fb0aa7572b",
+                "mechanism": "During reset (rst asserted), original forces m_axis_tvalid_reg to 0 at line 7461; patch substitutes m_axis_tvalid_int (which equals s_axis_tvalid && s_axis_tready). At cycle 6 rst=1, s_axis_tvalid=1, s_axis_tready=0 -> m_axis_tvalid_int=0 (no change). At cycle 7 rst=0, s_axis_tvalid=1, s_axis_tready=1 -> m_axis_tvalid_int becomes 1, enabling m_axis_tvalid_reg=1 on the next posedge, matching expected m_axis_tvalid=1 at cycle 7."
+              },
+              {
+                "id": "patch_bdfb4e29768c",
+                "mechanism": "During reset (rst asserted), original forces m_axis_tvalid_reg to 0 at line 7461; patch substitutes m_axis_tvalid_next. At cycle 6 rst=1, m_axis_tvalid_next=0 (no change). At cycle 7 rst=0, m_axis_tvalid_next was set to m_axis_tvalid_int (which is 1 because s_axis_tvalid=1 and s_axis_tready=1), so m_axis_tvalid_reg becomes 1, matching expected m_axis_tvalid=1 at cycle 7."
+              },
+              {
+                "id": "patch_7f31b59c2569",
+                "mechanism": "Adds explicit reset of m_axis_tlast_reg to 0 in the reset block. Cycle 7 expected m_axis_tlast=1, meaning the frame_reg should be 1; resetting m_axis_tlast_reg ensures it does not hold a stale 0 from the rst=1 cycles, allowing proper frame tracking when rst de-asserts."
+              },
+              {
+                "id": "patch_87d9d2ff8bbd",
+                "mechanism": "Guards the first accumulator threshold check (line 3691) with s_axis_tvalid. When s_axis_tvalid=0 (cycles 0-3), acc_next >= rate_num no longer triggers early pause, preventing premature backpressure that would otherwise delay the first valid transfer and cause m_axis_tvalid/m_axis_tdata mismatches at cycles 6-10."
+              },
+              {
+                "id": "patch_c73ed0d6214c",
+                "mechanism": "Guards the pause condition for LAST_ENABLE && rate_by_frame (line 3990) with s_axis_tvalid. During rst=1 cycles s_axis_tvalid=0, so pause stays 0, allowing s_axis_tready to become 1 earlier; this lets the first valid transaction (cycle 7) be accepted, fixing m_axis_tvalid/m_axis_tdata at cycle 7."
+              },
+              {
+                "id": "patch_f46dec541b44",
+                "mechanism": "Guards the same pause condition with !rst. While rst=1 (cycles 0-5) pause is forced 0 regardless of accumulator state, allowing s_axis_tready to assert sooner; when rst de-asserts at cycle 6 the rate limiter engages normally, aligning first valid output at cycle 7."
+              },
+              {
+                "id": "patch_bdf206843497",
+                "mechanism": "Adds !rate_by_frame guard to the pause decision (line 3942). With rate_by_frame=1 in the trace, the extra condition makes the pause test false, so pause=0 during the rst=1 prefix; s_axis_tready can assert earlier, letting the first valid beat arrive at cycle 7 as expected."
+              },
+              {
+                "id": "patch_709d4b72f088",
+                "mechanism": "Replaces constant 0 initialization of m_axis_tlast_reg with temp_m_axis_tvalid_next. This makes the frame-tracking register reflect the temp pipeline valid state instead of hard 0, potentially correcting the m_axis_tlast=0 mismatch at cycle 7."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 7.2075
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.017887,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "4816eb79a02547da8870bd34bf04e6d6",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "error": "ValueError: Invalid patch ID",
+          "ids": [],
+          "status": "ERROR",
+          "wall_seconds": 4.2785
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "artifact_provenance": {
+    "commit": "71e1afc0b9a2327d008b46acd415cf3f0343a938",
+    "directory": "benchmarks/fpga-debugging/axis-frame-len-d13",
+    "not_claimed_as_untouched_original_upstream_source": true,
+    "repository": "https://github.com/ekiwi/rtl-repair",
+    "research_artifact_adapted_from_historical_bug": true
+  },
+  "clock": "clk",
+  "corrected_source_for_scoring": false,
+  "dependencies_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "edited_module": "axis_frame_len",
+  "id": "axis-frame-len-d13_d13_normal",
+  "input_sha256": "b02dcd8cd2427ea8e933c6b80916e512d365df82461f4b4a786930930191283d",
+  "license": "MIT",
+  "oracle_scope": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "parent_family": "axis-frame-len-d13_d13",
+  "ports": {
+    "clk": {
+      "direction": "input",
+      "width": 1
+    },
+    "frame_len": {
+      "direction": "output",
+      "width": 16
+    },
+    "frame_len_valid": {
+      "direction": "output",
+      "width": 1
+    },
+    "monitor_axis_tkeep": {
+      "direction": "input",
+      "width": 8
+    },
+    "monitor_axis_tlast": {
+      "direction": "input",
+      "width": 1
+    },
+    "monitor_axis_tready": {
+      "direction": "input",
+      "width": 1
+    },
+    "monitor_axis_tvalid": {
+      "direction": "input",
+      "width": 1
+    },
+    "rst": {
+      "direction": "input",
+      "width": 1
+    }
+  },
+  "regression_oracle_uses_corrected_trace_values": true,
+  "revision": "V2 input-domain/output-validity correction; v1 retained as superseded development data",
+  "top": "axis_frame_len",
+  "traces": [
+    {
+      "cycles": 6,
+      "expected": "trace_0/expected.hex",
+      "ignored_non_port_columns": [],
+      "independent_oracle_guard": {
+        "applicable": true,
+        "domain": "Contiguous low-order keep masks, valid/ready transfers and synchronous reset",
+        "independent_observations_checked": 8
+      },
+      "inputs": [
+        "monitor_axis_tkeep",
+        "monitor_axis_tlast",
+        "monitor_axis_tready",
+        "monitor_axis_tvalid",
+        "rst"
+      ],
+      "label": "published_discovery_trace",
+      "output_masking": "Payload/length/Wishbone data only when expected valid/ack; debug outputs ignored",
+      "outputs": [
+        "frame_len",
+        "frame_len_valid"
+      ],
+      "sampling": "Public outputs after setting current inputs and evaluating combinational logic, before rising clock edge",
+      "stimulus": "trace_0/stimulus.hex"
+    },
+    {
+      "cycles": 256,
+      "expected": "trace_1/expected.hex",
+      "ignored_non_port_columns": [],
+      "independent_oracle_guard": {
+        "applicable": true,
+        "domain": "Contiguous low-order keep masks, valid/ready transfers and synchronous reset",
+        "independent_observations_checked": 288
+      },
+      "inputs": [
+        "monitor_axis_tkeep",
+        "monitor_axis_tlast",
+        "monitor_axis_tready",
+        "monitor_axis_tvalid",
+        "rst"
+      ],
+      "label": "unexposed_payload_transform_7403",
+      "oracle_origin": "Captured from the artifact's corrected control before inference, not an independently authored behavioral oracle",
+      "output_masking": "Payload/length/Wishbone data only when expected valid/ack; debug outputs ignored",
+      "outputs": [
+        "frame_len",
+        "frame_len_valid"
+      ],
+      "payload_xor_masks": {},
+      "sampling": "Public outputs after setting current inputs and evaluating combinational logic, before rising clock edge",
+      "stimulus": "trace_1/stimulus.hex"
+    },
+    {
+      "cycles": 256,
+      "expected": "trace_2/expected.hex",
+      "ignored_non_port_columns": [],
+      "independent_oracle_guard": {
+        "applicable": true,
+        "domain": "Contiguous low-order keep masks, valid/ready transfers and synchronous reset",
+        "independent_observations_checked": 292
+      },
+      "inputs": [
+        "monitor_axis_tkeep",
+        "monitor_axis_tlast",
+        "monitor_axis_tready",
+        "monitor_axis_tvalid",
+        "rst"
+      ],
+      "label": "unexposed_payload_transform_9601",
+      "oracle_origin": "Captured from the artifact's corrected control before inference, not an independently authored behavioral oracle",
+      "output_masking": "Payload/length/Wishbone data only when expected valid/ack; debug outputs ignored",
+      "outputs": [
+        "frame_len",
+        "frame_len_valid"
+      ],
+      "payload_xor_masks": {},
+      "sampling": "Public outputs after setting current inputs and evaluating combinational logic, before rising clock edge",
+      "stimulus": "trace_2/stimulus.hex"
+    }
+  ]
+}

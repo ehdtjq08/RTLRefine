@@ -1,0 +1,356 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_047338bad634": 0,
+          "patch_0e09f46d1e35": 9,
+          "patch_1dbd552c3dbe": 0,
+          "patch_32f229fde5f0": 3,
+          "patch_390e473ceb59": 4,
+          "patch_3d82912c89bf": 21,
+          "patch_3ffee8d0db7d": 5,
+          "patch_422618d0dee5": 14,
+          "patch_556c4a41a077": 2,
+          "patch_6a5b3ba56c41": 2,
+          "patch_6df8aa8164ca": 0,
+          "patch_75b1c7506838": 0,
+          "patch_792ae4fa96a9": 0,
+          "patch_863a54b885b4": 9,
+          "patch_8f768e62b60a": 0,
+          "patch_9c4e05759f35": 0,
+          "patch_ad349fc34413": 0,
+          "patch_be1dff44a4a9": 0,
+          "patch_cdf880e10e41": 0,
+          "patch_de1628c0e786": 9,
+          "patch_de6bffe8e862": 5,
+          "patch_e1dedeaa933a": 0,
+          "patch_eed1b93eea0f": 4,
+          "patch_f7e6f5f52970": 20
+        },
+        "fallback_reason": null,
+        "order": [
+          "patch_3d82912c89bf",
+          "patch_f7e6f5f52970",
+          "patch_422618d0dee5",
+          "patch_863a54b885b4",
+          "patch_de1628c0e786",
+          "patch_0e09f46d1e35",
+          "patch_3ffee8d0db7d",
+          "patch_de6bffe8e862",
+          "patch_390e473ceb59",
+          "patch_eed1b93eea0f",
+          "patch_32f229fde5f0",
+          "patch_6a5b3ba56c41",
+          "patch_556c4a41a077",
+          "patch_792ae4fa96a9",
+          "patch_ad349fc34413",
+          "patch_6df8aa8164ca",
+          "patch_1dbd552c3dbe",
+          "patch_75b1c7506838",
+          "patch_8f768e62b60a",
+          "patch_be1dff44a4a9",
+          "patch_047338bad634",
+          "patch_9c4e05759f35",
+          "patch_cdf880e10e41",
+          "patch_e1dedeaa933a"
+        ],
+        "raw_consensus_order": [
+          "patch_3d82912c89bf",
+          "patch_f7e6f5f52970",
+          "patch_422618d0dee5",
+          "patch_863a54b885b4",
+          "patch_de1628c0e786",
+          "patch_0e09f46d1e35",
+          "patch_3ffee8d0db7d",
+          "patch_de6bffe8e862",
+          "patch_390e473ceb59",
+          "patch_eed1b93eea0f",
+          "patch_32f229fde5f0",
+          "patch_6a5b3ba56c41",
+          "patch_556c4a41a077",
+          "patch_792ae4fa96a9",
+          "patch_ad349fc34413",
+          "patch_6df8aa8164ca",
+          "patch_1dbd552c3dbe",
+          "patch_75b1c7506838",
+          "patch_8f768e62b60a",
+          "patch_be1dff44a4a9",
+          "patch_047338bad634",
+          "patch_9c4e05759f35",
+          "patch_cdf880e10e41",
+          "patch_e1dedeaa933a"
+        ],
+        "stability": 0.3938746438746439,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_047338bad634": 0,
+          "patch_0e09f46d1e35": 2,
+          "patch_1dbd552c3dbe": 0,
+          "patch_32f229fde5f0": 1,
+          "patch_390e473ceb59": 2,
+          "patch_3d82912c89bf": 3,
+          "patch_3ffee8d0db7d": 2,
+          "patch_422618d0dee5": 2,
+          "patch_556c4a41a077": 1,
+          "patch_6a5b3ba56c41": 1,
+          "patch_6df8aa8164ca": 0,
+          "patch_75b1c7506838": 0,
+          "patch_792ae4fa96a9": 0,
+          "patch_863a54b885b4": 2,
+          "patch_8f768e62b60a": 0,
+          "patch_9c4e05759f35": 0,
+          "patch_ad349fc34413": 0,
+          "patch_be1dff44a4a9": 0,
+          "patch_cdf880e10e41": 0,
+          "patch_de1628c0e786": 2,
+          "patch_de6bffe8e862": 1,
+          "patch_e1dedeaa933a": 0,
+          "patch_eed1b93eea0f": 1,
+          "patch_f7e6f5f52970": 3
+        },
+        "used_model_order": true,
+        "valid_views": 3
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.016883,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "05995b785c0d466087987c5fc562ea31",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_de1628c0e786",
+          "patch_3d82912c89bf",
+          "patch_e1dedeaa933a",
+          "patch_8f768e62b60a",
+          "patch_cdf880e10e41",
+          "patch_556c4a41a077",
+          "patch_be1dff44a4a9",
+          "patch_0e09f46d1e35"
+        ],
+        "proposal": {
+          "explanation": "The first mismatch occurs at cycle 23 on scl_o where actual=1 but expected=0, indicating the I2C master drives the clock line high prematurely. The top-ranked patches directly target SCL/SDA output initialization and control logic using existing same-width signals: patch_de1628c0e786 substitutes scl_o_next initialization with s_axis_cmd_write (idle-low), patch_3d82912c89bf uses sda_o_reg for scl_o_next (cross-signal reuse), patch_e1dedeaa933a gates delay_sda with s_axis_data_tvalid to prevent early SDA release, patch_8f768e62b60a substitutes s_axis_cmd_ready_next with scl_t (bus clock state), and patch_cdf880e10e41 reuses phy_write_bit for last_scl_i_reg (SCL history tracking). These address the root cause of premature bus driving by ensuring outputs remain inactive until valid command transactions begin. Lower-ranked patches address secondary mismatches: patch_556c4a41a077 fixes sda_i_reg reset with stop_bit, patch_be1dff44a4a9 reuses m_axis_data_tlast for s_axis_data_tready_next, and patch_0e09f46d1e35 qualifies phy_release_bus with s_axis_data_tvalid.",
+          "ranking": [
+            {
+              "id": "patch_de1628c0e786",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_3d82912c89bf",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_e1dedeaa933a",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_8f768e62b60a",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_cdf880e10e41",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_556c4a41a077",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_be1dff44a4a9",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_0e09f46d1e35",
+              "mechanism": "rhs_substitution"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 4.4064
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.023286,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "3618c12a008942b0a722f62d1b535f41",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_422618d0dee5",
+            "patch_f7e6f5f52970",
+            "patch_3d82912c89bf",
+            "patch_de6bffe8e862",
+            "patch_eed1b93eea0f",
+            "patch_32f229fde5f0",
+            "patch_556c4a41a077"
+          ],
+          "proposal": {
+            "explanation": "The primary failure cluster is an early SCL assertion at cycle 23 (scl_o/scl_t=1) and a late SDA hold at cycle 27-28 (sda_o/sda_t=1). Candidates that directly retarget scl_o_next or sda_o_reg in the PHY STOP/WRITE/READ bit-sequence (patch_422618d0dee5, patch_f7e6f5f52970, patch_3d82912c89bf) address the exact ports and cycles. A secondary cluster stems from START emission without verifying bus freedom; patch_de6bffe8e862 gates phy_start_bit with scl_i_reg to prevent premature START. Data-path coupling patches (patch_eed1b93eea0f) and bus-control release patches (patch_32f229fde5f0, patch_556c4a41a077) clean up the trailing SDA hold and bus_active transition. Together these seven cover the observed mismatch ports and cycles.",
+            "ranking": [
+              {
+                "id": "patch_422618d0dee5",
+                "mechanism": "sda_o_reg bound to m_axis_data_tlast_next during STOP phases links the late sda_o=1 to m_axis_data_tlast_reg state; substituting corrects the held-high SDA line on cycle 27."
+              },
+              {
+                "id": "patch_f7e6f5f52970",
+                "mechanism": "phy_state_next tied to last_sda_i_reg forces SCL low only when SDA release is observed, delaying the early scl_o=1 on cycle 23 and fixing scl_t synchronously."
+              },
+              {
+                "id": "patch_3d82912c89bf",
+                "mechanism": "scl_o_next takes sda_o_reg in PHY write states, aligning SCL timing with SDA transitions and eliminating the early SCL assertion at cycle 23."
+              },
+              {
+                "id": "patch_de6bffe8e862",
+                "mechanism": "phy_start_bit gated by scl_i_reg prevents premature START emission when the bus is not free, which suppresses the bogus SCL pulse at cycle 23."
+              },
+              {
+                "id": "patch_eed1b93eea0f",
+                "mechanism": "delay_sda_next driven by s_axis_data_tvalid couples SDA hold time to AXI data availability, clearing the late sda_o=1 at cycle 27."
+              },
+              {
+                "id": "patch_32f229fde5f0",
+                "mechanism": "bus_control_next derives from missed_ack flag, releasing bus ownership after NACK and allowing proper STOP sequencing that removes the late sda_t=1 on cycle 28."
+              },
+              {
+                "id": "patch_556c4a41a077",
+                "mechanism": "sda_i_reg updated from stop_bit captures bus-level STOP condition, ensuring the PHY releases SDA at the correct cycle and fixing sda_t on cycle 28."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.9499
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.022653,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "455fe60e31c74081a6905de15e79a0c7",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_0e09f46d1e35",
+            "patch_3d82912c89bf",
+            "patch_f7e6f5f52970",
+            "patch_de1628c0e786",
+            "patch_863a54b885b4",
+            "patch_3ffee8d0db7d",
+            "patch_6a5b3ba56c41",
+            "patch_390e473ceb59"
+          ],
+          "proposal": {
+            "explanation": "Ranked by direct relevance to the first observed mismatches on scl_o/scl_t/sda_o at cycle 23-27. patch_0e09f46d1e35 (phy_release_bus) and patch_3d82912c89bf (scl_o_next\u2190sda_o_reg) directly edit the clock/data outputs seen failing. patch_f7e6f5f52970 and patch_de1628c0e786 also target scl_o_next with different source signals. patch_863a54b885b4 targets the same line with last_scl_i_reg. patch_3ffee8d0db7d and patch_6a5b3ba56c41 target downstream assignments affecting data-valid logic. patch_390e473ceb59 targets delay_scl_reg which may indirectly influence scl_o timing. All are rhs_substitution edits on assignment RHS; condition_gate patch_eed1b93eea0f is excluded as it edits a guard condition not directly on the failing ports.",
+            "ranking": [
+              {
+                "id": "patch_0e09f46d1e35",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_3d82912c89bf",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_f7e6f5f52970",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_de1628c0e786",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_863a54b885b4",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_3ffee8d0db7d",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_6a5b3ba56c41",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_390e473ceb59",
+                "mechanism": "rhs_substitution"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 3.6738
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.02262,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "13f0fc10e90a40cfb4b0e153871c02d1",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_3d82912c89bf",
+            "patch_f7e6f5f52970",
+            "patch_422618d0dee5",
+            "patch_863a54b885b4",
+            "patch_de1628c0e786",
+            "patch_390e473ceb59",
+            "patch_3ffee8d0db7d",
+            "patch_0e09f46d1e35"
+          ],
+          "proposal": {
+            "explanation": "Ranking prioritizes patches that directly target the mismatched output ports (scl_o, scl_t, sda_o, sda_t) at the failure cycles (23, 27, 28, 29) with structural dependencies on the failing state edges. Patches patch_3d82912c89bf, patch_f7e6f5f52970, and patch_422618d0dee5 directly modify scl_o_next or sda_o_reg with evidence tied to the failing port scl_o (cycle 23) and sda_o (cycle 27). patch_863a54b885b4 modifies scl_o_next using last_scl_i_reg, which is structurally related to scl_o edge detection. patch_de1628c0e786 modifies scl_o_next with s_axis_cmd_write, also dependent on the same failure cycle. The remaining patches address secondary signals (delay_scl_reg, phy_read_bit, phy_release_bus) that may influence timing but are less directly connected to the primary output mismatches.",
+            "ranking": [
+              {
+                "id": "patch_3d82912c89bf",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_f7e6f5f52970",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_422618d0dee5",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_863a54b885b4",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_de1628c0e786",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_390e473ceb59",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_3ffee8d0db7d",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_0e09f46d1e35",
+                "mechanism": "rhs_substitution"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.2843
+        }
+      ]
+    }
+  ]
+}

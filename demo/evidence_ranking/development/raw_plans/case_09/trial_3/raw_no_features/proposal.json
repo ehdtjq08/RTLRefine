@@ -1,0 +1,53 @@
+{
+  "explanation": "The discovery trace reveals two root causes: (1) incomplete reset of wr_ptr_cur and drop_frame, causing sticky drop_frame assertion at cycles 13-14; (2) missing pointer commit on the last beat of a dropped frame and lack of output register reset, causing stale data/tlast/tvalid at cycle 16. The top three patches (06b184d83718, 15a85deae41e, 9d300784e043) directly fix the reset block. The next four address the drop-frame branch logic and read-side reset to clean up the cycle-16 mismatches.",
+  "ranking": [
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_06b184d83718",
+      "mechanism": "The reset block only clears wr_ptr, leaving wr_ptr_cur and drop_frame uninitialized on reset. On a mid-packet reset (trace cycle 7 rst=1), wr_ptr_cur retains its pre-reset value and drop_frame remains asserted, so the next write (cycle 8) enters the drop-frame branch and asserts drop_frame again at cycles 13-14 instead of 0. Adding both resets restores the idle state.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_15a85deae41e",
+      "mechanism": "Resetting wr_ptr_cur to 0 in the same rst block clears the partial-frame write pointer. Without it, wr_ptr_cur holds a stale address after reset, causing the drop-frame logic to misbehave and assert drop_frame at cycles 13-14.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_9d300784e043",
+      "mechanism": "Resetting drop_frame to 0 in the rst block clears the sticky drop-frame flag. The trace shows drop_frame=1 at cycles 13-14 when it should be 0; the flag was never cleared on the reset at cycle 7.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_c388b437f780",
+      "mechanism": "When a frame is dropped (!full_cur), input_axis_tlast should still commit wr_ptr_cur to wr_ptr so the next frame starts cleanly. The added guard (!full_cur) ensures that on the last beat of a dropped frame the pointer swap occurs, preventing stale data (cycle 16 tdata=1 vs expected 6) and spurious tlast/tvalid.",
+      "source_line": 103
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_984eed6c8fb1",
+      "mechanism": "The drop-frame branch should only accept input_axis_tlast when drop_frame is already asserted (!drop_frame prevents re-entry). This stops the flag from toggling spuriously and contributing to cycles 13-14 drop_frame=1.",
+      "source_line": 103
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_2091b2021c83",
+      "mechanism": "Resetting data_out_reg to 0 clears the output holding register. After reset the read block can load stale memory before valid data arrives, causing cycle 16 tdata=1 instead of 6 and tlast=1 instead of 0.",
+      "source_line": 127
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_4d32631d780e",
+      "mechanism": "Requiring full_cur on input_axis_tlast inside the drop-frame branch ensures the pointer commit only happens when the current frame actually filled the FIFO. This avoids premature wr_ptr_cur <= wr_ptr that would leave drop_frame asserted into cycles 13-14.",
+      "source_line": 103
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_b363581cd472",
+      "mechanism": "On input_axis_tlast with input_axis_tuser, the code commits wr_ptr <= wr_ptr_cur + 1. The guard (input_axis_tuser) makes this explicit and prevents the commit when user=0, avoiding pointer corruption that leads to wrong data/tlast/tvalid at cycle 16.",
+      "source_line": 110
+    }
+  ]
+}

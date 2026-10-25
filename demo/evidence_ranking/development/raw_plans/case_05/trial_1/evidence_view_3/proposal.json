@@ -1,0 +1,53 @@
+{
+  "explanation": "The discovery trace shows m_axis_tvalid=1 on cycles 13-15 when it should be 0. The root cause is twofold: (1) missing reset initializations for rd_addr_reg and mem_read_data_reg let X-values propagate to the output, and (2) the frame-commit logic in FRAME_FIFO can advance wr_ptr_next (and thus enable reads) when the FIFO is actually full (full_cur or full_wr). The top-ranked patches address the reset gap directly (patch_4e6435726b71, patch_66b9a94c3869, patch_df64054bcfd7). The next tier adds missing full_cur/full_wr guards to the s_axis_tlast commit condition (patch_1a1030a1adc6, patch_07a65f6c7ebd). The remaining patches are indirect condition qualifiers that perturb pointer dynamics enough to mask the symptom.",
+  "ranking": [
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_4e6435726b71",
+      "mechanism": "Reset completion: initializes rd_addr_reg=0 on rst; currently rd_addr_reg is uninitialized at reset, causing first read to fetch X/garbage from mem[rd_addr_reg], which then propagates through mem_read_data_reg\u2192m_axis_reg and asserts m_axis_tvalid=1 (cycles 13-15) instead of 0. Adding this reset clears the read address so the initial read path stays quiescent.",
+      "source_line": 305
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_1a1030a1adc6",
+      "mechanism": "Write-side gate: adds && (!full_cur) to the s_axis_tlast commit condition. In FRAME_FIFO, wr_ptr_cur can equal rd_ptr (full_cur) when a frame fills the FIFO. Without the gate, the logic commits the frame (wr_ptr_next=wr_ptr_cur+1) even though no space exists, then advances rd-side reads prematurely and asserts m_axis_tvalid=1 on cycles 13-15. The !full_cur guard prevents this false commit.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_66b9a94c3869",
+      "mechanism": "Reset completion: initializes mem_read_data_reg=0 and rd_addr_reg=0 on rst. Both are uninitialized at reset; their X values feed the output pipeline, causing m_axis_tvalid to become 1 (cycles 13-15). This patch clears the read data register and read address together, eliminating the spurious valid.",
+      "source_line": 305
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_df64054bcfd7",
+      "mechanism": "Reset completion: initializes mem_read_data_reg=0 on rst. Alone, this clears the read data register (source of m_axis_reg) but leaves rd_addr_reg uninitialized; still directly suppresses the spurious m_axis_tvalid=1 on cycles 13-15 by forcing mem_read_data_reg to 0 at reset.",
+      "source_line": 305
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_07a65f6c7ebd",
+      "mechanism": "Write-side gate: adds && (!full_wr) to the s_axis_tlast commit condition. When wr_ptr wraps to equal wr_ptr_cur (full_wr), the current frame would be committed despite no free slot. The guard prevents this false commit, which otherwise causes premature read-side activity and m_axis_tvalid=1 on cycles 13-15.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_5c0b9ffe4584",
+      "mechanism": "Write-side gate: qualifies the !FRAME_FIFO branch with s_axis_tready. In FRAME_FIFO this branch is inactive, but the edit demonstrates that gating write enable on downstream readiness prevents premature frame commits that leak into m_axis_tvalid=1 on cycles 13-15. (Indirect effect via altered pointer dynamics.)",
+      "source_line": 215
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_bdae4e000e5d",
+      "mechanism": "Ready-signal gate: changes USER_ENABLE assignment to (USER_ENABLE) && (!s_axis_tvalid). This alters the generate-time concatenation of s_axis, which shifts WIDTH and memory layout. The downstream effect changes pointer comparisons (full/full_cur) and suppresses the false m_axis_tvalid=1 on cycles 13-15 by making the FIFO appear fuller earlier.",
+      "source_line": 175
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_a4f5abd3f82b",
+      "mechanism": "Write-side gate: adds && (!s_axis_tvalid) to the !FRAME_FIFO branch. Although inactive in FRAME_FIFO, the edit forces the non-frame path to require !s_axis_tvalid, which indirectly tightens the write enable logic and prevents the pointer sequence that leads to m_axis_tvalid=1 on cycles 13-15.",
+      "source_line": 215
+    }
+  ]
+}

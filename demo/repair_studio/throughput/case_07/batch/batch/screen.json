@@ -1,0 +1,1533 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "bench_top",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0326,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vbench_top.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8689,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "control_commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "bench_top",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0344,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vbench_top.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8195,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "fallback_ids": [],
+  "fallback_reasons": {},
+  "inactive_selector_exact_output_match": true,
+  "new_model_calls": 0,
+  "original_source_sha256": "394c79ad891fb3222f136da7867995c57da7fa487f1c30cf4100a78b391bb2d1",
+  "results": {
+    "candidate_001": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_002": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_003": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_004": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 6,
+      "passed": false
+    },
+    "candidate_005": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_006": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_007": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_008": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 6,
+      "passed": false
+    },
+    "candidate_009": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_010": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [],
+      "mismatch_count": 0,
+      "passed": true
+    },
+    "candidate_011": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_012": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        }
+      ],
+      "mismatch_count": 7,
+      "passed": false
+    },
+    "candidate_013": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_014": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_015": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 7,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 4,
+      "passed": false
+    },
+    "candidate_016": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 6,
+      "passed": false
+    },
+    "candidate_017": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_018": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_019": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_020": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 6,
+      "passed": false
+    },
+    "candidate_021": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 7,
+          "expected": 0,
+          "port": "output_axis_tvalid"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 4,
+      "passed": false
+    },
+    "candidate_022": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_023": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 7,
+      "passed": false
+    },
+    "candidate_024": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 1,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 6,
+      "passed": false
+    },
+    "candidate_025": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_026": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [],
+      "mismatch_count": 0,
+      "passed": true
+    },
+    "candidate_027": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 7,
+      "passed": false
+    },
+    "candidate_028": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "input_axis_tready"
+        }
+      ],
+      "mismatch_count": 7,
+      "passed": false
+    },
+    "candidate_029": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_030": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tvalid"
+        }
+      ],
+      "mismatch_count": 7,
+      "passed": false
+    },
+    "candidate_031": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_032": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_033": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_034": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_035": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_036": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_037": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_038": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_039": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_040": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_041": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_042": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_043": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_044": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        }
+      ],
+      "mismatch_count": 5,
+      "passed": false
+    },
+    "candidate_045": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    },
+    "candidate_046": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 1,
+          "port": "output_axis_tlast"
+        }
+      ],
+      "mismatch_count": 5,
+      "passed": false
+    },
+    "candidate_047": {
+      "comparisons": 26,
+      "cycles": 10,
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false
+    }
+  },
+  "screening_is_not_final_admission": true,
+  "status": "COMPLETE",
+  "supported": 47,
+  "wall_seconds": 4.750279037980363
+}

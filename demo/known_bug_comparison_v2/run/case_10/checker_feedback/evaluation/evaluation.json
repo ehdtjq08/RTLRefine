@@ -1,0 +1,131 @@
+{
+  "accepted": true,
+  "audit_pass": true,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "sdspi",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0656,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vsdspi.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 2.7768,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": true,
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "308167131ac42c3b316e75d36423da54820977eafef0d37bfbd673a3b564eba0",
+  "status": "ALL_SEALED_TRACES_PASS",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vsdspi"
+        ],
+        "elapsed_seconds": 0.7738,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 3136123,
+      "cycles": 522559,
+      "expected_sha256": "40d0ee01fe877ebb9d90ee849e533cb0043011d673ff21a109d062980a6fdcd6",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "phase": "discovery",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "8c60b9cd2dc9aab12b1476f7e8048f5bfa6f9e69217d65249745dadd7a6c8a8a",
+      "trace_label": "published_discovery_trace"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vsdspi"
+        ],
+        "elapsed_seconds": 0.8162,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 3136123,
+      "cycles": 522559,
+      "expected_sha256": "5d113e3448f036a657f51826b38918c781953bae5269c48de82834cf794a4478",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "59196582cec4c51e56ec9137c87b2f095eac3dd694392d2f412418954630cc5e",
+      "trace_label": "unexposed_payload_transform_7403"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vsdspi"
+        ],
+        "elapsed_seconds": 0.7709,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 3136123,
+      "cycles": 522559,
+      "expected_sha256": "4cb1f370f890e0decc81e6b46195515051e9238d2fc983d23549be18a523bf21",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "48f17893b3cf6c925eed7c0e12b169bb2a357cb308dc53878ba298a01f5bfe77",
+      "trace_label": "unexposed_payload_transform_9601"
+    }
+  ]
+}

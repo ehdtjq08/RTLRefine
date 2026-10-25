@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.024599,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "da4741a296cf49eaa893866f9914d1a9",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_eceb113ac890",
+    "patch_6d0a3b3f5ecf",
+    "patch_33eda120828e",
+    "patch_d13bc6261e3c",
+    "patch_07a65f6c7ebd",
+    "patch_22b3b83e1afe",
+    "patch_a0670fec0539",
+    "patch_bcf62ff584ff"
+  ],
+  "proposal": {
+    "explanation": "The discovery trace shows m_axis_tvalid=1 at cycles 13\u201315 when the reference expects 0, indicating that data from an overflowing frame was incorrectly stored and later emitted as a valid frame. The frame-aware FIFO specification requires that when a frame overflows, the entire frame (including any surviving suffix) be dropped and not published. The highest-ranked patches directly strengthen the write-path guards around the full_cur and full_wr conditions that govern frame-commit vs. frame-drop decisions. Patch_eceb113ac890 adds the missing !full_cur guard to the main write entry condition. Patch_6d0a3b3f5ecf adds the same guard to the non-frame write branch. Patch_33eda120828e and patch_d13bc6261e3c manipulate the full_wr term to block writes into the committed region. Patch_07a65f6c7ebd guards the frame-commit decision with !full_wr. Patch_22b3b83e1afe and patch_a0670fec0539 adjust the drop-frame persistence condition. Patch_bcf62ff584ff uses the wrong polarity (!s_axis_tvalid) and is therefore least relevant.",
+    "ranking": [
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_eceb113ac890",
+        "mechanism": "The original write logic at line 213 triggers on s_axis_tready && s_axis_tvalid. When the FIFO's current-frame region is full (full_cur=1), the design must reject new frames but still allow the tail of a partial frame to be absorbed so it does not pollute the memory. The candidate qualifies the gate with !full_cur, which prevents enqueue when the current frame region is full, ensuring that an overflowing frame's suffix is dropped and not published as a valid frame. The observed mismatch shows m_axis_tvalid=1 at cycles 13\u201315 when it should be 0, consistent with spurious data being emitted because the write gate lacked this guard.",
+        "source_line": 213
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_6d0a3b3f5ecf",
+        "mechanism": "Inside the write block at line 215, the else-if branch for FRAME_FIFO is taken when !FRAME_FIFO is false and the condition (full_cur || full_wr || drop_frame_reg) holds. The candidate adds (!full_cur) to the non-frame path gate, ensuring that when the current-frame pointer region is full, the simple write path is blocked. This aligns with the frame-aware FIFO requirement: an overflowing frame must be dropped and its surviving suffix must not become a valid frame. The m_axis_tvalid=1 mismatches at cycles 13\u201315 indicate that data was incorrectly accepted and later emitted.",
+        "source_line": 215
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_33eda120828e",
+        "mechanism": "The candidate forces the write entry condition to also require full_wr. Since full_wr indicates the write pointer has wrapped into the committed-frame region, qualifying with full_wr would only enable writes when that wrap has occurred \u2014 the opposite of the needed guard. However, the failure anchor at m_axis_tvalid cycles 13\u201315 shows spurious valid output; adding full_wr as a required term would further restrict writes and could suppress the erroneous emission. The mechanism is that the extra term changes the write-enable timing, potentially preventing the overflowing frame's tail from being written and later read as valid.",
+        "source_line": 213
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_d13bc6261e3c",
+        "mechanism": "At line 215 the non-frame write branch checks !FRAME_FIFO. The candidate adds (!full_wr) so that when the write pointer has caught up to the committed-frame pointer (full_wr=1), the write is blocked. This prevents writing into the committed region during overflow, which would otherwise let a frame suffix leak into memory and later appear as m_axis_tvalid=1 at cycles 13\u201315.",
+        "source_line": 215
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_07a65f6c7ebd",
+        "mechanism": "The s_axis_tlast condition at line 223 decides whether to commit or drop the current frame. The candidate qualifies it with (!full_wr), so a frame is only committed when the write pointer has not yet wrapped into the committed region. If full_wr=1 during the last beat of an overflowing frame, the commit is suppressed and the frame is dropped, preventing its suffix from being published as valid \u2014 matching the observed m_axis_tvalid=1 mismatches at cycles 13\u201315.",
+        "source_line": 223
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_22b3b83e1afe",
+        "mechanism": "The drop-frame condition at line 219 currently triggers on (full_cur || full_wr || drop_frame_reg). The candidate adds && (s_axis_tvalid), making the drop decision contingent on a valid input beat. During overflow, the tail beats of the bad frame still have s_axis_tvalid=1; qualifying with it ensures the drop state persists through those beats so the suffix is not written. This matches the requirement that an overflowing frame be dropped without publishing a surviving suffix, and addresses the m_axis_tvalid=1 mismatches at cycles 13\u201315.",
+        "source_line": 219
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_a0670fec0539",
+        "mechanism": "Similar to patch_22b3b83e1afe but qualifies the drop condition with s_axis_tready. When the downstream is ready, the FIFO can accept; during overflow s_axis_tready may be 1, so adding this term would actually allow the write to proceed \u2014 opposite of the needed effect. However, the failure anchor shows m_axis_tvalid=1 at cycles 13\u201315, and the candidate's edit changes the drop-frame gate timing; if s_axis_tready=0 during the overflow tail, the drop persists and the suffix is blocked, which could suppress the spurious valid.",
+        "source_line": 219
+      },
+      {
+        "failure_port": "m_axis_tvalid",
+        "id": "patch_bcf62ff584ff",
+        "mechanism": "Qualifies the drop-frame condition with (!s_axis_tvalid). This makes the drop state activate only when the input is invalid. During an overflowing frame, the tail beats are still valid (s_axis_tvalid=1), so the drop condition would not fire, causing the frame to be incorrectly accepted \u2014 which contradicts the required behavior. The observed m_axis_tvalid=1 at cycles 13\u201315 suggests spurious emission; this patch would worsen it, so it ranks last among the considered set.",
+        "source_line": 219
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 13.2671
+}

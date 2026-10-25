@@ -1,0 +1,131 @@
+%Warning-WIDTH: candidate.v:186:5: Operator VAR 'STATE_IDLE' expects 5 bits on the Initial value, but Initial value's CONST '4'h0' generates 4 bits.
+                                 : ... In instance i2c_master
+  186 |     STATE_IDLE = 4'd0,
+      |     ^~~~~~~~~~
+                ... Use "/* verilator lint_off WIDTH */" and lint_on around source to disable this message.
+%Warning-WIDTH: candidate.v:187:5: Operator VAR 'STATE_ACTIVE_WRITE' expects 5 bits on the Initial value, but Initial value's CONST '4'h1' generates 4 bits.
+                                 : ... In instance i2c_master
+  187 |     STATE_ACTIVE_WRITE = 4'd1,
+      |     ^~~~~~~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:188:5: Operator VAR 'STATE_ACTIVE_READ' expects 5 bits on the Initial value, but Initial value's CONST '4'h2' generates 4 bits.
+                                 : ... In instance i2c_master
+  188 |     STATE_ACTIVE_READ = 4'd2,
+      |     ^~~~~~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:189:5: Operator VAR 'STATE_START_WAIT' expects 5 bits on the Initial value, but Initial value's CONST '4'h3' generates 4 bits.
+                                 : ... In instance i2c_master
+  189 |     STATE_START_WAIT = 4'd3,
+      |     ^~~~~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:190:5: Operator VAR 'STATE_START' expects 5 bits on the Initial value, but Initial value's CONST '4'h4' generates 4 bits.
+                                 : ... In instance i2c_master
+  190 |     STATE_START = 4'd4,
+      |     ^~~~~~~~~~~
+%Warning-WIDTH: candidate.v:191:5: Operator VAR 'STATE_ADDRESS_1' expects 5 bits on the Initial value, but Initial value's CONST '4'h5' generates 4 bits.
+                                 : ... In instance i2c_master
+  191 |     STATE_ADDRESS_1 = 4'd5,
+      |     ^~~~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:192:5: Operator VAR 'STATE_ADDRESS_2' expects 5 bits on the Initial value, but Initial value's CONST '4'h6' generates 4 bits.
+                                 : ... In instance i2c_master
+  192 |     STATE_ADDRESS_2 = 4'd6,
+      |     ^~~~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:193:5: Operator VAR 'STATE_WRITE_1' expects 5 bits on the Initial value, but Initial value's CONST '4'h7' generates 4 bits.
+                                 : ... In instance i2c_master
+  193 |     STATE_WRITE_1 = 4'd7,
+      |     ^~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:194:5: Operator VAR 'STATE_WRITE_2' expects 5 bits on the Initial value, but Initial value's CONST '4'h8' generates 4 bits.
+                                 : ... In instance i2c_master
+  194 |     STATE_WRITE_2 = 4'd8,
+      |     ^~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:195:5: Operator VAR 'STATE_WRITE_3' expects 5 bits on the Initial value, but Initial value's CONST '4'h9' generates 4 bits.
+                                 : ... In instance i2c_master
+  195 |     STATE_WRITE_3 = 4'd9,
+      |     ^~~~~~~~~~~~~
+%Warning-WIDTH: candidate.v:196:5: Operator VAR 'STATE_READ' expects 5 bits on the Initial value, but Initial value's CONST '4'ha' generates 4 bits.
+                                 : ... In instance i2c_master
+  196 |     STATE_READ = 4'd10,
+      |     ^~~~~~~~~~
+%Warning-WIDTH: candidate.v:197:5: Operator VAR 'STATE_STOP' expects 5 bits on the Initial value, but Initial value's CONST '4'hb' generates 4 bits.
+                                 : ... In instance i2c_master
+  197 |     STATE_STOP = 4'd11;
+      |     ^~~~~~~~~~
+%Warning-WIDTH: candidate.v:239:24: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's CONST '16'h0' generates 16 bits.
+                                  : ... In instance i2c_master
+  239 | reg [16:0] delay_reg = 16'd0, delay_next;
+      |                        ^~~~~
+%Warning-WIDTH: candidate.v:511:31: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... In instance i2c_master
+  511 |                     data_next = 1'b0;
+      |                               ^
+%Warning-WIDTH: candidate.v:619:20: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... In instance i2c_master
+  619 |         delay_next = 1'b0;
+      |                    ^
+%Warning-WIDTH: candidate.v:641:32: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  641 |                     delay_next = prescale;
+      |                                ^
+%Warning-WIDTH: candidate.v:651:32: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  651 |                     delay_next = prescale;
+      |                                ^
+%Warning-WIDTH: candidate.v:655:32: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  655 |                     delay_next = prescale;
+      |                                ^
+%Warning-WIDTH: candidate.v:659:32: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  659 |                     delay_next = prescale;
+      |                                ^
+%Warning-WIDTH: candidate.v:663:32: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  663 |                     delay_next = prescale;
+      |                                ^
+%Warning-WIDTH: candidate.v:679:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  679 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:691:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  691 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:703:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  703 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:726:39: Operator SHIFTL expects 17 bits on the LHS, but LHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  726 |                 delay_next = prescale << 1;
+      |                                       ^~
+%Warning-WIDTH: candidate.v:737:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  737 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:758:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  758 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:769:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  769 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:780:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  780 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:801:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  801 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:812:28: Operator ASSIGN expects 17 bits on the Assign RHS, but Assign RHS's VARREF 'prescale' generates 16 bits.
+                                  : ... In instance i2c_master
+  812 |                 delay_next = prescale;
+      |                            ^
+%Warning-WIDTH: candidate.v:882:19: Operator ASSIGNDLY expects 17 bits on the Assign RHS, but Assign RHS's CONST '16'h0' generates 16 bits.
+                                  : ... In instance i2c_master
+  882 |         delay_reg <= 16'd0;
+      |                   ^~
+%Warning-CASEINCOMPLETE: candidate.v:329:9: Case values incompletely covered (example pattern 0xc)
+  329 |         case (state_reg)
+      |         ^~~~
+%Warning-CASEINCOMPLETE: candidate.v:634:9: Case values incompletely covered (example pattern 0x10)
+  634 |         case (phy_state_reg)
+      |         ^~~~

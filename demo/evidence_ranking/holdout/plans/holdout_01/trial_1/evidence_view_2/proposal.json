@@ -1,0 +1,37 @@
+{
+  "explanation": "The first mismatches are m_axis_tvalid at cycle 8 (actual 0 vs expected 1) and s_axis_tready at cycle 12 (actual 1 vs expected 0), followed by data/user/last divergences. The rate-limiting core uses acc_reg, frame_reg, and a pause signal gated by LAST_ENABLE and rate_by_frame. Patches that modify the pause condition (patch_12707f7188ea, patch_fd49deeec05e), make frame updates conditional on rate_by_frame (patch_6f8298dc7749), or change initial ready/valid registers (patch_5eb30d5685b3, patch_3732446a2223, patch_70ab4c75caf9) directly affect the handshake timing at the observed cycles. The reset-path qualification (patch_fb1371cffbe8) and the keep-driven ready init (patch_e6e9f736fdb3) are secondary but plausible because they alter the ready/valid boundary conditions during the mismatch window.",
+  "ranking": [
+    {
+      "id": "patch_12707f7188ea",
+      "mechanism": "Gates the pause condition on s_axis_tready being low, which changes when acc_reg updates relative to consumer readiness; this matches the first divergence at cycle 8 (m_axis_tvalid) and the ready/valid toggle at cycle 12\u201313."
+    },
+    {
+      "id": "patch_6f8298dc7749",
+      "mechanism": "Makes the frame-next update depend on rate_by_frame, altering frame_reg evolution and thus the pause logic in frame-mode; the observed mismatch window is with rate_by_frame=1."
+    },
+    {
+      "id": "patch_fd49deeec05e",
+      "mechanism": "Qualifies the pause condition on !rate_by_frame, directly inverting frame-mode pausing behavior; the discovery trace uses rate_by_frame=1, so this flips the pause decision at the mismatch cycles."
+    },
+    {
+      "id": "patch_fb1371cffbe8",
+      "mechanism": "Qualifies a reset action on m_axis_tvalid_reg, coupling output valid state into reset path; this can shift ready/valid alignment at the observed mismatch boundaries."
+    },
+    {
+      "id": "patch_5eb30d5685b3",
+      "mechanism": "Initializes s_axis_tready_reg to m_axis_tready instead of 0, changing the first-cycle ready assertion and the downstream valid/ready handshake at cycles 8 and 12."
+    },
+    {
+      "id": "patch_e6e9f736fdb3",
+      "mechanism": "Uses m_axis_tkeep as the initial value for s_axis_tready_reg, introducing a data-dependent ready reset; the mismatch shows ready toggling when keep/user fields differ."
+    },
+    {
+      "id": "patch_70ab4c75caf9",
+      "mechanism": "Initializes m_axis_tready_int_reg to m_axis_tready, altering the internal ready-early signal that gates the output register load and the temp buffer bypass at cycles 8\u201316."
+    },
+    {
+      "id": "patch_3732446a2223",
+      "mechanism": "Initializes m_axis_tvalid_reg to s_axis_tvalid, changing the initial valid state seen by the output register logic; first mismatch is m_axis_tvalid at cycle 8."
+    }
+  ]
+}

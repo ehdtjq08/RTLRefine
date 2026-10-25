@@ -1,0 +1,27 @@
+{
+  "api_requests": 1,
+  "changes": {
+    "rtl/word_math.sv": "// RTLRefine importer example, MIT.\nmodule word_math #(parameter integer WIDTH = 129)(\n    input wire [WIDTH-1:0] a, b,\n    output wire [WIDTH-1:0] result\n);\nfunction automatic [WIDTH-1:0] combine(input [WIDTH-1:0] lhs, rhs);\n    combine = lhs + rhs;\nendfunction\nassign result = combine(a, b);\nendmodule\n"
+  },
+  "cost": {
+    "estimated_usd": 0.001377,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "aecd220eb33440b6b5b525f2515ca69e",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "proposal": {
+    "diagnosis": "The word_math module implements subtraction (lhs - rhs) instead of the required addition (a + b modulo 2**WIDTH). The public test expects the result to equal a+b but receives a-b, causing the assertion failure.",
+    "edits": [
+      {
+        "end_line": 8,
+        "file": "rtl/word_math.sv",
+        "replacement": "function automatic [WIDTH-1:0] combine(input [WIDTH-1:0] lhs, rhs);\n    combine = lhs + rhs;\nendfunction",
+        "start_line": 6
+      }
+    ]
+  },
+  "status": "VALID_PATCH",
+  "wall_seconds": 1.727684552082792
+}

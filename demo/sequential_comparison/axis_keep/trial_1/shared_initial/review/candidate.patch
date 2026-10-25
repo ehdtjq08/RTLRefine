@@ -1,0 +1,116 @@
+--- original.v
++++ candidate.v
+@@ -142,7 +142,7 @@
+     reg [$clog2(SEG_COUNT)-1:0] seg_reg = 0;
+ 
+     reg [S_DATA_WIDTH-1:0] s_axis_tdata_reg = {S_DATA_WIDTH{1'b0}};
+-    reg [S_KEEP_WIDTH-1:0] s_axis_tkeep_reg = {S_KEEP_WIDTH{1'b0}};
++    reg [S_BYTE_LANES-1:0] s_axis_tkeep_reg = {S_BYTE_LANES{1'b0}};
+     reg s_axis_tvalid_reg = 1'b0;
+     reg s_axis_tlast_reg = 1'b0;
+     reg [ID_WIDTH-1:0] s_axis_tid_reg = {ID_WIDTH{1'b0}};
+@@ -150,12 +150,14 @@
+     reg [USER_WIDTH-1:0] s_axis_tuser_reg = {USER_WIDTH{1'b0}};
+ 
+     reg [M_DATA_WIDTH-1:0] m_axis_tdata_reg = {M_DATA_WIDTH{1'b0}};
+-    reg [M_KEEP_WIDTH-1:0] m_axis_tkeep_reg = {M_KEEP_WIDTH{1'b0}};
++    reg [M_BYTE_LANES-1:0] m_axis_tkeep_reg = {M_BYTE_LANES{1'b0}};
+     reg m_axis_tvalid_reg = 1'b0;
+     reg m_axis_tlast_reg = 1'b0;
+     reg [ID_WIDTH-1:0] m_axis_tid_reg = {ID_WIDTH{1'b0}};
+     reg [DEST_WIDTH-1:0] m_axis_tdest_reg = {DEST_WIDTH{1'b0}};
+     reg [USER_WIDTH-1:0] m_axis_tuser_reg = {USER_WIDTH{1'b0}};
++
++    wire [S_BYTE_LANES-1:0] s_axis_tkeep_int = S_KEEP_ENABLE ? s_axis_tkeep : {S_BYTE_LANES{1'b1}};
+ 
+     assign s_axis_tready = !s_axis_tvalid_reg;
+ 
+@@ -175,10 +177,10 @@
+ 
+             if (seg_reg == 0) begin
+                 m_axis_tdata_reg[seg_reg*SEG_DATA_WIDTH +: SEG_DATA_WIDTH] <= s_axis_tvalid_reg ? s_axis_tdata_reg : s_axis_tdata;
+-                m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep;
++                m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep_int;
+             end else begin
+                 m_axis_tdata_reg[seg_reg*SEG_DATA_WIDTH +: SEG_DATA_WIDTH] <= s_axis_tdata;
+-                m_axis_tkeep_reg[seg_reg*SEG_KEEP_WIDTH +: SEG_KEEP_WIDTH] <= s_axis_tkeep;
++                m_axis_tkeep_reg[seg_reg*SEG_KEEP_WIDTH +: SEG_KEEP_WIDTH] <= s_axis_tkeep_int;
+             end
+             m_axis_tlast_reg <= s_axis_tvalid_reg ? s_axis_tlast_reg : s_axis_tlast;
+             m_axis_tid_reg <= s_axis_tvalid_reg ? s_axis_tid_reg : s_axis_tid;
+@@ -207,7 +209,7 @@
+         end else if (s_axis_tvalid && s_axis_tready) begin
+             // store input data in skid buffer
+             s_axis_tdata_reg <= s_axis_tdata;
+-            s_axis_tkeep_reg <= s_axis_tkeep;
++            s_axis_tkeep_reg <= s_axis_tkeep_int;
+             s_axis_tvalid_reg <= 1'b1;
+             s_axis_tlast_reg <= s_axis_tlast;
+             s_axis_tid_reg <= s_axis_tid;
+@@ -232,7 +234,7 @@
+     localparam SEG_KEEP_WIDTH = S_BYTE_LANES / SEG_COUNT;
+ 
+     reg [S_DATA_WIDTH-1:0] s_axis_tdata_reg = {S_DATA_WIDTH{1'b0}};
+-    reg [S_KEEP_WIDTH-1:0] s_axis_tkeep_reg = {S_KEEP_WIDTH{1'b0}};
++    reg [S_BYTE_LANES-1:0] s_axis_tkeep_reg = {S_BYTE_LANES{1'b0}};
+     reg s_axis_tvalid_reg = 1'b0;
+     reg s_axis_tlast_reg = 1'b0;
+     reg [ID_WIDTH-1:0] s_axis_tid_reg = {ID_WIDTH{1'b0}};
+@@ -240,12 +242,14 @@
+     reg [USER_WIDTH-1:0] s_axis_tuser_reg = {USER_WIDTH{1'b0}};
+ 
+     reg [M_DATA_WIDTH-1:0] m_axis_tdata_reg = {M_DATA_WIDTH{1'b0}};
+-    reg [M_KEEP_WIDTH-1:0] m_axis_tkeep_reg = {M_KEEP_WIDTH{1'b0}};
++    reg [M_BYTE_LANES-1:0] m_axis_tkeep_reg = {M_BYTE_LANES{1'b0}};
+     reg m_axis_tvalid_reg = 1'b0;
+     reg m_axis_tlast_reg = 1'b0;
+     reg [ID_WIDTH-1:0] m_axis_tid_reg = {ID_WIDTH{1'b0}};
+     reg [DEST_WIDTH-1:0] m_axis_tdest_reg = {DEST_WIDTH{1'b0}};
+     reg [USER_WIDTH-1:0] m_axis_tuser_reg = {USER_WIDTH{1'b0}};
++
++    wire [S_BYTE_LANES-1:0] s_axis_tkeep_int = S_KEEP_ENABLE ? s_axis_tkeep : {S_BYTE_LANES{1'b1}};
+ 
+     assign s_axis_tready = !s_axis_tvalid_reg;
+ 
+@@ -264,7 +268,7 @@
+             // output register empty
+ 
+             m_axis_tdata_reg <= s_axis_tvalid_reg ? s_axis_tdata_reg : s_axis_tdata;
+-            m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep;
++            m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg[SEG_KEEP_WIDTH-1:0] : s_axis_tkeep_int[SEG_KEEP_WIDTH-1:0];
+             m_axis_tlast_reg <= 1'b0;
+             m_axis_tid_reg <= s_axis_tvalid_reg ? s_axis_tid_reg : s_axis_tid;
+             m_axis_tdest_reg <= s_axis_tvalid_reg ? s_axis_tdest_reg : s_axis_tdest;
+@@ -284,7 +288,7 @@
+             end else if (s_axis_tvalid && s_axis_tready) begin
+                 // buffer is empty; store from input
+                 s_axis_tdata_reg <= s_axis_tdata >> SEG_DATA_WIDTH;
+-                s_axis_tkeep_reg <= s_axis_tkeep >> SEG_KEEP_WIDTH;
++                s_axis_tkeep_reg <= s_axis_tkeep_int >> SEG_KEEP_WIDTH;
+                 s_axis_tlast_reg <= s_axis_tlast;
+                 s_axis_tid_reg <= s_axis_tid;
+                 s_axis_tdest_reg <= s_axis_tdest;
+@@ -292,7 +296,7 @@
+ 
+                 m_axis_tvalid_reg <= 1'b1;
+ 
+-                if ((s_axis_tkeep >> SEG_KEEP_WIDTH) == 0) begin
++                if ((s_axis_tkeep_int >> SEG_KEEP_WIDTH) == 0) begin
+                     s_axis_tvalid_reg <= 1'b0;
+                     m_axis_tlast_reg <= s_axis_tlast;
+                 end else begin
+@@ -302,7 +306,7 @@
+         end else if (s_axis_tvalid && s_axis_tready) begin
+             // store input data
+             s_axis_tdata_reg <= s_axis_tdata;
+-            s_axis_tkeep_reg <= s_axis_tkeep;
++            s_axis_tkeep_reg <= s_axis_tkeep_int;
+             s_axis_tvalid_reg <= 1'b1;
+             s_axis_tlast_reg <= s_axis_tlast;
+             s_axis_tid_reg <= s_axis_tid;
+@@ -322,4 +326,4 @@
+ 
+ endmodule
+ 
+-`resetall
++`resetall

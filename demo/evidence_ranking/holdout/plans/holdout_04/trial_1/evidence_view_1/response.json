@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_2c8752251e37\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_17422b8b1575\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_bdd445d05642\",\n      \"mechanism\": \"reset_completion\"\n    },\n    {\n      \"id\": \"patch_5d2b925ce50d\",\n      \"mechanism\": \"condition_gate\"\n    },\n    {\n      \"id\": \"patch_c34f93524a6a\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_a55e46059a07\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_1bcf966a75b9\",\n      \"mechanism\": \"condition_gate\"\n    },\n    {\n      \"id\": \"patch_316ca7f541a1\",\n      \"mechanism\": \"rhs_substitution\"\n    }\n  ],\n  \"explanation\": \"Ranking prioritizes patches with direct_failure_target=true on the failing port m_axis_tlast (patches 2c8752251e37, 17422b8b1575, bdd445d05642) as they directly address the output register driving the observed mismatch. Next, patch 5d2b925ce50d modifies the STATE_OUTPUT_DATA termination condition (frame_ptr_reg == offset-1) with a monitor_axis_tready guard, which is structurally adjacent to the frame_ptr advancement logic and could correct premature or delayed tlast assertion. Patches 316ca7f541a1 and c34f93524a6a target m_axis_tlast_int/m_axis_tuser_int in the combinational output path; 316ca7f541a1 substitutes store_output (asserted when trigger fires) for the hardcoded 0, which aligns tlast_int with the start of a new frame emission. The remaining candidates (a55e46059a07, 1bcf966a75b9) adjust frame_ptr_next initialization and a TAG_ENABLE gate respectively, which are less directly tied to the tlast signal but may influence frame_ptr progression and thus the last-byte detection.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755377,
+  "id": "chatcmpl-30c672429ef81f610d3c4e118bb2e459",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 578,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 13218,
+    "prompt_tokens": 13218,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 13796
+  }
+}

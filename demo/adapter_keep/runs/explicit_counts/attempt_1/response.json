@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"edits\": [{\"before\": \"    assign m_axis_tkeep  = M_KEEP_ENABLE ? s_axis_tkeep : {M_KEEP_WIDTH{1'b1}};\", \"after\": \"    assign m_axis_tkeep  = M_KEEP_ENABLE ? (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}}) : {M_KEEP_WIDTH{1'b1}};\", \"expected_matches\": 1}], \"explanation\": \"In the bypass case (equal widths), when the source has S_KEEP_ENABLE=0, s_axis_tkeep is only 1 bit wide but the output expects M_KEEP_WIDTH bits. The fix replicates the implied all-ones keep value to the full output keep width when S_KEEP_ENABLE=0, while preserving normal behavior when S_KEEP_ENABLE=1.\"}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792683133,
+  "id": "chatcmpl-9b955fa5ed5335513262de50f62f6b6f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 194,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 4646,
+    "prompt_tokens": 4646,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 4840
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "accepted": true,
+  "audit_pass": true,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_fifo",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0337,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_fifo.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8693,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": true,
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "e6cf9061c8301b378bf2566c07ce6e02ffa47f904f8002b7a3b1012961852294",
+  "status": "ALL_SEALED_TRACES_PASS",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_fifo"
+        ],
+        "elapsed_seconds": 0.0178,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 80,
+      "cycles": 16,
+      "expected_sha256": "543939beec13fc0940ad067fc4a071abc87a4875a447889999f409c7de76fce3",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "phase": "discovery",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "ff8b3c9eedd1fbf296d087aba358f1b96b736d489e9ef83b34d548f39c66f784",
+      "trace_label": "published_discovery_trace"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_fifo"
+        ],
+        "elapsed_seconds": 0.0176,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 1024,
+      "cycles": 128,
+      "expected_sha256": "f5992cc9fa197936883d04642be6c89188265e5f12967672707095a79f0cf2ec",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "fe85e39dbf0908a2662c3bc720f56764df8a8c463f828ddec4e4a521e58dd85e",
+      "trace_label": "unexposed_payload_transform_7403"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_fifo"
+        ],
+        "elapsed_seconds": 0.0175,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 1024,
+      "cycles": 128,
+      "expected_sha256": "b6f89ff7357adc13c807bdb78b77cda315ea8b1b8f8764afbd63ab0c54477923",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "eb03318b26771813994650ac356e0e91af2650501d4dd399614c0c37f7c1afcd",
+      "trace_label": "unexposed_payload_transform_9601"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+read_verilog -formal -sv candidate.v golden.v miter.v
+hierarchy -check -top miter
+proc
+flatten
+memory_map
+opt
+clk2fflogic
+opt
+sat -seq 16 -prove-asserts -set-init-def -timeout 45 -show-ports -dump_json counterexample.json -dump_vcd counterexample.vcd

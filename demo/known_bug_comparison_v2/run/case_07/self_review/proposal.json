@@ -1,0 +1,11 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 116,
+      "replacement": "        input_rst_sync2 <= input_rst_sync1;",
+      "start_line": 116
+    }
+  ],
+  "explanation": "Fixed reset synchronization in input clock domain by removing dependency on output_rst_sync1 which is asynchronous to input_clk, preventing potential metastability in dual-clock operation. The change preserves behavior for single-clock configuration used in the recorded profile."
+}

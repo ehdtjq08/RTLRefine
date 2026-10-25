@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "rtlrefine"
+version = "1.2.0"
+description = "Independent verification of NVIDIA-proposed sequential RTL repairs"
+requires-python = ">=3.13,<3.14"
+dependencies = ["streamlit==1.51.0"]
+license = "MIT"
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+[tool.setuptools.packages.find]
+include = ["rtl_agent*"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

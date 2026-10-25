@@ -1,0 +1,42 @@
+[
+  {
+    "elapsed_seconds": 0.014,
+    "message": "Reproduce the original failure",
+    "stage": "reproduce"
+  },
+  {
+    "elapsed_seconds": 2.183,
+    "message": "Build bounded patch hypotheses from the original source",
+    "stage": "hypotheses"
+  },
+  {
+    "elapsed_seconds": 2.341,
+    "message": "Ask NVIDIA Nemotron to explain and prioritize patch hypotheses",
+    "stage": "diagnose"
+  },
+  {
+    "elapsed_seconds": 6.583,
+    "message": "Check the highest-priority patch",
+    "stage": "fast_path"
+  },
+  {
+    "elapsed_seconds": 8.727,
+    "message": "Screen the remaining 42 hypotheses with shared candidate compilation",
+    "stage": "batch"
+  },
+  {
+    "elapsed_seconds": 14.086,
+    "message": "Use public check results to revise the diagnosis and choose a passing hypothesis",
+    "stage": "revise"
+  },
+  {
+    "elapsed_seconds": 17.567,
+    "message": "Compile the exact selected patch independently and run all three fixed profiles",
+    "stage": "independent_check"
+  },
+  {
+    "elapsed_seconds": 19.771,
+    "message": "Exact patch accepted within the fixed profiles",
+    "stage": "complete"
+  }
+]

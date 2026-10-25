@@ -1,0 +1,76 @@
+{
+  "accepted": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "skidbuffer",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0177,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vskidbuffer.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8188,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": true,
+  "rtl_sha256": "9dd2470ba76dd5c42cc773cff1c544f9784ab6ac9cd86fec539bbeb16a334b24",
+  "status": "DISCOVERY_PASS",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vskidbuffer"
+        ],
+        "elapsed_seconds": 0.0177,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 725,
+      "cycles": 256,
+      "expected_sha256": "c47ab4c07ae044124be5a2f75e9b71d04a343b9607fa2ddd3402b8609e61a627",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "dc65c37eb4c2c37afdd11f3135043b18594f6c28f0b1ffe0efd608b550f53d62",
+      "trace_label": "discovery"
+    }
+  ]
+}

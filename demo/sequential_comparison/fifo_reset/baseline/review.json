@@ -1,0 +1,2578 @@
+{
+  "accepted": false,
+  "bounded_comparisons": [
+    {
+      "clock_model": "Independent symbolic clock levels, edge detection via clk2fflogic",
+      "command": {
+        "command": [
+          "yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "bounded.ys"
+        ],
+        "elapsed_seconds": 0.917227,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "bounded",
+        "status": "PASS"
+      },
+      "compared_output_bits": 12,
+      "data_comparison": "Payload and sidebands compared only when reference valid",
+      "limitation": "Bounded two-state reference comparison, not an unbounded proof or CDC/metastability sign-off",
+      "normalization": "Name the existing input_rst | output_rst expression as joint_rst for the two reset synchronizers",
+      "reference": "Historical upstream fix; excluded from model prompt",
+      "reference_sha256": "8aca6b233800c0a38fd14be88966741a57ede52bf2f81bf9d3aec2a1744914e4",
+      "rtl_sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28",
+      "script_sha256": "3bea7b3d428d1384b723431abbe4205357dde6977ca162aa3efb218441bf42ce",
+      "status": "COUNTEREXAMPLE",
+      "steps": 16
+    }
+  ],
+  "case": "fifo_reset",
+  "limitation": "Directed simulations plus bounded two-state comparison to a historical reference; no unbounded proof or coverage of all parameters. Fixed references are excluded from model prompts.",
+  "new_api_calls": 0,
+  "proof_steps": 16,
+  "rtl_sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28",
+  "scope": "Reset on either side flushes pre-reset traffic. New traffic preserves data, order, TLAST and TUSER across independent clocks.",
+  "simulations": [
+    {
+      "commands": [
+        {
+          "command": [
+            "iverilog",
+            "-g2012",
+            "-Wall",
+            "-s",
+            "tb",
+            "-o",
+            "simulation.vvp",
+            "candidate.v",
+            "tb.v"
+          ],
+          "elapsed_seconds": 0.033413,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "compile_simulation",
+          "status": "PASS"
+        },
+        {
+          "command": [
+            "vvp",
+            "simulation.vvp"
+          ],
+          "elapsed_seconds": 0.017149,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS"
+        }
+      ],
+      "fresh_actual": [
+        [
+          "10010010",
+          "1",
+          "0"
+        ]
+      ],
+      "fresh_expected": [
+        [
+          97,
+          0,
+          1
+        ],
+        [
+          146,
+          1,
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 7000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 21000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 35000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 49000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 63000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 77000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 91000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 105000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 119000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 133000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 147000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 161000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 175000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 189000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 203000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 217000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 231000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 245000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 259000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 273000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 287000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 301000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 315000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 329000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 343000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 357000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 371000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 385000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 399000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 413000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 427000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 441000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 455000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 469000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 483000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 497000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 511000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 525000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 539000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 553000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 567000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 581000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 595000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 609000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 623000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 637000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 651000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 665000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 679000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 693000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 707000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 721000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 735000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 749000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 763000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 777000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 791000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 805000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 819000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 833000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 847000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 861000,
+          "user_bits": "0",
+          "valid": 0
+        }
+      ],
+      "passed": false,
+      "property": "Reset flushes pre-reset data; subsequent traffic retains data/order/sidebands",
+      "rtl_sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28",
+      "stale_transfers": [
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 427000,
+          "user_bits": "0",
+          "valid": 1
+        }
+      ],
+      "testbench_sha256": "0bd7e9cfa8a0192b6540a9b22da2e3282b87385dce310c85458429e735749ef0",
+      "variant": [
+        5,
+        7,
+        1
+      ]
+    },
+    {
+      "commands": [
+        {
+          "command": [
+            "iverilog",
+            "-g2012",
+            "-Wall",
+            "-s",
+            "tb",
+            "-o",
+            "simulation.vvp",
+            "candidate.v",
+            "tb.v"
+          ],
+          "elapsed_seconds": 0.033153,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "compile_simulation",
+          "status": "PASS"
+        },
+        {
+          "command": [
+            "vvp",
+            "simulation.vvp"
+          ],
+          "elapsed_seconds": 0.017204,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS"
+        }
+      ],
+      "fresh_actual": [
+        [
+          "xxxxxxxx",
+          "x",
+          "x"
+        ],
+        [
+          "01100001",
+          "0",
+          "1"
+        ],
+        [
+          "10010010",
+          "1",
+          "0"
+        ],
+        [
+          "10100111",
+          "1",
+          "0"
+        ],
+        [
+          "xxxxxxxx",
+          "x",
+          "x"
+        ],
+        [
+          "01100001",
+          "0",
+          "1"
+        ],
+        [
+          "10010010",
+          "1",
+          "0"
+        ]
+      ],
+      "fresh_expected": [
+        [
+          97,
+          0,
+          1
+        ],
+        [
+          146,
+          1,
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 5000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 15000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 25000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 35000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 45000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 55000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 65000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 75000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 85000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 95000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 105000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 115000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 125000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 135000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 145000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 155000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 165000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 175000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 185000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 195000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 205000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 215000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 225000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 235000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 245000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 255000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 265000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 275000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 285000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 295000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 305000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 315000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 325000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 335000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 345000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 355000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 365000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 375000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 385000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 395000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 405000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 415000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 425000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 435000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 445000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 455000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 465000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 475000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 485000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 495000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 505000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 515000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 525000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 535000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 545000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 555000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 565000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 575000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 585000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 595000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 605000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 615000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 625000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "xxxxxxxx",
+          "input_reset": 0,
+          "last_bits": "x",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 635000,
+          "user_bits": "x",
+          "valid": 1
+        },
+        {
+          "data_bits": "01100001",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 645000,
+          "user_bits": "1",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 655000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 665000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "xxxxxxxx",
+          "input_reset": 0,
+          "last_bits": "x",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 675000,
+          "user_bits": "x",
+          "valid": 1
+        },
+        {
+          "data_bits": "01100001",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 685000,
+          "user_bits": "1",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 695000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 705000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 715000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 725000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 735000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 745000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 755000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 765000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 775000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 785000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 795000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 805000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 815000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 825000,
+          "user_bits": "0",
+          "valid": 0
+        }
+      ],
+      "passed": false,
+      "property": "Reset flushes pre-reset data; subsequent traffic retains data/order/sidebands",
+      "rtl_sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28",
+      "stale_transfers": [
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 485000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 495000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100111",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 505000,
+          "user_bits": "0",
+          "valid": 1
+        }
+      ],
+      "testbench_sha256": "4902bb6c773917339819e982e9e134bc3d520eeb4e20049f05416bf45a3e21ea",
+      "variant": [
+        7,
+        5,
+        3
+      ]
+    },
+    {
+      "commands": [
+        {
+          "command": [
+            "iverilog",
+            "-g2012",
+            "-Wall",
+            "-s",
+            "tb",
+            "-o",
+            "simulation.vvp",
+            "candidate.v",
+            "tb.v"
+          ],
+          "elapsed_seconds": 0.033235,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "compile_simulation",
+          "status": "PASS"
+        },
+        {
+          "command": [
+            "vvp",
+            "simulation.vvp"
+          ],
+          "elapsed_seconds": 0.017428,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS"
+        }
+      ],
+      "fresh_actual": [
+        [
+          "xxxxxxxx",
+          "x",
+          "x"
+        ],
+        [
+          "xxxxxxxx",
+          "x",
+          "x"
+        ],
+        [
+          "01100001",
+          "0",
+          "1"
+        ],
+        [
+          "10010010",
+          "1",
+          "0"
+        ],
+        [
+          "xxxxxxxx",
+          "x",
+          "x"
+        ],
+        [
+          "xxxxxxxx",
+          "x",
+          "x"
+        ],
+        [
+          "01100001",
+          "0",
+          "1"
+        ],
+        [
+          "10010010",
+          "1",
+          "0"
+        ]
+      ],
+      "fresh_expected": [
+        [
+          97,
+          0,
+          1
+        ],
+        [
+          146,
+          1,
+          0
+        ]
+      ],
+      "observations": [
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 11000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 33000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 1,
+          "last_bits": "0",
+          "output_reset": 1,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 55000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 77000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 99000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 0,
+          "ready": 0,
+          "time_ps": 121000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 143000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 165000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 187000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "00000000",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 209000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 231000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 253000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 275000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 297000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 1,
+          "ready": 0,
+          "time_ps": 319000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 341000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 363000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 1,
+          "last_bits": "1",
+          "output_reset": 1,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 385000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 407000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 429000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 451000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 473000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 495000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 517000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 2,
+          "ready": 0,
+          "time_ps": 539000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 561000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 583000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 605000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 627000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 649000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 671000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 693000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 715000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 737000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 759000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 781000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 803000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 825000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 847000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "xxxxxxxx",
+          "input_reset": 0,
+          "last_bits": "x",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 869000,
+          "user_bits": "x",
+          "valid": 1
+        },
+        {
+          "data_bits": "xxxxxxxx",
+          "input_reset": 0,
+          "last_bits": "x",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 891000,
+          "user_bits": "x",
+          "valid": 1
+        },
+        {
+          "data_bits": "01100001",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 913000,
+          "user_bits": "1",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 935000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "xxxxxxxx",
+          "input_reset": 0,
+          "last_bits": "x",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 957000,
+          "user_bits": "x",
+          "valid": 1
+        },
+        {
+          "data_bits": "xxxxxxxx",
+          "input_reset": 0,
+          "last_bits": "x",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 979000,
+          "user_bits": "x",
+          "valid": 1
+        },
+        {
+          "data_bits": "01100001",
+          "input_reset": 0,
+          "last_bits": "0",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1001000,
+          "user_bits": "1",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1023000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1045000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1067000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1089000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1111000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1133000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1155000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1177000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1199000,
+          "user_bits": "0",
+          "valid": 0
+        },
+        {
+          "data_bits": "10010010",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 4,
+          "ready": 1,
+          "time_ps": 1221000,
+          "user_bits": "0",
+          "valid": 0
+        }
+      ],
+      "passed": false,
+      "property": "Reset flushes pre-reset data; subsequent traffic retains data/order/sidebands",
+      "rtl_sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28",
+      "stale_transfers": [
+        {
+          "data_bits": "10100101",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 561000,
+          "user_bits": "0",
+          "valid": 1
+        },
+        {
+          "data_bits": "10100110",
+          "input_reset": 0,
+          "last_bits": "1",
+          "output_reset": 0,
+          "phase": 3,
+          "ready": 1,
+          "time_ps": 583000,
+          "user_bits": "0",
+          "valid": 1
+        }
+      ],
+      "testbench_sha256": "91599565871a473c8159c768b75656a440822cad74253e4677c99bf03a29d264",
+      "variant": [
+        5,
+        11,
+        2
+      ]
+    }
+  ],
+  "status": "SIMULATION_FAILED"
+}

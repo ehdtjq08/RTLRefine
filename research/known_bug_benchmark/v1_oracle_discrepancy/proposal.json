@@ -1,0 +1,11 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 106,
+      "replacement": "         if (KEEP_ENABLE) begin\n             bit_cnt = 0;\n             for (i = 0; i < KEEP_WIDTH; i = i + 1) begin\n                 bit_cnt = bit_cnt + monitor_axis_tkeep[i];\n             end\n             frame_len_next = frame_len_next + bit_cnt;\n         end else begin\n             frame_len_next = frame_len_next + 1;\n         end",
+      "start_line": 98
+    }
+  ],
+  "explanation": "The original bit-counting logic assumed monitor_axis_tkeep is a contiguous block of ones from the LSB, which is not guaranteed. Replaced with a popcount loop that sums individual bits of monitor_axis_tkeep, correctly counting TKEEP-enabled bytes for any bitmask pattern."
+}

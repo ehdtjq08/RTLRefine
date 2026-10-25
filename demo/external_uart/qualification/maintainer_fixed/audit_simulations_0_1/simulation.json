@@ -1,0 +1,587 @@
+{
+  "accepted": [
+    {
+      "cts_n": 0,
+      "cycle": 281,
+      "data": 0,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 351,
+      "data": 255,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 421,
+      "data": 165,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 491,
+      "data": 97,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 561,
+      "data": 1,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 631,
+      "data": 231,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 701,
+      "data": 31,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 771,
+      "data": 245,
+      "phase": 5
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1317,
+      "data": 0,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1387,
+      "data": 255,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1457,
+      "data": 165,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1527,
+      "data": 97,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1597,
+      "data": 1,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1667,
+      "data": 231,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1737,
+      "data": 31,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 1807,
+      "data": 245,
+      "phase": 10
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2311,
+      "data": 0,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2381,
+      "data": 255,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2451,
+      "data": 165,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2521,
+      "data": 97,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2591,
+      "data": 1,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2661,
+      "data": 231,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2731,
+      "data": 31,
+      "phase": 13
+    },
+    {
+      "cts_n": 0,
+      "cycle": 2801,
+      "data": 245,
+      "phase": 13
+    }
+  ],
+  "bench_sha256": "2c88e1778b7a2d7415799d7eb0cd44648933e8d370c86a79d30e1c51a9b75f31",
+  "commands": [
+    {
+      "command": [
+        "iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb",
+        "-o",
+        "simulation.vvp",
+        "candidate.v",
+        "tb.v"
+      ],
+      "elapsed_seconds": 0.064717,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "compile_simulation",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "vvp",
+        "simulation.vvp"
+      ],
+      "elapsed_seconds": 0.115047,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS"
+    }
+  ],
+  "coverage": {
+    "accepted_bytes": 24,
+    "blocked_receiver_accepts": 0,
+    "break_cycles": 22,
+    "complete_serial_frames": 24,
+    "released_receiver_accepts": 24,
+    "reset_cycles": 5
+  },
+  "decoded_frames": [
+    {
+      "bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 0,
+      "start_cycle": 281
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 255,
+      "start_cycle": 351
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 165,
+      "start_cycle": 421
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 97,
+      "start_cycle": 491
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 1,
+      "start_cycle": 561
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 231,
+      "start_cycle": 631
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 31,
+      "start_cycle": 701
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 245,
+      "start_cycle": 771
+    },
+    {
+      "bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 0,
+      "start_cycle": 1317
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 255,
+      "start_cycle": 1387
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 165,
+      "start_cycle": 1457
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 97,
+      "start_cycle": 1527
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 1,
+      "start_cycle": 1597
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 231,
+      "start_cycle": 1667
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 31,
+      "start_cycle": 1737
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 245,
+      "start_cycle": 1807
+    },
+    {
+      "bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 0,
+      "start_cycle": 2311
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 255,
+      "start_cycle": 2381
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 165,
+      "start_cycle": 2451
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 97,
+      "start_cycle": 2521
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 1,
+      "start_cycle": 2591
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 231,
+      "start_cycle": 2661
+    },
+    {
+      "bits": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "data": 31,
+      "start_cycle": 2731
+    },
+    {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "data": 245,
+      "start_cycle": 2801
+    }
+  ],
+  "first_violations": [],
+  "fixed_reference_rtl_used": false,
+  "passed": true,
+  "profile": {
+    "baud_cycles": 7,
+    "data_bits": 6,
+    "flow_control": true,
+    "parity": "mark",
+    "seed": 7403,
+    "stop_bits": 2
+  },
+  "rtl_sha256": "cd0c6bc753d8ee4cac6929a46e332a9858596019dace18c1341cad96c809fb3c",
+  "violation_count": 0
+}

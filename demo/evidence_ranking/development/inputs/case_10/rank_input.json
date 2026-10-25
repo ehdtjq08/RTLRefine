@@ -1,0 +1,1230 @@
+{
+  "cards": [
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (startup_hold)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_4378791918ad",
+      "legacy_id": "candidate_001",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar startup_hold",
+      "rtl_sha256": "4378791918ad13f6d3b0879c9050b688b23e39679836869c536e2b90e56b4034",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (!startup_hold)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_172723ac5a94",
+      "legacy_id": "candidate_002",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar !startup_hold",
+      "rtl_sha256": "172723ac5a94180e5af4a35042917c7334543204ed15fbdb62f304ff766b0dae",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (o_sclk)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_c48e0257e2c8",
+      "legacy_id": "candidate_003",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar o_sclk",
+      "rtl_sha256": "c48e0257e2c8e7f65f29cef72b13cb2bd280e350b3ea1a252945b30d7179d643",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (!o_sclk)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_1404cec37fd7",
+      "legacy_id": "candidate_004",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar !o_sclk",
+      "rtl_sha256": "1404cec37fd7e9fb182c36ddac019614bd3fcb9f05ec22cec1001fefed521088",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (i_cs)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_bc94a3538745",
+      "legacy_id": "candidate_005",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar i_cs",
+      "rtl_sha256": "bc94a35387450c7e70fe6c6cbe4f3a0be4cfe9ff64dffb7540804c16eb41272a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (!i_cs)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_53835b0af197",
+      "legacy_id": "candidate_006",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar !i_cs",
+      "rtl_sha256": "53835b0af197cfb47e6aab91c3734b7f91ea30e6fc563d1ec4f498a24f990a03",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (i_bus_grant)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_eeb80301d24f",
+      "legacy_id": "candidate_007",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar i_bus_grant",
+      "rtl_sha256": "eeb80301d24faca6c8a74fdd0ede639c26d4ceab29601a05af9520ad73c1f8e8",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (!i_bus_grant)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_0255246a371b",
+      "legacy_id": "candidate_008",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar !i_bus_grant",
+      "rtl_sha256": "0255246a371b4f23eb60e1353f239c861025f3cd15f70e2b48d6c77279d91d8a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (startup_hold)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_7a5916700d19",
+      "legacy_id": "candidate_009",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar startup_hold",
+      "rtl_sha256": "7a5916700d19b1bafa01a0c850e45a67b5bc1bff24049546c583b929f7900c3b",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!startup_hold)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_a4b305331eab",
+      "legacy_id": "candidate_010",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !startup_hold",
+      "rtl_sha256": "a4b305331eabb0d112fb4a681b91bd54fd7169b08b623a8edd2aad8e97e7f61f",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (o_sclk)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_a3e598330844",
+      "legacy_id": "candidate_011",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar o_sclk",
+      "rtl_sha256": "a3e598330844647ca3026e82af807e354a908993f0bce55b9a57a017eafb4746",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!o_sclk)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_b096a5d91433",
+      "legacy_id": "candidate_012",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !o_sclk",
+      "rtl_sha256": "b096a5d9143390caf8842e6c10650cf12bd17319e32e44476e6a0a37a9ece303",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (i_cs)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_007003718e4b",
+      "legacy_id": "candidate_013",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar i_cs",
+      "rtl_sha256": "007003718e4b04b66421f4695279fc89bd0c40b1ae22330b6664dd01ac1e2c1d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!i_cs)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_15f983094cc1",
+      "legacy_id": "candidate_014",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !i_cs",
+      "rtl_sha256": "15f983094cc1cbe484ed60f5baba66972649d748fc9b650f470e51dfcada8227",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (i_bus_grant)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_86245bef8e06",
+      "legacy_id": "candidate_015",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar i_bus_grant",
+      "rtl_sha256": "86245bef8e064fbc6a91e962809fd50de6cbaff90a3f86f89f073bd68d999cd6",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!i_bus_grant)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_c40cd6261176",
+      "legacy_id": "candidate_016",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !i_bus_grant",
+      "rtl_sha256": "c40cd62611766b98aff5d31b3adc0096a736ab1537f58fb409672c472f021232",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (byte_accepted)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_3b2b022f3695",
+      "legacy_id": "candidate_017",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar byte_accepted",
+      "rtl_sha256": "3b2b022f3695a2679842a3ee63ca728b1a43e00cf12a36e83acb1588698960ac",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!byte_accepted)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_8651fbc225f3",
+      "legacy_id": "candidate_018",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar !byte_accepted",
+      "rtl_sha256": "8651fbc225f3785759237a9f3cabbbd118117d2787c375e76d726c19aacefaa8",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (r_z_counter)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_024c690d9c80",
+      "legacy_id": "candidate_019",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar r_z_counter",
+      "rtl_sha256": "024c690d9c8066a2a690e728500fe27f8264c7e0f8b4e5dace44f677a4c1f83d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!r_z_counter)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_a6e618277fde",
+      "legacy_id": "candidate_020",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar !r_z_counter",
+      "rtl_sha256": "a6e618277fde349d70f4af78230e31ad9f8b81e30e8394fa73da8e021c00e1c3",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (o_sclk)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_dc0a14d6ff41",
+      "legacy_id": "candidate_021",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar o_sclk",
+      "rtl_sha256": "dc0a14d6ff41ffd2285b6ba6e9195fe7b9d58cc2fc39f01db2b350ff5dfefdd2",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!o_sclk)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_5417c8c0b4db",
+      "legacy_id": "candidate_022",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar !o_sclk",
+      "rtl_sha256": "5417c8c0b4db741a8706b4d6ec3491cb3c0eb4d8bb8413b72ca9ef688c00ec66",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5509,
+          "old": "(startup_hold || byte_accepted) && r_z_counter",
+          "replacement": "((startup_hold || byte_accepted) && r_z_counter) && (i_cs)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_94fa4c2ea4af",
+      "legacy_id": "candidate_023",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar i_cs",
+      "rtl_sha256": "94fa4c2ea4af2ee27ae801058385d172c2fe9ae59e1a66f99b8e0717dfa14486",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5509,
+          "old": "(startup_hold || byte_accepted) && r_z_counter",
+          "replacement": "((startup_hold || byte_accepted) && r_z_counter) && (!i_cs)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_911faf62b8c7",
+      "legacy_id": "candidate_024",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !i_cs",
+      "rtl_sha256": "911faf62b8c74479ae4cac09265b93160bfdb5136b3c4fcc2d05d26b82e19dae",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5509,
+          "old": "(startup_hold || byte_accepted) && r_z_counter",
+          "replacement": "((startup_hold || byte_accepted) && r_z_counter) && (i_bus_grant)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_a11930ad372d",
+      "legacy_id": "candidate_025",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar i_bus_grant",
+      "rtl_sha256": "a11930ad372dc1e1874b3c41522f3057c7addcdc6957f1d3c9251ff90828561e",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5509,
+          "old": "(startup_hold || byte_accepted) && r_z_counter",
+          "replacement": "((startup_hold || byte_accepted) && r_z_counter) && (!i_bus_grant)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_1aeebb99bd36",
+      "legacy_id": "candidate_026",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !i_bus_grant",
+      "rtl_sha256": "1aeebb99bd36f44ac85d3e142df8e522cd6dbf919b9cbd7fa9dffb9ca6ae12c8",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5509,
+          "old": "(startup_hold || byte_accepted) && r_z_counter",
+          "replacement": "((startup_hold || byte_accepted) && r_z_counter) && (r_idle)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_4c77b137e56b",
+      "legacy_id": "candidate_027",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar r_idle",
+      "rtl_sha256": "4c77b137e56b636068d2a4ce7fffadc6cb04591ec530c3980ef2b1cb89e5da1a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5509,
+          "old": "(startup_hold || byte_accepted) && r_z_counter",
+          "replacement": "((startup_hold || byte_accepted) && r_z_counter) && (!r_idle)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_eca3749a3fbe",
+      "legacy_id": "candidate_028",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !r_idle",
+      "rtl_sha256": "eca3749a3fbeadc6b686152630a47d905e15e618f0ca693c90731b1af0bbbced",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5609,
+          "old": "!r_z_counter",
+          "replacement": "(!r_z_counter) && (startup_hold)",
+          "start": 5597
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_21bafea8dea9",
+      "legacy_id": "candidate_029",
+      "line": 174,
+      "note": "Qualify condition with nearby scalar startup_hold",
+      "rtl_sha256": "21bafea8dea914c5ea453955917905f6a8c39d4e0623d00060a7e2b0b26d399f",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5609,
+          "old": "!r_z_counter",
+          "replacement": "(!r_z_counter) && (!startup_hold)",
+          "start": 5597
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_f6a95465c92e",
+      "legacy_id": "candidate_030",
+      "line": 174,
+      "note": "Qualify condition with nearby scalar !startup_hold",
+      "rtl_sha256": "f6a95465c92edc8230638f2450f1fa5e40cb115f0d8b7b3c0772cf77b37c7741",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5609,
+          "old": "!r_z_counter",
+          "replacement": "(!r_z_counter) && (byte_accepted)",
+          "start": 5597
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_1b021832f32a",
+      "legacy_id": "candidate_031",
+      "line": 174,
+      "note": "Qualify condition with nearby scalar byte_accepted",
+      "rtl_sha256": "1b021832f32acab159025333b6bffed0b6322b09e578dd55282e6944cd94b750",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5609,
+          "old": "!r_z_counter",
+          "replacement": "(!r_z_counter) && (!byte_accepted)",
+          "start": 5597
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_e165084f15bf",
+      "legacy_id": "candidate_032",
+      "line": 174,
+      "note": "Qualify condition with nearby scalar !byte_accepted",
+      "rtl_sha256": "e165084f15bf32b38d7f6918cc9e25518e0550d61cae2ad82b8dda14d4b7a470",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    }
+  ],
+  "case_id": "zipcpu-spi-c1-c3-d9_c1_normal",
+  "heuristic_order": [
+    "patch_007003718e4b",
+    "patch_024c690d9c80",
+    "patch_0255246a371b",
+    "patch_1404cec37fd7",
+    "patch_15f983094cc1",
+    "patch_172723ac5a94",
+    "patch_1aeebb99bd36",
+    "patch_1b021832f32a",
+    "patch_21bafea8dea9",
+    "patch_3b2b022f3695",
+    "patch_4378791918ad",
+    "patch_4c77b137e56b",
+    "patch_53835b0af197",
+    "patch_5417c8c0b4db",
+    "patch_7a5916700d19",
+    "patch_86245bef8e06",
+    "patch_8651fbc225f3",
+    "patch_911faf62b8c7",
+    "patch_94fa4c2ea4af",
+    "patch_a11930ad372d",
+    "patch_a3e598330844",
+    "patch_a4b305331eab",
+    "patch_a6e618277fde",
+    "patch_b096a5d91433",
+    "patch_bc94a3538745",
+    "patch_c40cd6261176",
+    "patch_c48e0257e2c8",
+    "patch_dc0a14d6ff41",
+    "patch_e165084f15bf",
+    "patch_eca3749a3fbe",
+    "patch_eeb80301d24f",
+    "patch_f6a95465c92e"
+  ],
+  "opaque_id": "case_10",
+  "original_discovery": {
+    "error": null,
+    "sampling_reminder": "Cycle numbers are testbench sample indices, not internal RTL states. Outputs sampled after current inputs settle and before rising clock edge.",
+    "status": "DISCOVERY_ONLY",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vsdspi"
+          ],
+          "elapsed_seconds": 0.7159,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 3136123,
+        "cycles": 522559,
+        "expected_sha256": "40d0ee01fe877ebb9d90ee849e533cb0043011d673ff21a109d062980a6fdcd6",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "8c60b9cd2dc9aab12b1476f7e8048f5bfa6f9e69217d65249745dadd7a6c8a8a",
+        "trace_label": "published_discovery_trace"
+      }
+    ]
+  },
+  "original_discovery_pass": true,
+  "pool_sha256": "e484dcba2eec7a8fd4be78350683f71d17760a4360d6cc6acff4f0591eef49fb",
+  "size_order": [
+    "patch_007003718e4b",
+    "patch_21bafea8dea9",
+    "patch_15f983094cc1",
+    "patch_1b021832f32a",
+    "patch_f6a95465c92e",
+    "patch_a3e598330844",
+    "patch_e165084f15bf",
+    "patch_b096a5d91433",
+    "patch_c48e0257e2c8",
+    "patch_1404cec37fd7",
+    "patch_86245bef8e06",
+    "patch_7a5916700d19",
+    "patch_c40cd6261176",
+    "patch_a4b305331eab",
+    "patch_4378791918ad",
+    "patch_172723ac5a94",
+    "patch_bc94a3538745",
+    "patch_53835b0af197",
+    "patch_eeb80301d24f",
+    "patch_0255246a371b",
+    "patch_94fa4c2ea4af",
+    "patch_911faf62b8c7",
+    "patch_4c77b137e56b",
+    "patch_eca3749a3fbe",
+    "patch_a11930ad372d",
+    "patch_1aeebb99bd36",
+    "patch_dc0a14d6ff41",
+    "patch_5417c8c0b4db",
+    "patch_024c690d9c80",
+    "patch_a6e618277fde",
+    "patch_3b2b022f3695",
+    "patch_8651fbc225f3"
+  ],
+  "source_order": [
+    "patch_4378791918ad",
+    "patch_172723ac5a94",
+    "patch_c48e0257e2c8",
+    "patch_1404cec37fd7",
+    "patch_bc94a3538745",
+    "patch_53835b0af197",
+    "patch_eeb80301d24f",
+    "patch_0255246a371b",
+    "patch_7a5916700d19",
+    "patch_a4b305331eab",
+    "patch_a3e598330844",
+    "patch_b096a5d91433",
+    "patch_007003718e4b",
+    "patch_15f983094cc1",
+    "patch_86245bef8e06",
+    "patch_c40cd6261176",
+    "patch_3b2b022f3695",
+    "patch_8651fbc225f3",
+    "patch_024c690d9c80",
+    "patch_a6e618277fde",
+    "patch_dc0a14d6ff41",
+    "patch_5417c8c0b4db",
+    "patch_94fa4c2ea4af",
+    "patch_911faf62b8c7",
+    "patch_a11930ad372d",
+    "patch_1aeebb99bd36",
+    "patch_4c77b137e56b",
+    "patch_eca3749a3fbe",
+    "patch_21bafea8dea9",
+    "patch_f6a95465c92e",
+    "patch_1b021832f32a",
+    "patch_e165084f15bf"
+  ],
+  "source_sha256": "308167131ac42c3b316e75d36423da54820977eafef0d37bfbd673a3b564eba0"
+}

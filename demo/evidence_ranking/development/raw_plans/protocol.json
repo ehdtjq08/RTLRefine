@@ -1,0 +1,45 @@
+{
+  "algorithm_hashes": {
+    "configs/budget.json": "915447a9fdee019db7e6ccb1fb74cad5a0583140f055933c669ad47c86263dd2",
+    "configs/pricing.json": "6d0c219e3c023cc76b13732b1a594b9b15b9b9eb5711f41dee863a0007f32a3e",
+    "rtl_agent/budget.py": "99fa5be7fc3067423969a0fe88a3404d7ad28e2ad015e0e9a96908f2d4263fd2",
+    "rtl_agent/evidence_ranking/__init__.py": "9df595babfe377ac6af7156d29edc5b9b8e44c5602e1e2d198ab8945a96a590b",
+    "rtl_agent/evidence_ranking/aggregate.py": "9c3cfecafd5e70a808e6b3c3efbb035d1fd7e4dc6fea4f18aa18e9995bd490eb",
+    "rtl_agent/evidence_ranking/evaluate.py": "a40fc39276869e52aeb8002d91dd56c83bf846ce78ddd7ab40523c1498306d4c",
+    "rtl_agent/evidence_ranking/features.py": "103ffb678ed01906d9fd9d7df0d413cff10b585eef236c18525860509ccd1f00",
+    "rtl_agent/evidence_ranking/model.py": "6f779f430994a2a50c9553cc311c49b44a36002e26dd2e1fedd9d8542e692466",
+    "rtl_agent/model_client.py": "375935c18f8cbce43038a10179b35a308b2cf30608bdef32bb31d3e6955c50e1",
+    "rtl_agent/model_settings.py": "0ce64b548fd67b31f2b3d67a9d39536cc89f999937cdf99df3a7054066d06ff7",
+    "scripts/build_candidate_catalog.py": "c5e0e52b21569c2d9d51befda4552dfbdaa76eb74410b494cd45f91cc646a0fb",
+    "scripts/prepare_evidence_ranking.py": "0bd7a97c81de6d0ea1e82204b3fb6c00bf9f01bbd38c21cf84335f162cc7979e",
+    "scripts/run_evidence_ranking_plans.py": "ab7aa17de694ddef1131eef0b316b7424c9c8afdd72fc7f94b84a170b19f480f"
+  },
+  "candidate_outcomes_available_to_ranker": false,
+  "confidence_limit": "Stability and citation validity are not correctness probabilities or causal proof",
+  "consensus": "Top-eight Borda; content-hash tie break with fixed heuristic; below .35 mean top-eight Jaccard falls back to heuristic",
+  "estimated_spend_cap": 6.0,
+  "evidence_features": "Original static dependency overapproximation, direct changed targets, related-site scope completeness, edit size",
+  "forced_prefix": 0,
+  "heuristic_weights": {
+    "dependency_relevance": 4,
+    "direct_failure_target": 2,
+    "minimality": 0.5,
+    "structural_completeness": 2
+  },
+  "inputs_manifest_sha256": "451bdf4d9e47086be019c626d0ba40ea53aeadaafc5dd28c0588f24219d90389",
+  "max_output_tokens": 6144,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "private_catalog_may_be_scored_only_after_all_plans": true,
+  "raw_views_per_trial": 1,
+  "same_candidate_cap": 8,
+  "scope": "Known development cohort; this run cannot establish unseen-module or general RTL superiority.",
+  "settings": {
+    "api_timeout_seconds": 240,
+    "enable_thinking": false,
+    "json_mode": true,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "trials": 3,
+  "views_per_evidence_trial": 3
+}

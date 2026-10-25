@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranked_ids\": [\"candidate_002\", \"candidate_006\", \"candidate_008\", \"candidate_010\", \"candidate_012\", \"candidate_014\", \"candidate_016\", \"candidate_004\"],\n  \"explanation\": \"All first mismatches occur on o_mosi with bit-pattern inversions, indicating a consistent byte/bit ordering defect in the MOSI datapath. The public contract mandates preservation of serial bit order and FIFO word/byte order. Candidates 002, 006, 008, 010, 012, 014, and 016 each reverse byte lanes feeding o_mosi (via r_data_reg, fifo_a_reg, fifo_b_reg, or wb_data) and directly address the observed symptom. Candidate 004 reverses bytes in the command CRC path, which also feeds the low-level SPI transmitter. Condition-gate candidates (001, 003, 005, 007, 009, 011, 013, 015, 017\u2013040) only modify control-flow predicates and cannot correct a pure bit-order error.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792747060,
+  "id": "chatcmpl-b76ef29df337a32ec9f4413f3e00f5a3",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 289,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 19501,
+    "prompt_tokens": 19501,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 19790
+  }
+}

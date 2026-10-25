@@ -1,0 +1,361 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_042f4158d3f0": 6,
+          "patch_14fa1671138d": 6,
+          "patch_1f207853dea8": 14,
+          "patch_233b0c340b70": 1,
+          "patch_25df7630e139": 1,
+          "patch_30270cbdad9d": 10,
+          "patch_41986937eebf": 0,
+          "patch_44016440aa75": 0,
+          "patch_58a50ec716ac": 0,
+          "patch_624c3db76fc0": 3,
+          "patch_6b523645a71e": 5,
+          "patch_6dbbdce74c2f": 0,
+          "patch_7790f6f01318": 3,
+          "patch_7cbb431518f8": 0,
+          "patch_926f4e9c3561": 7,
+          "patch_97ba2adecc6f": 11,
+          "patch_c92819541122": 0,
+          "patch_c9c4ad33c838": 15,
+          "patch_da55a60398f6": 8,
+          "patch_df9a5ce60bcb": 1,
+          "patch_e9c2e7485e9b": 15,
+          "patch_ea82238c5c7a": 0,
+          "patch_ed69a2c357ce": 2,
+          "patch_fda8715728b0": 0
+        },
+        "fallback_reason": "Insufficient valid or stable model views",
+        "order": [
+          "patch_14fa1671138d",
+          "patch_1f207853dea8",
+          "patch_624c3db76fc0",
+          "patch_6b523645a71e",
+          "patch_c92819541122",
+          "patch_58a50ec716ac",
+          "patch_97ba2adecc6f",
+          "patch_c9c4ad33c838",
+          "patch_e9c2e7485e9b",
+          "patch_042f4158d3f0",
+          "patch_233b0c340b70",
+          "patch_30270cbdad9d",
+          "patch_41986937eebf",
+          "patch_926f4e9c3561",
+          "patch_da55a60398f6",
+          "patch_df9a5ce60bcb",
+          "patch_ea82238c5c7a",
+          "patch_ed69a2c357ce",
+          "patch_7cbb431518f8",
+          "patch_25df7630e139",
+          "patch_44016440aa75",
+          "patch_6dbbdce74c2f",
+          "patch_7790f6f01318",
+          "patch_fda8715728b0"
+        ],
+        "raw_consensus_order": [
+          "patch_c9c4ad33c838",
+          "patch_e9c2e7485e9b",
+          "patch_1f207853dea8",
+          "patch_97ba2adecc6f",
+          "patch_30270cbdad9d",
+          "patch_da55a60398f6",
+          "patch_926f4e9c3561",
+          "patch_14fa1671138d",
+          "patch_042f4158d3f0",
+          "patch_6b523645a71e",
+          "patch_624c3db76fc0",
+          "patch_7790f6f01318",
+          "patch_ed69a2c357ce",
+          "patch_233b0c340b70",
+          "patch_df9a5ce60bcb",
+          "patch_25df7630e139",
+          "patch_c92819541122",
+          "patch_58a50ec716ac",
+          "patch_41986937eebf",
+          "patch_ea82238c5c7a",
+          "patch_7cbb431518f8",
+          "patch_44016440aa75",
+          "patch_6dbbdce74c2f",
+          "patch_fda8715728b0"
+        ],
+        "stability": 0.23565323565323562,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_042f4158d3f0": 2,
+          "patch_14fa1671138d": 1,
+          "patch_1f207853dea8": 2,
+          "patch_233b0c340b70": 1,
+          "patch_25df7630e139": 1,
+          "patch_30270cbdad9d": 2,
+          "patch_41986937eebf": 0,
+          "patch_44016440aa75": 0,
+          "patch_58a50ec716ac": 0,
+          "patch_624c3db76fc0": 1,
+          "patch_6b523645a71e": 1,
+          "patch_6dbbdce74c2f": 0,
+          "patch_7790f6f01318": 1,
+          "patch_7cbb431518f8": 0,
+          "patch_926f4e9c3561": 1,
+          "patch_97ba2adecc6f": 2,
+          "patch_c92819541122": 0,
+          "patch_c9c4ad33c838": 2,
+          "patch_da55a60398f6": 2,
+          "patch_df9a5ce60bcb": 1,
+          "patch_e9c2e7485e9b": 3,
+          "patch_ea82238c5c7a": 0,
+          "patch_ed69a2c357ce": 1,
+          "patch_fda8715728b0": 0
+        },
+        "used_model_order": false,
+        "valid_views": 3
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.007874,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "3582ab043df240b2a5ec539c1dad86d0",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_41986937eebf",
+          "patch_6dbbdce74c2f",
+          "patch_25df7630e139",
+          "patch_97ba2adecc6f",
+          "patch_7790f6f01318",
+          "patch_233b0c340b70",
+          "patch_c9c4ad33c838",
+          "patch_6b523645a71e"
+        ],
+        "proposal": {
+          "explanation": "The trace mismatches on o_data show unexpected zeroes during active valid/ready handshake cycles after reset deassertion. This points to conditions incorrectly gating data flow or output registers holding zero due to reset-sensitive qualifiers missing. The top candidates add !i_reset guards to readiness (o_ready), the r_valid set condition, and the o_valid generation path, directly aligning state transitions with the post-reset operational window. The r_valid condition (line 137) and o_ready assignment (line 160) are the most upstream handshake gates; qualifying them with !i_reset prevents premature or stalled valid assertions. The o_valid initial condition (line 133) and the r_valid else-if gate (line 140) are secondary but related. The rhs substitutions (w_data, i_data) address the symptom (zero payload) but not the root gating cause, so they rank lower.",
+          "ranking": [
+            {
+              "id": "patch_41986937eebf",
+              "mechanism": "Qualify condition with nearby scalar !i_reset"
+            },
+            {
+              "id": "patch_6dbbdce74c2f",
+              "mechanism": "Qualify condition with nearby scalar !o_valid"
+            },
+            {
+              "id": "patch_25df7630e139",
+              "mechanism": "Qualify condition with nearby scalar i_reset"
+            },
+            {
+              "id": "patch_97ba2adecc6f",
+              "mechanism": "Qualify condition with nearby scalar i_reset"
+            },
+            {
+              "id": "patch_7790f6f01318",
+              "mechanism": "Qualify readiness with !i_reset"
+            },
+            {
+              "id": "patch_233b0c340b70",
+              "mechanism": "Qualify condition with nearby scalar !i_valid"
+            },
+            {
+              "id": "patch_c9c4ad33c838",
+              "mechanism": "Use existing same-width signal w_data for o_data"
+            },
+            {
+              "id": "patch_6b523645a71e",
+              "mechanism": "Use existing same-width signal i_data for o_data"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 4.3365
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.013356,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "7ce52f03b95a440fa3b210e2719a7218",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_c9c4ad33c838",
+            "patch_926f4e9c3561",
+            "patch_1f207853dea8",
+            "patch_6b523645a71e",
+            "patch_e9c2e7485e9b",
+            "patch_624c3db76fc0",
+            "patch_30270cbdad9d",
+            "patch_df9a5ce60bcb"
+          ],
+          "proposal": {
+            "explanation": "The o_data output is stuck at 0 because multiple combinational and sequential assignments drive 0 instead of the correct data sources. The highest-priority fixes directly target the failing o_data assignments by substituting the appropriate data signals (w_data or i_data) for the hardcoded 0. The passthrough path and both output register configurations (NET_OUTPUT and REG_OUTPUT) each have sites where 0 is assigned to o_data. Structural coverage shows these are the exact failure targets. Lower-priority condition_gate patches adjust r_valid control logic but don't directly fix the data path driving o_data=0.",
+            "ranking": [
+              {
+                "id": "patch_c9c4ad33c838",
+                "mechanism": "Replace 0 with w_data in the passthrough o_data assignment, using the available staging wire that carries the buffered data"
+              },
+              {
+                "id": "patch_926f4e9c3561",
+                "mechanism": "Replace 0 with w_data in the NET_OUTPUT combinational o_data logic, using the available staging wire that carries the buffered data"
+              },
+              {
+                "id": "patch_1f207853dea8",
+                "mechanism": "Replace 0 with i_data in the REG_OUTPUT sequential o_data logic, directly feeding the input when buffer is empty"
+              },
+              {
+                "id": "patch_6b523645a71e",
+                "mechanism": "Replace 0 with i_data in the passthrough o_data assignment, directly feeding the input when buffer is empty"
+              },
+              {
+                "id": "patch_e9c2e7485e9b",
+                "mechanism": "Replace 0 with w_data in the REG_OUTPUT sequential o_data logic, using the staging wire that carries buffered data"
+              },
+              {
+                "id": "patch_624c3db76fc0",
+                "mechanism": "Replace 0 with i_data in the passthrough o_data assignment, directly feeding the input when buffer is empty"
+              },
+              {
+                "id": "patch_30270cbdad9d",
+                "mechanism": "Add (!i_valid) gate to r_valid set condition to prevent setting valid when input is not asserted"
+              },
+              {
+                "id": "patch_df9a5ce60bcb",
+                "mechanism": "Add (i_reset) gate to r_valid clear condition to make clear synchronous with reset"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.9752
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.013584,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "8bb31c282373482d98adc96c6f2d854d",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_30270cbdad9d",
+            "patch_c9c4ad33c838",
+            "patch_14fa1671138d",
+            "patch_e9c2e7485e9b",
+            "patch_97ba2adecc6f",
+            "patch_da55a60398f6",
+            "patch_042f4158d3f0",
+            "patch_233b0c340b70"
+          ],
+          "proposal": {
+            "explanation": "The failure shows o_data stuck at 0 while expected values appear at cycles 6-27. The root cause is that r_valid never gets set during reset release because the condition at line 135 requires (i_valid && o_ready) && (o_valid && !i_ready), but o_valid depends on r_valid creating a circular dependency. patch_30270cbdad9d fixes the clear path so r_valid can clear when i_ready asserts without requiring i_valid. The w_data substitutions (patches c9c4ad33c838, 14fa1671138d, e9c2e7485e9b, 97ba2adecc6f) ensure registered data reaches o_data instead of hard zeros. The r_valid set guards (patches da55a60398f6, 042f4158d3f0, 233b0c340b70) prevent spurious sets during reset or invalid input phases.",
+            "ranking": [
+              {
+                "id": "patch_30270cbdad9d",
+                "mechanism": "adds missing i_valid guard to r_valid clear path in LOGIC block at line 140"
+              },
+              {
+                "id": "patch_c9c4ad33c838",
+                "mechanism": "replaces hard zero with registered w_data in REG_OUTPUT else-branch at line 205"
+              },
+              {
+                "id": "patch_14fa1671138d",
+                "mechanism": "replaces hard zero with registered w_data in REG_OUTPUT o_data sequential block at line 208"
+              },
+              {
+                "id": "patch_e9c2e7485e9b",
+                "mechanism": "replaces hard zero with registered w_data in REG_OUTPUT ro_valid sequential block at line 183"
+              },
+              {
+                "id": "patch_97ba2adecc6f",
+                "mechanism": "replaces hard zero with registered w_data in NET_OUTPUT combinational block at line 111"
+              },
+              {
+                "id": "patch_da55a60398f6",
+                "mechanism": "adds i_valid guard to r_valid set condition at line 135"
+              },
+              {
+                "id": "patch_042f4158d3f0",
+                "mechanism": "adds i_reset guard to r_valid set condition at line 137"
+              },
+              {
+                "id": "patch_233b0c340b70",
+                "mechanism": "adds !i_valid guard to r_valid set condition at line 135"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.5596
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.013533,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "a31959be575440a989846047805945cd",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_1f207853dea8",
+            "patch_97ba2adecc6f",
+            "patch_e9c2e7485e9b",
+            "patch_da55a60398f6",
+            "patch_042f4158d3f0",
+            "patch_7790f6f01318",
+            "patch_ed69a2c357ce",
+            "patch_25df7630e139"
+          ],
+          "proposal": {
+            "explanation": "The simulation mismatches show o_data stuck at 0 when it should carry valid payload values (65, 253, 184, 143, 121). The highest-relevance candidates directly substitute the correct data signals (i_data or w_data/r_data) into the o_data combinational assignments where 0 is currently driven. patch_1f207853dea8 and patch_e9c2e7485e9b target the NET_OUTPUT combinational path; patch_97ba2adecc6f targets the REG_OUTPUT sequential path. The condition_gate candidates adjust r_valid control logic around reset and valid qualification, which may fix the valid/ready handshake that gates data flow, but they do not directly supply data to o_data and show lower structural coverage of the failure site.",
+            "ranking": [
+              {
+                "id": "patch_1f207853dea8",
+                "mechanism": "rhs_substitution on o_data assignment in NET_OUTPUT: replace constant 0 with i_data when r_valid is false and low-power/invalid conditions apply"
+              },
+              {
+                "id": "patch_97ba2adecc6f",
+                "mechanism": "rhs_substitution on o_data assignment in REG_OUTPUT: replace constant 0 with w_data (which carries r_data) when r_valid is false"
+              },
+              {
+                "id": "patch_e9c2e7485e9b",
+                "mechanism": "rhs_substitution on o_data assignment in NET_OUTPUT: replace constant 0 with w_data (r_data) when r_valid is false and low-power/invalid conditions apply"
+              },
+              {
+                "id": "patch_da55a60398f6",
+                "mechanism": "condition_gate on r_valid initial block: qualify reset with i_valid so r_valid is not cleared during valid input"
+              },
+              {
+                "id": "patch_042f4158d3f0",
+                "mechanism": "condition_gate on r_valid set condition: add i_reset check to prevent r_valid being set during reset"
+              },
+              {
+                "id": "patch_7790f6f01318",
+                "mechanism": "condition_gate on r_valid initial block: qualify OPT_INITIAL with i_valid"
+              },
+              {
+                "id": "patch_ed69a2c357ce",
+                "mechanism": "condition_gate on r_valid initial block: qualify reset with !o_ready"
+              },
+              {
+                "id": "patch_25df7630e139",
+                "mechanism": "condition_gate on r_valid initial block: qualify OPT_INITIAL with i_reset"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 3.751
+        }
+      ]
+    }
+  ]
+}

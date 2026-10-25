@@ -1,0 +1,37 @@
+{
+  "explanation": "Ranking prioritizes patches with direct_failure_target=true on the failing port m_axis_tlast (patches 2c8752251e37, 17422b8b1575, bdd445d05642) as they directly address the output register driving the observed mismatch. Next, patch 5d2b925ce50d modifies the STATE_OUTPUT_DATA termination condition (frame_ptr_reg == offset-1) with a monitor_axis_tready guard, which is structurally adjacent to the frame_ptr advancement logic and could correct premature or delayed tlast assertion. Patches 316ca7f541a1 and c34f93524a6a target m_axis_tlast_int/m_axis_tuser_int in the combinational output path; 316ca7f541a1 substitutes store_output (asserted when trigger fires) for the hardcoded 0, which aligns tlast_int with the start of a new frame emission. The remaining candidates (a55e46059a07, 1bcf966a75b9) adjust frame_ptr_next initialization and a TAG_ENABLE gate respectively, which are less directly tied to the tlast signal but may influence frame_ptr progression and thus the last-byte detection.",
+  "ranking": [
+    {
+      "id": "patch_2c8752251e37",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_17422b8b1575",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_bdd445d05642",
+      "mechanism": "reset_completion"
+    },
+    {
+      "id": "patch_5d2b925ce50d",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_c34f93524a6a",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_a55e46059a07",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_1bcf966a75b9",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_316ca7f541a1",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

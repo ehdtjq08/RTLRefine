@@ -1,0 +1,898 @@
+{
+  "accepted": true,
+  "after": {
+    "port": "m_axis_tvalid",
+    "rows": [
+      {
+        "actual": "1",
+        "cycle": 9,
+        "expected": "1",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 10,
+        "expected": "1",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 11,
+        "expected": "1",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 12,
+        "expected": "0",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 13,
+        "expected": "0",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 14,
+        "expected": "0",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 15,
+        "expected": "0",
+        "match": true
+      }
+    ],
+    "sampling": "After current inputs settle, before the rising edge; hexadecimal values; ? is unqualified data"
+  },
+  "api_requests": 1,
+  "batch": {
+    "batched_candidates": 34,
+    "candidates": 42,
+    "control_match": true,
+    "new_model_calls": 0,
+    "scope": "Complete-pool public-trace screening, not final repair admission or unbounded equivalence",
+    "standalone_fallbacks": 8,
+    "status": "COMPLETE",
+    "wall_seconds": 4.742612565984018
+  },
+  "before": {
+    "port": "m_axis_tvalid",
+    "rows": [
+      {
+        "actual": "1",
+        "cycle": 9,
+        "expected": "1",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 10,
+        "expected": "1",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 11,
+        "expected": "1",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 12,
+        "expected": "0",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 13,
+        "expected": "0",
+        "match": false
+      },
+      {
+        "actual": "1",
+        "cycle": 14,
+        "expected": "0",
+        "match": false
+      },
+      {
+        "actual": "1",
+        "cycle": 15,
+        "expected": "0",
+        "match": false
+      }
+    ],
+    "sampling": "After current inputs settle, before the rising edge; hexadecimal values; ? is unqualified data"
+  },
+  "case_id": "axis-fifo-d12_d12",
+  "diagnosis": {
+    "api_requests": 1,
+    "cost": {
+      "estimated_usd": 0.008112,
+      "phase": "development",
+      "pricing_verified_on": "2026-10-22",
+      "request_id": "99aaab4bd45140dba7b9f053196e9494",
+      "reserved_usd": 1.060864,
+      "state": "settled"
+    },
+    "diagnosis": "The FIFO incorrectly publishes frames after reset because the read-side state (rd_ptr_reg, mem_read_data_valid_reg) is not initialized, causing garbage data to appear valid immediately. Simultaneously, the write-side pointer (wr_ptr_cur_reg) is not reset, so the FRAME_FIFO logic misinterprets the frame boundary and asserts m_axis_tvalid for three cycles with stale data.",
+    "display_ids": [
+      "candidate_006",
+      "candidate_010",
+      "candidate_002",
+      "candidate_017",
+      "candidate_003"
+    ],
+    "ids": [
+      "patch_df64054bcfd7",
+      "patch_4e6435726b71",
+      "patch_f32354795268",
+      "patch_bdae4e000e5d",
+      "patch_d49e609b915e"
+    ],
+    "proposal": {
+      "diagnosis": "The FIFO incorrectly publishes frames after reset because the read-side state (rd_ptr_reg, mem_read_data_valid_reg) is not initialized, causing garbage data to appear valid immediately. Simultaneously, the write-side pointer (wr_ptr_cur_reg) is not reset, so the FRAME_FIFO logic misinterprets the frame boundary and asserts m_axis_tvalid for three cycles with stale data.",
+      "ranking": [
+        {
+          "id": "candidate_006",
+          "mechanism": "Resets rd_ptr_reg and mem_read_data_valid_reg in the read-side always_ff block, eliminating stale read pointers and invalid data valid flags that cause m_axis_tvalid to assert prematurely."
+        },
+        {
+          "id": "candidate_010",
+          "mechanism": "Resets rd_addr_reg in the same block, ensuring the memory read address starts from a known state and does not fetch garbage on the first read after reset."
+        },
+        {
+          "id": "candidate_002",
+          "mechanism": "Resets wr_addr_reg in the write-side always_ff block, guaranteeing the first accepted frame is written to address 0 and aligns with the cleared read pointer."
+        },
+        {
+          "id": "candidate_017",
+          "mechanism": "Resets m_axis_reg so the output register does not drive stale frame payload onto m_axis_tdata/m_axis_tlast while m_axis_tvalid is incorrectly high."
+        },
+        {
+          "id": "candidate_003",
+          "mechanism": "Qualifies s_axis_tready with !rst, preventing the write logic from accepting input during the reset cycle and avoiding pointer updates that would corrupt frame tracking."
+        }
+      ]
+    },
+    "status": "VALID",
+    "wall_seconds": 3.4628824460087344
+  },
+  "directory": "/home/hands/Nebius/results/batch_repair_overflow_nebius_v2_20261023",
+  "fast_path_pass": false,
+  "final_check": {
+    "accepted": true,
+    "audit_pass": true,
+    "commands": [
+      {
+        "command": [
+          "/home/hands/Nebius/.tools/bin/verilator",
+          "--cc",
+          "--exe",
+          "-Wno-fatal",
+          "--x-initial",
+          "0",
+          "--x-assign",
+          "0",
+          "--top-module",
+          "axis_fifo",
+          "--Mdir",
+          "obj_dir",
+          "candidate.v",
+          "dependencies.v",
+          "harness.cpp"
+        ],
+        "elapsed_seconds": 0.0327,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "translate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      {
+        "command": [
+          "/usr/bin/make",
+          "-C",
+          "obj_dir",
+          "-f",
+          "Vaxis_fifo.mk",
+          "-j1",
+          "OPT_FAST=-O0",
+          "OPT_SLOW=-O0"
+        ],
+        "elapsed_seconds": 1.8186,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "build",
+        "status": "PASS",
+        "zero_initialization": true
+      }
+    ],
+    "corrected_RTL_loaded_for_scoring": false,
+    "directory": "/home/hands/Nebius/results/batch_repair_overflow_nebius_v2_20261023/independent_check",
+    "discovery_pass": true,
+    "formal_proof": false,
+    "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+    "new_api_calls": 0,
+    "oracle_depends_on_corrected_trace_values": true,
+    "rtl_sha256": "e6cf9061c8301b378bf2566c07ce6e02ffa47f904f8002b7a3b1012961852294",
+    "status": "ALL_SEALED_TRACES_PASS",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_fifo"
+          ],
+          "elapsed_seconds": 0.017,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 80,
+        "cycles": 16,
+        "expected_sha256": "543939beec13fc0940ad067fc4a071abc87a4875a447889999f409c7de76fce3",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "ff8b3c9eedd1fbf296d087aba358f1b96b736d489e9ef83b34d548f39c66f784",
+        "trace_label": "published_discovery_trace"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_fifo"
+          ],
+          "elapsed_seconds": 0.0166,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 1024,
+        "cycles": 128,
+        "expected_sha256": "f5992cc9fa197936883d04642be6c89188265e5f12967672707095a79f0cf2ec",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "fe85e39dbf0908a2662c3bc720f56764df8a8c463f828ddec4e4a521e58dd85e",
+        "trace_label": "unexposed_payload_transform_7403"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_fifo"
+          ],
+          "elapsed_seconds": 0.0166,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 1024,
+        "cycles": 128,
+        "expected_sha256": "b6f89ff7357adc13c807bdb78b77cda315ea8b1b8f8764afbd63ab0c54477923",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "eb03318b26771813994650ac356e0e91af2650501d4dd399614c0c37f7c1afcd",
+        "trace_label": "unexposed_payload_transform_9601"
+      }
+    ]
+  },
+  "key": "overflow",
+  "nvidia_prefix_applied": true,
+  "original_discovery": {
+    "commands": [
+      {
+        "command": [
+          "/home/hands/Nebius/.tools/bin/verilator",
+          "--cc",
+          "--exe",
+          "-Wno-fatal",
+          "--x-initial",
+          "0",
+          "--x-assign",
+          "0",
+          "--top-module",
+          "axis_fifo",
+          "--Mdir",
+          "obj_dir",
+          "candidate.v",
+          "dependencies.v",
+          "harness.cpp"
+        ],
+        "elapsed_seconds": 0.033,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "translate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      {
+        "command": [
+          "/usr/bin/make",
+          "-C",
+          "obj_dir",
+          "-f",
+          "Vaxis_fifo.mk",
+          "-j1",
+          "OPT_FAST=-O0",
+          "OPT_SLOW=-O0"
+        ],
+        "elapsed_seconds": 1.8686,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "build",
+        "status": "PASS",
+        "zero_initialization": true
+      }
+    ],
+    "directory": "/home/hands/Nebius/results/batch_repair_overflow_nebius_v2_20261023/original_discovery",
+    "discovery_pass": false,
+    "new_api_calls": 0,
+    "rtl_sha256": "06b56f304a376856f1c9505e30d15b2c77f73c69db1ec2d07628c15f06851665",
+    "status": "DISCOVERY_TRACE_FAILED",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_fifo"
+          ],
+          "elapsed_seconds": 0.0177,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 80,
+        "cycles": 16,
+        "expected_sha256": "543939beec13fc0940ad067fc4a071abc87a4875a447889999f409c7de76fce3",
+        "first_mismatches": [
+          {
+            "actual": 1,
+            "cycle": 13,
+            "expected": 0,
+            "port": "m_axis_tvalid"
+          },
+          {
+            "actual": 1,
+            "cycle": 14,
+            "expected": 0,
+            "port": "m_axis_tvalid"
+          },
+          {
+            "actual": 1,
+            "cycle": 15,
+            "expected": 0,
+            "port": "m_axis_tvalid"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                0,
+                4,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                5,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 5
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                0,
+                5,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 6
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                6,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                7,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 7
+          }
+        ],
+        "mismatch_count": 3,
+        "passed": false,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "ff8b3c9eedd1fbf296d087aba358f1b96b736d489e9ef83b34d548f39c66f784",
+        "trace_label": "published_discovery_trace"
+      }
+    ]
+  },
+  "pool_candidates": 43,
+  "rank_order": [
+    "candidate_006",
+    "candidate_010",
+    "candidate_002",
+    "candidate_017",
+    "candidate_003",
+    "candidate_015",
+    "candidate_013",
+    "candidate_032",
+    "candidate_043",
+    "candidate_027",
+    "candidate_041",
+    "candidate_038",
+    "candidate_035",
+    "candidate_022",
+    "candidate_028",
+    "candidate_024",
+    "candidate_020",
+    "candidate_026",
+    "candidate_031",
+    "candidate_040",
+    "candidate_036",
+    "candidate_025",
+    "candidate_029",
+    "candidate_034",
+    "candidate_030",
+    "candidate_039",
+    "candidate_023",
+    "candidate_042",
+    "candidate_033",
+    "candidate_021",
+    "candidate_037",
+    "candidate_007",
+    "candidate_019",
+    "candidate_012",
+    "candidate_018",
+    "candidate_009",
+    "candidate_016",
+    "candidate_008",
+    "candidate_011",
+    "candidate_005",
+    "candidate_004",
+    "candidate_001",
+    "candidate_014"
+  ],
+  "ranking": {
+    "heuristic_order": [
+      "patch_bfe8471edc6d",
+      "patch_66b9a94c3869",
+      "patch_f32354795268",
+      "patch_018be7c3f5da",
+      "patch_07a65f6c7ebd",
+      "patch_14560e30c11f",
+      "patch_1a1030a1adc6",
+      "patch_22b3b83e1afe",
+      "patch_2428910b6a74",
+      "patch_33eda120828e",
+      "patch_44c2dbb83e6a",
+      "patch_4dbf02942cc1",
+      "patch_503a809c4c30",
+      "patch_5c0b9ffe4584",
+      "patch_6d0a3b3f5ecf",
+      "patch_87e9f03179c2",
+      "patch_a0670fec0539",
+      "patch_a1b8a0260a9f",
+      "patch_a4f5abd3f82b",
+      "patch_a60590ee9d4f",
+      "patch_ab788e1def2d",
+      "patch_bcf62ff584ff",
+      "patch_bfd9d08b98f4",
+      "patch_cac4f5704d7e",
+      "patch_d13bc6261e3c",
+      "patch_eceb113ac890",
+      "patch_fdb25cd97ea7",
+      "patch_7834a61da6c6",
+      "patch_d49e609b915e",
+      "patch_4e6435726b71",
+      "patch_df64054bcfd7",
+      "patch_701132eb2141",
+      "patch_7b712140b888",
+      "patch_7dbfb0ba6ac9",
+      "patch_863f4ec32e65",
+      "patch_ad9c3f237cc3",
+      "patch_b013a04cc2c5",
+      "patch_b64d3a75289e",
+      "patch_bdae4e000e5d",
+      "patch_c283d27d2530",
+      "patch_cbadcbef2f9a",
+      "patch_e6cf9061c830",
+      "patch_fb20f7054af1"
+    ],
+    "order": [
+      "patch_df64054bcfd7",
+      "patch_4e6435726b71",
+      "patch_f32354795268",
+      "patch_bdae4e000e5d",
+      "patch_d49e609b915e",
+      "patch_bfe8471edc6d",
+      "patch_66b9a94c3869",
+      "patch_018be7c3f5da",
+      "patch_07a65f6c7ebd",
+      "patch_14560e30c11f",
+      "patch_1a1030a1adc6",
+      "patch_22b3b83e1afe",
+      "patch_2428910b6a74",
+      "patch_33eda120828e",
+      "patch_44c2dbb83e6a",
+      "patch_4dbf02942cc1",
+      "patch_503a809c4c30",
+      "patch_5c0b9ffe4584",
+      "patch_6d0a3b3f5ecf",
+      "patch_87e9f03179c2",
+      "patch_a0670fec0539",
+      "patch_a1b8a0260a9f",
+      "patch_a4f5abd3f82b",
+      "patch_a60590ee9d4f",
+      "patch_ab788e1def2d",
+      "patch_bcf62ff584ff",
+      "patch_bfd9d08b98f4",
+      "patch_cac4f5704d7e",
+      "patch_d13bc6261e3c",
+      "patch_eceb113ac890",
+      "patch_fdb25cd97ea7",
+      "patch_7834a61da6c6",
+      "patch_701132eb2141",
+      "patch_7b712140b888",
+      "patch_7dbfb0ba6ac9",
+      "patch_863f4ec32e65",
+      "patch_ad9c3f237cc3",
+      "patch_b013a04cc2c5",
+      "patch_b64d3a75289e",
+      "patch_c283d27d2530",
+      "patch_cbadcbef2f9a",
+      "patch_e6cf9061c830",
+      "patch_fb20f7054af1"
+    ],
+    "scope": "Ranks a supplied finite pool from public observations; does not establish correctness or grammar coverage.",
+    "source_sha256": "06b56f304a376856f1c9505e30d15b2c77f73c69db1ec2d07628c15f06851665"
+  },
+  "scope": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "selected_edits": [
+    {
+      "end": 7032,
+      "old": "1'b0",
+      "replacement": "drop_frame_reg",
+      "start": 7028
+    }
+  ],
+  "selected_family": "state_retention",
+  "selected_id": "candidate_001",
+  "selected_sha256": "e6cf9061c8301b378bf2566c07ce6e02ffa47f904f8002b7a3b1012961852294",
+  "source_sha256": "06b56f304a376856f1c9505e30d15b2c77f73c69db1ec2d07628c15f06851665",
+  "status": "ALL_SEALED_TRACES_PASS",
+  "wall_seconds": 14.915375100914389
+}

@@ -1,0 +1,114 @@
+{
+  "case": {
+    "buggy_commit": "87fe1a561f861366f8999a8ab5c1d3357290fc8a",
+    "files": [
+      {
+        "commit": "87fe1a561f861366f8999a8ab5c1d3357290fc8a",
+        "file": "axis_async_fifo.v",
+        "sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28"
+      },
+      {
+        "commit": "6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+        "file": "fixed_axis_async_fifo.v",
+        "sha256": "8aca6b233800c0a38fd14be88966741a57ede52bf2f81bf9d3aec2a1744914e4"
+      }
+    ],
+    "fix": "https://github.com/alexforencich/verilog-axis/commit/6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+    "fixed_commit": "6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+    "issue": "https://github.com/alexforencich/verilog-axis/issues/2",
+    "license": "MIT; upstream COPYING and source headers retained",
+    "provenance": "Historical real bug, not a new discovery. PR #4 was not merged; the maintainer fixed the issue independently. Fixed source is evaluation-only.",
+    "repository": "https://github.com/alexforencich/verilog-axis"
+  },
+  "estimated_api_cost_usd": 0.043217,
+  "model_advantage_established": false,
+  "no_hardware_required": true,
+  "paid_attempts": [
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.001148,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-21",
+        "request_id": "33ab719a39ea44ee8162c72990df7fd8",
+        "reserved_usd": 0.086016,
+        "state": "settled"
+      },
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "run": "runs/super_direct",
+      "status": "SIMULATION_FAILED"
+    },
+    {
+      "attempt": 2,
+      "cost": {
+        "estimated_usd": 0.001532,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-21",
+        "request_id": "c1d752e0fac74287b86185eaecd6d0de",
+        "reserved_usd": 0.086016,
+        "state": "settled"
+      },
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "run": "runs/super_direct",
+      "status": "ERROR"
+    },
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.008053,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-21",
+        "request_id": "4b8a2e8c403f49a8ae4cfee8f9ff15c9",
+        "reserved_usd": 0.086016,
+        "state": "settled"
+      },
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "run": "runs/super_reasoning",
+      "status": "ERROR"
+    },
+    {
+      "attempt": 2,
+      "cost": {
+        "estimated_usd": 0.008064,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-21",
+        "request_id": "e15d6ace8edf4d55a16c4423fd86ec7a",
+        "reserved_usd": 0.086016,
+        "state": "settled"
+      },
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "run": "runs/super_reasoning",
+      "status": "ERROR"
+    },
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.004923,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "139753ad227146bf990c9bfa4a8dc9b9",
+        "reserved_usd": 1.073152,
+        "state": "settled"
+      },
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "run": "runs/ultra_direct",
+      "status": "SIMULATION_FAILED"
+    },
+    {
+      "attempt": 1,
+      "cost": {
+        "estimated_usd": 0.019497,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "00ce2debda7f405dabac92f9255292fa",
+        "reserved_usd": 1.097728,
+        "state": "settled"
+      },
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "run": "runs/ultra_reasoning",
+      "status": "VERIFIED_WITHIN_BOUND"
+    }
+  ],
+  "selected_run": "runs/ultra_reasoning",
+  "source_matches_historical_fix": true
+}

@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"diagnosis\": \"When a frame is dropped, the write pointer wr_ptr_cur_reg is rolled back to wr_ptr_reg but wr_addr_reg is updated to the rolled-back pointer. If a tlast beat arrives during the drop sequence, the logic commits the frame by advancing wr_ptr_reg to wr_ptr_cur_next (which equals wr_ptr_reg), thereby publishing the dropped frame's data. The extra m_axis_tvalid cycles occur because this committed but unwanted frame remains in memory and is later read out.\",\n  \"ranking\": [\n    {\n      \"id\": \"candidate_001\",\n      \"mechanism\": \"Retain existing drop_frame state instead of a constant default\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792766878,
+  "id": "chatcmpl-da26b83072812ad19b55648bc06607b0",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 148,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 6376,
+    "prompt_tokens": 6376,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 6524
+  }
+}

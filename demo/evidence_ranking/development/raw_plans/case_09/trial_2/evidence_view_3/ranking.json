@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.019764,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "f201adb611d64aebbbee6c1d1c381831",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_9d300784e043",
+    "patch_06b184d83718",
+    "patch_260cd2a94865",
+    "patch_a0bad4f15d79",
+    "patch_2091b2021c83",
+    "patch_cc5c635bb718",
+    "patch_5290c6328b33",
+    "patch_8edd8def398a"
+  ],
+  "proposal": {
+    "explanation": "The earliest failure is drop_frame=1 at cycle 13 while rst=1. The root cause is incomplete reset: wr_ptr_cur and drop_frame are not cleared in the first always block (line 97). Patches that add those resets (9d300784e043, 06b184d83718) directly target the observed failure port and cycle. Patches that guard the drop_frame set condition with !rst (a0bad4f15d79) or suppress write during reset (5290c6328b33) also prevent the spurious set at cycle 13. The write guard with !full_cur (260cd2a94865) and the !drop_frame mask (cc5c635bb718) address the subsequent pointer progression that clears drop_frame. The data_out_reg reset (2091b2021c83) targets the cycle-16 output_axis_tdata/tlast/valid mismatch caused by stale output state after reset. The conditional reset guard (8edd8def398a) is ranked last because it does not guarantee clearing the offending registers.",
+    "ranking": [
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_9d300784e043",
+        "mechanism": "Adds drop_frame <= 0 in the reset block of the first always block (line 97). The first observed mismatch is drop_frame=1 at cycle 13 when rst=1; this patch directly clears that register on reset, preventing the sticky drop_frame from propagating into output_axis_tdata/tlast/valid mismatches at cycle 16.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_06b184d83718",
+        "mechanism": "Resets both drop_frame and wr_ptr_cur to 0 on rst (line 97). The discovery trace shows wr_ptr is cleared on reset but wr_ptr_cur is not; after reset while drop_frame is asserted, wr_ptr_cur retains a stale value and full_cur incorrectly gates the frame-drop logic. Clearing both eliminates the spurious drop_frame at cycles 13\u201314 and downstream data mismatches at cycle 16.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_260cd2a94865",
+        "mechanism": "Guards the write enable with !full_cur (line 99). When reset releases, full_cur can be spuriously high because wr_ptr_cur was not cleared; this blocks the first write that should advance wr_ptr_cur and clear drop_frame, leaving drop_frame=1 at cycles 13\u201314. The guard restores correct pointer progression and clears drop_frame.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_a0bad4f15d79",
+        "mechanism": "Guards the drop_frame set condition with !rst (line 100). During the reset pulse (cycle 13) full_cur and full can appear true due to stale pointers; the original logic sets drop_frame<=1 in that cycle. Adding !rst prevents drop_frame from latching during reset, matching expected 0 at cycle 13 and avoiding cascade to cycle 16.",
+        "source_line": 100
+      },
+      {
+        "failure_port": "output_axis_tdata",
+        "id": "patch_2091b2021c83",
+        "mechanism": "Resets data_out_reg to 0 in the read pointer block (line 127). The cycle-16 mismatch shows output_axis_tdata=1 instead of 6 and output_axis_tvalid=0 instead of 1; a stale data_out_reg from before reset can hold the output valid low. Clearing it on reset aligns the output register with the cleared pointers.",
+        "source_line": 127
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_cc5c635bb718",
+        "mechanism": "Masks the write enable with !drop_frame (line 99). Once drop_frame is spuriously set at cycle 13, the unguarded write path continues to execute the drop-frame branch and never clears it. The mask stops writes while drop_frame=1, allowing the tlast/user logic to unwind drop_frame on the next frame end.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_5290c6328b33",
+        "mechanism": "Guards write with !rst (line 99). The write pulse during the reset cycle (cycle 13) enters the full/full_cur/drop_frame branch and sets drop_frame<=1. Suppressing write during reset prevents that transition, keeping drop_frame=0 at cycles 13\u201314 and preserving output at cycle 16.",
+        "source_line": 99
+      },
+      {
+        "failure_port": "drop_frame",
+        "id": "patch_8edd8def398a",
+        "mechanism": "Qualifies the reset condition with full_cur (line 97), making the wr_ptr reset conditional. This is a lower-priority speculative guard; it does not directly clear drop_frame or wr_ptr_cur, so its ability to resolve the cycle-13 drop_frame=1 is indirect and less certain than the reset-completion patches above.",
+        "source_line": 97
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 8.5633
+}

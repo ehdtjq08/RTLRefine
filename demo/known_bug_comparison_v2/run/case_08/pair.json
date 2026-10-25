@@ -1,0 +1,293 @@
+{
+  "arms": {
+    "checker_feedback": {
+      "accepted": true,
+      "audit_pass": true,
+      "decision": "repair",
+      "discovery_pass": true,
+      "functional_source_changed": true,
+      "logical_calls": 2,
+      "request_path": "checker_feedback",
+      "status": "ALL_SEALED_TRACES_PASS",
+      "would_accept_on_discovery_but_audit_fails": false
+    },
+    "self_review": {
+      "accepted": false,
+      "audit_pass": false,
+      "decision": "repair",
+      "discovery_pass": false,
+      "functional_source_changed": true,
+      "logical_calls": 2,
+      "request_path": "self_review",
+      "status": "POLICY_REJECTED",
+      "would_accept_on_discovery_but_audit_fails": false
+    }
+  },
+  "attempts": {
+    "checker_feedback": {
+      "accepted": true,
+      "api_requests": 1,
+      "audit_pass": true,
+      "cost": {
+        "estimated_usd": 0.057094,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "0eff92d3d1944c12b630b9562e18558b",
+        "reserved_usd": 1.122304,
+        "state": "settled"
+      },
+      "discovery_pass": true,
+      "evaluation": {
+        "accepted": true,
+        "audit_pass": true,
+        "commands": [
+          {
+            "command": [
+              "/home/hands/Nebius/.tools/bin/verilator",
+              "--cc",
+              "--exe",
+              "-Wno-fatal",
+              "--x-initial",
+              "0",
+              "--x-assign",
+              "0",
+              "--top-module",
+              "axis_switch",
+              "--Mdir",
+              "obj_dir",
+              "candidate.v",
+              "dependencies.v",
+              "harness.cpp"
+            ],
+            "elapsed_seconds": 0.0653,
+            "execution_mode": "bubblewrap",
+            "returncode": 0,
+            "stage": "translate",
+            "status": "PASS",
+            "zero_initialization": true
+          },
+          {
+            "command": [
+              "/usr/bin/make",
+              "-C",
+              "obj_dir",
+              "-f",
+              "Vaxis_switch.mk",
+              "-j1",
+              "OPT_FAST=-O0",
+              "OPT_SLOW=-O0"
+            ],
+            "elapsed_seconds": 2.7355,
+            "execution_mode": "bubblewrap",
+            "returncode": 0,
+            "stage": "build",
+            "status": "PASS",
+            "zero_initialization": true
+          }
+        ],
+        "corrected_RTL_loaded_for_scoring": false,
+        "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_08/checker_feedback/evaluation",
+        "discovery_pass": true,
+        "formal_proof": false,
+        "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+        "new_api_calls": 0,
+        "oracle_depends_on_corrected_trace_values": true,
+        "rtl_sha256": "e96d40cdb34aa925b3e7abb90c61c451e4838b456817a9e38e4819b0769975a5",
+        "status": "ALL_SEALED_TRACES_PASS",
+        "traces": [
+          {
+            "command": {
+              "command": [
+                "./obj_dir/Vaxis_switch"
+              ],
+              "elapsed_seconds": 0.0165,
+              "execution_mode": "bubblewrap",
+              "returncode": 0,
+              "stage": "simulate",
+              "status": "PASS",
+              "zero_initialization": true
+            },
+            "comparisons": 40,
+            "cycles": 14,
+            "expected_sha256": "962b1ed02f3f6e09879a1069c6efc3a153417d7bceb343dc9c2e079d5c035e38",
+            "first_mismatches": [],
+            "input_windows": [],
+            "mismatch_count": 0,
+            "passed": true,
+            "phase": "discovery",
+            "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+            "stimulus_sha256": "c06fcf236942d60fb053c365da6c2861c860ccf4155413a4fa7716c5e3348f07",
+            "trace_label": "published_discovery_trace"
+          },
+          {
+            "command": {
+              "command": [
+                "./obj_dir/Vaxis_switch"
+              ],
+              "elapsed_seconds": 0.0164,
+              "execution_mode": "bubblewrap",
+              "returncode": 0,
+              "stage": "simulate",
+              "status": "PASS",
+              "zero_initialization": true
+            },
+            "comparisons": 320,
+            "cycles": 112,
+            "expected_sha256": "c2cbcbadef9eabfaafaaa6777e9d866a03833f34498a8f3e7c7ac71e61da7ef6",
+            "first_mismatches": [],
+            "input_windows": [],
+            "mismatch_count": 0,
+            "passed": true,
+            "phase": "unexposed_audit",
+            "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+            "stimulus_sha256": "2027726426e39dcd9d4b66a239c7eb64047c74ebfeb017631bd5bbdfddc3de4c",
+            "trace_label": "unexposed_payload_transform_7403"
+          },
+          {
+            "command": {
+              "command": [
+                "./obj_dir/Vaxis_switch"
+              ],
+              "elapsed_seconds": 0.033,
+              "execution_mode": "bubblewrap",
+              "returncode": 0,
+              "stage": "simulate",
+              "status": "PASS",
+              "zero_initialization": true
+            },
+            "comparisons": 320,
+            "cycles": 112,
+            "expected_sha256": "a925bb1c64f1a769043fa4f985901589fd3fca812f2339cc48a7cc9986c87081",
+            "first_mismatches": [],
+            "input_windows": [],
+            "mismatch_count": 0,
+            "passed": true,
+            "phase": "unexposed_audit",
+            "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+            "stimulus_sha256": "9ac0ca7eb5f07b7a0e08e8497c17f8cdeac4a7e8b21ed77594d2e1e868696508",
+            "trace_label": "unexposed_payload_transform_9601"
+          }
+        ]
+      },
+      "functional_source_changed": true,
+      "proposal": {
+        "decision": "repair",
+        "edits": [
+          {
+            "end_line": 233,
+            "replacement": "assign int_s_axis_tready[m] = int_axis_tready[select_reg*S_COUNT+m] || drop_reg;",
+            "start_line": 233
+          },
+          {
+            "end_line": 301,
+            "replacement": "wire s_axis_tvalid_mux  = int_axis_tvalid[grant_encoded*M_COUNT+n] && grant_valid;",
+            "start_line": 301
+          },
+          {
+            "end_line": 308,
+            "replacement": "for (m = 0; m < S_COUNT; m = m + 1) begin\n       assign int_axis_tready[n*S_COUNT + m] = (grant_valid && s_axis_tready_mux) && (grant_encoded == m);\n   end",
+            "start_line": 308
+          }
+        ],
+        "explanation": "Fixed three functional defects in the axis_switch module: 1) In source interfaces, the ready signal read from int_axis_tready used an incorrect stride (M_COUNT instead of S_COUNT), causing misrouting when source and destination counts differ. 2) In destination interfaces, the valid signal mux used an incorrect stride (S_COUNT instead of M_COUNT) when reading from int_axis_tvalid. 3) The ready signal write to int_axis_tready used a shift of a 1-bit value, which cannot produce a one-hot vector; replaced with a generate-for loop that assigns each bit correctly. These changes ensure correct cycle-exact behavior for all parameterized configurations."
+      },
+      "status": "ALL_SEALED_TRACES_PASS"
+    },
+    "self_review": {
+      "accepted": false,
+      "api_requests": 1,
+      "audit_pass": false,
+      "cost": {
+        "estimated_usd": 0.072045,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "2f30ff9ca13145fba2b259a5ec5704fa",
+        "reserved_usd": 1.122304,
+        "state": "settled"
+      },
+      "discovery_pass": false,
+      "evaluation": {
+        "accepted": false,
+        "audit_pass": false,
+        "corrected_RTL_loaded_for_scoring": false,
+        "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_08/self_review/evaluation",
+        "discovery_pass": false,
+        "error": "Do not change public ports, configuration parameters or compiler directives",
+        "formal_proof": false,
+        "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+        "new_api_calls": 0,
+        "oracle_depends_on_corrected_trace_values": true,
+        "rtl_sha256": "9496d45251cc4cb2cef87c4940306199794bbf1844ccfa129b8c6be2fe793c17",
+        "status": "POLICY_REJECTED",
+        "traces": []
+      },
+      "functional_source_changed": true,
+      "proposal": {
+        "decision": "repair",
+        "edits": [
+          {
+            "end_line": 109,
+            "replacement": "parameter CL_S_COUNT = (S_COUNT > 1) ? $clog2(S_COUNT) : 1;\nparameter CL_M_COUNT = (M_COUNT > 1) ? $clog2(M_COUNT) : 1;",
+            "start_line": 108
+          },
+          {
+            "end_line": 351,
+            "replacement": "    for (n = 0; n < M_COUNT; n = n + 1) begin : m_ifaces\n\n        wire [S_COUNT-1:0] request;\n        wire [S_COUNT-1:0] acknowledge;\n        wire [S_COUNT-1:0] grant;\n        wire grant_valid;\n        wire [CL_S_COUNT-1:0] grant_encoded;\n\n        arbiter #(\n            .PORTS(S_COUNT),\n            .TYPE(ARB_TYPE),\n            .BLOCK(\"ACKNOWLEDGE\"),\n            .LSB_PRIORITY(LSB_PRIORITY)\n        )\n        arb_inst (\n            .clk(clk),\n            .rst(rst),\n            .request(request),\n            .acknowledge(acknowledge),\n            .grant(grant),\n            .grant_valid(grant_valid),\n            .grant_encoded(grant_encoded)\n        );\n\n        \n        wire [DATA_WIDTH-1:0] s_axis_tdata_mux   = int_s_axis_tdata[grant_encoded*DATA_WIDTH +: DATA_WIDTH];\n        wire [KEEP_WIDTH-1:0] s_axis_tkeep_mux   = int_s_axis_tkeep[grant_encoded*KEEP_WIDTH +: KEEP_WIDTH];\n        wire                  s_axis_tvalid_mux  = int_axis_tvalid[grant_encoded*S_COUNT+n] && grant_valid;\n        wire                  s_axis_tready_mux;\n        wire                  s_axis_tlast_mux   = int_s_axis_tlast[grant_encoded];\n        wire [ID_WIDTH-1:0]   s_axis_tid_mux     = int_s_axis_tid[grant_encoded*ID_WIDTH +: ID_WIDTH];\n        wire [DEST_WIDTH-1:0] s_axis_tdest_mux   = int_s_axis_tdest[grant_encoded*DEST_WIDTH +: DEST_WIDTH];\n        wire [USER_WIDTH-1:0] s_axis_tuser_mux   = int_s_axis_tuser[grant_encoded*USER_WIDTH +: USER_WIDTH];\n\n        assign int_axis_tready[n*S_COUNT +: S_COUNT] = (grant_valid && s_axis_tready_mux) << grant_encoded;\n\n        for (m = 0; m < S_COUNT; m = m + 1) begin\n            assign request[m] = int_axis_tvalid[m*M_COUNT+n] && !grant[m];\n        end\n        assign acknowledge = grant & {S_COUNT{m_axis_tvalid[n] && m_axis_tready[n] && m_axis_tlast[n]}};\n\n        \n        axis_register #(\n            .DATA_WIDTH(DATA_WIDTH),\n            .KEEP_ENABLE(KEEP_ENABLE),\n            .KEEP_WIDTH(KEEP_WIDTH),\n            .LAST_ENABLE(1),\n            .ID_ENABLE(ID_ENABLE),\n            .ID_WIDTH(ID_WIDTH),\n            .DEST_ENABLE(1),\n            .DEST_WIDTH(DEST_WIDTH),\n            .USER_ENABLE(USER_ENABLE),\n            .USER_WIDTH(USER_WIDTH),\n            .REG_TYPE(M_REG_TYPE)\n        )\n        reg_inst (\n            .clk(clk),\n            .rst(rst),\n            \n            .s_axis_tdata(s_axis_tdata_mux),\n            .s_axis_tkeep(s_axis_tkeep_mux),\n            .s_axis_tvalid(s_axis_tvalid_mux),\n            .s_axis_tready(s_axis_tready_mux),\n            .s_axis_tlast(s_axis_tlast_mux),\n            .s_axis_tid(s_axis_tid_mux),\n            .s_axis_tdest(s_axis_tdest_mux),\n            .s_axis_tuser(s_axis_tuser_mux),\n            \n            .m_axis_tdata(m_axis_tdata[n*DATA_WIDTH +: DATA_WIDTH]),\n            .m_axis_tkeep(m_axis_tkeep[n*KEEP_WIDTH +: KEEP_WIDTH]),\n            .m_axis_tvalid(m_axis_tvalid[n]),\n            .m_axis_tready(m_axis_tready[n]),\n            .m_axis_tlast(m_axis_tlast[n]),\n            .m_axis_tid(m_axis_tid[n*ID_WIDTH +: ID_WIDTH]),\n            .m_axis_tdest(m_axis_tdest[n*DEST_WIDTH +: DEST_WIDTH]),\n            .m_axis_tuser(m_axis_tuser[n*USER_WIDTH +: USER_WIDTH])\n        );\n    end ",
+            "start_line": 273
+          }
+        ],
+        "explanation": "Two functional repairs: 1) Fixed CL_S_COUNT and CL_M_COUNT parameters to avoid zero-width vectors when S_COUNT or M_COUNT is 1. 2) Corrected the m_ifaces generate block: the acknowledge signal now uses the destination-side signals (m_axis_tvalid, m_axis_tready, m_axis_tlast) to ensure the grant is released only after the last beat is accepted downstream. The request assignment remains per-source. The inner for-loop now only assigns request; acknowledge is assigned as a vector. This matches the intended cycle-exact behavior of the parameterized stream switch."
+      },
+      "status": "POLICY_REJECTED"
+    },
+    "shared_initial": {
+      "accepted": false,
+      "api_requests": 1,
+      "audit_pass": false,
+      "cost": {
+        "estimated_usd": 0.032048,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "14eeb9e295834594aeaf5474259bbe26",
+        "reserved_usd": 1.122304,
+        "state": "settled"
+      },
+      "discovery_pass": false,
+      "evaluation": {
+        "accepted": false,
+        "audit_pass": false,
+        "corrected_RTL_loaded_for_scoring": false,
+        "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_08/shared_initial/evaluation",
+        "discovery_pass": false,
+        "error": "Do not change public ports, configuration parameters or compiler directives",
+        "formal_proof": false,
+        "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+        "new_api_calls": 0,
+        "oracle_depends_on_corrected_trace_values": true,
+        "rtl_sha256": "21b8a82702ad3ba7cbee61a755bf2363ba5191def598fdd401b7763aa4df83f7",
+        "status": "POLICY_REJECTED",
+        "traces": []
+      },
+      "functional_source_changed": true,
+      "proposal": {
+        "decision": "repair",
+        "edits": [
+          {
+            "end_line": 109,
+            "replacement": "parameter CL_S_COUNT = (S_COUNT > 1) ? $clog2(S_COUNT) : 1;\nparameter CL_M_COUNT = (M_COUNT > 1) ? $clog2(M_COUNT) : 1;",
+            "start_line": 108
+          },
+          {
+            "end_line": 351,
+            "replacement": "    for (n = 0; n < M_COUNT; n = n + 1) begin : m_ifaces\n\n        wire [S_COUNT-1:0] request;\n        wire [S_COUNT-1:0] acknowledge;\n        wire [S_COUNT-1:0] grant;\n        wire grant_valid;\n        wire [CL_S_COUNT-1:0] grant_encoded;\n\n        arbiter #(\n            .PORTS(S_COUNT),\n            .TYPE(ARB_TYPE),\n            .BLOCK(\"ACKNOWLEDGE\"),\n            .LSB_PRIORITY(LSB_PRIORITY)\n        )\n        arb_inst (\n            .clk(clk),\n            .rst(rst),\n            .request(request),\n            .acknowledge(acknowledge),\n            .grant(grant),\n            .grant_valid(grant_valid),\n            .grant_encoded(grant_encoded)\n        );\n\n        // Mux the input signals from the granted source\n        wire [DATA_WIDTH-1:0] mux_tdata   = int_s_axis_tdata[grant_encoded*DATA_WIDTH +: DATA_WIDTH];\n        wire [KEEP_WIDTH-1:0] mux_tkeep   = int_s_axis_tkeep[grant_encoded*KEEP_WIDTH +: KEEP_WIDTH];\n        wire                    mux_tvalid  = int_axis_tvalid[grant_encoded*M_COUNT+n] && grant_valid;\n        wire                    mux_tready;\n        wire                    mux_tlast   = int_s_axis_tlast[grant_encoded];\n        wire [ID_WIDTH-1:0]     mux_tid     = int_s_axis_tid[grant_encoded*ID_WIDTH +: ID_WIDTH];\n        wire [DEST_WIDTH-1:0]   mux_tdest   = int_s_axis_tdest[grant_encoded*DEST_WIDTH +: DEST_WIDTH];\n        wire [USER_WIDTH-1:0]   mux_tuser   = int_s_axis_tuser[grant_encoded*USER_WIDTH +: USER_WIDTH];\n\n        // Drive the ready for the granted source\n        assign int_axis_tready[n*S_COUNT +: S_COUNT] = (grant_valid && mux_tready) << grant_encoded;\n\n        // Generate request and acknowledge for arbiter\n        for (m = 0; m < S_COUNT; m = m + 1) begin\n            assign request[m] = int_axis_tvalid[m*M_COUNT+n] && !grant[m];\n            assign acknowledge[m] = grant[m] && mux_tlast && mux_tready;\n        end\n\n        // Output register\n        axis_register #(\n            .DATA_WIDTH(DATA_WIDTH),\n            .KEEP_ENABLE(KEEP_ENABLE),\n            .KEEP_WIDTH(KEEP_WIDTH),\n            .LAST_ENABLE(1),\n            .ID_ENABLE(ID_ENABLE),\n            .ID_WIDTH(ID_WIDTH),\n            .DEST_ENABLE(1),\n            .DEST_WIDTH(DEST_WIDTH),\n            .USER_ENABLE(USER_ENABLE),\n            .USER_WIDTH(USER_WIDTH),\n            .REG_TYPE(M_REG_TYPE)\n        )\n        reg_inst (\n            .clk(clk),\n            .rst(rst),\n            \n            .s_axis_tdata(mux_tdata),\n            .s_axis_tkeep(mux_tkeep),\n            .s_axis_tvalid(mux_tvalid),\n            .s_axis_tready(mux_tready),\n            .s_axis_tlast(mux_tlast),\n            .s_axis_tid(mux_tid),\n            .s_axis_tdest(mux_tdest),\n            .s_axis_tuser(mux_tuser),\n            \n            .m_axis_tdata(m_axis_tdata[n*DATA_WIDTH +: DATA_WIDTH]),\n            .m_axis_tkeep(m_axis_tkeep[n*KEEP_WIDTH +: KEEP_WIDTH]),\n            .m_axis_tvalid(m_axis_tvalid[n]),\n            .m_axis_tready(m_axis_tready[n]),\n            .m_axis_tlast(m_axis_tlast[n]),\n            .m_axis_tid(m_axis_tid[n*ID_WIDTH +: ID_WIDTH]),\n            .m_axis_tdest(m_axis_tdest[n*DEST_WIDTH +: DEST_WIDTH]),\n            .m_axis_tuser(m_axis_tuser[n*USER_WIDTH +: USER_WIDTH])\n        );\n    end ",
+            "start_line": 273
+          }
+        ],
+        "explanation": "Fixed two issues: 1) CL_S_COUNT and CL_M_COUNT parameters could be zero when S_COUNT or M_COUNT is 1, causing zero-width vectors. Changed them to have a minimum width of 1. 2) The m_ifaces generate block had numerous undefined signals and incorrect connections. Rewrote it to properly declare request/acknowledge/grant signals, instantiate the arbiter, mux data from the granted source, drive ready signals, and connect the output register. The new implementation uses grant_encoded to select the granted source's signals and generates request/acknowledge based on int_axis_tvalid and the muxed last/ready."
+      },
+      "status": "POLICY_REJECTED"
+    }
+  },
+  "case_id": "axis-switch-d8_d8",
+  "opaque_id": "case_08"
+}

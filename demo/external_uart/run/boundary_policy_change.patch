@@ -1,0 +1,18 @@
+--- original_boundary_policy.py
++++ corrected_boundary_policy.py
+@@ -19,10 +19,12 @@
+ 
+ 
+ def split_source(source):
+-    marker = "\twire\t[27:0]\tclocks_per_baud, break_condition;"
+-    if source.count(marker) != 1 or source.count("`ifdef\tFORMAL") != 1:
++    # Indentation is not a Verilog interface change. The entire immutable
++    # prefix/suffix is still compared byte-for-byte after finding this boundary.
++    markers = list(re.finditer(r"(?m)^[ \t]*wire[ \t]+\[27:0\][ \t]+clocks_per_baud,[ \t]*break_condition;", source))
++    if len(markers) != 1 or source.count("`ifdef\tFORMAL") != 1:
+         raise ValueError("Unsupported pinned txuart source layout")
+-    start, end = source.index(marker), source.index("`ifdef\tFORMAL")
++    start, end = markers[0].start(), source.index("`ifdef\tFORMAL")
+     return source[:start], source[start:end], source[end:]
+ 
+ 

@@ -1,0 +1,234 @@
+--- original.v
++++ candidate.v
+@@ -84,6 +84,52 @@
+     output wire                   status_good_frame
+ );
+ 
++localparam CLK_ENABLE = 1;
++localparam RST_ENABLE = 1;
++localparam LAST_OFFSET = DATA_WIDTH-1;
++localparam KEEP_OFFSET = DATA_WIDTH - (KEEP_ENABLE ? KEEP_WIDTH : 0);
++localparam ID_OFFSET = KEEP_OFFSET - (ID_ENABLE ? ID_WIDTH : 0);
++localparam DEST_OFFSET = ID_OFFSET - (DEST_ENABLE ? DEST_WIDTH : 0);
++localparam USER_OFFSET = DEST_OFFSET - (USER_ENABLE ? USER_WIDTH : 0);
++
++localparam WIDTH = DATA_WIDTH;
++localparam USER_WIDTH_INT = USER_ENABLE ? USER_WIDTH : 1;
++localparam ID_WIDTH_INT = ID_ENABLE ? ID_WIDTH : 1;
++localparam DEST_WIDTH_INT = DEST_ENABLE ? DEST_WIDTH : 1;
++
++localparam KEEP_OFFSET_INT = KEEP_ENABLE ? KEEP_OFFSET : 0;
++localparam LAST_OFFSET_INT = LAST_ENABLE ? LAST_OFFSET : 0;
++localparam ID_OFFSET_INT = ID_ENABLE ? ID_OFFSET : 0;
++localparam DEST_OFFSET_INT = DEST_ENABLE ? DEST_OFFSET : 0;
++localparam USER_OFFSET_INT = USER_ENABLE ? USER_OFFSET : 0;
++
++localparam DEST_WIDTH_INT = DEST_ENABLE ? DEST_WIDTH : 1;
++localparam USER_WIDTH_INT = USER_ENABLE ? USER_WIDTH : 1;
++
++localparam S_AXIS_TDATA_WIDTH = DATA_WIDTH;
++localparam S_AXIS_TKEEP_WIDTH = KEEP_WIDTH;
++localparam S_AXIS_TLAST_WIDTH = 1;
++localparam S_AXIS_TID_WIDTH = ID_WIDTH;
++localparam S_AXIS_TDEST_WIDTH = DEST_WIDTH;
++localparam S_AXIS_TUSER_WIDTH = USER_WIDTH;
++
++localparam M_AXIS_TDATA_WIDTH = DATA_WIDTH;
++localparam M_AXIS_TKEEP_WIDTH = KEEP_WIDTH;
++localparam M_AXIS_TLAST_WIDTH = 1;
++localparam M_AXIS_TID_WIDTH = ID_WIDTH;
++localparam M_AXIS_TDEST_WIDTH = DEST_WIDTH;
++localparam M_AXIS_TUSER_WIDTH = USER_WIDTH;
++
++localparam LAST_ENABLE_INT = LAST_ENABLE ? 1 : 0;
++localparam ID_ENABLE_INT = ID_ENABLE ? 1 : 0;
++localparam DEST_ENABLE_INT = DEST_ENABLE ? 1 : 0;
++localparam USER_ENABLE_INT = USER_ENABLE ? 1 : 0;
++localparam KEEP_ENABLE_INT = KEEP_ENABLE ? 1 : 0;
++
++localparam DROP_WHEN_FULL_INT = DROP_WHEN_FULL ? 1 : 0;
++localparam DROP_BAD_FRAME_INT = DROP_BAD_FRAME ? 1 : 0;
++localparam FRAME_FIFO_INT = FRAME_FIFO ? 1 : 0;
++
+ // check configuration
+ initial begin
+     if (FRAME_FIFO && !LAST_ENABLE) begin
+@@ -129,14 +175,19 @@
+ reg [WIDTH-1:0] m_axis_reg;
+ reg m_axis_tvalid_reg = 1'b0, m_axis_tvalid_next;
+ 
+-// full when first MSB different but rest same
++// full when first MSB different but rest same (committed pointers)
+ wire full = ((wr_ptr_reg[ADDR_WIDTH] != rd_ptr_reg[ADDR_WIDTH]) &&
+              (wr_ptr_reg[ADDR_WIDTH-1:0] == rd_ptr_reg[ADDR_WIDTH-1:0]));
+ // empty when pointers match exactly
+ wire empty = wr_ptr_reg == rd_ptr_reg;
+-// overflow within packet
+-wire full_cur = ((wr_ptr_reg[ADDR_WIDTH] != wr_ptr_cur_reg[ADDR_WIDTH]) &&
+-                 (wr_ptr_reg[ADDR_WIDTH-1:0] == wr_ptr_cur_reg[ADDR_WIDTH-1:0]));
++// overflow within packet (speculative vs committed)
++wire full_cur = FRAME_FIFO ? ((wr_ptr_reg[ADDR_WIDTH] != wr_ptr_cur_reg[ADDR_WIDTH]) &&
++                 (wr_ptr_reg[ADDR_WIDTH-1:0] == wr_ptr_cur_reg[ADDR_WIDTH-1:0])) : 1'b0;
++// write full condition: speculative vs read pointer for FRAME_FIFO, else committed vs read
++wire write_full = FRAME_FIFO ? ((wr_ptr_cur_reg[ADDR_WIDTH] != rd_ptr_reg[ADDR_WIDTH]) &&
++                   (wr_ptr_cur_reg[ADDR_WIDTH-1:0] == rd_ptr_reg[ADDR_WIDTH-1:0])) :
++                 ((wr_ptr_reg[ADDR_WIDTH] != rd_ptr_reg[ADDR_WIDTH]) &&
++                  (wr_ptr_reg[ADDR_WIDTH-1:0] == rd_ptr_reg[ADDR_WIDTH-1:0]));
+ 
+ // control signals
+ reg write;
+@@ -148,7 +199,8 @@
+ reg bad_frame_reg = 1'b0, bad_frame_next;
+ reg good_frame_reg = 1'b0, good_frame_next;
+ 
+-assign s_axis_tready = (!full || DROP_WHEN_FULL);
++// FIX: backpressure when dropping a frame to prevent partial frame writes
++assign s_axis_tready = (!write_full && !drop_frame_reg) || DROP_WHEN_FULL;
+ 
+ generate
+     assign s_axis[DATA_WIDTH-1:0] = s_axis_tdata;
+@@ -175,48 +227,59 @@
+ // Write logic
+ always @* begin
+     write = 1'b0;
++    wr_ptr_next = wr_ptr_reg;
++    wr_ptr_cur_next = wr_ptr_cur_reg;
+ 
+     drop_frame_next = 1'b0;
+     overflow_next = 1'b0;
+     bad_frame_next = 1'b0;
+     good_frame_next = 1'b0;
+ 
+-    wr_ptr_next = wr_ptr_reg;
+-    wr_ptr_cur_next = wr_ptr_cur_reg;
+-
+     if (s_axis_tvalid) begin
+         // input data valid
+-        if (!full || DROP_WHEN_FULL) begin
++        if (!write_full || DROP_WHEN_FULL) begin
+             // not full, perform write
+             if (!FRAME_FIFO) begin
+                 // normal FIFO mode
+                 write = 1'b1;
+                 wr_ptr_next = wr_ptr_reg + 1;
+-            end else if (full || full_cur || drop_frame_reg) begin
+-                // full, packet overflow, or currently dropping frame
+-                // drop frame
+-                drop_frame_next = 1'b1;
+-                if (s_axis_tlast) begin
+-                    // end of frame, reset write pointer
+-                    wr_ptr_cur_next = wr_ptr_reg;
+-                    drop_frame_next = 1'b0;
+-                    overflow_next = 1'b1;
+-                end
+             end else begin
+-                write = 1'b1;
+-                wr_ptr_cur_next = wr_ptr_cur_reg + 1;
+-                if (s_axis_tlast) begin
+-                    // end of frame
+-                    if (DROP_BAD_FRAME && (USER_BAD_FRAME_MASK & s_axis_tuser == USER_BAD_FRAME_VALUE)) begin
+-                        // bad packet, reset write pointer
++                // frame FIFO mode
++                // FIX: if currently dropping a frame, don't write; wait for tlast
++                if (drop_frame_reg) begin
++                    if (s_axis_tlast) begin
++                        // end of dropped frame, reset speculative pointer
+                         wr_ptr_cur_next = wr_ptr_reg;
+-                        bad_frame_next = 1'b1;
+-                    end else begin
+-                        // good packet, update write pointer
+-                        wr_ptr_next = wr_ptr_cur_reg + 1;
+-                        good_frame_next = 1'b1;
++                        drop_frame_next = 1'b0;
++                        overflow_next = 1'b1;
++                    end
++                end else begin
++                    write = 1'b1;
++                    wr_ptr_cur_next = wr_ptr_cur_reg + 1;
++                    if (s_axis_tlast) begin
++                        // end of frame
++                        if (DROP_BAD_FRAME && (USER_BAD_FRAME_MASK & s_axis_tuser == USER_BAD_FRAME_VALUE)) begin
++                            // bad packet, reset write pointer
++                            wr_ptr_cur_next = wr_ptr_reg;
++                            drop_frame_next = 1'b1;
++                            bad_frame_next = 1'b1;
++                        end else begin
++                            // good packet, update write pointer
++                            wr_ptr_next = wr_ptr_cur_reg + 1;
++                            good_frame_next = 1'b1;
++                        end
+                     end
+                 end
++            end
++        end else if (write_full || full_cur || drop_frame_reg) begin
++            // full (and DROP_WHEN_FULL=1), packet overflow, or currently dropping frame
++            // drop frame
++            drop_frame_next = 1'b1;
++            if (s_axis_tlast) begin
++                // end of frame, reset write pointer
++                wr_ptr_cur_next = wr_ptr_reg;
++                drop_frame_next = 1'b0;
++                overflow_next = 1'b1;
+             end
+         end
+     end
+@@ -275,19 +338,10 @@
+ end
+ 
+ always @(posedge clk) begin
+-    if (rst) begin
+-        rd_ptr_reg <= {ADDR_WIDTH+1{1'b0}};
+-        mem_read_data_valid_reg <= 1'b0;
+-    end else begin
+-        rd_ptr_reg <= rd_ptr_next;
+-        mem_read_data_valid_reg <= mem_read_data_valid_next;
+-    end
+-
+-    rd_addr_reg <= rd_ptr_next;
+-
+     if (read) begin
+         mem_read_data_reg <= mem[rd_addr_reg[ADDR_WIDTH-1:0]];
+     end
++    rd_addr_reg <= rd_ptr_next;
+ end
+ 
+ // Output register
+@@ -296,9 +350,16 @@
+ 
+     m_axis_tvalid_next = m_axis_tvalid_reg;
+ 
+-    if (m_axis_tready || !m_axis_tvalid) begin
+-        store_output = 1'b1;
+-        m_axis_tvalid_next = mem_read_data_valid_reg;
++    if (m_axis_tready || !m_axis_tvalid_reg) begin
++        // output data not valid OR currently being transferred
++        if (mem_read_data_valid_reg) begin
++            // have data, send it
++            store_output = 1'b1;
++            m_axis_tvalid_next = 1'b1;
++        end else begin
++            // no data
++            m_axis_tvalid_next = 1'b0;
++        end
+     end
+ end
+ 
+@@ -307,11 +368,10 @@
+         m_axis_tvalid_reg <= 1'b0;
+     end else begin
+         m_axis_tvalid_reg <= m_axis_tvalid_next;
+-    end
+-
+-    if (store_output) begin
+-        m_axis_reg <= mem_read_data_reg;
+-    end
+-end
+-
+-endmodule
++        if (store_output) begin
++            m_axis_reg <= mem_read_data_reg;
++        end
++    end
++end
++
++endmodule

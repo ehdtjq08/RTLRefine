@@ -1,0 +1,244 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_switch",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0327,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_switch.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 2.2187,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": false,
+  "new_api_calls": 0,
+  "rtl_sha256": "30724f58bcce793dc360901b1c91d4dad3483dc5b2a05d59b86405d57c0337af",
+  "status": "DISCOVERY_TRACE_FAILED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_switch"
+        ],
+        "elapsed_seconds": 0.0175,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 40,
+      "cycles": 14,
+      "expected_sha256": "962b1ed02f3f6e09879a1069c6efc3a153417d7bceb343dc9c2e079d5c035e38",
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 4,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        },
+        {
+          "actual": 0,
+          "cycle": 5,
+          "expected": 1,
+          "port": "m_axis_tvalid"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "m_axis_tready",
+            "rst",
+            "s_axis_tdata",
+            "s_axis_tdest",
+            "s_axis_tid",
+            "s_axis_tkeep",
+            "s_axis_tlast",
+            "s_axis_tuser",
+            "s_axis_tvalid"
+          ],
+          "samples": [
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              0,
+              0,
+              15
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              8,
+              0,
+              15
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              4,
+              0,
+              7
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              2,
+              0,
+              3
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "m_axis_tready",
+            "rst",
+            "s_axis_tdata",
+            "s_axis_tdest",
+            "s_axis_tid",
+            "s_axis_tkeep",
+            "s_axis_tlast",
+            "s_axis_tuser",
+            "s_axis_tvalid"
+          ],
+          "samples": [
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              0,
+              0,
+              15
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              8,
+              0,
+              15
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              4,
+              0,
+              7
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              13,
+              16909060,
+              15,
+              2,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              2882343476,
+              0,
+              16909060,
+              15,
+              1,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        }
+      ],
+      "mismatch_count": 2,
+      "passed": false,
+      "phase": "discovery",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "c06fcf236942d60fb053c365da6c2861c860ccf4155413a4fa7716c5e3348f07",
+      "trace_label": "published_discovery_trace"
+    }
+  ]
+}

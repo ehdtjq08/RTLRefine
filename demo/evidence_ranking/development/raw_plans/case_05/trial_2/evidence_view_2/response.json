@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_df64054bcfd7\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 305,\n      \"mechanism\": \"Reset mem_read_data_reg to 0 on reset. The failure cycles (13-15) show m_axis_tvalid=1 when it should be 0. If mem_read_data_reg contains stale data after reset, the output logic may incorrectly assert m_axis_tvalid when store_output fires. Zeroing mem_read_data_reg at reset ensures the output pipeline starts clean, preventing spurious valid assertions from uninitialized memory contents.\"\n    },\n    {\n      \"id\": \"patch_6d0a3b3f5ecf\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 215,\n      \"mechanism\": \"Add !full_cur guard to the non-FRAME_FIFO write path. The FRAME_FIFO branch already checks full_cur for frame-boundary write control. The non-FRAME_FIFO path currently only checks !FRAME_FIFO, so it may write when the frame FIFO is full, corrupting state that later causes m_axis_tvalid to assert incorrectly at cycles 13-15. Qualifying with !full_cur aligns the simple FIFO path with frame-aware backpressure.\"\n    },\n    {\n      \"id\": \"patch_a0670fec0539\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 219,\n      \"mechanism\": \"Require s_axis_tready in the FRAME_FIFO full/drop condition. Currently the condition (full_cur || full_wr || drop_frame_reg) can trigger drop/overflow logic even when the upstream is not ready, potentially advancing wr_ptr_cur_reg or setting drop_frame_reg incorrectly. This corrupts frame tracking, leading to premature m_axis_tvalid at cycles 13-15. Gating with s_axis_tready ensures drop/overflow only activates on actual handshake cycles.\"\n    },\n    {\n      \"id\": \"patch_ab788e1def2d\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 215,\n      \"mechanism\": \"Add full_cur guard to the non-FRAME_FIFO write condition. Symmetric to patch_6d0a3b3f5ecf but using positive full_cur: when the frame FIFO is full, the simple FIFO path should not write. This prevents write pointer advancement during frame backpressure, which otherwise leaks into the output pipeline causing m_axis_tvalid=1 at cycles 13-15 when the oracle expects 0.\"\n    },\n    {\n      \"id\": \"patch_4e6435726b71\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 305,\n      \"mechanism\": \"Reset rd_addr_reg to 0 in the read-domain reset block. The failure at cycles 13-15 shows m_axis_tvalid asserted early. If rd_addr_reg holds a non-zero value after reset, the first read may fetch from a wrong address, loading mem_read_data_reg with stale data that makes m_axis_tvalid_reg become 1 prematurely. Zeroing rd_addr_reg ensures the read pointer restarts cleanly.\"\n    },\n    {\n      \"id\": \"patch_701132eb2141\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 175,\n      \"mechanism\": \"Guard USER_ENABLE assignment with !s_axis_tvalid. The generate block builds s_axis from input signals. If USER_WIDTH field is assigned when s_axis_tvalid=0, it may inject garbage into s_axis[USER_OFFSET]. Later, when a valid frame arrives, this corrupted s_axis value gets written to memory and propagates to m_axis_tvalid at cycles 13-15. The guard ensures user field only updates on valid cycles.\"\n    },\n    {\n      \"id\": \"patch_22b3b83e1afe\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 219,\n      \"mechanism\": \"Add s_axis_tvalid to the FRAME_FIFO full/drop condition. Currently the condition (full_cur || full_wr || drop_frame_reg) evaluates even without a valid input beat. This can set drop_frame_next or overflow_next spuriously when s_axis_tvalid=0, corrupting frame state that later causes m_axis_tvalid=1 at cycles 13-15. Requiring s_axis_tvalid ensures frame-control logic only reacts to real input beats.\"\n    },\n    {\n      \"id\": \"patch_87e9f03179c2\",\n      \"failure_port\": \"m_axis_tvalid\",\n      \"source_line\": 223,\n      \"mechanism\": \"Qualify s_axis_tlast with full_cur in the frame-close logic. At line 223 the code checks s_axis_tlast to decide whether to commit or drop a frame. If the FIFO is full (full_cur=1), the frame cannot be accepted, so s_axis_tlast should not advance wr_ptr_next or trigger good_frame/bad_frame. Without this guard, a last beat arriving during full_cur incorrectly commits the frame, causing m_axis_tvalid to assert at cycles 13-15 when the frame should have been dropped.\"\n    }\n  ]\n  ,\n  \"explanation\": \"The public failure shows m_axis_tvalid=1 at cycles 13-15 when the oracle expects 0. All eight patches target state initialization or gating conditions that, if wrong, let stale data or spurious pointer advances leak into the output valid signal. patch_df64054bcfd7 and patch_4e6435726b71 reset memory-data and read-address registers so the output pipeline starts from known-zero state. patch_6d0a3b3f5ecf and patch_ab788e1def2d add full_cur guards to the non-FRAME_FIFO write path, preventing writes during frame backpressure. patch_a0670fec0539 and patch_22b3b83e1afe require s_axis_tready/s_axis_tvalid in the FRAME_FIFO drop/overflow condition so frame-tracking state only updates on real handshake beats. patch_701132eb2141 stops user-field corruption on invalid input cycles. patch_87e9f03179c2 ensures s_axis_tlast only commits a frame when the FIFO can accept it. Each patch cites its exact source line and the observed m_axis_tvalid failure at cycles 13-15.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754321,
+  "id": "chatcmpl-1c2ae1feae1b1950547df05947dd41e2",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 1471,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 19637,
+    "prompt_tokens": 19637,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 21108
+  }
+}

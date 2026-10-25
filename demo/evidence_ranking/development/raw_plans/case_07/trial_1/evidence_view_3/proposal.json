@@ -1,0 +1,53 @@
+{
+  "explanation": "The simulation trace shows three cycle-exact mismatches: input_axis_tready is 1 at cycle 4 (expected 0) and output_axis_tdata is wrong at cycles 8 and 9. All eight selected patches target the reset-handshake logic that spans the input_clk and output_clk domains. The top two patches (patch_b3b9f2b1a04b and patch_399df3c427d6) directly gate the input-side ready signal with reset-state qualifiers, fixing the cycle-4 ready failure. The next three patches (patch_7ca96ea8d5d1, patch_37040ee40903, patch_59664e2586b7) guard memory write/read enable conditions with reset synchronizers, preventing premature memory accesses that corrupt the first two output data samples. The final three patches (patch_213cfcafcc24, patch_a87a829ad29e, patch_ac60e3091721) add additional reset-synchronizer checks to the ready predicate, each addressing a different stage of the dual-clock reset pipeline. Together they cover the observed failure ports and cycles without introducing edits outside the reset-handshake region.",
+  "ranking": [
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_b3b9f2b1a04b",
+      "mechanism": "The input-side reset state (input_rst_sync3) does not gate the write condition, so during the first cycles after async_rst de-assertion the FIFO spuriously accepts data and reports ready. Adding `(!async_rst)` to the write predicate blocks writes while the asynchronous reset is still asserted, keeping input_axis_tready at 0 until the reset domain has fully cleared, which matches the observed cycle-4 failure on input_axis_tready.",
+      "source_line": 139
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_399df3c427d6",
+      "mechanism": "The handshake for input_axis_tready uses `~full` without checking that the output-side reset (output_rst_sync3) has cleared. While the output domain is still in reset the FIFO is effectively empty but not yet safe to accept data, causing input_axis_tready to pulse high prematurely (cycle 4). Qualifying readiness with `(!output_rst_sync3)` holds input_axis_tready low until the output reset has fully de-asserted, aligning with the cycle-4 mismatch on input_axis_tready.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_7ca96ea8d5d1",
+      "mechanism": "The write pointer (wr_ptr) is updated on input_clk while the output-side reset (output_rst_sync3) may still be asserted. If a write occurs during that window, the memory is written before the output domain has finished its reset sequence, so the first read (cycle 8) returns stale data (actual 2, expected 1). Gating the write-pointer update with `(!output_rst_sync3)` prevents writes until the output reset is fully clear, directly addressing the cycle-8/9 data mismatches on output_axis_tdata.",
+      "source_line": 148
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_37040ee40903",
+      "mechanism": "The write condition is only `write` (input_axis_tvalid & ~full). While the input-side reset synchronizers (input_rst_sync3) are still high the FIFO can accept data, populating memory before the output domain is ready to consume it. Adding `(!input_rst_sync3)` to the write predicate blocks writes until the input reset domain has fully cleared, preventing the early memory write that corrupts the first two output data samples (cycles 8 and 9).",
+      "source_line": 139
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_59664e2586b7",
+      "mechanism": "The read condition is enabled as soon as output_axis_tready is asserted, but the output-side reset synchronizer (output_rst_sync3) may still be high. A read during that window pulls uninitialized or stale memory, producing the wrong output_axis_tdata values at cycles 8 and 9. Qualifying the read with `(!input_rst_sync3)` (using the input-side reset as a conservative proxy for system-wide reset clearance) delays the first read until both domains are out of reset, matching the expected data sequence.",
+      "source_line": 163
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_213cfcafcc24",
+      "mechanism": "The readiness predicate `~full` does not consider output_rst_sync2, which is the middle stage of the output reset synchronizer chain. While output_rst_sync2 is high the output domain is still resetting, so the FIFO should not advertise ready. Adding `(!output_rst_sync2)` to the readiness condition keeps input_axis_tready at 0 for the extra cycle needed for the output reset to propagate, fixing the cycle-4 ready mismatch.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_a87a829ad29e",
+      "mechanism": "The readiness predicate `~full` does not check the input-side reset synchronizer (input_rst_sync1). During the first few cycles after async_rst de-asserts, input_rst_sync1 is still high while the FIFO logic sees an empty buffer and raises input_axis_tready. Qualifying readiness with `(!input_rst_sync1)` holds ready low until the input reset domain has advanced past its first synchronizer stage, eliminating the cycle-4 ready pulse.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_ac60e3091721",
+      "mechanism": "The readiness predicate `~full` ignores input_rst_sync2, the second stage of the input reset synchronizer chain. While input_rst_sync2 is asserted the input domain is not yet fully out of reset, but the FIFO reports ready because the buffer appears empty. Adding `(!input_rst_sync2)` to the readiness condition extends the ready-low period by one cycle, aligning the ready waveform with the reference trace at cycle 4.",
+      "source_line": 105
+    }
+  ]
+}

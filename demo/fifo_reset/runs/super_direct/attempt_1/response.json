@@ -1,0 +1,54 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"edits\": [{\"before\": \"// read\\nalways @(posedge output_clk or posedge output_rst_sync2) begin\\n    if (output_rst_sync2) begin\\n        rd_ptr <= 0;\\n    end else if (read) begin\\n        data_out_reg <= mem[rd_ptr[ADDR_WIDTH-1:0]];\\n        rd_ptr_next = rd_ptr + 1;\\n        rd_ptr <= rd_ptr_next;\\n        rd_ptr_gray <= rd_ptr_next ^ (rd_ptr_next >> 1);\\n    end\\nend\", \"after\": \"// read\\nalways @(posedge output_clk or posedge output_rst_sync2) begin\\n    if (output_rst_sync2) begin\\n        rd_ptr <= 0;\\n        data_out_reg <= {DATA_WIDTH+2{1'b0}};\\n    end else if (read) begin\\n        data_out_reg <= mem[rd_ptr[ADDR_WIDTH-1:0]];\\n        rd_ptr_next = rd_ptr + 1;\\n        rd_ptr <= rd_ptr_next;\\n        rd_ptr_gray <= rd_ptr_next ^ (rd_ptr_next >> 1);\\n    end\\nend\"}, {\"before\": \"// source ready output\\nalways @(posedge output_clk or posedge output_rst_sync2) begin\\n    if (output_rst_sync2) begin\\n        output_axis_tvalid_reg <= 1'b0;\\n    end else if (output_axis_tready | ~output_axis_tvalid_reg) begin\\n        output_axis_tvalid_reg <= ~empty;\\n    end else begin\\n        output_axis_tvalid_reg <= output_axis_tvalid_reg;\\n    end\\nend\", \"after\": \"// source ready output\\nalways @(posedge output_clk or posedge output_rst_sync2) begin\\n    if (output_rst_sync2) begin\\n        output_axis_tvalid_reg <= 1'b0;\\n    end else if (output_axis_tready | !output_axis_tvalid_reg) begin\\n        output_axis_tvalid_reg <= ~empty;\\n    end\\nend\"}], \"explanation\": \"Fixed two issues causing stale data after reset: (1) Added explicit clearing of data_out_reg on output reset to prevent holding old data; (2) Changed ~output_axis_tvalid_reg to !output_axis_tvalid_reg for proper boolean logic in the valid register update condition.\"}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792680295,
+  "ec_transfer_params": null,
+  "id": "chatcmpl-3a6d54900182795559716f8eb63225c4",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g5001743e3-tp2-05adddbc",
+  "usage": {
+    "completion_tokens": 520,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 2265,
+    "prompt_tokens": 2265,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "created_cache_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 2785
+  }
+}

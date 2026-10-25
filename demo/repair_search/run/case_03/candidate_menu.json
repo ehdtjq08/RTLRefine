@@ -1,0 +1,514 @@
+[
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4449,
+        "old": "STARTUP_CLOCKS > 0",
+        "replacement": "(STARTUP_CLOCKS > 0) && (startup_hold)",
+        "start": 4431
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_001",
+    "line": 129,
+    "note": "Qualify condition with nearby scalar startup_hold",
+    "rtl_sha256": "8b77b8c988e94af85e4d00b664ebccecb7b3542620725d4688410829150768ed"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4449,
+        "old": "STARTUP_CLOCKS > 0",
+        "replacement": "(STARTUP_CLOCKS > 0) && (!startup_hold)",
+        "start": 4431
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_002",
+    "line": 129,
+    "note": "Qualify condition with nearby scalar !startup_hold",
+    "rtl_sha256": "85af62ebbb4e4ca2afe7443111f76ce7b9a1477b577af8d1d58811e6828c9a51"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4449,
+        "old": "STARTUP_CLOCKS > 0",
+        "replacement": "(STARTUP_CLOCKS > 0) && (o_sclk)",
+        "start": 4431
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_003",
+    "line": 129,
+    "note": "Qualify condition with nearby scalar o_sclk",
+    "rtl_sha256": "3f3b17647f5f0c178759688a4d2d02c6e82ad26ca8ac00332fb804ee258e9037"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4449,
+        "old": "STARTUP_CLOCKS > 0",
+        "replacement": "(STARTUP_CLOCKS > 0) && (!o_sclk)",
+        "start": 4431
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_004",
+    "line": 129,
+    "note": "Qualify condition with nearby scalar !o_sclk",
+    "rtl_sha256": "96690c95ad72b7dfd7581e6221151a5145af5cb930b06d4f183431cf9599f056"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4826,
+        "old": "startup_hold && !past_sclk && o_sclk",
+        "replacement": "(startup_hold && !past_sclk && o_sclk) && (i_cs)",
+        "start": 4790
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_005",
+    "line": 142,
+    "note": "Qualify condition with nearby scalar i_cs",
+    "rtl_sha256": "d6528483d37982fef23d1dbd39c661e9a1226f5f83630f3739590bb629844586"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4826,
+        "old": "startup_hold && !past_sclk && o_sclk",
+        "replacement": "(startup_hold && !past_sclk && o_sclk) && (!i_cs)",
+        "start": 4790
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_006",
+    "line": 142,
+    "note": "Qualify condition with nearby scalar !i_cs",
+    "rtl_sha256": "dda0a8a3d763ceb210c2eca3bc20cce4554d656e6c74a42c0f6ffa1fc79cd761"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4826,
+        "old": "startup_hold && !past_sclk && o_sclk",
+        "replacement": "(startup_hold && !past_sclk && o_sclk) && (i_bus_grant)",
+        "start": 4790
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_007",
+    "line": 142,
+    "note": "Qualify condition with nearby scalar i_bus_grant",
+    "rtl_sha256": "7f3d8adcb57b8a1320f38c8e63fbffec5f7b7d0ca89a0e4ead893c608a41079b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4826,
+        "old": "startup_hold && !past_sclk && o_sclk",
+        "replacement": "(startup_hold && !past_sclk && o_sclk) && (!i_bus_grant)",
+        "start": 4790
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_008",
+    "line": 142,
+    "note": "Qualify condition with nearby scalar !i_bus_grant",
+    "rtl_sha256": "04bb6f387ef099bc6d9e53a9e75931a506e13b82f55169f17592d97861bf73f0"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (startup_hold)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_009",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar startup_hold",
+    "rtl_sha256": "88b084625589a042ae160cb01a2bf200360e9238606b89d4db3844cdbe568860"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (!startup_hold)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_010",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar !startup_hold",
+    "rtl_sha256": "968f6bf285088e9d8607abc3808d2e8e22aa39b352083fd559425822aa6d7a6d"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (o_sclk)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_011",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar o_sclk",
+    "rtl_sha256": "d7b295664e259d663825d78e48014405705376941b58f344e4fdfd3240ffdbb6"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (!o_sclk)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_012",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar !o_sclk",
+    "rtl_sha256": "aa06e6532ede1faa2dd786ce3b73fb76caf172ef402f0393b17caaab5f28b02c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (i_cs)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_013",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar i_cs",
+    "rtl_sha256": "4cf862bc9372aedd2603ee921d734fcaad8ec17b84953869ddf277c09e59363e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (!i_cs)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_014",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar !i_cs",
+    "rtl_sha256": "baa9767c5bfd0f03a4091eed73325995b14336a94d8a4500c1145d99d9bea2e7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (i_bus_grant)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_015",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar i_bus_grant",
+    "rtl_sha256": "5047f8bbe1945d62c4bd551e14278a55ffdb7424f61a72bc29d48de27ac839b0"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4859,
+        "old": "|startup_counter",
+        "replacement": "(|startup_counter) && (!i_bus_grant)",
+        "start": 4843
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_016",
+    "line": 144,
+    "note": "Qualify condition with nearby scalar !i_bus_grant",
+    "rtl_sha256": "ed668372cade4a4673db663d90e5fd2ff2903c0c5a67255a861a1949d92cbcb1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5349,
+        "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+        "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (byte_accepted)",
+        "start": 5284
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_017",
+    "line": 165,
+    "note": "Qualify condition with nearby scalar byte_accepted",
+    "rtl_sha256": "ccf83f63228b9fb85629c380f06399d8f7127e68a71f26f8f589c675cc6136eb"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5349,
+        "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+        "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!byte_accepted)",
+        "start": 5284
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_018",
+    "line": 165,
+    "note": "Qualify condition with nearby scalar !byte_accepted",
+    "rtl_sha256": "59ed3c0e422189857889894a8b54477b9b09387ba95796e6f2b846a3a4fe8b74"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5349,
+        "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+        "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (o_sclk)",
+        "start": 5284
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_019",
+    "line": 165,
+    "note": "Qualify condition with nearby scalar o_sclk",
+    "rtl_sha256": "d0284aacab57b7120dd29b0ea36ab1112559fdb7397b67d860f2d1d38bcdbbcb"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5349,
+        "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+        "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!o_sclk)",
+        "start": 5284
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_020",
+    "line": 165,
+    "note": "Qualify condition with nearby scalar !o_sclk",
+    "rtl_sha256": "7ee99901893a5742564b8bb5009d1a09ba00192e023c6698c17d021c50a0d450"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5349,
+        "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+        "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (r_z_counter)",
+        "start": 5284
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_021",
+    "line": 165,
+    "note": "Qualify condition with nearby scalar r_z_counter",
+    "rtl_sha256": "6d5da8d9d65c6f957c5ca38d2db4265ef50b8693097b0d7e2fb57c1742ec3e17"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5349,
+        "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+        "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!r_z_counter)",
+        "start": 5284
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_022",
+    "line": 165,
+    "note": "Qualify condition with nearby scalar !r_z_counter",
+    "rtl_sha256": "012fc872ffca8a474c66c22ba0020dbe4b4dbac67b5b96ba0c3936b50b1706c4"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (i_cs)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_023",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar i_cs",
+    "rtl_sha256": "51df04ca4c8ef5069e0babbc84f9442e538b9d3c024434106f079b137270dc3a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (!i_cs)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_024",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar !i_cs",
+    "rtl_sha256": "475847e36fa124266d92ea72ba9c6f7de2db2b5c7911874ccfb0b7bc90460f3e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (i_bus_grant)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_025",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar i_bus_grant",
+    "rtl_sha256": "2b78a2b4a842b9cacbc0377247bccd5f7dc1d95cff2de03e5f9c3a8509369d3c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (!i_bus_grant)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_026",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar !i_bus_grant",
+    "rtl_sha256": "8c9e5f0872b334bf0e56dc3fca78ae67af7a0ccfbce95ced664833f81b239a53"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (r_z_counter)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_027",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar r_z_counter",
+    "rtl_sha256": "113b45178c7ff3519303a7d079730dae26f8ea6ac8d58e5f637c3cb06683279a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (!r_z_counter)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_028",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar !r_z_counter",
+    "rtl_sha256": "8ef6954164818740cf4df981b8aaad0a1ce011403300536c0b3f897adbd26ab7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (r_idle)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_029",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar r_idle",
+    "rtl_sha256": "9006a7746811c9047d3ca992244aa51d85aa62146e7ace6610397cd6bd3d7618"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5494,
+        "old": "(startup_hold || byte_accepted)",
+        "replacement": "((startup_hold || byte_accepted)) && (!r_idle)",
+        "start": 5463
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_030",
+    "line": 170,
+    "note": "Qualify condition with nearby scalar !r_idle",
+    "rtl_sha256": "f0301a33cc2fe4f5891cb6d8c1ac1325b5b5128617b44be60ddd1c40b2a91041"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5594,
+        "old": "!r_z_counter",
+        "replacement": "(!r_z_counter) && (startup_hold)",
+        "start": 5582
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_031",
+    "line": 174,
+    "note": "Qualify condition with nearby scalar startup_hold",
+    "rtl_sha256": "4e8a7b689e9c98e88a1ca839d64b7c8c5e9bfa011546c5967875db224615d2e6"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5594,
+        "old": "!r_z_counter",
+        "replacement": "(!r_z_counter) && (!startup_hold)",
+        "start": 5582
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_032",
+    "line": 174,
+    "note": "Qualify condition with nearby scalar !startup_hold",
+    "rtl_sha256": "f6b82ff1654747214732d67c79484c72084ffc9a7d5e32a0930e857f220b6f29"
+  }
+]

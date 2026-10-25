@@ -1,0 +1,10 @@
+{
+  "edits": [
+    {
+      "after": "    assign m_axis_tkeep  = M_KEEP_ENABLE ? (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}}) : {M_KEEP_WIDTH{1'b1}};",
+      "before": "    assign m_axis_tkeep  = M_KEEP_ENABLE ? s_axis_tkeep : {M_KEEP_WIDTH{1'b1}};",
+      "expected_matches": 1
+    }
+  ],
+  "explanation": "In the bypass case (equal widths), when the source has S_KEEP_ENABLE=0, s_axis_tkeep is only 1 bit wide but the output expects M_KEEP_WIDTH bits. The fix replicates the implied all-ones keep value to the full output keep width when S_KEEP_ENABLE=0, while preserving normal behavior when S_KEEP_ENABLE=1."
+}

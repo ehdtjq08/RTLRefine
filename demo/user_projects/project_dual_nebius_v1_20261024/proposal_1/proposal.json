@@ -1,0 +1,27 @@
+{
+  "api_requests": 1,
+  "changes": {
+    "rtl/domain_ticks.sv": "// RTLRefine importer example, MIT.\nmodule domain_ticks #(parameter integer WIDTH=80)(\n    input wire clk_a, clk_b, reset,\n    output reg [WIDTH-1:0] count_a,\n    output reg [WIDTH-1:0] count_b\n);\nalways @(posedge clk_a or posedge reset) begin\n    if(reset) count_a <= 0;\n    else count_a <= count_a + 1;\nend\nalways @(posedge clk_b or posedge reset) begin\n    if(reset) count_b <= 0;\n    else count_b <= count_b + 1;\nend\nendmodule\n"
+  },
+  "cost": {
+    "estimated_usd": 0.001241,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "e6ec35b45529492a9860b5cb1a10a615",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "proposal": {
+    "diagnosis": "The testbench expects count_b to increment by 1 on each clk_b edge, but the RTL increments count_b by 2 (count_b + 2). The failure shows count_b becomes 2 after one clk_b toggle, confirming the increment step is wrong.",
+    "edits": [
+      {
+        "end_line": 13,
+        "file": "rtl/domain_ticks.sv",
+        "replacement": "    else count_b <= count_b + 1;",
+        "start_line": 13
+      }
+    ]
+  },
+  "status": "VALID_PATCH",
+  "wall_seconds": 1.4960674250032753
+}

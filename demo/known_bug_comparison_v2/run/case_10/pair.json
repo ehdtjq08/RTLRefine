@@ -1,0 +1,274 @@
+{
+  "arms": {
+    "checker_feedback": {
+      "accepted": true,
+      "audit_pass": true,
+      "decision": "keep",
+      "discovery_pass": true,
+      "functional_source_changed": false,
+      "logical_calls": 2,
+      "request_path": "checker_feedback",
+      "status": "ALL_SEALED_TRACES_PASS",
+      "would_accept_on_discovery_but_audit_fails": false
+    },
+    "self_review": {
+      "accepted": false,
+      "audit_pass": false,
+      "decision": "repair",
+      "discovery_pass": false,
+      "functional_source_changed": true,
+      "logical_calls": 2,
+      "request_path": "self_review",
+      "status": "COMPILE_FAILED",
+      "would_accept_on_discovery_but_audit_fails": false
+    }
+  },
+  "attempts": {
+    "checker_feedback": {
+      "accepted": true,
+      "api_requests": 1,
+      "audit_pass": true,
+      "cost": {
+        "estimated_usd": 0.03691,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "47d4b638ccfe44bba1b0b617cc373c0c",
+        "reserved_usd": 1.122304,
+        "state": "settled"
+      },
+      "discovery_pass": true,
+      "evaluation": {
+        "accepted": true,
+        "audit_pass": true,
+        "commands": [
+          {
+            "command": [
+              "/home/hands/Nebius/.tools/bin/verilator",
+              "--cc",
+              "--exe",
+              "-Wno-fatal",
+              "--x-initial",
+              "0",
+              "--x-assign",
+              "0",
+              "--top-module",
+              "sdspi",
+              "--Mdir",
+              "obj_dir",
+              "candidate.v",
+              "dependencies.v",
+              "harness.cpp"
+            ],
+            "elapsed_seconds": 0.0656,
+            "execution_mode": "bubblewrap",
+            "returncode": 0,
+            "stage": "translate",
+            "status": "PASS",
+            "zero_initialization": true
+          },
+          {
+            "command": [
+              "/usr/bin/make",
+              "-C",
+              "obj_dir",
+              "-f",
+              "Vsdspi.mk",
+              "-j1",
+              "OPT_FAST=-O0",
+              "OPT_SLOW=-O0"
+            ],
+            "elapsed_seconds": 2.7768,
+            "execution_mode": "bubblewrap",
+            "returncode": 0,
+            "stage": "build",
+            "status": "PASS",
+            "zero_initialization": true
+          }
+        ],
+        "corrected_RTL_loaded_for_scoring": false,
+        "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_10/checker_feedback/evaluation",
+        "discovery_pass": true,
+        "formal_proof": false,
+        "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+        "new_api_calls": 0,
+        "oracle_depends_on_corrected_trace_values": true,
+        "rtl_sha256": "308167131ac42c3b316e75d36423da54820977eafef0d37bfbd673a3b564eba0",
+        "status": "ALL_SEALED_TRACES_PASS",
+        "traces": [
+          {
+            "command": {
+              "command": [
+                "./obj_dir/Vsdspi"
+              ],
+              "elapsed_seconds": 0.7738,
+              "execution_mode": "bubblewrap",
+              "returncode": 0,
+              "stage": "simulate",
+              "status": "PASS",
+              "zero_initialization": true
+            },
+            "comparisons": 3136123,
+            "cycles": 522559,
+            "expected_sha256": "40d0ee01fe877ebb9d90ee849e533cb0043011d673ff21a109d062980a6fdcd6",
+            "first_mismatches": [],
+            "input_windows": [],
+            "mismatch_count": 0,
+            "passed": true,
+            "phase": "discovery",
+            "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+            "stimulus_sha256": "8c60b9cd2dc9aab12b1476f7e8048f5bfa6f9e69217d65249745dadd7a6c8a8a",
+            "trace_label": "published_discovery_trace"
+          },
+          {
+            "command": {
+              "command": [
+                "./obj_dir/Vsdspi"
+              ],
+              "elapsed_seconds": 0.8162,
+              "execution_mode": "bubblewrap",
+              "returncode": 0,
+              "stage": "simulate",
+              "status": "PASS",
+              "zero_initialization": true
+            },
+            "comparisons": 3136123,
+            "cycles": 522559,
+            "expected_sha256": "5d113e3448f036a657f51826b38918c781953bae5269c48de82834cf794a4478",
+            "first_mismatches": [],
+            "input_windows": [],
+            "mismatch_count": 0,
+            "passed": true,
+            "phase": "unexposed_audit",
+            "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+            "stimulus_sha256": "59196582cec4c51e56ec9137c87b2f095eac3dd694392d2f412418954630cc5e",
+            "trace_label": "unexposed_payload_transform_7403"
+          },
+          {
+            "command": {
+              "command": [
+                "./obj_dir/Vsdspi"
+              ],
+              "elapsed_seconds": 0.7709,
+              "execution_mode": "bubblewrap",
+              "returncode": 0,
+              "stage": "simulate",
+              "status": "PASS",
+              "zero_initialization": true
+            },
+            "comparisons": 3136123,
+            "cycles": 522559,
+            "expected_sha256": "4cb1f370f890e0decc81e6b46195515051e9238d2fc983d23549be18a523bf21",
+            "first_mismatches": [],
+            "input_windows": [],
+            "mismatch_count": 0,
+            "passed": true,
+            "phase": "unexposed_audit",
+            "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+            "stimulus_sha256": "48f17893b3cf6c925eed7c0e12b169bb2a357cb308dc53878ba298a01f5bfe77",
+            "trace_label": "unexposed_payload_transform_9601"
+          }
+        ]
+      },
+      "functional_source_changed": false,
+      "proposal": {
+        "decision": "keep",
+        "edits": [],
+        "explanation": "The llsdspi module appears functionally correct for its role as a low-level SPI interface. The clock divider and state machine are separated into two always blocks, which may cause simulation non-determinism but matches the original coding style and likely the cycle-exact behavior expected by the trace oracle. No functional defects are evident in the datapath, startup timing, serial bit order, or FIFO interactions. Parameter defaults and port mappings align with the higher-level sdspi instantiation. Therefore, no edits are required."
+      },
+      "status": "ALL_SEALED_TRACES_PASS"
+    },
+    "self_review": {
+      "accepted": false,
+      "api_requests": 1,
+      "audit_pass": false,
+      "cost": {
+        "estimated_usd": 0.081392,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "8539a4726630449c9cb390eea20128e8",
+        "reserved_usd": 1.122304,
+        "state": "settled"
+      },
+      "discovery_pass": false,
+      "evaluation": {
+        "accepted": false,
+        "audit_pass": false,
+        "commands": [
+          {
+            "command": [
+              "/home/hands/Nebius/.tools/bin/verilator",
+              "--cc",
+              "--exe",
+              "-Wno-fatal",
+              "--x-initial",
+              "0",
+              "--x-assign",
+              "0",
+              "--top-module",
+              "sdspi",
+              "--Mdir",
+              "obj_dir",
+              "candidate.v",
+              "dependencies.v",
+              "harness.cpp"
+            ],
+            "elapsed_seconds": 0.0328,
+            "execution_mode": "bubblewrap",
+            "returncode": 1,
+            "stage": "translate",
+            "status": "FAIL",
+            "zero_initialization": true
+          }
+        ],
+        "corrected_RTL_loaded_for_scoring": false,
+        "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_10/self_review/evaluation",
+        "discovery_pass": false,
+        "error": "%Error: candidate.v:268:6: syntax error, unexpected else\n  268 |  end else begin\n      |      ^~~~\n%Error: candidate.v:273:12: syntax error, unexpected <=, expecting IDENTIFIER or randomize\n  273 |    r_state <= LLSDSPI_HOTIDLE;\n      |            ^~\n%Error: candidate.v:285:12: syntax error, unexpected <=, expecting IDENTIFIER or randomize\n  285 |     o_sclk <= !o_sclk;\n      |            ^~\n%Error: Exiting due to 3 error(s)\n",
+        "formal_proof": false,
+        "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+        "new_api_calls": 0,
+        "oracle_depends_on_corrected_trace_values": true,
+        "rtl_sha256": "59827968923bb03275aaef25ddf1e3c829b048503a98a499b46b25da4e36b496",
+        "status": "COMPILE_FAILED",
+        "traces": []
+      },
+      "functional_source_changed": true,
+      "proposal": {
+        "decision": "repair",
+        "edits": [
+          {
+            "end_line": 264,
+            "replacement": "\tend else if (o_sclk)\n\tbegin\n\to_mosi <= r_byte[7];\n\tr_byte <= { r_byte[6:0], 1'b1 };\n\to_sclk <= 1'b0;\n\tif (r_state == LLSDSPI_START+7)\n\tbegin\n\t\tr_state <= LLSDSPI_START+8;\n\tend else if (r_state == LLSDSPI_START+8)\n\tbegin\n\t\tr_state <= LLSDSPI_HOTIDLE;\n\t\tr_idle <= 1'b1;\n\t\to_stb <= 1'b1;\n\t\to_byte <= r_ireg;\n\t\to_sclk <= 1'b1;\n\tend else\n\t\tr_state <= r_state + 1;\n\tend",
+            "start_line": 250
+          },
+          {
+            "end_line": 268,
+            "replacement": "\tend else begin\n\t\tr_ireg <= { r_ireg[6:0], i_miso };\n\t\to_sclk <= 1'b1;\n\t\tif (r_state == LLSDSPI_START+8)\n\t\tbegin\n\t\t\tr_state <= LLSDSPI_HOTIDLE;\n\t\t\tr_idle <= 1'b1;\n\t\t\to_stb <= 1'b1;\n\t\t\to_byte <= { r_ireg[6:0], i_miso };\n\t\tend\n\tend",
+            "start_line": 265
+          }
+        ],
+        "explanation": "Fixed the SPI bit-shifting state machine to correctly sample the 8th received bit. The original design completed the byte transfer in the high phase of the clock after sending the 8th bit, skipping the low phase that samples the last bit. This caused an extra clock cycle with an extra transmitted bit and potential data corruption. The repair moves completion to the low phase when r_state == LLSDSPI_START+8 (11), ensuring exactly 8 clock cycles per byte and proper reception of all 8 bits. The high phase block now transitions to state 11 after the 8th bit (old state 10) and waits for the low phase to complete. The low phase block detects state 11, samples the final bit, outputs the byte, and transitions to HOTIDLE."
+      },
+      "status": "COMPILE_FAILED"
+    },
+    "shared_initial": {
+      "accepted": false,
+      "api_requests": 1,
+      "audit_pass": false,
+      "cost": {
+        "estimated_usd": 0.087739,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "fcba64dab2094a38856c90c002907b61",
+        "reserved_usd": 1.122304,
+        "state": "settled"
+      },
+      "discovery_pass": false,
+      "error": "ValueError: Model did not complete its JSON response",
+      "proposal": null,
+      "status": "RESPONSE_ERROR"
+    }
+  },
+  "case_id": "zipcpu-spi-c1-c3-d9_c1_normal",
+  "opaque_id": "case_10"
+}

@@ -1,0 +1,5 @@
+{
+  "decision": "keep",
+  "edits": [],
+  "explanation": "The RTL meets the CTS-specific behavioral contract. The CTS synchronizer (two flip-flops) provides the required latency; after a receiver blocks for eight clocks, the transmitter's busy remains high and no new byte is accepted. Reset and BREAK enforce a 16-baud recovery period. Byte acceptance occurs on i_wr && !o_busy outside reset/BREAK. Configuration is held constant between bytes. The excluded issues (divisor-two forward-progress and computed-parity disagreement) are not part of this CTS contract. No changes are required."
+}

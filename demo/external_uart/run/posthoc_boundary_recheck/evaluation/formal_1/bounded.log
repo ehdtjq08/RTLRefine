@@ -1,0 +1,1308 @@
+
+-- Executing script file `bounded.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\txuart'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: properties.v
+Parsing formal SystemVerilog input from `properties.v' to AST representation.
+Generating RTLIL representation for module `\property_top'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     \txuart
+Parameter \INITIAL_SETUP = 31'0000000000000000000000000000101
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\txuart'.
+Parameter \INITIAL_SETUP = 31'0000000000000000000000000000101
+Generating RTLIL representation for module `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101
+
+3.4. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101
+Removing unused module `\txuart'.
+Removed 1 unused modules.
+Module property_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$candidate.v:398$117 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 5 switch rules as full_case in process $proc$candidate.v:368$105 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 4 switch rules as full_case in process $proc$candidate.v:311$99 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 3 switch rules as full_case in process $proc$candidate.v:291$95 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 1 switch rules as full_case in process $proc$candidate.v:270$93 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Marked 12 switch rules as full_case in process $proc$candidate.v:181$77 in module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 15 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\property_top.$proc$properties.v:8$70'.
+  Set init value: \past_valid = 1'0
+Found init rule in `\property_top.$proc$properties.v:7$69'.
+  Set init value: \stable_age = 4'0000
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$128'.
+  Set init value: \last_state = 1'0
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$127'.
+  Set init value: \baud_counter = 28'0000000000000000000000000101
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$126'.
+  Set init value: \zero_baud_counter = 1'0
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$125'.
+  Set init value: \calc_parity = 1'0
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$124'.
+  Set init value: \lcl_data = 8'11111111
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$123'.
+  Set init value: \r_setup = 31'0000000000000000000000000000101
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$122'.
+  Set init value: \state = 4'1111
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$121'.
+  Set init value: \r_busy = 1'1
+Found init rule in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$120'.
+  Set init value: \o_uart_tx = 1'1
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\property_top.$proc$properties.v:8$70'.
+Creating decoders for process `\property_top.$proc$properties.v:7$69'.
+Creating decoders for process `\property_top.$proc$properties.v:16$67'.
+Creating decoders for process `\property_top.$proc$properties.v:13$62'.
+     1/1: $assume$properties.v:13$64_EN
+Creating decoders for process `\property_top.$proc$properties.v:9$59'.
+     1/1: $0\stable_age[3:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$128'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$127'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$126'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$125'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$124'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$123'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$122'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$121'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$120'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$117'.
+     1/1: $0\last_state[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$105'.
+     1/2: $0\baud_counter[27:0]
+     2/2: $0\zero_baud_counter[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$99'.
+     1/1: $0\calc_parity[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$95'.
+     1/1: $0\o_uart_tx[0:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$93'.
+     1/1: $0\lcl_data[7:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$91'.
+     1/1: $0\r_setup[30:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$77'.
+     1/2: $0\r_busy[0:0]
+     2/2: $0\state[3:0]
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:175$73'.
+Creating decoders for process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$72'.
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\property_top.\stable_age' using process `\property_top.$proc$properties.v:9$59'.
+  created $dff cell `$procdff$258' with positive edge clock.
+Creating register for signal `\property_top.\past_valid' using process `\property_top.$proc$properties.v:9$59'.
+  created $dff cell `$procdff$259' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\last_state' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$117'.
+  created $dff cell `$procdff$260' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\baud_counter' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$105'.
+  created $dff cell `$procdff$261' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\zero_baud_counter' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$105'.
+  created $dff cell `$procdff$262' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\calc_parity' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$99'.
+  created $dff cell `$procdff$263' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\o_uart_tx' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$95'.
+  created $dff cell `$procdff$264' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\lcl_data' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$93'.
+  created $dff cell `$procdff$265' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\r_setup' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$91'.
+  created $dff cell `$procdff$266' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\state' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$77'.
+  created $dff cell `$procdff$267' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\r_busy' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$77'.
+  created $dff cell `$procdff$268' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\ck_cts' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:175$73'.
+  created $dff cell `$procdff$269' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\q_cts_n' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$72'.
+  created $dff cell `$procdff$270' with positive edge clock.
+Creating register for signal `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.\qq_cts_n' using process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$72'.
+  created $dff cell `$procdff$271' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `property_top.$proc$properties.v:8$70'.
+Removing empty process `property_top.$proc$properties.v:7$69'.
+Removing empty process `property_top.$proc$properties.v:16$67'.
+Found and cleaned up 1 empty switch in `\property_top.$proc$properties.v:13$62'.
+Removing empty process `property_top.$proc$properties.v:13$62'.
+Found and cleaned up 1 empty switch in `\property_top.$proc$properties.v:9$59'.
+Removing empty process `property_top.$proc$properties.v:9$59'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$128'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$127'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$126'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$125'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$124'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$123'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$122'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$121'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:0$120'.
+Found and cleaned up 1 empty switch in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$117'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:398$117'.
+Found and cleaned up 6 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$105'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:368$105'.
+Found and cleaned up 6 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$99'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:311$99'.
+Found and cleaned up 4 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$95'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:291$95'.
+Found and cleaned up 2 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$93'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:270$93'.
+Found and cleaned up 1 empty switch in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$91'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:256$91'.
+Found and cleaned up 12 empty switches in `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$77'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:181$77'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:175$73'.
+Removing empty process `$paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.$proc$candidate.v:173$72'.
+Cleaned up 34 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+Optimizing module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\txuart\INITIAL_SETUP=31'0000000000000000000000000000101.
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 15 cells.
+
+6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\dut.$procmux$167.
+Removed 1 multiplexer ports.
+
+6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$258 ($dff) from module property_top (D = $add$properties.v:11$61_Y, Q = \stable_age).
+Adding SRST signal on $flatten\dut.$procdff$268 ($dff) from module property_top (D = $flatten\dut.$procmux$209_Y, Q = \dut.r_busy, rval = 1'1).
+Adding SRST signal on $flatten\dut.$procdff$267 ($dff) from module property_top (D = $flatten\dut.$procmux$253_Y [0], Q = \dut.state [0], rval = 1'1).
+Adding SRST signal on $flatten\dut.$procdff$267 ($dff) from module property_top (D = $flatten\dut.$procmux$250_Y [3:1], Q = \dut.state [3:1], rval = 3'111).
+Adding EN signal on $auto$ff.cc:266:slice$280 ($sdff) from module property_top (D = $flatten\dut.$procmux$247_Y [3:1], Q = \dut.state [3:1]).
+Adding EN signal on $auto$ff.cc:266:slice$279 ($sdff) from module property_top (D = $flatten\dut.$procmux$253_Y [0], Q = \dut.state [0]).
+Adding EN signal on $flatten\dut.$procdff$266 ($dff) from module property_top (D = 31'0000000000000000000000000000101, Q = \dut.r_setup).
+Adding SRST signal on $flatten\dut.$procdff$265 ($dff) from module property_top (D = $flatten\dut.$procmux$195_Y, Q = \dut.lcl_data, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:266:slice$296 ($sdff) from module property_top (D = { 1'0 \dut.lcl_data [7:1] }, Q = \dut.lcl_data).
+Adding SRST signal on $flatten\dut.$procdff$264 ($dff) from module property_top (D = $flatten\dut.$procmux$190_Y, Q = \dut.o_uart_tx, rval = 1'1).
+Adding EN signal on $auto$ff.cc:266:slice$298 ($sdff) from module property_top (D = $flatten\dut.$procmux$190_Y, Q = \dut.o_uart_tx).
+Adding SRST signal on $flatten\dut.$procdff$263 ($dff) from module property_top (D = $flatten\dut.$procmux$178_Y, Q = \dut.calc_parity, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$302 ($sdff) from module property_top (D = $flatten\dut.$procmux$178_Y, Q = \dut.calc_parity).
+Adding SRST signal on $flatten\dut.$procdff$262 ($dff) from module property_top (D = $flatten\dut.$procmux$162_Y, Q = \dut.zero_baud_counter, rval = 1'0).
+Adding SRST signal on $flatten\dut.$procdff$261 ($dff) from module property_top (D = $flatten\dut.$procmux$148_Y [3:0], Q = \dut.baud_counter [3:0], rval = 4'0000).
+Setting constant 1-bit at position 0 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 1-bit at position 2 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 17 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$295 ($dffe) from module property_top.
+Setting constant 1-bit at position 0 on $flatten\dut.$procdff$270 ($dff) from module property_top.
+
+6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 15 unused cells and 118 unused wires.
+
+6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 1 cells.
+
+6.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$312 ($dff) from module property_top (D = $flatten\dut.$procmux$148_Y [27:4], Q = \dut.baud_counter [27:4], rval = 24'000000000000000000000101).
+Setting constant 1-bit at position 0 on $flatten\dut.$procdff$271 ($dff) from module property_top.
+
+6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 2 unused cells and 12 unused wires.
+
+6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.20. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $flatten\dut.$procdff$269 ($dff) from module property_top.
+
+6.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 0 unused cells and 1 unused wires.
+
+6.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.27. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 1-bit at position 0 on $auto$ff.cc:266:slice$274 ($sdff) from module property_top.
+
+6.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 2 unused cells and 5 unused wires.
+
+6.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.30. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.31. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.32. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.33. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.34. Executing OPT_DFF pass (perform DFF optimizations).
+Removing never-active SRST on $auto$ff.cc:266:slice$303 ($sdffe) from module property_top.
+Removing never-active SRST on $auto$ff.cc:266:slice$297 ($sdffe) from module property_top.
+
+6.35. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 1 unused cells and 1 unused wires.
+
+6.36. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.37. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.38. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+6.39. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+6.40. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+6.41. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.42. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+
+6.43. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+6.44. Finished OPT passes. (There is nothing left to do.)
+
+7. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import set-constraint from init attribute: \dut.baud_counter = 28'0000000000000000000000000101
+Import set-constraint from init attribute: \dut.calc_parity = 1'0
+Import set-constraint from init attribute: \dut.last_state = 1'0
+Import set-constraint from init attribute: \dut.lcl_data = 8'11111111
+Import set-constraint from init attribute: \dut.o_uart_tx = 1'1
+Import set-constraint from init attribute: \dut.state = 4'1111
+Import set-constraint from init attribute: \dut.zero_baud_counter = 1'0
+Import set-constraint from init attribute: \past_valid = 1'0
+Import set-constraint from init attribute: \stable_age = 4'0000
+Final init constraint equation: { \stable_age \past_valid \dut.zero_baud_counter \dut.state \dut.o_uart_tx \dut.lcl_data \dut.last_state \dut.calc_parity \dut.baud_counter } = 49'0000001111111111111000000000000000000000000000101
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 17:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 18:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 19:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 20:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 21:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 22:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 23:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 24:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 25:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 26:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 27:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 28:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 29:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 30:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 31:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 32:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 33:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 34:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 35:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 36:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 37:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 38:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 39:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 40:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 41:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 42:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 43:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 44:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 45:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 46:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 47:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 48:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 49:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 50:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 51:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 52:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 53:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 54:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 55:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 56:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 57:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 58:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 59:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 60:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 61:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 62:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 63:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 64:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 65:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 66:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 67:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 68:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 69:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 70:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 71:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 72:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 73:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 74:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 75:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 76:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 77:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 78:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 79:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 80:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 81:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 82:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 83:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 84:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 85:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 86:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 87:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 88:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 89:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 90:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 91:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 92:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 93:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 94:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 95:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+
+Setting up time step 96:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \i_clk
+Import def constraint for this timestep: \i_reset
+Import def constraint for this timestep: \i_break
+Imported 60 cells to SAT database.
+Import constraint from assume cell: \i_reset when $assume$properties.v:13$64_EN.
+Import proof for assert: 1'1 when 1'1.
+Import show expression: \i_break
+Import show expression: \i_clk
+Import show expression: \i_reset
+Import show expression: \age
+Import show expression: \o_busy
+Import show expression: \o_uart_tx
+Import show expression: \property_blocked
+
+Solving problem with 589746 variables and 1612420 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+

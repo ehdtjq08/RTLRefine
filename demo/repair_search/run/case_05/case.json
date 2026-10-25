@@ -1,0 +1,70 @@
+{
+  "arms": {
+    "nvidia_prioritized": {
+      "accepted": true,
+      "attempted_ids": [
+        "candidate_001"
+      ],
+      "discovery_pass_audit_rejected": false,
+      "logical_candidate_evaluations": 1,
+      "logical_discovery_tool_seconds": 2.2699,
+      "selected_family": "state_retention",
+      "selected_id": "candidate_001",
+      "selected_source": "case_05/candidate_001/candidate.v",
+      "source_changed": true,
+      "status": "ALL_SEALED_TRACES_PASS"
+    },
+    "static_search": {
+      "accepted": true,
+      "attempted_ids": [
+        "candidate_001"
+      ],
+      "discovery_pass_audit_rejected": false,
+      "logical_candidate_evaluations": 1,
+      "logical_discovery_tool_seconds": 2.2699,
+      "selected_family": "state_retention",
+      "selected_id": "candidate_001",
+      "selected_source": "case_05/candidate_001/candidate.v",
+      "source_changed": true,
+      "status": "ALL_SEALED_TRACES_PASS"
+    }
+  },
+  "audits_ran_only_after_both_selections": true,
+  "candidate_count": 43,
+  "case_id": "axis-fifo-d12_d12",
+  "families": [
+    "condition_gate",
+    "handshake_reset_gate",
+    "reset_completion",
+    "state_retention"
+  ],
+  "opaque_id": "case_05",
+  "original_status": "DISCOVERY_TRACE_FAILED",
+  "physical_candidate_evaluations": 1,
+  "pool_candidates": 43,
+  "pool_sha256": "b6f0a7be7bfd6e8805e56b46ca36f41a29a6f88fdb92038d3de9156b30bcd5a7",
+  "ranking": {
+    "api_requests": 1,
+    "cost": {
+      "estimated_usd": 0.008565,
+      "phase": "development",
+      "pricing_verified_on": "2026-10-22",
+      "request_id": "64f907d8498d4c90b7c0c08c882b22da",
+      "reserved_usd": 1.060864,
+      "state": "settled"
+    },
+    "explanation": "The mismatch (m_axis_tvalid=1 when expected 0) indicates spurious output of data from an incomplete or invalid frame. The FRAME_FIFO logic must only commit frames when s_axis_tvalid && s_axis_tlast. Candidates 011, 021, 023, 025, 026, 028, 030, 031 add s_axis_tvalid/last and full_cur guards around write/depth conditions, directly preventing acceptance of partial frames that would otherwise be dequeued. Reset and USER_ENABLE edits are less relevant to the frame-commit policy.",
+    "ranked_ids": [
+      "candidate_011",
+      "candidate_021",
+      "candidate_023",
+      "candidate_025",
+      "candidate_026",
+      "candidate_028",
+      "candidate_030",
+      "candidate_031"
+    ],
+    "status": "VALID",
+    "wall_seconds": 3.0445
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"ranking\": [{\"id\": \"patch_07a65f6c7ebd\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 223, \"mechanism\": \"The failure shows m_axis_tvalid=1 when expected 0 at cycles 13-15. This patch adds (!full_wr) guard to the last-beat branch (line 223), preventing write eligibility from spuriously activating when the write and frame cursors wrap together. The write gate (lines 213-246) drives wr_ptr_cur_next advancement, which then produces premature mem writes and early read-data availability, resulting in m_axis_tvalid asserting before the consumer expects it.\"}, {\"id\": \"patch_c283d27d2530\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 206, \"mechanism\": \"m_axis_tvalid goes high early at cycles 13-15. This patch retains the registered overflow_reg instead of resetting it to constant 0 at line 206. If overflow_reg reflects a previously detected frame overrun, keeping it asserted suppresses subsequent frame acceptance in the write gate (lines 213-246), which otherwise would re-open write eligibility and push spurious data into memory that surfaces as early m_axis_tvalid.\"}, {\"id\": \"patch_6d0a3b3f5ecf\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 167, \"mechanism\": \"m_axis_tvalid=1 at cycles 13-15 when expected 0. This patch adds (!full_cur) to the non-frame FIFO path at line 167. The readiness gate (line 167) controls s_axis_tready, which gates entry into the write block (line 213). Over-readiness when full_cur is true lets the write block fire erroneously, advancing wr_ptr_cur and producing early mem data that becomes m_axis_tvalid via the read/output chain.\"}, {\"id\": \"patch_863f4ec32e65\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 207, \"mechanism\": \"m_axis_tvalid asserts early at cycles 13-15. This patch changes bad_frame_next default from constant 1'b0 to retain bad_frame_reg at line 207. A sticky bad_frame state blocks frame commitment in the write gate (line 213 block) on subsequent cycles; losing it to 0 re-enables frame acceptance and allows premature writes whose data propagates to m_axis_tvalid.\"}, {\"id\": \"patch_bcf62ff584ff\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 219, \"mechanism\": \"m_axis_tvalid=1 unexpectedly at cycles 13-15. This patch qualifies the FRAME_FIFO else-branch with (!s_axis_tvalid) at line 219. The else-branch (lines 219-246) is the primary write eligibility path; without this guard it can fire on cycles where s_axis_tvalid=0 but readiness is asserted, creating ghost writes that populate memory and generate spurious m_axis_tvalid.\"}, {\"id\": \"patch_5c0b9ffe4584\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 215, \"mechanism\": \"m_axis_tvalid goes high at cycles 13-15. This patch adds (s_axis_tready) guard to the !FRAME_FIFO condition at line 215. The write gate (line 213 block) uses s_axis_tready implicitly; making it explicit stops the write block from advancing wr_ptr_cur when the upstream consumer is not ready, cutting off the premature memory write that leads to early m_axis_tvalid.\"}, {\"id\": \"patch_d49e609b915e\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 167, \"mechanism\": \"m_axis_tvalid=1 at cycles 13-15 when expected 0. This patch ANDs (!rst) into the s_axis_tready assignment at line 167. During reset the original gate can assert readiness, allowing the write block (line 213) to accept data before state is cleared; the resulting memory contents then propagate through the read path to m_axis_tvalid prematurely.\"}, {\"id\": \"patch_cac4f5704d7e\", \"failure_port\": \"m_axis_tvalid\", \"source_line\": 167, \"mechanism\": \"m_axis_tvalid unexpectedly 1 at cycles 13-15. This patch changes the readiness expression to (!full_cur || full_wr || DROP_WHEN_FULL) without the FRAME_FIFO ternary at line 167. The original ternary mixes frame and non-frame logic; collapsing it removes the non-frame !full path that was asserting readiness during frame-mode operation, thereby closing the write gate (line 213) and preventing the early writes that cause m_axis_tvalid to rise.\"}], \"explanation\": \"Ranking ordered by directness to the write-gate (line 213 block) that drives wr_ptr_cur and memory writes feeding the m_axis_tvalid chain. Patches on the write-gate condition (line 213), frame cursor wrap guard (line 223), sticky status retention (lines 206,207), and upstream readiness gating (lines 167,215,219) are highest because they directly suppress the premature write that generates early valid data. Reset-side and readiness-expression patches are included but ranked lower as they act one stage earlier.\"}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754282,
+  "id": "chatcmpl-92712f7e959be0e3b7a44850efe5cff4",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 1281,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 19637,
+    "prompt_tokens": 19637,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 20918
+  }
+}

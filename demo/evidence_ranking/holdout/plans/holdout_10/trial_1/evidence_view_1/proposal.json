@@ -1,0 +1,37 @@
+{
+  "explanation": "The o_data output is stuck at 0 because multiple combinational and sequential assignments drive 0 instead of the correct data sources. The highest-priority fixes directly target the failing o_data assignments by substituting the appropriate data signals (w_data or i_data) for the hardcoded 0. The passthrough path and both output register configurations (NET_OUTPUT and REG_OUTPUT) each have sites where 0 is assigned to o_data. Structural coverage shows these are the exact failure targets. Lower-priority condition_gate patches adjust r_valid control logic but don't directly fix the data path driving o_data=0.",
+  "ranking": [
+    {
+      "id": "patch_c9c4ad33c838",
+      "mechanism": "Replace 0 with w_data in the passthrough o_data assignment, using the available staging wire that carries the buffered data"
+    },
+    {
+      "id": "patch_926f4e9c3561",
+      "mechanism": "Replace 0 with w_data in the NET_OUTPUT combinational o_data logic, using the available staging wire that carries the buffered data"
+    },
+    {
+      "id": "patch_1f207853dea8",
+      "mechanism": "Replace 0 with i_data in the REG_OUTPUT sequential o_data logic, directly feeding the input when buffer is empty"
+    },
+    {
+      "id": "patch_6b523645a71e",
+      "mechanism": "Replace 0 with i_data in the passthrough o_data assignment, directly feeding the input when buffer is empty"
+    },
+    {
+      "id": "patch_e9c2e7485e9b",
+      "mechanism": "Replace 0 with w_data in the REG_OUTPUT sequential o_data logic, using the staging wire that carries buffered data"
+    },
+    {
+      "id": "patch_624c3db76fc0",
+      "mechanism": "Replace 0 with i_data in the passthrough o_data assignment, directly feeding the input when buffer is empty"
+    },
+    {
+      "id": "patch_30270cbdad9d",
+      "mechanism": "Add (!i_valid) gate to r_valid set condition to prevent setting valid when input is not asserted"
+    },
+    {
+      "id": "patch_df9a5ce60bcb",
+      "mechanism": "Add (i_reset) gate to r_valid clear condition to make clear synchronous with reset"
+    }
+  ]
+}

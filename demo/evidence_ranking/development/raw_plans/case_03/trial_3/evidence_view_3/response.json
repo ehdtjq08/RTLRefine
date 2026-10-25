@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"ranking\": [], \"explanation\": \"All candidate patches modify the `sdspi` parent module or its generate-blocks (lines 129, 142, 144, 165, 170, 174, 4431, 4826, 4843, 4859, 5284, 5463, 5494, 5582). However, the public failure trace shows mismatches only on `o_sck` (which maps to `o_sclk` inside `llsdspi`) starting at cycle 101. The root cause is in the low-level SPI engine `llsdspi`, specifically its clock-divider / state-machine logic that drives `o_sclk`. None of the offered patches touch `llsdspi`; they only guard conditions in the wishbone wrapper. Therefore no listed candidate can resolve the observed `o_sck` divergence, and the correct ranking is empty.\"}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754255,
+  "id": "chatcmpl-6f0002378ce75984e10a8176895e96d7",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 229,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 8704,
+    "prompt_cache_miss_tokens": 19340,
+    "prompt_tokens": 28044,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 8704,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 28273
+  }
+}

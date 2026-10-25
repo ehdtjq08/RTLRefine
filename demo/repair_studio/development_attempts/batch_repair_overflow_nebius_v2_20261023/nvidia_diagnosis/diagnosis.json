@@ -1,0 +1,53 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.008112,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "99aaab4bd45140dba7b9f053196e9494",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "diagnosis": "The FIFO incorrectly publishes frames after reset because the read-side state (rd_ptr_reg, mem_read_data_valid_reg) is not initialized, causing garbage data to appear valid immediately. Simultaneously, the write-side pointer (wr_ptr_cur_reg) is not reset, so the FRAME_FIFO logic misinterprets the frame boundary and asserts m_axis_tvalid for three cycles with stale data.",
+  "display_ids": [
+    "candidate_006",
+    "candidate_010",
+    "candidate_002",
+    "candidate_017",
+    "candidate_003"
+  ],
+  "ids": [
+    "patch_df64054bcfd7",
+    "patch_4e6435726b71",
+    "patch_f32354795268",
+    "patch_bdae4e000e5d",
+    "patch_d49e609b915e"
+  ],
+  "proposal": {
+    "diagnosis": "The FIFO incorrectly publishes frames after reset because the read-side state (rd_ptr_reg, mem_read_data_valid_reg) is not initialized, causing garbage data to appear valid immediately. Simultaneously, the write-side pointer (wr_ptr_cur_reg) is not reset, so the FRAME_FIFO logic misinterprets the frame boundary and asserts m_axis_tvalid for three cycles with stale data.",
+    "ranking": [
+      {
+        "id": "candidate_006",
+        "mechanism": "Resets rd_ptr_reg and mem_read_data_valid_reg in the read-side always_ff block, eliminating stale read pointers and invalid data valid flags that cause m_axis_tvalid to assert prematurely."
+      },
+      {
+        "id": "candidate_010",
+        "mechanism": "Resets rd_addr_reg in the same block, ensuring the memory read address starts from a known state and does not fetch garbage on the first read after reset."
+      },
+      {
+        "id": "candidate_002",
+        "mechanism": "Resets wr_addr_reg in the write-side always_ff block, guaranteeing the first accepted frame is written to address 0 and aligns with the cleared read pointer."
+      },
+      {
+        "id": "candidate_017",
+        "mechanism": "Resets m_axis_reg so the output register does not drive stale frame payload onto m_axis_tdata/m_axis_tlast while m_axis_tvalid is incorrectly high."
+      },
+      {
+        "id": "candidate_003",
+        "mechanism": "Qualifies s_axis_tready with !rst, preventing the write logic from accepting input during the reset cycle and avoiding pointer updates that would corrupt frame tracking."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 3.4628824460087344
+}

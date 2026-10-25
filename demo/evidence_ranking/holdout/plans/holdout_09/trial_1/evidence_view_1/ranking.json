@@ -1,0 +1,55 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.023286,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "3618c12a008942b0a722f62d1b535f41",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_422618d0dee5",
+    "patch_f7e6f5f52970",
+    "patch_3d82912c89bf",
+    "patch_de6bffe8e862",
+    "patch_eed1b93eea0f",
+    "patch_32f229fde5f0",
+    "patch_556c4a41a077"
+  ],
+  "proposal": {
+    "explanation": "The primary failure cluster is an early SCL assertion at cycle 23 (scl_o/scl_t=1) and a late SDA hold at cycle 27-28 (sda_o/sda_t=1). Candidates that directly retarget scl_o_next or sda_o_reg in the PHY STOP/WRITE/READ bit-sequence (patch_422618d0dee5, patch_f7e6f5f52970, patch_3d82912c89bf) address the exact ports and cycles. A secondary cluster stems from START emission without verifying bus freedom; patch_de6bffe8e862 gates phy_start_bit with scl_i_reg to prevent premature START. Data-path coupling patches (patch_eed1b93eea0f) and bus-control release patches (patch_32f229fde5f0, patch_556c4a41a077) clean up the trailing SDA hold and bus_active transition. Together these seven cover the observed mismatch ports and cycles.",
+    "ranking": [
+      {
+        "id": "patch_422618d0dee5",
+        "mechanism": "sda_o_reg bound to m_axis_data_tlast_next during STOP phases links the late sda_o=1 to m_axis_data_tlast_reg state; substituting corrects the held-high SDA line on cycle 27."
+      },
+      {
+        "id": "patch_f7e6f5f52970",
+        "mechanism": "phy_state_next tied to last_sda_i_reg forces SCL low only when SDA release is observed, delaying the early scl_o=1 on cycle 23 and fixing scl_t synchronously."
+      },
+      {
+        "id": "patch_3d82912c89bf",
+        "mechanism": "scl_o_next takes sda_o_reg in PHY write states, aligning SCL timing with SDA transitions and eliminating the early SCL assertion at cycle 23."
+      },
+      {
+        "id": "patch_de6bffe8e862",
+        "mechanism": "phy_start_bit gated by scl_i_reg prevents premature START emission when the bus is not free, which suppresses the bogus SCL pulse at cycle 23."
+      },
+      {
+        "id": "patch_eed1b93eea0f",
+        "mechanism": "delay_sda_next driven by s_axis_data_tvalid couples SDA hold time to AXI data availability, clearing the late sda_o=1 at cycle 27."
+      },
+      {
+        "id": "patch_32f229fde5f0",
+        "mechanism": "bus_control_next derives from missed_ack flag, releasing bus ownership after NACK and allowing proper STOP sequencing that removes the late sda_t=1 on cycle 28."
+      },
+      {
+        "id": "patch_556c4a41a077",
+        "mechanism": "sda_i_reg updated from stop_bit captures bus-level STOP condition, ensuring the PHY releases SDA at the correct cycle and fixing sda_t on cycle 28."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.9499
+}

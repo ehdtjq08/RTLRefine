@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.017338,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "eb92578f58834e79ab69fb451e277855",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_c2632dbfb27f",
+    "patch_f3246935129c",
+    "patch_6ccd792d465f",
+    "patch_3b7cab0258e3",
+    "patch_0ef623a0d576",
+    "patch_e97363bfcac1",
+    "patch_8c0a90c6fab4",
+    "patch_aa8ac67bf828"
+  ],
+  "proposal": {
+    "explanation": "The primary failure at cycle 20 (m_axis_tdata=207 vs expected 0) indicates the first trigger event produces corrupted output data. The most critical fixes address the core statistics counters (tick_count, byte_count, frame_count) and their output snapshots, which directly populate the m_axis_tdata stream. The bit_cnt patch fixes KEEP_WIDTH byte counting, the offset patches fix frame serialization alignment, and the counter initialization patches fix snapshot corruption. The pipeline handshake patch (busy) and tick_count_output_reg initialization are secondary but contribute to sustained mismatches.",
+    "ranking": [
+      {
+        "id": "patch_c2632dbfb27f",
+        "mechanism": "The bit_cnt calculation is incorrectly using a hardcoded 0 instead of frame_count_output_reg, which affects the KEEP_ENABLE byte counting logic and subsequently corrupts the output data stream starting from the first trigger event at cycle 20."
+      },
+      {
+        "id": "patch_f3246935129c",
+        "mechanism": "The tick_count_next signal is being initialized with a constant 0 instead of the computed offset value, breaking the frame pointer alignment logic that determines which data bytes are output during STATE_OUTPUT_DATA."
+      },
+      {
+        "id": "patch_6ccd792d465f",
+        "mechanism": "The offset variable used for frame byte indexing is initialized to 0 instead of frame_count_next, causing misalignment in the data output sequence when TAG_ENABLE, TICK_COUNT_ENABLE, BYTE_COUNT_ENABLE, or FRAME_COUNT_ENABLE fields are serialized."
+      },
+      {
+        "id": "patch_3b7cab0258e3",
+        "mechanism": "tick_count_next is being assigned frame_count_output_reg instead of its proper increment logic, corrupting the tick counter that forms part of the output payload and causing immediate data mismatches at trigger assertion."
+      },
+      {
+        "id": "patch_0ef623a0d576",
+        "mechanism": "tick_count_reg is being reset with frame_count_output_reg instead of 0 during store_output, corrupting the tick counter snapshot that gets transmitted as part of the statistics frame."
+      },
+      {
+        "id": "patch_e97363bfcac1",
+        "mechanism": "byte_count_reg is being updated with tick_count_next instead of byte_count_next, breaking the byte accumulation logic that feeds into the output frame and causing progressive data corruption."
+      },
+      {
+        "id": "patch_8c0a90c6fab4",
+        "mechanism": "store_axis_temp_to_output control signal is driven by constant 1'b1 instead of the busy flag, disrupting the output pipeline handshake between temp and main output registers during backpressure conditions."
+      },
+      {
+        "id": "patch_aa8ac67bf828",
+        "mechanism": "tick_count_output_reg is initialized with byte_count_reg instead of 0 during store_output, causing the tick counter field in the output frame to reflect byte counts rather than tick counts from the first trigger cycle."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 5.4857
+}

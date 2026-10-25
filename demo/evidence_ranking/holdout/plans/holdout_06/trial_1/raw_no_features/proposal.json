@@ -1,0 +1,29 @@
+{
+  "explanation": "Ranking prioritizes patches that directly address the state machine's output path initialization and frame pointer logic, which are implicated by the first mismatches at cycles 20-22 on m_axis_tdata. patch_69ccf5c47bf8 corrects the STATE_IDLE trigger condition by adding a check for m_axis_tready_int_reg being clear, ensuring the output pipeline is ready before accepting a new trigger. patch_c2632dbfb27f fixes the bit_cnt initialization in the monitor input counter, which affects byte/frame counting accuracy. patch_25e2bb6b9fbe ensures m_axis_tvalid_int is driven by the store_axis_int_to_output control signal rather than a constant, aligning output validation with the skid buffer logic. patch_aa8ac67bf828 and patch_2830e5edbd13 substitute zero-initializations of output registers (tick_count_output_reg, bit_cnt) with live counter values, ensuring captured statistics reflect actual monitored traffic. patch_f3246935129c replaces a hardcoded frame_ptr_next reset with frame_ptr_reg, preserving pointer state consistency. Together, these target the combinational output path and counter capture logic most likely causing the early data mismatches.",
+  "ranking": [
+    {
+      "id": "patch_69ccf5c47bf8",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_c2632dbfb27f",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_25e2bb6b9fbe",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_aa8ac67bf828",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_2830e5edbd13",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_f3246935129c",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

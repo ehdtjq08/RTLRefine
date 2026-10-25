@@ -1,0 +1,13 @@
+{
+  "explanation": "The trace reveals three mismatches at cycles 8-9: input_axis_tready stuck low, output_axis_tlast missing, and output_axis_tvalid spuriously high. Candidate_001 prevents hard-resetting tready to 0. Candidate_012 gates output tlast with input tvalid to avoid false last. Candidate_014 qualifies input tlast with output tready_int so last propagates only when output can accept. Candidate_009 gates expand-bus path with !tlast to avoid premature completion. Candidate_019 guards input_valid with output tready_int to prevent over-consumption under back-pressure. Candidate_021 qualifies input_valid with !tready_int to avoid double-valid. Candidate_030 adds output tready_int to the last-cycle completion gate. Candidate_006 adds input tvalid to the expand-bus gate.",
+  "ranked_ids": [
+    "candidate_001",
+    "candidate_012",
+    "candidate_014",
+    "candidate_009",
+    "candidate_019",
+    "candidate_021",
+    "candidate_030",
+    "candidate_006"
+  ]
+}

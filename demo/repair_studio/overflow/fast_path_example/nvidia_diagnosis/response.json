@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"diagnosis\": \"In FRAME_FIFO mode, drop_frame_reg should remain asserted across the full frame until s_axis_tlast is observed, but the current code unconditionally clears it each cycle (drop_frame_next defaults to 1'b0). Once the frame ends, wr_ptr_cur_reg must snap back to wr_ptr_reg to discard the partial frame, yet the reset path only clears wr_ptr_cur_reg without reloading it from wr_ptr_reg. Together these cause the FIFO to accept the tail of an overflowed frame as a new valid frame, so m_axis_tvalid stays asserted after the input stream ends.\",\n  \"ranking\": [\n    { \"id\": \"candidate_001\", \"mechanism\": \"Retains drop_frame_reg instead of defaulting to 1'b0, keeping the drop state asserted until the frame's tlast arrives.\" },\n    { \"id\": \"candidate_026\", \"mechanism\": \"Requires s_axis_tready before evaluating full_cur/full_wr/drop_frame_reg, preventing spurious frame-drop decisions when the upstream is not ready.\" },\n    { \"id\": \"candidate_043\", \"mechanism\": \"Qualifies the !FRAME_FIFO branch with !full_wr, avoiding pointer updates that corrupt FRAME_FIFO state.\" },\n    { \"id\": \"candidate_035\", \"mechanism\": \"Gates the overflow/drop condition on s_axis_tlast so wr_ptr_cur_reg only rolls back at frame boundaries.\" },\n    { \"id\": \"candidate_017\", \"mechanism\": \"Adds !s_axis_tready to the USER_ENABLE condition, reducing write-side activity during back-pressure.\" },\n    { \"id\": \"candidate_002\", \"mechanism\": \"Resets wr_addr_reg on rst, ensuring the write address used in the same cycle as reset is clean.\" }\n  ]\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792765437,
+  "id": "chatcmpl-5f7c64f5dd6e073f609e3290defa68d6",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 418,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 6960,
+    "prompt_tokens": 6960,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 7378
+  }
+}

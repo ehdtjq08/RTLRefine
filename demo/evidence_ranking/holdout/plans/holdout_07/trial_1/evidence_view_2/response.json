@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_64d2bd7aca6b\",\n      \"mechanism\": \"Alters phy_tx_data constant 1'b1 to missed_ack_next in PHY_STATE_WRITE_BIT_3; changes data driven onto SDA during write bit phase, potentially affecting bus control timing and downstream bus_active generation.\"\n    },\n    {\n      \"id\": \"patch_1eaa912ddb03\",\n      \"mechanism\": \"Replaces missed_ack_reg default 1'b0 with scl_negedge; couples missed ACK detection to SCL falling edge which may shift bus control sequencing and influence bus_active assertion cycles.\"\n    },\n    {\n      \"id\": \"patch_b426c357ff1e\",\n      \"mechanism\": \"Directly substitutes bus_active_reg initialization from 1'b0 to s_axis_cmd_start; since bus_active is the failing port, this edit targets the exact register driving the mismatched output.\"\n    },\n    {\n      \"id\": \"patch_58d634fc40e4\",\n      \"mechanism\": \"Sets bus_active_reg default from 1'b0 to mode_write_multiple_reg; mode_write_multiple_reg reflects multi-byte write intent and may cause earlier bus_active assertion aligned with expected trace.\"\n    },\n    {\n      \"id\": \"patch_047dea8ef5d8\",\n      \"mechanism\": \"Changes phy_tx_data from constant 1'b1 to delay_sda_next in PHY_STATE_START_1; modifies SDA data during repeated start sequence, potentially altering bus arbitration timing that feeds bus_active.\"\n    },\n    {\n      \"id\": \"patch_c1bf34953ab3\",\n      \"mechanism\": \"Replaces delay_scl_next constant 1'b1 with scl_t in PHY_STATE_WRITE_BIT_2; ties SCL delay release to output enable, which could shift phy_state progression and bus_active timing.\"\n    },\n    {\n      \"id\": \"patch_dd3edbcc7820\",\n      \"mechanism\": \"Substitutes sda_o_next constant 1'b1 with missed_ack_next in PHY_STATE_STOP_2; modifies SDA release during stop, possibly affecting bus handover and bus_active deassertion alignment.\"\n    },\n    {\n      \"id\": \"patch_4d9541c17aad\",\n      \"mechanism\": \"Replaces phy_stop_bit constant 1'b0 with scl_t; ties stop condition to SCL output enable, which may cause premature or delayed stop sequencing impacting bus_active.\"\n    }\n  ],\n  \"explanation\": \"Ranking prioritizes edits that directly target the failing bus_active register (patch_b426c357ff1e, patch_58d634fc40e4) or modify signals feeding bus control sequencing (patch_64d2bd7aca6b, patch_1eaa912ddb03, patch_047dea8ef5d8, patch_c1bf34953ab3, patch_dd3edbcc7820, patch_4d9541c17aad). All are rhs_substitution of same-width signals at lines implicated by dependency analysis. No RTL, test results, or confidence probabilities are included.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755421,
+  "id": "chatcmpl-0fb2ae1dfa234dc29279b40ea96e39b5",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 743,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 4352,
+    "prompt_cache_miss_tokens": 15549,
+    "prompt_tokens": 19901,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 4352,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 20644
+  }
+}

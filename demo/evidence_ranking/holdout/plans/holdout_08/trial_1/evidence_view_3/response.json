@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_31072fe48c08\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_b636b4c69600\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_19c499f1ae89\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_c8e74ade46dc\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_cec5966346b2\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_3457e7486463\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_a506c39785b0\",\n      \"mechanism\": \"rhs_substitution\"\n    },\n    {\n      \"id\": \"patch_cec5966346b2\",\n      \"mechanism\": \"rhs_substitution\"\n    }\n  ],\n  \"explanation\": \"Ranking prioritizes patches targeting the core PHY state machine timing and bus control logic where mismatches occur at failure_cycle=13. Patches affecting phy_state transitions (PHY_STATE_STOP_1/STOP_2/STOP_3), bus_control_next, s_axis_cmd_ready_next, and sda_o/scl_o sequencing are highest. The repeated PHY_STATE_READ_BIT_4\u2192ACTIVE and STOP sequences appear in multiple candidates, indicating the physical layer stop/start timing is the primary failure anchor. Candidates with direct_failure_target=true on s_axis_cmd_ready, sda_o, busy are ranked first as they match the first_mismatches ports exactly. The rhs_substitution family dominates because the combinational logic replacements directly address signal width/state retention mismatches in the always@* block.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755425,
+  "id": "chatcmpl-42d37e8503926d7f9937c8b23a94ae7f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 460,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 4352,
+    "prompt_cache_miss_tokens": 17157,
+    "prompt_tokens": 21509,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 4352,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 21969
+  }
+}

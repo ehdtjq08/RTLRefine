@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.013634,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "cf30bf6a4b324f039f3f08f966ff481f",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_5e3af25f023e",
+    "patch_1e51d2e21710",
+    "patch_158c82e15fb9",
+    "patch_4d3dbe7613e4",
+    "patch_4ac42f1009e7",
+    "patch_c1e6cd26e2ef",
+    "patch_f416b40a5aaa",
+    "patch_3b8e3300b085"
+  ],
+  "proposal": {
+    "explanation": "The cycle-5 frame_len mismatch (actual 3 vs expected 1) stems from the previous frame's length persisting into the next frame and/or an extra beat being counted after tlast. The top-ranked patches directly reset or gate the length accumulator at frame boundaries (patch_5e3af25f023e, patch_1e51d2e21710) or tighten the conditions that define a valid frame start/end (patch_158c82e15fb9, patch_4d3dbe7613e4, patch_4ac42f1009e7, patch_c1e6cd26e2ef). Lower-ranked patches modify the tlast branch qualification (patch_f416b40a5aaa, patch_3b8e3300b085), which can indirectly shift frame_reg timing and thus the set of beats counted. All cited patches reference the exact source line they edit and the single observed failing port frame_len at cycle 5.",
+    "ranking": [
+      {
+        "failure_port": "frame_len",
+        "id": "patch_5e3af25f023e",
+        "mechanism": "Resets frame_len_next to zero whenever frame_len_valid_reg is asserted, preventing the previous frame's length from carrying into the next frame. In the failing trace at cycle 5, the prior frame completed with tlast (cycle 3) and frame_len_valid_reg=1; without this reset the combinational block adds the new beat's KEEP count on top of the old value, producing 3 instead of the expected 1.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_1e51d2e21710",
+        "mechanism": "Gates the entire transfer-handling block with !frame_reg so that a new frame cannot begin until the previous one has closed (frame_reg=0). In the trace, frame_reg is still 1 at cycle 4 (the cycle after tlast), so the spurious beat at cycle 4 would be ignored, avoiding the extra +2 that leads to the cycle-5 mismatch.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_158c82e15fb9",
+        "mechanism": "Strengthens the new-frame condition (!frame_reg) with !monitor_axis_tlast, ensuring frame_len_next is only cleared for a genuine first beat of a frame. This prevents a tlast beat from accidentally satisfying the start-of-frame path and leaving the length uninitialized for the next frame.",
+        "source_line": 88
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_4d3dbe7613e4",
+        "mechanism": "Requires monitor_axis_tready alongside !frame_reg when starting a new frame, aligning the frame-start event with a qualified transfer. In the trace this would keep frame_len_next at zero until cycle 4's ready/valid beat, so the subsequent KEEP count begins from a clean baseline.",
+        "source_line": 88
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_4ac42f1009e7",
+        "mechanism": "Guards the KEEP_ENABLE byte-counting loop with !frame_reg so enabled bytes are only accumulated while a frame is actively open. When frame_reg=1 at cycle 4 (post-tlast), the loop is suppressed and the erroneous +2 addition disappears.",
+        "source_line": 95
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_c1e6cd26e2ef",
+        "mechanism": "Adds !frame_reg to the per-bit KEEP match condition, causing the popcount loop to yield zero once the frame has closed. This directly removes the extra +2 seen at cycle 4 in the failing trace.",
+        "source_line": 98
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_f416b40a5aaa",
+        "mechanism": "Qualifies the tlast branch with !monitor_axis_tready, ensuring frame_len_valid_next and frame_next=0 only trigger on a ready/valid/last beat. If the trace's tlast at cycle 3 lacked ready, this would delay frame closure and change the cycle-5 state, indirectly affecting the observed length.",
+        "source_line": 84
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_3b8e3300b085",
+        "mechanism": "Adds !frame_reg to the tlast condition, so a frame can only close if it was previously open. This prevents a stray tlast from resetting frame_reg prematurely, which would alter the frame_reg value seen at cycle 4 and thus the eligibility of the cycle-4 beat for length accumulation.",
+        "source_line": 84
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 7.9147
+}

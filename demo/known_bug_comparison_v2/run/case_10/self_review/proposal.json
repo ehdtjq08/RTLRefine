@@ -1,0 +1,16 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 264,
+      "replacement": "\tend else if (o_sclk)\n\tbegin\n\to_mosi <= r_byte[7];\n\tr_byte <= { r_byte[6:0], 1'b1 };\n\to_sclk <= 1'b0;\n\tif (r_state == LLSDSPI_START+7)\n\tbegin\n\t\tr_state <= LLSDSPI_START+8;\n\tend else if (r_state == LLSDSPI_START+8)\n\tbegin\n\t\tr_state <= LLSDSPI_HOTIDLE;\n\t\tr_idle <= 1'b1;\n\t\to_stb <= 1'b1;\n\t\to_byte <= r_ireg;\n\t\to_sclk <= 1'b1;\n\tend else\n\t\tr_state <= r_state + 1;\n\tend",
+      "start_line": 250
+    },
+    {
+      "end_line": 268,
+      "replacement": "\tend else begin\n\t\tr_ireg <= { r_ireg[6:0], i_miso };\n\t\to_sclk <= 1'b1;\n\t\tif (r_state == LLSDSPI_START+8)\n\t\tbegin\n\t\t\tr_state <= LLSDSPI_HOTIDLE;\n\t\t\tr_idle <= 1'b1;\n\t\t\to_stb <= 1'b1;\n\t\t\to_byte <= { r_ireg[6:0], i_miso };\n\t\tend\n\tend",
+      "start_line": 265
+    }
+  ],
+  "explanation": "Fixed the SPI bit-shifting state machine to correctly sample the 8th received bit. The original design completed the byte transfer in the high phase of the clock after sending the 8th bit, skipping the low phase that samples the last bit. This caused an extra clock cycle with an extra transmitted bit and potential data corruption. The repair moves completion to the low phase when r_state == LLSDSPI_START+8 (11), ensuring exactly 8 clock cycles per byte and proper reception of all 8 bits. The high phase block now transitions to state 11 after the 8th bit (old state 10) and waits for the low phase to complete. The low phase block detects state 11, samples the final bit, outputs the byte, and transitions to HOTIDLE."
+}

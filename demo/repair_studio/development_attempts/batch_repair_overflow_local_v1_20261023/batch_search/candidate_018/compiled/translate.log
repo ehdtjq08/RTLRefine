@@ -1,0 +1,9 @@
+%Error: candidate.v:175:27: Expecting expression to be constant, but variable isn't const: 's_axis_tvalid'
+                          : ... In instance axis_fifo
+  175 |     if ((USER_ENABLE) && (s_axis_tvalid)) assign s_axis[USER_OFFSET +: USER_WIDTH] = s_axis_tuser;
+      |                           ^~~~~~~~~~~~~
+%Error: candidate.v:175:27: Generate If condition must evaluate to constant
+                          : ... In instance axis_fifo
+  175 |     if ((USER_ENABLE) && (s_axis_tvalid)) assign s_axis[USER_OFFSET +: USER_WIDTH] = s_axis_tuser;
+      |                           ^~~~~~~~~~~~~
+%Error: Exiting due to 2 error(s)

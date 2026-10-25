@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "sdspi",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0327,
+      "execution_mode": "bubblewrap",
+      "returncode": 1,
+      "stage": "translate",
+      "status": "FAIL",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": false,
+  "error": "%Error: candidate.v:129:41: Expecting expression to be constant, but variable isn't const: 'startup_hold'\n                          : ... In instance sdspi.lowlevel\n  129 |  generate if ((STARTUP_CLOCKS > 0) && (!startup_hold))\n      |                                         ^~~~~~~~~~~~\n%Error: candidate.v:129:40: Generate If condition must evaluate to constant\n                          : ... In instance sdspi.lowlevel\n  129 |  generate if ((STARTUP_CLOCKS > 0) && (!startup_hold))\n      |                                        ^\n%Error: Exiting due to 2 error(s)\n",
+  "new_api_calls": 0,
+  "rtl_sha256": "85af62ebbb4e4ca2afe7443111f76ce7b9a1477b577af8d1d58811e6828c9a51",
+  "status": "COMPILE_FAILED",
+  "traces": []
+}

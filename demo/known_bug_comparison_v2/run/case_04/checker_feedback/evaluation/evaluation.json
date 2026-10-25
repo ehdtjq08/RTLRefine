@@ -1,0 +1,41 @@
+{
+  "accepted": false,
+  "audit_pass": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_adapter",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0167,
+      "execution_mode": "bubblewrap",
+      "returncode": 1,
+      "stage": "translate",
+      "status": "FAIL",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": false,
+  "error": "%Error: candidate.v:380:1: syntax error, unexpected end\n  380 | end\n      | ^~~\n%Error: Exiting due to 1 error(s)\n",
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "4c9e5f3ae0d10b25a0cb71fe63c01c56ac55898beeda74fa497460b6044a7dd5",
+  "status": "COMPILE_FAILED",
+  "traces": []
+}

@@ -1,0 +1,53 @@
+{
+  "explanation": "The discovery trace shows a single mismatch at cycle 5: frame_len=3 (actual) vs 1 (expected). The stimulus has a single-word frame at cycles 2-3 (tkeep=1, tlast=1, tvalid=1, tready=1) followed by a multi-word frame. The root cause is that the original code allows both the tlast branch (line 84) and the new-frame branch (line 88) to execute in the same cycle for a single-word frame, because line 88 lacks a `!tlast` guard. This resets frame_len_next to 0 then adds the keep count (1), but the tlast branch also adds its keep count (1), and the next transfer adds another, yielding 3. Patch_158c82e15fb9 directly fixes this by adding `&& (!monitor_axis_tlast)` to line 88. Patch_1e51d2e21710 and patch_5e3af25f023e provide complementary guards: gating all transfer logic to active frames and clearing the accumulator after a valid pulse. The remaining candidates address secondary issues (tlast without frame, reset-time keep logic, wrong-polarity frame gating) that could surface in longer traces.",
+  "ranking": [
+    {
+      "failure_port": "frame_len",
+      "id": "patch_158c82e15fb9",
+      "mechanism": "The condition for starting a new frame (line 88) lacks a guard against tlast in the same transfer. When a single-word frame occurs (tvalid && tready && tlast while !frame_reg), both the tlast branch (line 84) and the new-frame branch (line 88) execute, resetting frame_len_next to 0 then adding the keep count. The patch adds `&& (!monitor_axis_tlast)` to the new-frame condition, ensuring only the tlast branch runs for single-word frames. This matches the observed failure at cycle 5 where frame_len=3 instead of 1.",
+      "source_line": 88
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_1e51d2e21710",
+      "mechanism": "The main transfer condition (line 81) processes tvalid && tready even when not in a frame (!frame_reg) and not tlast, causing frame_len_next to accumulate keep counts before a frame starts. The patch adds `&& (!frame_reg)` to gate all frame logic behind an active frame, except the explicit new-frame start at line 88. This prevents spurious accumulation and aligns with the public spec: 'Count those enabled bytes only on valid AND ready transfers' within a frame.",
+      "source_line": 81
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_5e3af25f023e",
+      "mechanism": "After frame_len_valid pulses, frame_len_reg retains the reported length. The next transfer (even without a new frame start) adds to this stale value. The patch inserts a reset of frame_len_next to 0 when frame_len_valid_reg is asserted, clearing the accumulator for the next frame. This addresses the cycle-5 mismatch by ensuring the second frame starts from zero.",
+      "source_line": 81
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_43231d1a706e",
+      "mechanism": "The tlast condition (line 84) can fire when frame_reg=0 (e.g., spurious tlast without a frame), setting frame_len_valid_next and clearing frame_next. The patch adds `&& (frame_reg)` so tlast only ends an active frame. This prevents false frame completion and valid pulses, which would corrupt subsequent frame_len accounting.",
+      "source_line": 84
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_a0ac38b154f7",
+      "mechanism": "The KEEP_ENABLE block (line 95) runs its loop even during reset (rst=1), because the combinational always @* executes before the sequential reset takes effect. The patch adds `&& (!rst)` to disable keep counting during reset, avoiding x/undefined behavior in the loop comparison and ensuring frame_len_next starts clean at 0.",
+      "source_line": 95
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_c1e6cd26e2ef",
+      "mechanism": "The keep-width detection loop (line 98) executes for every i even when not in a frame (!frame_reg), adding bit_cnt to frame_len_next spuriously. The patch adds `&& (!frame_reg)` to the equality check, but more critically the loop should be gated by frame_reg (not !frame_reg). This candidate partially aligns with gating keep logic to active frames.",
+      "source_line": 98
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_4ac42f1009e7",
+      "mechanism": "Similar to patch_c1e6cd26e2ef, this gates the entire KEEP_ENABLE block with `&& (!frame_reg)`, which is the wrong polarity (should be frame_reg). However, it identifies the correct site: the keep-width loop must not run outside a frame. The observed failure stems from keep counts accumulating in the !frame_reg gap before line 88 resets frame_len_next.",
+      "source_line": 95
+    },
+    {
+      "failure_port": "frame_len",
+      "id": "patch_1bf21575a3be",
+      "mechanism": "frame_len_valid_next defaults to 1'b0 every cycle (line 78), but the patch changes it to retain frame_len_valid_reg. This would hold the valid pulse longer than one cycle, violating the spec's 'report each completed frame' (single-cycle pulse). Included as a negative example: it would break the valid-pulse contract even if frame_len were fixed.",
+      "source_line": 78
+    }
+  ]
+}

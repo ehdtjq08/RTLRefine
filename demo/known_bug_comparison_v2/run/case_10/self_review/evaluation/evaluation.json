@@ -1,0 +1,41 @@
+{
+  "accepted": false,
+  "audit_pass": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "sdspi",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0328,
+      "execution_mode": "bubblewrap",
+      "returncode": 1,
+      "stage": "translate",
+      "status": "FAIL",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": false,
+  "error": "%Error: candidate.v:268:6: syntax error, unexpected else\n  268 |  end else begin\n      |      ^~~~\n%Error: candidate.v:273:12: syntax error, unexpected <=, expecting IDENTIFIER or randomize\n  273 |    r_state <= LLSDSPI_HOTIDLE;\n      |            ^~\n%Error: candidate.v:285:12: syntax error, unexpected <=, expecting IDENTIFIER or randomize\n  285 |     o_sclk <= !o_sclk;\n      |            ^~\n%Error: Exiting due to 3 error(s)\n",
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "59827968923bb03275aaef25ddf1e3c829b048503a98a499b46b25da4e36b496",
+  "status": "COMPILE_FAILED",
+  "traces": []
+}

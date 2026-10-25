@@ -1,0 +1,8 @@
+read_verilog -formal -sv candidate.v properties.v
+hierarchy -check -top property_top
+proc
+flatten
+memory_map
+opt
+chformal -lower
+sat -seq 16 -set-assumes -prove-asserts -set-init-zero -set-def-inputs -timeout 45 -show-ports -dump_json counterexample.json -dump_vcd counterexample.vcd

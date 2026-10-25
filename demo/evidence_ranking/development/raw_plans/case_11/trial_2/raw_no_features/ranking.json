@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.007933,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "7b6a725bfc944bd7a146a18f6dc5dff9",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_6ae7345a2b8e",
+    "patch_a5fd054c48a1",
+    "patch_3b8e3300b085",
+    "patch_4ac42f1009e7",
+    "patch_14a0bc3c436d",
+    "patch_c1e6cd26e2ef",
+    "patch_5e3af25f023e",
+    "patch_e7d230ca8a18"
+  ],
+  "proposal": {
+    "explanation": "The discovery trace shows frame_len=3 when the oracle expects 1 at cycle 5. The stimulus has a single valid/ready/tlast=1 cycle with tkeep=1 (one enabled byte). The original RTL executes the tlast branch (sets valid, clears frame_reg) and then also executes the KEEP_ENABLE block, adding the enabled-byte count for that last word a second time. The fix is to prevent the KEEP_ENABLE block from running on the tlast cycle. patch_6ae7345a2b8e does this precisely by adding !monitor_axis_tlast to the KEEP_ENABLE condition at line 95. Other candidates either miss the root cause, are too broad (breaking single-word frames), or invert the required logic.",
+    "ranking": [
+      {
+        "failure_port": "frame_len",
+        "id": "patch_6ae7345a2b8e",
+        "mechanism": "The KEEP_ENABLE block at line 95 runs on every valid/ready cycle, including the final (tlast=1) cycle. On that cycle the original code also executes the tlast branch (line 84) which sets frame_len_valid_next=1 and frame_next=0, but then the KEEP_ENABLE block still adds the enabled-byte count for the last word. This double-counts the final word, producing frame_len=3 instead of 1 in the discovery trace. Guarding the KEEP_ENABLE block with !monitor_axis_tlast ensures the enabled-byte count is added only for non-last words, matching the spec to count bytes on valid/ready transfers and report on the completed frame.",
+        "source_line": 95
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_a5fd054c48a1",
+        "mechanism": "The outer guard at line 81 currently executes its body on every valid/ready cycle. Adding !monitor_axis_tlast restricts the frame_len update logic to non-last cycles, so the final word does not increment frame_len_next at all (the tlast branch only emits frame_len_valid). This also prevents the double-count but is coarser: it disables the new-frame reset (!frame_reg branch) on a single-word frame where tlast arrives with frame_reg=0, which could break consecutive single-word frames. patch_6ae7345a2b8e is more surgical.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_3b8e3300b085",
+        "mechanism": "Adding !frame_reg to the tlast condition makes the frame_len_valid pulse conditional on already being inside a frame. This does not address the extra addition performed by the KEEP_ENABLE block on the last cycle, so the frame_len mismatch remains. It also risks suppressing the valid pulse for legitimate single-word frames (frame_reg=0 when tlast arrives).",
+        "source_line": 84
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_4ac42f1009e7",
+        "mechanism": "Guarding the KEEP_ENABLE block with !frame_reg would allow the enabled-byte count only when a frame is already open. On the first word of a frame (frame_reg=0) the count would be skipped, causing an off-by-one on multi-word frames and breaking single-word frames. The failure is on the last word, not the first.",
+        "source_line": 95
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_14a0bc3c436d",
+        "mechanism": "Requiring monitor_axis_tlast on the outer guard inverts the logic: frame_len would only update on the last cycle, breaking all multi-word frames. Does not match the observed single mismatch.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_c1e6cd26e2ef",
+        "mechanism": "Adding !frame_reg inside the popcount loop makes the bit-count conditional on frame_reg, but the loop still runs on the last cycle. The root cause is the loop executing on the tlast cycle at all; this patch does not stop that.",
+        "source_line": 98
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_5e3af25f023e",
+        "mechanism": "Clears frame_len_next after frame_len_valid_reg is asserted, which is a post-report reset. The discovery mismatch is the value reported (3 vs 1), not a stale value afterward. This does not prevent the over-count during the final cycle.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_e7d230ca8a18",
+        "mechanism": "Guarding KEEP_ENABLE with monitor_axis_tlast would enable the popcount only on the last cycle \u2014 the exact opposite of what is needed \u2014 and would still over-count that cycle.",
+        "source_line": 95
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 6.1347
+}

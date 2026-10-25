@@ -1,0 +1,16 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 248,
+      "replacement": "            if (byte_accepted)\n            begin\n                r_byte <= i_byte[7:0];\n                r_state <= LLSDSPI_START;\n                r_idle <= 1'b0;\n                o_mosi <= i_byte[7];\n                o_sclk <= 1'b1;\n            end else",
+      "start_line": 241
+    },
+    {
+      "end_line": 268,
+      "replacement": "        end else if (o_sclk && r_z_counter)\n        begin\n            o_mosi <= r_byte[7];\n            r_byte <= { r_byte[6:0], 1'b1 };\n            r_state <= r_state + 1;\n            o_sclk <= 1'b0;\n            if (r_state >= LLSDSPI_START+8)\n            begin\n                r_state <= LLSDSPI_HOTIDLE;\n                r_idle <= 1'b1;\n                o_stb <= 1'b1;\n                o_byte <= r_ireg;\n                o_sclk <= 1'b1;\n            end else\n                r_state <= r_state + 1;\n        end else if (r_z_counter) begin\n            r_ireg <= { r_ireg[6:0], i_miso };\n            o_sclk <= 1'b1;\n        end",
+      "start_line": 250
+    }
+  ],
+  "explanation": "Discovery traces confirm the SPI clock (o_sck/o_sclk) toggles at system-clock rate instead of the configured divider rate. The first mismatch at cycle 101 shows o_sck=1 when 0 is expected, and subsequent cycles show it stuck high. The root cause is the bit-transmission loop (lines 250-268) toggling SCK and advancing state every cycle without checking r_z_counter. The fix gates both the SCK-falling and SCK-rising edges with r_z_counter so the divider controls SPI frequency. Additionally, the HOTIDLE state (lines 241-248) forced the last transmitted bit to 1 and advanced state by one extra step, corrupting back-to-back byte transmission; the fix makes HOTIDLE identical to IDLE for correct serial bit order. Both edits preserve the public interface, startup timing, and Wishbone-qualified acknowledgments."
+}

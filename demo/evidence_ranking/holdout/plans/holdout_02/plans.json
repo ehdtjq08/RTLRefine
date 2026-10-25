@@ -1,0 +1,361 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_004cc266ecdc": 6,
+          "patch_05abffd461ff": 12,
+          "patch_177e84f089b9": 12,
+          "patch_330141055bc5": 13,
+          "patch_37b9d212adbe": 8,
+          "patch_390a7a67ed09": 11,
+          "patch_4c92a56408a4": 10,
+          "patch_526cd5d1d85b": 0,
+          "patch_53c73d1a2563": 0,
+          "patch_5a0af9d51c1a": 0,
+          "patch_687644f7cde1": 0,
+          "patch_73d0959c8d78": 10,
+          "patch_8053be1dbae4": 0,
+          "patch_9d11758b2afe": 0,
+          "patch_b3ecf77ee42a": 0,
+          "patch_bdfb4e29768c": 18,
+          "patch_c9bcd0ebf5ab": 0,
+          "patch_de127ce49d29": 3,
+          "patch_ec27a287b3cc": 0,
+          "patch_ee94d1ca02b6": 0,
+          "patch_f2861c6c0e09": 0,
+          "patch_f89a1677f767": 5,
+          "patch_fc70287381b7": 0,
+          "patch_ff59297437c2": 0
+        },
+        "fallback_reason": null,
+        "order": [
+          "patch_bdfb4e29768c",
+          "patch_330141055bc5",
+          "patch_177e84f089b9",
+          "patch_05abffd461ff",
+          "patch_390a7a67ed09",
+          "patch_73d0959c8d78",
+          "patch_4c92a56408a4",
+          "patch_37b9d212adbe",
+          "patch_004cc266ecdc",
+          "patch_f89a1677f767",
+          "patch_de127ce49d29",
+          "patch_8053be1dbae4",
+          "patch_9d11758b2afe",
+          "patch_c9bcd0ebf5ab",
+          "patch_ec27a287b3cc",
+          "patch_f2861c6c0e09",
+          "patch_ff59297437c2",
+          "patch_53c73d1a2563",
+          "patch_687644f7cde1",
+          "patch_526cd5d1d85b",
+          "patch_fc70287381b7",
+          "patch_5a0af9d51c1a",
+          "patch_b3ecf77ee42a",
+          "patch_ee94d1ca02b6"
+        ],
+        "raw_consensus_order": [
+          "patch_bdfb4e29768c",
+          "patch_330141055bc5",
+          "patch_177e84f089b9",
+          "patch_05abffd461ff",
+          "patch_390a7a67ed09",
+          "patch_73d0959c8d78",
+          "patch_4c92a56408a4",
+          "patch_37b9d212adbe",
+          "patch_004cc266ecdc",
+          "patch_f89a1677f767",
+          "patch_de127ce49d29",
+          "patch_8053be1dbae4",
+          "patch_9d11758b2afe",
+          "patch_c9bcd0ebf5ab",
+          "patch_ec27a287b3cc",
+          "patch_f2861c6c0e09",
+          "patch_ff59297437c2",
+          "patch_53c73d1a2563",
+          "patch_687644f7cde1",
+          "patch_526cd5d1d85b",
+          "patch_fc70287381b7",
+          "patch_5a0af9d51c1a",
+          "patch_b3ecf77ee42a",
+          "patch_ee94d1ca02b6"
+        ],
+        "stability": 0.6107744107744107,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_004cc266ecdc": 1,
+          "patch_05abffd461ff": 2,
+          "patch_177e84f089b9": 3,
+          "patch_330141055bc5": 3,
+          "patch_37b9d212adbe": 1,
+          "patch_390a7a67ed09": 3,
+          "patch_4c92a56408a4": 2,
+          "patch_526cd5d1d85b": 0,
+          "patch_53c73d1a2563": 0,
+          "patch_5a0af9d51c1a": 0,
+          "patch_687644f7cde1": 0,
+          "patch_73d0959c8d78": 3,
+          "patch_8053be1dbae4": 0,
+          "patch_9d11758b2afe": 0,
+          "patch_b3ecf77ee42a": 0,
+          "patch_bdfb4e29768c": 3,
+          "patch_c9bcd0ebf5ab": 0,
+          "patch_de127ce49d29": 1,
+          "patch_ec27a287b3cc": 0,
+          "patch_ee94d1ca02b6": 0,
+          "patch_f2861c6c0e09": 0,
+          "patch_f89a1677f767": 2,
+          "patch_fc70287381b7": 0,
+          "patch_ff59297437c2": 0
+        },
+        "used_model_order": true,
+        "valid_views": 3
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.012042,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "e01488e6dc2d4e31a35eeb560f764db6",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_bdfb4e29768c",
+          "patch_c9bcd0ebf5ab",
+          "patch_ec27a287b3cc",
+          "patch_8053be1dbae4",
+          "patch_9d11758b2afe",
+          "patch_330141055bc5",
+          "patch_177e84f089b9",
+          "patch_4c92a56408a4"
+        ],
+        "proposal": {
+          "explanation": "The primary failure is m_axis_tlast stuck at 0 (53 mismatches). The root cause is line 141 hardcoding m_axis_tlast_int=0 instead of propagating s_axis_tlast. patch_bdfb4e29768c fixes this directly. Secondary issues involve uninitialized registers during reset: m_axis_tdata_reg, m_axis_tdest_reg, temp_m_axis_tid_reg, temp_m_axis_tkeep_reg lack explicit reset assignments (patches c9bcd0ebf5ab, ec27a287b3cc, 8053be1dbae4, 9d11758b2afe). The frame pause logic incorrectly triggers when rate_by_frame=0 (patch_330141055bc5). The pause signal substitution (patch_177e84f089b9) and ready gating (patch_4c92a56408a4) address potential handshake sequencing issues observed in traces.",
+          "ranking": [
+            {
+              "id": "patch_bdfb4e29768c",
+              "mechanism": "Corrects m_axis_tlast_int to use s_axis_tlast instead of hardcoded 0, enabling proper tlast signal propagation when LAST_ENABLE=1"
+            },
+            {
+              "id": "patch_c9bcd0ebf5ab",
+              "mechanism": "Adds reset initialization for m_axis_tdata_reg to 0, ensuring clean state after reset"
+            },
+            {
+              "id": "patch_ec27a287b3cc",
+              "mechanism": "Adds reset initialization for m_axis_tdest_reg to 0, ensuring clean state after reset"
+            },
+            {
+              "id": "patch_8053be1dbae4",
+              "mechanism": "Adds reset initialization for temp_m_axis_tid_reg to 0, ensuring clean state after reset"
+            },
+            {
+              "id": "patch_9d11758b2afe",
+              "mechanism": "Adds reset initialization for temp_m_axis_tkeep_reg to 0, ensuring clean state after reset"
+            },
+            {
+              "id": "patch_330141055bc5",
+              "mechanism": "Qualifies frame-based pause condition with !rate_by_frame, preventing incorrect frame pause when rate_by_frame=0"
+            },
+            {
+              "id": "patch_177e84f089b9",
+              "mechanism": "Substitutes pause signal with s_axis_tvalid to control backpressure based on input validity"
+            },
+            {
+              "id": "patch_4c92a56408a4",
+              "mechanism": "Gates s_axis_tready_reg with rst, preventing ready assertion during reset"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 4.0113
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.019215,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "c667d509d55c405ba3df3ebdb5e7dbe5",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_bdfb4e29768c",
+            "patch_73d0959c8d78",
+            "patch_004cc266ecdc",
+            "patch_4c92a56408a4",
+            "patch_f89a1677f767",
+            "patch_330141055bc5",
+            "patch_177e84f089b9",
+            "patch_390a7a67ed09"
+          ],
+          "proposal": {
+            "explanation": "The simulation mismatches are exclusively on m_axis_tlast, indicating that frame-boundary information is lost inside the two-stage skid-buffer. The root cause is the combinational assignment m_axis_tlast_int = 1'b0, which erases the incoming s_axis_tlast before it reaches either output register. patch_bdfb4e29768c restores that path. A second loss occurs when back-pressure forces the temp register to be forwarded; patch_73d0959c8d78 and patch_004cc266ecdc ensure the temp stage captures and re-emits the correct last flag. The pause logic (patch_330141055bc5, patch_177e84f089b9, patch_390a7a67ed09) incorrectly stalls the pipeline in rate_by_frame mode, preventing the boundary from advancing. Finally, reset and forward-path hygiene patches (patch_4c92a56408a4, patch_f89a1677f767) avoid spurious ready/last behavior during initialization and temp-to-output transfers.",
+            "ranking": [
+              {
+                "id": "patch_bdfb4e29768c",
+                "mechanism": "The combinational logic forces m_axis_tlast_int to 1'b0, which propagates through the two-stage output registers (store_axis_int_to_output / store_axis_temp_to_output) and causes m_axis_tlast_reg to be 0 on cycles 6,7,19,20,27,29,30,33,47,48 instead of the expected 1. The edit at line 216 makes m_axis_tlast_int follow s_axis_tlast so that frame boundaries reach the output when LAST_ENABLE=1."
+              },
+              {
+                "id": "patch_73d0959c8d78",
+                "mechanism": "temp_m_axis_tlast_reg is hardwired to 0 and later transferred to m_axis_tlast_reg via store_axis_temp_to_output. During back-pressure cycles (e.g., 6,7,19,20) the temp register is the one forwarded to the output, so m_axis_tlast stays 0 instead of 1. The edit at line 163 makes the temp register take its last value from the pipeline (temp_m_axis_tlast_reg) instead of a constant."
+              },
+              {
+                "id": "patch_004cc266ecdc",
+                "mechanism": "store_axis_int_to_temp captures the frame boundary into the temp register. The edit makes the captured last flag be the combinational m_axis_tlast_int (which carries s_axis_tlast when patch_bdfb4e29768c is applied), so the temp stage can later emit a correct last pulse."
+              },
+              {
+                "id": "patch_4c92a56408a4",
+                "mechanism": "During reset the design must not present a ready pulse to the upstream side. The edit gates s_axis_tready_reg with rst so that the first post-reset cycles do not spuriously assert ready, which indirectly influences when the first frame boundary is accepted and thus when m_axis_tlast appears."
+              },
+              {
+                "id": "patch_f89a1677f767",
+                "mechanism": "When store_axis_temp_to_output is asserted the output last flag is driven by a constant 1'b0. The replacement makes it follow the module-level m_axis_tlast port (which already reflects m_axis_tlast_reg), so the forwarded frame boundary is preserved instead of being cleared."
+              },
+              {
+                "id": "patch_330141055bc5",
+                "mechanism": "The pause logic asserts pause = 1'b1 whenever acc_next >= rate_num even in rate_by_frame mode, which stalls s_axis_tready and prevents frame boundaries from advancing. Adding !rate_by_frame to the condition suppresses pause in frame-rate mode, allowing the last flag to propagate through the pipeline."
+              },
+              {
+                "id": "patch_177e84f089b9",
+                "mechanism": "pause is driven by a constant 1'b1 in the same rate_by_frame path. Substituting s_axis_tvalid makes pause conditional on an incoming valid transaction, so the frame boundary is not paused away when no data is present."
+              },
+              {
+                "id": "patch_390a7a67ed09",
+                "mechanism": "Same pause assignment as patch_177e84f089b9 but using m_axis_tready as the gating signal; this also prevents pause from suppressing the frame boundary when the downstream is ready to accept data."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 6.6953
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.018105,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "99cfc63f94634ac2aa32bd4f1d38960f",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_bdfb4e29768c",
+            "patch_05abffd461ff",
+            "patch_330141055bc5",
+            "patch_4c92a56408a4",
+            "patch_390a7a67ed09",
+            "patch_177e84f089b9",
+            "patch_73d0959c8d78",
+            "patch_f89a1677f767"
+          ],
+          "proposal": {
+            "explanation": "The primary failure is m_axis_tlast stuck at 0, observed at cycles 6, 7, 19, etc. The root cause is m_axis_tlast_int being hardcoded to 0 (line 141), so frame boundaries never enter the pipeline. Patch_bdfb4e29768c directly fixes this by assigning s_axis_tlast. Secondary issues involve premature pause activation stalling frame completion: patch_05abffd461ff guards the accumulator check with !s_axis_tready, patch_330141055bc5 disables pause logic in frame-rate mode, and patches_390a7a67ed09/177e84f089b9 add alternative pause gating. Patch_4c92a56408a4 stabilizes reset handshake. Patches_73d0959c8d78 and _f89a1677f767 ensure frame-boundary state propagates through the two-stage output registers once generated.",
+            "ranking": [
+              {
+                "id": "patch_bdfb4e29768c",
+                "mechanism": "Corrects m_axis_tlast_int to forward the input s_axis_tlast value instead of hardcoding 0, enabling proper frame boundary propagation through the pipeline."
+              },
+              {
+                "id": "patch_05abffd461ff",
+                "mechanism": "Prevents premature accumulator threshold checks when s_axis_tready is asserted, avoiding incorrect pause activation that stalls frame completion."
+              },
+              {
+                "id": "patch_330141055bc5",
+                "mechanism": "Restricts the pause condition to non-frame-rate mode, preventing spurious frame gating when rate_by_frame is active."
+              },
+              {
+                "id": "patch_4c92a56408a4",
+                "mechanism": "Guards s_axis_tready output with rst to avoid premature readiness during reset, indirectly stabilizing frame state initialization."
+              },
+              {
+                "id": "patch_390a7a67ed09",
+                "mechanism": "Uses m_axis_tready backpressure to modulate pause, coupling frame pacing to downstream readiness."
+              },
+              {
+                "id": "patch_177e84f089b9",
+                "mechanism": "Leverages s_axis_tvalid to gate pause, tying frame continuation to active input data presence."
+              },
+              {
+                "id": "patch_73d0959c8d78",
+                "mechanism": "Seeds m_axis_tlast_reg from the temp register, ensuring frame-boundary state can propagate through the two-deep output pipeline."
+              },
+              {
+                "id": "patch_f89a1677f767",
+                "mechanism": "Drives store_axis_temp_to_output using m_axis_tlast, linking frame-boundary assertion to pipeline flush."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.8458
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.018546,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "e7ae591072c54f2db76a49257acb5a7b",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_37b9d212adbe",
+            "patch_177e84f089b9",
+            "patch_390a7a67ed09",
+            "patch_05abffd461ff",
+            "patch_330141055bc5",
+            "patch_de127ce49d29",
+            "patch_bdfb4e29768c",
+            "patch_73d0959c8d78"
+          ],
+          "proposal": {
+            "explanation": "The failure manifests as m_axis_tlast stuck at 0 instead of 1 at cycles 6,7,19,etc. The signal originates from m_axis_tlast_reg, driven by m_axis_tlast_int in combinational logic. patch_bdfb4e29768c directly assigns s_axis_tlast to m_axis_tlast_int (line 141), creating the most direct path. patch_73d0959c8d78 directly targets m_axis_tlast_reg initialization (line 163). Other patches affect the pause/frame_reg/s_axis_tready chain that controls frame_reg, which drives m_axis_tlast_int. patch_37b9d212adbe, patch_177e84f089b9, patch_390a7a67ed09 modify pause inputs; patch_05abffd461ff qualifies accumulator condition; patch_330141055bc5 qualifies pause condition; patch_de127ce49d29 qualifies reset. All ultimately influence frame_reg -> m_axis_tlast_int -> m_axis_tlast_reg.",
+            "ranking": [
+              {
+                "id": "patch_37b9d212adbe",
+                "mechanism": "temp_m_axis_tkeep_reg feeds pause logic at line 132, and pause gates s_axis_tready which controls frame_reg update. frame_reg directly drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+              },
+              {
+                "id": "patch_177e84f089b9",
+                "mechanism": "s_axis_tvalid feeds pause logic at line 132, and pause gates s_axis_tready which controls frame_reg update. frame_reg directly drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+              },
+              {
+                "id": "patch_390a7a67ed09",
+                "mechanism": "m_axis_tready feeds pause logic at line 132, and pause gates s_axis_tready which controls frame_reg update. frame_reg directly drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+              },
+              {
+                "id": "patch_05abffd461ff",
+                "mechanism": "s_axis_tready qualifies acc_reg >= rate_num condition at line 118, altering acc_next which controls pause at line 129. pause gates s_axis_tready which controls frame_reg update driving m_axis_tlast_int."
+              },
+              {
+                "id": "patch_330141055bc5",
+                "mechanism": "rate_by_frame qualifies pause condition at line 128, altering pause which gates s_axis_tready. s_axis_tready controls frame_reg update which drives m_axis_tlast_int for m_axis_tlast_reg at cycle 6."
+              },
+              {
+                "id": "patch_de127ce49d29",
+                "mechanism": "m_axis_tready_int_reg qualifies reset at line 152, potentially changing reset behavior of acc_reg and frame_reg. frame_reg drives m_axis_tlast_int which sets m_axis_tlast_reg at cycle 6."
+              },
+              {
+                "id": "patch_bdfb4e29768c",
+                "mechanism": "s_axis_tlast directly sets m_axis_tlast_int at line 141, which propagates to m_axis_tlast_reg at cycle 6. This is the most direct path to the failing port."
+              },
+              {
+                "id": "patch_73d0959c8d78",
+                "mechanism": "temp_m_axis_tlast_reg directly replaces m_axis_tlast_reg initialization at line 163, directly targeting the failing output port m_axis_tlast."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.6636
+        }
+      ]
+    }
+  ]
+}

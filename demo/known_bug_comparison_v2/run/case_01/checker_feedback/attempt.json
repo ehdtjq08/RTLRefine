@@ -1,0 +1,3108 @@
+{
+  "accepted": false,
+  "api_requests": 1,
+  "audit_pass": false,
+  "cost": {
+    "estimated_usd": 0.062973,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "81139e8957084e638239e6e553d4a918",
+    "reserved_usd": 1.122304,
+    "state": "settled"
+  },
+  "discovery_pass": false,
+  "evaluation": {
+    "accepted": false,
+    "audit_pass": false,
+    "commands": [
+      {
+        "command": [
+          "/home/hands/Nebius/.tools/bin/verilator",
+          "--cc",
+          "--exe",
+          "-Wno-fatal",
+          "--x-initial",
+          "0",
+          "--x-assign",
+          "0",
+          "--top-module",
+          "sdspi",
+          "--Mdir",
+          "obj_dir",
+          "candidate.v",
+          "dependencies.v",
+          "harness.cpp"
+        ],
+        "elapsed_seconds": 0.0654,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "translate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      {
+        "command": [
+          "/usr/bin/make",
+          "-C",
+          "obj_dir",
+          "-f",
+          "Vsdspi.mk",
+          "-j1",
+          "OPT_FAST=-O0",
+          "OPT_SLOW=-O0"
+        ],
+        "elapsed_seconds": 2.7259,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "build",
+        "status": "PASS",
+        "zero_initialization": true
+      }
+    ],
+    "corrected_RTL_loaded_for_scoring": false,
+    "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_01/checker_feedback/evaluation",
+    "discovery_pass": false,
+    "formal_proof": false,
+    "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+    "new_api_calls": 0,
+    "oracle_depends_on_corrected_trace_values": true,
+    "rtl_sha256": "91bf60e2bcb57adc3f9fddd6ec1100b4ea63efc5e0ad282053386cf56bf668e4",
+    "status": "DISCOVERY_TRACE_FAILED",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vsdspi"
+          ],
+          "elapsed_seconds": 0.9679,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 3136123,
+        "cycles": 522559,
+        "expected_sha256": "40d0ee01fe877ebb9d90ee849e533cb0043011d673ff21a109d062980a6fdcd6",
+        "first_mismatches": [
+          {
+            "actual": 1,
+            "cycle": 6,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 7,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 11,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 12,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 15,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 16,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 19,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 20,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 24,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 25,
+            "expected": 1,
+            "port": "o_wb_ack"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 3
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                128,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 4
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 7
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 8
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 11
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 12
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                128,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 16
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 17
+          }
+        ],
+        "mismatch_count": 256,
+        "passed": false,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "8c60b9cd2dc9aab12b1476f7e8048f5bfa6f9e69217d65249745dadd7a6c8a8a",
+        "trace_label": "published_discovery_trace"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vsdspi"
+          ],
+          "elapsed_seconds": 0.8702,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 3136123,
+        "cycles": 522559,
+        "expected_sha256": "5d113e3448f036a657f51826b38918c781953bae5269c48de82834cf794a4478",
+        "first_mismatches": [
+          {
+            "actual": 1,
+            "cycle": 6,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 7,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 11,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 12,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 15,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 16,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 19,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 20,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 24,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 25,
+            "expected": 1,
+            "port": "o_wb_ack"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                166,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 3
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                38,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 4
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 7
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 8
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 11
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 12
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                38,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 16
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                166,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                295142,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 17
+          }
+        ],
+        "mismatch_count": 256,
+        "passed": false,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "59196582cec4c51e56ec9137c87b2f095eac3dd694392d2f412418954630cc5e",
+        "trace_label": "unexposed_payload_transform_7403"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vsdspi"
+          ],
+          "elapsed_seconds": 0.9716,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 3136123,
+        "cycles": 522559,
+        "expected_sha256": "4cb1f370f890e0decc81e6b46195515051e9238d2fc983d23549be18a523bf21",
+        "first_mismatches": [
+          {
+            "actual": 1,
+            "cycle": 6,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 7,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 11,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 12,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 15,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 16,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 19,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 20,
+            "expected": 1,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 1,
+            "cycle": 24,
+            "expected": 0,
+            "port": "o_wb_ack"
+          },
+          {
+            "actual": 0,
+            "cycle": 25,
+            "expected": 1,
+            "port": "o_wb_ack"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                111,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 3
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                239,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 4
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 7
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 8
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 11
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 12
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                239,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 16
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                1,
+                0,
+                111,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                1,
+                294959,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 17
+          }
+        ],
+        "mismatch_count": 256,
+        "passed": false,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "48f17893b3cf6c925eed7c0e12b169bb2a357cb308dc53878ba298a01f5bfe77",
+        "trace_label": "unexposed_payload_transform_9601"
+      }
+    ]
+  },
+  "functional_source_changed": false,
+  "proposal": {
+    "decision": "keep",
+    "edits": [],
+    "explanation": "Re-analysis confirms no functional defects. The design uses multiple sequential always_ff blocks each driving distinct register sets (command state machine, Wishbone interface, FIFO control, CRC, watchdog). No register has multiple writers. The r_rsp_state, second_rsp_state, and other state registers are each assigned in exactly one always_ff block. Initial blocks properly initialize all state. The apparent duplication in the listing reflects separate always_ff blocks for separate register groups, not redundant drivers. No cycle-exact behavior change is required."
+  },
+  "status": "DISCOVERY_TRACE_FAILED"
+}

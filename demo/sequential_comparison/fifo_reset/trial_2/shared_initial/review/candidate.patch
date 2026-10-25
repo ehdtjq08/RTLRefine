@@ -1,0 +1,144 @@
+--- original.v
++++ candidate.v
+@@ -68,17 +68,17 @@
+ reg [ADDR_WIDTH:0] rd_ptr_gray_sync1 = {ADDR_WIDTH+1{1'b0}};
+ reg [ADDR_WIDTH:0] rd_ptr_gray_sync2 = {ADDR_WIDTH+1{1'b0}};
+ 
+-reg input_rst_sync1 = 1;
+-reg input_rst_sync2 = 1;
+-reg output_rst_sync1 = 1;
+-reg output_rst_sync2 = 1;
++// Reset synchronization
++reg output_rst_sync1 = 1'b1, output_rst_sync2 = 1'b1;
++reg input_rst_sync1 = 1'b1, input_rst_sync2 = 1'b1;
++
++wire input_rst_combined = input_rst | output_rst_sync2;
++wire output_rst_combined = output_rst | input_rst_sync2;
+ 
+ reg [DATA_WIDTH+2-1:0] data_out_reg = {1'b0, 1'b0, {DATA_WIDTH{1'b0}}};
+ 
+ //(* RAM_STYLE="BLOCK" *)
+ reg [DATA_WIDTH+2-1:0] mem[(2**ADDR_WIDTH)-1:0];
+-
+-reg output_read = 1'b0;
+ 
+ reg output_axis_tvalid_reg = 1'b0;
+ 
+@@ -100,31 +100,33 @@
+ assign input_axis_tready = ~full;
+ assign output_axis_tvalid = output_axis_tvalid_reg;
+ 
+-// reset synchronization
+-always @(posedge input_clk or posedge input_rst or posedge output_rst) begin
+-    if (input_rst | output_rst) begin
+-        input_rst_sync1 <= 1;
+-        input_rst_sync2 <= 1;
++// Synchronize output_rst into input_clk domain
++always @(posedge input_clk or posedge output_rst) begin
++    if (output_rst) begin
++        output_rst_sync1 <= 1'b1;
++        output_rst_sync2 <= 1'b1;
+     end else begin
+-        input_rst_sync1 <= 0;
++        output_rst_sync1 <= 1'b0;
++        output_rst_sync2 <= output_rst_sync1;
++    end
++end
++
++// Synchronize input_rst into output_clk domain
++always @(posedge output_clk or posedge input_rst) begin
++    if (input_rst) begin
++        input_rst_sync1 <= 1'b1;
++        input_rst_sync2 <= 1'b1;
++    end else begin
++        input_rst_sync1 <= 1'b0;
+         input_rst_sync2 <= input_rst_sync1;
+     end
+ end
+ 
+-always @(posedge output_clk or posedge input_rst or posedge output_rst) begin
+-    if (input_rst | output_rst) begin
+-        output_rst_sync1 <= 1;
+-        output_rst_sync2 <= 1;
+-    end else begin
+-        output_rst_sync1 <= 0;
+-        output_rst_sync2 <= output_rst_sync1;
+-    end
+-end
+-
+ // write
+-always @(posedge input_clk or posedge input_rst_sync2) begin
+-    if (input_rst_sync2) begin
+-        wr_ptr <= 0;
++always @(posedge input_clk or posedge input_rst_combined) begin
++    if (input_rst_combined) begin
++        wr_ptr <= {ADDR_WIDTH+1{1'b0}};
++        wr_ptr_gray <= {ADDR_WIDTH+1{1'b0}};
+     end else if (write) begin
+         mem[wr_ptr[ADDR_WIDTH-1:0]] <= data_in;
+         wr_ptr_next = wr_ptr + 1;
+@@ -133,11 +135,11 @@
+     end
+ end
+ 
+-// pointer synchronization
+-always @(posedge input_clk or posedge input_rst_sync2) begin
+-    if (input_rst_sync2) begin
+-        rd_ptr_gray_sync1 <= 0;
+-        rd_ptr_gray_sync2 <= 0;
++// pointer synchronization: synchronize rd_ptr_gray into input_clk domain
++always @(posedge input_clk or posedge input_rst_combined) begin
++    if (input_rst_combined) begin
++        rd_ptr_gray_sync1 <= {ADDR_WIDTH+1{1'b0}};
++        rd_ptr_gray_sync2 <= {ADDR_WIDTH+1{1'b0}};
+     end else begin
+         rd_ptr_gray_sync1 <= rd_ptr_gray;
+         rd_ptr_gray_sync2 <= rd_ptr_gray_sync1;
+@@ -145,9 +147,10 @@
+ end
+ 
+ // read
+-always @(posedge output_clk or posedge output_rst_sync2) begin
+-    if (output_rst_sync2) begin
+-        rd_ptr <= 0;
++always @(posedge output_clk or posedge output_rst_combined) begin
++    if (output_rst_combined) begin
++        rd_ptr <= {ADDR_WIDTH+1{1'b0}};
++        rd_ptr_gray <= {ADDR_WIDTH+1{1'b0}};
+     end else if (read) begin
+         data_out_reg <= mem[rd_ptr[ADDR_WIDTH-1:0]];
+         rd_ptr_next = rd_ptr + 1;
+@@ -156,11 +159,11 @@
+     end
+ end
+ 
+-// pointer synchronization
+-always @(posedge output_clk or posedge output_rst_sync2) begin
+-    if (output_rst_sync2) begin
+-        wr_ptr_gray_sync1 <= 0;
+-        wr_ptr_gray_sync2 <= 0;
++// pointer synchronization: synchronize wr_ptr_gray into output_clk domain
++always @(posedge output_clk or posedge output_rst_combined) begin
++    if (output_rst_combined) begin
++        wr_ptr_gray_sync1 <= {ADDR_WIDTH+1{1'b0}};
++        wr_ptr_gray_sync2 <= {ADDR_WIDTH+1{1'b0}};
+     end else begin
+         wr_ptr_gray_sync1 <= wr_ptr_gray;
+         wr_ptr_gray_sync2 <= wr_ptr_gray_sync1;
+@@ -168,8 +171,8 @@
+ end
+ 
+ // source ready output
+-always @(posedge output_clk or posedge output_rst_sync2) begin
+-    if (output_rst_sync2) begin
++always @(posedge output_clk or posedge output_rst_combined) begin
++    if (output_rst_combined) begin
+         output_axis_tvalid_reg <= 1'b0;
+     end else if (output_axis_tready | ~output_axis_tvalid_reg) begin
+         output_axis_tvalid_reg <= ~empty;
+@@ -178,4 +181,4 @@
+     end
+ end
+ 
+-endmodule
++endmodule

@@ -1,0 +1,361 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_047dea8ef5d8": 4,
+          "patch_0729b6683aa8": 1,
+          "patch_1eaa912ddb03": 9,
+          "patch_32397b1f1f5a": 7,
+          "patch_353450f10494": 7,
+          "patch_40a550fb3580": 6,
+          "patch_45d6cb4a55d3": 0,
+          "patch_4622f9afd10b": 0,
+          "patch_4d9541c17aad": 1,
+          "patch_58d634fc40e4": 5,
+          "patch_64d2bd7aca6b": 12,
+          "patch_7eb04e02ec7e": 0,
+          "patch_8f0b6eda38a7": 0,
+          "patch_9c4e05759f35": 0,
+          "patch_a20388282eab": 9,
+          "patch_a3b07d62b466": 4,
+          "patch_a614de3b9c24": 7,
+          "patch_b426c357ff1e": 6,
+          "patch_b42f68f8b120": 16,
+          "patch_b9a0634de3ff": 0,
+          "patch_c1bf34953ab3": 3,
+          "patch_db2dce61ec9f": 0,
+          "patch_dd3edbcc7820": 6,
+          "patch_e7975c078897": 5
+        },
+        "fallback_reason": "Insufficient valid or stable model views",
+        "order": [
+          "patch_b426c357ff1e",
+          "patch_1eaa912ddb03",
+          "patch_9c4e05759f35",
+          "patch_a3b07d62b466",
+          "patch_e7975c078897",
+          "patch_58d634fc40e4",
+          "patch_047dea8ef5d8",
+          "patch_0729b6683aa8",
+          "patch_32397b1f1f5a",
+          "patch_353450f10494",
+          "patch_40a550fb3580",
+          "patch_45d6cb4a55d3",
+          "patch_4622f9afd10b",
+          "patch_4d9541c17aad",
+          "patch_64d2bd7aca6b",
+          "patch_7eb04e02ec7e",
+          "patch_8f0b6eda38a7",
+          "patch_a20388282eab",
+          "patch_a614de3b9c24",
+          "patch_b42f68f8b120",
+          "patch_b9a0634de3ff",
+          "patch_c1bf34953ab3",
+          "patch_db2dce61ec9f",
+          "patch_dd3edbcc7820"
+        ],
+        "raw_consensus_order": [
+          "patch_b42f68f8b120",
+          "patch_64d2bd7aca6b",
+          "patch_1eaa912ddb03",
+          "patch_a20388282eab",
+          "patch_32397b1f1f5a",
+          "patch_353450f10494",
+          "patch_a614de3b9c24",
+          "patch_b426c357ff1e",
+          "patch_40a550fb3580",
+          "patch_dd3edbcc7820",
+          "patch_e7975c078897",
+          "patch_58d634fc40e4",
+          "patch_a3b07d62b466",
+          "patch_047dea8ef5d8",
+          "patch_c1bf34953ab3",
+          "patch_0729b6683aa8",
+          "patch_4d9541c17aad",
+          "patch_9c4e05759f35",
+          "patch_45d6cb4a55d3",
+          "patch_4622f9afd10b",
+          "patch_7eb04e02ec7e",
+          "patch_8f0b6eda38a7",
+          "patch_b9a0634de3ff",
+          "patch_db2dce61ec9f"
+        ],
+        "stability": 0.21025641025641026,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_047dea8ef5d8": 1,
+          "patch_0729b6683aa8": 1,
+          "patch_1eaa912ddb03": 2,
+          "patch_32397b1f1f5a": 1,
+          "patch_353450f10494": 2,
+          "patch_40a550fb3580": 1,
+          "patch_45d6cb4a55d3": 0,
+          "patch_4622f9afd10b": 0,
+          "patch_4d9541c17aad": 1,
+          "patch_58d634fc40e4": 1,
+          "patch_64d2bd7aca6b": 2,
+          "patch_7eb04e02ec7e": 0,
+          "patch_8f0b6eda38a7": 0,
+          "patch_9c4e05759f35": 0,
+          "patch_a20388282eab": 2,
+          "patch_a3b07d62b466": 1,
+          "patch_a614de3b9c24": 1,
+          "patch_b426c357ff1e": 1,
+          "patch_b42f68f8b120": 2,
+          "patch_b9a0634de3ff": 0,
+          "patch_c1bf34953ab3": 1,
+          "patch_db2dce61ec9f": 0,
+          "patch_dd3edbcc7820": 3,
+          "patch_e7975c078897": 1
+        },
+        "used_model_order": false,
+        "valid_views": 3
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.016155,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "f437b84ae49b46c8b484692ecf727278",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_a20388282eab",
+          "patch_8f0b6eda38a7",
+          "patch_45d6cb4a55d3",
+          "patch_db2dce61ec9f",
+          "patch_c1bf34953ab3",
+          "patch_9c4e05759f35",
+          "patch_64d2bd7aca6b",
+          "patch_b426c357ff1e"
+        ],
+        "proposal": {
+          "explanation": "The failure shows bus_active not asserting when expected. The top-ranked patch adds bus_active qualification to the command acceptance condition, directly controlling when the master initiates bus activity. The rhs_substitution patches then propagate the bus_active signal through the physical layer logic (sda_o_next, bus_control_reg, phy_stop_bit, etc.), ensuring consistent bus_active assertion throughout the transaction. This combination addresses the root cause by gating command acceptance on bus_active and then correctly threading that signal through the I2C physical layer state machine.",
+          "ranking": [
+            {
+              "id": "patch_a20388282eab",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_8f0b6eda38a7",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_45d6cb4a55d3",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_db2dce61ec9f",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_c1bf34953ab3",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_9c4e05759f35",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_64d2bd7aca6b",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_b426c357ff1e",
+              "mechanism": "rhs_substitution"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 4.7388
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.02177,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "016f4c5efb204b22b205aa9b9f0d6498",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_b42f68f8b120",
+            "patch_a614de3b9c24",
+            "patch_40a550fb3580",
+            "patch_353450f10494",
+            "patch_64d2bd7aca6b",
+            "patch_a20388282eab",
+            "patch_1eaa912ddb03",
+            "patch_dd3edbcc7820"
+          ],
+          "proposal": {
+            "explanation": "Ranking prioritizes candidates that directly manipulate core I2C physical-layer signals (phy_tx_data, phy_write_bit, phy_read_bit, scl_o, sda_o, missed_ack_reg) and bus activity indicators (bus_active). Substitutions tied to SCL/SDA timing (patch_b42f68f8b120, patch_1eaa912ddb03) and command/read-data handshakes (patch_a614de3b9c24, patch_40a550fb3580, patch_353450f10494) are ranked highest because bus_active failures at cycles 8-17 suggest the bus-active handshake (repeated start, SCL toggling, SDA release) is not completing. Lower-ranked candidates substitute outputs with loosely related status signals (busy, missed_ack_next) that are less likely to restore the precise SCL/SDA sequencing required for bus_active assertion.",
+            "ranking": [
+              {
+                "id": "patch_b42f68f8b120",
+                "mechanism": "phy_tx_data in WRITE_BIT path now driven by scl_o, linking physical bit emission to SCL output state rather than a constant."
+              },
+              {
+                "id": "patch_a614de3b9c24",
+                "mechanism": "phy_write_bit now driven by s_axis_cmd_ready, coupling physical write emission to command interface readiness."
+              },
+              {
+                "id": "patch_40a550fb3580",
+                "mechanism": "phy_read_bit gated by m_axis_data_tready, so a read operation only proceeds when the output channel can accept data."
+              },
+              {
+                "id": "patch_353450f10494",
+                "mechanism": "phy_read_bit driven by m_axis_data_tvalid_reg, making physical read dependent on valid output register state."
+              },
+              {
+                "id": "patch_64d2bd7aca6b",
+                "mechanism": "phy_tx_data sourced from missed_ack_next in PHY_STATE_WRITE_BIT_2 path, feeding back ACK status into transmit data."
+              },
+              {
+                "id": "patch_a20388282eab",
+                "mechanism": "phy_tx_data sourced from s_axis_data_tready_reg, linking transmit data to data-channel readiness register."
+              },
+              {
+                "id": "patch_1eaa912ddb03",
+                "mechanism": "missed_ack_reg updated from scl_negedge, capturing ACK detection on SCL falling edge."
+              },
+              {
+                "id": "patch_dd3edbcc7820",
+                "mechanism": "sda_o_next replaced with missed_ack_next, driving SDA output with missed-ACK status."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 5.6676
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.02213,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "7139d99480af4a9c801933273381d7c1",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_64d2bd7aca6b",
+            "patch_1eaa912ddb03",
+            "patch_b426c357ff1e",
+            "patch_58d634fc40e4",
+            "patch_047dea8ef5d8",
+            "patch_c1bf34953ab3",
+            "patch_dd3edbcc7820",
+            "patch_4d9541c17aad"
+          ],
+          "proposal": {
+            "explanation": "Ranking prioritizes edits that directly target the failing bus_active register (patch_b426c357ff1e, patch_58d634fc40e4) or modify signals feeding bus control sequencing (patch_64d2bd7aca6b, patch_1eaa912ddb03, patch_047dea8ef5d8, patch_c1bf34953ab3, patch_dd3edbcc7820, patch_4d9541c17aad). All are rhs_substitution of same-width signals at lines implicated by dependency analysis. No RTL, test results, or confidence probabilities are included.",
+            "ranking": [
+              {
+                "id": "patch_64d2bd7aca6b",
+                "mechanism": "Alters phy_tx_data constant 1'b1 to missed_ack_next in PHY_STATE_WRITE_BIT_3; changes data driven onto SDA during write bit phase, potentially affecting bus control timing and downstream bus_active generation."
+              },
+              {
+                "id": "patch_1eaa912ddb03",
+                "mechanism": "Replaces missed_ack_reg default 1'b0 with scl_negedge; couples missed ACK detection to SCL falling edge which may shift bus control sequencing and influence bus_active assertion cycles."
+              },
+              {
+                "id": "patch_b426c357ff1e",
+                "mechanism": "Directly substitutes bus_active_reg initialization from 1'b0 to s_axis_cmd_start; since bus_active is the failing port, this edit targets the exact register driving the mismatched output."
+              },
+              {
+                "id": "patch_58d634fc40e4",
+                "mechanism": "Sets bus_active_reg default from 1'b0 to mode_write_multiple_reg; mode_write_multiple_reg reflects multi-byte write intent and may cause earlier bus_active assertion aligned with expected trace."
+              },
+              {
+                "id": "patch_047dea8ef5d8",
+                "mechanism": "Changes phy_tx_data from constant 1'b1 to delay_sda_next in PHY_STATE_START_1; modifies SDA data during repeated start sequence, potentially altering bus arbitration timing that feeds bus_active."
+              },
+              {
+                "id": "patch_c1bf34953ab3",
+                "mechanism": "Replaces delay_scl_next constant 1'b1 with scl_t in PHY_STATE_WRITE_BIT_2; ties SCL delay release to output enable, which could shift phy_state progression and bus_active timing."
+              },
+              {
+                "id": "patch_dd3edbcc7820",
+                "mechanism": "Substitutes sda_o_next constant 1'b1 with missed_ack_next in PHY_STATE_STOP_2; modifies SDA release during stop, possibly affecting bus handover and bus_active deassertion alignment."
+              },
+              {
+                "id": "patch_4d9541c17aad",
+                "mechanism": "Replaces phy_stop_bit constant 1'b0 with scl_t; ties stop condition to SCL output enable, which may cause premature or delayed stop sequencing impacting bus_active."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 5.09
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.021914,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "a9a3c89c24144fb4947d693e49e0f48d",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_b42f68f8b120",
+            "patch_32397b1f1f5a",
+            "patch_a20388282eab",
+            "patch_e7975c078897",
+            "patch_a3b07d62b466",
+            "patch_dd3edbcc7820",
+            "patch_353450f10494",
+            "patch_0729b6683aa8"
+          ],
+          "proposal": {
+            "explanation": "The simulation shows bus_active never reaching 1. The root cause is that bus_active_reg only sets on start_bit, but start_bit never fires because the physical-layer sequencer is stalled: phy_read_bit and phy_tx_data are constants, sda_o_next never releases the bus, and busy_reg never reflects activity. Patches that wire bus_active_reg to the user start command, make phy_read_bit sample SDA, let phy_tx_data follow the transmit window, drive busy_reg from transaction-end or SCL, and release SDA with the missed-ack flag together unblock the physical layer so start_bit can occur and bus_active can assert. The condition gate patch prevents new commands from entering while the bus is busy, avoiding a secondary stall.",
+            "ranking": [
+              {
+                "id": "patch_b42f68f8b120",
+                "mechanism": "bus_active_reg is stuck low because it never sees start_bit; the replacement ties bus_active_reg to s_axis_cmd_start, the user command that actually begins a transaction, so bus_active rises when a new command arrives."
+              },
+              {
+                "id": "patch_32397b1f1f5a",
+                "mechanism": "phy_read_bit currently held low; driving it with sda_i makes the controller sample the bus during read phases so data and ack detection proceed, which eventually allows bus_active to deassert correctly."
+              },
+              {
+                "id": "patch_a20388282eab",
+                "mechanism": "phy_tx_data hard-coded to 1 prevents data-phase SDA from toggling; using s_axis_data_tready_reg lets the bit follow the true transmit window so ACK/NACK sampling works and bus_active sequencing completes."
+              },
+              {
+                "id": "patch_e7975c078897",
+                "mechanism": "busy_reg stays low; substituting scl_i makes busy follow the clock line so the design reports busy while the physical layer is clocking, matching the trace expectation for bus_active correlation."
+              },
+              {
+                "id": "patch_a3b07d62b466",
+                "mechanism": "busy_reg never asserts; m_axis_data_tlast_next goes high at the end of a read transaction, so busy reflects transaction completion and aligns with bus_active deassertion."
+              },
+              {
+                "id": "patch_dd3edbcc7820",
+                "mechanism": "sda_o_next fixed high masks slave ACK; missed_ack_next carries the sampled NACK so the bus release sequence sees the correct level and can transition bus_active."
+              },
+              {
+                "id": "patch_353450f10494",
+                "mechanism": "phy_read_bit constant; m_axis_data_tvalid_reg rises when read data is valid, enabling the read-bit sequence that leads to proper bus_active deassertion."
+              },
+              {
+                "id": "patch_0729b6683aa8",
+                "mechanism": "guard s_axis_cmd_ready with bus_active so new commands wait for the bus to be free, preventing premature state entry that stalls bus_active."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 6.0662
+        }
+      ]
+    }
+  ]
+}

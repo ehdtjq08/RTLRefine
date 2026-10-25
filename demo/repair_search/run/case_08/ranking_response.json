@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranked_ids\": [\n    \"candidate_007\",\n    \"candidate_001\",\n    \"candidate_004\",\n    \"candidate_002\",\n    \"candidate_005\",\n    \"candidate_008\",\n    \"candidate_010\"\n  ],\n  \"explanation\": \"The discovery trace shows m_axis_tvalid is 0 when expected 1 at cycle 4 (first data transfer) and cycle 5. The source-side select logic uses select_reg (destination index) and select_valid_reg (active routing) but neither is reset on rst. Only drop_reg has no reset, but select_reg/select_valid_reg retain stale values across reset, causing initial routing to use garbage select_reg and select_valid_reg=0. This prevents valid propagation to int_s_axis_tvalid and downstream m_axis_tvalid. Candidates 007/001/004 add the missing synchronous resets for select_reg and select_valid_reg (and drop_reg) in the s_ifaces generate block. Candidates 002/005/008/010 are lower-probability guard fixes that qualify the destination-match condition on rst, but the root cause is the uninitialized state registers.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792747136,
+  "id": "chatcmpl-2a0988ad4fe82815d96a92147b172ec4",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 273,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 11276,
+    "prompt_tokens": 11276,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 11549
+  }
+}

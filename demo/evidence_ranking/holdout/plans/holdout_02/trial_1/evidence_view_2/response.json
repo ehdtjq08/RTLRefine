@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_bdfb4e29768c\",\n      \"mechanism\": \"Corrects m_axis_tlast_int to forward the input s_axis_tlast value instead of hardcoding 0, enabling proper frame boundary propagation through the pipeline.\"\n    },\n    {\n      \"id\": \"patch_05abffd461ff\",\n      \"mechanism\": \"Prevents premature accumulator threshold checks when s_axis_tready is asserted, avoiding incorrect pause activation that stalls frame completion.\"\n    },\n    {\n      \"id\": \"patch_330141055bc5\",\n      \"mechanism\": \"Restricts the pause condition to non-frame-rate mode, preventing spurious frame gating when rate_by_frame is active.\"\n    },\n    {\n      \"id\": \"patch_4c92a56408a4\",\n      \"mechanism\": \"Guards s_axis_tready output with rst to avoid premature readiness during reset, indirectly stabilizing frame state initialization.\"\n    },\n    {\n      \"id\": \"patch_390a7a67ed09\",\n      \"mechanism\": \"Uses m_axis_tready backpressure to modulate pause, coupling frame pacing to downstream readiness.\"\n    },\n    {\n      \"id\": \"patch_177e84f089b9\",\n      \"mechanism\": \"Leverages s_axis_tvalid to gate pause, tying frame continuation to active input data presence.\"\n    },\n    {\n      \"id\": \"patch_73d0959c8d78\",\n      \"mechanism\": \"Seeds m_axis_tlast_reg from the temp register, ensuring frame-boundary state can propagate through the two-deep output pipeline.\"\n    },\n    {\n      \"id\": \"patch_f89a1677f767\",\n      \"mechanism\": \"Drives store_axis_temp_to_output using m_axis_tlast, linking frame-boundary assertion to pipeline flush.\"\n    }\n  ],\n  \"explanation\": \"The primary failure is m_axis_tlast stuck at 0, observed at cycles 6, 7, 19, etc. The root cause is m_axis_tlast_int being hardcoded to 0 (line 141), so frame boundaries never enter the pipeline. Patch_bdfb4e29768c directly fixes this by assigning s_axis_tlast. Secondary issues involve premature pause activation stalling frame completion: patch_05abffd461ff guards the accumulator check with !s_axis_tready, patch_330141055bc5 disables pause logic in frame-rate mode, and patches_390a7a67ed09/177e84f089b9 add alternative pause gating. Patch_4c92a56408a4 stabilizes reset handshake. Patches_73d0959c8d78 and _f89a1677f767 ensure frame-boundary state propagates through the two-stage output registers once generated.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755363,
+  "id": "chatcmpl-200fde4f6838fa54d1bfde4a3a35d863",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 683,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 16056,
+    "prompt_tokens": 16056,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 16739
+  }
+}

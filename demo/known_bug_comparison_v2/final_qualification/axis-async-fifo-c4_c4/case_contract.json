@@ -1,0 +1,161 @@
+{
+  "artifact_provenance": {
+    "commit": "71e1afc0b9a2327d008b46acd415cf3f0343a938",
+    "directory": "benchmarks/fpga-debugging/axis-async-fifo-c4",
+    "not_claimed_as_untouched_original_upstream_source": true,
+    "repository": "https://github.com/ekiwi/rtl-repair",
+    "research_artifact_adapted_from_historical_bug": true
+  },
+  "clock": "clk",
+  "corrected_source_for_scoring": false,
+  "dependencies_sha256": "6837c254b3c8c782c6eaeb5bdc29fb21dae19213350ee15c5e22a0337905ea0f",
+  "edited_module": "axis_async_fifo",
+  "id": "axis-async-fifo-c4_c4",
+  "input_sha256": "394c79ad891fb3222f136da7867995c57da7fa487f1c30cf4100a78b391bb2d1",
+  "license": "MIT",
+  "oracle_scope": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "ports": {
+    "async_rst": {
+      "direction": "input",
+      "width": 1
+    },
+    "clk": {
+      "direction": "input",
+      "width": 1
+    },
+    "input_axis_tdata": {
+      "direction": "input",
+      "width": 8
+    },
+    "input_axis_tlast": {
+      "direction": "input",
+      "width": 1
+    },
+    "input_axis_tready": {
+      "direction": "output",
+      "width": 1
+    },
+    "input_axis_tuser": {
+      "direction": "input",
+      "width": 1
+    },
+    "input_axis_tvalid": {
+      "direction": "input",
+      "width": 1
+    },
+    "output_axis_tdata": {
+      "direction": "output",
+      "width": 8
+    },
+    "output_axis_tlast": {
+      "direction": "output",
+      "width": 1
+    },
+    "output_axis_tready": {
+      "direction": "input",
+      "width": 1
+    },
+    "output_axis_tuser": {
+      "direction": "output",
+      "width": 1
+    },
+    "output_axis_tvalid": {
+      "direction": "output",
+      "width": 1
+    }
+  },
+  "regression_oracle_uses_corrected_trace_values": true,
+  "revision": "V2 input-domain/output-validity correction; v1 retained as superseded development data",
+  "top": "bench_top",
+  "traces": [
+    {
+      "cycles": 10,
+      "expected": "trace_0/expected.hex",
+      "ignored_non_port_columns": [],
+      "independent_oracle_guard": {
+        "applicable": false
+      },
+      "inputs": [
+        "async_rst",
+        "input_axis_tdata",
+        "input_axis_tlast",
+        "input_axis_tuser",
+        "input_axis_tvalid",
+        "output_axis_tready"
+      ],
+      "label": "published_discovery_trace",
+      "output_masking": "Payload/length/Wishbone data only when expected valid/ack; debug outputs ignored",
+      "outputs": [
+        "input_axis_tready",
+        "output_axis_tdata",
+        "output_axis_tlast",
+        "output_axis_tuser",
+        "output_axis_tvalid"
+      ],
+      "sampling": "Public outputs after setting current inputs and evaluating combinational logic, before rising clock edge",
+      "stimulus": "trace_0/stimulus.hex"
+    },
+    {
+      "cycles": 80,
+      "expected": "trace_1/expected.hex",
+      "ignored_non_port_columns": [],
+      "independent_oracle_guard": {
+        "applicable": false
+      },
+      "inputs": [
+        "async_rst",
+        "input_axis_tdata",
+        "input_axis_tlast",
+        "input_axis_tuser",
+        "input_axis_tvalid",
+        "output_axis_tready"
+      ],
+      "label": "unexposed_payload_transform_7403",
+      "oracle_origin": "Captured from the artifact's corrected control before inference, not an independently authored behavioral oracle",
+      "output_masking": "Payload/length/Wishbone data only when expected valid/ack; debug outputs ignored",
+      "outputs": [
+        "input_axis_tready",
+        "output_axis_tdata",
+        "output_axis_tlast",
+        "output_axis_tuser",
+        "output_axis_tvalid"
+      ],
+      "payload_xor_masks": {
+        "input_axis_tdata": 1
+      },
+      "sampling": "Public outputs after setting current inputs and evaluating combinational logic, before rising clock edge",
+      "stimulus": "trace_1/stimulus.hex"
+    },
+    {
+      "cycles": 80,
+      "expected": "trace_2/expected.hex",
+      "ignored_non_port_columns": [],
+      "independent_oracle_guard": {
+        "applicable": false
+      },
+      "inputs": [
+        "async_rst",
+        "input_axis_tdata",
+        "input_axis_tlast",
+        "input_axis_tuser",
+        "input_axis_tvalid",
+        "output_axis_tready"
+      ],
+      "label": "unexposed_payload_transform_9601",
+      "oracle_origin": "Captured from the artifact's corrected control before inference, not an independently authored behavioral oracle",
+      "output_masking": "Payload/length/Wishbone data only when expected valid/ack; debug outputs ignored",
+      "outputs": [
+        "input_axis_tready",
+        "output_axis_tdata",
+        "output_axis_tlast",
+        "output_axis_tuser",
+        "output_axis_tvalid"
+      ],
+      "payload_xor_masks": {
+        "input_axis_tdata": 123
+      },
+      "sampling": "Public outputs after setting current inputs and evaluating combinational logic, before rising clock edge",
+      "stimulus": "trace_2/stimulus.hex"
+    }
+  ]
+}

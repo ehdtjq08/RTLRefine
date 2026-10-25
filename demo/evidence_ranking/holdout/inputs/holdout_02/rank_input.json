@@ -1,0 +1,3036 @@
+{
+  "cards": [
+    {
+      "changed_targets": [
+        "s_axis_tready"
+      ],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 3574,
+          "old": "s_axis_tready_reg",
+          "replacement": "(s_axis_tready_reg) && (rst)",
+          "start": 3557
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "handshake_reset_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_4c92a56408a4",
+      "legacy_id": "candidate_001",
+      "line": 111,
+      "note": "Qualify readiness with rst",
+      "rtl_sha256": "4c92a56408a47f0a2cc59bbd851e1db62b325f2bec79d03566ccb0f63f8a831d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 17,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 118,
+        "last_line": 118,
+        "state_edges": 3
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 3691,
+          "old": "acc_reg >= rate_num",
+          "replacement": "(acc_reg >= rate_num) && (!s_axis_tready)",
+          "start": 3672
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.17543859649122806,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.9517543859649122,
+      "id": "patch_05abffd461ff",
+      "legacy_id": "candidate_002",
+      "line": 118,
+      "note": "Qualify condition with nearby scalar !s_axis_tready",
+      "rtl_sha256": "05abffd461ffae40f3fc27acd9f222face70ca248fb62209f5959c3b63d589e0",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 14,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 128,
+        "last_line": 128,
+        "state_edges": 3
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 3942,
+          "old": "acc_next >= rate_num",
+          "replacement": "(acc_next >= rate_num) && (!rate_by_frame)",
+          "start": 3922
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.18518518518518517,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.9907407407407405,
+      "id": "patch_330141055bc5",
+      "legacy_id": "candidate_003",
+      "line": 128,
+      "note": "Qualify condition with nearby scalar !rate_by_frame",
+      "rtl_sha256": "330141055bc5c022fe4dbc99caf5a53b20b37989add661035daed8d0622ab5a0",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "pause"
+      ],
+      "dependency": {
+        "cell_edges": 14,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 128,
+        "last_line": 134,
+        "state_edges": 3
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4078,
+          "old": "1'b1",
+          "replacement": "s_axis_tvalid",
+          "start": 4074
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.18518518518518517,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.9907407407407405,
+      "id": "patch_177e84f089b9",
+      "legacy_id": "candidate_004",
+      "line": 132,
+      "note": "Use existing same-width signal s_axis_tvalid for pause",
+      "rtl_sha256": "177e84f089b9cea2563aed69594f53560e9ef34b695062c8d001bb8be0722ef7",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "pause"
+      ],
+      "dependency": {
+        "cell_edges": 14,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 128,
+        "last_line": 134,
+        "state_edges": 3
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4078,
+          "old": "1'b1",
+          "replacement": "temp_m_axis_tkeep_reg",
+          "start": 4074
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.18518518518518517,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.9907407407407405,
+      "id": "patch_37b9d212adbe",
+      "legacy_id": "candidate_005",
+      "line": 132,
+      "note": "Use existing same-width signal temp_m_axis_tkeep_reg for pause",
+      "rtl_sha256": "37b9d212adbebd2a77560e708c6d5c3fe6d7cd95912be1ef9df4c8d62ed3cd4f",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "pause"
+      ],
+      "dependency": {
+        "cell_edges": 14,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 128,
+        "last_line": 134,
+        "state_edges": 3
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4078,
+          "old": "1'b1",
+          "replacement": "m_axis_tready",
+          "start": 4074
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.18518518518518517,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.9907407407407405,
+      "id": "patch_390a7a67ed09",
+      "legacy_id": "candidate_006",
+      "line": 132,
+      "note": "Use existing same-width signal m_axis_tready for pause",
+      "rtl_sha256": "390a7a67ed09cc4689775b7a078a7d8f80c8fa7d050ee07e6147a175447d04a5",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "m_axis_tlast_int"
+      ],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4319,
+          "old": "0",
+          "replacement": "s_axis_tlast",
+          "start": 4318
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_bdfb4e29768c",
+      "legacy_id": "candidate_007",
+      "line": 141,
+      "note": "Use existing same-width signal s_axis_tlast for m_axis_tlast_int",
+      "rtl_sha256": "bdfb4e29768c5224c543098765b8d648f3fe774eb42643c289d85b446414d155",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 10,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 147,
+        "last_line": 157,
+        "state_edges": 2
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4577,
+          "old": "rst",
+          "replacement": "(rst) && (!m_axis_tready_int_reg)",
+          "start": 4574
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.25,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.25,
+      "id": "patch_de127ce49d29",
+      "legacy_id": "candidate_008",
+      "line": 152,
+      "note": "Qualify condition with nearby scalar !m_axis_tready_int_reg",
+      "rtl_sha256": "de127ce49d2971945b3262432263bd9b6ae67b07f664256f6b283c6c5bbc1ee8",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "s_axis_tready_reg"
+      ],
+      "dependency": {
+        "cell_edges": 10,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 147,
+        "last_line": 157,
+        "state_edges": 2
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4671,
+          "old": "1'b0",
+          "replacement": "s_axis_tuser",
+          "start": 4667
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.25,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.25,
+      "id": "patch_526cd5d1d85b",
+      "legacy_id": "candidate_009",
+      "line": 155,
+      "note": "Use existing same-width signal s_axis_tuser for s_axis_tready_reg",
+      "rtl_sha256": "526cd5d1d85b66df5a9e0c0270337a9e67afb197c790dc1f3c60b2ebb082c6af",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "s_axis_tready_reg"
+      ],
+      "dependency": {
+        "cell_edges": 10,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 147,
+        "last_line": 157,
+        "state_edges": 2
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4671,
+          "old": "1'b0",
+          "replacement": "temp_m_axis_tvalid_reg",
+          "start": 4667
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.25,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.25,
+      "id": "patch_fc70287381b7",
+      "legacy_id": "candidate_010",
+      "line": 155,
+      "note": "Use existing same-width signal temp_m_axis_tvalid_reg for s_axis_tready_reg",
+      "rtl_sha256": "fc70287381b7c671719ba5cbf8ba20939baa5900b0efb44e5fb954d207361a7e",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "m_axis_tlast_reg"
+      ],
+      "dependency": null,
+      "direct_failure_target": true,
+      "edits": [
+        {
+          "end": 4945,
+          "old": "1'b0",
+          "replacement": "temp_m_axis_tlast_reg",
+          "start": 4941
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 1,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.25,
+      "id": "patch_73d0959c8d78",
+      "legacy_id": "candidate_011",
+      "line": 163,
+      "note": "Use existing same-width signal temp_m_axis_tlast_reg for m_axis_tlast_reg",
+      "rtl_sha256": "73d0959c8d784d013edd381deb3a8341c77ec1c6a6825687316033f3a3f5bc91",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "temp_m_axis_tlast_reg"
+      ],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5388,
+          "old": "1'b0",
+          "replacement": "m_axis_tuser",
+          "start": 5384
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_b3ecf77ee42a",
+      "legacy_id": "candidate_012",
+      "line": 171,
+      "note": "Use existing same-width signal m_axis_tuser for temp_m_axis_tlast_reg",
+      "rtl_sha256": "b3ecf77ee42ac4856a45b607465462baa5ae688645412aab5b5dc3572ee05032",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "store_axis_int_to_output"
+      ],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6598,
+          "old": "1'b0",
+          "replacement": "m_axis_tkeep_int",
+          "start": 6594
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_ee94d1ca02b6",
+      "legacy_id": "candidate_013",
+      "line": 197,
+      "note": "Use existing same-width signal m_axis_tkeep_int for store_axis_int_to_output",
+      "rtl_sha256": "ee94d1ca02b6b54890063eaeb4c3de3ff956ee32718f9bd7e03f8ccda7116833",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "store_axis_temp_to_output"
+      ],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6671,
+          "old": "1'b0",
+          "replacement": "s_axis_tvalid",
+          "start": 6667
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_5a0af9d51c1a",
+      "legacy_id": "candidate_014",
+      "line": 199,
+      "note": "Use existing same-width signal s_axis_tvalid for store_axis_temp_to_output",
+      "rtl_sha256": "5a0af9d51c1a86856d3c71b48cb08ba5b603f8e6483e29d00a1dbe15873d0408",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "store_axis_temp_to_output"
+      ],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 6671,
+          "old": "1'b0",
+          "replacement": "m_axis_tlast",
+          "start": 6667
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_f89a1677f767",
+      "legacy_id": "candidate_015",
+      "line": 199,
+      "note": "Use existing same-width signal m_axis_tlast for store_axis_temp_to_output",
+      "rtl_sha256": "f89a1677f767c32869763b727486fe5a2521a1d18beb5b40e93a61f44d72b24b",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "store_axis_int_to_temp"
+      ],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 201,
+        "last_line": 217,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7145,
+          "old": "1'b1",
+          "replacement": "m_axis_tlast_int",
+          "start": 7141
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_004cc266ecdc",
+      "legacy_id": "candidate_016",
+      "line": 210,
+      "note": "Use existing same-width signal m_axis_tlast_int for store_axis_int_to_temp",
+      "rtl_sha256": "004cc266ecdc26084b389044f54c24bb9b31b101bf3545f57622a6f2241a081a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "temp_m_axis_tvalid_next"
+      ],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 201,
+        "last_line": 217,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7339,
+          "old": "1'b0",
+          "replacement": "m_axis_tvalid_reg",
+          "start": 7335
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_687644f7cde1",
+      "legacy_id": "candidate_017",
+      "line": 215,
+      "note": "Use existing same-width signal m_axis_tvalid_reg for temp_m_axis_tvalid_next",
+      "rtl_sha256": "687644f7cde1aa6cfbbfc1aac6dd26ac10ee2601639bc45f98b51b12a51ff7f9",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "store_axis_temp_to_output"
+      ],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 201,
+        "last_line": 217,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 7381,
+          "old": "1'b1",
+          "replacement": "s_axis_tkeep",
+          "start": 7377
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_53c73d1a2563",
+      "legacy_id": "candidate_018",
+      "line": 216,
+      "note": "Use existing same-width signal s_axis_tkeep for store_axis_temp_to_output",
+      "rtl_sha256": "53c73d1a25635b6374f662a2e5d14db768143ba7e8adbd46243890a3b1a8e919",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "temp_m_axis_tvalid_reg"
+      ],
+      "dependency": {
+        "cell_edges": 0,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 220,
+        "last_line": 256,
+        "state_edges": 0
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8754,
+          "old": "1'b0",
+          "replacement": "m_axis_tlast",
+          "start": 8750
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 1.0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 6.25,
+      "id": "patch_f2861c6c0e09",
+      "legacy_id": "candidate_019",
+      "line": 254,
+      "note": "Use existing same-width signal m_axis_tlast for temp_m_axis_tvalid_reg",
+      "rtl_sha256": "f2861c6c0e0956b7877df91a95f29d6c0fb41e1ff337e0dcf00c31c261e37280",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "temp_m_axis_tvalid_reg"
+      ],
+      "dependency": {
+        "cell_edges": 0,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 220,
+        "last_line": 256,
+        "state_edges": 0
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8754,
+          "old": "1'b0",
+          "replacement": "m_axis_tkeep_reg",
+          "start": 8750
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "rhs_substitution",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 1.0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 6.25,
+      "id": "patch_ff59297437c2",
+      "legacy_id": "candidate_020",
+      "line": 254,
+      "note": "Use existing same-width signal m_axis_tkeep_reg for temp_m_axis_tvalid_reg",
+      "rtl_sha256": "ff59297437c2462228a4a02b3208178bf51d7a8f3b55e5516653a28d2e388b7a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "temp_m_axis_tid_reg"
+      ],
+      "dependency": {
+        "cell_edges": 0,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 220,
+        "last_line": 256,
+        "state_edges": 0
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8760,
+          "old": "",
+          "replacement": "\n        temp_m_axis_tid_reg <= 0;\n    ",
+          "start": 8760
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "reset_completion",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 1.0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 6.25,
+      "id": "patch_8053be1dbae4",
+      "legacy_id": "candidate_021",
+      "line": 255,
+      "note": "Reset same-block state: temp_m_axis_tid_reg",
+      "rtl_sha256": "8053be1dbae40c949d8a60ae2ccdbf380bfdba154dfbce2f13f84e2df694cf26",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "temp_m_axis_tkeep_reg"
+      ],
+      "dependency": {
+        "cell_edges": 0,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 220,
+        "last_line": 256,
+        "state_edges": 0
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8760,
+          "old": "",
+          "replacement": "\n        temp_m_axis_tkeep_reg <= 0;\n    ",
+          "start": 8760
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "reset_completion",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 1.0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 6.25,
+      "id": "patch_9d11758b2afe",
+      "legacy_id": "candidate_022",
+      "line": 255,
+      "note": "Reset same-block state: temp_m_axis_tkeep_reg",
+      "rtl_sha256": "9d11758b2afe36188b2b02586e2e59d777acd7dcd64d3c2fb7bea8a6a1645066",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "m_axis_tdata_reg"
+      ],
+      "dependency": {
+        "cell_edges": 0,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 220,
+        "last_line": 256,
+        "state_edges": 0
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8760,
+          "old": "",
+          "replacement": "\n        m_axis_tdata_reg <= 0;\n    ",
+          "start": 8760
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "reset_completion",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 1.0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 6.25,
+      "id": "patch_c9bcd0ebf5ab",
+      "legacy_id": "candidate_023",
+      "line": 255,
+      "note": "Reset same-block state: m_axis_tdata_reg",
+      "rtl_sha256": "c9bcd0ebf5ab0603b35e4a1982f94a267f249142d8a159f6a05c77dc3fb0b499",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [
+        "m_axis_tdest_reg"
+      ],
+      "dependency": {
+        "cell_edges": 0,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 6,
+        "failure_port": "m_axis_tlast",
+        "first_line": 220,
+        "last_line": 256,
+        "state_edges": 0
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 8760,
+          "old": "",
+          "replacement": "\n        m_axis_tdest_reg <= 0;\n    ",
+          "start": 8760
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        },
+        {
+          "actual": 0,
+          "cycle": 19,
+          "expected": 1,
+          "port": "m_axis_tlast"
+        }
+      ],
+      "family": "reset_completion",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 1.0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 6.25,
+      "id": "patch_ec27a287b3cc",
+      "legacy_id": "candidate_024",
+      "line": 255,
+      "note": "Reset same-block state: m_axis_tdest_reg",
+      "rtl_sha256": "ec27a287b3cc864f4f91686b4ec8cfb436d94cb30ca427d05c8f4c74b3e6bb80",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    }
+  ],
+  "case_id": "holdout_02",
+  "heuristic_order": [
+    "patch_8053be1dbae4",
+    "patch_9d11758b2afe",
+    "patch_c9bcd0ebf5ab",
+    "patch_ec27a287b3cc",
+    "patch_f2861c6c0e09",
+    "patch_ff59297437c2",
+    "patch_73d0959c8d78",
+    "patch_004cc266ecdc",
+    "patch_53c73d1a2563",
+    "patch_687644f7cde1",
+    "patch_526cd5d1d85b",
+    "patch_de127ce49d29",
+    "patch_fc70287381b7",
+    "patch_177e84f089b9",
+    "patch_330141055bc5",
+    "patch_37b9d212adbe",
+    "patch_390a7a67ed09",
+    "patch_05abffd461ff",
+    "patch_4c92a56408a4",
+    "patch_5a0af9d51c1a",
+    "patch_b3ecf77ee42a",
+    "patch_bdfb4e29768c",
+    "patch_ee94d1ca02b6",
+    "patch_f89a1677f767"
+  ],
+  "opaque_id": "holdout_02",
+  "original_discovery": {
+    "error": null,
+    "sampling_reminder": "Cycle numbers are testbench sample indices, not internal RTL states. Outputs sampled after current inputs settle and before rising clock edge.",
+    "status": "DISCOVERY_ONLY",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_rate_limit"
+          ],
+          "elapsed_seconds": 0.0179,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 1682,
+        "cycles": 256,
+        "expected_sha256": "e22316e71591b2879b8a7cd672f6d249dd78a77d7b8e2a223b4cfaf77a42db0d",
+        "first_mismatches": [
+          {
+            "actual": 0,
+            "cycle": 6,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 7,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 19,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 20,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 27,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 29,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 30,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 33,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 47,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          },
+          {
+            "actual": 0,
+            "cycle": 48,
+            "expected": 1,
+            "port": "m_axis_tlast"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                121,
+                175,
+                119,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                250,
+                100,
+                236,
+                1,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                173,
+                179,
+                230,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                235,
+                235,
+                181,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                224,
+                149,
+                121,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                224,
+                149,
+                121,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                45,
+                253,
+                189,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                121,
+                175,
+                119,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                250,
+                100,
+                236,
+                1,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                173,
+                179,
+                230,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                1,
+                235,
+                235,
+                181,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                224,
+                149,
+                121,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                224,
+                149,
+                121,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                45,
+                253,
+                189,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                71,
+                67,
+                189,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 0
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                23,
+                24,
+                140,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                189,
+                48,
+                235,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                189,
+                48,
+                235,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                241,
+                142,
+                87,
+                1,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                241,
+                142,
+                87,
+                1,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ]
+            ],
+            "start_cycle": 11
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                189,
+                48,
+                235,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                189,
+                48,
+                235,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                241,
+                142,
+                87,
+                1,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                241,
+                142,
+                87,
+                1,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                234,
+                205,
+                250,
+                1,
+                0,
+                1,
+                1
+              ]
+            ],
+            "start_cycle": 12
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                179,
+                36,
+                66,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                234,
+                205,
+                250,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                234,
+                205,
+                250,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                228,
+                126,
+                218,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                167,
+                252,
+                57,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                167,
+                252,
+                57,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ]
+            ],
+            "start_cycle": 19
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                234,
+                205,
+                250,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                228,
+                126,
+                218,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                167,
+                252,
+                57,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                167,
+                252,
+                57,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                58,
+                13,
+                11,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 21
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                228,
+                126,
+                218,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                167,
+                252,
+                57,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                167,
+                252,
+                57,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                58,
+                13,
+                11,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                58,
+                13,
+                11,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 22
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                28,
+                180,
+                204,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                140,
+                93,
+                253,
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                58,
+                13,
+                11,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                58,
+                13,
+                11,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                21,
+                166,
+                223,
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                182,
+                219,
+                58,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                182,
+                219,
+                58,
+                1,
+                0,
+                1,
+                1
+              ]
+            ],
+            "start_cycle": 25
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                123,
+                198,
+                52,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                18,
+                124,
+                105,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                207,
+                84,
+                204,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                197,
+                194,
+                42,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                200,
+                219,
+                71,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                181,
+                217,
+                80,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                181,
+                217,
+                80,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                181,
+                217,
+                80,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                214,
+                219,
+                153,
+                1,
+                1,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 39
+          },
+          {
+            "inputs": [
+              "m_axis_tready",
+              "rate_by_frame",
+              "rate_denom",
+              "rate_num",
+              "rst",
+              "s_axis_tdata",
+              "s_axis_tdest",
+              "s_axis_tid",
+              "s_axis_tkeep",
+              "s_axis_tlast",
+              "s_axis_tuser",
+              "s_axis_tvalid"
+            ],
+            "samples": [
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                18,
+                124,
+                105,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                207,
+                84,
+                204,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                197,
+                194,
+                42,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                200,
+                219,
+                71,
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                181,
+                217,
+                80,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                181,
+                217,
+                80,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                5,
+                3,
+                0,
+                181,
+                217,
+                80,
+                1,
+                1,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                214,
+                219,
+                153,
+                1,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                5,
+                3,
+                0,
+                108,
+                69,
+                172,
+                0,
+                1,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 40
+          }
+        ],
+        "mismatch_count": 53,
+        "passed": false,
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "11e1735a4bef28b866c97b42375b1862c1665a57116c0fc1565b0aaa55de2505",
+        "trace_label": "discovery"
+      }
+    ]
+  },
+  "original_discovery_pass": false,
+  "size_order": [
+    "patch_bdfb4e29768c",
+    "patch_526cd5d1d85b",
+    "patch_53c73d1a2563",
+    "patch_b3ecf77ee42a",
+    "patch_f2861c6c0e09",
+    "patch_f89a1677f767",
+    "patch_177e84f089b9",
+    "patch_390a7a67ed09",
+    "patch_5a0af9d51c1a",
+    "patch_004cc266ecdc",
+    "patch_ee94d1ca02b6",
+    "patch_ff59297437c2",
+    "patch_687644f7cde1",
+    "patch_37b9d212adbe",
+    "patch_73d0959c8d78",
+    "patch_fc70287381b7",
+    "patch_c9bcd0ebf5ab",
+    "patch_de127ce49d29",
+    "patch_ec27a287b3cc",
+    "patch_8053be1dbae4",
+    "patch_9d11758b2afe",
+    "patch_4c92a56408a4",
+    "patch_05abffd461ff",
+    "patch_330141055bc5"
+  ],
+  "source_order": [
+    "patch_4c92a56408a4",
+    "patch_05abffd461ff",
+    "patch_330141055bc5",
+    "patch_177e84f089b9",
+    "patch_37b9d212adbe",
+    "patch_390a7a67ed09",
+    "patch_bdfb4e29768c",
+    "patch_de127ce49d29",
+    "patch_526cd5d1d85b",
+    "patch_fc70287381b7",
+    "patch_73d0959c8d78",
+    "patch_b3ecf77ee42a",
+    "patch_ee94d1ca02b6",
+    "patch_5a0af9d51c1a",
+    "patch_f89a1677f767",
+    "patch_004cc266ecdc",
+    "patch_687644f7cde1",
+    "patch_53c73d1a2563",
+    "patch_f2861c6c0e09",
+    "patch_ff59297437c2",
+    "patch_8053be1dbae4",
+    "patch_9d11758b2afe",
+    "patch_c9bcd0ebf5ab",
+    "patch_ec27a287b3cc"
+  ],
+  "source_sha256": "41337f1b5ad68b8fbaa0e130ab617ab96771ed030f2a4c58f33667d41a199ee5"
+}

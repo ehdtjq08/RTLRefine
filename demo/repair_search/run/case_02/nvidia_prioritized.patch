@@ -1,0 +1,11 @@
+--- original.v
++++ nvidia_prioritized.v
+@@ -767,7 +767,7 @@
+ 			fifo_b_wr <= 1'b1;
+ 			fifo_b_wr_mask <= 4'b1111;
+ 			fifo_b_wr_addr <= fifo_wb_addr;
+-			fifo_b_wr_data <= wb_data;
++			fifo_b_wr_data <= {wb_data[7:0],wb_data[15:8],wb_data[23:16],wb_data[31:24]};
+ 		end else if (pre_fifo_b_wr)
+ 		begin
+ 			fifo_b_wr <= 1'b1;

@@ -1,0 +1,30 @@
+{
+  "accepted": false,
+  "cost": {
+    "estimated_usd": 0.021234,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "d68de5056b244f998cd9a64111110765",
+    "reserved_usd": 1.097728,
+    "state": "settled"
+  },
+  "proposal": {
+    "explanation": "Fixed deadlocks in the non-keep-enabled width adapter paths (upsizing and downsizing) by replacing fragile two-flop state machines with robust beat-counter based skid-buffer handshakes. The upsizing path now uses a `read_count` counter to buffer input beats, asserting `output_axis_tvalid` only when a full output word is assembled and `output_axis_tready` is high, while `input_axis_tready` tracks output buffer availability. The downsizing path uses a `write_count` counter to shift out beats from a buffered input word, asserting `input_axis_tready` when the buffer is empty or the output accepts a beat. TUSER/TID/TDEST/TKEEP signals are captured on the first input beat (upsizing) or first output beat (downsizing) for frame alignment. The keep-enabled submodules (`axis_data_width_adapter_input_keep`, `axis_data_width_adapter_output_keep`, `axis_data_width_adapter_passthrough`, `axis_skid_buffer`) are retained and cleaned up with SystemVerilog syntax as they passed validation.",
+    "rtl": "systemverilog/refinement/axis_data_width_adapter_refined.sv"
+  },
+  "review": {
+    "accepted": false,
+    "bounded_comparisons": [],
+    "case": "axis_keep",
+    "directory": "/home/hands/Nebius/results/sequential_paired_fork_v2_20261023/axis_keep/trial_3/self_review/review",
+    "error": "Keep the template license, module parameters and ports byte-identical",
+    "limitation": "Directed simulations plus bounded two-state comparison to a historical reference; no unbounded proof or coverage of all parameters. Fixed references are excluded from model prompts.",
+    "new_api_calls": 0,
+    "proof_steps": 20,
+    "rtl_sha256": "dc9738cce79c4d82ad4efecdadc305d0e0c6fc3516a8cd7cd859ee036e040ac8",
+    "scope": "S_KEEP_ENABLE=0 means every source byte is valid regardless of s_axis_tkeep. Preserve frames, byte validity and ID/DEST/USER across 8-to-8/16/32-bit paths and stalls, including enabled source masks.",
+    "simulations": [],
+    "status": "POLICY_REJECTED"
+  },
+  "status": "POLICY_REJECTED"
+}

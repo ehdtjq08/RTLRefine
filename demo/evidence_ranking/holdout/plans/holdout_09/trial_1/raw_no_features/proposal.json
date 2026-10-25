@@ -1,0 +1,37 @@
+{
+  "explanation": "The first mismatch occurs at cycle 23 on scl_o where actual=1 but expected=0, indicating the I2C master drives the clock line high prematurely. The top-ranked patches directly target SCL/SDA output initialization and control logic using existing same-width signals: patch_de1628c0e786 substitutes scl_o_next initialization with s_axis_cmd_write (idle-low), patch_3d82912c89bf uses sda_o_reg for scl_o_next (cross-signal reuse), patch_e1dedeaa933a gates delay_sda with s_axis_data_tvalid to prevent early SDA release, patch_8f768e62b60a substitutes s_axis_cmd_ready_next with scl_t (bus clock state), and patch_cdf880e10e41 reuses phy_write_bit for last_scl_i_reg (SCL history tracking). These address the root cause of premature bus driving by ensuring outputs remain inactive until valid command transactions begin. Lower-ranked patches address secondary mismatches: patch_556c4a41a077 fixes sda_i_reg reset with stop_bit, patch_be1dff44a4a9 reuses m_axis_data_tlast for s_axis_data_tready_next, and patch_0e09f46d1e35 qualifies phy_release_bus with s_axis_data_tvalid.",
+  "ranking": [
+    {
+      "id": "patch_de1628c0e786",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_3d82912c89bf",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_e1dedeaa933a",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_8f768e62b60a",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_cdf880e10e41",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_556c4a41a077",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_be1dff44a4a9",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_0e09f46d1e35",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

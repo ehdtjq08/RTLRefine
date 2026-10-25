@@ -1,0 +1,2134 @@
+{
+  "accepted": false,
+  "audit_pass": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "bench_top",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0326,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vbench_top.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 2.6267,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": false,
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "394c79ad891fb3222f136da7867995c57da7fa487f1c30cf4100a78b391bb2d1",
+  "status": "DISCOVERY_TRACE_FAILED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vbench_top"
+        ],
+        "elapsed_seconds": 0.0333,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 26,
+      "cycles": 10,
+      "expected_sha256": "6878a66f95807a07904b1cfb82fb374f789175cff555127873e465fa68491d3c",
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 2,
+          "cycle": 8,
+          "expected": 1,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 3,
+          "cycle": 9,
+          "expected": 2,
+          "port": "output_axis_tdata"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              2,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              3,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              2,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              3,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              3,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              4,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              5,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              6,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              2,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              3,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              3,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              4,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              5,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              6,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              7,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 1
+        }
+      ],
+      "mismatch_count": 3,
+      "passed": false,
+      "phase": "discovery",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "57cff7f16c430d92b701dbb30195e644dbdf4d7bd63e495a60be95990b61b0c2",
+      "trace_label": "published_discovery_trace"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vbench_top"
+        ],
+        "elapsed_seconds": 0.0166,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 250,
+      "cycles": 80,
+      "expected_sha256": "ec41f2b31e2262ff91f4e6335a4dc4e1d5ba2879899d467f8a709098e937ecb0",
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 164,
+          "cycle": 8,
+          "expected": 167,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 165,
+          "cycle": 9,
+          "expected": 164,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 250,
+          "cycle": 18,
+          "expected": 249,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 251,
+          "cycle": 19,
+          "expected": 250,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 1,
+          "cycle": 24,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 118,
+          "cycle": 28,
+          "expected": 117,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 119,
+          "cycle": 29,
+          "expected": 118,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 1,
+          "cycle": 34,
+          "expected": 0,
+          "port": "input_axis_tready"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              166,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              167,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              167,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              164,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              165,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              166,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              167,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              167,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              164,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              165,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              165,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              162,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              163,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              160,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              167,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              167,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              164,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              165,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              165,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              162,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              163,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              160,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              161,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 1
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              162,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              163,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              160,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              161,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              248,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              249,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              249,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              250,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              251,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 6
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              248,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              249,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              249,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              250,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              251,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              251,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              252,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              253,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              254,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 10
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              249,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              249,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              250,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              251,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              251,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              252,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              253,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              254,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              255,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 11
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              252,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              253,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              254,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              255,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              116,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              117,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              117,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              118,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              119,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 16
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              116,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              117,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              117,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              118,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              119,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              119,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              112,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              113,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              114,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 20
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              117,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              117,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              118,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              119,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              119,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              112,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              113,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              114,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              115,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 21
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              112,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              113,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              114,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              115,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              16,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              17,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              17,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              18,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              19,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 26
+        }
+      ],
+      "mismatch_count": 24,
+      "passed": false,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "c0c00bb8b3dc3908caafc7412fe345d21d44009755e1af03fe63e3518115b5ec",
+      "trace_label": "unexposed_payload_transform_7403"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vbench_top"
+        ],
+        "elapsed_seconds": 0.0165,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 250,
+      "cycles": 80,
+      "expected_sha256": "0be7306712abea60ee9ffbdf83e4632584372b960c548b4657f5c05e79ba0339",
+      "first_mismatches": [
+        {
+          "actual": 1,
+          "cycle": 4,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 109,
+          "cycle": 8,
+          "expected": 110,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 108,
+          "cycle": 9,
+          "expected": 109,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 1,
+          "cycle": 14,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 142,
+          "cycle": 18,
+          "expected": 141,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 143,
+          "cycle": 19,
+          "expected": 142,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 1,
+          "cycle": 24,
+          "expected": 0,
+          "port": "input_axis_tready"
+        },
+        {
+          "actual": 38,
+          "cycle": 28,
+          "expected": 37,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 39,
+          "cycle": 29,
+          "expected": 38,
+          "port": "output_axis_tdata"
+        },
+        {
+          "actual": 1,
+          "cycle": 34,
+          "expected": 0,
+          "port": "input_axis_tready"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              111,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              110,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              110,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              109,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              108,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              111,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              110,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              110,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              109,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              108,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              108,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              107,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              106,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              105,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              110,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              110,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              109,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              108,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              108,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              107,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              106,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              105,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              104,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 1
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              107,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              106,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              105,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              104,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              140,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              141,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              141,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              142,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              143,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 6
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              140,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              141,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              141,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              142,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              143,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              143,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              136,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              137,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              138,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 10
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              141,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              141,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              142,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              143,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              143,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              136,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              137,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              138,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              139,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 11
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              136,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              137,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              138,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              139,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              36,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              37,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              37,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              38,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              39,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 16
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              1,
+              36,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              37,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              37,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              38,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              39,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              39,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              32,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              33,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              34,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 20
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              37,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              37,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              38,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              39,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              39,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              32,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              33,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              34,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              35,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 21
+        },
+        {
+          "inputs": [
+            "async_rst",
+            "input_axis_tdata",
+            "input_axis_tlast",
+            "input_axis_tuser",
+            "input_axis_tvalid",
+            "output_axis_tready"
+          ],
+          "samples": [
+            [
+              0,
+              32,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              33,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              34,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              35,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              151,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              150,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              150,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              149,
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              148,
+              1,
+              0,
+              1,
+              1
+            ]
+          ],
+          "start_cycle": 26
+        }
+      ],
+      "mismatch_count": 24,
+      "passed": false,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "37b69650641a7459a806f7f53baf155394b769b3c5c2dfcec8b9de635b7b327c",
+      "trace_label": "unexposed_payload_transform_9601"
+    }
+  ]
+}

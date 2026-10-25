@@ -1,0 +1,41 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.005156,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "66cb2eb346764afe86af96171e5da429",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "diagnosis": "The write pointer reset block fails to clear the `drop_frame` and `wr_ptr_cur` registers, so they retain stale values after reset. These stale values cause the FIFO to incorrectly assert `drop_frame` and corrupt the first post-reset frame write, which subsequently produces wrong output data.",
+  "display_ids": [
+    "candidate_007",
+    "candidate_001",
+    "candidate_004"
+  ],
+  "ids": [
+    "patch_06b184d83718",
+    "patch_9d300784e043",
+    "patch_15a85deae41e"
+  ],
+  "proposal": {
+    "diagnosis": "The write pointer reset block fails to clear the `drop_frame` and `wr_ptr_cur` registers, so they retain stale values after reset. These stale values cause the FIFO to incorrectly assert `drop_frame` and corrupt the first post-reset frame write, which subsequently produces wrong output data.",
+    "ranking": [
+      {
+        "id": "candidate_007",
+        "mechanism": "Resets both `drop_frame` and `wr_ptr_cur` to zero in the `rst` branch of the write-pointer always block, ensuring a clean state for the next frame after reset."
+      },
+      {
+        "id": "candidate_001",
+        "mechanism": "Resets only `drop_frame` in the write-pointer reset branch, clearing the drop-state but leaving `wr_ptr_cur` stale."
+      },
+      {
+        "id": "candidate_004",
+        "mechanism": "Resets only `wr_ptr_cur` in the write-pointer reset branch, aligning the current write pointer but leaving `drop_frame` asserted."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 3.2100009019486606
+}

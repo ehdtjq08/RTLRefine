@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.03068,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "84467780a7e649ecbe1f6820eb74953a",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_a3e524527915",
+    "patch_f8d57d590691",
+    "patch_cef2e466558e",
+    "patch_2643820b9fc0",
+    "patch_0bcc454688eb",
+    "patch_15e507eb05d7",
+    "patch_574faa6d7168",
+    "patch_3466ed48d141"
+  ],
+  "proposal": {
+    "explanation": "The trace shows `o_wb_ack` toggling every cycle starting at cycle 6 while `i_wb_cyc` also toggles, but the original code drives `o_wb_ack` directly from `wb_stb` (which follows `i_wb_stb`). Only patches `patch_a3e524527915` and `patch_f8d57d590691` modify the `o_wb_ack` assignment itself to insert a cycle delay or bus-cycle gate, directly matching the observed one-cycle-late ack pattern. The remaining patches adjust command/response state guards that indirectly influence `r_cmd_busy` and the interrupt `o_int`, which feeds back into bus behavior; they are ranked by proximity to the ack-generating logic and whether they add bus-cycle qualification seen in the trace.",
+    "ranking": [
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_a3e524527915",
+        "mechanism": "Replaces combinational `o_wb_ack <= wb_stb` with a registered one-cycle delay: asserts ack when `wb_stb` was high on previous cycle and `i_wb_cyc` is high on current cycle. This matches the trace's ack appearing one cycle after write-strobe samples.",
+        "source_line": 582
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_f8d57d590691",
+        "mechanism": "Changes ack from `wb_stb` to `(i_wb_cyc) && (wb_stb)`. Since `wb_stb = (i_wb_stb)&&(!o_wb_stall)` and `o_wb_stall=0`, this gates ack with `i_wb_cyc` directly. The trace shows ack cycling with `i_wb_cyc`, supporting this bus-cycle qualification.",
+        "source_line": 582
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_cef2e466558e",
+        "mechanism": "Inside response-token logic, qualifies `r_have_resp` with `r_use_fifo` so `r_data_response_token` only sets when a FIFO command expects a token. Prevents premature token capture that could disrupt command state and thus `o_wb_ack` via `r_cmd_busy`/`q_busy`.",
+        "source_line": 327
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_2643820b9fc0",
+        "mechanism": "Byte-swaps `fifo_a_reg` readout for WB address 2'h2. If trace read data comes from FIFO A, endian mismatch would cause data errors; however the primary failure is `o_wb_ack` so this is lower relevance.",
+        "source_line": 577
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_0bcc454688eb",
+        "mechanism": "Guards entry to state 0 with `!pre_cmd_state`, preventing reset logic from running on the first cycle before `pre_cmd_state` is asserted. Aligns command-state initialization with bus-cycle timing.",
+        "source_line": 300
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_15e507eb05d7",
+        "mechanism": "Guards state-0 to state-1 transition with `pre_cmd_state`, ensuring byte serialization only starts when bus cycle is qualified. Directly affects when `ll_cmd_stb` asserts and thus `r_cmd_busy`/`o_wb_ack`.",
+        "source_line": 305
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_574faa6d7168",
+        "mechanism": "Qualifies FIFO-write completion check with `ll_fifo_rd_complete`, delaying `ll_cmd_stb` deassertion until low-level read finishes. Affects `r_cmd_busy` duration and therefore `o_wb_ack` via interrupt path.",
+        "source_line": 334
+      },
+      {
+        "failure_port": "o_wb_ack",
+        "id": "patch_3466ed48d141",
+        "mechanism": "Guards state 5 entry with `!r_have_resp`, preventing transition to busy-wait before first response token. Keeps response state machine aligned with actual token arrival, indirectly stabilizing `o_wb_ack`.",
+        "source_line": 324
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 9.5102
+}

@@ -1,0 +1,13 @@
+{
+  "id": "stream_buffer_v1",
+  "synthetic_mutation_challenge": true,
+  "module": "stream_buffer",
+  "description": "A synchronous, non-bypassing, lossless ready/valid queue carrying DATA_WIDTH payload bits, LAST and USER. Capacity is 2**ADDR_WIDTH words.",
+  "reset": "Active-high synchronous reset flushes all accepted but unconsumed words at each rising edge. While reset is asserted, s_ready and m_valid are zero. The first four directed cycles assert reset.",
+  "handshake": "Outside reset a transfer occurs on a rising edge when valid and ready are both high. The source must hold valid and its data/sidebands while stalled, unless reset is asserted. The receiver may stop for any number of cycles.",
+  "availability": "m_valid is high exactly when buffered words exist. The head data and sidebands remain stable while stalled. No direct input-to-output bypass is allowed.",
+  "ready": "s_ready must be high exactly when reset is low and either there is unused capacity or an existing head word will be consumed on this edge. Full-capacity simultaneous dequeue/enqueue must be supported.",
+  "ordering": "Each accepted word, including LAST and USER, appears once and in order unless flushed by reset. New traffic must work after reset; tying off ready or valid cannot satisfy the contract.",
+  "parameters": "Directed checks use DATA_WIDTH=8 and ADDR_WIDTH in {1,2,3}; formal checks will use listed fixed profiles only. This is not an all-parameter or unbounded proof.",
+  "reference_rtl_used_for_scoring": false
+}

@@ -1,0 +1,53 @@
+{
+  "explanation": "The simulation mismatch shows o_sck toggling from cycle 102 onward, while the expected trace holds it at 0 until cycle 109 (75 cycles after the design start at cycle 34). The only logic driving o_sck during this window is the `startup_hold` block in llsdspi. The generate block (lines 120-139) counts 75 rising edges of o_sclk to clear startup_hold; the final `if (startup_hold)` clause toggles o_sclk every cycle while startup_hold=1. Candidate patch_8b77b8c988e9 reinforces the generate block's dependency on startup_hold, ensuring the counter cannot decrement after startup_hold clears, which would otherwise cause early release and premature SCLK toggling. The other candidates either invert the guard, make it unsatisfiable, add a tautology, or edit unrelated Wishbone/byte-logic paths.",
+  "ranking": [
+    {
+      "failure_port": "o_sck",
+      "id": "patch_8b77b8c988e9",
+      "mechanism": "The original startup block toggles o_sclk on every clock edge while startup_hold is asserted (via the final `if (startup_hold)` clause). The candidate adds `&& (startup_hold)` to the STARTUP_BITS>0 generate block's condition that enables the toggle (`if (startup_hold && !past_sclk && o_sclk)`). Although this appears redundant, it guarantees the decrement-and-hold logic only runs when startup_hold=1, preventing any spurious counter update that could cause startup_hold to drop early. Early drop of startup_hold would re-enable the main state machine's SCLK generation before the required 75 cycles, causing the observed premature o_sck toggling at cycle 102.",
+      "source_line": 129
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_85af62ebbb4e",
+      "mechanism": "This candidate adds `&& (!startup_hold)` to the same generate-block condition. It would gate the startup counter decrement on the inverse of startup_hold, which is logically opposite to the required behavior and would either freeze the counter or cause immediate exit, worsening the SCLK mismatch.",
+      "source_line": 129
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_96690c95ad72",
+      "mechanism": "This candidate adds `&& (!o_sclk)` to the generate-block condition. Since the block triggers on `!past_sclk && o_sclk` (rising edge of o_sclk), requiring `!o_sclk` simultaneously makes the condition unsatisfiable, freezing startup_counter at its initial value and preventing startup_hold from ever clearing. The SCLK would toggle forever under the final `if (startup_hold)` clause, not matching the expected 75-cycle hold then release.",
+      "source_line": 129
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_3f3b17647f5f",
+      "mechanism": "This candidate adds `&& (o_sclk)` to the generate-block condition. The condition already requires `o_sclk` (via `!past_sclk && o_sclk`), so this is a tautology that changes nothing; the premature SCLK toggling remains unexplained and unfixed.",
+      "source_line": 129
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_968f6bf28508",
+      "mechanism": "This candidate qualifies the Wishbone address-increment condition (`|startup_counter`) with `&& (!startup_hold)` in the sdspi module. The address logic is unrelated to SCLK generation; the failure is in the low-level SPI clock divider and startup sequencer. This edit cannot affect o_sck.",
+      "source_line": 144
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_4cf862bc9372",
+      "mechanism": "Similar to the above, this adds `&& (i_cs)` to a Wishbone FIFO address condition. It operates in the high-level command layer, not the low-level SPI clock generator that produces o_sck.",
+      "source_line": 144
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_113b45178c7f",
+      "mechanism": "This candidate adds `&& (r_z_counter)` to the `byte_accepted` branch in the low-level state machine. It would affect when a new byte transmission starts, but the observed failure occurs during the initial 75-cycle startup hold before any byte is accepted, so this edit is not on the critical path.",
+      "source_line": 170
+    },
+    {
+      "failure_port": "o_sck",
+      "id": "patch_f0301a33cc2f",
+      "mechanism": "This candidate adds `&& (!r_idle)` to the same `byte_accepted` branch. Like the previous, it modifies byte-transmission startup logic, which is not yet active during the failing startup cycles.",
+      "source_line": 170
+    }
+  ]
+}

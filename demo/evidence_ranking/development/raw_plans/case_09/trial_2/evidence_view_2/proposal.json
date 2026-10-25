@@ -1,0 +1,53 @@
+{
+  "explanation": "The discovery trace reveals two failure modes: (1) drop_frame spuriously asserted at cycles 13-14 immediately after rst release, and (2) output_axis_tdata=6 with output_axis_tvalid=0 at cycle 16. The root cause is incomplete reset of write-side state: wr_ptr is reset but wr_ptr_cur and drop_frame are not, leaving them with stale values that trigger the drop-frame logic incorrectly. The highest-ranked patches (patch_260cd2a94865, patch_15a85deae41e, patch_9d300784e043) directly address this by resetting wr_ptr_cur and/or drop_frame in the write-side reset block at line 99. patch_2091b2021c83 addresses the output data residue by resetting data_out_reg in the read-side reset block at line 127. The remaining patches modify gating conditions (readiness, drop-frame qualification) that may mitigate symptoms but do not fix the core missing reset initialization. Static dependency annotations all point to the write block (lines 96-121) as the failure cycle 13 region, confirming the write-side reset as the primary fix locus.",
+  "ranking": [
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_260cd2a94865",
+      "mechanism": "Resets wr_ptr_cur and drop_frame to zero on rst, clearing stale write pointer and drop state. This directly prevents the observed drop_frame=1 at cycles 13-14 and subsequent output_axis_tdata=6 at cycle 16 by ensuring write-side state initializes cleanly on reset.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_15a85deae41e",
+      "mechanism": "Adds wr_ptr_cur reset in the rst block at line 99. The failing trace shows drop_frame spuriously asserted after reset; resetting the current write pointer ensures the drop frame logic starts from a known state rather than inheriting pre-reset pointer values.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_9d300784e043",
+      "mechanism": "Resets drop_frame register itself during rst. The discovery trace shows drop_frame=1 at cycles 13 and 14 immediately after reset release; explicitly clearing this flag in the reset block eliminates the spurious assertion.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_2091b2021c83",
+      "mechanism": "Resets data_out_reg in the read-side reset block. The trace shows output_axis_tdata=6 at cycle 16 vs expected 6 with output_axis_tvalid=0; clearing the output data register on reset prevents residual data from appearing before the first valid read.",
+      "source_line": 127
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_6dd7aead91eb",
+      "mechanism": "Gates input_axis_tready with rst so the FIFO does not signal readiness during reset. While not directly changing drop_frame, this prevents write transactions during reset that could corrupt wr_ptr_cur state and indirectly cause the observed drop_frame assertion.",
+      "source_line": 92
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_c8cdd17adad4",
+      "mechanism": "Gates input_axis_tready with !rst (inverse of patch_6dd7aead91eb). This would disable readiness outside reset, which contradicts normal operation; ranked lower because the polarity is likely wrong for the observed failure.",
+      "source_line": 92
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_0df996e92b1b",
+      "mechanism": "Requires input_axis_tlast for the drop-frame condition. The failure occurs during a multi-cycle valid/last sequence; this gate could suppress drop_frame assertion for non-last beats, but the trace shows last=1 at the relevant cycles so impact is uncertain.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_eed1c85249a0",
+      "mechanism": "Qualifies the input_axis_tlast branch with !full_cur. This attempts to prevent pointer updates when the current frame is full, but full_cur is derived from wr_ptr vs wr_ptr_cur which are both reset-uninitialized; low confidence without pointer reset.",
+      "source_line": 103
+    }
+  ]
+}

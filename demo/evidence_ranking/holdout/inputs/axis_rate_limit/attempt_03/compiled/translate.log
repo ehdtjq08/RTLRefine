@@ -1,0 +1,21 @@
+%Warning-WIDTH: candidate.v:119:28: Operator SUB expects 24 bits on the RHS, but RHS's VARREF 'rate_num' generates 8 bits.
+                                  : ... In instance axis_rate_limit
+  119 |         acc_next = acc_reg - rate_num;
+      |                            ^
+                ... Use "/* verilator lint_off WIDTH */" and lint_on around source to disable this message.
+%Warning-WIDTH: candidate.v:118:17: Operator GTE expects 24 bits on the RHS, but RHS's VARREF 'rate_num' generates 8 bits.
+                                  : ... In instance axis_rate_limit
+  118 |     if (acc_reg >= rate_num) begin
+      |                 ^~
+%Warning-WIDTH: candidate.v:125:42: Operator SUB expects 24 bits on the LHS, but LHS's VARREF 'rate_denom' generates 8 bits.
+                                  : ... In instance axis_rate_limit
+  125 |         acc_next = acc_reg + (rate_denom - rate_num);
+      |                                          ^
+%Warning-WIDTH: candidate.v:125:42: Operator SUB expects 24 bits on the RHS, but RHS's VARREF 'rate_num' generates 8 bits.
+                                  : ... In instance axis_rate_limit
+  125 |         acc_next = acc_reg + (rate_denom - rate_num);
+      |                                          ^
+%Warning-WIDTH: candidate.v:128:18: Operator GTE expects 24 bits on the RHS, but RHS's VARREF 'rate_num' generates 8 bits.
+                                  : ... In instance axis_rate_limit
+  128 |     if (acc_next >= rate_num) begin
+      |                  ^~

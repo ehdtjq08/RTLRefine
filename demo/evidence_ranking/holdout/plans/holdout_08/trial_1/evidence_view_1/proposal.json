@@ -1,0 +1,37 @@
+{
+  "explanation": "Ranked by failure-port proximity to edit sites and mechanism-type diversity. condition_gate patches (patch_ffb9af3e0e36/patch_896da21b3566 target s_axis_cmd_ready combinational gates in the command FSM, directly affecting ready/valid handshake. rhs_substitution entries replace hard-coded literals with existing registered signals (phy_write_bit, s_axis_cmd_ready_next, delay_scl_next, s_axis_data_tready_reg, mode_write_multiple_next, s_axis_cmd_stop, state_next, scl_o_next) at lines feeding the same failing ports (busy, s_axis_cmd_ready, sda_o). Structural coverage is 1.0 for each; dependencies are bounded static over-approximations anchored at cycle 13.",
+  "ranking": [
+    {
+      "id": "patch_ffb9af3e0e36",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_896da21b3566",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_f946eb483b5d",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_ae32ec067fa9",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_33b1685bf6d7",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_f249dd8b9502",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_0ce542feb6cc",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_729f3a736c71",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

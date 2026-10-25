@@ -1,0 +1,59 @@
+%Warning-PINMISSING: dependencies.v:502:9: Cell has missing pin: 'output_unencoded'
+  502 |         priority_encoder_inst1 (
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: dependencies.v:511:9: Cell has missing pin: 'output_unencoded'
+  511 |         priority_encoder_inst2 (
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+%Warning-WIDTH: dependencies.v:105:59: Logical Operator LOGNOT expects 1 bit on the LHS, but LHS's AND generates 4 bits.
+                                     : ... In instance axis_switch.m_ifaces[0].arb_inst
+  105 |     end else if (BLOCK == "ACKNOWLEDGE" && grant_valid && !(grant_reg & acknowledge)) begin
+      |                                                           ^
+%Warning-WIDTH: dependencies.v:100:28: Logical Operator LOGAND expects 1 bit on the RHS, but RHS's AND generates 4 bits.
+                                     : ... In instance axis_switch.m_ifaces[0].arb_inst
+  100 |     if (BLOCK == "REQUEST" && grant_reg & request) begin
+      |                            ^~
+%Warning-LITENDIAN: candidate.v:176:13: Little bit endian vector: MSB < LSB of bit range: -1:0
+                                      : ... In instance axis_switch
+  176 |         reg [CL_M_COUNT-1:0] select_reg = 0;
+      |             ^
+%Warning-LITENDIAN: candidate.v:177:13: Little bit endian vector: MSB < LSB of bit range: -1:0
+                                      : ... In instance axis_switch
+  177 |         reg [CL_M_COUNT-1:0] select_next;
+      |             ^
+%Warning-WIDTH: candidate.v:191:29: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's CONST '1'h0' generates 1 bits.
+                                  : ... In instance axis_switch
+  191 |                 select_next = 1'b0;
+      |                             ^
+%Warning-WIDTH: candidate.v:198:41: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'k' generates 32 bits.
+                                  : ... In instance axis_switch
+  198 |                             select_next = k;
+      |                                         ^
+%Warning-WIDTH: candidate.v:197:74: Operator EQ expects 32 bits on the LHS, but LHS's SEL generates 1 bits.
+                                  : ... In instance axis_switch
+  197 |                         if (int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == k && (M_CONNECT & (1 << (m+k*S_COUNT)))) begin
+      |                                                                          ^~
+%Warning-WIDTH: candidate.v:197:79: Logical Operator LOGAND expects 1 bit on the RHS, but RHS's AND generates 32 or 4 bits.
+                                  : ... In instance axis_switch
+  197 |                         if (int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == k && (M_CONNECT & (1 << (m+k*S_COUNT)))) begin
+      |                                                                               ^~
+%Warning-WIDTH: candidate.v:205:41: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'k' generates 32 bits.
+                                  : ... In instance axis_switch
+  205 |                             select_next = k;
+      |                                         ^
+%Warning-WIDTH: candidate.v:204:112: Logical Operator LOGAND expects 1 bit on the RHS, but RHS's AND generates 32 or 4 bits.
+                                   : ... In instance axis_switch
+  204 |                         if (int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] == M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))) begin
+      |                                                                                                                ^~
+%Warning-WIDTH: candidate.v:211:41: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'k' generates 32 bits.
+                                  : ... In instance axis_switch
+  211 |                             select_next = k;
+      |                                         ^
+%Warning-WIDTH: candidate.v:210:198: Logical Operator LOGAND expects 1 bit on the RHS, but RHS's AND generates 32 or 4 bits.
+                                   : ... In instance axis_switch
+  210 |                         if ((int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] >= M_BASE[k*DEST_WIDTH +: DEST_WIDTH] && int_s_axis_tdest[m*DEST_WIDTH +: DEST_WIDTH] <= M_TOP[k*DEST_WIDTH +: DEST_WIDTH] && (M_CONNECT & (1 << (m+k*S_COUNT)))) && (!rst)) begin
+      |                                                                                                                                                                                                      ^~
+%Warning-WIDTH: candidate.v:308:91: Operator SHIFTL expects 4 bits on the LHS, but LHS's LOGAND generates 1 bits.
+                                  : ... In instance axis_switch
+  308 |         assign int_axis_tready[n*S_COUNT +: S_COUNT] = (grant_valid && s_axis_tready_mux) << grant_encoded;
+      |                                                                                           ^~

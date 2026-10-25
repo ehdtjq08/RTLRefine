@@ -1,0 +1,16 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 176,
+      "replacement": "generate\n    assign s_axis[DATA_WIDTH-1:0] = s_axis_tdata;\n    if (KEEP_ENABLE) begin\n        assign s_axis[KEEP_OFFSET +: KEEP_WIDTH] = s_axis_tkeep;\n    end\n    if (LAST_ENABLE) begin\n        assign s_axis[LAST_OFFSET] = s_axis_tlast;\n    end\n    if (ID_ENABLE) begin\n        assign s_axis[ID_OFFSET +: ID_WIDTH] = s_axis_tid;\n    end\n    if (DEST_ENABLE) begin\n        assign s_axis[DEST_OFFSET +: DEST_WIDTH] = s_axis_tdest;\n    end\n    if (USER_ENABLE) begin\n        assign s_axis[USER_OFFSET +: USER_WIDTH] = s_axis_tuser;\n    end\nendgenerate",
+      "start_line": 169
+    },
+    {
+      "end_line": 235,
+      "replacement": "                 if (DROP_BAD_FRAME && (USER_BAD_FRAME_MASK & ~(s_axis_tuser ^ USER_BAD_FRAME_VALUE)) == USER_BAD_FRAME_MASK) begin",
+      "start_line": 235
+    }
+  ],
+  "explanation": "Two functional defects were identified and repaired. First, the `generate` block (lines 169-176) used invalid SystemVerilog syntax: conditional `assign` statements inside a generate block must be wrapped in `begin ... end` blocks. The original would cause a compilation error. Second, the bad-frame detection condition (line 235) incorrectly treated a partial match of masked user bits as a bad frame. The condition `USER_BAD_FRAME_MASK & ~(s_axis_tuser ^ USER_BAD_FRAME_VALUE)` evaluates true if any masked bit matches the bad-frame value, but the intended behavior (given parameter names USER_BAD_FRAME_VALUE and USER_BAD_FRAME_MASK) is to match the entire masked field. The fix changes the condition to require all masked bits to match, i.e., the result equals USER_BAD_FRAME_MASK."
+}

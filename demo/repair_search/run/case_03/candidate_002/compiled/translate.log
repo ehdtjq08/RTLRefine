@@ -1,0 +1,9 @@
+%Error: candidate.v:129:41: Expecting expression to be constant, but variable isn't const: 'startup_hold'
+                          : ... In instance sdspi.lowlevel
+  129 |  generate if ((STARTUP_CLOCKS > 0) && (!startup_hold))
+      |                                         ^~~~~~~~~~~~
+%Error: candidate.v:129:40: Generate If condition must evaluate to constant
+                          : ... In instance sdspi.lowlevel
+  129 |  generate if ((STARTUP_CLOCKS > 0) && (!startup_hold))
+      |                                        ^
+%Error: Exiting due to 2 error(s)

@@ -1,0 +1,340 @@
+{
+  "accepted": true,
+  "design_hashes": {
+    "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf"
+  },
+  "new_model_calls": 0,
+  "phase": "all",
+  "project_id": "9aaefdc1236e89d1bffdb2ace5e5e214a2e88d4f8b063ea33871af99634c5611",
+  "shared_compilation_speed_claim_applies": false,
+  "status": "PROVIDED_TESTS_PASS",
+  "tests": [
+    {
+      "checks": 2,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/domain_ticks.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.016612788080237806
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "domain_ticks",
+            "-Pdomain_ticks.WIDTH=80",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.016750897048041224
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/test_expanded.v",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/public.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "test_preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.01714687200728804
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-s",
+            "tb_public",
+            "-o",
+            "__rtlrefine/simulation.vvp",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/public.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "compile",
+          "status": "PASS",
+          "wall_seconds": 0.016898724948987365
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "domain_ticks",
+            "-Pdomain_ticks.WIDTH=32'sb00000000000000000000000001010000",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.017208999022841454
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/vvp",
+            "__rtlrefine/simulation.vvp"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "wall_seconds": 0.01687096303794533
+        }
+      ],
+      "id": "basic",
+      "interface": [
+        {
+          "instance": "dut",
+          "numeric_parameters": {
+            "WIDTH": "32'sb00000000000000000000000001010000"
+          },
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk_a",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "clk_b",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "reset",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 3,
+              "name": "count_a",
+              "width": 80
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 4,
+              "name": "count_b",
+              "width": 80
+            }
+          ]
+        }
+      ],
+      "log_tail": "RTLREFINE_PASS nonce=b25255b48e5ba50685dcf739c440f951 checks=2\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": true,
+      "phase": "public",
+      "source_hashes": {
+        "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf"
+      },
+      "status": "PASS",
+      "testbench_marker_transforms": [],
+      "top": "tb_public",
+      "verification_hashes": {
+        "rtlrefine_check.vh": "7259a593cdb2b53c3ea14ef111f270a3a796ea433536d0bda11bf226a63878aa",
+        "tests/public.sv": "9c6c61773f921892b1a4f0a96f6484c853085af6b15eba80f198b137a47d23fd"
+      },
+      "wall_seconds": 0.10148924414534122
+    },
+    {
+      "checks": 25,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/domain_ticks.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.016614411026239395
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "domain_ticks",
+            "-Pdomain_ticks.WIDTH=80",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.01693899102974683
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/test_expanded.v",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/audit.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "test_preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.016906649922020733
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-s",
+            "tb_audit",
+            "-o",
+            "__rtlrefine/simulation.vvp",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/audit.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "compile",
+          "status": "PASS",
+          "wall_seconds": 0.032999109011143446
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "domain_ticks",
+            "-Pdomain_ticks.WIDTH=32'sb00000000000000000000000001010000",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.017017378006130457
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/vvp",
+            "__rtlrefine/simulation.vvp"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "wall_seconds": 0.01735330990049988
+        }
+      ],
+      "id": "stress",
+      "interface": [
+        {
+          "instance": "dut",
+          "numeric_parameters": {
+            "WIDTH": "32'sb00000000000000000000000001010000"
+          },
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk_a",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "clk_b",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "reset",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 3,
+              "name": "count_a",
+              "width": 80
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 4,
+              "name": "count_b",
+              "width": 80
+            }
+          ]
+        }
+      ],
+      "log_tail": "RTLREFINE_PASS nonce=771ac15b832b6ae118ac8aa8f945f6c2 checks=25\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": true,
+      "phase": "audit",
+      "source_hashes": {
+        "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf"
+      },
+      "status": "PASS",
+      "testbench_marker_transforms": [],
+      "top": "tb_audit",
+      "verification_hashes": {
+        "rtlrefine_check.vh": "a4b7e33a1014e2d7e34c57d8721c141b5be59c6a587e615dc1ab65bbd20ad463",
+        "tests/audit.sv": "6c0976ba9346c359c79fbca4ffb22a5e52d7c356ea2c12a2c12fc53fa54bbffa"
+      },
+      "wall_seconds": 0.11782984889578074
+    }
+  ],
+  "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+}

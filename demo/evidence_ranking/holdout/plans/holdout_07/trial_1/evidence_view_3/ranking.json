@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.021914,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "a9a3c89c24144fb4947d693e49e0f48d",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_b42f68f8b120",
+    "patch_32397b1f1f5a",
+    "patch_a20388282eab",
+    "patch_e7975c078897",
+    "patch_a3b07d62b466",
+    "patch_dd3edbcc7820",
+    "patch_353450f10494",
+    "patch_0729b6683aa8"
+  ],
+  "proposal": {
+    "explanation": "The simulation shows bus_active never reaching 1. The root cause is that bus_active_reg only sets on start_bit, but start_bit never fires because the physical-layer sequencer is stalled: phy_read_bit and phy_tx_data are constants, sda_o_next never releases the bus, and busy_reg never reflects activity. Patches that wire bus_active_reg to the user start command, make phy_read_bit sample SDA, let phy_tx_data follow the transmit window, drive busy_reg from transaction-end or SCL, and release SDA with the missed-ack flag together unblock the physical layer so start_bit can occur and bus_active can assert. The condition gate patch prevents new commands from entering while the bus is busy, avoiding a secondary stall.",
+    "ranking": [
+      {
+        "id": "patch_b42f68f8b120",
+        "mechanism": "bus_active_reg is stuck low because it never sees start_bit; the replacement ties bus_active_reg to s_axis_cmd_start, the user command that actually begins a transaction, so bus_active rises when a new command arrives."
+      },
+      {
+        "id": "patch_32397b1f1f5a",
+        "mechanism": "phy_read_bit currently held low; driving it with sda_i makes the controller sample the bus during read phases so data and ack detection proceed, which eventually allows bus_active to deassert correctly."
+      },
+      {
+        "id": "patch_a20388282eab",
+        "mechanism": "phy_tx_data hard-coded to 1 prevents data-phase SDA from toggling; using s_axis_data_tready_reg lets the bit follow the true transmit window so ACK/NACK sampling works and bus_active sequencing completes."
+      },
+      {
+        "id": "patch_e7975c078897",
+        "mechanism": "busy_reg stays low; substituting scl_i makes busy follow the clock line so the design reports busy while the physical layer is clocking, matching the trace expectation for bus_active correlation."
+      },
+      {
+        "id": "patch_a3b07d62b466",
+        "mechanism": "busy_reg never asserts; m_axis_data_tlast_next goes high at the end of a read transaction, so busy reflects transaction completion and aligns with bus_active deassertion."
+      },
+      {
+        "id": "patch_dd3edbcc7820",
+        "mechanism": "sda_o_next fixed high masks slave ACK; missed_ack_next carries the sampled NACK so the bus release sequence sees the correct level and can transition bus_active."
+      },
+      {
+        "id": "patch_353450f10494",
+        "mechanism": "phy_read_bit constant; m_axis_data_tvalid_reg rises when read data is valid, enabling the read-bit sequence that leads to proper bus_active deassertion."
+      },
+      {
+        "id": "patch_0729b6683aa8",
+        "mechanism": "guard s_axis_cmd_ready with bus_active so new commands wait for the bus to be free, preventing premature state entry that stalls bus_active."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 6.0662
+}

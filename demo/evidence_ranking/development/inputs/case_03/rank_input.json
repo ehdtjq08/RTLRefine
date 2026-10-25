@@ -1,0 +1,3074 @@
+{
+  "cards": [
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (startup_hold)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_8b77b8c988e9",
+      "legacy_id": "candidate_001",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar startup_hold",
+      "rtl_sha256": "8b77b8c988e94af85e4d00b664ebccecb7b3542620725d4688410829150768ed",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (!startup_hold)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_85af62ebbb4e",
+      "legacy_id": "candidate_002",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar !startup_hold",
+      "rtl_sha256": "85af62ebbb4e4ca2afe7443111f76ce7b9a1477b577af8d1d58811e6828c9a51",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (o_sclk)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_3f3b17647f5f",
+      "legacy_id": "candidate_003",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar o_sclk",
+      "rtl_sha256": "3f3b17647f5f0c178759688a4d2d02c6e82ad26ca8ac00332fb804ee258e9037",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": null,
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4449,
+          "old": "STARTUP_CLOCKS > 0",
+          "replacement": "(STARTUP_CLOCKS > 0) && (!o_sclk)",
+          "start": 4431
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 2.25,
+      "id": "patch_96690c95ad72",
+      "legacy_id": "candidate_004",
+      "line": 129,
+      "note": "Qualify condition with nearby scalar !o_sclk",
+      "rtl_sha256": "96690c95ad72b7dfd7581e6221151a5145af5cb930b06d4f183431cf9599f056",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (i_cs)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_d6528483d379",
+      "legacy_id": "candidate_005",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar i_cs",
+      "rtl_sha256": "d6528483d37982fef23d1dbd39c661e9a1226f5f83630f3739590bb629844586",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (!i_cs)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_dda0a8a3d763",
+      "legacy_id": "candidate_006",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar !i_cs",
+      "rtl_sha256": "dda0a8a3d763ceb210c2eca3bc20cce4554d656e6c74a42c0f6ffa1fc79cd761",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (i_bus_grant)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_7f3d8adcb57b",
+      "legacy_id": "candidate_007",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar i_bus_grant",
+      "rtl_sha256": "7f3d8adcb57b8a1320f38c8e63fbffec5f7b7d0ca89a0e4ead893c608a41079b",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4826,
+          "old": "startup_hold && !past_sclk && o_sclk",
+          "replacement": "(startup_hold && !past_sclk && o_sclk) && (!i_bus_grant)",
+          "start": 4790
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_04bb6f387ef0",
+      "legacy_id": "candidate_008",
+      "line": 142,
+      "note": "Qualify condition with nearby scalar !i_bus_grant",
+      "rtl_sha256": "04bb6f387ef099bc6d9e53a9e75931a506e13b82f55169f17592d97861bf73f0",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (startup_hold)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_88b084625589",
+      "legacy_id": "candidate_009",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar startup_hold",
+      "rtl_sha256": "88b084625589a042ae160cb01a2bf200360e9238606b89d4db3844cdbe568860",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!startup_hold)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_968f6bf28508",
+      "legacy_id": "candidate_010",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !startup_hold",
+      "rtl_sha256": "968f6bf285088e9d8607abc3808d2e8e22aa39b352083fd559425822aa6d7a6d",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (o_sclk)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_d7b295664e25",
+      "legacy_id": "candidate_011",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar o_sclk",
+      "rtl_sha256": "d7b295664e259d663825d78e48014405705376941b58f344e4fdfd3240ffdbb6",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!o_sclk)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_aa06e6532ede",
+      "legacy_id": "candidate_012",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !o_sclk",
+      "rtl_sha256": "aa06e6532ede1faa2dd786ce3b73fb76caf172ef402f0393b17caaab5f28b02c",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (i_cs)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_4cf862bc9372",
+      "legacy_id": "candidate_013",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar i_cs",
+      "rtl_sha256": "4cf862bc9372aedd2603ee921d734fcaad8ec17b84953869ddf277c09e59363e",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!i_cs)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_baa9767c5bfd",
+      "legacy_id": "candidate_014",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !i_cs",
+      "rtl_sha256": "baa9767c5bfd0f03a4091eed73325995b14336a94d8a4500c1145d99d9bea2e7",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (i_bus_grant)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_5047f8bbe194",
+      "legacy_id": "candidate_015",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar i_bus_grant",
+      "rtl_sha256": "5047f8bbe1945d62c4bd551e14278a55ffdb7424f61a72bc29d48de27ac839b0",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 2,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 141,
+        "last_line": 147,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 4859,
+          "old": "|startup_counter",
+          "replacement": "(|startup_counter) && (!i_bus_grant)",
+          "start": 4843
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.45454545454545453,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 4.068181818181818,
+      "id": "patch_ed668372cade",
+      "legacy_id": "candidate_016",
+      "line": 144,
+      "note": "Qualify condition with nearby scalar !i_bus_grant",
+      "rtl_sha256": "ed668372cade4a4673db663d90e5fd2ff2903c0c5a67255a861a1949d92cbcb1",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (byte_accepted)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_ccf83f63228b",
+      "legacy_id": "candidate_017",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar byte_accepted",
+      "rtl_sha256": "ccf83f63228b9fb85629c380f06399d8f7127e68a71f26f8f589c675cc6136eb",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!byte_accepted)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_59ed3c0e4221",
+      "legacy_id": "candidate_018",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar !byte_accepted",
+      "rtl_sha256": "59ed3c0e422189857889894a8b54477b9b09387ba95796e6f2b846a3a4fe8b74",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (o_sclk)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_d0284aacab57",
+      "legacy_id": "candidate_019",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar o_sclk",
+      "rtl_sha256": "d0284aacab57b7120dd29b0ea36ab1112559fdb7397b67d860f2d1d38bcdbbcb",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!o_sclk)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_7ee99901893a",
+      "legacy_id": "candidate_020",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar !o_sclk",
+      "rtl_sha256": "7ee99901893a5742564b8bb5009d1a09ba00192e023c6698c17d021c50a0d450",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (r_z_counter)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_6d5da8d9d65c",
+      "legacy_id": "candidate_021",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar r_z_counter",
+      "rtl_sha256": "6d5da8d9d65c6f957c5ca38d2db4265ef50b8693097b0d7e2fb57c1742ec3e17",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5349,
+          "old": "!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))",
+          "replacement": "(!startup_hold && (!i_cs || (OPT_SPI_ARBITRATION && !i_bus_grant))) && (!r_z_counter)",
+          "start": 5284
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_012fc872ffca",
+      "legacy_id": "candidate_022",
+      "line": 165,
+      "note": "Qualify condition with nearby scalar !r_z_counter",
+      "rtl_sha256": "012fc872ffca8a474c66c22ba0020dbe4b4dbac67b5b96ba0c3936b50b1706c4",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (i_cs)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_51df04ca4c8e",
+      "legacy_id": "candidate_023",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar i_cs",
+      "rtl_sha256": "51df04ca4c8ef5069e0babbc84f9442e538b9d3c024434106f079b137270dc3a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (!i_cs)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_475847e36fa1",
+      "legacy_id": "candidate_024",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !i_cs",
+      "rtl_sha256": "475847e36fa124266d92ea72ba9c6f7de2db2b5c7911874ccfb0b7bc90460f3e",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (i_bus_grant)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_2b78a2b4a842",
+      "legacy_id": "candidate_025",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar i_bus_grant",
+      "rtl_sha256": "2b78a2b4a842b9cacbc0377247bccd5f7dc1d95cff2de03e5f9c3a8509369d3c",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (!i_bus_grant)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_8c9e5f0872b3",
+      "legacy_id": "candidate_026",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !i_bus_grant",
+      "rtl_sha256": "8c9e5f0872b334bf0e56dc3fca78ae67af7a0ccfbce95ced664833f81b239a53",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (r_z_counter)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_113b45178c7f",
+      "legacy_id": "candidate_027",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar r_z_counter",
+      "rtl_sha256": "113b45178c7ff3519303a7d079730dae26f8ea6ac8d58e5f637c3cb06683279a",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (!r_z_counter)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_8ef695416481",
+      "legacy_id": "candidate_028",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !r_z_counter",
+      "rtl_sha256": "8ef6954164818740cf4df981b8aaad0a1ce011403300536c0b3f897adbd26ab7",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (r_idle)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_9006a7746811",
+      "legacy_id": "candidate_029",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar r_idle",
+      "rtl_sha256": "9006a7746811c9047d3ca992244aa51d85aa62146e7ace6610397cd6bd3d7618",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5494,
+          "old": "(startup_hold || byte_accepted)",
+          "replacement": "((startup_hold || byte_accepted)) && (!r_idle)",
+          "start": 5463
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_f0301a33cc2f",
+      "legacy_id": "candidate_030",
+      "line": 170,
+      "note": "Qualify condition with nearby scalar !r_idle",
+      "rtl_sha256": "f0301a33cc2fe4f5891cb6d8c1ac1325b5b5128617b44be60ddd1c40b2a91041",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5594,
+          "old": "!r_z_counter",
+          "replacement": "(!r_z_counter) && (startup_hold)",
+          "start": 5582
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_4e8a7b689e9c",
+      "legacy_id": "candidate_031",
+      "line": 174,
+      "note": "Qualify condition with nearby scalar startup_hold",
+      "rtl_sha256": "4e8a7b689e9c98e88a1ca839d64b7c8c5e9bfa011546c5967875db224615d2e6",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    },
+    {
+      "changed_targets": [],
+      "dependency": {
+        "cell_edges": 3,
+        "evidence_type": "bounded_static_dependency_overapproximation",
+        "failure_cycle": 101,
+        "failure_port": "o_sck",
+        "first_line": 163,
+        "last_line": 189,
+        "state_edges": 1
+      },
+      "direct_failure_target": false,
+      "edits": [
+        {
+          "end": 5594,
+          "old": "!r_z_counter",
+          "replacement": "(!r_z_counter) && (!startup_hold)",
+          "start": 5582
+        }
+      ],
+      "evidence_limit": "Static source ranges can be coarse; structural bundles need not be semantically required.",
+      "failure_anchors": [
+        {
+          "actual": 1,
+          "cycle": 101,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 102,
+          "expected": 0,
+          "port": "o_sck"
+        },
+        {
+          "actual": 1,
+          "cycle": 103,
+          "expected": 0,
+          "port": "o_sck"
+        }
+      ],
+      "family": "condition_gate",
+      "heuristic_components": {
+        "direct_failure_target": 0,
+        "minimality": 0.5,
+        "relevance": 0.4347826086956522,
+        "structural_completeness": 1.0
+      },
+      "heuristic_score": 3.989130434782609,
+      "id": "patch_f6b82ff16547",
+      "legacy_id": "candidate_032",
+      "line": 174,
+      "note": "Qualify condition with nearby scalar !startup_hold",
+      "rtl_sha256": "f6b82ff1654747214732d67c79484c72084ffc9a7d5e32a0930e857f220b6f29",
+      "structural_coverage": {
+        "available_related_sites": 1,
+        "edited_sites": 1,
+        "fraction": 1.0,
+        "superset_ids": []
+      }
+    }
+  ],
+  "case_id": "zipcpu-spi-c1-c3-d9_c1",
+  "heuristic_order": [
+    "patch_04bb6f387ef0",
+    "patch_4cf862bc9372",
+    "patch_5047f8bbe194",
+    "patch_7f3d8adcb57b",
+    "patch_88b084625589",
+    "patch_968f6bf28508",
+    "patch_aa06e6532ede",
+    "patch_baa9767c5bfd",
+    "patch_d6528483d379",
+    "patch_d7b295664e25",
+    "patch_dda0a8a3d763",
+    "patch_ed668372cade",
+    "patch_012fc872ffca",
+    "patch_113b45178c7f",
+    "patch_2b78a2b4a842",
+    "patch_475847e36fa1",
+    "patch_4e8a7b689e9c",
+    "patch_51df04ca4c8e",
+    "patch_59ed3c0e4221",
+    "patch_6d5da8d9d65c",
+    "patch_7ee99901893a",
+    "patch_8c9e5f0872b3",
+    "patch_8ef695416481",
+    "patch_9006a7746811",
+    "patch_ccf83f63228b",
+    "patch_d0284aacab57",
+    "patch_f0301a33cc2f",
+    "patch_f6b82ff16547",
+    "patch_3f3b17647f5f",
+    "patch_85af62ebbb4e",
+    "patch_8b77b8c988e9",
+    "patch_96690c95ad72"
+  ],
+  "opaque_id": "case_03",
+  "original_discovery": {
+    "error": null,
+    "sampling_reminder": "Cycle numbers are testbench sample indices, not internal RTL states. Outputs sampled after current inputs settle and before rising clock edge.",
+    "status": "DISCOVERY_ONLY",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vsdspi"
+          ],
+          "elapsed_seconds": 0.6661,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 3136123,
+        "cycles": 522559,
+        "expected_sha256": "40d0ee01fe877ebb9d90ee849e533cb0043011d673ff21a109d062980a6fdcd6",
+        "first_mismatches": [
+          {
+            "actual": 1,
+            "cycle": 101,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 102,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 103,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 104,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 105,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 106,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 107,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 108,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 109,
+            "expected": 0,
+            "port": "o_sck"
+          },
+          {
+            "actual": 1,
+            "cycle": 110,
+            "expected": 0,
+            "port": "o_sck"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 93
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 94
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 95
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 96
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 97
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 98
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 99
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 100
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 101
+          },
+          {
+            "inputs": [
+              "i_bus_grant",
+              "i_miso",
+              "i_wb_addr",
+              "i_wb_cyc",
+              "i_wb_data",
+              "i_wb_stb",
+              "i_wb_we"
+            ],
+            "samples": [
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                294976,
+                0,
+                1
+              ]
+            ],
+            "start_cycle": 102
+          }
+        ],
+        "mismatch_count": 1106750,
+        "passed": false,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "8c60b9cd2dc9aab12b1476f7e8048f5bfa6f9e69217d65249745dadd7a6c8a8a",
+        "trace_label": "published_discovery_trace"
+      }
+    ]
+  },
+  "original_discovery_pass": false,
+  "pool_sha256": "248b2266cee69de8eac4a2730b6680c9b7628cf69671c0ff12b63f92ac9a7cfe",
+  "size_order": [
+    "patch_4cf862bc9372",
+    "patch_4e8a7b689e9c",
+    "patch_baa9767c5bfd",
+    "patch_f6b82ff16547",
+    "patch_d7b295664e25",
+    "patch_aa06e6532ede",
+    "patch_3f3b17647f5f",
+    "patch_5047f8bbe194",
+    "patch_96690c95ad72",
+    "patch_88b084625589",
+    "patch_ed668372cade",
+    "patch_968f6bf28508",
+    "patch_8b77b8c988e9",
+    "patch_85af62ebbb4e",
+    "patch_51df04ca4c8e",
+    "patch_475847e36fa1",
+    "patch_9006a7746811",
+    "patch_f0301a33cc2f",
+    "patch_113b45178c7f",
+    "patch_2b78a2b4a842",
+    "patch_8c9e5f0872b3",
+    "patch_8ef695416481",
+    "patch_d6528483d379",
+    "patch_dda0a8a3d763",
+    "patch_7f3d8adcb57b",
+    "patch_04bb6f387ef0",
+    "patch_d0284aacab57",
+    "patch_7ee99901893a",
+    "patch_6d5da8d9d65c",
+    "patch_012fc872ffca",
+    "patch_ccf83f63228b",
+    "patch_59ed3c0e4221"
+  ],
+  "source_order": [
+    "patch_8b77b8c988e9",
+    "patch_85af62ebbb4e",
+    "patch_3f3b17647f5f",
+    "patch_96690c95ad72",
+    "patch_d6528483d379",
+    "patch_dda0a8a3d763",
+    "patch_7f3d8adcb57b",
+    "patch_04bb6f387ef0",
+    "patch_88b084625589",
+    "patch_968f6bf28508",
+    "patch_d7b295664e25",
+    "patch_aa06e6532ede",
+    "patch_4cf862bc9372",
+    "patch_baa9767c5bfd",
+    "patch_5047f8bbe194",
+    "patch_ed668372cade",
+    "patch_ccf83f63228b",
+    "patch_59ed3c0e4221",
+    "patch_d0284aacab57",
+    "patch_7ee99901893a",
+    "patch_6d5da8d9d65c",
+    "patch_012fc872ffca",
+    "patch_51df04ca4c8e",
+    "patch_475847e36fa1",
+    "patch_2b78a2b4a842",
+    "patch_8c9e5f0872b3",
+    "patch_113b45178c7f",
+    "patch_8ef695416481",
+    "patch_9006a7746811",
+    "patch_f0301a33cc2f",
+    "patch_4e8a7b689e9c",
+    "patch_f6b82ff16547"
+  ],
+  "source_sha256": "acab296a12ca72e030d9d3968c4bdd6e058b1018b3ac52bc25caf34506833cd1"
+}

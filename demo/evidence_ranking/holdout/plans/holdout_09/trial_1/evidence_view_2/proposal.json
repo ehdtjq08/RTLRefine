@@ -1,0 +1,37 @@
+{
+  "explanation": "Ranked by direct relevance to the first observed mismatches on scl_o/scl_t/sda_o at cycle 23-27. patch_0e09f46d1e35 (phy_release_bus) and patch_3d82912c89bf (scl_o_next\u2190sda_o_reg) directly edit the clock/data outputs seen failing. patch_f7e6f5f52970 and patch_de1628c0e786 also target scl_o_next with different source signals. patch_863a54b885b4 targets the same line with last_scl_i_reg. patch_3ffee8d0db7d and patch_6a5b3ba56c41 target downstream assignments affecting data-valid logic. patch_390e473ceb59 targets delay_scl_reg which may indirectly influence scl_o timing. All are rhs_substitution edits on assignment RHS; condition_gate patch_eed1b93eea0f is excluded as it edits a guard condition not directly on the failing ports.",
+  "ranking": [
+    {
+      "id": "patch_0e09f46d1e35",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_3d82912c89bf",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_f7e6f5f52970",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_de1628c0e786",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_863a54b885b4",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_3ffee8d0db7d",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_6a5b3ba56c41",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_390e473ceb59",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

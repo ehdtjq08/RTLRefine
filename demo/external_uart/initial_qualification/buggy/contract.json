@@ -1,0 +1,32 @@
+{
+  "module": "txuart",
+  "origin": "Independent third-party historical UART; not an injected defect",
+  "behavior": [
+    "Synchronous positive reset holds busy and returns serial output high. BREAK forces serial low and busy high; after release allow at least 16 baud intervals of recovery.",
+    "CTS is active low. When setup[30] is zero, a receiver that has blocked continuously for at least eight clocks must not see busy go low or a new byte accepted. CTS changes have synchronizer latency. An in-flight byte may finish.",
+    "With CTS permissive (or setup[30]=1), pending bytes must eventually be accepted after reset/BREAK recovery and emitted as start=0, least-significant data bit first, configured parity, then one or two high stop bits.",
+    "A byte is accepted on a clock edge with i_wr && !o_busy, outside reset and BREAK. A source sends only one-clock write strobes when not busy.",
+    "Configuration is constant for an entire run. Tested divisors are at least four, data widths five through eight, parity disabled or fixed mark/space, one or two stop bits."
+  ],
+  "setup_fields": {
+    "30": "1 disables flow control",
+    "29:28": "00=8,01=7,10=6,11=5 data bits",
+    "27": "1=two stop bits",
+    "26": "parity enabled",
+    "25": "fixed parity",
+    "24": "With fixed parity: 1=mark, 0=space. Computed parity mode excluded.",
+    "23:0": "clocks per baud"
+  },
+  "allowed_initial_assignments": [
+    "o_uart_tx = 1'b1",
+    "r_busy = 1'b1",
+    "state  = TXU_IDLE",
+    "r_setup = INITIAL_SETUP",
+    "lcl_data = 8'hff",
+    "calc_parity = 1'b0",
+    "zero_baud_counter = 1'b0",
+    "baud_counter = 28'h05",
+    "last_state = 1'b0"
+  ],
+  "scope": "Black-box external port checks at explicit configurations. Initial qualification found divisor-two forward-progress failure and computed-parity disagreement even in maintainer-fixed RTL; both remain recorded and are excluded from this CTS-specific contract. No fixed-RTL equivalence, CDC/metastability, physical board, all-configuration or unbounded claim."
+}

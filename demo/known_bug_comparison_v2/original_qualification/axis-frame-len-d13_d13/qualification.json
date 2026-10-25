@@ -1,0 +1,118 @@
+{
+  "baseline": {
+    "command": {
+      "command": [
+        "./obj_dir/Vaxis_frame_len"
+      ],
+      "elapsed_seconds": 0.017,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    "comparisons": 8,
+    "cycles": 6,
+    "expected_sha256": "4d7acd167d1c86ef597cf775dfd1c430551e693e08c28a572821cd1317a52ed9",
+    "first_mismatches": [
+      {
+        "actual": 3,
+        "cycle": 5,
+        "expected": 1,
+        "port": "frame_len"
+      }
+    ],
+    "input_windows": [
+      {
+        "inputs": [
+          "monitor_axis_tkeep",
+          "monitor_axis_tlast",
+          "monitor_axis_tready",
+          "monitor_axis_tvalid",
+          "rst"
+        ],
+        "samples": [
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "start_cycle": 0
+      }
+    ],
+    "mismatch_count": 1,
+    "passed": false,
+    "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+    "stimulus_sha256": "f66d69787c8d7064f5825f0fd57a4ceee6f75d9726b5a0b62dd6a51ac0bb9183",
+    "trace_label": "published_discovery_trace"
+  },
+  "bug": "d13",
+  "case_data": "/home/hands/Nebius/external_cases/known_bugs_v2/axis-frame-len-d13_d13",
+  "corrected_control": {
+    "command": {
+      "command": [
+        "./obj_dir/Vaxis_frame_len"
+      ],
+      "elapsed_seconds": 0.0168,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    "comparisons": 8,
+    "cycles": 6,
+    "expected_sha256": "4d7acd167d1c86ef597cf775dfd1c430551e693e08c28a572821cd1317a52ed9",
+    "first_mismatches": [],
+    "input_windows": [],
+    "mismatch_count": 0,
+    "passed": true,
+    "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+    "stimulus_sha256": "f66d69787c8d7064f5825f0fd57a4ceee6f75d9726b5a0b62dd6a51ac0bb9183",
+    "trace_label": "published_discovery_trace"
+  },
+  "id": "axis-frame-len-d13_d13",
+  "project": "axis-frame-len-d13",
+  "qualified": true,
+  "reason": null,
+  "top": "axis_frame_len",
+  "trace_cycles": 6
+}

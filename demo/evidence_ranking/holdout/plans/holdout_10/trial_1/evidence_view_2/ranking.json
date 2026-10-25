@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.013584,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "8bb31c282373482d98adc96c6f2d854d",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_30270cbdad9d",
+    "patch_c9c4ad33c838",
+    "patch_14fa1671138d",
+    "patch_e9c2e7485e9b",
+    "patch_97ba2adecc6f",
+    "patch_da55a60398f6",
+    "patch_042f4158d3f0",
+    "patch_233b0c340b70"
+  ],
+  "proposal": {
+    "explanation": "The failure shows o_data stuck at 0 while expected values appear at cycles 6-27. The root cause is that r_valid never gets set during reset release because the condition at line 135 requires (i_valid && o_ready) && (o_valid && !i_ready), but o_valid depends on r_valid creating a circular dependency. patch_30270cbdad9d fixes the clear path so r_valid can clear when i_ready asserts without requiring i_valid. The w_data substitutions (patches c9c4ad33c838, 14fa1671138d, e9c2e7485e9b, 97ba2adecc6f) ensure registered data reaches o_data instead of hard zeros. The r_valid set guards (patches da55a60398f6, 042f4158d3f0, 233b0c340b70) prevent spurious sets during reset or invalid input phases.",
+    "ranking": [
+      {
+        "id": "patch_30270cbdad9d",
+        "mechanism": "adds missing i_valid guard to r_valid clear path in LOGIC block at line 140"
+      },
+      {
+        "id": "patch_c9c4ad33c838",
+        "mechanism": "replaces hard zero with registered w_data in REG_OUTPUT else-branch at line 205"
+      },
+      {
+        "id": "patch_14fa1671138d",
+        "mechanism": "replaces hard zero with registered w_data in REG_OUTPUT o_data sequential block at line 208"
+      },
+      {
+        "id": "patch_e9c2e7485e9b",
+        "mechanism": "replaces hard zero with registered w_data in REG_OUTPUT ro_valid sequential block at line 183"
+      },
+      {
+        "id": "patch_97ba2adecc6f",
+        "mechanism": "replaces hard zero with registered w_data in NET_OUTPUT combinational block at line 111"
+      },
+      {
+        "id": "patch_da55a60398f6",
+        "mechanism": "adds i_valid guard to r_valid set condition at line 135"
+      },
+      {
+        "id": "patch_042f4158d3f0",
+        "mechanism": "adds i_reset guard to r_valid set condition at line 137"
+      },
+      {
+        "id": "patch_233b0c340b70",
+        "mechanism": "adds !i_valid guard to r_valid set condition at line 135"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.5596
+}

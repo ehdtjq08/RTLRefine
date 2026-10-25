@@ -1,0 +1,1331 @@
+{
+  "accepted": false,
+  "audit_pass": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_frame_len",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0339,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_frame_len.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 2.6231,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": false,
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "911cabce109a87e23a1c3141ed273e29e9f74230ceeace8998f5436e084d1166",
+  "status": "DISCOVERY_TRACE_FAILED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_frame_len"
+        ],
+        "elapsed_seconds": 0.0172,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 8,
+      "cycles": 6,
+      "expected_sha256": "4d7acd167d1c86ef597cf775dfd1c430551e693e08c28a572821cd1317a52ed9",
+      "first_mismatches": [
+        {
+          "actual": 3,
+          "cycle": 5,
+          "expected": 1,
+          "port": "frame_len"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 0
+        }
+      ],
+      "mismatch_count": 1,
+      "passed": false,
+      "phase": "discovery",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "f66d69787c8d7064f5825f0fd57a4ceee6f75d9726b5a0b62dd6a51ac0bb9183",
+      "trace_label": "published_discovery_trace"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_frame_len"
+        ],
+        "elapsed_seconds": 0.0329,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 288,
+      "cycles": 256,
+      "expected_sha256": "b9b2d2761e9dab1c4efc7b9eb691ebc04fc9da321f72daf77acf50aab705645d",
+      "first_mismatches": [
+        {
+          "actual": 15,
+          "cycle": 40,
+          "expected": 7,
+          "port": "frame_len"
+        },
+        {
+          "actual": 30,
+          "cycle": 52,
+          "expected": 7,
+          "port": "frame_len"
+        },
+        {
+          "actual": 13,
+          "cycle": 177,
+          "expected": 1,
+          "port": "frame_len"
+        },
+        {
+          "actual": 14,
+          "cycle": 192,
+          "expected": 4,
+          "port": "frame_len"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              31,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              127,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 32
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              7,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              127,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              127,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              127,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 44
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              255,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              255,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              255,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 169
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              63,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              255,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              7,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 184
+        }
+      ],
+      "mismatch_count": 4,
+      "passed": false,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "45a8453dfd3d8c3d68001bee43ed5e3b705563afe75b6749c3619c02735ef9d3",
+      "trace_label": "unexposed_payload_transform_7403"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_frame_len"
+        ],
+        "elapsed_seconds": 0.0173,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 292,
+      "cycles": 256,
+      "expected_sha256": "63eb5ad8b66260f1467e64a3614718d094c21f694e1df52a37d8ea792c439a29",
+      "first_mismatches": [
+        {
+          "actual": 28,
+          "cycle": 19,
+          "expected": 4,
+          "port": "frame_len"
+        },
+        {
+          "actual": 9,
+          "cycle": 36,
+          "expected": 6,
+          "port": "frame_len"
+        },
+        {
+          "actual": 17,
+          "cycle": 69,
+          "expected": 5,
+          "port": "frame_len"
+        },
+        {
+          "actual": 23,
+          "cycle": 71,
+          "expected": 6,
+          "port": "frame_len"
+        },
+        {
+          "actual": 31,
+          "cycle": 72,
+          "expected": 8,
+          "port": "frame_len"
+        },
+        {
+          "actual": 32,
+          "cycle": 76,
+          "expected": 1,
+          "port": "frame_len"
+        },
+        {
+          "actual": 17,
+          "cycle": 197,
+          "expected": 1,
+          "port": "frame_len"
+        },
+        {
+          "actual": 12,
+          "cycle": 204,
+          "expected": 4,
+          "port": "frame_len"
+        },
+        {
+          "actual": 7,
+          "cycle": 215,
+          "expected": 2,
+          "port": "frame_len"
+        },
+        {
+          "actual": 11,
+          "cycle": 221,
+          "expected": 4,
+          "port": "frame_len"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              63,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              127,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              63,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 11
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              7,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              7,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              7,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              7,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 28
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              1,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              127,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              0,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 61
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              0,
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              127,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              255,
+              1,
+              1,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 63
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              127,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              255,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 64
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              255,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 68
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              15,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              7,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              7,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              15,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              31,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 189
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              63,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 196
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 207
+        },
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              15,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              15,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "start_cycle": 213
+        }
+      ],
+      "mismatch_count": 11,
+      "passed": false,
+      "phase": "unexposed_audit",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "fbf078928e55980aabbd72b0029d18b3e38e27fb7479882a9d0f1e75cab8c179",
+      "trace_label": "unexposed_payload_transform_9601"
+    }
+  ]
+}

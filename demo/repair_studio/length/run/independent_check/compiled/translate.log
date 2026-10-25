@@ -1,0 +1,9 @@
+%Warning-WIDTH: candidate.v:101:45: Operator ADD expects 32 bits on the LHS, but LHS's VARREF 'frame_len_next' generates 16 bits.
+                                  : ... In instance axis_frame_len
+  101 |             frame_len_next = frame_len_next + bit_cnt;
+      |                                             ^
+                ... Use "/* verilator lint_off WIDTH */" and lint_on around source to disable this message.
+%Warning-WIDTH: candidate.v:101:28: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                  : ... In instance axis_frame_len
+  101 |             frame_len_next = frame_len_next + bit_cnt;
+      |                            ^

@@ -1,0 +1,24 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.008565,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "64f907d8498d4c90b7c0c08c882b22da",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "explanation": "The mismatch (m_axis_tvalid=1 when expected 0) indicates spurious output of data from an incomplete or invalid frame. The FRAME_FIFO logic must only commit frames when s_axis_tvalid && s_axis_tlast. Candidates 011, 021, 023, 025, 026, 028, 030, 031 add s_axis_tvalid/last and full_cur guards around write/depth conditions, directly preventing acceptance of partial frames that would otherwise be dequeued. Reset and USER_ENABLE edits are less relevant to the frame-commit policy.",
+  "ranked_ids": [
+    "candidate_011",
+    "candidate_021",
+    "candidate_023",
+    "candidate_025",
+    "candidate_026",
+    "candidate_028",
+    "candidate_030",
+    "candidate_031"
+  ],
+  "status": "VALID",
+  "wall_seconds": 3.0445
+}

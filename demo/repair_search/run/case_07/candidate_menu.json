@@ -1,0 +1,754 @@
+[
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5126,
+        "old": "",
+        "replacement": "\n        data_out_reg <= 0;\n    ",
+        "start": 5126
+      }
+    ],
+    "family": "reset_completion",
+    "id": "candidate_001",
+    "line": 163,
+    "note": "Reset same-block state: data_out_reg",
+    "rtl_sha256": "68c4a4d1add9100f4babf4a7fcc56bc8916f7f6b8894a2ecb1ab13dfac9bdd19"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!input_rst_sync1)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_002",
+    "line": 105,
+    "note": "Qualify readiness with !input_rst_sync1",
+    "rtl_sha256": "a87a829ad29e5f844c020978385b2ad27c4bb5d0e82e89a1bc7e989e1b172afb"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3781,
+        "old": "async_rst",
+        "replacement": "(async_rst) && (input_rst_sync3)",
+        "start": 3772
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_003",
+    "line": 110,
+    "note": "Qualify condition with nearby scalar input_rst_sync3",
+    "rtl_sha256": "74e85a269285b2c25807d90d4b4e16d7f3436e382f594c8a1a71624778050cae"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (input_rst_sync1)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_004",
+    "line": 105,
+    "note": "Qualify readiness with input_rst_sync1",
+    "rtl_sha256": "ea919cd146da06ee3b129490ecf1e7eec2570be8ba283d71710aabfdc9828e65"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3781,
+        "old": "async_rst",
+        "replacement": "(async_rst) && (!input_rst_sync3)",
+        "start": 3772
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_005",
+    "line": 110,
+    "note": "Qualify condition with nearby scalar !input_rst_sync3",
+    "rtl_sha256": "3d75e9177240708453a690b81270c803ed830582af671110efa49ca6b44788a3"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!input_rst_sync2)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_006",
+    "line": 105,
+    "note": "Qualify readiness with !input_rst_sync2",
+    "rtl_sha256": "ac60e3091721f94694b06657f3ad13ac60be5cb8a7bbf081c62a9984aa266590"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4100,
+        "old": "async_rst",
+        "replacement": "(async_rst) && (input_rst_sync3)",
+        "start": 4091
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_007",
+    "line": 122,
+    "note": "Qualify condition with nearby scalar input_rst_sync3",
+    "rtl_sha256": "d0b5b1166c4a67ae1804a7d6f4c4262b45f89d4fd1eb63405824c622481ef14a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (input_rst_sync2)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_008",
+    "line": 105,
+    "note": "Qualify readiness with input_rst_sync2",
+    "rtl_sha256": "f526328dc56f220c0ca4f38fa93421ad711b06baaa127581a31bb5421838d7d8"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4100,
+        "old": "async_rst",
+        "replacement": "(async_rst) && (!input_rst_sync3)",
+        "start": 4091
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_009",
+    "line": 122,
+    "note": "Qualify condition with nearby scalar !input_rst_sync3",
+    "rtl_sha256": "0c4f3c0e7c8c29f9cb8d386d774ee461cab3f9c8fc25c94defde4b97d7f8b6a5"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!input_rst_sync3)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_010",
+    "line": 105,
+    "note": "Qualify readiness with !input_rst_sync3",
+    "rtl_sha256": "e4d895e08cad340ffc3c1463e680c38f38847f9a69d9f7f6b1515b7f7d054c8a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4100,
+        "old": "async_rst",
+        "replacement": "(async_rst) && (write)",
+        "start": 4091
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_011",
+    "line": 122,
+    "note": "Qualify condition with nearby scalar write",
+    "rtl_sha256": "061a354d3ba410aee840675c6d25ec972722c6ab58deb3a24a09bb8f30d62b88"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (input_rst_sync3)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_012",
+    "line": 105,
+    "note": "Qualify readiness with input_rst_sync3",
+    "rtl_sha256": "74df60f23eb42b4629cc914e34004810978fcfa8a5bb0797394519a16c6fb9d1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4100,
+        "old": "async_rst",
+        "replacement": "(async_rst) && (!write)",
+        "start": 4091
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_013",
+    "line": 122,
+    "note": "Qualify condition with nearby scalar !write",
+    "rtl_sha256": "6e2e33580da65d1edba3bf2040cb077650e5be51f7df09adea3eb87208eef40e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!async_rst)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_014",
+    "line": 105,
+    "note": "Qualify readiness with !async_rst",
+    "rtl_sha256": "000305187b49549f3561f0a0830046f5b58de505887b032ecb520853034a0939"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4455,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (async_rst)",
+        "start": 4440
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_015",
+    "line": 136,
+    "note": "Qualify condition with nearby scalar async_rst",
+    "rtl_sha256": "adc7330dd4b771183ca7448f8a5ba2bc80c2e325bec0bfd35fba04af5770c481"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (async_rst)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_016",
+    "line": 105,
+    "note": "Qualify readiness with async_rst",
+    "rtl_sha256": "10167a46803d5343a4a17a3ab9edd159228a1bd195013e032da4b7e316450421"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4455,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (!async_rst)",
+        "start": 4440
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_017",
+    "line": 136,
+    "note": "Qualify condition with nearby scalar !async_rst",
+    "rtl_sha256": "fb20d46382041880b89e7a7e004f87b9ea2f94b32a14047cfa57e1fe6dc2b4b1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!output_rst_sync1)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_018",
+    "line": 105,
+    "note": "Qualify readiness with !output_rst_sync1",
+    "rtl_sha256": "3e4c5ecff89c7b1b46332245be343f377b272a18e1e4f548b1443de86ece3f35"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4455,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (write)",
+        "start": 4440
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_019",
+    "line": 136,
+    "note": "Qualify condition with nearby scalar write",
+    "rtl_sha256": "92befdfe800b00fdfb64331f0a21d9a986978029eb117fa73c15c0b429f1fafc"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (output_rst_sync1)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_020",
+    "line": 105,
+    "note": "Qualify readiness with output_rst_sync1",
+    "rtl_sha256": "a80aa76980067d649fde31dff114a6814978186968f640221a1208a9ab6dc729"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4455,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (!write)",
+        "start": 4440
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_021",
+    "line": 136,
+    "note": "Qualify condition with nearby scalar !write",
+    "rtl_sha256": "cce1fe7ed09e5fa3845a7d5be6cc0ef0daab8ac59389c03073c6e0c9ea866800"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!output_rst_sync2)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_022",
+    "line": 105,
+    "note": "Qualify readiness with !output_rst_sync2",
+    "rtl_sha256": "213cfcafcc2405c9618d73c2d815dcf33de08c8318a834996f2879469c2705c5"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4532,
+        "old": "write",
+        "replacement": "(write) && (input_rst_sync3)",
+        "start": 4527
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_023",
+    "line": 139,
+    "note": "Qualify condition with nearby scalar input_rst_sync3",
+    "rtl_sha256": "9425e1a524ed024c505172635577ee34c94de75f1091826a9a416d738a632371"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (output_rst_sync2)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_024",
+    "line": 105,
+    "note": "Qualify readiness with output_rst_sync2",
+    "rtl_sha256": "c64900800719d276585e1ad874ef8819672ae44623e49b68695e7f9775d0a0ee"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4532,
+        "old": "write",
+        "replacement": "(write) && (!input_rst_sync3)",
+        "start": 4527
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_025",
+    "line": 139,
+    "note": "Qualify condition with nearby scalar !input_rst_sync3",
+    "rtl_sha256": "37040ee40903582a4942644b60489b1b085b86ebe956e14f53b2dd354ee85c69"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (!output_rst_sync3)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_026",
+    "line": 105,
+    "note": "Qualify readiness with !output_rst_sync3",
+    "rtl_sha256": "399df3c427d69f5911e272f441f03d188e59e56b8169f64e67a0b9a6b598513b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4532,
+        "old": "write",
+        "replacement": "(write) && (async_rst)",
+        "start": 4527
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_027",
+    "line": 139,
+    "note": "Qualify condition with nearby scalar async_rst",
+    "rtl_sha256": "ea9d6ca66e86251e04f6276f9f698fe6cd7e0db9e3d7db403aee17c4b35a916c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 3650,
+        "old": "~full",
+        "replacement": "(~full) && (output_rst_sync3)",
+        "start": 3645
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_028",
+    "line": 105,
+    "note": "Qualify readiness with output_rst_sync3",
+    "rtl_sha256": "9d8c6fe52725900818e21e820b1245cc2334c7b0e7d66b29e1997dad94263e1c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4532,
+        "old": "write",
+        "replacement": "(write) && (!async_rst)",
+        "start": 4527
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_029",
+    "line": 139,
+    "note": "Qualify condition with nearby scalar !async_rst",
+    "rtl_sha256": "b3b9f2b1a04b8f776a24bfaa44f124d9fb23a8dfddf29aeaff981e2281775a54"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4532,
+        "old": "write",
+        "replacement": "(write) && (output_rst_sync3)",
+        "start": 4527
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_030",
+    "line": 139,
+    "note": "Qualify condition with nearby scalar output_rst_sync3",
+    "rtl_sha256": "00f7a197fd02d03814ad514388ede1072310e107d47fdbffafaa5a89e9c0e80f"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4532,
+        "old": "write",
+        "replacement": "(write) && (!output_rst_sync3)",
+        "start": 4527
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_031",
+    "line": 139,
+    "note": "Qualify condition with nearby scalar !output_rst_sync3",
+    "rtl_sha256": "f09094005ed795ca9e905b119292fe19a2858be04948d2e28a74aa9ae18ee12b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4773,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (write)",
+        "start": 4758
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_032",
+    "line": 148,
+    "note": "Qualify condition with nearby scalar write",
+    "rtl_sha256": "72d3f8b9923f6acc7ecbc40715391f883d9d4a47c8406cfccdc617523fbbd58e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4773,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (!write)",
+        "start": 4758
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_033",
+    "line": 148,
+    "note": "Qualify condition with nearby scalar !write",
+    "rtl_sha256": "f7324ef4eb06d8ce85d80f8f21dba2d5dd826e8e59d68cb6828dc11fd23b2670"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4773,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (output_rst_sync3)",
+        "start": 4758
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_034",
+    "line": 148,
+    "note": "Qualify condition with nearby scalar output_rst_sync3",
+    "rtl_sha256": "c4126d26799872e5d1785ecc25d7252081b30d2b45d306d5837afa2e9712b236"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4773,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (!output_rst_sync3)",
+        "start": 4758
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_035",
+    "line": 148,
+    "note": "Qualify condition with nearby scalar !output_rst_sync3",
+    "rtl_sha256": "7ca96ea8d5d1b2c4ead473eb918b51d4b21a3bc72da00c0f37598727abc7c2d0"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4773,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (read)",
+        "start": 4758
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_036",
+    "line": 148,
+    "note": "Qualify condition with nearby scalar read",
+    "rtl_sha256": "ef9da370f3e6e98eb828de166fb6d0d90150975b50a7d5a2d4985ef512074974"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4773,
+        "old": "input_rst_sync3",
+        "replacement": "(input_rst_sync3) && (!read)",
+        "start": 4758
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_037",
+    "line": 148,
+    "note": "Qualify condition with nearby scalar !read",
+    "rtl_sha256": "c9a8474a88972bece6bb58790ef76b1f274d006134c002b0ab8e73680a7e6168"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5067,
+        "old": "output_rst_sync3",
+        "replacement": "(output_rst_sync3) && (input_rst_sync3)",
+        "start": 5051
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_038",
+    "line": 160,
+    "note": "Qualify condition with nearby scalar input_rst_sync3",
+    "rtl_sha256": "8b896b0b2e36943864abdf29eda2842bbea1b3fef27ee7057d49a2748298d1f8"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5067,
+        "old": "output_rst_sync3",
+        "replacement": "(output_rst_sync3) && (!input_rst_sync3)",
+        "start": 5051
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_039",
+    "line": 160,
+    "note": "Qualify condition with nearby scalar !input_rst_sync3",
+    "rtl_sha256": "6976d9270b79003ba875d0b2cd72f7be6861b30463887b3cae6bb2bfaffc7b69"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5067,
+        "old": "output_rst_sync3",
+        "replacement": "(output_rst_sync3) && (read)",
+        "start": 5051
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_040",
+    "line": 160,
+    "note": "Qualify condition with nearby scalar read",
+    "rtl_sha256": "289187f12d1eed2a68f8fe379a737cc3a8809347932b18c65af68d8549952523"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5067,
+        "old": "output_rst_sync3",
+        "replacement": "(output_rst_sync3) && (!read)",
+        "start": 5051
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_041",
+    "line": 160,
+    "note": "Qualify condition with nearby scalar !read",
+    "rtl_sha256": "eb843a3e75140997fc7298628142c762e7221ec2e67824620ab35c11e082d1a7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5067,
+        "old": "output_rst_sync3",
+        "replacement": "(output_rst_sync3) && (write)",
+        "start": 5051
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_042",
+    "line": 160,
+    "note": "Qualify condition with nearby scalar write",
+    "rtl_sha256": "f418559e78da93fde8b35bc73310ac7c7c415a346a4e114f62486144436f847c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5067,
+        "old": "output_rst_sync3",
+        "replacement": "(output_rst_sync3) && (!write)",
+        "start": 5051
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_043",
+    "line": 160,
+    "note": "Qualify condition with nearby scalar !write",
+    "rtl_sha256": "74d6b0b1b314678ace034f4df2e105b10e73fd77b7304803ba7e29e8fa40ee98"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5143,
+        "old": "read",
+        "replacement": "(read) && (output_rst_sync3)",
+        "start": 5139
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_044",
+    "line": 163,
+    "note": "Qualify condition with nearby scalar output_rst_sync3",
+    "rtl_sha256": "369cf8cc07c849622e0663b53a6ac970008182e8efaf58eeb2fd9de3cc04e2b7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5143,
+        "old": "read",
+        "replacement": "(read) && (!output_rst_sync3)",
+        "start": 5139
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_045",
+    "line": 163,
+    "note": "Qualify condition with nearby scalar !output_rst_sync3",
+    "rtl_sha256": "e14b57b9dd10e0c6f33d81eadd978e2a8efda5a2b9ea85b45f2be36b8670d1ee"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5143,
+        "old": "read",
+        "replacement": "(read) && (input_rst_sync3)",
+        "start": 5139
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_046",
+    "line": 163,
+    "note": "Qualify condition with nearby scalar input_rst_sync3",
+    "rtl_sha256": "5da527582759a30a19e7f7a244eae714698c1d27a3ea17272486a9cddf4a5591"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5143,
+        "old": "read",
+        "replacement": "(read) && (!input_rst_sync3)",
+        "start": 5139
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_047",
+    "line": 163,
+    "note": "Qualify condition with nearby scalar !input_rst_sync3",
+    "rtl_sha256": "59664e2586b7b392f30fd51c54e8c97eda76def3ee00666b48eb169fc0cb21a7"
+  }
+]

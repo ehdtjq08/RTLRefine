@@ -1,0 +1,361 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_0b3ab7ce9c6c": 5,
+          "patch_0c142226f776": 4,
+          "patch_2a431655333c": 0,
+          "patch_489a6092dfdc": 7,
+          "patch_7329800dc4a8": 6,
+          "patch_75435d38326c": 5,
+          "patch_76d1014d3329": 0,
+          "patch_a22fdc889d1f": 4,
+          "patch_a691a4237cc9": 1,
+          "patch_a7d16ae94182": 1,
+          "patch_a92250a89e31": 15,
+          "patch_b246985527c1": 0,
+          "patch_bf3cb49329ff": 7,
+          "patch_c98c57628a2e": 7,
+          "patch_d85c55cc2e00": 8,
+          "patch_dcfe3aa1fa32": 8,
+          "patch_de6f8c13a145": 4,
+          "patch_dfe5389f406e": 0,
+          "patch_e61bb11dea52": 0,
+          "patch_e653d3aa3b52": 0,
+          "patch_f2d9d35bb697": 23,
+          "patch_f4772fefedab": 0,
+          "patch_f5b5b7b84f2e": 3,
+          "patch_fa95cf9597b1": 0
+        },
+        "fallback_reason": "Insufficient valid or stable model views",
+        "order": [
+          "patch_e653d3aa3b52",
+          "patch_f4772fefedab",
+          "patch_489a6092dfdc",
+          "patch_a92250a89e31",
+          "patch_bf3cb49329ff",
+          "patch_dfe5389f406e",
+          "patch_f2d9d35bb697",
+          "patch_0b3ab7ce9c6c",
+          "patch_0c142226f776",
+          "patch_2a431655333c",
+          "patch_7329800dc4a8",
+          "patch_d85c55cc2e00",
+          "patch_dcfe3aa1fa32",
+          "patch_de6f8c13a145",
+          "patch_75435d38326c",
+          "patch_76d1014d3329",
+          "patch_a22fdc889d1f",
+          "patch_a691a4237cc9",
+          "patch_a7d16ae94182",
+          "patch_b246985527c1",
+          "patch_c98c57628a2e",
+          "patch_e61bb11dea52",
+          "patch_f5b5b7b84f2e",
+          "patch_fa95cf9597b1"
+        ],
+        "raw_consensus_order": [
+          "patch_f2d9d35bb697",
+          "patch_a92250a89e31",
+          "patch_d85c55cc2e00",
+          "patch_dcfe3aa1fa32",
+          "patch_489a6092dfdc",
+          "patch_bf3cb49329ff",
+          "patch_c98c57628a2e",
+          "patch_7329800dc4a8",
+          "patch_0b3ab7ce9c6c",
+          "patch_75435d38326c",
+          "patch_0c142226f776",
+          "patch_de6f8c13a145",
+          "patch_a22fdc889d1f",
+          "patch_f5b5b7b84f2e",
+          "patch_a691a4237cc9",
+          "patch_a7d16ae94182",
+          "patch_e653d3aa3b52",
+          "patch_f4772fefedab",
+          "patch_dfe5389f406e",
+          "patch_2a431655333c",
+          "patch_76d1014d3329",
+          "patch_b246985527c1",
+          "patch_e61bb11dea52",
+          "patch_fa95cf9597b1"
+        ],
+        "stability": 0.24444444444444444,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_0b3ab7ce9c6c": 1,
+          "patch_0c142226f776": 1,
+          "patch_2a431655333c": 0,
+          "patch_489a6092dfdc": 2,
+          "patch_7329800dc4a8": 1,
+          "patch_75435d38326c": 1,
+          "patch_76d1014d3329": 0,
+          "patch_a22fdc889d1f": 1,
+          "patch_a691a4237cc9": 1,
+          "patch_a7d16ae94182": 1,
+          "patch_a92250a89e31": 2,
+          "patch_b246985527c1": 0,
+          "patch_bf3cb49329ff": 1,
+          "patch_c98c57628a2e": 2,
+          "patch_d85c55cc2e00": 2,
+          "patch_dcfe3aa1fa32": 2,
+          "patch_de6f8c13a145": 2,
+          "patch_dfe5389f406e": 0,
+          "patch_e61bb11dea52": 0,
+          "patch_e653d3aa3b52": 0,
+          "patch_f2d9d35bb697": 3,
+          "patch_f4772fefedab": 0,
+          "patch_f5b5b7b84f2e": 1,
+          "patch_fa95cf9597b1": 0
+        },
+        "used_model_order": false,
+        "valid_views": 3
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.009986,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "f6c6ed39030448feae096100bd160bdc",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_2a431655333c",
+          "patch_0c142226f776",
+          "patch_a92250a89e31",
+          "patch_c98c57628a2e",
+          "patch_75435d38326c",
+          "patch_bf3cb49329ff",
+          "patch_e61bb11dea52",
+          "patch_b246985527c1"
+        ],
+        "proposal": {
+          "explanation": "The ranking prioritizes fixes that directly address the root cause of the output mismatch: the frame_count_reg and byte_count_output_reg registers are hardcoded to zero on reset instead of being properly reset/cleared. patch_2a431655333c fixes frame_count_reg to use frame_count_next (which is correctly updated), and patch_0c142226f776 adds the missing reset for byte_count_output_reg. The other substitutions (patch_a92250a89e31, patch_c98c57628a2e, patch_75435d38326c, patch_bf3cb49329ff, patch_e61bb11dea52, patch_b246985527c1) address signal width/usage consistency in the output path and trigger logic, which may contribute to cycle-exact behavior. Patches with nonsensical substitutions (like using loop index i for register values) are excluded.",
+          "ranking": [
+            {
+              "id": "patch_2a431655333c",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_0c142226f776",
+              "mechanism": "reset_completion"
+            },
+            {
+              "id": "patch_a92250a89e31",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_c98c57628a2e",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_75435d38326c",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_bf3cb49329ff",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_e61bb11dea52",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_b246985527c1",
+              "mechanism": "rhs_substitution"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 4.0113
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.017907,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "73e872d6c1094920848a0d4a80bd8d4c",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_a92250a89e31",
+            "patch_f2d9d35bb697",
+            "patch_7329800dc4a8",
+            "patch_0b3ab7ce9c6c",
+            "patch_c98c57628a2e",
+            "patch_f5b5b7b84f2e",
+            "patch_dcfe3aa1fa32",
+            "patch_a691a4237cc9"
+          ],
+          "proposal": {
+            "explanation": "All eight patches target the first observed mismatch at cycle 35 where m_axis_tdata is 0 but should be 1. The root cause cluster is the IDLE-to-OUTPUT transition: store_output fires unconditionally on trigger, but the output channel isn't ready, so the first payload byte is lost. Patches a92250a89e31, f2d9d35bb697, and c98c57628a2e directly gate this transition with downstream ready/valid signals. The remaining patches (7329800dc4a8, 0b3ab7ce9c6c, f5b5b7b84f2e, dcfe3aa1fa32, a691a4237cc9) adjust auxiliary registers (busy, frame_count, temp last flags) that correlate with the same handshake timing, providing secondary alignment. Together they cover the handshake gating, counter capture, and status propagation needed to make the first output byte appear on cycle 35.",
+            "ranking": [
+              {
+                "id": "patch_a92250a89e31",
+                "mechanism": "The first m_axis_tdata output occurs when the state machine transitions from STATE_IDLE to STATE_OUTPUT_DATA on trigger. The original code sets store_output=1'b1 unconditionally, but m_axis_tdata_int is only driven when m_axis_tready_int_reg is already asserted. If the downstream m_axis_tready is not ready at that exact cycle, the first payload byte is never emitted, causing m_axis_tdata to stay zero at the first mismatch cycle. Replacing the unconditional store_output with m_axis_tvalid (the downstream ready/valid handshake) aligns the capture of counters with the cycle when the output channel can actually accept data, so the first byte appears on the expected cycle."
+              },
+              {
+                "id": "patch_f2d9d35bb697",
+                "mechanism": "In the IDLE state, the transition to STATE_OUTPUT_DATA and the first output byte are gated only by trigger. The simulation shows m_axis_tdata stuck at zero on the first few trigger events, implying the output channel was not ready. Adding m_axis_tready_int_reg to the condition ensures the state only advances when the internal ready flag indicates the output pipeline can accept a new frame, preventing premature state transitions that produce zero payloads."
+              },
+              {
+                "id": "patch_7329800dc4a8",
+                "mechanism": "busy_reg is assigned 1'b0 in the sequential block but the oracle expects it to reflect monitor_axis_tready activity. The first mismatches coincide with cycles where monitor_axis_tready toggles, suggesting busy should follow the monitor-side ready rather than being hard-wired low. Using monitor_axis_tready as the RHS makes busy pulse with the monitor interface, matching the observed trace."
+              },
+              {
+                "id": "patch_0b3ab7ce9c6c",
+                "mechanism": "frame_count_reg is reset to 0 every cycle in the sequential block, yet the test expects frame counts to accumulate. The first mismatches appear when a new frame starts; if frame_count_reg stays zero, the byte emitted for the frame-count field is zero instead of the incremented value. Substituting byte_count_next (which increments on monitor_axis_tvalid & monitor_axis_tready) provides a monotonically increasing value that matches the expected frame-count byte pattern."
+              },
+              {
+                "id": "patch_c98c57628a2e",
+                "mechanism": "store_output is hard-wired to 1'b1 in the IDLE->OUTPUT transition, capturing counters before the output channel is ready. The oracle expects the capture to happen when m_axis_tvalid is asserted, meaning the downstream has accepted the previous frame. Replacing the constant with m_axis_tvalid defers the snapshot until the output side signals readiness, aligning the first output byte with the expected cycle."
+              },
+              {
+                "id": "patch_f5b5b7b84f2e",
+                "mechanism": "temp_m_axis_tlast_reg is initialized to 1'b0 but never driven by a related monitor signal. The first mismatches show m_axis_tdata=0 when the monitor side signals tlast, suggesting the internal last flag should track monitor_axis_tready (which coincides with tlast in the trace). Using monitor_axis_tready as the RHS propagates the monitor last indication into the output pipeline, allowing the correct frame-termination byte to appear."
+              },
+              {
+                "id": "patch_dcfe3aa1fa32",
+                "mechanism": "busy_reg is set to 1'b0 in the reset block, but the trace expects busy to assert when the output pipeline accepts a new frame (store_axis_int_to_output). The first mismatches occur at cycles where this store signal pulses. Driving busy_reg with store_axis_int_to_output makes busy follow the actual frame-start event, matching the observed busy/m_axis_tdata correlation."
+              },
+              {
+                "id": "patch_a691a4237cc9",
+                "mechanism": "busy_reg is initialized to 1'b0, yet the earliest mismatch shows m_axis_tdata should be non-zero, implying busy should already be asserted. m_axis_tuser_reg is a register that toggles with frame emission; using it as the reset value for busy_reg seeds busy with the correct frame-active state, so the first output byte appears instead of zero."
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 8.4903
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.016062,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "84e3c6cfb3444fe99e443bc3996b15e3",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_f2d9d35bb697",
+            "patch_bf3cb49329ff",
+            "patch_d85c55cc2e00",
+            "patch_75435d38326c",
+            "patch_a22fdc889d1f",
+            "patch_de6f8c13a145",
+            "patch_489a6092dfdc",
+            "patch_a7d16ae94182"
+          ],
+          "proposal": {
+            "explanation": "The primary failure at cycle 35 shows m_axis_tdata=0 when 1 is expected, indicating the output state machine isn't being triggered correctly. patch_f2d9d35bb697 adds a guard condition requiring m_axis_tready_int_reg for trigger activation, which directly controls whether STATE_OUTPUT_DATA is entered and data transmission begins. patch_bf3cb49329ff substitutes byte_count_next for offset initialization in the output state, correcting the byte-offset calculation that selects which statistic bytes to transmit. patch_d85c55cc2e00 replaces frame_count_reg reset with loop index i, fixing the frame counter update that affects multi-frame accounting. patch_75435d38326c initializes m_axis_tready_int_reg with m_axis_tvalid_int instead of 1'b0, ensuring the ready-int signal reflects actual output validity. patch_a22fdc889d1f sets temp_m_axis_tuser_reg to m_axis_tready, correcting the user signal propagation in the output pipeline. patch_de6f8c13a145 uses busy_reg for frame_next, linking frame state to the busy indicator. patch_489a6092dfdc substitutes loop index i for frame_count_next initialization. patch_a7d16ae94182 assigns m_axis_tvalid_reg to temp_m_axis_tlast_reg, fixing last-signal handling in the temp register path.",
+            "ranking": [
+              {
+                "id": "patch_f2d9d35bb697",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_bf3cb49329ff",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_d85c55cc2e00",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_75435d38326c",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_a22fdc889d1f",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_de6f8c13a145",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_489a6092dfdc",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_a7d16ae94182",
+                "mechanism": "rhs_substitution"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 5.1124
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.015792,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "5522f493cb4d46669acb42150ce24e70",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_f2d9d35bb697",
+            "patch_a92250a89e31",
+            "patch_dcfe3aa1fa32",
+            "patch_489a6092dfdc",
+            "patch_0c142226f776",
+            "patch_c98c57628a2e",
+            "patch_d85c55cc2e00",
+            "patch_de6f8c13a145"
+          ],
+          "proposal": {
+            "explanation": "The earliest failure at cycle 35 shows m_axis_tdata=0 when 1 is expected, indicating the first output byte is missing. The trigger fires but the output pipeline isn't ready (m_axis_tready_int_reg=0), yet store_output=1 captures stale zero counters. patch_f2d9d35bb697 fixes this by requiring m_axis_tready_int_reg before store_output. patch_a92250a89e31 provides a related guard using m_axis_tvalid. patch_dcfe3aa1fa32 ensures busy_reg tracks actual output activity. The remaining patches address secondary counter resets and state assignments observed in the same failure window.",
+            "ranking": [
+              {
+                "id": "patch_f2d9d35bb697",
+                "mechanism": "Qualify trigger with m_axis_tready_int_reg to prevent store_output when output pipeline not ready, fixing missing first output byte"
+              },
+              {
+                "id": "patch_a92250a89e31",
+                "mechanism": "Replace constant store_output=1 with m_axis_tvalid signal to gate storage on output channel readiness"
+              },
+              {
+                "id": "patch_dcfe3aa1fa32",
+                "mechanism": "Use store_axis_int_to_output for busy_reg to align busy with actual output activity"
+              },
+              {
+                "id": "patch_489a6092dfdc",
+                "mechanism": "Use loop variable i for frame_count_next reset in STATE_IDLE when trigger fires"
+              },
+              {
+                "id": "patch_0c142226f776",
+                "mechanism": "Reset byte_count_output_reg during synchronous reset block"
+              },
+              {
+                "id": "patch_c98c57628a2e",
+                "mechanism": "Use m_axis_tvalid for store_output initialization in STATE_IDLE"
+              },
+              {
+                "id": "patch_d85c55cc2e00",
+                "mechanism": "Use loop variable i for frame_count_reg reset"
+              },
+              {
+                "id": "patch_de6f8c13a145",
+                "mechanism": "Use busy_reg for frame_next assignment"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 5.214
+        }
+      ]
+    }
+  ]
+}

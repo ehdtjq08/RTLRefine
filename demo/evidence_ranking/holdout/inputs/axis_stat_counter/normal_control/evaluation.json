@@ -1,0 +1,122 @@
+{
+  "accepted": true,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_stat_counter",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0325,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_stat_counter.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8687,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": true,
+  "rtl_sha256": "2a431655333c6d4b8daad55a80eb2b22b9796e92b15a2c295a6b5d2f5e0e2ce1",
+  "status": "ACCEPTED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_stat_counter"
+        ],
+        "elapsed_seconds": 0.0179,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 896,
+      "cycles": 256,
+      "expected_sha256": "e815797c8ea8b89e0cc8e11be2b819d35a01dcc7773b25345f3433bc1ae3f6ec",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "a07faf9f5a6114af61478b1a2db2ba602cdaa0d4e59d0b8810e7c088ed90f4f9",
+      "trace_label": "discovery"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_stat_counter"
+        ],
+        "elapsed_seconds": 0.0176,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 1843,
+      "cycles": 512,
+      "expected_sha256": "3ddbee22f3c41f813b0cf73f073986edde3f2e486614ae55b3a16d1215d88f0c",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "514ec200ca1398781bdfd4adb2837cf0ac97d61b423abfa1f2fdfca89c5e87b0",
+      "trace_label": "sealed_audit_1"
+    },
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_stat_counter"
+        ],
+        "elapsed_seconds": 0.0176,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 2727,
+      "cycles": 768,
+      "expected_sha256": "c5ee7a45ecc7641eb48e7e9158712c37aaf9480003b68ca4b957c2edb3f162ad",
+      "first_mismatches": [],
+      "input_windows": [],
+      "mismatch_count": 0,
+      "passed": true,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "431f6641deb06a8449d34dc45d78c911ac7aa14ca284412e3af22f13a8b6ec60",
+      "trace_label": "sealed_audit_2"
+    }
+  ]
+}

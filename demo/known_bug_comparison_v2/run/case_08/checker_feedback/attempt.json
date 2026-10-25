@@ -1,0 +1,169 @@
+{
+  "accepted": true,
+  "api_requests": 1,
+  "audit_pass": true,
+  "cost": {
+    "estimated_usd": 0.057094,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "0eff92d3d1944c12b630b9562e18558b",
+    "reserved_usd": 1.122304,
+    "state": "settled"
+  },
+  "discovery_pass": true,
+  "evaluation": {
+    "accepted": true,
+    "audit_pass": true,
+    "commands": [
+      {
+        "command": [
+          "/home/hands/Nebius/.tools/bin/verilator",
+          "--cc",
+          "--exe",
+          "-Wno-fatal",
+          "--x-initial",
+          "0",
+          "--x-assign",
+          "0",
+          "--top-module",
+          "axis_switch",
+          "--Mdir",
+          "obj_dir",
+          "candidate.v",
+          "dependencies.v",
+          "harness.cpp"
+        ],
+        "elapsed_seconds": 0.0653,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "translate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      {
+        "command": [
+          "/usr/bin/make",
+          "-C",
+          "obj_dir",
+          "-f",
+          "Vaxis_switch.mk",
+          "-j1",
+          "OPT_FAST=-O0",
+          "OPT_SLOW=-O0"
+        ],
+        "elapsed_seconds": 2.7355,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "build",
+        "status": "PASS",
+        "zero_initialization": true
+      }
+    ],
+    "corrected_RTL_loaded_for_scoring": false,
+    "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_08/checker_feedback/evaluation",
+    "discovery_pass": true,
+    "formal_proof": false,
+    "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+    "new_api_calls": 0,
+    "oracle_depends_on_corrected_trace_values": true,
+    "rtl_sha256": "e96d40cdb34aa925b3e7abb90c61c451e4838b456817a9e38e4819b0769975a5",
+    "status": "ALL_SEALED_TRACES_PASS",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_switch"
+          ],
+          "elapsed_seconds": 0.0165,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 40,
+        "cycles": 14,
+        "expected_sha256": "962b1ed02f3f6e09879a1069c6efc3a153417d7bceb343dc9c2e079d5c035e38",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "c06fcf236942d60fb053c365da6c2861c860ccf4155413a4fa7716c5e3348f07",
+        "trace_label": "published_discovery_trace"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_switch"
+          ],
+          "elapsed_seconds": 0.0164,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 320,
+        "cycles": 112,
+        "expected_sha256": "c2cbcbadef9eabfaafaaa6777e9d866a03833f34498a8f3e7c7ac71e61da7ef6",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "2027726426e39dcd9d4b66a239c7eb64047c74ebfeb017631bd5bbdfddc3de4c",
+        "trace_label": "unexposed_payload_transform_7403"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_switch"
+          ],
+          "elapsed_seconds": 0.033,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 320,
+        "cycles": 112,
+        "expected_sha256": "a925bb1c64f1a769043fa4f985901589fd3fca812f2339cc48a7cc9986c87081",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "9ac0ca7eb5f07b7a0e08e8497c17f8cdeac4a7e8b21ed77594d2e1e868696508",
+        "trace_label": "unexposed_payload_transform_9601"
+      }
+    ]
+  },
+  "functional_source_changed": true,
+  "proposal": {
+    "decision": "repair",
+    "edits": [
+      {
+        "end_line": 233,
+        "replacement": "assign int_s_axis_tready[m] = int_axis_tready[select_reg*S_COUNT+m] || drop_reg;",
+        "start_line": 233
+      },
+      {
+        "end_line": 301,
+        "replacement": "wire s_axis_tvalid_mux  = int_axis_tvalid[grant_encoded*M_COUNT+n] && grant_valid;",
+        "start_line": 301
+      },
+      {
+        "end_line": 308,
+        "replacement": "for (m = 0; m < S_COUNT; m = m + 1) begin\n       assign int_axis_tready[n*S_COUNT + m] = (grant_valid && s_axis_tready_mux) && (grant_encoded == m);\n   end",
+        "start_line": 308
+      }
+    ],
+    "explanation": "Fixed three functional defects in the axis_switch module: 1) In source interfaces, the ready signal read from int_axis_tready used an incorrect stride (M_COUNT instead of S_COUNT), causing misrouting when source and destination counts differ. 2) In destination interfaces, the valid signal mux used an incorrect stride (S_COUNT instead of M_COUNT) when reading from int_axis_tvalid. 3) The ready signal write to int_axis_tready used a shift of a 1-bit value, which cannot produce a one-hot vector; replaced with a generate-for loop that assigns each bit correctly. These changes ensure correct cycle-exact behavior for all parameterized configurations."
+  },
+  "status": "ALL_SEALED_TRACES_PASS"
+}

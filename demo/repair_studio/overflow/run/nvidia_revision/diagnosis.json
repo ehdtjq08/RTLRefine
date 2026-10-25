@@ -1,0 +1,29 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.00682,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "9df2b9bac3264d7aa1feb6d315c886cd",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "diagnosis": "When a frame is dropped, the write pointer wr_ptr_cur_reg is rolled back to wr_ptr_reg but wr_addr_reg is updated to the rolled-back pointer. If a tlast beat arrives during the drop sequence, the logic commits the frame by advancing wr_ptr_reg to wr_ptr_cur_next (which equals wr_ptr_reg), thereby publishing the dropped frame's data. The extra m_axis_tvalid cycles occur because this committed but unwanted frame remains in memory and is later read out.",
+  "display_ids": [
+    "candidate_001"
+  ],
+  "ids": [
+    "patch_e6cf9061c830"
+  ],
+  "proposal": {
+    "diagnosis": "When a frame is dropped, the write pointer wr_ptr_cur_reg is rolled back to wr_ptr_reg but wr_addr_reg is updated to the rolled-back pointer. If a tlast beat arrives during the drop sequence, the logic commits the frame by advancing wr_ptr_reg to wr_ptr_cur_next (which equals wr_ptr_reg), thereby publishing the dropped frame's data. The extra m_axis_tvalid cycles occur because this committed but unwanted frame remains in memory and is later read out.",
+    "ranking": [
+      {
+        "id": "candidate_001",
+        "mechanism": "Retain existing drop_frame state instead of a constant default"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 2.7147809939924628
+}

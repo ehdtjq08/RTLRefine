@@ -1,0 +1,9 @@
+make: Entering directory '/work/obj_dir'
+g++  -I.  -MMD -I/home/hands/Nebius/.tools/verilator/usr/share/verilator/include -I/home/hands/Nebius/.tools/verilator/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -O0 -c -o harness.o ../harness.cpp
+g++  -I.  -MMD -I/home/hands/Nebius/.tools/verilator/usr/share/verilator/include -I/home/hands/Nebius/.tools/verilator/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -Os -c -o verilated.o /home/hands/Nebius/.tools/verilator/usr/share/verilator/include/verilated.cpp
+/usr/bin/perl /home/hands/Nebius/.tools/verilator/usr/share/verilator/bin/verilator_includer -DVL_INCLUDE_OPT=include Vaxis_adapter.cpp Vaxis_adapter__Slow.cpp Vaxis_adapter__Syms.cpp > Vaxis_adapter__ALL.cpp
+g++  -I.  -MMD -I/home/hands/Nebius/.tools/verilator/usr/share/verilator/include -I/home/hands/Nebius/.tools/verilator/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -Wno-shadow      -O0 -c -o Vaxis_adapter__ALL.o Vaxis_adapter__ALL.cpp
+ar -cr Vaxis_adapter__ALL.a Vaxis_adapter__ALL.o
+ranlib Vaxis_adapter__ALL.a
+g++    harness.o verilated.o Vaxis_adapter__ALL.a      -o Vaxis_adapter
+make: Leaving directory '/work/obj_dir'

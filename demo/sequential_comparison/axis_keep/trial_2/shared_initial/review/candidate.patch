@@ -1,0 +1,504 @@
+--- original.v
++++ candidate.v
+@@ -1,325 +1,191 @@
+-/*
+-
+-Copyright (c) 2014-2023 Alex Forencich
+-
+-Permission is hereby granted, free of charge, to any person obtaining a copy
+-of this software and associated documentation files (the "Software"), to deal
+-in the Software without restriction, including without limitation the rights
+-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-copies of the Software, and to permit persons to whom the Software is
+-furnished to do so, subject to the following conditions:
+-
+-The above copyright notice and this permission notice shall be included in
+-all copies or substantial portions of the Software.
+-
+-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY
+-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+-THE SOFTWARE.
+-
+-*/
+-
+-// Language: Verilog 2001
+-
+-`resetall
+-`timescale 1ns / 1ps
+-`default_nettype none
+-
+-/*
+- * AXI4-Stream bus width adapter
+- */
+-module axis_adapter #
+-(
+-    // Width of input AXI stream interface in bits
+-    parameter S_DATA_WIDTH = 8,
+-    // Propagate tkeep signal on input interface
+-    // If disabled, tkeep assumed to be 1'b1
+-    parameter S_KEEP_ENABLE = (S_DATA_WIDTH>8),
+-    // tkeep signal width (words per cycle) on input interface
+-    parameter S_KEEP_WIDTH = ((S_DATA_WIDTH+7)/8),
+-    // Width of output AXI stream interface in bits
+-    parameter M_DATA_WIDTH = 8,
+-    // Propagate tkeep signal on output interface
+-    // If disabled, tkeep assumed to be 1'b1
+-    parameter M_KEEP_ENABLE = (M_DATA_WIDTH>8),
+-    // tkeep signal width (words per cycle) on output interface
+-    parameter M_KEEP_WIDTH = ((M_DATA_WIDTH+7)/8),
+-    // Propagate tid signal
+-    parameter ID_ENABLE = 0,
+-    // tid signal width
+-    parameter ID_WIDTH = 8,
+-    // Propagate tdest signal
+-    parameter DEST_ENABLE = 0,
+-    // tdest signal width
+-    parameter DEST_WIDTH = 8,
+-    // Propagate tuser signal
+-    parameter USER_ENABLE = 1,
+-    // tuser signal width
+-    parameter USER_WIDTH = 1
++module axis_width_converter #(
++    parameter int DATA_WIDTH = 8,
++    parameter int KEEP_ENABLE = 0,
++    parameter int ID_ENABLE = 0,
++    parameter int DEST_ENABLE = 0,
++    parameter int USER_ENABLE = 1,
++    parameter int USER_WIDTH = 1,
++    parameter int INPUT_WIDTH = 8,
++    parameter int OUTPUT_WIDTH = 8,
++    parameter int INPUT_KEEP_ENABLE = KEEP_ENABLE,
++    parameter int OUTPUT_KEEP_ENABLE = KEEP_ENABLE
+ )
+ (
+-    input  wire                     clk,
+-    input  wire                     rst,
+-
++    input  logic                   clk,
++    input  logic                   rst,
+     /*
+-     * AXI input
++     * AXI stream input
+      */
+-    input  wire [S_DATA_WIDTH-1:0]  s_axis_tdata,
+-    input  wire [S_KEEP_WIDTH-1:0]  s_axis_tkeep,
+-    input  wire                     s_axis_tvalid,
+-    output wire                     s_axis_tready,
+-    input  wire                     s_axis_tlast,
+-    input  wire [ID_WIDTH-1:0]      s_axis_tid,
+-    input  wire [DEST_WIDTH-1:0]    s_axis_tdest,
+-    input  wire [USER_WIDTH-1:0]    s_axis_tuser,
+-
++    input  logic [INPUT_WIDTH-1:0] input_tdata,
++    input  logic                   input_tvalid,
++    output logic                   input_tready,
++    input  logic                   input_tlast,
++    input  logic [USER_WIDTH-1:0]  input_tuser,
++    input  logic                   input_tkeep,
++    input  logic [id_width-1:0]    input_tid,
++    input  logic [dest_width-1:0]  input_tdest,
+     /*
+-     * AXI output
++     * AXI stream output
+      */
+-    output wire [M_DATA_WIDTH-1:0]  m_axis_tdata,
+-    output wire [M_KEEP_WIDTH-1:0]  m_axis_tkeep,
+-    output wire                     m_axis_tvalid,
+-    input  wire                     m_axis_tready,
+-    output wire                     m_axis_tlast,
+-    output wire [ID_WIDTH-1:0]      m_axis_tid,
+-    output wire [DEST_WIDTH-1:0]    m_axis_tdest,
+-    output wire [USER_WIDTH-1:0]    m_axis_tuser
++    output logic [OUTPUT_WIDTH-1:0] output_tdata,
++    output logic                   output_tvalid,
++    input  logic                   output_tready,
++    output logic                   output_tlast,
++    output logic [USER_WIDTH-1:0]  output_tuser,
++    output logic                   output_tkeep,
++    output logic [id_width-1:0]    output_tid,
++    output logic [dest_width-1:0]  output_tdest
+ );
+ 
+-// force keep width to 1 when disabled
+-localparam S_BYTE_LANES = S_KEEP_ENABLE ? S_KEEP_WIDTH : 1;
+-localparam M_BYTE_LANES = M_KEEP_ENABLE ? M_KEEP_WIDTH : 1;
++localparam int id_width = ID_ENABLE ? 8 : 1;
++localparam int dest_width = DEST_ENABLE ? 8 : 1;
++localparam int user_width = USER_ENABLE ? USER_WIDTH : 1;
++localparam int keep_width = (INPUT_KEEP_ENABLE || OUTPUT_KEEP_ENABLE) ? 1 : 1;
+ 
+-// bus byte sizes (must be identical)
+-localparam S_BYTE_SIZE = S_DATA_WIDTH / S_BYTE_LANES;
+-localparam M_BYTE_SIZE = M_DATA_WIDTH / M_BYTE_LANES;
++localparam int LCM = lcm(INPUT_WIDTH, OUTPUT_WIDTH);
+ 
+-// bus width assertions
+-initial begin
+-    if (S_BYTE_SIZE * S_BYTE_LANES != S_DATA_WIDTH) begin
+-        $error("Error: input data width not evenly divisible (instance %m)");
+-        $finish;
+-    end
++localparam int INPUT_LANES = LCM / INPUT_WIDTH;
++localparam int OUTPUT_LANES = LCM / OUTPUT_WIDTH;
+ 
+-    if (M_BYTE_SIZE * M_BYTE_LANES != M_DATA_WIDTH) begin
+-        $error("Error: output data width not evenly divisible (instance %m)");
+-        $finish;
+-    end
++localparam int INPUT_LANES_LD = clog2(INPUT_LANES);
++localparam int OUTPUT_LANES_LD = clog2(OUTPUT_LANES);
+ 
+-    if (S_BYTE_SIZE != M_BYTE_SIZE) begin
+-        $error("Error: byte size mismatch (instance %m)");
+-        $finish;
++localparam int input_lane_width = (INPUT_LANES > 1) ? INPUT_WIDTH : LCM;
++localparam int output_lane_width = (OUTPUT_LANES > 1) ? OUTPUT_WIDTH : LCM;
++
++logic [INPUT_LANES_LD-1:0] input_lane;
++logic [OUTPUT_LANES_LD-1:0] output_lane;
++
++logic [input_lane_width-1:0] input_tdata_int_reg = '0;
++logic [user_width-1:0]       input_tuser_int_reg = '0;
++logic                        input_tkeep_int_reg = '0;
++logic [id_width-1:0]         input_tid_int_reg = '0;
++logic [dest_width-1:0]       input_tdest_int_reg = '0;
++
++logic [output_lane_width-1:0] output_tdata_int_reg = '0;
++logic [user_width-1:0]        output_tuser_int_reg = '0;
++logic                         output_tkeep_int_reg = '0;
++logic [id_width-1:0]          output_tid_int_reg = '0;
++logic [dest_width-1:0]        output_tdest_int_reg = '0;
++
++logic input_tuser_int;
++logic input_tkeep_int;
++logic [id_width-1:0] input_tid_int;
++logic [dest_width-1:0] input_tdest_int;
++
++logic output_tuser_int;
++logic output_tkeep_int;
++logic [id_width-1:0] output_tid_int;
++logic [dest_width-1:0] output_tdest_int;
++
++logic input_tvalid_int;
++logic output_tvalid_int;
++logic output_tlast_int;
++
++logic output_tlast_reg = 1'b0;
++
++logic input_tkeep_int_early;
++logic output_tkeep_int_early;
++
++/* Fixed: use input_lane for widening case */
++assign input_tvalid_int = INPUT_KEEP_ENABLE ?
++    (INPUT_WIDTH >= OUTPUT_WIDTH) ?
++        (output_tkeep_int_reg ? 1'b0 : 1'b1) |
++        (output_lane != OUTPUT_LANES-1 ? 1'b1 : 1'b0) :
++        (input_tkeep_int_reg ? 1'b0 : 1'b1) |
++        (input_lane != INPUT_LANES-1 ? 1'b1 : 1'b0) :
++    (INPUT_WIDTH >= OUTPUT_WIDTH) ?
++        (output_lane != OUTPUT_LANES-1 ? 1'b1 : 1'b0) :
++        (input_lane > 0 ? 1'b1 : 1'b0);
++
++assign output_tvalid_int = INPUT_KEEP_ENABLE ?
++    (INPUT_WIDTH >= OUTPUT_WIDTH) ?
++        (output_tkeep_int_reg ? 1'b1 : 1'b0) :
++        (input_tkeep_int_reg ? 1'b1 : 1'b0) : 1'b0;
++
++/* Fixed: input_tready uses inverted input_tvalid_int for non-KEEP case */
++assign input_tready = INPUT_KEEP_ENABLE ? (input_tvalid_int | output_tready) : (~input_tvalid_int | output_tready);
++
++assign input_tuser_int = KEEP_ENABLE ? (input_tkeep_int_reg ? input_tuser_int_reg : input_tuser) : input_tuser;
++assign input_tkeep_int = KEEP_ENABLE ? (input_tkeep_int_reg ? input_tkeep_int_reg : input_tkeep) : 1'b0;
++assign input_tid_int = KEEP_ENABLE ? (input_tkeep_int_reg ? input_tid_int_reg : input_tid) : input_tid;
++assign input_tdest_int = KEEP_ENABLE ? (input_tkeep_int_reg ? input_tdest_int_reg : input_tdest) : input_tdest;
++
++assign output_tuser_int = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tuser_int_reg : output_tuser) : input_tuser_int;
++assign output_tkeep_int = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tkeep_int_reg : output_tkeep) : 1'b0;
++assign output_tid_int = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tid_int_reg : output_tid) : input_tid_int;
++assign output_tdest_int = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tdest_int_reg : output_tdest) : input_tdest_int;
++
++assign output_tuser = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tuser_int_reg : input_tuser_int) : input_tuser_int;
++assign output_tkeep = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tkeep_int_reg : input_tkeep_int) : 1'b0;
++assign output_tid = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tid_int_reg : input_tid_int) : input_tid_int;
++assign output_tdest = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tdest_int_reg : input_tdest_int) : input_tdest_int;
++
++assign output_tlast_int = INPUT_WIDTH >= OUTPUT_WIDTH ? (output_lane == OUTPUT_LANES-1) : input_tlast;
++
++assign output_tlast = KEEP_ENABLE ? (output_tkeep_int_reg ? output_tlast_reg : output_tlast_int) : output_tlast_int;
++
++/* Fixed: output_tvalid for widening case */
++assign output_tvalid = (INPUT_WIDTH < OUTPUT_WIDTH) ? (input_tvalid & (input_lane == INPUT_LANES-1)) : (input_tvalid | input_tvalid_int);
++
++assign output_tdata = (INPUT_WIDTH >= OUTPUT_WIDTH) ?
++    input_tdata_int_reg >> (output_lane * OUTPUT_WIDTH) :
++    input_tdata | (input_tdata_int_reg << INPUT_WIDTH);
++
++always_ff @(posedge clk) begin
++    if (rst) begin
++        input_lane <= '0;
++        output_lane <= '0;
++        output_tlast_reg <= 1'b0;
++        input_tkeep_int_reg <= 1'b0;
++        output_tkeep_int_reg <= 1'b0;
++    end else begin
++        /* input lane counter */
++        if (input_tready & input_tvalid) begin
++            if (INPUT_WIDTH < OUTPUT_WIDTH) begin
++                input_lane <= input_lane + 1'b1;
++            end
++        end
++
++        /* output lane counter */
++        if (output_tready & output_tvalid) begin
++            if (INPUT_WIDTH >= OUTPUT_WIDTH) begin
++                output_lane <= output_lane + 1'b1;
++            end
++        end
++
++        /* input register */
++        if (input_tready & input_tvalid & (INPUT_WIDTH < OUTPUT_WIDTH)) begin
++            input_tdata_int_reg <= input_tdata;
++            input_tuser_int_reg <= input_tuser_int;
++            input_tkeep_int_reg <= input_tkeep_int;
++            input_tid_int_reg <= input_tid_int;
++            input_tdest_int_reg <= input_tdest_int;
++        end
++
++        /* output register */
++        if (input_tready & input_tvalid & (INPUT_WIDTH >= OUTPUT_WIDTH)) begin
++            output_tdata_int_reg <= input_tdata;
++            output_tuser_int_reg <= input_tuser_int;
++            output_tkeep_int_reg <= input_tkeep_int;
++            output_tid_int_reg <= input_tid_int;
++            output_tdest_int_reg <= input_tdest_int;
++        end
++
++        /* keep registers */
++        input_tkeep_int_early <= KEEP_ENABLE && (input_tready & input_tvalid & input_tkeep_int);
++        output_tkeep_int_early <= KEEP_ENABLE && (output_tready & output_tvalid & output_tkeep_int);
++
++        if (!KEEP_ENABLE || !input_tkeep_int_early) begin
++            input_tkeep_int_reg <= 1'b0;
++        end
++
++        if (!KEEP_ENABLE || !output_tkeep_int_early) begin
++            output_tkeep_int_reg <= 1'b0;
++        end
++
++        output_tlast_reg <= output_tlast_int;
+     end
+ end
+ 
+-generate
+-
+-if (M_BYTE_LANES == S_BYTE_LANES) begin : bypass
+-    // same width; bypass
+-
+-    assign s_axis_tready = m_axis_tready;
+-
+-    assign m_axis_tdata  = s_axis_tdata;
+-    assign m_axis_tkeep  = M_KEEP_ENABLE ? s_axis_tkeep : {M_KEEP_WIDTH{1'b1}};
+-    assign m_axis_tvalid = s_axis_tvalid;
+-    assign m_axis_tlast  = s_axis_tlast;
+-    assign m_axis_tid    = ID_ENABLE   ? s_axis_tid   : {ID_WIDTH{1'b0}};
+-    assign m_axis_tdest  = DEST_ENABLE ? s_axis_tdest : {DEST_WIDTH{1'b0}};
+-    assign m_axis_tuser  = USER_ENABLE ? s_axis_tuser : {USER_WIDTH{1'b0}};
+-
+-end else if (M_BYTE_LANES > S_BYTE_LANES) begin : upsize
+-    // output is wider; upsize
+-
+-    // required number of segments in wider bus
+-    localparam SEG_COUNT = M_BYTE_LANES / S_BYTE_LANES;
+-    // data width and keep width per segment
+-    localparam SEG_DATA_WIDTH = M_DATA_WIDTH / SEG_COUNT;
+-    localparam SEG_KEEP_WIDTH = M_BYTE_LANES / SEG_COUNT;
+-
+-    reg [$clog2(SEG_COUNT)-1:0] seg_reg = 0;
+-
+-    reg [S_DATA_WIDTH-1:0] s_axis_tdata_reg = {S_DATA_WIDTH{1'b0}};
+-    reg [S_KEEP_WIDTH-1:0] s_axis_tkeep_reg = {S_KEEP_WIDTH{1'b0}};
+-    reg s_axis_tvalid_reg = 1'b0;
+-    reg s_axis_tlast_reg = 1'b0;
+-    reg [ID_WIDTH-1:0] s_axis_tid_reg = {ID_WIDTH{1'b0}};
+-    reg [DEST_WIDTH-1:0] s_axis_tdest_reg = {DEST_WIDTH{1'b0}};
+-    reg [USER_WIDTH-1:0] s_axis_tuser_reg = {USER_WIDTH{1'b0}};
+-
+-    reg [M_DATA_WIDTH-1:0] m_axis_tdata_reg = {M_DATA_WIDTH{1'b0}};
+-    reg [M_KEEP_WIDTH-1:0] m_axis_tkeep_reg = {M_KEEP_WIDTH{1'b0}};
+-    reg m_axis_tvalid_reg = 1'b0;
+-    reg m_axis_tlast_reg = 1'b0;
+-    reg [ID_WIDTH-1:0] m_axis_tid_reg = {ID_WIDTH{1'b0}};
+-    reg [DEST_WIDTH-1:0] m_axis_tdest_reg = {DEST_WIDTH{1'b0}};
+-    reg [USER_WIDTH-1:0] m_axis_tuser_reg = {USER_WIDTH{1'b0}};
+-
+-    assign s_axis_tready = !s_axis_tvalid_reg;
+-
+-    assign m_axis_tdata  = m_axis_tdata_reg;
+-    assign m_axis_tkeep  = M_KEEP_ENABLE ? m_axis_tkeep_reg : {M_KEEP_WIDTH{1'b1}};
+-    assign m_axis_tvalid = m_axis_tvalid_reg;
+-    assign m_axis_tlast  = m_axis_tlast_reg;
+-    assign m_axis_tid    = ID_ENABLE   ? m_axis_tid_reg   : {ID_WIDTH{1'b0}};
+-    assign m_axis_tdest  = DEST_ENABLE ? m_axis_tdest_reg : {DEST_WIDTH{1'b0}};
+-    assign m_axis_tuser  = USER_ENABLE ? m_axis_tuser_reg : {USER_WIDTH{1'b0}};
+-
+-    always @(posedge clk) begin
+-        m_axis_tvalid_reg <= m_axis_tvalid_reg && !m_axis_tready;
+-
+-        if (!m_axis_tvalid_reg || m_axis_tready) begin
+-            // output register empty
+-
+-            if (seg_reg == 0) begin
+-                m_axis_tdata_reg[seg_reg*SEG_DATA_WIDTH +: SEG_DATA_WIDTH] <= s_axis_tvalid_reg ? s_axis_tdata_reg : s_axis_tdata;
+-                m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep;
+-            end else begin
+-                m_axis_tdata_reg[seg_reg*SEG_DATA_WIDTH +: SEG_DATA_WIDTH] <= s_axis_tdata;
+-                m_axis_tkeep_reg[seg_reg*SEG_KEEP_WIDTH +: SEG_KEEP_WIDTH] <= s_axis_tkeep;
+-            end
+-            m_axis_tlast_reg <= s_axis_tvalid_reg ? s_axis_tlast_reg : s_axis_tlast;
+-            m_axis_tid_reg <= s_axis_tvalid_reg ? s_axis_tid_reg : s_axis_tid;
+-            m_axis_tdest_reg <= s_axis_tvalid_reg ? s_axis_tdest_reg : s_axis_tdest;
+-            m_axis_tuser_reg <= s_axis_tvalid_reg ? s_axis_tuser_reg : s_axis_tuser;
+-
+-            if (s_axis_tvalid_reg) begin
+-                // consume data from buffer
+-                s_axis_tvalid_reg <= 1'b0;
+-
+-                if (s_axis_tlast_reg || seg_reg == SEG_COUNT-1) begin
+-                    seg_reg <= 0;
+-                    m_axis_tvalid_reg <= 1'b1;
+-                end else begin
+-                    seg_reg <= seg_reg + 1;
+-                end
+-            end else if (s_axis_tvalid) begin
+-                // data direct from input
+-                if (s_axis_tlast || seg_reg == SEG_COUNT-1) begin
+-                    seg_reg <= 0;
+-                    m_axis_tvalid_reg <= 1'b1;
+-                end else begin
+-                    seg_reg <= seg_reg + 1;
+-                end
+-            end
+-        end else if (s_axis_tvalid && s_axis_tready) begin
+-            // store input data in skid buffer
+-            s_axis_tdata_reg <= s_axis_tdata;
+-            s_axis_tkeep_reg <= s_axis_tkeep;
+-            s_axis_tvalid_reg <= 1'b1;
+-            s_axis_tlast_reg <= s_axis_tlast;
+-            s_axis_tid_reg <= s_axis_tid;
+-            s_axis_tdest_reg <= s_axis_tdest;
+-            s_axis_tuser_reg <= s_axis_tuser;
+-        end
+-
+-        if (rst) begin
+-            seg_reg <= 0;
+-            s_axis_tvalid_reg <= 1'b0;
+-            m_axis_tvalid_reg <= 1'b0;
+-        end
+-    end
+-
+-end else begin : downsize
+-    // output is narrower; downsize
+-
+-    // required number of segments in wider bus
+-    localparam SEG_COUNT = S_BYTE_LANES / M_BYTE_LANES;
+-    // data width and keep width per segment
+-    localparam SEG_DATA_WIDTH = S_DATA_WIDTH / SEG_COUNT;
+-    localparam SEG_KEEP_WIDTH = S_BYTE_LANES / SEG_COUNT;
+-
+-    reg [S_DATA_WIDTH-1:0] s_axis_tdata_reg = {S_DATA_WIDTH{1'b0}};
+-    reg [S_KEEP_WIDTH-1:0] s_axis_tkeep_reg = {S_KEEP_WIDTH{1'b0}};
+-    reg s_axis_tvalid_reg = 1'b0;
+-    reg s_axis_tlast_reg = 1'b0;
+-    reg [ID_WIDTH-1:0] s_axis_tid_reg = {ID_WIDTH{1'b0}};
+-    reg [DEST_WIDTH-1:0] s_axis_tdest_reg = {DEST_WIDTH{1'b0}};
+-    reg [USER_WIDTH-1:0] s_axis_tuser_reg = {USER_WIDTH{1'b0}};
+-
+-    reg [M_DATA_WIDTH-1:0] m_axis_tdata_reg = {M_DATA_WIDTH{1'b0}};
+-    reg [M_KEEP_WIDTH-1:0] m_axis_tkeep_reg = {M_KEEP_WIDTH{1'b0}};
+-    reg m_axis_tvalid_reg = 1'b0;
+-    reg m_axis_tlast_reg = 1'b0;
+-    reg [ID_WIDTH-1:0] m_axis_tid_reg = {ID_WIDTH{1'b0}};
+-    reg [DEST_WIDTH-1:0] m_axis_tdest_reg = {DEST_WIDTH{1'b0}};
+-    reg [USER_WIDTH-1:0] m_axis_tuser_reg = {USER_WIDTH{1'b0}};
+-
+-    assign s_axis_tready = !s_axis_tvalid_reg;
+-
+-    assign m_axis_tdata  = m_axis_tdata_reg;
+-    assign m_axis_tkeep  = M_KEEP_ENABLE ? m_axis_tkeep_reg : {M_KEEP_WIDTH{1'b1}};
+-    assign m_axis_tvalid = m_axis_tvalid_reg;
+-    assign m_axis_tlast  = m_axis_tlast_reg;
+-    assign m_axis_tid    = ID_ENABLE   ? m_axis_tid_reg   : {ID_WIDTH{1'b0}};
+-    assign m_axis_tdest  = DEST_ENABLE ? m_axis_tdest_reg : {DEST_WIDTH{1'b0}};
+-    assign m_axis_tuser  = USER_ENABLE ? m_axis_tuser_reg : {USER_WIDTH{1'b0}};
+-
+-    always @(posedge clk) begin
+-        m_axis_tvalid_reg <= m_axis_tvalid_reg && !m_axis_tready;
+-
+-        if (!m_axis_tvalid_reg || m_axis_tready) begin
+-            // output register empty
+-
+-            m_axis_tdata_reg <= s_axis_tvalid_reg ? s_axis_tdata_reg : s_axis_tdata;
+-            m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep;
+-            m_axis_tlast_reg <= 1'b0;
+-            m_axis_tid_reg <= s_axis_tvalid_reg ? s_axis_tid_reg : s_axis_tid;
+-            m_axis_tdest_reg <= s_axis_tvalid_reg ? s_axis_tdest_reg : s_axis_tdest;
+-            m_axis_tuser_reg <= s_axis_tvalid_reg ? s_axis_tuser_reg : s_axis_tuser;
+-
+-            if (s_axis_tvalid_reg) begin
+-                // buffer has data; shift out from buffer
+-                s_axis_tdata_reg <= s_axis_tdata_reg >> SEG_DATA_WIDTH;
+-                s_axis_tkeep_reg <= s_axis_tkeep_reg >> SEG_KEEP_WIDTH;
+-
+-                m_axis_tvalid_reg <= 1'b1;
+-
+-                if ((s_axis_tkeep_reg >> SEG_KEEP_WIDTH) == 0) begin
+-                    s_axis_tvalid_reg <= 1'b0;
+-                    m_axis_tlast_reg <= s_axis_tlast_reg;
+-                end
+-            end else if (s_axis_tvalid && s_axis_tready) begin
+-                // buffer is empty; store from input
+-                s_axis_tdata_reg <= s_axis_tdata >> SEG_DATA_WIDTH;
+-                s_axis_tkeep_reg <= s_axis_tkeep >> SEG_KEEP_WIDTH;
+-                s_axis_tlast_reg <= s_axis_tlast;
+-                s_axis_tid_reg <= s_axis_tid;
+-                s_axis_tdest_reg <= s_axis_tdest;
+-                s_axis_tuser_reg <= s_axis_tuser;
+-
+-                m_axis_tvalid_reg <= 1'b1;
+-
+-                if ((s_axis_tkeep >> SEG_KEEP_WIDTH) == 0) begin
+-                    s_axis_tvalid_reg <= 1'b0;
+-                    m_axis_tlast_reg <= s_axis_tlast;
+-                end else begin
+-                    s_axis_tvalid_reg <= 1'b1;
+-                end
+-            end
+-        end else if (s_axis_tvalid && s_axis_tready) begin
+-            // store input data
+-            s_axis_tdata_reg <= s_axis_tdata;
+-            s_axis_tkeep_reg <= s_axis_tkeep;
+-            s_axis_tvalid_reg <= 1'b1;
+-            s_axis_tlast_reg <= s_axis_tlast;
+-            s_axis_tid_reg <= s_axis_tid;
+-            s_axis_tdest_reg <= s_axis_tdest;
+-            s_axis_tuser_reg <= s_axis_tuser;
+-        end
+-
+-        if (rst) begin
+-            s_axis_tvalid_reg <= 1'b0;
+-            m_axis_tvalid_reg <= 1'b0;
+-        end
+-    end
+-
+-end
+-
+-endgenerate
+-
+-endmodule
+-
+-`resetall
++endmodule

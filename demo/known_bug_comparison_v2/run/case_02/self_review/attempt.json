@@ -1,0 +1,62 @@
+{
+  "accepted": false,
+  "api_requests": 1,
+  "audit_pass": false,
+  "cost": {
+    "estimated_usd": 0.074159,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "51c75e2388434548a56ee56ef4867376",
+    "reserved_usd": 1.122304,
+    "state": "settled"
+  },
+  "discovery_pass": false,
+  "evaluation": {
+    "accepted": false,
+    "audit_pass": false,
+    "corrected_RTL_loaded_for_scoring": false,
+    "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_02/self_review/evaluation",
+    "discovery_pass": false,
+    "error": "Do not change public ports, configuration parameters or compiler directives",
+    "formal_proof": false,
+    "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+    "new_api_calls": 0,
+    "oracle_depends_on_corrected_trace_values": true,
+    "rtl_sha256": "5f57f41682260ae839fe3edad504e34bd46026fd4e6130c33500662a8578856b",
+    "status": "POLICY_REJECTED",
+    "traces": []
+  },
+  "functional_source_changed": true,
+  "proposal": {
+    "decision": "repair",
+    "edits": [
+      {
+        "end_line": 256,
+        "replacement": "  reg\tr_cmd_busy;\n\n  wire\twb_stb, write_stb, cmd_stb, new_data, new_cmd;\n  wire\t[1:0]\twb_addr;\n  wire\t[31:0]\twb_data;\n`ifdef\tWB_CLOCK\n  wire\twb_stb, write_stb, cmd_stb; \n  assign\twb_stb    = ((i_wb_stb)&&(!o_wb_stall));\n  assign\twrite_stb = ((wb_stb)&&( i_wb_we));\n  \n  assign\tcmd_stb  = (!r_cmd_busy)&&(write_stb)\n  \t\t\t&&(i_wb_addr==`SDSPI_CMD_ADDRESS);\n  assign\twb_addr = i_wb_addr;\n  assign\twb_data = i_wb_data;\n  assign\tnew_cmd = cmd_stb;\n  assign\tnew_data = (i_wb_stb)&&(!o_wb_stall)&&(i_wb_we)\n  \t\t\t&&(i_wb_addr == `SDSPI_DAT_ADDRESS);\n`else\n  reg\tr_wb_stb, r_write_stb, r_cmd_stb, r_new_data;\n  reg\t[1:0]\tr_wb_addr;\n  reg\t[31:0]\tr_wb_data;\n  always @(posedge i_clk)\n  \tr_wb_stb <= ((i_wb_stb)&&(!o_wb_stall));\n  always @(posedge i_clk)\n  \tr_write_stb <= ((i_wb_stb)&&(!o_wb_stall)&&(i_wb_we));\n  always @(posedge i_clk)\n  \tr_cmd_stb <= (!r_cmd_busy)&&(i_wb_stb)&&(!o_wb_stall)&&(i_wb_we)\n  \t\t\t\t&&(i_wb_addr == `SDSPI_CMD_ADDRESS);\n  always @(posedge i_clk)\n  \tr_new_data <= (i_wb_stb)&&(!o_wb_stall)&&(i_wb_we)\n  \t\t\t&&(i_wb_addr == `SDSPI_DAT_ADDRESS);\n  always @(posedge i_clk)\n  \tr_wb_addr <= i_wb_addr;\n  always @(posedge i_clk)\n  \tr_wb_data <= i_wb_data;\n\n  assign\twb_stb   = r_wb_stb;\n  assign\twrite_stb= r_write_stb;\n  assign\tcmd_stb  = r_cmd_stb;\n  assign\tnew_cmd  = r_cmd_stb;\n  assign\tnew_data = r_new_data;\n  assign\twb_addr  = r_wb_addr;\n  assign\twb_data  = r_wb_data;\n`endif\n\n\n  \n  \n  \n  \n  reg\t[6:0]\tr_sdspi_clk;\n  reg\t\tll_cmd_stb;\n  reg\t[7:0]\tll_cmd_dat;\n  wire\t\tll_out_stb, ll_idle;\n  wire\t[7:0]\tll_out_dat;\n  llsdspi #(.STARTUP_CLOCKS(STARTUP_CLOCKS),\n  \t.OPT_SPI_ARBITRATION(OPT_SPI_ARBITRATION))\n  lowlevel(i_clk, r_sdspi_clk, r_cmd_busy, ll_cmd_stb, ll_cmd_dat,\n  \t\to_cs_n, o_sck, o_mosi, i_miso,\n  \t\tll_out_stb, ll_out_dat, ll_idle,\n  \t\ti_bus_grant);\n\n\n  \n  reg\t\tr_cmd_crc_stb;\n  wire\t[7:0]\tcmd_crc;\n  \n  reg\t[2:0]\tr_cmd_state, r_rsp_state;\n  \n  reg\t\tr_have_resp, r_use_fifo, r_fifo_wr,\n  \t\t\tll_fifo_rd_complete, ll_fifo_wr_complete,\n  \t\t\tr_fifo_id,\n  \t\t\tll_fifo_wr, ll_fifo_rd,\n  \t\t\tr_have_data_response_token, \n  \t\t\tr_have_start_token,\n  \t\t\tr_err_token;\n  reg\t[3:0]\tr_read_err_token;\n  reg\t[1:0]\tr_data_response_token;\n  reg\t[7:0]\tfifo_byte;\n  reg\t[7:0]\tr_last_r_one;\n  \n  reg\t[31:0]\tr_data_reg;\n  reg\t[1:0]\tr_data_fil, r_cmd_resp;\n  \n  \n  wire\t\tneed_reset;\n  reg\t\tr_cmd_err;\n  reg\t\tr_cmd_sent;\n  reg\t[31:0]\tfifo_a_reg, fifo_b_reg;\n  \n  reg\t\tq_busy;\n  \n  reg\t[7:0]\tfifo_a_mem_0[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_a_mem_1[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_a_mem_2[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_a_mem_3[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_b_mem_0[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_b_mem_1[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_b_mem_2[0:((1<<LGFIFOLN)-1)],\n  \t\tfifo_b_mem_3[0:((1<<LGFIFOLN)-1)];\n  reg\t[(LGFIFOLN-1):0]\tfifo_wb_addr;\n  \n  reg\t[(LGFIFOLN+1):0]\tll_fifo_addr;\n  \n  reg\t\tfifo_crc_err;\n  reg\t[1:0]\tll_fifo_wr_state;\n  reg\t[7:0]\tfifo_a_byte, fifo_b_byte;\n  \n  reg\t[2:0]\tll_fifo_pkt_state;\n  reg\t\tfifo_rd_crc_stb, fifo_wr_crc_stb;\n  \n  reg\t[3:0]\tfifo_rd_crc_count, fifo_wr_crc_count;\n  reg\t[15:0]\tfifo_rd_crc_reg, fifo_wr_crc_reg;\n  \n  reg\t[3:0]\tr_cmd_crc_cnt;\n  reg\t[7:0]\tr_cmd_crc;\n  \n  reg\t\tr_cmd_crc_ff;\n  \n  reg\t[3:0]\tr_lgblklen;\n  wire\t[3:0]\tmax_lgblklen;\n  assign\tmax_lgblklen = LGFIFOLN;\n  \n  reg\t[25:0]\tr_watchdog;\n  reg\t\tr_watchdog_err;\n  reg\tpre_cmd_state;\n  reg\tpre_rsp_state;\n  reg\t[2:0]\tsecond_rsp_state;\n  reg\tready_for_response_token;\n  reg\tr_err_token;\n  wire\tnonzero_out;\n  assign\tnonzero_out = |ll_out_dat;\n",
+        "start_line": 130
+      },
+      {
+        "end_line": 543,
+        "replacement": "// duplicate r_rsp_state logic removed\n",
+        "start_line": 510
+      },
+      {
+        "end_line": 505,
+        "replacement": "// nonzero_out now combinational\n",
+        "start_line": 503
+      },
+      {
+        "end_line": 477,
+        "replacement": "  // ready_for_response_token declared in declaration region\n",
+        "start_line": 477
+      },
+      {
+        "end_line": 489,
+        "replacement": "  // second_rsp_state declared in declaration region\n",
+        "start_line": 489
+      }
+    ],
+    "explanation": "The original code had several functional defects: (1) missing declarations for signals used in the main sequential block (pre_rsp_state, second_rsp_state, ready_for_response_token, r_err_token, nonzero_out), causing synthesis errors. (2) A duplicate always block assigning r_rsp_state creating multiple drivers. (3) An always block incorrectly assigning nonzero_out as a sequential signal instead of combinational. (4) Declarations of ready_for_response_token and second_rsp_state placed in the middle of the code instead of the declaration region. The repairs add missing declarations in the declaration region, remove the duplicate r_rsp_state block, convert nonzero_out to a combinational wire, and clean up misplaced declarations. These changes preserve the public interface, parameters, and configured behavior while fixing synthesis and functional issues."
+  },
+  "status": "POLICY_REJECTED"
+}

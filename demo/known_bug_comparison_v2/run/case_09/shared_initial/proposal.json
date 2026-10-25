@@ -1,0 +1,16 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 98,
+      "replacement": "    if (rst) begin\n        wr_ptr <= 0;\n        wr_ptr_cur <= 0;\n        drop_frame <= 0;",
+      "start_line": 97
+    },
+    {
+      "end_line": 116,
+      "replacement": "                    wr_ptr <= wr_ptr_cur;",
+      "start_line": 116
+    }
+  ],
+  "explanation": "The original module had two functional defects: (1) The synchronous reset block only cleared wr_ptr, leaving wr_ptr_cur and drop_frame uninitialized, which violates the requirement that reset flushes packet pointers and partial/drop state. (2) The frame commit logic incorrectly updated wr_ptr to wr_ptr_cur + 1 instead of wr_ptr_cur, causing an off-by-one error that reduced FIFO capacity by one slot and distorted full/empty flags. The edits add the missing resets and fix the commit pointer assignment."
+}

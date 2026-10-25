@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.008684,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "6112d96b8d17446c81ca6076ff6d6e69",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_b7c09269741f",
+    "patch_fc89a2456871",
+    "patch_1bcf966a75b9",
+    "patch_316ca7f541a1",
+    "patch_a55e46059a07",
+    "patch_2c8752251e37",
+    "patch_548face3e9ab",
+    "patch_c34f93524a6a"
+  ],
+  "proposal": {
+    "explanation": "Ranking prioritizes patches that address the core m_axis_tlast mismatch pattern observed at cycles 65, 66, 101, and 172. The top candidates either substitute m_axis_tlast signals directly (patch_2c8752251e37, patch_316ca7f541a1, patch_bdd445d05642 via m_axis_tlast_reg) or gate the trigger/output logic with m_axis_tready_int_reg (patch_fc89a2456871, patch_1bcf966a75b9), which controls when frame_ptr_reg advances and m_axis_tlast_int is asserted. Patch_b7c09269741f substitutes busy_reg with trigger, potentially correcting the idle/output handshake. The remaining patches adjust related data/valid/user signals but are less directly tied to the tlast failure signature.",
+    "ranking": [
+      {
+        "id": "patch_b7c09269741f",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_fc89a2456871",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_1bcf966a75b9",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_316ca7f541a1",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_a55e46059a07",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_2c8752251e37",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_548face3e9ab",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_c34f93524a6a",
+        "mechanism": "rhs_substitution"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 3.6878
+}

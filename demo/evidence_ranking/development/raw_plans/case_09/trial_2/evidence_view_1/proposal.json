@@ -1,0 +1,53 @@
+{
+  "explanation": "The public trace shows three early failures: `drop_frame=1` at cycles 13 and 14 (expected 0), followed by `output_axis_tdata=1` vs expected 6 and `output_axis_tvalid=0` vs expected 1 at cycle 16. All candidate patches cite these same failure anchors and map to the write-pointer/drop-frame block (lines 96-121). The top-ranked patches directly address the reset initialization of `drop_frame` and `wr_ptr_cur` (patch_06b184d83718, patch_9d300784e043), gate the drop-frame entry condition with `input_axis_tlast` (patch_0df996e92b1b) or `!rst` (patch_a0bad4f15d79), and suppress write enable during drop-frame (patch_cc5c635bb718) or reset-gated write (patch_5290c6328b33). Lower-ranked patches apply more speculative condition qualifications on the same block. Each mechanism is traced from the cited source line to the observed failing port via the static dependency overapproximation provided.",
+  "ranking": [
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_cc5c635bb718",
+      "mechanism": "The write enable gate at line 99 (`write = input_axis_tvalid & (~full | DROP_WHEN_FULL)`) allows input acceptance even when `drop_frame` is asserted from a previous partial frame. This patch adds `&& (!drop_frame)` to the `write` condition, preventing new frame data from being written into the FIFO while a partial frame is being dropped. This directly addresses the early `drop_frame=1` at cycles 13-14 and the subsequent data corruption at cycle 16 (output_axis_tdata=1 vs expected 6).",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_0df996e92b1b",
+      "mechanism": "The drop-frame entry condition at line 100 (`if (full | full_cur | drop_frame)`) triggers `drop_frame <= 1` for any beat when the FIFO is full, the current frame is full, or drop is already active. This patch adds `&& (input_axis_tlast)` so drop-frame mode is only entered when the incoming beat is a frame terminator. This prevents spurious drop_frame assertion on non-last beats (cycles 13-14) and preserves frame boundary alignment for cycle 16 output.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_06b184d83718",
+      "mechanism": "The reset block for the write pointer logic (line 96-121) currently only clears `wr_ptr`. This patch adds synchronous reset of `drop_frame <= 0` and `wr_ptr_cur <= 0` in the same `if (rst)` block. The trace shows `drop_frame` stuck at 1 after reset release (cycles 13-14), and `wr_ptr_cur` misaligned causing wrong data at cycle 16. Resetting both state variables together ensures clean pointer and drop-state initialization.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_9d300784e043",
+      "mechanism": "This patch adds `drop_frame <= 0` to the reset block at line 99 (same `if (rst)` region as patch_06b184d83718 but only targeting `drop_frame`). The first observed failure is `drop_frame=1` at cycle 13 when it should be 0, indicating the drop-state latch is not cleared by reset. Clearing `drop_frame` synchronously with `wr_ptr` removes the stale drop condition that corrupts the subsequent frame at cycle 16.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_a0bad4f15d79",
+      "mechanism": "The condition `full | full_cur | drop_frame` at line 100 is evaluated even during reset (rst=1) because the reset only gates the outer `if (rst)` block, not this inner condition. This patch adds `&& (!rst)` to prevent drop-frame logic from triggering during reset. The trace shows drop_frame=1 at cycles 13-14 immediately after reset release, suggesting the condition fired on the first post-reset cycle due to stale full flags.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_5290c6328b33",
+      "mechanism": "The `write` signal at line 99 is derived from `input_axis_tvalid & (~full | DROP_WHEN_FULL)` and does not check `rst`. This patch adds `&& (!rst)` to the `write` assignment, preventing any write-side activity during reset. The trace shows drop_frame assertion at cycles 13-14 right after reset, and output data corruption at cycle 16; gating write with !rst ensures the write pointer logic is fully quiescent during reset.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_4fb9f010f15d",
+      "mechanism": "This patch changes the `write` enable at line 99 to `(write) && (full)`, which only permits writes when the FIFO is already full. While counter-intuitive, the failure anchors show drop_frame=1 at cycles 13-14 and data mismatch at cycle 16; the static dependency links this condition to the write-pointer block (lines 96-121) where drop_frame is set. The mechanism is indirect: by restricting write to full-only, it may prevent the pointer advance that leads to premature drop_frame assertion on the first post-reset frame.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_984eed6c8fb1",
+      "mechanism": "At line 103, the frame-termination check `if (input_axis_tlast)` inside the drop-frame block updates `wr_ptr_cur` and clears `drop_frame`. This patch adds `&& (!drop_frame)` to that condition, making the frame-termination logic conditional on drop_frame being already clear. The trace shows drop_frame stuck at 1 (cycles 13-14) and wrong data at cycle 16; this edit attempts to prevent re-entry or confused state transitions when drop_frame is asserted.",
+      "source_line": 103
+    }
+  ]
+}

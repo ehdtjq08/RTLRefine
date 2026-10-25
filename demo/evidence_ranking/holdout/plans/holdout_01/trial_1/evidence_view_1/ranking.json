@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.018007,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "ec1cdc3068ba443a93744ca16b5b7ed7",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_28182ef789d2",
+    "patch_489a75ddcd7b",
+    "patch_c05548e3a8e5",
+    "patch_6f8298dc7749",
+    "patch_d09dad2fed72",
+    "patch_413743f5dfd2",
+    "patch_b857ef3ece44",
+    "patch_fd49deeec05e"
+  ],
+  "proposal": {
+    "explanation": "The ranking prioritizes patches that target the frame/pause logic and output storage controls around the first mismatch window (cycles 8-16). The top candidates substitute frame-related signals into store enables (patch_28182ef789d2, patch_c05548e3a8e5) and add temp register reset (patch_489a75ddcd7b), addressing the m_axis_tdata/m_axis_tlast/m_axis_tuser divergence at cycles 13-16. Mid-ranked patches gate the frame-advance condition on rate_by_frame (patch_6f8298dc7749) and qualify output-store enables with valid/ready/reset signals (patch_d09dad2fed72, patch_413743f5dfd2, patch_b857ef3ece44), which influence the pause/ready behavior seen at cycles 12-15. The last patch gates the pause condition on rate_by_frame (patch_fd49deeec05e). Patches directly modifying s_axis_tready_reg or m_axis_tvalid_reg initial values were deprioritized because they affect earlier cycles without explaining the frame-correlated data/last/user errors.",
+    "ranking": [
+      {
+        "id": "patch_28182ef789d2",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_489a75ddcd7b",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_c05548e3a8e5",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_6f8298dc7749",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_d09dad2fed72",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_413743f5dfd2",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_b857ef3ece44",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_fd49deeec05e",
+        "mechanism": "condition_gate"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 3.7418
+}

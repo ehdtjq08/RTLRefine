@@ -1,0 +1,770 @@
+{
+  "accepted": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "skidbuffer",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0337,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vskidbuffer.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8193,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": false,
+  "rtl_sha256": "335c5c7f80c01e1c7615641638be882883299859501a52245b75c5f950b5b0a0",
+  "status": "DISCOVERY_FAILED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vskidbuffer"
+        ],
+        "elapsed_seconds": 0.0177,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 725,
+      "cycles": 256,
+      "expected_sha256": "c47ab4c07ae044124be5a2f75e9b71d04a343b9607fa2ddd3402b8609e61a627",
+      "first_mismatches": [
+        {
+          "actual": 0,
+          "cycle": 6,
+          "expected": 65,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 7,
+          "expected": 65,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 8,
+          "expected": 65,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 9,
+          "expected": 65,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 18,
+          "expected": 253,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 22,
+          "expected": 184,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 23,
+          "expected": 143,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 24,
+          "expected": 143,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 25,
+          "expected": 143,
+          "port": "o_data"
+        },
+        {
+          "actual": 0,
+          "cycle": 27,
+          "expected": 121,
+          "port": "o_data"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              102,
+              0,
+              1,
+              0
+            ],
+            [
+              216,
+              0,
+              1,
+              0
+            ],
+            [
+              49,
+              0,
+              1,
+              0
+            ],
+            [
+              250,
+              0,
+              1,
+              0
+            ],
+            [
+              105,
+              1,
+              0,
+              0
+            ],
+            [
+              65,
+              1,
+              0,
+              1
+            ],
+            [
+              230,
+              0,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              102,
+              0,
+              1,
+              0
+            ],
+            [
+              216,
+              0,
+              1,
+              0
+            ],
+            [
+              49,
+              0,
+              1,
+              0
+            ],
+            [
+              250,
+              0,
+              1,
+              0
+            ],
+            [
+              105,
+              1,
+              0,
+              0
+            ],
+            [
+              65,
+              1,
+              0,
+              1
+            ],
+            [
+              230,
+              0,
+              0,
+              1
+            ],
+            [
+              116,
+              0,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              102,
+              0,
+              1,
+              0
+            ],
+            [
+              216,
+              0,
+              1,
+              0
+            ],
+            [
+              49,
+              0,
+              1,
+              0
+            ],
+            [
+              250,
+              0,
+              1,
+              0
+            ],
+            [
+              105,
+              1,
+              0,
+              0
+            ],
+            [
+              65,
+              1,
+              0,
+              1
+            ],
+            [
+              230,
+              0,
+              0,
+              1
+            ],
+            [
+              116,
+              0,
+              0,
+              0
+            ],
+            [
+              235,
+              0,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 0
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              216,
+              0,
+              1,
+              0
+            ],
+            [
+              49,
+              0,
+              1,
+              0
+            ],
+            [
+              250,
+              0,
+              1,
+              0
+            ],
+            [
+              105,
+              1,
+              0,
+              0
+            ],
+            [
+              65,
+              1,
+              0,
+              1
+            ],
+            [
+              230,
+              0,
+              0,
+              1
+            ],
+            [
+              116,
+              0,
+              0,
+              0
+            ],
+            [
+              235,
+              0,
+              0,
+              1
+            ],
+            [
+              235,
+              1,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 1
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              235,
+              0,
+              0,
+              1
+            ],
+            [
+              2,
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              0,
+              0,
+              1
+            ],
+            [
+              171,
+              1,
+              0,
+              0
+            ],
+            [
+              167,
+              0,
+              0,
+              1
+            ],
+            [
+              253,
+              0,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              103,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 10
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              167,
+              0,
+              0,
+              1
+            ],
+            [
+              253,
+              0,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              103,
+              1,
+              0,
+              0
+            ],
+            [
+              115,
+              1,
+              0,
+              0
+            ],
+            [
+              124,
+              1,
+              0,
+              0
+            ],
+            [
+              184,
+              1,
+              0,
+              1
+            ],
+            [
+              143,
+              1,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 14
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              253,
+              0,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              103,
+              1,
+              0,
+              0
+            ],
+            [
+              115,
+              1,
+              0,
+              0
+            ],
+            [
+              124,
+              1,
+              0,
+              0
+            ],
+            [
+              184,
+              1,
+              0,
+              1
+            ],
+            [
+              143,
+              1,
+              0,
+              1
+            ],
+            [
+              12,
+              0,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 15
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              103,
+              1,
+              0,
+              0
+            ],
+            [
+              115,
+              1,
+              0,
+              0
+            ],
+            [
+              124,
+              1,
+              0,
+              0
+            ],
+            [
+              184,
+              1,
+              0,
+              1
+            ],
+            [
+              143,
+              1,
+              0,
+              1
+            ],
+            [
+              12,
+              0,
+              0,
+              0
+            ],
+            [
+              231,
+              0,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 16
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              253,
+              1,
+              0,
+              1
+            ],
+            [
+              103,
+              1,
+              0,
+              0
+            ],
+            [
+              115,
+              1,
+              0,
+              0
+            ],
+            [
+              124,
+              1,
+              0,
+              0
+            ],
+            [
+              184,
+              1,
+              0,
+              1
+            ],
+            [
+              143,
+              1,
+              0,
+              1
+            ],
+            [
+              12,
+              0,
+              0,
+              0
+            ],
+            [
+              231,
+              0,
+              0,
+              1
+            ],
+            [
+              121,
+              1,
+              0,
+              1
+            ]
+          ],
+          "start_cycle": 17
+        },
+        {
+          "inputs": [
+            "i_data",
+            "i_ready",
+            "i_reset",
+            "i_valid"
+          ],
+          "samples": [
+            [
+              115,
+              1,
+              0,
+              0
+            ],
+            [
+              124,
+              1,
+              0,
+              0
+            ],
+            [
+              184,
+              1,
+              0,
+              1
+            ],
+            [
+              143,
+              1,
+              0,
+              1
+            ],
+            [
+              12,
+              0,
+              0,
+              0
+            ],
+            [
+              231,
+              0,
+              0,
+              1
+            ],
+            [
+              121,
+              1,
+              0,
+              1
+            ],
+            [
+              121,
+              1,
+              0,
+              1
+            ],
+            [
+              35,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 19
+        }
+      ],
+      "mismatch_count": 162,
+      "passed": false,
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "dc65c37eb4c2c37afdd11f3135043b18594f6c28f0b1ffe0efd608b550f53d62",
+      "trace_label": "discovery"
+    }
+  ]
+}

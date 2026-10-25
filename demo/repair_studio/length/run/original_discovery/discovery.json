@@ -1,0 +1,139 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_frame_len",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0169,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_frame_len.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.868,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "discovery_pass": false,
+  "new_api_calls": 0,
+  "rtl_sha256": "911cabce109a87e23a1c3141ed273e29e9f74230ceeace8998f5436e084d1166",
+  "status": "DISCOVERY_TRACE_FAILED",
+  "traces": [
+    {
+      "command": {
+        "command": [
+          "./obj_dir/Vaxis_frame_len"
+        ],
+        "elapsed_seconds": 0.0178,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      "comparisons": 8,
+      "cycles": 6,
+      "expected_sha256": "4d7acd167d1c86ef597cf775dfd1c430551e693e08c28a572821cd1317a52ed9",
+      "first_mismatches": [
+        {
+          "actual": 3,
+          "cycle": 5,
+          "expected": 1,
+          "port": "frame_len"
+        }
+      ],
+      "input_windows": [
+        {
+          "inputs": [
+            "monitor_axis_tkeep",
+            "monitor_axis_tlast",
+            "monitor_axis_tready",
+            "monitor_axis_tvalid",
+            "rst"
+          ],
+          "samples": [
+            [
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          ],
+          "start_cycle": 0
+        }
+      ],
+      "mismatch_count": 1,
+      "passed": false,
+      "phase": "discovery",
+      "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+      "stimulus_sha256": "f66d69787c8d7064f5825f0fd57a4ceee6f75d9726b5a0b62dd6a51ac0bb9183",
+      "trace_label": "published_discovery_trace"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "explanation": "All five observed mismatches originate from the same root cause: the reset block (lines 96-99) clears only wr_ptr, leaving drop_frame and wr_ptr_cur in an unknown power-up state. The first failure (drop_frame=1 at cycles 13,14) occurs because a stale drop_frame=1 or a stale wr_ptr_cur causing full_cur=1 makes the condition at line 100 true on the first post-reset write, which immediately re-asserts drop_frame<=1. The downstream failures at cycle 16 (output_axis_tdata=1 vs 6, output_axis_tlast=1 vs 0, output_axis_tvalid=0 vs 1) are consequences: the FIFO remains in drop mode, discarding the frame that should have been stored, so the read pointer never advances and the output port presents stale/zero data. The highest-ranked patch (patch_eb889265e9be) directly resets both drop_frame and wr_ptr_cur, eliminating the root cause. The next two patches each address one half of that root cause individually. The remaining patches add defensive guards on the drop-mode entry condition or the write enable; they can mask the symptom but do not replace the missing reset initializations.",
+  "ranking": [
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_eb889265e9be",
+      "mechanism": "The first failing mismatch is drop_frame=1 at cycle 13 (expected 0) during reset. The reset block at lines 96-99 only clears wr_ptr but leaves drop_frame and wr_ptr_cur uninitialized. If either is left as 1 from pre-reset state, the condition (full|full_cur|drop_frame) at line 100 becomes true on the first post-reset write, immediately asserting drop_frame<=1. Adding `drop_frame <= 0` and `wr_ptr_cur <= 0` to the reset block (line 99) ensures a clean drop-mode exit and consistent pointer state before any new frame arrives.",
+      "source_line": 97
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_15a85deae41e",
+      "mechanism": "wr_ptr_cur is not cleared on reset. If it powers up non-zero while wr_ptr is cleared to 0, full_cur = (wr_ptr[ADDR]!=wr_ptr_cur[ADDR]) && (wr_ptr[ADDR-1:0]==wr_ptr_cur[ADDR-1:0]) can evaluate true, making (full|full_cur|drop_frame) true at line 100 and causing spurious drop_frame assertion. Resetting wr_ptr_cur to 0 (patch_15a85deae41e) aligns the current-write pointer with the committed-write pointer, preventing false full_cur after reset.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_9d300784e043",
+      "mechanism": "drop_frame register is not cleared in the reset block (lines 96-99). A power-up value of 1 makes the condition at line 100 true immediately on the first post-reset write, forcing drop_frame<=1 and keeping the FIFO in drop mode. Adding `drop_frame <= 0` to the reset block directly clears the failing output port at its source.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_a0bad4f15d79",
+      "mechanism": "The drop-mode entry condition (line 100) fires on (full|full_cur|drop_frame) even during reset if the guard is evaluated before wr_ptr/wr_ptr_cur clear. Adding `&& (!rst)` to the condition prevents drop_frame assertion on the same cycle rst=1, ensuring reset has priority over drop-mode entry.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_5d8c1cfb86b1",
+      "mechanism": "If write = input_axis_tvalid & (~full|DROP_WHEN_FULL) is asserted while rst=1 (e.g., valid held high during reset), the drop-mode condition (full|full_cur|drop_frame) can trigger on that cycle. Qualifying with `&& (!write)` at line 100 ensures drop-mode logic only runs on genuine write cycles, not during reset.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_5290c6328b33",
+      "mechanism": "The write enable itself (`write = input_axis_tvalid & (~full|DROP_WHEN_FULL)`) is not gated by reset. If input_axis_tvalid=1 during rst=1, write=1 and the always block enters the write path, evaluating the drop-mode condition at line 100. Changing the write qualifier to `&& (!rst)` at line 99 prevents any write-path entry during reset.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_f85ef7f84cd6",
+      "mechanism": "Mirror of patch_a0bad4f15d79 but with `(rst)` instead of `(!rst)`. This would enable the drop condition *only* during reset, which is opposite of the needed fix; retained here only to show the inverse edit was considered and is incorrect for the observed failure.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_cc5c635bb718",
+      "mechanism": "Qualifies the write enable with `&& (!drop_frame)` so that when drop_frame=1 (from pre-reset state) no new write is accepted, avoiding re-entry into the drop-mode block. This is a secondary guard; the primary fix remains clearing drop_frame and wr_ptr_cur in reset (patch_eb889265e9be).",
+      "source_line": 99
+    }
+  ]
+}

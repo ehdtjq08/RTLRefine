@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"ranking\": [{\"id\": \"patch_17422b8b1575\", \"mechanism\": \"rhs_substitution\"}, {\"id\": \"patch_2a431655333c\", \"mechanism\": \"rhs_substitution\"}, {\"id\": \"patch_2c8752251e37\", \"mechanism\": \"rhs_substitution\"}, {\"id\": \"patch_bdd445d05642\", \"mechanism\": \"reset_completion\"}, {\"id\": \"patch_316ca7f541a1\", \"mechanism\": \"rhs_substitution\"}, {\"id\": \"patch_eb7c01602e2a\", \"mechanism\": \"rhs_substitution\"}, {\"id\": \"patch_5900c28588fb\", \"mechanism\": \"rhs_substitution\"}, {\"id\": \"patch_1b97a12f1d1e\", \"mechanism\": \"rhs_substitution\"}], \"explanation\": \"All first mismatches occur at m_axis_tlast (cycles 65, 66, 101, 172). The patches directly targeting m_axis_tlast_reg via rhs_substitution (patch_17422b8b1575, patch_2a431655333c, patch_2c8752251e37) and reset_completion (patch_bdd445d05642) are ranked highest because they modify the exact signal observed failing. The frame_last_int substitution (patch_316ca7f541a1) is next because m_axis_tlast_int feeds m_axis_tlast_reg. Then m_axis_tvalid_int substitutions (patch_eb7c01602e2a, patch_5900c28588fb) that affect valid/last sequencing. Finally, frame_count_output_reg substitution (patch_1b97a12f1d1e) due to its role in the output frame. Structural coverage and direct_failure_target flags support this ordering.\"}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755385,
+  "id": "chatcmpl-e0b116eb8f3098b54360ede735297b82",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 481,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 13218,
+    "prompt_tokens": 13218,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 13699
+  }
+}

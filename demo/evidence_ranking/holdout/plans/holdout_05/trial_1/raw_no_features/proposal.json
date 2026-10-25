@@ -1,0 +1,37 @@
+{
+  "explanation": "The ranking prioritizes fixes that directly address the root cause of the output mismatch: the frame_count_reg and byte_count_output_reg registers are hardcoded to zero on reset instead of being properly reset/cleared. patch_2a431655333c fixes frame_count_reg to use frame_count_next (which is correctly updated), and patch_0c142226f776 adds the missing reset for byte_count_output_reg. The other substitutions (patch_a92250a89e31, patch_c98c57628a2e, patch_75435d38326c, patch_bf3cb49329ff, patch_e61bb11dea52, patch_b246985527c1) address signal width/usage consistency in the output path and trigger logic, which may contribute to cycle-exact behavior. Patches with nonsensical substitutions (like using loop index i for register values) are excluded.",
+  "ranking": [
+    {
+      "id": "patch_2a431655333c",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_0c142226f776",
+      "mechanism": "reset_completion"
+    },
+    {
+      "id": "patch_a92250a89e31",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_c98c57628a2e",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_75435d38326c",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_bf3cb49329ff",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_e61bb11dea52",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_b246985527c1",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "explanation": "The first three patches directly target the missing rst initialization of the source-side routing state (select_reg, drop_reg, select_valid_reg) at lines 220-229. Public trace shows m_axis_tvalid = 0 at cycles 4 and 5 when it should be 1, indicating the first packet is not being forwarded. The root cause is that select_reg and drop_reg come out of reset with unknown values, so the first valid input is misrouted or dropped and the arbiter never sees a request. patch_09b2f4ca228b resets both drop_reg and select_reg together with select_valid_reg, making it the most complete single fix. patch_35cdbadc2436 and patch_c1a2f86ca667 each reset only one of the two registers. The next two patches (0cffe2701cd6, 8ed0fa2ec0d1) add rst guards to the destination-match logic; they prevent secondary corruption during reset but do not fix the unreset registers. The remaining patches attempt index-stride corrections at lines 233/9120/11712/12403/12494; these address potential bit-slice errors but the failure occurs earlier in the datapath and the stride edits use log2 parameters incorrectly.",
+  "ranking": [
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_09b2f4ca228b",
+      "mechanism": "The source-side state registers select_reg, drop_reg, and select_valid_reg are not reset on rst. Only select_valid_reg is cleared (line 229). On the first active cycle after reset, stale select_reg and drop_reg cause the input interface to route or drop incorrectly, so the arbiter never receives a valid request and m_axis_tvalid stays 0 at cycles 4 and 5. Resetting drop_reg and select_reg in the same rst block (line 223-229) initializes the routing state so the first packet is forwarded correctly.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_35cdbadc2436",
+      "mechanism": "Clears only drop_reg on rst (line 223). This addresses half of the missing reset for the source-side routing state. With select_reg still unreset, the first packet may be routed to a wrong destination or dropped, leaving m_axis_tvalid at 0 on cycles 4-5. Less complete than patch_09b2f4ca228b which also resets select_reg.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_c1a2f86ca667",
+      "mechanism": "Resets only select_reg on rst (line 223). Addresses the other half of the missing routing-state reset. Still leaves drop_reg unreset, so drop_reg can incorrectly assert and suppress the first transfer. Incomplete relative to patch_09b2f4ca228b.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_0cffe2701cd6",
+      "mechanism": "Guards the M_BASE/M_TOP range-check branch with !rst. During reset the condition would otherwise evaluate on uninitialized M_BASE/M_TOP and set select_valid_reg/drop_reg incorrectly, corrupting the first routing decision and causing m_axis_tvalid to miss at cycles 4-5. However the primary cause is the unreset routing registers, so this is a secondary fix.",
+      "source_line": 210
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_8ed0fa2ec0d1",
+      "mechanism": "Guards the M_BASE equality branch with rst (active-high). During reset the condition would evaluate on possibly uninitialized M_BASE and incorrectly assert select_valid_reg/drop_reg. Like patch_0cffe2701cd6 this mitigates a secondary corruption but does not fix the core missing register reset.",
+      "source_line": 204
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_0954daa92ecd",
+      "mechanism": "Changes the source-side ready-mux index from M_COUNT to S_COUNT (line 233). The original int_s_axis_tready is a flat S_COUNT vector; indexing with M_COUNT is a stride error that can return the wrong ready bit. If the wrong ready is seen, the source interface may not present a request to the arbiter, leaving m_axis_tvalid at 0. This is a plausible indexing bug but the observed failure is earlier in the path (routing state).",
+      "source_line": 233
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_0551023abab5",
+      "mechanism": "Changes line 9120 (int_s_axis_tready index) to CL_M_COUNT and line 11712 (s_axis_tvalid_mux index) to CL_M_COUNT. Both indices are bit-width values, not element counts, so these substitutions are dimensionally incorrect and unlikely to fix the stride mismatch at line 233.",
+      "source_line": 233
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_b00008c7be19",
+      "mechanism": "Changes line 9120 to CL_S_COUNT and line 11712 to CL_M_COUNT. Similar to patch_0551023abab5, uses log2 widths as array strides which is incorrect for the generated flat vectors. Does not address the root cause (unreset routing registers).",
+      "source_line": 233
+    }
+  ]
+}

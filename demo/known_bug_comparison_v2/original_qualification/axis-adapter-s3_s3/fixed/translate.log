@@ -1,0 +1,28 @@
+%Warning-WIDTH: candidate.v:162:39: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'input_axis_tdata' generates 64 bits.
+                                  : ... In instance axis_adapter
+  162 |                 output_axis_tdata_int = input_axis_tdata;
+      |                                       ^
+                ... Use "/* verilator lint_off WIDTH */" and lint_on around source to disable this message.
+%Warning-WIDTH: candidate.v:163:39: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'input_axis_tkeep' generates 8 bits.
+                                  : ... In instance axis_adapter
+  163 |                 output_axis_tkeep_int = input_axis_tkeep;
+      |                                       ^
+%Warning-WIDTH: candidate.v:263:87: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'input_axis_tdata' generates 64 bits.
+                                  : ... In instance axis_adapter
+  263 |                 temp_tdata_next[cycle_count_reg*CYCLE_DATA_WIDTH +: CYCLE_DATA_WIDTH] = input_axis_tdata;
+      |                                                                                       ^
+%Warning-WIDTH: candidate.v:264:87: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'input_axis_tkeep' generates 8 bits.
+                                  : ... In instance axis_adapter
+  264 |                 temp_tkeep_next[cycle_count_reg*CYCLE_KEEP_WIDTH +: CYCLE_KEEP_WIDTH] = input_axis_tkeep;
+      |                                                                                       ^
+%Warning-WIDTH: candidate.v:294:39: Operator ASSIGN expects 8 bits on the Assign RHS, but Assign RHS's VARREF 'temp_tdata_reg' generates 64 bits.
+                                  : ... In instance axis_adapter
+  294 |                 output_axis_tdata_int = temp_tdata_reg;
+      |                                       ^
+%Warning-WIDTH: candidate.v:295:39: Operator ASSIGN expects 1 bits on the Assign RHS, but Assign RHS's VARREF 'temp_tkeep_reg' generates 8 bits.
+                                  : ... In instance axis_adapter
+  295 |                 output_axis_tkeep_int = temp_tkeep_reg;
+      |                                       ^
+%Warning-CASEINCOMPLETE: candidate.v:152:5: Case values incompletely covered (example pattern 0x3)
+  152 |     case (state_reg)
+      |     ^~~~

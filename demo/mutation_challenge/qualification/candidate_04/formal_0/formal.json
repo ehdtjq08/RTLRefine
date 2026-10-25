@@ -1,0 +1,303 @@
+{
+  "assumptions": "First symbolic step resets; legal stable source while stalled; selector in 0..9 and constant. No assumptions force DUT ready or valid.",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 0.416304,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "fixed_reference_rtl_used": false,
+  "initial_state": "Unspecified state bits start at zero; explicit register initializers are retained",
+  "limitation": "Bounded two-state property check at fixed widths/depths; not unbounded correctness or a power-on/CDC proof",
+  "monitor_sha256": "9b1716b7479a83db68227a0ad2c610c54f4ef271f3064a2810b29903165d1d51",
+  "payload_method": "One unconstrained selector held constant over the bound covers every one of the 10 payload/sideband bits",
+  "profile": {
+    "addr_width": 1,
+    "data_width": 8,
+    "steps": 16
+  },
+  "properties": [
+    "valid_matches_occupancy",
+    "ready_matches_capacity",
+    "payload_order_sidebands",
+    "output_stability",
+    "capacity"
+  ],
+  "public_trace": {
+    "signal": [
+      {
+        "data": [
+          "",
+          "1000"
+        ],
+        "name": "watched_bit",
+        "wave": "4=..............."
+      },
+      {
+        "name": "s_valid",
+        "wave": "401.01.0.10.101.0"
+      },
+      {
+        "name": "s_user",
+        "wave": "401...01.....0..."
+      },
+      {
+        "name": "s_ready",
+        "wave": "401.......0.10.1."
+      },
+      {
+        "name": "s_last",
+        "wave": "41...010.1....0.."
+      },
+      {
+        "data": [
+          "",
+          "10111000",
+          "10010000",
+          "11110111",
+          "11010101",
+          "01010111",
+          "01110110",
+          "01110111",
+          "00110101",
+          "11100110",
+          "10000000",
+          "00010111",
+          "00010101",
+          "00010001",
+          "00010000"
+        ],
+        "name": "s_data",
+        "wave": "4==.=========.==="
+      },
+      {
+        "name": "rst",
+        "wave": "410........101.0."
+      },
+      {
+        "name": "property_valid",
+        "wave": "41..............."
+      },
+      {
+        "name": "property_stable",
+        "wave": "41..............."
+      },
+      {
+        "name": "property_ready",
+        "wave": "41..............."
+      },
+      {
+        "name": "property_payload",
+        "wave": "41....0....1....."
+      },
+      {
+        "name": "property_capacity",
+        "wave": "41..............."
+      },
+      {
+        "name": "m_valid",
+        "wave": "40.1.01....0....1"
+      },
+      {
+        "name": "m_user",
+        "wave": "40.1..01........0"
+      },
+      {
+        "name": "m_ready",
+        "wave": "41.....0...1010.."
+      },
+      {
+        "name": "m_last",
+        "wave": "40.1...0....1...0"
+      },
+      {
+        "data": [
+          "",
+          "00000000",
+          "10010000",
+          "11010101",
+          "01010111",
+          "00110101",
+          "00010111",
+          "00010001"
+        ],
+        "name": "m_data",
+        "wave": "4=.=..==....==..="
+      },
+      {
+        "data": [
+          "",
+          "00",
+          "01",
+          "00",
+          "01",
+          "10",
+          "00",
+          "01",
+          "00",
+          "01"
+        ],
+        "name": "expected_count",
+        "wave": "4=.=.==...=.===.="
+      }
+    ]
+  },
+  "replay": {
+    "first_violations": [
+      {
+        "actual": [
+          213,
+          1,
+          0
+        ],
+        "cycle": 5,
+        "expected": [
+          213,
+          0,
+          1
+        ],
+        "observed": {
+          "cycle": 5,
+          "m_data": "11010101",
+          "m_last": "1",
+          "m_ready": "1",
+          "m_user": "0",
+          "m_valid": "1",
+          "rst": "0",
+          "s_data": "01010111",
+          "s_last": "1",
+          "s_ready": "1",
+          "s_user": "0",
+          "s_valid": "1"
+        },
+        "property": "data_order_sidebands"
+      },
+      {
+        "actual": [
+          87,
+          0,
+          1
+        ],
+        "cycle": 6,
+        "expected": [
+          87,
+          1,
+          0
+        ],
+        "observed": {
+          "cycle": 6,
+          "m_data": "01010111",
+          "m_last": "0",
+          "m_ready": "0",
+          "m_user": "1",
+          "m_valid": "1",
+          "rst": "0",
+          "s_data": "01110110",
+          "s_last": "0",
+          "s_ready": "1",
+          "s_user": "1",
+          "s_valid": "0"
+        },
+        "property": "data_order_sidebands"
+      },
+      {
+        "actual": [
+          87,
+          0,
+          1
+        ],
+        "cycle": 7,
+        "expected": [
+          87,
+          1,
+          0
+        ],
+        "observed": {
+          "cycle": 7,
+          "m_data": "01010111",
+          "m_last": "0",
+          "m_ready": "0",
+          "m_user": "1",
+          "m_valid": "1",
+          "rst": "0",
+          "s_data": "01110111",
+          "s_last": "0",
+          "s_ready": "1",
+          "s_user": "1",
+          "s_valid": "0"
+        },
+        "property": "data_order_sidebands"
+      },
+      {
+        "actual": [
+          87,
+          0,
+          1
+        ],
+        "cycle": 8,
+        "expected": [
+          87,
+          1,
+          0
+        ],
+        "observed": {
+          "cycle": 8,
+          "m_data": "01010111",
+          "m_last": "0",
+          "m_ready": "0",
+          "m_user": "1",
+          "m_valid": "1",
+          "rst": "0",
+          "s_data": "00110101",
+          "s_last": "1",
+          "s_ready": "1",
+          "s_user": "1",
+          "s_valid": "1"
+        },
+        "property": "data_order_sidebands"
+      },
+      {
+        "actual": [
+          87,
+          0,
+          1
+        ],
+        "cycle": 9,
+        "expected": [
+          87,
+          1,
+          0
+        ],
+        "observed": {
+          "cycle": 9,
+          "m_data": "01010111",
+          "m_last": "0",
+          "m_ready": "0",
+          "m_user": "1",
+          "m_valid": "1",
+          "rst": "0",
+          "s_data": "11100110",
+          "s_last": "1",
+          "s_ready": "0",
+          "s_user": "1",
+          "s_valid": "0"
+        },
+        "property": "data_order_sidebands"
+      }
+    ],
+    "scope": "Same external input sequence replayed in four-state Icarus and independent Python queue; unknown uninitialized memory can differ from SAT zero initialization",
+    "status": "CONTRACT_FAILURE_REPRODUCED",
+    "violation_count": 5
+  },
+  "rtl_sha256": "d6521bc80334a3a38fe3f1b7de395aa5752784753c83b5f899800a05aa0c2721",
+  "script_sha256": "a3e547daa39adade7f5ac0fea2c5186b9995c6949378ff4c88814e2131d515b9",
+  "status": "COUNTEREXAMPLE"
+}

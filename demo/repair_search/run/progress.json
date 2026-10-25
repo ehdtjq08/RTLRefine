@@ -1,0 +1,903 @@
+{
+  "cases": [
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_005"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 3,
+          "logical_discovery_tool_seconds": 8.7206,
+          "selected_family": "ack_pipeline",
+          "selected_id": "candidate_005",
+          "selected_source": "case_01/candidate_005/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        },
+        "static_search": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 5,
+          "logical_discovery_tool_seconds": 14.5912,
+          "selected_family": "ack_pipeline",
+          "selected_id": "candidate_005",
+          "selected_source": "case_01/candidate_005/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 39,
+      "case_id": "zipcpu-spi-c1-c3-d9_c3",
+      "families": [
+        "ack_pipeline",
+        "condition_gate",
+        "word_byte_order"
+      ],
+      "opaque_id": "case_01",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 5,
+      "pool_candidates": 39,
+      "pool_sha256": "3433efc6a353ff5a998522634ee11f5badac19587bd134b14c64d889fefc816b",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.019744,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "a649a28a9d964e3bbbf8acd557f6b48c",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "Discovery shows o_wb_ack mismatches starting at cycle 6, indicating acknowledgment timing is misaligned with bus cycles. Candidates 002 and 005 directly qualify o_wb_ack with i_wb_cyc to enforce cycle-exact acknowledgment behavior. Candidates 001/004/011/014/024/034 adjust command/FIFO state machine gating (pre_cmd_state, ll_cmd_stb) to prevent premature state transitions that could cascade into ack misalignment. Byte-order candidates (003,010,012) are deprioritized as no data-port mismatches were reported.",
+        "ranked_ids": [
+          "candidate_002",
+          "candidate_005",
+          "candidate_001",
+          "candidate_004",
+          "candidate_011",
+          "candidate_014",
+          "candidate_024",
+          "candidate_034"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.661
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_006",
+            "candidate_008",
+            "candidate_010",
+            "candidate_012",
+            "candidate_014"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 7,
+          "logical_discovery_tool_seconds": 20.2955,
+          "selected_family": "word_byte_order",
+          "selected_id": "candidate_014",
+          "selected_source": "case_02/candidate_014/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        },
+        "static_search": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005",
+            "candidate_006",
+            "candidate_007",
+            "candidate_008"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 23.0459,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 40,
+      "case_id": "zipcpu-spi-c1-c3-d9_d9",
+      "families": [
+        "condition_gate",
+        "word_byte_order"
+      ],
+      "opaque_id": "case_02",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 11,
+      "pool_candidates": 40,
+      "pool_sha256": "719b1b389387b2ca899c04cbf6762afe07a44e29df40991cbfbf3962bc563d4b",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.020368,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "45d7e602b0f64202b19c11908d930c9b",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "All first mismatches occur on o_mosi with bit-pattern inversions, indicating a consistent byte/bit ordering defect in the MOSI datapath. The public contract mandates preservation of serial bit order and FIFO word/byte order. Candidates 002, 006, 008, 010, 012, 014, and 016 each reverse byte lanes feeding o_mosi (via r_data_reg, fifo_a_reg, fifo_b_reg, or wb_data) and directly address the observed symptom. Candidate 004 reverses bytes in the command CRC path, which also feeds the low-level SPI transmitter. Condition-gate candidates (001, 003, 005, 007, 009, 011, 013, 015, 017\u2013040) only modify control-flow predicates and cannot correct a pure bit-order error.",
+        "ranked_ids": [
+          "candidate_002",
+          "candidate_006",
+          "candidate_008",
+          "candidate_010",
+          "candidate_012",
+          "candidate_014",
+          "candidate_016",
+          "candidate_004"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.7359
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005",
+            "candidate_006",
+            "candidate_007",
+            "candidate_008"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 11.737,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        },
+        "static_search": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005",
+            "candidate_006",
+            "candidate_007",
+            "candidate_008"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 11.737,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 32,
+      "case_id": "zipcpu-spi-c1-c3-d9_c1",
+      "families": [
+        "condition_gate"
+      ],
+      "opaque_id": "case_03",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 8,
+      "pool_candidates": 32,
+      "pool_sha256": "248b2266cee69de8eac4a2730b6680c9b7628cf69671c0ff12b63f92ac9a7cfe",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.019617,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "7083d4349812468ab3f76cd2df3c2093",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The first trace mismatch occurs at cycle 101 on o_sck, indicating a startup/clk timing issue. The llsdspi module's WAIT_FOR_STARTUP generate block controls the startup_hold signal which gates SPI clock generation and CS de-assertion. Candidates 001-004 directly modify the startup counter logic and clock toggling during startup. Candidates 005-008 add gating conditions to the startup counter increment edge detector (past_sclk/o_sclk transition), which could prevent premature startup exit if the edge detection is too sensitive. These eight candidates target the startup hold mechanism most likely to cause the early o_sck=1 mismatch.",
+        "ranked_ids": [
+          "candidate_001",
+          "candidate_002",
+          "candidate_003",
+          "candidate_004",
+          "candidate_005",
+          "candidate_006",
+          "candidate_007",
+          "candidate_008"
+        ],
+        "status": "VALID",
+        "wall_seconds": 2.9193
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 1,
+          "logical_discovery_tool_seconds": 2.2699,
+          "selected_family": "state_retention",
+          "selected_id": "candidate_001",
+          "selected_source": "case_05/candidate_001/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        },
+        "static_search": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 1,
+          "logical_discovery_tool_seconds": 2.2699,
+          "selected_family": "state_retention",
+          "selected_id": "candidate_001",
+          "selected_source": "case_05/candidate_001/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 43,
+      "case_id": "axis-fifo-d12_d12",
+      "families": [
+        "condition_gate",
+        "handshake_reset_gate",
+        "reset_completion",
+        "state_retention"
+      ],
+      "opaque_id": "case_05",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 1,
+      "pool_candidates": 43,
+      "pool_sha256": "b6f0a7be7bfd6e8805e56b46ca36f41a29a6f88fdb92038d3de9156b30bcd5a7",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.008565,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "64f907d8498d4c90b7c0c08c882b22da",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The mismatch (m_axis_tvalid=1 when expected 0) indicates spurious output of data from an incomplete or invalid frame. The FRAME_FIFO logic must only commit frames when s_axis_tvalid && s_axis_tlast. Candidates 011, 021, 023, 025, 026, 028, 030, 031 add s_axis_tvalid/last and full_cur guards around write/depth conditions, directly preventing acceptance of partial frames that would otherwise be dequeued. Reset and USER_ENABLE edits are less relevant to the frame-commit policy.",
+        "ranked_ids": [
+          "candidate_011",
+          "candidate_021",
+          "candidate_023",
+          "candidate_025",
+          "candidate_026",
+          "candidate_028",
+          "candidate_030",
+          "candidate_031"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.0445
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": true,
+          "attempted_ids": [],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 0,
+          "logical_discovery_tool_seconds": 0,
+          "selected_family": null,
+          "selected_id": "original",
+          "selected_source": "case_06/original_discovery/candidate.v",
+          "source_changed": false,
+          "status": "ALL_SEALED_TRACES_PASS"
+        },
+        "static_search": {
+          "accepted": true,
+          "attempted_ids": [],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 0,
+          "logical_discovery_tool_seconds": 0,
+          "selected_family": null,
+          "selected_id": "original",
+          "selected_source": "case_06/original_discovery/candidate.v",
+          "source_changed": false,
+          "status": "ALL_SEALED_TRACES_PASS"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 34,
+      "case_id": "axis-frame-len-d13_d13_normal",
+      "families": [
+        "condition_gate",
+        "reported_value_reset",
+        "state_retention"
+      ],
+      "opaque_id": "case_06",
+      "original_status": "DISCOVERY_PASS_AUDIT_PENDING",
+      "physical_candidate_evaluations": 0,
+      "pool_candidates": 34,
+      "pool_sha256": "64f51f4248450387ddbc22c8ddbbf02bcfd8d22a0c1f87f3ce435acdbe066d69",
+      "ranking": {
+        "api_requests": 0,
+        "cost": null,
+        "ranked_ids": [],
+        "status": "NOT_REQUIRED",
+        "wall_seconds": 0
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_012",
+            "candidate_014",
+            "candidate_009",
+            "candidate_019",
+            "candidate_021",
+            "candidate_030"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 17.8036,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        },
+        "static_search": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005",
+            "candidate_006",
+            "candidate_007",
+            "candidate_008"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 17.8056,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 35,
+      "case_id": "axis-adapter-s3_s3",
+      "families": [
+        "condition_gate",
+        "handshake_reset_gate",
+        "state_retention"
+      ],
+      "opaque_id": "case_04",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 14,
+      "pool_candidates": 35,
+      "pool_sha256": "ffaa026611e447f7853815f6306f31556446abc28e6e106bc14198f4ba26e010",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.009073,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "803d863f5943445d85280b5cdf104bb0",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The trace reveals three mismatches at cycles 8-9: input_axis_tready stuck low, output_axis_tlast missing, and output_axis_tvalid spuriously high. Candidate_001 prevents hard-resetting tready to 0. Candidate_012 gates output tlast with input tvalid to avoid false last. Candidate_014 qualifies input tlast with output tready_int so last propagates only when output can accept. Candidate_009 gates expand-bus path with !tlast to avoid premature completion. Candidate_019 guards input_valid with output tready_int to prevent over-consumption under back-pressure. Candidate_021 qualifies input_valid with !tready_int to avoid double-valid. Candidate_030 adds output tready_int to the last-cycle completion gate. Candidate_006 adds input tvalid to the expand-bus gate.",
+        "ranked_ids": [
+          "candidate_001",
+          "candidate_012",
+          "candidate_014",
+          "candidate_009",
+          "candidate_019",
+          "candidate_021",
+          "candidate_030",
+          "candidate_006"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.3037
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_031",
+            "candidate_029",
+            "candidate_013",
+            "candidate_034",
+            "candidate_035",
+            "candidate_018"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 17.6522,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        },
+        "static_search": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005",
+            "candidate_006",
+            "candidate_007",
+            "candidate_008"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 17.7071,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 47,
+      "case_id": "axis-async-fifo-c4_c4",
+      "families": [
+        "condition_gate",
+        "handshake_reset_gate",
+        "reset_completion"
+      ],
+      "opaque_id": "case_07",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 14,
+      "pool_candidates": 47,
+      "pool_sha256": "10954e79327005fb50be5fb93073c71437c11e06306505d0881d3d94a48b293c",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.010074,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "28bc34c5c9714a4eb55c820057dcc37e",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The failing traces show a mismatch at cycle 4 where input_axis_tready is 1 instead of 0 during async reset. Candidate 031 gates the write handshake with !output_rst_sync3, preventing premature writes during output reset. Candidate 029 ensures async_rst blocks writes, avoiding activity during reset. Candidate 013 prevents async_rst from enabling writes, aligning write enable with reset de-assertion. Candidates 034/035/023 add input/output reset sync qualification to handshake gates, ensuring readiness/validity respect domain reset completion. Candidate 018 ties input readiness to output reset state. Candidate 001 clears data_out_reg on output reset, fixing the output_axis_tdata mismatch at cycle 8/9.",
+        "ranked_ids": [
+          "candidate_031",
+          "candidate_029",
+          "candidate_013",
+          "candidate_034",
+          "candidate_035",
+          "candidate_018",
+          "candidate_001",
+          "candidate_023"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.4838
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001"
+          ],
+          "discovery_pass_audit_rejected": true,
+          "logical_candidate_evaluations": 1,
+          "logical_discovery_tool_seconds": 2.2557,
+          "selected_family": "reset_completion",
+          "selected_id": "candidate_001",
+          "selected_source": "case_09/candidate_001/candidate.v",
+          "source_changed": true,
+          "status": "AUDIT_FAILED"
+        },
+        "static_search": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001"
+          ],
+          "discovery_pass_audit_rejected": true,
+          "logical_candidate_evaluations": 1,
+          "logical_discovery_tool_seconds": 2.2557,
+          "selected_family": "reset_completion",
+          "selected_id": "candidate_001",
+          "selected_source": "case_09/candidate_001/candidate.v",
+          "source_changed": true,
+          "status": "AUDIT_FAILED"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 38,
+      "case_id": "axis-frame-fifo-d11_d11",
+      "families": [
+        "condition_gate",
+        "handshake_reset_gate",
+        "reset_completion"
+      ],
+      "opaque_id": "case_09",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 1,
+      "pool_candidates": 38,
+      "pool_sha256": "4e77c0ea423e690be6c000d630663f61e32064f477d49ed1c137db4cdd69ac7a",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.006444,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "ca18036e828e48a9b0fb80611af8db76",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The trace shows drop_frame stuck high and output metadata corruption after reset. The write pointer block (line 97) lacks reset initialization for drop_frame and wr_ptr_cur, leaving them in unknown state. candidate_007 resets both in the rst block, fixing the root cause. candidate_001 and candidate_004 address each individually. candidate_002 gates input readiness with !rst to prevent spurious writes during reset. candidate_028 qualifies the drop-frame condition with !rst to avoid reset-era mis-evaluation. candidate_016 guards the write enable with !rst. candidate_034 qualifies the tlast check with !drop_frame to prevent false frame-end detection during drop. candidate_009 resets data_out_reg to clear stale output metadata.",
+        "ranked_ids": [
+          "candidate_007",
+          "candidate_001",
+          "candidate_004",
+          "candidate_002",
+          "candidate_028",
+          "candidate_016",
+          "candidate_034",
+          "candidate_009"
+        ],
+        "status": "VALID",
+        "wall_seconds": 2.8929
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": true,
+          "attempted_ids": [],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 0,
+          "logical_discovery_tool_seconds": 0,
+          "selected_family": null,
+          "selected_id": "original",
+          "selected_source": "case_10/original_discovery/candidate.v",
+          "source_changed": false,
+          "status": "ALL_SEALED_TRACES_PASS"
+        },
+        "static_search": {
+          "accepted": true,
+          "attempted_ids": [],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 0,
+          "logical_discovery_tool_seconds": 0,
+          "selected_family": null,
+          "selected_id": "original",
+          "selected_source": "case_10/original_discovery/candidate.v",
+          "source_changed": false,
+          "status": "ALL_SEALED_TRACES_PASS"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 32,
+      "case_id": "zipcpu-spi-c1-c3-d9_c1_normal",
+      "families": [
+        "condition_gate"
+      ],
+      "opaque_id": "case_10",
+      "original_status": "DISCOVERY_PASS_AUDIT_PENDING",
+      "physical_candidate_evaluations": 0,
+      "pool_candidates": 32,
+      "pool_sha256": "e484dcba2eec7a8fd4be78350683f71d17760a4360d6cc6acff4f0591eef49fb",
+      "ranking": {
+        "api_requests": 0,
+        "cost": null,
+        "ranked_ids": [],
+        "status": "NOT_REQUIRED",
+        "wall_seconds": 0
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_007",
+            "candidate_004",
+            "candidate_005",
+            "candidate_008",
+            "candidate_010",
+            "candidate_003"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 18.1003,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        },
+        "static_search": {
+          "accepted": false,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002",
+            "candidate_003",
+            "candidate_004",
+            "candidate_005",
+            "candidate_006",
+            "candidate_007",
+            "candidate_008"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 8,
+          "logical_discovery_tool_seconds": 18.1004,
+          "selected_family": null,
+          "selected_id": null,
+          "selected_source": null,
+          "source_changed": false,
+          "status": "SEARCH_EXHAUSTED"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 32,
+      "case_id": "axis-switch-d8_d8",
+      "families": [
+        "condition_gate",
+        "index_stride",
+        "reset_completion"
+      ],
+      "opaque_id": "case_08",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 9,
+      "pool_candidates": 32,
+      "pool_sha256": "f8f2a462e7ff0f2a46acc3a490da8e4038bfd4194b77f5744cb9843cb23166bd",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.012095,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "138c88442060421197962545417631c3",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The discovery trace shows m_axis_tvalid is 0 when expected 1 at cycle 4 (first data transfer) and cycle 5. The source-side select logic uses select_reg (destination index) and select_valid_reg (active routing) but neither is reset on rst. Only drop_reg has no reset, but select_reg/select_valid_reg retain stale values across reset, causing initial routing to use garbage select_reg and select_valid_reg=0. This prevents valid propagation to int_s_axis_tvalid and downstream m_axis_tvalid. Candidates 007/001/004 add the missing synchronous resets for select_reg and select_valid_reg (and drop_reg) in the s_ifaces generate block. Candidates 002/005/008/010 are lower-probability guard fixes that qualify the destination-match condition on rst, but the root cause is the uninitialized state registers.",
+        "ranked_ids": [
+          "candidate_007",
+          "candidate_001",
+          "candidate_004",
+          "candidate_002",
+          "candidate_005",
+          "candidate_008",
+          "candidate_010"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.9244
+      }
+    },
+    {
+      "arms": {
+        "nvidia_prioritized": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 2,
+          "logical_discovery_tool_seconds": 4.4545,
+          "selected_family": "reported_value_reset",
+          "selected_id": "candidate_002",
+          "selected_source": "case_11/candidate_002/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        },
+        "static_search": {
+          "accepted": true,
+          "attempted_ids": [
+            "candidate_001",
+            "candidate_002"
+          ],
+          "discovery_pass_audit_rejected": false,
+          "logical_candidate_evaluations": 2,
+          "logical_discovery_tool_seconds": 4.4545,
+          "selected_family": "reported_value_reset",
+          "selected_id": "candidate_002",
+          "selected_source": "case_11/candidate_002/candidate.v",
+          "source_changed": true,
+          "status": "ALL_SEALED_TRACES_PASS"
+        }
+      },
+      "audits_ran_only_after_both_selections": true,
+      "candidate_count": 28,
+      "case_id": "axis-frame-len-d13_d13",
+      "families": [
+        "condition_gate",
+        "reported_value_reset",
+        "state_retention"
+      ],
+      "opaque_id": "case_11",
+      "original_status": "DISCOVERY_TRACE_FAILED",
+      "physical_candidate_evaluations": 2,
+      "pool_candidates": 28,
+      "pool_sha256": "083425c93900a731bd812ea622dbf9b83c8fae89274ebb39661026987481fca4",
+      "ranking": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.00524,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "a00c682c145345a48000585972147251",
+          "reserved_usd": 1.060864,
+          "state": "settled"
+        },
+        "explanation": "The trace shows frame_len=3 vs expected=1 at cycle 5, with tkeep=1 (single byte) on a tlast transfer. The loop counts bits by matching tkeep against left-aligned masks, but tkeep=1 is right-aligned (LSB). For i=0: mask=0 -> no match; i=1: mask=128 -> no match; ... i=8: mask=255 -> no match. bit_cnt stays 0, yet frame_len becomes 3, implying the loop runs three times. The combinational block executes on every valid+ready cycle. At cycle 2 (first data), frame_reg=0 so frame_len_next=0 then +bit_cnt. If bit_cnt=1 (bug), frame_len=1. Cycle 3: frame_reg=1, frame_len=1+bit_cnt. Cycle 4: frame_len=1+2*bit_cnt. Cycle 5 (tlast): frame_len=1+3*bit_cnt=3 -> bit_cnt=1 per cycle. The loop must be matching i=1 incorrectly. candidate_014 adds !tlast to the new-frame condition (!frame_reg && !tlast), preventing new-frame reset on single-cycle frames, but the real issue is the bit counting. However, given the menu, candidate_014 and candidate_004 (gate main condition with !tlast) can suppress counting on tlast cycles. candidate_006 (!frame_reg) on main condition would only count on first cycle. candidate_019 (KEEP_ENABLE && frame_reg) would only count inside frames. candidate_018 (!tvalid) on tlast condition is irrelevant. candidate_022 (KEEP_ENABLE && !tlast) suppresses counting on tlast. candidate_001/002 are state retention/resets.",
+        "ranked_ids": [
+          "candidate_014",
+          "candidate_004",
+          "candidate_006",
+          "candidate_019",
+          "candidate_018",
+          "candidate_022",
+          "candidate_001",
+          "candidate_002"
+        ],
+        "status": "VALID",
+        "wall_seconds": 3.5716
+      }
+    }
+  ],
+  "paid_requests": [
+    {
+      "api_requests": 1,
+      "case": "case_01",
+      "cost": {
+        "estimated_usd": 0.019744,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "a649a28a9d964e3bbbf8acd557f6b48c",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_02",
+      "cost": {
+        "estimated_usd": 0.020368,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "45d7e602b0f64202b19c11908d930c9b",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_03",
+      "cost": {
+        "estimated_usd": 0.019617,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "7083d4349812468ab3f76cd2df3c2093",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_04",
+      "cost": {
+        "estimated_usd": 0.009073,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "803d863f5943445d85280b5cdf104bb0",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_05",
+      "cost": {
+        "estimated_usd": 0.008565,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "64f907d8498d4c90b7c0c08c882b22da",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_07",
+      "cost": {
+        "estimated_usd": 0.010074,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "28bc34c5c9714a4eb55c820057dcc37e",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_08",
+      "cost": {
+        "estimated_usd": 0.012095,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "138c88442060421197962545417631c3",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_09",
+      "cost": {
+        "estimated_usd": 0.006444,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "ca18036e828e48a9b0fb80611af8db76",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    },
+    {
+      "api_requests": 1,
+      "case": "case_11",
+      "cost": {
+        "estimated_usd": 0.00524,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "a00c682c145345a48000585972147251",
+        "reserved_usd": 1.060864,
+        "state": "settled"
+      }
+    }
+  ]
+}

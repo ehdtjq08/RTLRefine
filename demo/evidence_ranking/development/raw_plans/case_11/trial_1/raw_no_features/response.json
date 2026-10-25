@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    {\n      \"id\": \"patch_1bf21575a3be\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 81,\n      \"mechanism\": \"The default assignment `frame_len_valid_next = 1'b0` unconditionally clears the valid pulse in the same cycle it is asserted. Changing the default to `frame_len_valid_reg` (retain state) preserves the 1-cycle pulse until the next combinational evaluation, matching the observed trace where `frame_len_valid` stays asserted for exactly one cycle.\"\n    },\n    {\n      \"id\": \"patch_c1e6cd26e2ef\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 98,\n      \"mechanism\": \"The loop counts bits for every `i` where `tkeep` matches the contiguous mask. At cycle 5, `tkeep=1` matches both `i=0` (mask 0) and `i=1` (mask 1), so `bit_cnt` becomes 1 instead of 0, adding an extra byte. Guarding the equality with `(!frame_reg)` ensures the count only runs when starting a new frame (`frame_reg==0`), preventing spurious increments on continuation cycles.\"\n    },\n    {\n      \"id\": \"patch_e75a1cff7e0b\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 84,\n      \"mechanism\": \"The `if (monitor_axis_tlast)` block executes even when `tready=0` because the outer qualifier only checks `tready && tvalid`. Adding `&& (monitor_axis_tready)` makes the frame-termination logic (valid pulse, frame_reg clear) conditional on a *ready* transfer, which is the protocol requirement: a frame ends only on a valid AND ready last beat.\"\n    },\n    {\n      \"id\": \"patch_4ac42f1009e7\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 95,\n      \"mechanism\": \"The `if (KEEP_ENABLE)` block runs on every ready/valid beat, but `frame_len_next` should only be reset to 0 at frame start (`!frame_reg`). Qualifying with `&& (!frame_reg)` prevents re-initializing the accumulator mid-frame, avoiding double-count or reset glitches during multi-beat frames.\"\n    },\n    {\n      \"id\": \"patch_1e51d2e21710\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 81,\n      \"mechanism\": \"The outer `if (tready && tvalid)` processes beats even when already inside a frame (`frame_reg==1`). Adding `&& (!frame_reg)` restricts entry actions (frame start, length reset) to the first beat of a frame, aligning with the spec that only the first enabled beat of a frame initializes the counter.\"\n    },\n    {\n      \"id\": \"patch_5e3af25f023e\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 81,\n      \"mechanism\": \"After `frame_len_valid_reg` pulses high, `frame_len_reg` holds the reported length until explicitly cleared. Inserting `if (frame_len_valid_reg) frame_len_next = 0;` at the top of the combinational block resets the accumulator immediately after the valid cycle, preventing the stale length from contaminating the next frame\u2019s count.\"\n    },\n    {\n      \"id\": \"patch_a0ac38b154f7\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 95,\n      \"mechanism\": \"When `rst` is asserted mid-frame, `KEEP_ENABLE` logic should be disabled to avoid counting during reset. Qualifying with `&& (!rst)` suppresses the bit-count adder during active reset, ensuring `frame_len` stays at 0 while `rst=1`.\"\n    },\n    {\n      \"id\": \"patch_158c82e15fb9\",\n      \"failure_port\": \"frame_len\",\n      \"source_line\": 88,\n      \"mechanism\": \"The `else if (!frame_reg)` block starts a new frame on any ready/valid beat when not already in a frame. Adding `&& (!monitor_axis_tlast)` prevents treating a single-beat frame (tlast=1) as both start and continuation, avoiding double execution of start logic and the terminator logic in the same cycle.\"\n    }\n  ]\n  ,\n  \"explanation\": \"The discovery trace shows `frame_len` = 3 at cycle 5 instead of 1. Root causes are: (1) `frame_len_valid_next` default 0 kills the valid pulse in the same cycle (patch_1bf21575a3be); (2) bit-count loop matches multiple `i` for `tkeep=1` because no `!frame_reg` guard (patch_c1e6cd26e2ef); (3) frame termination logic runs without `tready` (patch_e75a1cff7e0b); (4) `KEEP_ENABLE` adder runs mid-frame without `!frame_reg` (patch_4ac42f1009e7); (5) outer qualifier lacks `!frame_reg` so start logic re-triggers (patch_1e51d2e21710); (6) no post-valid reset of `frame_len_next` (patch_5e3af25f023e); (7) reset assertion leaks into bit-count (patch_a0ac38b154f7); (8) single-beat frame start/end collision (patch_158c82e15fb9). Patches are ordered by directness to the observed mismatch at cycle 5.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754471,
+  "id": "chatcmpl-c533d17119091b83c27c0b84abf6ae7c",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 1285,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 4459,
+    "prompt_tokens": 4459,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 5744
+  }
+}

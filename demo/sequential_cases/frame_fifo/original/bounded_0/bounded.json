@@ -1,0 +1,26 @@
+{
+  "clock_model": "Single synchronous clock, one active edge per symbolic step",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 0.81724,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "compared_output_bits": 20,
+  "limitation": "12-step two-state reference comparison, four-word 8-bit FRAME_FIFO instance, not an unbounded proof",
+  "reference": "Historical maintainer fix, excluded from model prompts",
+  "reference_sha256": "f392a8ef44fa5204aae5ca9cdc284104de3d53f8db7ec484c3fb01bb5b61b1e2",
+  "reset_constraints": "Reset asserted at step 1, released at step 2; unconstrained thereafter",
+  "rtl_sha256": "2be8c2bd7c702029504bcdee441d07a5f59eacaff3b20232c1ee49f61990bc70",
+  "script_sha256": "cbe889a2c52b095ccf5b077d3012d5e72b3a6c0b27d82e26fbc2535fea4539c3",
+  "status": "COUNTEREXAMPLE",
+  "steps": 12
+}

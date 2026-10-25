@@ -1,0 +1,163 @@
+{
+  "checks": 25,
+  "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+  "commands": [
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-E",
+        "-o",
+        "__rtlrefine/design.v",
+        "./rtl/domain_ticks.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "preprocess",
+      "status": "PASS",
+      "wall_seconds": 0.016614411026239395
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-t",
+        "null",
+        "-s",
+        "domain_ticks",
+        "-Pdomain_ticks.WIDTH=80",
+        "./__rtlrefine/design.v"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "elaborate",
+      "status": "PASS",
+      "wall_seconds": 0.01693899102974683
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-E",
+        "-o",
+        "__rtlrefine/test_expanded.v",
+        "-I.",
+        "./__rtlrefine/design.v",
+        "./tests/audit.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "test_preprocess",
+      "status": "PASS",
+      "wall_seconds": 0.016906649922020733
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-s",
+        "tb_audit",
+        "-o",
+        "__rtlrefine/simulation.vvp",
+        "-I.",
+        "./__rtlrefine/design.v",
+        "./tests/audit.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "compile",
+      "status": "PASS",
+      "wall_seconds": 0.032999109011143446
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-t",
+        "null",
+        "-s",
+        "domain_ticks",
+        "-Pdomain_ticks.WIDTH=32'sb00000000000000000000000001010000",
+        "./__rtlrefine/design.v"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "elaborate",
+      "status": "PASS",
+      "wall_seconds": 0.017017378006130457
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/vvp",
+        "__rtlrefine/simulation.vvp"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "wall_seconds": 0.01735330990049988
+    }
+  ],
+  "id": "stress",
+  "interface": [
+    {
+      "instance": "dut",
+      "numeric_parameters": {
+        "WIDTH": "32'sb00000000000000000000000001010000"
+      },
+      "ports": [
+        {
+          "direction": "INPUT",
+          "index": 0,
+          "name": "clk_a",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 1,
+          "name": "clk_b",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 2,
+          "name": "reset",
+          "width": 1
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 3,
+          "name": "count_a",
+          "width": 80
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 4,
+          "name": "count_b",
+          "width": 80
+        }
+      ]
+    }
+  ],
+  "log_tail": "RTLREFINE_PASS nonce=771ac15b832b6ae118ac8aa8f945f6c2 checks=25\n",
+  "oracle": "User-supplied immutable self-checking testbench",
+  "passed": true,
+  "phase": "audit",
+  "source_hashes": {
+    "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf"
+  },
+  "status": "PASS",
+  "testbench_marker_transforms": [],
+  "top": "tb_audit",
+  "verification_hashes": {
+    "rtlrefine_check.vh": "a4b7e33a1014e2d7e34c57d8721c141b5be59c6a587e615dc1ab65bbd20ad463",
+    "tests/audit.sv": "6c0976ba9346c359c79fbca4ffb22a5e52d7c356ea2c12a2c12fc53fa54bbffa"
+  },
+  "wall_seconds": 0.11782984889578074
+}

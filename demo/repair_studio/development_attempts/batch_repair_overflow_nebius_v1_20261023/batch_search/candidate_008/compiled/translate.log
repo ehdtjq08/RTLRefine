@@ -1,0 +1,9 @@
+%Error: candidate.v:174:28: Expecting expression to be constant, but variable isn't const: 's_axis_tready'
+                          : ... In instance axis_fifo
+  174 |     if ((DEST_ENABLE) && (!s_axis_tready)) assign s_axis[DEST_OFFSET +: DEST_WIDTH] = s_axis_tdest;
+      |                            ^~~~~~~~~~~~~
+%Error: candidate.v:174:27: Generate If condition must evaluate to constant
+                          : ... In instance axis_fifo
+  174 |     if ((DEST_ENABLE) && (!s_axis_tready)) assign s_axis[DEST_OFFSET +: DEST_WIDTH] = s_axis_tdest;
+      |                           ^
+%Error: Exiting due to 2 error(s)

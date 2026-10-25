@@ -1,0 +1,52 @@
+{
+  "accepted": false,
+  "api_requests": 1,
+  "audit_pass": false,
+  "cost": {
+    "estimated_usd": 0.085665,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "8486bcedcca0433c8fcfa65ee80092ae",
+    "reserved_usd": 1.122304,
+    "state": "settled"
+  },
+  "discovery_pass": false,
+  "evaluation": {
+    "accepted": false,
+    "audit_pass": false,
+    "corrected_RTL_loaded_for_scoring": false,
+    "directory": "/home/hands/Nebius/results/known_bug_paired_v2_20261023/case_01/shared_initial/evaluation",
+    "discovery_pass": false,
+    "error": "Do not change public ports, configuration parameters or compiler directives",
+    "formal_proof": false,
+    "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+    "new_api_calls": 0,
+    "oracle_depends_on_corrected_trace_values": true,
+    "rtl_sha256": "3e48bf63ceb529b545c462ab903a4fdd29670aeddd8669eb4c07a9679ace2982",
+    "status": "POLICY_REJECTED",
+    "traces": []
+  },
+  "functional_source_changed": true,
+  "proposal": {
+    "decision": "repair",
+    "edits": [
+      {
+        "end_line": 270,
+        "replacement": "\tinitial\tr_cmd_busy = 1'b0;\n\tinitial\tr_data_reg = 32'h00;\n\tinitial\tr_last_r_one = 8'hff;\n\tinitial\tll_cmd_stb = 1'b0;\n\tinitial\tll_fifo_rd = 1'b0;\n\tinitial\tll_fifo_wr = 1'b0;\n\tinitial\tr_rsp_state = 3'h0;\n\tinitial\tr_cmd_state = 3'h0;\n\tinitial\tr_use_fifo  = 1'b0;\n\tinitial\tr_data_fil  = 2'b00;\n\tinitial\tr_lgblklen  = LGFIFOLN;\n\tinitial\tr_cmd_err   = 1'b0;\n\tinitial\tpre_cmd_state = 1'b0;\n\tinitial\tpre_rsp_state = 1'b0;\n\tinitial\tready_for_response_token = 1'b0;\n\tinitial\tr_have_data_response_token = 1'b0;\n\tinitial\tnonzero_out = 1'b0;",
+        "start_line": 259
+      },
+      {
+        "end_line": 498,
+        "replacement": "",
+        "start_line": 489
+      },
+      {
+        "end_line": 543,
+        "replacement": "",
+        "start_line": 509
+      }
+    ],
+    "explanation": "Fixed multiple-driver conflict on r_rsp_state by removing duplicate always block (lines 509-543). Added missing initializations for pre_cmd_state, pre_rsp_state, ready_for_response_token, r_have_data_response_token, nonzero_out to avoid X-propagation at reset. Removed dead code second_rsp_state (lines 489-498) which was declared but never used."
+  },
+  "status": "POLICY_REJECTED"
+}

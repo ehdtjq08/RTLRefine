@@ -1,0 +1,59 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.004707,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "3bec42b416a2476a933d8fe364856a67",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "diagnosis": "The bit-counting loop iterates one index beyond the legal mask range and uses a right-shift width that collapses to zero on the first iteration, so every non-zero tkeep is misclassified as the minimum frame length. Consequently the frame length register accumulates three bytes over cycles 2\u20134 instead of resetting at the frame boundary, producing a value of 3 when the oracle expects the new frame\u2019s first-byte count of 1 at cycle 5.",
+  "display_ids": [
+    "candidate_002",
+    "candidate_006",
+    "candidate_014",
+    "candidate_015",
+    "candidate_017",
+    "candidate_011"
+  ],
+  "ids": [
+    "patch_5e3af25f023e",
+    "patch_1e51d2e21710",
+    "patch_158c82e15fb9",
+    "patch_4d3dbe7613e4",
+    "patch_750e411d6b5a",
+    "patch_43231d1a706e"
+  ],
+  "proposal": {
+    "diagnosis": "The bit-counting loop iterates one index beyond the legal mask range and uses a right-shift width that collapses to zero on the first iteration, so every non-zero tkeep is misclassified as the minimum frame length. Consequently the frame length register accumulates three bytes over cycles 2\u20134 instead of resetting at the frame boundary, producing a value of 3 when the oracle expects the new frame\u2019s first-byte count of 1 at cycle 5.",
+    "ranking": [
+      {
+        "id": "candidate_002",
+        "mechanism": "Clears the reported frame_len after its valid pulse so the next frame starts from zero instead of accumulating stale bytes."
+      },
+      {
+        "id": "candidate_006",
+        "mechanism": "Restricts the frame-start logic to cycles where no frame is currently open, preventing mid-frame tlast from incorrectly re-initializing the counter."
+      },
+      {
+        "id": "candidate_014",
+        "mechanism": "Ensures a new frame is only started when tlast is low, avoiding a false restart on the same cycle a frame ends."
+      },
+      {
+        "id": "candidate_015",
+        "mechanism": "Gates frame-start on tready so that a new frame cannot begin on a cycle where the upstream is not ready to transfer."
+      },
+      {
+        "id": "candidate_017",
+        "mechanism": "Gates frame-start on tvalid so that a new frame cannot begin on a cycle where the upstream has no valid data."
+      },
+      {
+        "id": "candidate_011",
+        "mechanism": "Requires frame_reg to be set before accepting tlast, preventing an isolated tlast from spuriously closing a non-existent frame."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 3.8920599069679156
+}

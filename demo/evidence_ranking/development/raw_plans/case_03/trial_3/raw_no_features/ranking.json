@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.023905,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "28ed6566d5964e0d9da70f05b4e6d1fa",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_475847e36fa1",
+    "patch_baa9767c5bfd",
+    "patch_04bb6f387ef0",
+    "patch_d6528483d379",
+    "patch_7f3d8adcb57b",
+    "patch_dda0a8a3d763",
+    "patch_9006a7746811",
+    "patch_51df04ca4c8e"
+  ],
+  "proposal": {
+    "explanation": "All eight candidates target the SPI clock divider load conditions in llsdspi (lines 142, 144, 170). The public trace shows o_sck toggling high at cycle 102 when expected is 0, then repeated mismatches through cycle 110. The root cause is premature loading of r_clk_counter with i_speed during startup or early byte_accepted, before the low-level SPI engine (r_idle, CS, bus grant) is ready to drive SCK. Each patch adds a qualifying guard (i_cs, i_bus_grant, r_idle, !i_cs) to the relevant if/else-if branch so the divider only arms when a transaction is genuinely selected and the engine is idle. Patches at line 142 guard the startup_hold counter decrement; patches at line 144 guard the (startup_hold || byte_accepted) load in the else-if chain; patches at line 170 guard the same load in the main always block. The ranking orders by proximity to the observed failure: line 170 is the active divider load during normal operation, line 144 is the else-if counterpart, and line 142 is the startup path. Within each line, guards that match the trace's inactive inputs (i_cs=0, i_bus_grant=0, r_idle=0) are ranked higher.",
+    "ranking": [
+      {
+        "failure_port": "o_sck",
+        "id": "patch_475847e36fa1",
+        "mechanism": "The original r_clk_counter load condition at line 170 unconditionally loads i_speed when (startup_hold || byte_accepted) is true. In the failing trace, byte_accepted becomes asserted at cycle 94 (via i_wb_stb with o_idle), causing r_clk_counter to be loaded immediately. However, the SPI clock (o_sck) should not begin toggling until the low-level state machine has sequenced past startup and is ready to drive SCK low/high. The patch adds && (!i_cs) to this gate so the divider only loads when chip-select is asserted, preventing premature counter loads and aligning o_sck with the expected idle-high behavior.",
+        "source_line": 170
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_baa9767c5bfd",
+        "mechanism": "At line 144, the counter load branch for (startup_hold || byte_accepted) lacks a chip-select guard. If byte_accepted fires while i_cs is de-asserted (idle bus), the divider loads i_speed and r_z_counter becomes active, which later qualifies SCK transitions. Adding && (!i_cs) ensures the divider only arms when a transaction is actually selected, matching the observed need for o_sck to stay low during early cycles.",
+        "source_line": 144
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_04bb6f387ef0",
+        "mechanism": "The startup hold counter decrement at line 142 is gated by (startup_hold && !past_sclk && o_sclk). If i_bus_grant is de-asserted during startup, the design should not advance the startup counter. The patch adds && (!i_bus_grant) to prevent SCK toggling when arbitration denies bus access, which the trace shows as a contributor to early o_sck=1.",
+        "source_line": 142
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_d6528483d379",
+        "mechanism": "Symmetric to patch_04bb6f387ef0 but guarding with i_cs instead of i_bus_grant. If chip-select is de-asserted during startup, the startup counter should not advance. This prevents o_sck from toggling before a valid transaction begins, directly addressing the early-cycle o_sck=1 mismatches.",
+        "source_line": 142
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_7f3d8adcb57b",
+        "mechanism": "Guards the startup counter decrement with i_bus_grant asserted, ensuring SCK only toggles during startup when arbitration grants the bus. The public trace shows i_bus_grant=0 during early cycles, so this gate suppresses the spurious SCK transitions that appear at cycles 102+.",
+        "source_line": 142
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_dda0a8a3d763",
+        "mechanism": "Guards the startup counter decrement with i_cs asserted, ensuring SCK only toggles during startup when chip-select is active. Since the trace begins with i_cs=0 (implied by idle bus), this prevents the startup_hold counter from advancing and toggling o_sck prematurely.",
+        "source_line": 142
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_9006a7746811",
+        "mechanism": "Adds r_idle qualification to the (startup_hold || byte_accepted) branch. r_idle reflects the low-level state machine's readiness to transmit. In the trace, r_idle is low during early cycles, so this gate blocks the divider load until the SPI engine is actually idle and ready, preventing premature SCK activity.",
+        "source_line": 170
+      },
+      {
+        "failure_port": "o_sck",
+        "id": "patch_51df04ca4c8e",
+        "mechanism": "Adds i_cs qualification to the (startup_hold || byte_accepted) branch. This ensures the SPI clock divider only arms when chip-select is asserted, which matches the protocol requirement that SCK remains inactive until a transaction is selected. The trace shows SCK toggling before any valid CS, so this gate directly suppresses those cycles.",
+        "source_line": 170
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 8.7012
+}

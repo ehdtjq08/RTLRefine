@@ -1,0 +1,71 @@
+{
+  "cases": {
+    "grammar_miss": {
+      "exposure": "previously_examined",
+      "kind": "synthetic_injected",
+      "module": "smoke_counter",
+      "preparation_error": null,
+      "project": "local/comparison-lab-integration-fixture",
+      "solution_seeded": false,
+      "source_sha256": "74fb8c310fc370c510ca9b89af1bec9acdd008fb580fe63c7d34d78d7585d095",
+      "upstream": null
+    },
+    "normal": {
+      "exposure": "previously_examined",
+      "kind": "normal_control",
+      "module": "smoke_counter",
+      "preparation_error": null,
+      "project": "local/comparison-lab-integration-fixture",
+      "solution_seeded": false,
+      "source_sha256": "890ce0ecddfd1ae83b2c3772240357b6be310c5431181603510b60d7121828e9",
+      "upstream": null
+    },
+    "retention_fault": {
+      "exposure": "previously_examined",
+      "kind": "synthetic_injected",
+      "module": "smoke_counter",
+      "preparation_error": null,
+      "project": "local/comparison-lab-integration-fixture",
+      "solution_seeded": false,
+      "source_sha256": "93bd4659ccbd12d68f8a8bf69a7bc238554c7b55fb7e2bddc9964f40558e8aae",
+      "upstream": null
+    }
+  },
+  "claim_scope": "finite_source_grammar_at_declared_profiles",
+  "cohort": "native_system_validation_only",
+  "exposure": "previously_examined",
+  "grammar_coverage_denominator_includes_empty_and_unrepairable_pools": true,
+  "input_hashes": {
+    "grammar_miss/input.v": "74fb8c310fc370c510ca9b89af1bec9acdd008fb580fe63c7d34d78d7585d095",
+    "grammar_miss/trace_0/expected.hex": "6b4a1590355415de9bf7892405c4764b9222755f361f86c2931183929d73ba78",
+    "grammar_miss/trace_0/stimulus.hex": "3c08a1bba80d8c7ad4a4685e8e36b7a27edd9de0a343821f9fd8d487ce7872ad",
+    "grammar_miss/trace_1/expected.hex": "e3b90de927d1fdcefc0209fd3395215fcc1cbe374194ca41c5dfaefb19ecf9a1",
+    "grammar_miss/trace_1/stimulus.hex": "3eff17e9a40daed76b1725b554d981a2e3c1116d9df698ca4e70a4e74d9e4d46",
+    "grammar_miss/trace_2/expected.hex": "490f19829aac1ed0915ab350cdc460e986810c79d7e8fea06c2396ad5c1cac9e",
+    "grammar_miss/trace_2/stimulus.hex": "ed3c1a819598b20f9765112c1578860eb5c5f43753921c37628c42bef453f4e3",
+    "normal/input.v": "890ce0ecddfd1ae83b2c3772240357b6be310c5431181603510b60d7121828e9",
+    "normal/trace_0/expected.hex": "6b4a1590355415de9bf7892405c4764b9222755f361f86c2931183929d73ba78",
+    "normal/trace_0/stimulus.hex": "3c08a1bba80d8c7ad4a4685e8e36b7a27edd9de0a343821f9fd8d487ce7872ad",
+    "normal/trace_1/expected.hex": "e3b90de927d1fdcefc0209fd3395215fcc1cbe374194ca41c5dfaefb19ecf9a1",
+    "normal/trace_1/stimulus.hex": "3eff17e9a40daed76b1725b554d981a2e3c1116d9df698ca4e70a4e74d9e4d46",
+    "normal/trace_2/expected.hex": "490f19829aac1ed0915ab350cdc460e986810c79d7e8fea06c2396ad5c1cac9e",
+    "normal/trace_2/stimulus.hex": "ed3c1a819598b20f9765112c1578860eb5c5f43753921c37628c42bef453f4e3",
+    "retention_fault/input.v": "93bd4659ccbd12d68f8a8bf69a7bc238554c7b55fb7e2bddc9964f40558e8aae",
+    "retention_fault/trace_0/expected.hex": "6b4a1590355415de9bf7892405c4764b9222755f361f86c2931183929d73ba78",
+    "retention_fault/trace_0/stimulus.hex": "3c08a1bba80d8c7ad4a4685e8e36b7a27edd9de0a343821f9fd8d487ce7872ad",
+    "retention_fault/trace_1/expected.hex": "e3b90de927d1fdcefc0209fd3395215fcc1cbe374194ca41c5dfaefb19ecf9a1",
+    "retention_fault/trace_1/stimulus.hex": "3eff17e9a40daed76b1725b554d981a2e3c1116d9df698ca4e70a4e74d9e4d46",
+    "retention_fault/trace_2/expected.hex": "490f19829aac1ed0915ab350cdc460e986810c79d7e8fea06c2396ad5c1cac9e",
+    "retention_fault/trace_2/stimulus.hex": "ed3c1a819598b20f9765112c1578860eb5c5f43753921c37628c42bef453f4e3"
+  },
+  "oracle_scope": "Independent Python increment/reset recurrence, before-edge outputs; integration fixture only",
+  "schema_version": 1,
+  "source_manifest_sha256": "57fe6edcff2535069a606dae0dabc04e27116ef9492e32d951b5b1af0f99cd65",
+  "tool_versions": {
+    "g++": "g++: error: unrecognized command-line option '-V'",
+    "make": "/usr/bin/make: invalid option -- 'V'",
+    "verilator": "Verilator 4.038 2020-07-11 rev v4.036-114-g0cd4a57ad",
+    "yosys": "Yosys 0.51 (git sha1 c4b5190229616f7ebf8197f43990b4429de3e420)"
+  },
+  "validation_fixture": true
+}

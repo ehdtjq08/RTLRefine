@@ -1,0 +1,316 @@
+{
+  "original_pass": false,
+  "trials": [
+    {
+      "consensus": {
+        "borda_scores": {
+          "patch_0ce542feb6cc": 2,
+          "patch_19c499f1ae89": 0,
+          "patch_31072fe48c08": 6,
+          "patch_33b1685bf6d7": 4,
+          "patch_3457e7486463": 8,
+          "patch_4346fe4ce953": 0,
+          "patch_729f3a736c71": 1,
+          "patch_7c00c0de328d": 0,
+          "patch_896da21b3566": 10,
+          "patch_9c4e05759f35": 0,
+          "patch_a506c39785b0": 0,
+          "patch_ae32ec067fa9": 5,
+          "patch_b636b4c69600": 0,
+          "patch_c512447e3357": 0,
+          "patch_c8e74ade46dc": 1,
+          "patch_cd9c456b5c19": 7,
+          "patch_cec5966346b2": 0,
+          "patch_e0bd0b91ec43": 0,
+          "patch_ebc5e67a8224": 4,
+          "patch_f249dd8b9502": 3,
+          "patch_f494d942b989": 0,
+          "patch_f946eb483b5d": 8,
+          "patch_ff12fe133e85": 5,
+          "patch_ffb9af3e0e36": 8
+        },
+        "fallback_reason": "Insufficient valid or stable model views",
+        "order": [
+          "patch_3457e7486463",
+          "patch_9c4e05759f35",
+          "patch_b636b4c69600",
+          "patch_19c499f1ae89",
+          "patch_a506c39785b0",
+          "patch_ae32ec067fa9",
+          "patch_f249dd8b9502",
+          "patch_ff12fe133e85",
+          "patch_0ce542feb6cc",
+          "patch_31072fe48c08",
+          "patch_33b1685bf6d7",
+          "patch_4346fe4ce953",
+          "patch_729f3a736c71",
+          "patch_7c00c0de328d",
+          "patch_896da21b3566",
+          "patch_c512447e3357",
+          "patch_c8e74ade46dc",
+          "patch_cec5966346b2",
+          "patch_e0bd0b91ec43",
+          "patch_ebc5e67a8224",
+          "patch_f946eb483b5d",
+          "patch_ffb9af3e0e36",
+          "patch_cd9c456b5c19",
+          "patch_f494d942b989"
+        ],
+        "raw_consensus_order": [
+          "patch_896da21b3566",
+          "patch_3457e7486463",
+          "patch_f946eb483b5d",
+          "patch_ffb9af3e0e36",
+          "patch_cd9c456b5c19",
+          "patch_31072fe48c08",
+          "patch_ae32ec067fa9",
+          "patch_ff12fe133e85",
+          "patch_33b1685bf6d7",
+          "patch_ebc5e67a8224",
+          "patch_f249dd8b9502",
+          "patch_0ce542feb6cc",
+          "patch_729f3a736c71",
+          "patch_c8e74ade46dc",
+          "patch_9c4e05759f35",
+          "patch_b636b4c69600",
+          "patch_19c499f1ae89",
+          "patch_a506c39785b0",
+          "patch_4346fe4ce953",
+          "patch_7c00c0de328d",
+          "patch_c512447e3357",
+          "patch_cec5966346b2",
+          "patch_e0bd0b91ec43",
+          "patch_f494d942b989"
+        ],
+        "stability": 0.14285714285714285,
+        "stability_definition": "Mean pairwise top-eight Jaccard overlap; not correctness probability",
+        "topk_frequency": {
+          "patch_0ce542feb6cc": 1,
+          "patch_19c499f1ae89": 0,
+          "patch_31072fe48c08": 1,
+          "patch_33b1685bf6d7": 1,
+          "patch_3457e7486463": 1,
+          "patch_4346fe4ce953": 0,
+          "patch_729f3a736c71": 1,
+          "patch_7c00c0de328d": 0,
+          "patch_896da21b3566": 2,
+          "patch_9c4e05759f35": 0,
+          "patch_a506c39785b0": 0,
+          "patch_ae32ec067fa9": 1,
+          "patch_b636b4c69600": 0,
+          "patch_c512447e3357": 0,
+          "patch_c8e74ade46dc": 1,
+          "patch_cd9c456b5c19": 1,
+          "patch_cec5966346b2": 0,
+          "patch_e0bd0b91ec43": 0,
+          "patch_ebc5e67a8224": 1,
+          "patch_f249dd8b9502": 1,
+          "patch_f494d942b989": 0,
+          "patch_f946eb483b5d": 2,
+          "patch_ff12fe133e85": 1,
+          "patch_ffb9af3e0e36": 1
+        },
+        "used_model_order": false,
+        "valid_views": 2
+      },
+      "raw": {
+        "api_requests": 1,
+        "cost": {
+          "estimated_usd": 0.01647,
+          "phase": "development",
+          "pricing_verified_on": "2026-10-22",
+          "request_id": "4f7e57fe3f0c4de39ba0e284ab24f798",
+          "reserved_usd": 1.067008,
+          "state": "settled"
+        },
+        "ids": [
+          "patch_0ce542feb6cc",
+          "patch_729f3a736c71",
+          "patch_33b1685bf6d7",
+          "patch_ff12fe133e85",
+          "patch_b636b4c69600",
+          "patch_4346fe4ce953",
+          "patch_9c4e05759f35",
+          "patch_31072fe48c08"
+        ],
+        "proposal": {
+          "explanation": "Ranked by direct overlap with observed port failures: busy (cycle 13), s_axis_cmd_ready (cycle 13), sda_o/t (cycle 14/15), scl_o (cycle 26406). The top patches target rhs_substitution in regions driving start/stop timing, bus_active assertion, SCL/SDA drive, and PHY state release logic. The condition_gate patch (896da21b3566) qualifies the command valid check that gates all sequences. The state_retention patch (f249dd8b9502) preserves s_axis_data_tready across cycles to avoid premature deassertion. Lower candidates address narrower substitutions or lines distant from mismatch cycles.",
+          "ranking": [
+            {
+              "id": "patch_0ce542feb6cc",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_729f3a736c71",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_33b1685bf6d7",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_ff12fe133e85",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_b636b4c69600",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_4346fe4ce953",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_9c4e05759f35",
+              "mechanism": "rhs_substitution"
+            },
+            {
+              "id": "patch_31072fe48c08",
+              "mechanism": "rhs_substitution"
+            }
+          ]
+        },
+        "status": "VALID",
+        "wall_seconds": 4.001
+      },
+      "trial": 1,
+      "views": [
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.022718,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "ab1283f978c8433988ad145815ca9807",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_ffb9af3e0e36",
+            "patch_896da21b3566",
+            "patch_f946eb483b5d",
+            "patch_ae32ec067fa9",
+            "patch_33b1685bf6d7",
+            "patch_f249dd8b9502",
+            "patch_0ce542feb6cc",
+            "patch_729f3a736c71"
+          ],
+          "proposal": {
+            "explanation": "Ranked by failure-port proximity to edit sites and mechanism-type diversity. condition_gate patches (patch_ffb9af3e0e36/patch_896da21b3566 target s_axis_cmd_ready combinational gates in the command FSM, directly affecting ready/valid handshake. rhs_substitution entries replace hard-coded literals with existing registered signals (phy_write_bit, s_axis_cmd_ready_next, delay_scl_next, s_axis_data_tready_reg, mode_write_multiple_next, s_axis_cmd_stop, state_next, scl_o_next) at lines feeding the same failing ports (busy, s_axis_cmd_ready, sda_o). Structural coverage is 1.0 for each; dependencies are bounded static over-approximations anchored at cycle 13.",
+            "ranking": [
+              {
+                "id": "patch_ffb9af3e0e36",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_896da21b3566",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_f946eb483b5d",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_ae32ec067fa9",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_33b1685bf6d7",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_f249dd8b9502",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_0ce542feb6cc",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_729f3a736c71",
+                "mechanism": "rhs_substitution"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.7627
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.022271,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "9a114add4a3e4fe68f3fee9206d0cda9",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "ids": [
+            "patch_3457e7486463",
+            "patch_cd9c456b5c19",
+            "patch_31072fe48c08",
+            "patch_ff12fe133e85",
+            "patch_ebc5e67a8224",
+            "patch_896da21b3566",
+            "patch_f946eb483b5d",
+            "patch_c8e74ade46dc"
+          ],
+          "proposal": {
+            "explanation": "Ranking: ",
+            "ranking": [
+              {
+                "id": "patch_3457e7486463",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_cd9c456b5c19",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_31072fe48c08",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_ff12fe133e85",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_ebc5e67a8224",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_896da21b3566",
+                "mechanism": "condition_gate"
+              },
+              {
+                "id": "patch_f946eb483b5d",
+                "mechanism": "rhs_substitution"
+              },
+              {
+                "id": "patch_c8e74ade46dc",
+                "mechanism": "rhs_substitution"
+              }
+            ]
+          },
+          "status": "VALID",
+          "wall_seconds": 4.0047
+        },
+        {
+          "api_requests": 1,
+          "cost": {
+            "estimated_usd": 0.022889,
+            "phase": "development",
+            "pricing_verified_on": "2026-10-22",
+            "request_id": "21592e5b02864bfaaf4b7dd8e8b1887f",
+            "reserved_usd": 1.067008,
+            "state": "settled"
+          },
+          "error": "ValueError: Invalid patch ID",
+          "ids": [],
+          "status": "ERROR",
+          "wall_seconds": 3.8665
+        }
+      ]
+    }
+  ]
+}

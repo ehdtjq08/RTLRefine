@@ -1,0 +1,41 @@
+{
+  "accepted": false,
+  "audit_pass": false,
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_adapter",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0689,
+      "execution_mode": "bubblewrap",
+      "returncode": 1,
+      "stage": "translate",
+      "status": "FAIL",
+      "zero_initialization": true
+    }
+  ],
+  "corrected_RTL_loaded_for_scoring": false,
+  "discovery_pass": false,
+  "error": "%Error: candidate.v:242:21: syntax error, unexpected else\n  242 |                 end else begin\n      |                     ^~~~\n%Error: candidate.v:278:29: syntax error, unexpected begin, expecting assert or assume or cover or restrict\n  278 |         STATE_TRANSFER_OUT: begin\n      |                             ^~~~~\n%Error: candidate.v:301:41: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  301 |                         temp_tdata_next = input_axis_tdata;\n      |                                         ^\n%Error: candidate.v:311:52: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  311 |                             input_axis_tready_next = 0;\n      |                                                    ^\n%Error: candidate.v:315:52: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  315 |                             input_axis_tready_next = 1;\n      |                                                    ^\n%Error: candidate.v:319:48: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  319 |                         input_axis_tready_next = 1;\n      |                                                ^\n%Error: candidate.v:323:32: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  323 |                     state_next = STATE_TRANSFER_OUT;\n      |                                ^\n%Error: candidate.v:339:38: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  339 |                     cycle_count_next = cycle_count_reg + 1;\n      |                                      ^\n%Error: candidate.v:344:48: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  344 |                         input_axis_tready_next = 1;\n      |                                                ^\n%Error: candidate.v:348:36: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  348 |                         state_next = STATE_TRANSFER_OUT;\n      |                                    ^\n%Error: candidate.v:351:32: syntax error, unexpected '=', expecting IDENTIFIER or randomize\n  351 |                     state_next = STATE_TRANSFER_OUT;\n      |                                ^\n%Error: Exiting due to 11 error(s)\n",
+  "formal_proof": false,
+  "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "new_api_calls": 0,
+  "oracle_depends_on_corrected_trace_values": true,
+  "rtl_sha256": "827c073d49db81fbd232ee83a8f791da22481e8a54a7d2f6e8cf6a96c1bd3bca",
+  "status": "COMPILE_FAILED",
+  "traces": []
+}

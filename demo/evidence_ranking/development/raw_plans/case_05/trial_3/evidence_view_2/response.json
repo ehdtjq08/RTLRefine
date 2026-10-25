@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\"ranking\": [], \"explanation\": \"No candidate edits modify the output logic (`m_axis_tvalid`, `m_axis_tready`, `rd_ptr`, `mem_read_data_valid`) which is the actual failing signal path. The first mismatches occur at cycles 13\\u201315 on `m_axis_tvalid` where the design outputs 1 but the oracle expects 0. All provided patches only gate input-side conditions (`s_axis_tvalid`, `s_axis_tready`, `full_cur`, `full_wr`, `drop_frame_reg`, etc.) around line 213\\u2013246. Since the failure is on the master side (valid assertion when it should be deasserted), input qualification cannot fix the root cause. Therefore zero patches are ranked.\"}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792754369,
+  "id": "chatcmpl-d7c84035a5625106f4472d0628d47bc3",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 170,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 19637,
+    "prompt_tokens": 19637,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 19807
+  }
+}

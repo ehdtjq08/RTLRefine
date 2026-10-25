@@ -1,0 +1,37 @@
+{
+  "explanation": "The failure shows bus_active not asserting when expected. The top-ranked patch adds bus_active qualification to the command acceptance condition, directly controlling when the master initiates bus activity. The rhs_substitution patches then propagate the bus_active signal through the physical layer logic (sda_o_next, bus_control_reg, phy_stop_bit, etc.), ensuring consistent bus_active assertion throughout the transaction. This combination addresses the root cause by gating command acceptance on bus_active and then correctly threading that signal through the I2C physical layer state machine.",
+  "ranking": [
+    {
+      "id": "patch_a20388282eab",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_8f0b6eda38a7",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_45d6cb4a55d3",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_db2dce61ec9f",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_c1bf34953ab3",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_9c4e05759f35",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_64d2bd7aca6b",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_b426c357ff1e",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

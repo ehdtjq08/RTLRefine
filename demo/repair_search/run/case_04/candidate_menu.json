@@ -1,0 +1,562 @@
+[
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5050,
+        "old": "0",
+        "replacement": "input_axis_tready_reg",
+        "start": 5049
+      }
+    ],
+    "family": "state_retention",
+    "id": "candidate_001",
+    "line": 148,
+    "note": "Retain existing input_axis_tready state instead of a constant default",
+    "rtl_sha256": "0517c5c2c927fc7f2cedc165bb741c5616855a78b154e06495d005943e70d953"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4620,
+        "old": "input_axis_tready_reg",
+        "replacement": "(input_axis_tready_reg) && (!rst)",
+        "start": 4599
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_002",
+    "line": 130,
+    "note": "Qualify readiness with !rst",
+    "rtl_sha256": "4f3a96077aa59ce1da61b99ee1ab9fa9525ef0d3ea36075134ec43bd02853c10"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5181,
+        "old": "CYCLE_COUNT == 1",
+        "replacement": "(CYCLE_COUNT == 1) && (input_axis_tvalid)",
+        "start": 5165
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_003",
+    "line": 153,
+    "note": "Qualify condition with nearby scalar input_axis_tvalid",
+    "rtl_sha256": "e1b071d54052c647741cc333a247c90c91cd719780324ad6cd84830c073df98d"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 4620,
+        "old": "input_axis_tready_reg",
+        "replacement": "(input_axis_tready_reg) && (rst)",
+        "start": 4599
+      }
+    ],
+    "family": "handshake_reset_gate",
+    "id": "candidate_004",
+    "line": 130,
+    "note": "Qualify readiness with rst",
+    "rtl_sha256": "db4c16e63e26a5fd3aea80740783f68b7a7285b0901f126a2d6c0bb43058032c"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5181,
+        "old": "CYCLE_COUNT == 1",
+        "replacement": "(CYCLE_COUNT == 1) && (!input_axis_tvalid)",
+        "start": 5165
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_005",
+    "line": 153,
+    "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+    "rtl_sha256": "f60cbee57538498c41d13587330acf47562b6ebde41404deae0a1c0fd6403565"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5819,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (input_axis_tvalid)",
+        "start": 5809
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_006",
+    "line": 167,
+    "note": "Qualify condition with nearby scalar input_axis_tvalid",
+    "rtl_sha256": "cfc8ea21a9a5cc39b815891e731ea45f7c2246d7341d18a28fcc2b1dac6fa6c0"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5819,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (!input_axis_tvalid)",
+        "start": 5809
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_007",
+    "line": 167,
+    "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+    "rtl_sha256": "36fbea9cee2d661070f5d3e8d12a2081d31acf23af0c44f9f0ba4631397125be"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5819,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (input_axis_tlast)",
+        "start": 5809
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_008",
+    "line": 167,
+    "note": "Qualify condition with nearby scalar input_axis_tlast",
+    "rtl_sha256": "86feac8aac1dc6776360e7a55310786eaec2ba0d3f9c20233d77e36993037dcc"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5819,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (!input_axis_tlast)",
+        "start": 5809
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_009",
+    "line": 167,
+    "note": "Qualify condition with nearby scalar !input_axis_tlast",
+    "rtl_sha256": "1a6508cab2115c33f6607d0d9f3972e7ca48739ace0fd0367a7da9a658ed08dd"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5984,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (input_axis_tlast)",
+        "start": 5967
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_010",
+    "line": 173,
+    "note": "Qualify condition with nearby scalar input_axis_tlast",
+    "rtl_sha256": "deb7666bfed49a028db1d0e5d8e42b05c1962e4eec7efea72c7e7f4b34a17f00"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5984,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (!input_axis_tlast)",
+        "start": 5967
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_011",
+    "line": 173,
+    "note": "Qualify condition with nearby scalar !input_axis_tlast",
+    "rtl_sha256": "585622aac09804e14ce72e81da8dac79f0bd738f8545e5628f2ebb828488deed"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 6519,
+        "old": "input_axis_tlast",
+        "replacement": "(input_axis_tlast) && (input_axis_tvalid)",
+        "start": 6503
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_012",
+    "line": 185,
+    "note": "Qualify condition with nearby scalar input_axis_tvalid",
+    "rtl_sha256": "b689ecffefee258298cea9d52a43d1c25bf5571a905547028a0cbae07d2a2aa1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 6519,
+        "old": "input_axis_tlast",
+        "replacement": "(input_axis_tlast) && (!input_axis_tvalid)",
+        "start": 6503
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_013",
+    "line": 185,
+    "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+    "rtl_sha256": "d8e122b9d57a626e5417b335c205b427413c40c6dbc252b64c416bfcc7934f92"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 6519,
+        "old": "input_axis_tlast",
+        "replacement": "(input_axis_tlast) && (output_axis_tready_int)",
+        "start": 6503
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_014",
+    "line": 185,
+    "note": "Qualify condition with nearby scalar output_axis_tready_int",
+    "rtl_sha256": "3cb99864f5021f5d5ca5f13b186b6a0748b4ee18eebd40664d8468adb83d99fd"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 6519,
+        "old": "input_axis_tlast",
+        "replacement": "(input_axis_tlast) && (!output_axis_tready_int)",
+        "start": 6503
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_015",
+    "line": 185,
+    "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+    "rtl_sha256": "2a85c0d2ad995e107d1c22112495d4c88f0e032d5bbd9efcf3d7a1cb3fd912f7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7230,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (input_axis_tlast)",
+        "start": 7213
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_016",
+    "line": 203,
+    "note": "Qualify condition with nearby scalar input_axis_tlast",
+    "rtl_sha256": "ae44e878a6d30380b657916f6c149539ae87a5c2c07446c4063441a05eb25c74"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7230,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (!input_axis_tlast)",
+        "start": 7213
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_017",
+    "line": 203,
+    "note": "Qualify condition with nearby scalar !input_axis_tlast",
+    "rtl_sha256": "2809cde8141f43554271d541bc71ce829fb6ec4f88fd5af26cfeb5d40c007a6a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7230,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (output_axis_tready_int)",
+        "start": 7213
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_018",
+    "line": 203,
+    "note": "Qualify condition with nearby scalar output_axis_tready_int",
+    "rtl_sha256": "6b110907b92c1f2a9188b5c8cf723d304085de2986298179f3aae5b9eb91ff5d"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 7230,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (!output_axis_tready_int)",
+        "start": 7213
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_019",
+    "line": 203,
+    "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+    "rtl_sha256": "f007f011176d2dbef02906813bee1f58edaf0f38fb8e8a10fceb0cb9b0d1f7b5"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8254,
+        "old": "output_axis_tready_int",
+        "replacement": "(output_axis_tready_int) && (input_axis_tvalid)",
+        "start": 8232
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_020",
+    "line": 220,
+    "note": "Qualify condition with nearby scalar input_axis_tvalid",
+    "rtl_sha256": "7d6c69bf2e619adf939a710bff207a6c55056ed13dffef0bc2dd6809bf827405"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8254,
+        "old": "output_axis_tready_int",
+        "replacement": "(output_axis_tready_int) && (!input_axis_tvalid)",
+        "start": 8232
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_021",
+    "line": 220,
+    "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+    "rtl_sha256": "1f983d0a9bca2e2f40d5784d21aae60f097553681c7ccecea27a3187ded11e7b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8254,
+        "old": "output_axis_tready_int",
+        "replacement": "(output_axis_tready_int) && (input_axis_tlast)",
+        "start": 8232
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_022",
+    "line": 220,
+    "note": "Qualify condition with nearby scalar input_axis_tlast",
+    "rtl_sha256": "c67689a4876b5fc4862025bb01bc619ba804fe211f81febf7f948c5a2995448a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8254,
+        "old": "output_axis_tready_int",
+        "replacement": "(output_axis_tready_int) && (!input_axis_tlast)",
+        "start": 8232
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_023",
+    "line": 220,
+    "note": "Qualify condition with nearby scalar !input_axis_tlast",
+    "rtl_sha256": "f927a53d2b54d9969ec4f2fac6a20d92ff1525cb43cffe379b19f4bd29c00678"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8939,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (output_axis_tready_int)",
+        "start": 8922
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_024",
+    "line": 240,
+    "note": "Qualify condition with nearby scalar output_axis_tready_int",
+    "rtl_sha256": "7936cc858aaef97571b83923c12397a4df2ef75c1ea7f2b9220397d63a0d3379"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8939,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (!output_axis_tready_int)",
+        "start": 8922
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_025",
+    "line": 240,
+    "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+    "rtl_sha256": "628ff018d189d53df8a30cf2d47a5b28ac3ae36d0c87d3263a7b9bf37150cb1e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8939,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (input_axis_tlast)",
+        "start": 8922
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_026",
+    "line": 240,
+    "note": "Qualify condition with nearby scalar input_axis_tlast",
+    "rtl_sha256": "58b9f127d482e88407fa4cd6ad0c5b434c27dce7fe5505ad18131ea7c09b1183"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8939,
+        "old": "input_axis_tvalid",
+        "replacement": "(input_axis_tvalid) && (!input_axis_tlast)",
+        "start": 8922
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_027",
+    "line": 240,
+    "note": "Qualify condition with nearby scalar !input_axis_tlast",
+    "rtl_sha256": "e805e9a3d4c94999b103ee819ed3c2901698e69c86b7f6ae8163bf1c5b2a75b9"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9488,
+        "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+        "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (input_axis_tvalid)",
+        "start": 9435
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_028",
+    "line": 250,
+    "note": "Qualify condition with nearby scalar input_axis_tvalid",
+    "rtl_sha256": "6c3f2cebb4386dc083a54bbf260c131ce336cd316b58606b6a4f1192c5fb2845"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9488,
+        "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+        "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (!input_axis_tvalid)",
+        "start": 9435
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_029",
+    "line": 250,
+    "note": "Qualify condition with nearby scalar !input_axis_tvalid",
+    "rtl_sha256": "759e593ce41e9829fbbab09a8177025af9711e4697425a8ee0d049b930977f71"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9488,
+        "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+        "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (output_axis_tready_int)",
+        "start": 9435
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_030",
+    "line": 250,
+    "note": "Qualify condition with nearby scalar output_axis_tready_int",
+    "rtl_sha256": "4da73638e1ac52ac030a2ea8143140baff6c9ad9b89537dab82b3f3d29822302"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9488,
+        "old": "(cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast",
+        "replacement": "((cycle_count_reg == CYCLE_COUNT-1) | input_axis_tlast) && (!output_axis_tready_int)",
+        "start": 9435
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_031",
+    "line": 250,
+    "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+    "rtl_sha256": "4366b56c71e4ccd189d9059a925a01029d777ea56c8da765ab6bcfd9a6f1264e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10187,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (input_axis_tlast)",
+        "start": 10177
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_032",
+    "line": 267,
+    "note": "Qualify condition with nearby scalar input_axis_tlast",
+    "rtl_sha256": "f8c4b83d413c6cbef480967b06e210e31427cbcd73109b5a3e3718bbc7a4af0b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10187,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (!input_axis_tlast)",
+        "start": 10177
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_033",
+    "line": 267,
+    "note": "Qualify condition with nearby scalar !input_axis_tlast",
+    "rtl_sha256": "7123361951d815358ab987400e423978d9ccc69f3dd7f0cf4b9d2ab827c37e95"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10187,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (output_axis_tready_int)",
+        "start": 10177
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_034",
+    "line": 267,
+    "note": "Qualify condition with nearby scalar output_axis_tready_int",
+    "rtl_sha256": "e7dee5af7c1316bc48cc309848ac260734052f80fd7aceedde18fd486cbcc48d"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10187,
+        "old": "EXPAND_BUS",
+        "replacement": "(EXPAND_BUS) && (!output_axis_tready_int)",
+        "start": 10177
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_035",
+    "line": 267,
+    "note": "Qualify condition with nearby scalar !output_axis_tready_int",
+    "rtl_sha256": "31ff37e82a237a922aa6a71f66dcbbf71dfa46da7a917d530998df3b2480807b"
+  }
+]

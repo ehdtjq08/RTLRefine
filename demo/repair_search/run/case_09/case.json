@@ -1,0 +1,69 @@
+{
+  "arms": {
+    "nvidia_prioritized": {
+      "accepted": false,
+      "attempted_ids": [
+        "candidate_001"
+      ],
+      "discovery_pass_audit_rejected": true,
+      "logical_candidate_evaluations": 1,
+      "logical_discovery_tool_seconds": 2.2557,
+      "selected_family": "reset_completion",
+      "selected_id": "candidate_001",
+      "selected_source": "case_09/candidate_001/candidate.v",
+      "source_changed": true,
+      "status": "AUDIT_FAILED"
+    },
+    "static_search": {
+      "accepted": false,
+      "attempted_ids": [
+        "candidate_001"
+      ],
+      "discovery_pass_audit_rejected": true,
+      "logical_candidate_evaluations": 1,
+      "logical_discovery_tool_seconds": 2.2557,
+      "selected_family": "reset_completion",
+      "selected_id": "candidate_001",
+      "selected_source": "case_09/candidate_001/candidate.v",
+      "source_changed": true,
+      "status": "AUDIT_FAILED"
+    }
+  },
+  "audits_ran_only_after_both_selections": true,
+  "candidate_count": 38,
+  "case_id": "axis-frame-fifo-d11_d11",
+  "families": [
+    "condition_gate",
+    "handshake_reset_gate",
+    "reset_completion"
+  ],
+  "opaque_id": "case_09",
+  "original_status": "DISCOVERY_TRACE_FAILED",
+  "physical_candidate_evaluations": 1,
+  "pool_candidates": 38,
+  "pool_sha256": "4e77c0ea423e690be6c000d630663f61e32064f477d49ed1c137db4cdd69ac7a",
+  "ranking": {
+    "api_requests": 1,
+    "cost": {
+      "estimated_usd": 0.006444,
+      "phase": "development",
+      "pricing_verified_on": "2026-10-22",
+      "request_id": "ca18036e828e48a9b0fb80611af8db76",
+      "reserved_usd": 1.060864,
+      "state": "settled"
+    },
+    "explanation": "The trace shows drop_frame stuck high and output metadata corruption after reset. The write pointer block (line 97) lacks reset initialization for drop_frame and wr_ptr_cur, leaving them in unknown state. candidate_007 resets both in the rst block, fixing the root cause. candidate_001 and candidate_004 address each individually. candidate_002 gates input readiness with !rst to prevent spurious writes during reset. candidate_028 qualifies the drop-frame condition with !rst to avoid reset-era mis-evaluation. candidate_016 guards the write enable with !rst. candidate_034 qualifies the tlast check with !drop_frame to prevent false frame-end detection during drop. candidate_009 resets data_out_reg to clear stale output metadata.",
+    "ranked_ids": [
+      "candidate_007",
+      "candidate_001",
+      "candidate_004",
+      "candidate_002",
+      "candidate_028",
+      "candidate_016",
+      "candidate_034",
+      "candidate_009"
+    ],
+    "status": "VALID",
+    "wall_seconds": 2.8929
+  }
+}

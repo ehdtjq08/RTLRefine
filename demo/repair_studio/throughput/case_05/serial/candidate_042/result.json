@@ -1,0 +1,71 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/Nebius/.tools/bin/verilator",
+        "--cc",
+        "--exe",
+        "-Wno-fatal",
+        "--x-initial",
+        "0",
+        "--x-assign",
+        "0",
+        "--top-module",
+        "axis_fifo",
+        "--Mdir",
+        "obj_dir",
+        "candidate.v",
+        "dependencies.v",
+        "harness.cpp"
+      ],
+      "elapsed_seconds": 0.0339,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "translate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    {
+      "command": [
+        "/usr/bin/make",
+        "-C",
+        "obj_dir",
+        "-f",
+        "Vaxis_fifo.mk",
+        "-j1",
+        "OPT_FAST=-O0",
+        "OPT_SLOW=-O0"
+      ],
+      "elapsed_seconds": 1.8696,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "build",
+      "status": "PASS",
+      "zero_initialization": true
+    }
+  ],
+  "comparisons": 80,
+  "cycles": 16,
+  "first_mismatches": [
+    {
+      "actual": 1,
+      "cycle": 13,
+      "expected": 0,
+      "port": "m_axis_tvalid"
+    },
+    {
+      "actual": 1,
+      "cycle": 14,
+      "expected": 0,
+      "port": "m_axis_tvalid"
+    },
+    {
+      "actual": 1,
+      "cycle": 15,
+      "expected": 0,
+      "port": "m_axis_tvalid"
+    }
+  ],
+  "mismatch_count": 3,
+  "passed": false
+}

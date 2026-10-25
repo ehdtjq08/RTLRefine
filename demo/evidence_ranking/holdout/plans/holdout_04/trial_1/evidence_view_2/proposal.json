@@ -1,0 +1,37 @@
+{
+  "explanation": "The m_axis_tlast signal is asserted low instead of high at the final output byte. The most direct fix is driving m_axis_tlast_reg from the combinational m_axis_tlast (patch_2a431655333c), which targets the failing register directly. Next, the STATE_IDLE branch that emits the first byte on trigger must qualify m_axis_tvalid_int with m_axis_tready_int_reg so the initial word is not dropped (patch_eb7c01602e2a). The last-byte condition in the output loop should also require monitor_axis_tready so tlast is not asserted while the monitor side is not ready (patch_5d2b925ce50d). In the same STATE_IDLE block the TICK_COUNT_ENABLE selection should be gated by !m_axis_tready_int_reg to avoid a premature valid when the output register is already occupied (patch_1bcf966a75b9). The store_output pulse that captures counters should be driven by the frame_reg state rather than a constant to keep the capture aligned with frame boundaries (patch_ebce015d5f7b). The first-byte emission in STATE_OUTPUT_DATA needs the same monitor_axis_tready gate (patch_fc89a2456871). Resetting frame_ptr_next from frame_ptr_reg on trigger ensures the pointer starts from a known value (patch_a55e46059a07). Finally, busy_reg can reflect m_axis_tlast so busy drops when the last byte leaves the pipeline (patch_139b369af3a2).",
+  "ranking": [
+    {
+      "id": "patch_2a431655333c",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_eb7c01602e2a",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_5d2b925ce50d",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_1bcf966a75b9",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_ebce015d5f7b",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_fc89a2456871",
+      "mechanism": "condition_gate"
+    },
+    {
+      "id": "patch_a55e46059a07",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_139b369af3a2",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

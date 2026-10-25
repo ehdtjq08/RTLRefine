@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranked_ids\": [\n    \"candidate_014\",\n    \"candidate_004\",\n    \"candidate_006\",\n    \"candidate_019\",\n    \"candidate_018\",\n    \"candidate_022\",\n    \"candidate_001\",\n    \"candidate_002\"\n  ],\n  \"explanation\": \"The trace shows frame_len=3 vs expected=1 at cycle 5, with tkeep=1 (single byte) on a tlast transfer. The loop counts bits by matching tkeep against left-aligned masks, but tkeep=1 is right-aligned (LSB). For i=0: mask=0 -> no match; i=1: mask=128 -> no match; ... i=8: mask=255 -> no match. bit_cnt stays 0, yet frame_len becomes 3, implying the loop runs three times. The combinational block executes on every valid+ready cycle. At cycle 2 (first data), frame_reg=0 so frame_len_next=0 then +bit_cnt. If bit_cnt=1 (bug), frame_len=1. Cycle 3: frame_reg=1, frame_len=1+bit_cnt. Cycle 4: frame_len=1+2*bit_cnt. Cycle 5 (tlast): frame_len=1+3*bit_cnt=3 -> bit_cnt=1 per cycle. The loop must be matching i=1 incorrectly. candidate_014 adds !tlast to the new-frame condition (!frame_reg && !tlast), preventing new-frame reset on single-cycle frames, but the real issue is the bit counting. However, given the menu, candidate_014 and candidate_004 (gate main condition with !tlast) can suppress counting on tlast cycles. candidate_006 (!frame_reg) on main condition would only count on first cycle. candidate_019 (KEEP_ENABLE && frame_reg) would only count inside frames. candidate_018 (!tvalid) on tlast condition is irrelevant. candidate_022 (KEEP_ENABLE && !tlast) suppresses counting on tlast. candidate_001/002 are state retention/resets.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792747157,
+  "id": "chatcmpl-766085388c62a482dbf21efebd89c437",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 485,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 3785,
+    "prompt_tokens": 3785,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 4270
+  }
+}

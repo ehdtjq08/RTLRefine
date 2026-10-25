@@ -1,0 +1,138 @@
+{
+  "clock": "clk",
+  "id": "holdout_06",
+  "module_id": "axis_stat_counter",
+  "ports": {
+    "busy": {
+      "direction": "output",
+      "width": 1
+    },
+    "clk": {
+      "direction": "input",
+      "width": 1
+    },
+    "m_axis_tdata": {
+      "direction": "output",
+      "width": 8
+    },
+    "m_axis_tlast": {
+      "direction": "output",
+      "width": 1
+    },
+    "m_axis_tready": {
+      "direction": "input",
+      "width": 1
+    },
+    "m_axis_tuser": {
+      "direction": "output",
+      "width": 1
+    },
+    "m_axis_tvalid": {
+      "direction": "output",
+      "width": 1
+    },
+    "monitor_axis_tkeep": {
+      "direction": "input",
+      "width": 8
+    },
+    "monitor_axis_tlast": {
+      "direction": "input",
+      "width": 1
+    },
+    "monitor_axis_tready": {
+      "direction": "input",
+      "width": 1
+    },
+    "monitor_axis_tvalid": {
+      "direction": "input",
+      "width": 1
+    },
+    "rst": {
+      "direction": "input",
+      "width": 1
+    },
+    "tag": {
+      "direction": "input",
+      "width": 16
+    },
+    "trigger": {
+      "direction": "input",
+      "width": 1
+    }
+  },
+  "top": "axis_stat_counter",
+  "traces": [
+    {
+      "cycles": 256,
+      "expected": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/axis_stat_counter/trace_0/expected.hex",
+      "inputs": [
+        "m_axis_tready",
+        "monitor_axis_tkeep",
+        "monitor_axis_tlast",
+        "monitor_axis_tready",
+        "monitor_axis_tvalid",
+        "rst",
+        "tag",
+        "trigger"
+      ],
+      "label": "discovery",
+      "outputs": [
+        "busy",
+        "m_axis_tdata",
+        "m_axis_tlast",
+        "m_axis_tuser",
+        "m_axis_tvalid"
+      ],
+      "seed": 1103,
+      "stimulus": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/axis_stat_counter/trace_0/stimulus.hex"
+    },
+    {
+      "cycles": 512,
+      "expected": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/axis_stat_counter/trace_1/expected.hex",
+      "inputs": [
+        "m_axis_tready",
+        "monitor_axis_tkeep",
+        "monitor_axis_tlast",
+        "monitor_axis_tready",
+        "monitor_axis_tvalid",
+        "rst",
+        "tag",
+        "trigger"
+      ],
+      "label": "sealed_audit_1",
+      "outputs": [
+        "busy",
+        "m_axis_tdata",
+        "m_axis_tlast",
+        "m_axis_tuser",
+        "m_axis_tvalid"
+      ],
+      "seed": 7403,
+      "stimulus": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/axis_stat_counter/trace_1/stimulus.hex"
+    },
+    {
+      "cycles": 768,
+      "expected": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/axis_stat_counter/trace_2/expected.hex",
+      "inputs": [
+        "m_axis_tready",
+        "monitor_axis_tkeep",
+        "monitor_axis_tlast",
+        "monitor_axis_tready",
+        "monitor_axis_tvalid",
+        "rst",
+        "tag",
+        "trigger"
+      ],
+      "label": "sealed_audit_2",
+      "outputs": [
+        "busy",
+        "m_axis_tdata",
+        "m_axis_tlast",
+        "m_axis_tuser",
+        "m_axis_tvalid"
+      ],
+      "seed": 9601,
+      "stimulus": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/axis_stat_counter/trace_2/stimulus.hex"
+    }
+  ]
+}

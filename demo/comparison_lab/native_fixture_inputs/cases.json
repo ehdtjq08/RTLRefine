@@ -1,0 +1,155 @@
+{
+  "cases": [
+    {
+      "clock": "clk",
+      "id": "retention_fault",
+      "kind": "synthetic_injected",
+      "project": "local/comparison-lab-integration-fixture",
+      "source": "retention_fault/input.v",
+      "top": "smoke_counter",
+      "traces": [
+        {
+          "cycles": 32,
+          "expected": "retention_fault/trace_0/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "discovery",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "retention_fault/trace_0/stimulus.hex"
+        },
+        {
+          "cycles": 64,
+          "expected": "retention_fault/trace_1/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "audit_1",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "retention_fault/trace_1/stimulus.hex"
+        },
+        {
+          "cycles": 96,
+          "expected": "retention_fault/trace_2/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "audit_2",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "retention_fault/trace_2/stimulus.hex"
+        }
+      ]
+    },
+    {
+      "clock": "clk",
+      "id": "grammar_miss",
+      "kind": "synthetic_injected",
+      "project": "local/comparison-lab-integration-fixture",
+      "source": "grammar_miss/input.v",
+      "top": "smoke_counter",
+      "traces": [
+        {
+          "cycles": 32,
+          "expected": "grammar_miss/trace_0/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "discovery",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "grammar_miss/trace_0/stimulus.hex"
+        },
+        {
+          "cycles": 64,
+          "expected": "grammar_miss/trace_1/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "audit_1",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "grammar_miss/trace_1/stimulus.hex"
+        },
+        {
+          "cycles": 96,
+          "expected": "grammar_miss/trace_2/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "audit_2",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "grammar_miss/trace_2/stimulus.hex"
+        }
+      ]
+    },
+    {
+      "clock": "clk",
+      "id": "normal",
+      "kind": "normal_control",
+      "project": "local/comparison-lab-integration-fixture",
+      "source": "normal/input.v",
+      "top": "smoke_counter",
+      "traces": [
+        {
+          "cycles": 32,
+          "expected": "normal/trace_0/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "discovery",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "normal/trace_0/stimulus.hex"
+        },
+        {
+          "cycles": 64,
+          "expected": "normal/trace_1/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "audit_1",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "normal/trace_1/stimulus.hex"
+        },
+        {
+          "cycles": 96,
+          "expected": "normal/trace_2/expected.hex",
+          "inputs": [
+            "en",
+            "rst"
+          ],
+          "label": "audit_2",
+          "outputs": [
+            "count"
+          ],
+          "stimulus": "normal/trace_2/stimulus.hex"
+        }
+      ]
+    }
+  ],
+  "cohort": "native_system_validation_only",
+  "exposure": "previously_examined",
+  "oracle_scope": "Independent Python increment/reset recurrence, before-edge outputs; integration fixture only",
+  "validation_fixture": true
+}

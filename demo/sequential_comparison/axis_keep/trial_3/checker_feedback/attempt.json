@@ -1,0 +1,30 @@
+{
+  "accepted": false,
+  "cost": {
+    "estimated_usd": 0.023878,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "a4fb2ee98cac4461878040ade1540df9",
+    "reserved_usd": 1.097728,
+    "state": "settled"
+  },
+  "proposal": {
+    "explanation": "The test failure (0 actual bytes vs 20 expected) revealed a deadlock in the upsizing adapter (OUTPUT_WIDTH > SOURCE_WIDTH) when the downstream ready signal is bursty. The root cause was twofold: (1) the combinational/sequential logic was mixed in `always_comb` blocks, causing synthesis/simulation mismatches, and (2) the state machine incorrectly drove the *input* `output_axis_tready` (an input port) instead of the *output* `input_axis_tready`. This created a signal contention that prevented the adapter from ever asserting `output_axis_tvalid`. The fix restructures all generate blocks into clean `always_comb` (combinational) and `always_ff @(posedge clk)` (sequential) sections. For the upsizing paths, a clear 3-state machine (WAIT_FIRST, WAIT_SECOND, WAIT_OUTPUT_READY) assembles a full output word from two input beats, asserts `output_axis_tvalid` only when a word is ready, and waits for `output_axis_tready` before accepting new beats. The downsizing path is similarly refactored with a beat counter and explicit handshake. The pass-through and keep-enabled paths are also cleaned up for consistency.",
+    "rtl": "systemverilog/refinement/axis_data_width_adapter_refined.sv"
+  },
+  "review": {
+    "accepted": false,
+    "bounded_comparisons": [],
+    "case": "axis_keep",
+    "directory": "/home/hands/Nebius/results/sequential_paired_fork_v2_20261023/axis_keep/trial_3/checker_feedback/review",
+    "error": "Keep the template license, module parameters and ports byte-identical",
+    "limitation": "Directed simulations plus bounded two-state comparison to a historical reference; no unbounded proof or coverage of all parameters. Fixed references are excluded from model prompts.",
+    "new_api_calls": 0,
+    "proof_steps": 20,
+    "rtl_sha256": "dc9738cce79c4d82ad4efecdadc305d0e0c6fc3516a8cd7cd859ee036e040ac8",
+    "scope": "S_KEEP_ENABLE=0 means every source byte is valid regardless of s_axis_tkeep. Preserve frames, byte validity and ID/DEST/USER across 8-to-8/16/32-bit paths and stalls, including enabled source masks.",
+    "simulations": [],
+    "status": "POLICY_REJECTED"
+  },
+  "status": "POLICY_REJECTED"
+}

@@ -1,0 +1,648 @@
+[
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8371,
+        "old": "!ll_cmd_stb",
+        "replacement": "(!ll_cmd_stb) && (pre_cmd_state)",
+        "start": 8360
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_001",
+    "line": 278,
+    "note": "Qualify condition with nearby scalar pre_cmd_state",
+    "rtl_sha256": "b9cc3bb103f86deb77517d40a73e17e5be74aee688b2ddc5c3ad9034090096f5"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 5674,
+        "old": "i_wb_data",
+        "replacement": "{i_wb_data[7:0],i_wb_data[15:8],i_wb_data[23:16],i_wb_data[31:24]}",
+        "start": 5665
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_002",
+    "line": 164,
+    "note": "Reverse bytes feeding r_wb_data",
+    "rtl_sha256": "60defe19ec353feaee6bd90e156d0c2eca6a557e7afca81521ee357c390f31c1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8371,
+        "old": "!ll_cmd_stb",
+        "replacement": "(!ll_cmd_stb) && (!pre_cmd_state)",
+        "start": 8360
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_003",
+    "line": 278,
+    "note": "Qualify condition with nearby scalar !pre_cmd_state",
+    "rtl_sha256": "80df3a8332b3fb7762d62a2232d6d3afc58dd1d48c0c5ee47fa72fda7b8deb81"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 14136,
+        "old": "wb_data",
+        "replacement": "{wb_data[7:0],wb_data[15:8],wb_data[23:16],wb_data[31:24]}",
+        "start": 14129
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_004",
+    "line": 471,
+    "note": "Reverse bytes feeding r_data_reg",
+    "rtl_sha256": "0e09bc44ff7a7fa1fa963cf69f2ab47162dabf70083721a976c445caf8d06f3b"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8636,
+        "old": "pre_cmd_state",
+        "replacement": "(pre_cmd_state) && (ll_cmd_stb)",
+        "start": 8623
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_005",
+    "line": 291,
+    "note": "Qualify condition with nearby scalar ll_cmd_stb",
+    "rtl_sha256": "db4e5272cc97622dc2789eacc57b8e59cabac9455d3471553668d1f215937f34"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 17280,
+        "old": "r_data_reg",
+        "replacement": "{r_data_reg[7:0],r_data_reg[15:8],r_data_reg[23:16],r_data_reg[31:24]}",
+        "start": 17270
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_006",
+    "line": 575,
+    "note": "Reverse bytes feeding o_wb_data",
+    "rtl_sha256": "2214a040a4aab3cd7df2c06646d391bcb69cfb8310a8d83514e7c6bbaf4e1919"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 8636,
+        "old": "pre_cmd_state",
+        "replacement": "(pre_cmd_state) && (!ll_cmd_stb)",
+        "start": 8623
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_007",
+    "line": 291,
+    "note": "Qualify condition with nearby scalar !ll_cmd_stb",
+    "rtl_sha256": "03cf2d2c8b87a1a8347d6cc6a996161c6da74aa31bd9eeda343d33fd2a54f461"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 17330,
+        "old": "fifo_a_reg",
+        "replacement": "{fifo_a_reg[7:0],fifo_a_reg[15:8],fifo_a_reg[23:16],fifo_a_reg[31:24]}",
+        "start": 17320
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_008",
+    "line": 577,
+    "note": "Reverse bytes feeding o_wb_data",
+    "rtl_sha256": "6fd3913e7ef91433bd12936d76556b216b6a5dc2ee64d318384e2b1348daf3e7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9029,
+        "old": "r_cmd_state == 3'h0",
+        "replacement": "(r_cmd_state == 3'h0) && (pre_cmd_state)",
+        "start": 9010
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_009",
+    "line": 300,
+    "note": "Qualify condition with nearby scalar pre_cmd_state",
+    "rtl_sha256": "6fa1fa7caddacea4411c082376dd7a983d6f2aff6cee1f8dd608415ae575ec9a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 17380,
+        "old": "fifo_b_reg",
+        "replacement": "{fifo_b_reg[7:0],fifo_b_reg[15:8],fifo_b_reg[23:16],fifo_b_reg[31:24]}",
+        "start": 17370
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_010",
+    "line": 579,
+    "note": "Reverse bytes feeding o_wb_data",
+    "rtl_sha256": "3cea563764e1fbcf7714e4edcc921adc78d1db137e169a8f0a5b314dab49bbf7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9029,
+        "old": "r_cmd_state == 3'h0",
+        "replacement": "(r_cmd_state == 3'h0) && (!pre_cmd_state)",
+        "start": 9010
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_011",
+    "line": 300,
+    "note": "Qualify condition with nearby scalar !pre_cmd_state",
+    "rtl_sha256": "852e7d91862375706c3ea5457a739f8ec7434336391d38a6924d6132269af758"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 22117,
+        "old": "wb_data",
+        "replacement": "{wb_data[7:0],wb_data[15:8],wb_data[23:16],wb_data[31:24]}",
+        "start": 22110
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_012",
+    "line": 741,
+    "note": "Reverse bytes feeding fifo_a_wr_data",
+    "rtl_sha256": "98a3b715815197b2c756cee8cf77332d6077fe1e80d7950cd4a259abc5bbc7d1"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9029,
+        "old": "r_cmd_state == 3'h0",
+        "replacement": "(r_cmd_state == 3'h0) && (ll_cmd_stb)",
+        "start": 9010
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_013",
+    "line": 300,
+    "note": "Qualify condition with nearby scalar ll_cmd_stb",
+    "rtl_sha256": "89a8d0d71cf064c3e8cf72eb294c82b073bfcf61df54ac44222b4b09f52b9bf7"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 23071,
+        "old": "wb_data",
+        "replacement": "{wb_data[7:0],wb_data[15:8],wb_data[23:16],wb_data[31:24]}",
+        "start": 23064
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_014",
+    "line": 770,
+    "note": "Reverse bytes feeding fifo_b_wr_data",
+    "rtl_sha256": "29d173398429c1b51f0efb389a5eb4956ce8093ab6f93e47aa5436699303a951"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9029,
+        "old": "r_cmd_state == 3'h0",
+        "replacement": "(r_cmd_state == 3'h0) && (!ll_cmd_stb)",
+        "start": 9010
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_015",
+    "line": 300,
+    "note": "Qualify condition with nearby scalar !ll_cmd_stb",
+    "rtl_sha256": "2e6db5d7770ebff666397000a03f736ff4bc3ef4731ac19f4aa1ed30d792001e"
+  },
+  {
+    "changed_spans": 2,
+    "edits": [
+      {
+        "end": 22117,
+        "old": "wb_data",
+        "replacement": "{wb_data[7:0],wb_data[15:8],wb_data[23:16],wb_data[31:24]}",
+        "start": 22110
+      },
+      {
+        "end": 23071,
+        "old": "wb_data",
+        "replacement": "{wb_data[7:0],wb_data[15:8],wb_data[23:16],wb_data[31:24]}",
+        "start": 23064
+      }
+    ],
+    "family": "word_byte_order",
+    "id": "candidate_016",
+    "line": 741,
+    "note": "Coordinate byte reversal across similarly named lanes fed by wb_data",
+    "rtl_sha256": "3e6c1ef8f5ffbb69d4b8f28a2f23108627d6f9e50cd66736afa6ea5bc3f76cae"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9178,
+        "old": "r_cmd_state == 3'h1",
+        "replacement": "(r_cmd_state == 3'h1) && (pre_cmd_state)",
+        "start": 9159
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_017",
+    "line": 305,
+    "note": "Qualify condition with nearby scalar pre_cmd_state",
+    "rtl_sha256": "15ae8a9243d8b02d911e7bd24bb6f553bd5511f08d86565e48f0842a9a0e4153"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9178,
+        "old": "r_cmd_state == 3'h1",
+        "replacement": "(r_cmd_state == 3'h1) && (!pre_cmd_state)",
+        "start": 9159
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_018",
+    "line": 305,
+    "note": "Qualify condition with nearby scalar !pre_cmd_state",
+    "rtl_sha256": "fbe6b975ae3bfe52064e4f35b50e3c9a6725edd771a92431790ec0388c35001a"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9622,
+        "old": "r_cmd_state == 3'h4",
+        "replacement": "(r_cmd_state == 3'h4) && (r_have_resp)",
+        "start": 9603
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_019",
+    "line": 320,
+    "note": "Qualify condition with nearby scalar r_have_resp",
+    "rtl_sha256": "9a7462ea210142466d207cb07ac7b8ba6c857ee410c5c0824fa7a2d80f8ac19d"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9622,
+        "old": "r_cmd_state == 3'h4",
+        "replacement": "(r_cmd_state == 3'h4) && (!r_have_resp)",
+        "start": 9603
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_020",
+    "line": 320,
+    "note": "Qualify condition with nearby scalar !r_have_resp",
+    "rtl_sha256": "d3ef2b391b8fe87c2527b4eeff3d51d24f058fbf237a8db4a1e6e627a476acbb"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9734,
+        "old": "r_cmd_state == 3'h5",
+        "replacement": "(r_cmd_state == 3'h5) && (r_have_resp)",
+        "start": 9715
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_021",
+    "line": 324,
+    "note": "Qualify condition with nearby scalar r_have_resp",
+    "rtl_sha256": "3fe26dfae867854a935800d50cac23ac3142d9fe5dcc6ccc7d7ecceef20b0e73"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9734,
+        "old": "r_cmd_state == 3'h5",
+        "replacement": "(r_cmd_state == 3'h5) && (!r_have_resp)",
+        "start": 9715
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_022",
+    "line": 324,
+    "note": "Qualify condition with nearby scalar !r_have_resp",
+    "rtl_sha256": "1fa9da7ac9175fa2310dcbdb1939bec495f64bf739ffc1cc6712f7e94eaf1e7f"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9734,
+        "old": "r_cmd_state == 3'h5",
+        "replacement": "(r_cmd_state == 3'h5) && (r_use_fifo)",
+        "start": 9715
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_023",
+    "line": 324,
+    "note": "Qualify condition with nearby scalar r_use_fifo",
+    "rtl_sha256": "6278fcd13e6096dff16bc8eb587244e29452a38a39d606685b40cf2c248a2f78"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9734,
+        "old": "r_cmd_state == 3'h5",
+        "replacement": "(r_cmd_state == 3'h5) && (!r_use_fifo)",
+        "start": 9715
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_024",
+    "line": 324,
+    "note": "Qualify condition with nearby scalar !r_use_fifo",
+    "rtl_sha256": "bebc8cd2915d7d0141cd861124dc85851987225edfaea8e3ccffa8b6a18db2d8"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9789,
+        "old": "r_have_resp",
+        "replacement": "(r_have_resp) && (r_use_fifo)",
+        "start": 9778
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_025",
+    "line": 327,
+    "note": "Qualify condition with nearby scalar r_use_fifo",
+    "rtl_sha256": "97989b13811d25bad81af0a2155f1df472507703e055d0e0098cf70c0fd0c7d3"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9789,
+        "old": "r_have_resp",
+        "replacement": "(r_have_resp) && (!r_use_fifo)",
+        "start": 9778
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_026",
+    "line": 327,
+    "note": "Qualify condition with nearby scalar !r_use_fifo",
+    "rtl_sha256": "f98cd079ac46f0f2992c3dff141425b48a486c84708f86d7de6f1127f92ed6e9"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9789,
+        "old": "r_have_resp",
+        "replacement": "(r_have_resp) && (r_fifo_wr)",
+        "start": 9778
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_027",
+    "line": 327,
+    "note": "Qualify condition with nearby scalar r_fifo_wr",
+    "rtl_sha256": "1632e5257d6e4a703a08b4690e1840dd342bf75ee5c61c791fd1c29a4519e1b3"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9789,
+        "old": "r_have_resp",
+        "replacement": "(r_have_resp) && (!r_fifo_wr)",
+        "start": 9778
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_028",
+    "line": 327,
+    "note": "Qualify condition with nearby scalar !r_fifo_wr",
+    "rtl_sha256": "aecf7561e2c6aa4607076ebed0bfbbb366b76a3ec7dec3760de927e4fc79a671"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9820,
+        "old": "r_use_fifo",
+        "replacement": "(r_use_fifo) && (r_have_resp)",
+        "start": 9810
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_029",
+    "line": 329,
+    "note": "Qualify condition with nearby scalar r_have_resp",
+    "rtl_sha256": "46c9544a21419750e2575d29daefeecb3653fdf6f54f796cbdf1af1c0ae60de4"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9820,
+        "old": "r_use_fifo",
+        "replacement": "(r_use_fifo) && (!r_have_resp)",
+        "start": 9810
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_030",
+    "line": 329,
+    "note": "Qualify condition with nearby scalar !r_have_resp",
+    "rtl_sha256": "fad6eb05ccdca40da620382a44d0aee8e194c5b5d03dd28eee315f6567d33b98"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9820,
+        "old": "r_use_fifo",
+        "replacement": "(r_use_fifo) && (r_fifo_wr)",
+        "start": 9810
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_031",
+    "line": 329,
+    "note": "Qualify condition with nearby scalar r_fifo_wr",
+    "rtl_sha256": "3a11c0f77d92c10bc5555b65bb3c3e945d29478f01aca552ef875efd4e50a935"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9820,
+        "old": "r_use_fifo",
+        "replacement": "(r_use_fifo) && (!r_fifo_wr)",
+        "start": 9810
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_032",
+    "line": 329,
+    "note": "Qualify condition with nearby scalar !r_fifo_wr",
+    "rtl_sha256": "bdc33e6d7cdf0adc71c7d84bfaf66c94bc26c5636f958886f97c9ce12e491bf3"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9994,
+        "old": "(r_use_fifo)&&(r_fifo_wr)",
+        "replacement": "((r_use_fifo)&&(r_fifo_wr)) && (r_have_resp)",
+        "start": 9969
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_033",
+    "line": 334,
+    "note": "Qualify condition with nearby scalar r_have_resp",
+    "rtl_sha256": "171aea9942d81fc5f7cab98ed6e379d5d46ee7061a1a28b80074dfa664d2387e"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9994,
+        "old": "(r_use_fifo)&&(r_fifo_wr)",
+        "replacement": "((r_use_fifo)&&(r_fifo_wr)) && (!r_have_resp)",
+        "start": 9969
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_034",
+    "line": 334,
+    "note": "Qualify condition with nearby scalar !r_have_resp",
+    "rtl_sha256": "9f849ba2dadb1552473302bd9a0455be61f4fe117d26cb1decf62e819b0597c5"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9994,
+        "old": "(r_use_fifo)&&(r_fifo_wr)",
+        "replacement": "((r_use_fifo)&&(r_fifo_wr)) && (ll_fifo_rd_complete)",
+        "start": 9969
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_035",
+    "line": 334,
+    "note": "Qualify condition with nearby scalar ll_fifo_rd_complete",
+    "rtl_sha256": "0ce0a636b1ee81da028bc46cadce6494ce7d54bdaeb7f3dcd37f0bf5c6724165"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 9994,
+        "old": "(r_use_fifo)&&(r_fifo_wr)",
+        "replacement": "((r_use_fifo)&&(r_fifo_wr)) && (!ll_fifo_rd_complete)",
+        "start": 9969
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_036",
+    "line": 334,
+    "note": "Qualify condition with nearby scalar !ll_fifo_rd_complete",
+    "rtl_sha256": "0c325e5e23378fd7d1174e843e1b7276f5c2ea3df8870e15ccfcaf08cc57f64f"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10066,
+        "old": "r_cmd_state == 3'h6",
+        "replacement": "(r_cmd_state == 3'h6) && (r_use_fifo)",
+        "start": 10047
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_037",
+    "line": 337,
+    "note": "Qualify condition with nearby scalar r_use_fifo",
+    "rtl_sha256": "55de7eef46884bb5ecce04e4d079941fcb805435f29b35d339c110cb5c4ec141"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10066,
+        "old": "r_cmd_state == 3'h6",
+        "replacement": "(r_cmd_state == 3'h6) && (!r_use_fifo)",
+        "start": 10047
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_038",
+    "line": 337,
+    "note": "Qualify condition with nearby scalar !r_use_fifo",
+    "rtl_sha256": "9b2f397737b9e8c4aebcb3351fdc5226515de682fe93c61cd5a0b80abafad471"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10066,
+        "old": "r_cmd_state == 3'h6",
+        "replacement": "(r_cmd_state == 3'h6) && (r_fifo_wr)",
+        "start": 10047
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_039",
+    "line": 337,
+    "note": "Qualify condition with nearby scalar r_fifo_wr",
+    "rtl_sha256": "70dca1511670ac757d89b09ad172a33f03d3e12429ca5a8a5126e89bd6a0d255"
+  },
+  {
+    "changed_spans": 1,
+    "edits": [
+      {
+        "end": 10066,
+        "old": "r_cmd_state == 3'h6",
+        "replacement": "(r_cmd_state == 3'h6) && (!r_fifo_wr)",
+        "start": 10047
+      }
+    ],
+    "family": "condition_gate",
+    "id": "candidate_040",
+    "line": 337,
+    "note": "Qualify condition with nearby scalar !r_fifo_wr",
+    "rtl_sha256": "81b97ff1164327a61c46867a78652b55bae5f9a25067c0b6e14a641e97ec6206"
+  }
+]

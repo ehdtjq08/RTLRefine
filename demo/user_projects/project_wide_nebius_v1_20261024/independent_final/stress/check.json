@@ -1,0 +1,114 @@
+{
+  "checks": 40,
+  "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+  "commands": [
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-E",
+        "-o",
+        "__rtlrefine/design.v",
+        "./rtl/word_math.sv",
+        "./rtl/customer_top.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "preprocess",
+      "status": "PASS",
+      "wall_seconds": 0.016515007941052318
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-t",
+        "null",
+        "-s",
+        "customer_top",
+        "-Pcustomer_top.WIDTH=129",
+        "./__rtlrefine/design.v"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "elaborate",
+      "status": "PASS",
+      "wall_seconds": 0.01648891798686236
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-s",
+        "tb_audit",
+        "-o",
+        "__rtlrefine/simulation.vvp",
+        "-I.",
+        "./__rtlrefine/design.v",
+        "./tests/audit.sv"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "compile",
+      "status": "PASS",
+      "wall_seconds": 0.016454493044875562
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/vvp",
+        "__rtlrefine/simulation.vvp"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "wall_seconds": 0.016477445955388248
+    }
+  ],
+  "id": "stress",
+  "interface": [
+    {
+      "instance": "dut",
+      "ports": [
+        {
+          "direction": "INPUT",
+          "index": 0,
+          "name": "a",
+          "width": 129
+        },
+        {
+          "direction": "INPUT",
+          "index": 1,
+          "name": "b",
+          "width": 129
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 2,
+          "name": "result",
+          "width": 129
+        }
+      ]
+    }
+  ],
+  "log_tail": "RTLREFINE_PASS nonce=9609e5e6b2852cac4fdbb3befa7b25eb checks=40\n",
+  "oracle": "User-supplied immutable self-checking testbench",
+  "passed": true,
+  "phase": "audit",
+  "source_hashes": {
+    "rtl/customer_top.sv": "48eed9e08e55350d5f80c2600cec4aceb6c55c09999919febcd2856364caa2ab",
+    "rtl/word_math.sv": "e5b06e6fb5c130bec0afed31044aa0bcc97de2fde1edd65d0767fd9bf033a9af"
+  },
+  "status": "PASS",
+  "testbench_marker_transforms": [],
+  "top": "tb_audit",
+  "verification_hashes": {
+    "rtlrefine_check.vh": "a168249698cbec53ebaf277af2b8f5e30485624c83c83a08bb697163a868665a",
+    "tests/audit.sv": "56777ec06ba0d74e6f0f2473590b416227efba7faa5f8759460ae1d171747d98"
+  },
+  "wall_seconds": 0.06593586492817849
+}

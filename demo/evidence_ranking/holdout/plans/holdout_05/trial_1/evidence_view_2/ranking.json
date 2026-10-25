@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.016062,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "84e3c6cfb3444fe99e443bc3996b15e3",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_f2d9d35bb697",
+    "patch_bf3cb49329ff",
+    "patch_d85c55cc2e00",
+    "patch_75435d38326c",
+    "patch_a22fdc889d1f",
+    "patch_de6f8c13a145",
+    "patch_489a6092dfdc",
+    "patch_a7d16ae94182"
+  ],
+  "proposal": {
+    "explanation": "The primary failure at cycle 35 shows m_axis_tdata=0 when 1 is expected, indicating the output state machine isn't being triggered correctly. patch_f2d9d35bb697 adds a guard condition requiring m_axis_tready_int_reg for trigger activation, which directly controls whether STATE_OUTPUT_DATA is entered and data transmission begins. patch_bf3cb49329ff substitutes byte_count_next for offset initialization in the output state, correcting the byte-offset calculation that selects which statistic bytes to transmit. patch_d85c55cc2e00 replaces frame_count_reg reset with loop index i, fixing the frame counter update that affects multi-frame accounting. patch_75435d38326c initializes m_axis_tready_int_reg with m_axis_tvalid_int instead of 1'b0, ensuring the ready-int signal reflects actual output validity. patch_a22fdc889d1f sets temp_m_axis_tuser_reg to m_axis_tready, correcting the user signal propagation in the output pipeline. patch_de6f8c13a145 uses busy_reg for frame_next, linking frame state to the busy indicator. patch_489a6092dfdc substitutes loop index i for frame_count_next initialization. patch_a7d16ae94182 assigns m_axis_tvalid_reg to temp_m_axis_tlast_reg, fixing last-signal handling in the temp register path.",
+    "ranking": [
+      {
+        "id": "patch_f2d9d35bb697",
+        "mechanism": "condition_gate"
+      },
+      {
+        "id": "patch_bf3cb49329ff",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_d85c55cc2e00",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_75435d38326c",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_a22fdc889d1f",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_de6f8c13a145",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_489a6092dfdc",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_a7d16ae94182",
+        "mechanism": "rhs_substitution"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 5.1124
+}

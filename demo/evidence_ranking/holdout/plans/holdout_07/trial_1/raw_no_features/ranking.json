@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.016155,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "f437b84ae49b46c8b484692ecf727278",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_a20388282eab",
+    "patch_8f0b6eda38a7",
+    "patch_45d6cb4a55d3",
+    "patch_db2dce61ec9f",
+    "patch_c1bf34953ab3",
+    "patch_9c4e05759f35",
+    "patch_64d2bd7aca6b",
+    "patch_b426c357ff1e"
+  ],
+  "proposal": {
+    "explanation": "The failure shows bus_active not asserting when expected. The top-ranked patch adds bus_active qualification to the command acceptance condition, directly controlling when the master initiates bus activity. The rhs_substitution patches then propagate the bus_active signal through the physical layer logic (sda_o_next, bus_control_reg, phy_stop_bit, etc.), ensuring consistent bus_active assertion throughout the transaction. This combination addresses the root cause by gating command acceptance on bus_active and then correctly threading that signal through the I2C physical layer state machine.",
+    "ranking": [
+      {
+        "id": "patch_a20388282eab",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_8f0b6eda38a7",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_45d6cb4a55d3",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_db2dce61ec9f",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_c1bf34953ab3",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_9c4e05759f35",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_64d2bd7aca6b",
+        "mechanism": "rhs_substitution"
+      },
+      {
+        "id": "patch_b426c357ff1e",
+        "mechanism": "rhs_substitution"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.7388
+}

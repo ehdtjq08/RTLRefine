@@ -1,0 +1,603 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\axis_switch'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dependencies.v
+Parsing SystemVerilog input from `dependencies.v' to AST representation.
+Generating RTLIL representation for module `\arbiter'.
+Generating RTLIL representation for module `\axis_register'.
+Generating RTLIL representation for module `\priority_encoder'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \axis_switch
+Used module:     \axis_register
+Used module:     \arbiter
+Used module:         \priority_encoder
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 2
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_register'.
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 2
+Generating RTLIL representation for module `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register'.
+Parameter \PORTS = 4
+Parameter \TYPE = 88'0101001001001111010101010100111001000100010111110101001001001111010000100100100101001110
+Parameter \BLOCK = 88'0100000101000011010010110100111001001111010101110100110001000101010001000100011101000101
+Parameter \LSB_PRIORITY = 1212761928
+
+3.3. Executing AST frontend in derive mode using pre-parsed AST for module `\arbiter'.
+Parameter \PORTS = 4
+Parameter \TYPE = 88'0101001001001111010101010100111001000100010111110101001001001111010000100100100101001110
+Parameter \BLOCK = 88'0100000101000011010010110100111001001111010101110100110001000101010001000100011101000101
+Parameter \LSB_PRIORITY = 1212761928
+Generating RTLIL representation for module `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter'.
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 0
+
+3.4. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_register'.
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 0
+Generating RTLIL representation for module `$paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register'.
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 0
+Found cached RTLIL representation for module `$paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register'.
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 0
+Found cached RTLIL representation for module `$paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register'.
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1'0
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 8
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 1
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \REG_TYPE = 0
+Found cached RTLIL representation for module `$paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register'.
+Parameter \WIDTH = 4
+Parameter \LSB_PRIORITY = 24'010011000100111101010111
+
+3.5. Executing AST frontend in derive mode using pre-parsed AST for module `\priority_encoder'.
+Parameter \WIDTH = 4
+Parameter \LSB_PRIORITY = 24'010011000100111101010111
+Generating RTLIL representation for module `$paramod$a1ae0559a5737e2656ad7b4d7fa32eb688a24528\priority_encoder'.
+Parameter \WIDTH = 4
+Parameter \LSB_PRIORITY = 24'010011000100111101010111
+Found cached RTLIL representation for module `$paramod$a1ae0559a5737e2656ad7b4d7fa32eb688a24528\priority_encoder'.
+Parameter \WIDTH = 2
+Parameter \LSB_PRIORITY = 24'010011000100111101010111
+
+3.6. Executing AST frontend in derive mode using pre-parsed AST for module `\priority_encoder'.
+Parameter \WIDTH = 2
+Parameter \LSB_PRIORITY = 24'010011000100111101010111
+Generating RTLIL representation for module `$paramod$15fcd8c2a3973ef57aeff32e10132f76dcb1ee38\priority_encoder'.
+Parameter \WIDTH = 2
+Parameter \LSB_PRIORITY = 24'010011000100111101010111
+Found cached RTLIL representation for module `$paramod$15fcd8c2a3973ef57aeff32e10132f76dcb1ee38\priority_encoder'.
+
+3.7. Analyzing design hierarchy..
+Top module:  \axis_switch
+Used module:     $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register
+Used module:     $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter
+Used module:         \priority_encoder
+Used module:             $paramod$15fcd8c2a3973ef57aeff32e10132f76dcb1ee38\priority_encoder
+Used module:     $paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register
+Parameter \WIDTH = 4
+Parameter \LSB_PRIORITY = 1212761928
+
+3.8. Executing AST frontend in derive mode using pre-parsed AST for module `\priority_encoder'.
+Parameter \WIDTH = 4
+Parameter \LSB_PRIORITY = 1212761928
+Generating RTLIL representation for module `$paramod$988598fe0cffb891d91000f0f76bb56f4ddf1b01\priority_encoder'.
+Parameter \WIDTH = 4
+Parameter \LSB_PRIORITY = 1212761928
+Found cached RTLIL representation for module `$paramod$988598fe0cffb891d91000f0f76bb56f4ddf1b01\priority_encoder'.
+
+3.9. Analyzing design hierarchy..
+Top module:  \axis_switch
+Used module:     $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register
+Used module:     $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter
+Used module:         $paramod$988598fe0cffb891d91000f0f76bb56f4ddf1b01\priority_encoder
+Used module:             \priority_encoder
+Used module:                 $paramod$15fcd8c2a3973ef57aeff32e10132f76dcb1ee38\priority_encoder
+Used module:     $paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register
+Parameter \WIDTH = 2
+Parameter \LSB_PRIORITY = 1212761928
+
+3.10. Executing AST frontend in derive mode using pre-parsed AST for module `\priority_encoder'.
+Parameter \WIDTH = 2
+Parameter \LSB_PRIORITY = 1212761928
+Generating RTLIL representation for module `$paramod$6b97d935b3151b8e6e96147386baf99ad1901fdb\priority_encoder'.
+Parameter \WIDTH = 2
+Parameter \LSB_PRIORITY = 1212761928
+Found cached RTLIL representation for module `$paramod$6b97d935b3151b8e6e96147386baf99ad1901fdb\priority_encoder'.
+
+3.11. Analyzing design hierarchy..
+Top module:  \axis_switch
+Used module:     $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register
+Used module:     $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter
+Used module:         $paramod$988598fe0cffb891d91000f0f76bb56f4ddf1b01\priority_encoder
+Used module:             $paramod$6b97d935b3151b8e6e96147386baf99ad1901fdb\priority_encoder
+Used module:     $paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register
+
+3.12. Analyzing design hierarchy..
+Top module:  \axis_switch
+Used module:     $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register
+Used module:     $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter
+Used module:         $paramod$988598fe0cffb891d91000f0f76bb56f4ddf1b01\priority_encoder
+Used module:             $paramod$6b97d935b3151b8e6e96147386baf99ad1901fdb\priority_encoder
+Used module:     $paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register
+Removing unused module `$paramod$15fcd8c2a3973ef57aeff32e10132f76dcb1ee38\priority_encoder'.
+Removing unused module `$paramod$a1ae0559a5737e2656ad7b4d7fa32eb688a24528\priority_encoder'.
+Removing unused module `\priority_encoder'.
+Removing unused module `\axis_register'.
+Removing unused module `\arbiter'.
+Removed 5 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:185$68'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:185$46'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:185$24'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:185$2'.
+Cleaned up 8 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$dependencies.v:139$222 in module $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.
+Marked 4 switch rules as full_case in process $proc$dependencies.v:94$211 in module $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.
+Marked 2 switch rules as full_case in process $proc$dependencies.v:311$194 in module $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.
+Marked 3 switch rules as full_case in process $proc$dependencies.v:283$191 in module $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.
+Marked 1 switch rules as full_case in process $proc$candidate.v:220$81 in module axis_switch.
+Marked 2 switch rules as full_case in process $proc$candidate.v:185$68 in module axis_switch.
+Marked 1 switch rules as full_case in process $proc$candidate.v:220$59 in module axis_switch.
+Marked 2 switch rules as full_case in process $proc$candidate.v:185$46 in module axis_switch.
+Marked 1 switch rules as full_case in process $proc$candidate.v:220$37 in module axis_switch.
+Marked 2 switch rules as full_case in process $proc$candidate.v:185$24 in module axis_switch.
+Marked 1 switch rules as full_case in process $proc$candidate.v:220$15 in module axis_switch.
+Marked 2 switch rules as full_case in process $proc$candidate.v:185$2 in module axis_switch.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 11 redundant assignments.
+Promoted 64 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:77$226'.
+  Set init value: \mask_reg = 4'0000
+Found init rule in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:56$225'.
+  Set init value: \grant_encoded_reg = 2'00
+Found init rule in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:55$224'.
+  Set init value: \grant_valid_reg = 1'0
+Found init rule in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:54$223'.
+  Set init value: \grant_reg = 4'0000
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:263$209'.
+  Set init value: \genblk1.temp_m_axis_tuser_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:262$208'.
+  Set init value: \genblk1.temp_m_axis_tdest_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:261$207'.
+  Set init value: \genblk1.temp_m_axis_tid_reg = 8'00000000
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:260$206'.
+  Set init value: \genblk1.temp_m_axis_tlast_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:259$205'.
+  Set init value: \genblk1.temp_m_axis_tvalid_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:258$204'.
+  Set init value: \genblk1.temp_m_axis_tkeep_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:257$203'.
+  Set init value: \genblk1.temp_m_axis_tdata_reg = 8'00000000
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:255$202'.
+  Set init value: \genblk1.m_axis_tuser_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:254$201'.
+  Set init value: \genblk1.m_axis_tdest_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:253$200'.
+  Set init value: \genblk1.m_axis_tid_reg = 8'00000000
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:252$199'.
+  Set init value: \genblk1.m_axis_tlast_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:251$198'.
+  Set init value: \genblk1.m_axis_tvalid_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:250$197'.
+  Set init value: \genblk1.m_axis_tkeep_reg = 1'0
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:249$196'.
+  Set init value: \genblk1.m_axis_tdata_reg = 8'00000000
+Found init rule in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:247$195'.
+  Set init value: \genblk1.s_axis_tready_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:180$143'.
+  Set init value: \s_ifaces[3].select_valid_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:178$142'.
+  Set init value: \s_ifaces[3].drop_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:176$141'.
+  Set init value: \s_ifaces[3].select_reg = 2'00
+Found init rule in `\axis_switch.$proc$candidate.v:180$140'.
+  Set init value: \s_ifaces[2].select_valid_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:178$139'.
+  Set init value: \s_ifaces[2].drop_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:176$138'.
+  Set init value: \s_ifaces[2].select_reg = 2'00
+Found init rule in `\axis_switch.$proc$candidate.v:180$137'.
+  Set init value: \s_ifaces[1].select_valid_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:178$136'.
+  Set init value: \s_ifaces[1].drop_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:176$135'.
+  Set init value: \s_ifaces[1].select_reg = 2'00
+Found init rule in `\axis_switch.$proc$candidate.v:180$134'.
+  Set init value: \s_ifaces[0].select_valid_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:178$133'.
+  Set init value: \s_ifaces[0].drop_reg = 1'0
+Found init rule in `\axis_switch.$proc$candidate.v:176$132'.
+  Set init value: \s_ifaces[0].select_reg = 2'00
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:77$226'.
+Creating decoders for process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:56$225'.
+Creating decoders for process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:55$224'.
+Creating decoders for process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:54$223'.
+Creating decoders for process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+     1/4: $0\mask_reg[3:0]
+     2/4: $0\grant_encoded_reg[1:0]
+     3/4: $0\grant_valid_reg[0:0]
+     4/4: $0\grant_reg[3:0]
+Creating decoders for process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+     1/26: $8\mask_next[3:0]
+     2/26: $7\mask_next[3:0]
+     3/26: $6\mask_next[3:0]
+     4/26: $6\grant_encoded_next[1:0]
+     5/26: $6\grant_next[3:0]
+     6/26: $6\grant_valid_next[0:0]
+     7/26: $5\mask_next[3:0]
+     8/26: $5\grant_encoded_next[1:0]
+     9/26: $5\grant_valid_next[0:0]
+    10/26: $5\grant_next[3:0]
+    11/26: $4\mask_next[3:0]
+    12/26: $4\grant_encoded_next[1:0]
+    13/26: $4\grant_valid_next[0:0]
+    14/26: $4\grant_next[3:0]
+    15/26: $3\mask_next[3:0]
+    16/26: $3\grant_encoded_next[1:0]
+    17/26: $3\grant_valid_next[0:0]
+    18/26: $3\grant_next[3:0]
+    19/26: $2\grant_encoded_next[1:0]
+    20/26: $2\grant_next[3:0]
+    21/26: $2\grant_valid_next[0:0]
+    22/26: $2\mask_next[3:0]
+    23/26: $1\grant_encoded_next[1:0]
+    24/26: $1\grant_next[3:0]
+    25/26: $1\grant_valid_next[0:0]
+    26/26: $1\mask_next[3:0]
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:263$209'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:262$208'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:261$207'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:260$206'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:259$205'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:258$204'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:257$203'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:255$202'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:254$201'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:253$200'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:252$199'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:251$198'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:250$197'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:249$196'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:247$195'.
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+     1/15: $0\genblk1.temp_m_axis_tvalid_reg[0:0]
+     2/15: $0\genblk1.m_axis_tvalid_reg[0:0]
+     3/15: $0\genblk1.s_axis_tready_reg[0:0]
+     4/15: $0\genblk1.temp_m_axis_tuser_reg[0:0]
+     5/15: $0\genblk1.temp_m_axis_tdest_reg[0:0]
+     6/15: $0\genblk1.temp_m_axis_tid_reg[7:0]
+     7/15: $0\genblk1.temp_m_axis_tlast_reg[0:0]
+     8/15: $0\genblk1.temp_m_axis_tkeep_reg[0:0]
+     9/15: $0\genblk1.temp_m_axis_tdata_reg[7:0]
+    10/15: $0\genblk1.m_axis_tuser_reg[0:0]
+    11/15: $0\genblk1.m_axis_tdest_reg[0:0]
+    12/15: $0\genblk1.m_axis_tid_reg[7:0]
+    13/15: $0\genblk1.m_axis_tlast_reg[0:0]
+    14/15: $0\genblk1.m_axis_tkeep_reg[0:0]
+    15/15: $0\genblk1.m_axis_tdata_reg[7:0]
+Creating decoders for process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+     1/12: $2\genblk1.store_axis_temp_to_output[0:0]
+     2/12: $3\genblk1.temp_m_axis_tvalid_next[0:0]
+     3/12: $3\genblk1.m_axis_tvalid_next[0:0]
+     4/12: $2\genblk1.store_axis_input_to_output[0:0]
+     5/12: $2\genblk1.m_axis_tvalid_next[0:0]
+     6/12: $2\genblk1.store_axis_input_to_temp[0:0]
+     7/12: $2\genblk1.temp_m_axis_tvalid_next[0:0]
+     8/12: $1\genblk1.store_axis_input_to_temp[0:0]
+     9/12: $1\genblk1.store_axis_input_to_output[0:0]
+    10/12: $1\genblk1.temp_m_axis_tvalid_next[0:0]
+    11/12: $1\genblk1.m_axis_tvalid_next[0:0]
+    12/12: $1\genblk1.store_axis_temp_to_output[0:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:180$143'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:178$142'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:176$141'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:180$140'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:178$139'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:176$138'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:180$137'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:178$136'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:176$135'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:180$134'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:178$133'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:176$132'.
+Creating decoders for process `\axis_switch.$proc$candidate.v:220$81'.
+     1/1: $0\s_ifaces[3].select_valid_reg[0:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:185$68'.
+     1/10: $3\s_ifaces[3].drop_next[0:0]
+     2/10: $3\s_ifaces[3].select_valid_next[0:0]
+     3/10: $3\s_ifaces[3].select_next[1:0]
+     4/10: $2\s_ifaces[3].select_valid_next[0:0]
+     5/10: $2\s_ifaces[3].drop_next[0:0]
+     6/10: $2\s_ifaces[3].select_next[1:0]
+     7/10: $1\s_ifaces[3].k[31:0]
+     8/10: $1\s_ifaces[3].select_valid_next[0:0]
+     9/10: $1\s_ifaces[3].drop_next[0:0]
+    10/10: $1\s_ifaces[3].select_next[1:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:220$59'.
+     1/1: $0\s_ifaces[2].select_valid_reg[0:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:185$46'.
+     1/10: $3\s_ifaces[2].drop_next[0:0]
+     2/10: $3\s_ifaces[2].select_valid_next[0:0]
+     3/10: $3\s_ifaces[2].select_next[1:0]
+     4/10: $2\s_ifaces[2].select_valid_next[0:0]
+     5/10: $2\s_ifaces[2].drop_next[0:0]
+     6/10: $2\s_ifaces[2].select_next[1:0]
+     7/10: $1\s_ifaces[2].k[31:0]
+     8/10: $1\s_ifaces[2].select_valid_next[0:0]
+     9/10: $1\s_ifaces[2].drop_next[0:0]
+    10/10: $1\s_ifaces[2].select_next[1:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:220$37'.
+     1/1: $0\s_ifaces[1].select_valid_reg[0:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:185$24'.
+     1/10: $3\s_ifaces[1].drop_next[0:0]
+     2/10: $3\s_ifaces[1].select_valid_next[0:0]
+     3/10: $3\s_ifaces[1].select_next[1:0]
+     4/10: $2\s_ifaces[1].select_valid_next[0:0]
+     5/10: $2\s_ifaces[1].drop_next[0:0]
+     6/10: $2\s_ifaces[1].select_next[1:0]
+     7/10: $1\s_ifaces[1].k[31:0]
+     8/10: $1\s_ifaces[1].select_valid_next[0:0]
+     9/10: $1\s_ifaces[1].drop_next[0:0]
+    10/10: $1\s_ifaces[1].select_next[1:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:220$15'.
+     1/1: $0\s_ifaces[0].select_valid_reg[0:0]
+Creating decoders for process `\axis_switch.$proc$candidate.v:185$2'.
+     1/10: $3\s_ifaces[0].drop_next[0:0]
+     2/10: $3\s_ifaces[0].select_valid_next[0:0]
+     3/10: $3\s_ifaces[0].select_next[1:0]
+     4/10: $2\s_ifaces[0].select_valid_next[0:0]
+     5/10: $2\s_ifaces[0].drop_next[0:0]
+     6/10: $2\s_ifaces[0].select_next[1:0]
+     7/10: $1\s_ifaces[0].k[31:0]
+     8/10: $1\s_ifaces[0].select_valid_next[0:0]
+     9/10: $1\s_ifaces[0].drop_next[0:0]
+    10/10: $1\s_ifaces[0].select_next[1:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\grant_next' from process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+No latch inferred for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\grant_valid_next' from process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+No latch inferred for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\grant_encoded_next' from process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+No latch inferred for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\mask_next' from process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+No latch inferred for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tvalid_next' from process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+No latch inferred for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tvalid_next' from process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+No latch inferred for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.store_axis_input_to_output' from process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+No latch inferred for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.store_axis_input_to_temp' from process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+No latch inferred for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.store_axis_temp_to_output' from process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+No latch inferred for signal `\axis_switch.\s_ifaces[3].select_next' from process `\axis_switch.$proc$candidate.v:185$68'.
+No latch inferred for signal `\axis_switch.\s_ifaces[3].drop_next' from process `\axis_switch.$proc$candidate.v:185$68'.
+No latch inferred for signal `\axis_switch.\s_ifaces[3].select_valid_next' from process `\axis_switch.$proc$candidate.v:185$68'.
+Latch inferred for signal `\axis_switch.\s_ifaces[3].k' from process `\axis_switch.$proc$candidate.v:185$68': $auto$proc_dlatch.cc:432:proc_dlatch$747
+No latch inferred for signal `\axis_switch.\s_ifaces[2].select_next' from process `\axis_switch.$proc$candidate.v:185$46'.
+No latch inferred for signal `\axis_switch.\s_ifaces[2].drop_next' from process `\axis_switch.$proc$candidate.v:185$46'.
+No latch inferred for signal `\axis_switch.\s_ifaces[2].select_valid_next' from process `\axis_switch.$proc$candidate.v:185$46'.
+Latch inferred for signal `\axis_switch.\s_ifaces[2].k' from process `\axis_switch.$proc$candidate.v:185$46': $auto$proc_dlatch.cc:432:proc_dlatch$758
+No latch inferred for signal `\axis_switch.\s_ifaces[1].select_next' from process `\axis_switch.$proc$candidate.v:185$24'.
+No latch inferred for signal `\axis_switch.\s_ifaces[1].drop_next' from process `\axis_switch.$proc$candidate.v:185$24'.
+No latch inferred for signal `\axis_switch.\s_ifaces[1].select_valid_next' from process `\axis_switch.$proc$candidate.v:185$24'.
+Latch inferred for signal `\axis_switch.\s_ifaces[1].k' from process `\axis_switch.$proc$candidate.v:185$24': $auto$proc_dlatch.cc:432:proc_dlatch$769
+No latch inferred for signal `\axis_switch.\s_ifaces[0].select_next' from process `\axis_switch.$proc$candidate.v:185$2'.
+No latch inferred for signal `\axis_switch.\s_ifaces[0].drop_next' from process `\axis_switch.$proc$candidate.v:185$2'.
+No latch inferred for signal `\axis_switch.\s_ifaces[0].select_valid_next' from process `\axis_switch.$proc$candidate.v:185$2'.
+Latch inferred for signal `\axis_switch.\s_ifaces[0].k' from process `\axis_switch.$proc$candidate.v:185$2': $auto$proc_dlatch.cc:432:proc_dlatch$780
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\grant_reg' using process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+  created $dff cell `$procdff$781' with positive edge clock.
+Creating register for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\grant_valid_reg' using process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+  created $dff cell `$procdff$782' with positive edge clock.
+Creating register for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\grant_encoded_reg' using process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+  created $dff cell `$procdff$783' with positive edge clock.
+Creating register for signal `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.\mask_reg' using process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+  created $dff cell `$procdff$784' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.s_axis_tready_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$785' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tdata_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$786' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tkeep_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$787' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tvalid_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$788' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tlast_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$789' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tid_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$790' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tdest_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$791' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.m_axis_tuser_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$792' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tdata_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$793' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tkeep_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$794' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tvalid_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$795' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tlast_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$796' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tid_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$797' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tdest_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$798' with positive edge clock.
+Creating register for signal `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.\genblk1.temp_m_axis_tuser_reg' using process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+  created $dff cell `$procdff$799' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[3].select_reg' using process `\axis_switch.$proc$candidate.v:220$81'.
+  created $dff cell `$procdff$800' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[3].drop_reg' using process `\axis_switch.$proc$candidate.v:220$81'.
+  created $dff cell `$procdff$801' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[3].select_valid_reg' using process `\axis_switch.$proc$candidate.v:220$81'.
+  created $dff cell `$procdff$802' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[2].select_reg' using process `\axis_switch.$proc$candidate.v:220$59'.
+  created $dff cell `$procdff$803' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[2].drop_reg' using process `\axis_switch.$proc$candidate.v:220$59'.
+  created $dff cell `$procdff$804' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[2].select_valid_reg' using process `\axis_switch.$proc$candidate.v:220$59'.
+  created $dff cell `$procdff$805' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[1].select_reg' using process `\axis_switch.$proc$candidate.v:220$37'.
+  created $dff cell `$procdff$806' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[1].drop_reg' using process `\axis_switch.$proc$candidate.v:220$37'.
+  created $dff cell `$procdff$807' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[1].select_valid_reg' using process `\axis_switch.$proc$candidate.v:220$37'.
+  created $dff cell `$procdff$808' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[0].select_reg' using process `\axis_switch.$proc$candidate.v:220$15'.
+  created $dff cell `$procdff$809' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[0].drop_reg' using process `\axis_switch.$proc$candidate.v:220$15'.
+  created $dff cell `$procdff$810' with positive edge clock.
+Creating register for signal `\axis_switch.\s_ifaces[0].select_valid_reg' using process `\axis_switch.$proc$candidate.v:220$15'.
+  created $dff cell `$procdff$811' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:77$226'.
+Removing empty process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:56$225'.
+Removing empty process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:55$224'.
+Removing empty process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:54$223'.
+Found and cleaned up 1 empty switch in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+Removing empty process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:139$222'.
+Found and cleaned up 4 empty switches in `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+Removing empty process `$paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.$proc$dependencies.v:94$211'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:263$209'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:262$208'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:261$207'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:260$206'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:259$205'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:258$204'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:257$203'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:255$202'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:254$201'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:253$200'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:252$199'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:251$198'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:250$197'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:249$196'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:247$195'.
+Found and cleaned up 4 empty switches in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:311$194'.
+Found and cleaned up 3 empty switches in `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+Removing empty process `$paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.$proc$dependencies.v:283$191'.
+Removing empty process `axis_switch.$proc$candidate.v:180$143'.
+Removing empty process `axis_switch.$proc$candidate.v:178$142'.
+Removing empty process `axis_switch.$proc$candidate.v:176$141'.
+Removing empty process `axis_switch.$proc$candidate.v:180$140'.
+Removing empty process `axis_switch.$proc$candidate.v:178$139'.
+Removing empty process `axis_switch.$proc$candidate.v:176$138'.
+Removing empty process `axis_switch.$proc$candidate.v:180$137'.
+Removing empty process `axis_switch.$proc$candidate.v:178$136'.
+Removing empty process `axis_switch.$proc$candidate.v:176$135'.
+Removing empty process `axis_switch.$proc$candidate.v:180$134'.
+Removing empty process `axis_switch.$proc$candidate.v:178$133'.
+Removing empty process `axis_switch.$proc$candidate.v:176$132'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:220$81'.
+Removing empty process `axis_switch.$proc$candidate.v:220$81'.
+Found and cleaned up 2 empty switches in `\axis_switch.$proc$candidate.v:185$68'.
+Removing empty process `axis_switch.$proc$candidate.v:185$68'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:220$59'.
+Removing empty process `axis_switch.$proc$candidate.v:220$59'.
+Found and cleaned up 2 empty switches in `\axis_switch.$proc$candidate.v:185$46'.
+Removing empty process `axis_switch.$proc$candidate.v:185$46'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:220$37'.
+Removing empty process `axis_switch.$proc$candidate.v:220$37'.
+Found and cleaned up 2 empty switches in `\axis_switch.$proc$candidate.v:185$24'.
+Removing empty process `axis_switch.$proc$candidate.v:185$24'.
+Found and cleaned up 1 empty switch in `\axis_switch.$proc$candidate.v:220$15'.
+Removing empty process `axis_switch.$proc$candidate.v:220$15'.
+Found and cleaned up 2 empty switches in `\axis_switch.$proc$candidate.v:185$2'.
+Removing empty process `axis_switch.$proc$candidate.v:185$2'.
+Cleaned up 24 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1bd5668296a23b4c53db93e178ea60b344bc88c5\arbiter.
+Optimizing module $paramod$2b93a48f24bf4619e8fc1efab0a9ced7dbf9ca59\axis_register.
+Optimizing module $paramod$6b97d935b3151b8e6e96147386baf99ad1901fdb\priority_encoder.
+Optimizing module $paramod$988598fe0cffb891d91000f0f76bb56f4ddf1b01\priority_encoder.
+Optimizing module $paramod$e59483d4778c717a05727e4332bc099836b4f6fe\axis_register.
+Optimizing module axis_switch.
+
+5. Executing JSON backend.

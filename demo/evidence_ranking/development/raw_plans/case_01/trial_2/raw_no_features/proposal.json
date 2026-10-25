@@ -1,0 +1,53 @@
+{
+  "explanation": "The public trace reveals a strict cycle-exact Wishbone acknowledgment protocol: `o_wb_ack` must pulse exactly one cycle after each qualified `i_wb_stb` (gated by `i_wb_cyc`), starting at cycle 7. The original RTL drives `o_wb_ack` combinationally from `wb_stb` (itself `i_wb_stb & !o_wb_stall`), producing an immediate pulse at cycle 6 and then losing alignment. The highest-impact fix is inserting a one-cycle acknowledgment pipeline (patch_f8d57d590691 or patch_a3e524527915). Secondary root cause: the command sequencer (`r_cmd_state`) can restart while `ll_cmd_stb` is still asserted, causing spurious early activity; patches 0bcc454688eb, c1fed5d49f35, 84188b04a635, and e2d3357bdec1 guard the FSM entry with low-level idle status. Tertiary: FIFO address increment logic shares `pre_cmd_state` without the same guard (patches 9ce4a09dbd52, 150e8f9bf128). Ranking prioritizes direct acknowledgment pipeline correction, then command sequencer synchronization, then FIFO datapath isolation.",
+  "ranking": [
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_f8d57d590691",
+      "mechanism": "The trace shows o_wb_ack is asserted immediately on cycle 6 when no Wishbone transaction is present (i_wb_stb=0), then misses required pulses at cycles 12 and 20. The original `o_wb_ack <= wb_stb` assigns acknowledgment combinationally from the qualified strobe `wb_stb`, which is gated by `!o_wb_stall` (line 94). Since `o_wb_stall` is hard-wired to 0, `wb_stb` mirrors `i_wb_stb` with no cycle delay. The failure pattern (early pulse, then missing pulses) matches a missing pipeline register: the design must accept the request in one cycle and emit `o_wb_ack` in the next. This patch inserts a one-cycle register qualified by `i_wb_cyc`, preserving bus-cycle alignment.",
+      "source_line": 582
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_a3e524527915",
+      "mechanism": "Same root cause as patch_f8d57d590691: the acknowledgment lacks a cycle-qualified pipeline stage. This alternative inserts an explicit delay register `__rtlrefine_ack_delay` that captures `wb_stb` when `i_wb_cyc` is asserted and drives `o_wb_ack` on the following cycle, with synchronous reset when `i_wb_cyc` deasserts. The trace expects first acknowledgment at cycle 7 (one cycle after the first `i_wb_stb` at cycle 6) and regular pulses thereafter; this patch implements that exact sequencing.",
+      "source_line": 582
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_0bcc454688eb",
+      "mechanism": "The `r_cmd_state` FSM enters the command transmit sequence (states 0-4) unconditionally whenever `pre_cmd_state` asserts (line 295), but `pre_cmd_state` is only `ll_cmd_stb && ll_idle` (line 315). If `ll_cmd_stb` is still asserted from a previous command when a new command arrives, the FSM restarts at state 0 while the low-level SPI is still busy, causing the early `o_wb_ack` pulse and subsequent desynchronization. Adding `!ll_cmd_stb` to the `r_cmd_state==0` entry guard ensures the command sequencer only starts when the low-level transmitter is truly idle.",
+      "source_line": 300
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_c1fed5d49f35",
+      "mechanism": "Complementary to patch_0bcc454688eb: it explicitly requires `pre_cmd_state` (which already includes `ll_idle`) before allowing the first command byte to be sent. This prevents the FSM from advancing when the low-level SPI has not signaled readiness, eliminating the spurious early acknowledgment and aligning command start to cycle 7 as the trace expects.",
+      "source_line": 300
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_84188b04a639",
+      "mechanism": "Guards the `r_cmd_state==0` transition with `!ll_cmd_stb`, ensuring the command sequencer does not restart while a prior command is still being presented to the low-level SPI. This directly addresses the trace's first mismatch at cycle 6 where `o_wb_ack` asserts without a preceding qualified Wishbone cycle.",
+      "source_line": 300
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_e2d3357bdec1",
+      "mechanism": "Requires `ll_cmd_stb` (low-level command strobe active) before entering the command transmit sequence, which seems inverted but may intend to keep the FSM in reset until the low-level explicitly requests a byte. In context, the real fix is ensuring the FSM only advances when the low-level is ready (`ll_idle`), so this patch is lower confidence; included for completeness as it touches the same state-entry logic.",
+      "source_line": 300
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_9ce4a09dbd52",
+      "mechanism": "The `pre_fifo_addr_inc_wr` signal (line 8623) increments the FIFO address on `ll_fifo_wr && ll_out_stb && r_have_start_token`. If `pre_cmd_state` (which pulses when `ll_cmd_stb && ll_idle`) is not gated by `!ll_cmd_stb`, the address increment logic can fire during the same cycle a new command is accepted, corrupting FIFO pointer state and indirectly causing acknowledgment timing errors. Adding `!ll_cmd_stb` to the pre-condition isolates FIFO address updates from command-sequencer restarts.",
+      "source_line": 291
+    },
+    {
+      "failure_port": "o_wb_ack",
+      "id": "patch_150e8f9bf128",
+      "mechanism": "Alternative formulation of the same guard as patch_9ce4a09dbd52: qualifies `pre_cmd_state` with `!ll_cmd_stb` at the FIFO address increment pre-condition. This prevents the FIFO write-address counter from advancing when the low-level command strobe is still asserted from a previous operation, which would desynchronize the datapath and manifest as `o_wb_ack` timing violations.",
+      "source_line": 291
+    }
+  ]
+}

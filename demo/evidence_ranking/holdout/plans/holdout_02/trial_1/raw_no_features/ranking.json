@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.012042,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "e01488e6dc2d4e31a35eeb560f764db6",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_bdfb4e29768c",
+    "patch_c9bcd0ebf5ab",
+    "patch_ec27a287b3cc",
+    "patch_8053be1dbae4",
+    "patch_9d11758b2afe",
+    "patch_330141055bc5",
+    "patch_177e84f089b9",
+    "patch_4c92a56408a4"
+  ],
+  "proposal": {
+    "explanation": "The primary failure is m_axis_tlast stuck at 0 (53 mismatches). The root cause is line 141 hardcoding m_axis_tlast_int=0 instead of propagating s_axis_tlast. patch_bdfb4e29768c fixes this directly. Secondary issues involve uninitialized registers during reset: m_axis_tdata_reg, m_axis_tdest_reg, temp_m_axis_tid_reg, temp_m_axis_tkeep_reg lack explicit reset assignments (patches c9bcd0ebf5ab, ec27a287b3cc, 8053be1dbae4, 9d11758b2afe). The frame pause logic incorrectly triggers when rate_by_frame=0 (patch_330141055bc5). The pause signal substitution (patch_177e84f089b9) and ready gating (patch_4c92a56408a4) address potential handshake sequencing issues observed in traces.",
+    "ranking": [
+      {
+        "id": "patch_bdfb4e29768c",
+        "mechanism": "Corrects m_axis_tlast_int to use s_axis_tlast instead of hardcoded 0, enabling proper tlast signal propagation when LAST_ENABLE=1"
+      },
+      {
+        "id": "patch_c9bcd0ebf5ab",
+        "mechanism": "Adds reset initialization for m_axis_tdata_reg to 0, ensuring clean state after reset"
+      },
+      {
+        "id": "patch_ec27a287b3cc",
+        "mechanism": "Adds reset initialization for m_axis_tdest_reg to 0, ensuring clean state after reset"
+      },
+      {
+        "id": "patch_8053be1dbae4",
+        "mechanism": "Adds reset initialization for temp_m_axis_tid_reg to 0, ensuring clean state after reset"
+      },
+      {
+        "id": "patch_9d11758b2afe",
+        "mechanism": "Adds reset initialization for temp_m_axis_tkeep_reg to 0, ensuring clean state after reset"
+      },
+      {
+        "id": "patch_330141055bc5",
+        "mechanism": "Qualifies frame-based pause condition with !rate_by_frame, preventing incorrect frame pause when rate_by_frame=0"
+      },
+      {
+        "id": "patch_177e84f089b9",
+        "mechanism": "Substitutes pause signal with s_axis_tvalid to control backpressure based on input validity"
+      },
+      {
+        "id": "patch_4c92a56408a4",
+        "mechanism": "Gates s_axis_tready_reg with rst, preventing ready assertion during reset"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.0113
+}

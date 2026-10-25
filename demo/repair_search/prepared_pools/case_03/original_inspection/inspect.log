@@ -1,0 +1,692 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\llsdspi'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dependencies.v
+Parsing SystemVerilog input from `dependencies.v' to AST representation.
+Generating RTLIL representation for module `\sdspi'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \sdspi
+Used module:     \llsdspi
+Parameter \STARTUP_CLOCKS = 75
+Parameter \OPT_SPI_ARBITRATION = 1'0
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\llsdspi'.
+Parameter \STARTUP_CLOCKS = 75
+Parameter \OPT_SPI_ARBITRATION = 1'0
+Generating RTLIL representation for module `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \sdspi
+Used module:     $paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi
+
+3.4. Analyzing design hierarchy..
+Top module:  \sdspi
+Used module:     $paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi
+Removing unused module `\llsdspi'.
+Removed 1 unused modules.
+Mapping positional arguments of cell sdspi.lowlevel ($paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi).
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+Cleaned up 1 empty switch.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$dependencies.v:984$376 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:979$373 in module sdspi.
+Marked 3 switch rules as full_case in process $proc$dependencies.v:947$365 in module sdspi.
+Marked 3 switch rules as full_case in process $proc$dependencies.v:922$359 in module sdspi.
+Marked 3 switch rules as full_case in process $proc$dependencies.v:903$353 in module sdspi.
+Marked 7 switch rules as full_case in process $proc$dependencies.v:841$327 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:813$315 in module sdspi.
+Marked 14 switch rules as full_case in process $proc$dependencies.v:732$244 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:695$221 in module sdspi.
+Marked 2 switch rules as full_case in process $proc$dependencies.v:682$212 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:675$207 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:669$200 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:664$195 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:649$191 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:608$171 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:590$165 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:584$163 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:566$162 in module sdspi.
+Marked 5 switch rules as full_case in process $proc$dependencies.v:510$140 in module sdspi.
+Marked 3 switch rules as full_case in process $proc$dependencies.v:490$130 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:483$125 in module sdspi.
+Marked 1 switch rules as full_case in process $proc$dependencies.v:478$123 in module sdspi.
+Marked 14 switch rules as full_case in process $proc$dependencies.v:276$85 in module sdspi.
+Marked 8 switch rules as full_case in process $proc$candidate.v:201$425 in module $paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.
+Marked 4 switch rules as full_case in process $proc$candidate.v:163$408 in module $paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 8 redundant assignments.
+Promoted 82 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\sdspi.$proc$dependencies.v:0$406'.
+  Set init value: \r_watchdog_err = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$405'.
+  Set init value: \r_watchdog = 26'11111111111111111111111111
+Found init rule in `\sdspi.$proc$dependencies.v:0$404'.
+  Set init value: \r_cmd_crc_ff = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$403'.
+  Set init value: \fifo_crc_err = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$402'.
+  Set init value: \last_fifo_byte = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$401'.
+  Set init value: \r_err_token = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$400'.
+  Set init value: \pre_fifo_addr_inc_wr = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$399'.
+  Set init value: \pre_fifo_addr_inc_rd = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$398'.
+  Set init value: \q_busy = 1'1
+Found init rule in `\sdspi.$proc$dependencies.v:0$397'.
+  Set init value: \o_wb_ack = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$396'.
+  Set init value: \dly_stb = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$395'.
+  Set init value: \r_sdspi_clk = 7'1100011
+Found init rule in `\sdspi.$proc$dependencies.v:0$394'.
+  Set init value: \r_rsp_state = 3'000
+Found init rule in `\sdspi.$proc$dependencies.v:0$393'.
+  Set init value: \r_cmd_err = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$392'.
+  Set init value: \r_lgblklen = 4'0111
+Found init rule in `\sdspi.$proc$dependencies.v:0$391'.
+  Set init value: \r_data_fil = 2'00
+Found init rule in `\sdspi.$proc$dependencies.v:0$390'.
+  Set init value: \r_use_fifo = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$389'.
+  Set init value: \r_cmd_state = 3'000
+Found init rule in `\sdspi.$proc$dependencies.v:0$388'.
+  Set init value: \r_rsp_state = 3'000
+Found init rule in `\sdspi.$proc$dependencies.v:0$387'.
+  Set init value: \ll_fifo_wr = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$386'.
+  Set init value: \ll_fifo_rd = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$385'.
+  Set init value: \ll_cmd_stb = 1'0
+Found init rule in `\sdspi.$proc$dependencies.v:0$384'.
+  Set init value: \r_last_r_one = 8'11111111
+Found init rule in `\sdspi.$proc$dependencies.v:0$383'.
+  Set init value: \r_data_reg = 0
+Found init rule in `\sdspi.$proc$dependencies.v:0$382'.
+  Set init value: \r_cmd_busy = 1'0
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$459'.
+  Set init value: \startup_hold = 1'1
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$458'.
+  Set init value: \WAIT_FOR_STARTUP.startup_counter = 7'1001011
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$457'.
+  Set init value: \WAIT_FOR_STARTUP.past_sclk = 1'1
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$456'.
+  Set init value: \r_idle = 1'0
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$455'.
+  Set init value: \r_state = 4'0000
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$454'.
+  Set init value: \o_sclk = 1'1
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$453'.
+  Set init value: \o_cs_n = 1'1
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$452'.
+  Set init value: \o_stb = 1'0
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$451'.
+  Set init value: \r_z_counter = 1'1
+Found init rule in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$450'.
+  Set init value: \r_clk_counter = 7'0000000
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$406'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$405'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$404'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$403'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$402'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$401'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$400'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$399'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$398'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$397'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$396'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$395'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$394'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$393'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$392'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$391'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$390'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$389'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$388'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$387'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$386'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$385'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$384'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$383'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:0$382'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:984$376'.
+     1/1: $0\r_watchdog[25:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:979$373'.
+     1/1: $0\r_watchdog_err[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:947$365'.
+     1/3: $0\r_cmd_crc_ff[0:0]
+     2/3: $0\r_cmd_crc[7:0]
+     3/3: $0\r_cmd_crc_cnt[3:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:922$359'.
+     1/3: $0\fifo_rd_crc_reg[15:0] [15:8]
+     2/3: $0\fifo_rd_crc_reg[15:0] [7:0]
+     3/3: $0\fifo_rd_crc_count[3:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:903$353'.
+     1/3: $0\fifo_wr_crc_reg[15:0] [15:8]
+     2/3: $0\fifo_wr_crc_reg[15:0] [7:0]
+     3/3: $0\fifo_wr_crc_count[3:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:841$327'.
+     1/4: $0\fifo_rd_crc_stb[0:0]
+     2/4: $0\ll_fifo_pkt_state[2:0]
+     3/4: $0\fifo_byte[7:0]
+     4/4: $0\ll_fifo_rd_complete[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:836$324'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:813$315'.
+     1/2: $0\fifo_b_byte[7:0]
+     2/2: $0\fifo_a_byte[7:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:732$244'.
+     1/35: $1$memwr$\fifo_b_mem_3$dependencies.v:790$61_EN[7:0]$304
+     2/35: $1$memwr$\fifo_b_mem_3$dependencies.v:790$61_DATA[7:0]$303
+     3/35: $1$memwr$\fifo_b_mem_3$dependencies.v:790$61_ADDR[6:0]$302
+     4/35: $1$memwr$\fifo_b_mem_2$dependencies.v:788$60_EN[7:0]$300
+     5/35: $1$memwr$\fifo_b_mem_2$dependencies.v:788$60_DATA[7:0]$299
+     6/35: $1$memwr$\fifo_b_mem_2$dependencies.v:788$60_ADDR[6:0]$298
+     7/35: $1$memwr$\fifo_b_mem_1$dependencies.v:786$59_EN[7:0]$296
+     8/35: $1$memwr$\fifo_b_mem_1$dependencies.v:786$59_DATA[7:0]$295
+     9/35: $1$memwr$\fifo_b_mem_1$dependencies.v:786$59_ADDR[6:0]$294
+    10/35: $1$memwr$\fifo_b_mem_0$dependencies.v:784$58_EN[7:0]$292
+    11/35: $1$memwr$\fifo_b_mem_0$dependencies.v:784$58_DATA[7:0]$291
+    12/35: $1$memwr$\fifo_b_mem_0$dependencies.v:784$58_ADDR[6:0]$290
+    13/35: $1$memwr$\fifo_a_mem_3$dependencies.v:761$57_EN[7:0]$286
+    14/35: $1$memwr$\fifo_a_mem_3$dependencies.v:761$57_DATA[7:0]$285
+    15/35: $1$memwr$\fifo_a_mem_3$dependencies.v:761$57_ADDR[6:0]$284
+    16/35: $1$memwr$\fifo_a_mem_2$dependencies.v:759$56_EN[7:0]$282
+    17/35: $1$memwr$\fifo_a_mem_2$dependencies.v:759$56_DATA[7:0]$281
+    18/35: $1$memwr$\fifo_a_mem_2$dependencies.v:759$56_ADDR[6:0]$280
+    19/35: $1$memwr$\fifo_a_mem_1$dependencies.v:757$55_EN[7:0]$278
+    20/35: $1$memwr$\fifo_a_mem_1$dependencies.v:757$55_DATA[7:0]$277
+    21/35: $1$memwr$\fifo_a_mem_1$dependencies.v:757$55_ADDR[6:0]$276
+    22/35: $1$memwr$\fifo_a_mem_0$dependencies.v:755$54_EN[7:0]$274
+    23/35: $1$memwr$\fifo_a_mem_0$dependencies.v:755$54_DATA[7:0]$273
+    24/35: $1$memwr$\fifo_a_mem_0$dependencies.v:755$54_ADDR[6:0]$272
+    25/35: $0\fifo_b_wr_data[31:0]
+    26/35: $0\fifo_b_wr[0:0]
+    27/35: $0\fifo_a_wr_data[31:0]
+    28/35: $0\fifo_a_wr[0:0]
+    29/35: $0\fifo_b_wr_addr[6:0]
+    30/35: $0\fifo_a_wr_addr[6:0]
+    31/35: $0\fifo_b_wr_mask[3:0]
+    32/35: $0\fifo_a_wr_mask[3:0]
+    33/35: $0\ll_fifo_wr_state[1:0]
+    34/35: $0\fifo_crc_err[0:0]
+    35/35: $0\ll_fifo_wr_complete[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:711$223'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:695$221'.
+     1/1: $0\last_fifo_byte[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:682$212'.
+     1/1: $0\r_err_token[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:675$207'.
+     1/1: $0\r_data_response_token[1:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:669$200'.
+     1/1: $0\r_read_err_token[3:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:664$195'.
+     1/1: $0\r_have_start_token[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:649$191'.
+     1/1: $0\ll_fifo_addr[8:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:647$188'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:644$185'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:625$176'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:608$171'.
+     1/1: $0\fifo_wb_addr[6:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:599$168'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:597$167'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:590$165'.
+     1/1: $0\o_wb_ack[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:584$163'.
+     1/1: $0\dly_stb[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:566$162'.
+     1/1: $0\o_wb_data[31:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:549$153'.
+     1/2: $0\r_lgblklen[3:0]
+     2/2: $0\r_sdspi_clk[6:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:545$150'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:510$140'.
+     1/1: $0\r_rsp_state[2:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:505$138'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:502$136'.
+     1/1: $0\nonzero_out[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:490$130'.
+     1/1: $0\second_rsp_state[2:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:483$125'.
+     1/1: $0\r_have_data_response_token[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:478$123'.
+     1/1: $0\ready_for_response_token[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:474$121'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:276$85'.
+     1/16: $0\r_cmd_crc_stb[0:0]
+     2/16: $0\r_cmd_err[0:0]
+     3/16: $0\r_cmd_resp[1:0]
+     4/16: $0\r_data_fil[1:0]
+     5/16: $0\r_data_reg[31:0]
+     6/16: $0\r_last_r_one[7:0]
+     7/16: $0\ll_fifo_rd[0:0]
+     8/16: $0\ll_fifo_wr[0:0]
+     9/16: $0\r_fifo_id[0:0]
+    10/16: $0\r_fifo_wr[0:0]
+    11/16: $0\r_use_fifo[0:0]
+    12/16: $0\r_have_resp[0:0]
+    13/16: $0\r_cmd_state[2:0]
+    14/16: $0\ll_cmd_dat[7:0]
+    15/16: $0\ll_cmd_stb[0:0]
+    16/16: $0\r_cmd_busy[0:0]
+Creating decoders for process `\sdspi.$proc$dependencies.v:163$84'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:161$83'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:158$77'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:155$69'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:153$65'.
+Creating decoders for process `\sdspi.$proc$dependencies.v:151$62'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$459'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$458'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$457'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$456'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$455'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$454'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$453'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$452'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$451'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$450'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:141$443'.
+     1/2: $0\WAIT_FOR_STARTUP.startup_counter[6:0]
+     2/2: $0\startup_hold[0:0]
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:136$442'.
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+     1/9: $0\o_cs_n[0:0]
+     2/9: $0\o_stb[0:0]
+     3/9: $0\r_ireg[7:0]
+     4/9: $0\r_byte[7:0]
+     5/9: $0\r_state[3:0]
+     6/9: $0\r_idle[0:0]
+     7/9: $0\o_byte[7:0]
+     8/9: $0\o_mosi[0:0]
+     9/9: $0\o_sclk[0:0]
+Creating decoders for process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:163$408'.
+     1/2: $0\r_clk_counter[6:0]
+     2/2: $0\r_z_counter[0:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\sdspi.\r_watchdog' using process `\sdspi.$proc$dependencies.v:984$376'.
+  created $dff cell `$procdff$1466' with positive edge clock.
+Creating register for signal `\sdspi.\r_watchdog_err' using process `\sdspi.$proc$dependencies.v:979$373'.
+  created $dff cell `$procdff$1467' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_crc_cnt' using process `\sdspi.$proc$dependencies.v:947$365'.
+  created $dff cell `$procdff$1468' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_crc' using process `\sdspi.$proc$dependencies.v:947$365'.
+  created $dff cell `$procdff$1469' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_crc_ff' using process `\sdspi.$proc$dependencies.v:947$365'.
+  created $dff cell `$procdff$1470' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_rd_crc_count' using process `\sdspi.$proc$dependencies.v:922$359'.
+  created $dff cell `$procdff$1471' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_rd_crc_reg' using process `\sdspi.$proc$dependencies.v:922$359'.
+  created $dff cell `$procdff$1472' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_wr_crc_count' using process `\sdspi.$proc$dependencies.v:903$353'.
+  created $dff cell `$procdff$1473' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_wr_crc_reg' using process `\sdspi.$proc$dependencies.v:903$353'.
+  created $dff cell `$procdff$1474' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_rd_complete' using process `\sdspi.$proc$dependencies.v:841$327'.
+  created $dff cell `$procdff$1475' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_byte' using process `\sdspi.$proc$dependencies.v:841$327'.
+  created $dff cell `$procdff$1476' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_pkt_state' using process `\sdspi.$proc$dependencies.v:841$327'.
+  created $dff cell `$procdff$1477' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_rd_crc_stb' using process `\sdspi.$proc$dependencies.v:841$327'.
+  created $dff cell `$procdff$1478' with positive edge clock.
+Creating register for signal `\sdspi.\r_blklimit' using process `\sdspi.$proc$dependencies.v:836$324'.
+  created $dff cell `$procdff$1479' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_a_byte' using process `\sdspi.$proc$dependencies.v:813$315'.
+  created $dff cell `$procdff$1480' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_b_byte' using process `\sdspi.$proc$dependencies.v:813$315'.
+  created $dff cell `$procdff$1481' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_wr_complete' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1482' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_crc_err' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1483' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_wr_state' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1484' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_a_wr' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1485' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_b_wr' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1486' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_a_wr_mask' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1487' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_b_wr_mask' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1488' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_a_wr_addr' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1489' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_b_wr_addr' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1490' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_a_wr_data' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1491' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_b_wr_data' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1492' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_0$dependencies.v:755$54_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1493' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_0$dependencies.v:755$54_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1494' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_0$dependencies.v:755$54_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1495' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_1$dependencies.v:757$55_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1496' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_1$dependencies.v:757$55_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1497' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_1$dependencies.v:757$55_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1498' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_2$dependencies.v:759$56_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1499' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_2$dependencies.v:759$56_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1500' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_2$dependencies.v:759$56_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1501' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_3$dependencies.v:761$57_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1502' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_3$dependencies.v:761$57_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1503' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_a_mem_3$dependencies.v:761$57_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1504' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_0$dependencies.v:784$58_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1505' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_0$dependencies.v:784$58_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1506' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_0$dependencies.v:784$58_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1507' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_1$dependencies.v:786$59_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1508' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_1$dependencies.v:786$59_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1509' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_1$dependencies.v:786$59_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1510' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_2$dependencies.v:788$60_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1511' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_2$dependencies.v:788$60_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1512' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_2$dependencies.v:788$60_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1513' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_3$dependencies.v:790$61_ADDR' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1514' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_3$dependencies.v:790$61_DATA' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1515' with positive edge clock.
+Creating register for signal `\sdspi.$memwr$\fifo_b_mem_3$dependencies.v:790$61_EN' using process `\sdspi.$proc$dependencies.v:732$244'.
+  created $dff cell `$procdff$1516' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_wr_crc_stb' using process `\sdspi.$proc$dependencies.v:711$223'.
+  created $dff cell `$procdff$1517' with positive edge clock.
+Creating register for signal `\sdspi.\pre_fifo_a_wr' using process `\sdspi.$proc$dependencies.v:711$223'.
+  created $dff cell `$procdff$1518' with positive edge clock.
+Creating register for signal `\sdspi.\pre_fifo_b_wr' using process `\sdspi.$proc$dependencies.v:711$223'.
+  created $dff cell `$procdff$1519' with positive edge clock.
+Creating register for signal `\sdspi.\pre_fifo_crc_a' using process `\sdspi.$proc$dependencies.v:711$223'.
+  created $dff cell `$procdff$1520' with positive edge clock.
+Creating register for signal `\sdspi.\pre_fifo_crc_b' using process `\sdspi.$proc$dependencies.v:711$223'.
+  created $dff cell `$procdff$1521' with positive edge clock.
+Creating register for signal `\sdspi.\clear_fifo_crc' using process `\sdspi.$proc$dependencies.v:711$223'.
+  created $dff cell `$procdff$1522' with positive edge clock.
+Creating register for signal `\sdspi.\last_fifo_byte' using process `\sdspi.$proc$dependencies.v:695$221'.
+  created $dff cell `$procdff$1523' with positive edge clock.
+Creating register for signal `\sdspi.\r_err_token' using process `\sdspi.$proc$dependencies.v:682$212'.
+  created $dff cell `$procdff$1524' with positive edge clock.
+Creating register for signal `\sdspi.\r_data_response_token' using process `\sdspi.$proc$dependencies.v:675$207'.
+  created $dff cell `$procdff$1525' with positive edge clock.
+Creating register for signal `\sdspi.\r_read_err_token' using process `\sdspi.$proc$dependencies.v:669$200'.
+  created $dff cell `$procdff$1526' with positive edge clock.
+Creating register for signal `\sdspi.\r_have_start_token' using process `\sdspi.$proc$dependencies.v:664$195'.
+  created $dff cell `$procdff$1527' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_addr' using process `\sdspi.$proc$dependencies.v:649$191'.
+  created $dff cell `$procdff$1528' with positive edge clock.
+Creating register for signal `\sdspi.\pre_fifo_addr_inc_rd' using process `\sdspi.$proc$dependencies.v:647$188'.
+  created $dff cell `$procdff$1529' with positive edge clock.
+Creating register for signal `\sdspi.\pre_fifo_addr_inc_wr' using process `\sdspi.$proc$dependencies.v:644$185'.
+  created $dff cell `$procdff$1530' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_a_reg' using process `\sdspi.$proc$dependencies.v:625$176'.
+  created $dff cell `$procdff$1531' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_b_reg' using process `\sdspi.$proc$dependencies.v:625$176'.
+  created $dff cell `$procdff$1532' with positive edge clock.
+Creating register for signal `\sdspi.\fifo_wb_addr' using process `\sdspi.$proc$dependencies.v:608$171'.
+  created $dff cell `$procdff$1533' with positive edge clock.
+Creating register for signal `\sdspi.\o_int' using process `\sdspi.$proc$dependencies.v:599$168'.
+  created $dff cell `$procdff$1534' with positive edge clock.
+Creating register for signal `\sdspi.\q_busy' using process `\sdspi.$proc$dependencies.v:597$167'.
+  created $dff cell `$procdff$1535' with positive edge clock.
+Creating register for signal `\sdspi.\o_wb_ack' using process `\sdspi.$proc$dependencies.v:590$165'.
+  created $dff cell `$procdff$1536' with positive edge clock.
+Creating register for signal `\sdspi.\dly_stb' using process `\sdspi.$proc$dependencies.v:584$163'.
+  created $dff cell `$procdff$1537' with positive edge clock.
+Creating register for signal `\sdspi.\o_wb_data' using process `\sdspi.$proc$dependencies.v:566$162'.
+  created $dff cell `$procdff$1538' with positive edge clock.
+Creating register for signal `\sdspi.\r_sdspi_clk' using process `\sdspi.$proc$dependencies.v:549$153'.
+  created $dff cell `$procdff$1539' with positive edge clock.
+Creating register for signal `\sdspi.\r_lgblklen' using process `\sdspi.$proc$dependencies.v:549$153'.
+  created $dff cell `$procdff$1540' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_sent' using process `\sdspi.$proc$dependencies.v:545$150'.
+  created $dff cell `$procdff$1541' with positive edge clock.
+Creating register for signal `\sdspi.\r_rsp_state' using process `\sdspi.$proc$dependencies.v:510$140'.
+  created $dff cell `$procdff$1542' with positive edge clock.
+Creating register for signal `\sdspi.\pre_rsp_state' using process `\sdspi.$proc$dependencies.v:505$138'.
+  created $dff cell `$procdff$1543' with positive edge clock.
+Creating register for signal `\sdspi.\nonzero_out' using process `\sdspi.$proc$dependencies.v:502$136'.
+  created $dff cell `$procdff$1544' with positive edge clock.
+Creating register for signal `\sdspi.\second_rsp_state' using process `\sdspi.$proc$dependencies.v:490$130'.
+  created $dff cell `$procdff$1545' with positive edge clock.
+Creating register for signal `\sdspi.\r_have_data_response_token' using process `\sdspi.$proc$dependencies.v:483$125'.
+  created $dff cell `$procdff$1546' with positive edge clock.
+Creating register for signal `\sdspi.\ready_for_response_token' using process `\sdspi.$proc$dependencies.v:478$123'.
+  created $dff cell `$procdff$1547' with positive edge clock.
+Creating register for signal `\sdspi.\pre_cmd_state' using process `\sdspi.$proc$dependencies.v:474$121'.
+  created $dff cell `$procdff$1548' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_busy' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1549' with positive edge clock.
+Creating register for signal `\sdspi.\ll_cmd_stb' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1550' with positive edge clock.
+Creating register for signal `\sdspi.\ll_cmd_dat' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1551' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_crc_stb' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1552' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_state' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1553' with positive edge clock.
+Creating register for signal `\sdspi.\r_have_resp' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1554' with positive edge clock.
+Creating register for signal `\sdspi.\r_use_fifo' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1555' with positive edge clock.
+Creating register for signal `\sdspi.\r_fifo_wr' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1556' with positive edge clock.
+Creating register for signal `\sdspi.\r_fifo_id' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1557' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_wr' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1558' with positive edge clock.
+Creating register for signal `\sdspi.\ll_fifo_rd' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1559' with positive edge clock.
+Creating register for signal `\sdspi.\r_last_r_one' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1560' with positive edge clock.
+Creating register for signal `\sdspi.\r_data_reg' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1561' with positive edge clock.
+Creating register for signal `\sdspi.\r_data_fil' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1562' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_resp' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1563' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_err' using process `\sdspi.$proc$dependencies.v:276$85'.
+  created $dff cell `$procdff$1564' with positive edge clock.
+Creating register for signal `\sdspi.\r_wb_data' using process `\sdspi.$proc$dependencies.v:163$84'.
+  created $dff cell `$procdff$1565' with positive edge clock.
+Creating register for signal `\sdspi.\r_wb_addr' using process `\sdspi.$proc$dependencies.v:161$83'.
+  created $dff cell `$procdff$1566' with positive edge clock.
+Creating register for signal `\sdspi.\r_new_data' using process `\sdspi.$proc$dependencies.v:158$77'.
+  created $dff cell `$procdff$1567' with positive edge clock.
+Creating register for signal `\sdspi.\r_cmd_stb' using process `\sdspi.$proc$dependencies.v:155$69'.
+  created $dff cell `$procdff$1568' with positive edge clock.
+Creating register for signal `\sdspi.\r_write_stb' using process `\sdspi.$proc$dependencies.v:153$65'.
+  created $dff cell `$procdff$1569' with positive edge clock.
+Creating register for signal `\sdspi.\r_wb_stb' using process `\sdspi.$proc$dependencies.v:151$62'.
+  created $dff cell `$procdff$1570' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\startup_hold' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:141$443'.
+  created $dff cell `$procdff$1571' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\WAIT_FOR_STARTUP.startup_counter' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:141$443'.
+  created $dff cell `$procdff$1572' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\WAIT_FOR_STARTUP.past_sclk' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:136$442'.
+  created $dff cell `$procdff$1573' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\o_cs_n' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1574' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\o_sclk' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1575' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\o_mosi' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1576' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\o_stb' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1577' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\o_byte' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1578' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\r_idle' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1579' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\r_state' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1580' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\r_byte' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1581' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\r_ireg' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+  created $dff cell `$procdff$1582' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\r_z_counter' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:163$408'.
+  created $dff cell `$procdff$1583' with positive edge clock.
+Creating register for signal `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.\r_clk_counter' using process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:163$408'.
+  created $dff cell `$procdff$1584' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `sdspi.$proc$dependencies.v:0$406'.
+Removing empty process `sdspi.$proc$dependencies.v:0$405'.
+Removing empty process `sdspi.$proc$dependencies.v:0$404'.
+Removing empty process `sdspi.$proc$dependencies.v:0$403'.
+Removing empty process `sdspi.$proc$dependencies.v:0$402'.
+Removing empty process `sdspi.$proc$dependencies.v:0$401'.
+Removing empty process `sdspi.$proc$dependencies.v:0$400'.
+Removing empty process `sdspi.$proc$dependencies.v:0$399'.
+Removing empty process `sdspi.$proc$dependencies.v:0$398'.
+Removing empty process `sdspi.$proc$dependencies.v:0$397'.
+Removing empty process `sdspi.$proc$dependencies.v:0$396'.
+Removing empty process `sdspi.$proc$dependencies.v:0$395'.
+Removing empty process `sdspi.$proc$dependencies.v:0$394'.
+Removing empty process `sdspi.$proc$dependencies.v:0$393'.
+Removing empty process `sdspi.$proc$dependencies.v:0$392'.
+Removing empty process `sdspi.$proc$dependencies.v:0$391'.
+Removing empty process `sdspi.$proc$dependencies.v:0$390'.
+Removing empty process `sdspi.$proc$dependencies.v:0$389'.
+Removing empty process `sdspi.$proc$dependencies.v:0$388'.
+Removing empty process `sdspi.$proc$dependencies.v:0$387'.
+Removing empty process `sdspi.$proc$dependencies.v:0$386'.
+Removing empty process `sdspi.$proc$dependencies.v:0$385'.
+Removing empty process `sdspi.$proc$dependencies.v:0$384'.
+Removing empty process `sdspi.$proc$dependencies.v:0$383'.
+Removing empty process `sdspi.$proc$dependencies.v:0$382'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:984$376'.
+Removing empty process `sdspi.$proc$dependencies.v:984$376'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:979$373'.
+Removing empty process `sdspi.$proc$dependencies.v:979$373'.
+Found and cleaned up 4 empty switches in `\sdspi.$proc$dependencies.v:947$365'.
+Removing empty process `sdspi.$proc$dependencies.v:947$365'.
+Found and cleaned up 4 empty switches in `\sdspi.$proc$dependencies.v:922$359'.
+Removing empty process `sdspi.$proc$dependencies.v:922$359'.
+Found and cleaned up 4 empty switches in `\sdspi.$proc$dependencies.v:903$353'.
+Removing empty process `sdspi.$proc$dependencies.v:903$353'.
+Found and cleaned up 14 empty switches in `\sdspi.$proc$dependencies.v:841$327'.
+Removing empty process `sdspi.$proc$dependencies.v:841$327'.
+Removing empty process `sdspi.$proc$dependencies.v:836$324'.
+Found and cleaned up 1 empty switch in `\sdspi.$proc$dependencies.v:813$315'.
+Removing empty process `sdspi.$proc$dependencies.v:813$315'.
+Found and cleaned up 20 empty switches in `\sdspi.$proc$dependencies.v:732$244'.
+Removing empty process `sdspi.$proc$dependencies.v:732$244'.
+Removing empty process `sdspi.$proc$dependencies.v:711$223'.
+Found and cleaned up 1 empty switch in `\sdspi.$proc$dependencies.v:695$221'.
+Removing empty process `sdspi.$proc$dependencies.v:695$221'.
+Found and cleaned up 3 empty switches in `\sdspi.$proc$dependencies.v:682$212'.
+Removing empty process `sdspi.$proc$dependencies.v:682$212'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:675$207'.
+Removing empty process `sdspi.$proc$dependencies.v:675$207'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:669$200'.
+Removing empty process `sdspi.$proc$dependencies.v:669$200'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:664$195'.
+Removing empty process `sdspi.$proc$dependencies.v:664$195'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:649$191'.
+Removing empty process `sdspi.$proc$dependencies.v:649$191'.
+Removing empty process `sdspi.$proc$dependencies.v:647$188'.
+Removing empty process `sdspi.$proc$dependencies.v:644$185'.
+Removing empty process `sdspi.$proc$dependencies.v:625$176'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:608$171'.
+Removing empty process `sdspi.$proc$dependencies.v:608$171'.
+Removing empty process `sdspi.$proc$dependencies.v:599$168'.
+Removing empty process `sdspi.$proc$dependencies.v:597$167'.
+Found and cleaned up 1 empty switch in `\sdspi.$proc$dependencies.v:590$165'.
+Removing empty process `sdspi.$proc$dependencies.v:590$165'.
+Found and cleaned up 1 empty switch in `\sdspi.$proc$dependencies.v:584$163'.
+Removing empty process `sdspi.$proc$dependencies.v:584$163'.
+Found and cleaned up 1 empty switch in `\sdspi.$proc$dependencies.v:566$162'.
+Removing empty process `sdspi.$proc$dependencies.v:566$162'.
+Found and cleaned up 3 empty switches in `\sdspi.$proc$dependencies.v:549$153'.
+Removing empty process `sdspi.$proc$dependencies.v:549$153'.
+Removing empty process `sdspi.$proc$dependencies.v:545$150'.
+Found and cleaned up 11 empty switches in `\sdspi.$proc$dependencies.v:510$140'.
+Removing empty process `sdspi.$proc$dependencies.v:510$140'.
+Removing empty process `sdspi.$proc$dependencies.v:505$138'.
+Found and cleaned up 1 empty switch in `\sdspi.$proc$dependencies.v:502$136'.
+Removing empty process `sdspi.$proc$dependencies.v:502$136'.
+Found and cleaned up 3 empty switches in `\sdspi.$proc$dependencies.v:490$130'.
+Removing empty process `sdspi.$proc$dependencies.v:490$130'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:483$125'.
+Removing empty process `sdspi.$proc$dependencies.v:483$125'.
+Found and cleaned up 2 empty switches in `\sdspi.$proc$dependencies.v:478$123'.
+Removing empty process `sdspi.$proc$dependencies.v:478$123'.
+Removing empty process `sdspi.$proc$dependencies.v:474$121'.
+Found and cleaned up 29 empty switches in `\sdspi.$proc$dependencies.v:276$85'.
+Removing empty process `sdspi.$proc$dependencies.v:276$85'.
+Removing empty process `sdspi.$proc$dependencies.v:163$84'.
+Removing empty process `sdspi.$proc$dependencies.v:161$83'.
+Removing empty process `sdspi.$proc$dependencies.v:158$77'.
+Removing empty process `sdspi.$proc$dependencies.v:155$69'.
+Removing empty process `sdspi.$proc$dependencies.v:153$65'.
+Removing empty process `sdspi.$proc$dependencies.v:151$62'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$459'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$458'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$457'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$456'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$455'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$454'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$453'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$452'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$451'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:0$450'.
+Found and cleaned up 2 empty switches in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:141$443'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:141$443'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:136$442'.
+Found and cleaned up 12 empty switches in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:201$425'.
+Found and cleaned up 5 empty switches in `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:163$408'.
+Removing empty process `$paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.$proc$candidate.v:163$408'.
+Cleaned up 138 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module sdspi.
+Optimizing module $paramod$d29e17142227d05ed868ca275a85b88ee7608d17\llsdspi.
+
+5. Executing JSON backend.

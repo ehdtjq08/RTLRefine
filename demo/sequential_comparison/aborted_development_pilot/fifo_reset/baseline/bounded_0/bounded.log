@@ -1,0 +1,1134 @@
+
+-- Executing script file `bounded.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing formal SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\axis_async_fifo'.
+Warning: Replacing memory \mem with list of registers. See candidate.v:130
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: golden.v
+Parsing formal SystemVerilog input from `golden.v' to AST representation.
+Generating RTLIL representation for module `\reference_fifo'.
+Warning: Replacing memory \mem with list of registers. See golden.v:131
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: miter.v
+Parsing formal SystemVerilog input from `miter.v' to AST representation.
+Generating RTLIL representation for module `\miter'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \miter
+Used module:     \reference_fifo
+Used module:     \axis_async_fifo
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+
+4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\reference_fifo'.
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+Generating RTLIL representation for module `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo'.
+Warning: Replacing memory \mem with list of registers. See golden.v:131
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+
+4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_async_fifo'.
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+Generating RTLIL representation for module `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo'.
+Warning: Replacing memory \mem with list of registers. See candidate.v:130
+
+4.4. Analyzing design hierarchy..
+Top module:  \miter
+Used module:     $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo
+Used module:     $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo
+
+4.5. Analyzing design hierarchy..
+Top module:  \miter
+Used module:     $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo
+Used module:     $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo
+Removing unused module `\reference_fifo'.
+Removing unused module `\axis_async_fifo'.
+Removed 2 unused modules.
+Module miter directly or indirectly contains formal properties -> setting "keep" attribute.
+
+5. Executing PROC pass (convert processes to netlists).
+
+5.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+5.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$candidate.v:172$233 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:161$232 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Removed 1 dead cases from process $proc$candidate.v:149$221 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 3 switch rules as full_case in process $proc$candidate.v:149$221 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:138$220 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 3 switch rules as full_case in process $proc$candidate.v:126$210 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:115$209 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:105$208 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Marked 2 switch rules as full_case in process $proc$golden.v:174$173 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:163$172 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Removed 1 dead cases from process $proc$golden.v:150$161 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Marked 3 switch rules as full_case in process $proc$golden.v:150$161 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:139$160 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Marked 3 switch rules as full_case in process $proc$golden.v:126$150 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:115$149 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:105$148 in module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+Removed a total of 2 dead cases.
+
+5.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 20 redundant assignments.
+Promoted 44 assignments to connections.
+
+5.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:83$251'.
+  Set init value: \output_axis_tvalid_reg = 1'0
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:76$249'.
+  Set init value: \data_out_reg = 10'0000000000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:74$248'.
+  Set init value: \output_rst_sync2 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:73$247'.
+  Set init value: \output_rst_sync1 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:72$246'.
+  Set init value: \input_rst_sync2 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:71$245'.
+  Set init value: \input_rst_sync1 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:69$244'.
+  Set init value: \rd_ptr_gray_sync2 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:68$243'.
+  Set init value: \rd_ptr_gray_sync1 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:67$242'.
+  Set init value: \wr_ptr_gray_sync2 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:66$241'.
+  Set init value: \wr_ptr_gray_sync1 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:64$240'.
+  Set init value: \rd_ptr_gray = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:63$239'.
+  Set init value: \rd_ptr = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:62$238'.
+  Set init value: \wr_ptr_gray = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:61$237'.
+  Set init value: \wr_ptr = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:83$191'.
+  Set init value: \output_axis_tvalid_reg = 1'0
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:76$189'.
+  Set init value: \data_out_reg = 10'0000000000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:74$188'.
+  Set init value: \output_rst_sync2 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:73$187'.
+  Set init value: \output_rst_sync1 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:72$186'.
+  Set init value: \input_rst_sync2 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:71$185'.
+  Set init value: \input_rst_sync1 = 1'1
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:69$184'.
+  Set init value: \rd_ptr_gray_sync2 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:68$183'.
+  Set init value: \rd_ptr_gray_sync1 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:67$182'.
+  Set init value: \wr_ptr_gray_sync2 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:66$181'.
+  Set init value: \wr_ptr_gray_sync1 = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:64$180'.
+  Set init value: \rd_ptr_gray = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:63$179'.
+  Set init value: \rd_ptr = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:62$178'.
+  Set init value: \wr_ptr_gray = 3'000
+Found init rule in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:61$177'.
+  Set init value: \wr_ptr = 3'000
+
+5.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \output_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:172$233'.
+Found async reset \output_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:161$232'.
+Found async reset \output_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+Found async reset \input_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:138$220'.
+Found async reset \input_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+Found async reset \joint_rst in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:115$209'.
+Found async reset \joint_rst in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:105$208'.
+Found async reset \output_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:174$173'.
+Found async reset \output_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:163$172'.
+Found async reset \output_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+Found async reset \input_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:139$160'.
+Found async reset \input_rst_sync2 in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+Found async reset \joint_rst in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:115$149'.
+Found async reset \joint_rst in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:105$148'.
+
+5.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+5.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\miter.$proc$miter.v:17$121'.
+     1/3: $assert$miter.v:20$130_EN
+     2/3: $assert$miter.v:20$128_EN
+     3/3: $assert$miter.v:20$126_EN
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:83$251'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:81$250'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:76$249'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:74$248'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:73$247'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:72$246'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:71$245'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:69$244'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:68$243'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:67$242'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:66$241'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:64$240'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:63$239'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:62$238'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:61$237'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:172$233'.
+     1/1: $0\output_axis_tvalid_reg[0:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:161$232'.
+     1/2: $0\wr_ptr_gray_sync2[2:0]
+     2/2: $0\wr_ptr_gray_sync1[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+     1/10: $3$mem2reg_rd$\mem$candidate.v:153$193_DATA[9:0]$228
+     2/10: $2\rd_ptr_next[2:0]
+     3/10: $2$mem2reg_rd$\mem$candidate.v:153$193_DATA[9:0]$227
+     4/10: $2$mem2reg_rd$\mem$candidate.v:153$193_ADDR[1:0]$226
+     5/10: $1$mem2reg_rd$\mem$candidate.v:153$193_DATA[9:0]$225
+     6/10: $1$mem2reg_rd$\mem$candidate.v:153$193_ADDR[1:0]$224
+     7/10: $1\rd_ptr_next[2:0]
+     8/10: $0\data_out_reg[9:0]
+     9/10: $0\rd_ptr_gray[2:0]
+    10/10: $0\rd_ptr[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:138$220'.
+     1/2: $0\rd_ptr_gray_sync2[2:0]
+     2/2: $0\rd_ptr_gray_sync1[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+     1/12: $2\wr_ptr_next[2:0]
+     2/12: $2$mem2reg_wr$\mem$candidate.v:130$192_ADDR[1:0]$215
+     3/12: $2$mem2reg_wr$\mem$candidate.v:130$192_DATA[9:0]$216
+     4/12: $1$mem2reg_wr$\mem$candidate.v:130$192_DATA[9:0]$214
+     5/12: $1$mem2reg_wr$\mem$candidate.v:130$192_ADDR[1:0]$213
+     6/12: $1\wr_ptr_next[2:0]
+     7/12: $0\mem[3][9:0]
+     8/12: $0\mem[2][9:0]
+     9/12: $0\mem[1][9:0]
+    10/12: $0\mem[0][9:0]
+    11/12: $0\wr_ptr_gray[2:0]
+    12/12: $0\wr_ptr[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:115$209'.
+     1/2: $0\output_rst_sync2[0:0]
+     2/2: $0\output_rst_sync1[0:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:105$208'.
+     1/2: $0\input_rst_sync2[0:0]
+     2/2: $0\input_rst_sync1[0:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:83$191'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:81$190'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:76$189'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:74$188'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:73$187'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:72$186'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:71$185'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:69$184'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:68$183'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:67$182'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:66$181'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:64$180'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:63$179'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:62$178'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:61$177'.
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:174$173'.
+     1/1: $0\output_axis_tvalid_reg[0:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:163$172'.
+     1/2: $0\wr_ptr_gray_sync2[2:0]
+     2/2: $0\wr_ptr_gray_sync1[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+     1/10: $3$mem2reg_rd$\mem$golden.v:155$133_DATA[9:0]$168
+     2/10: $2\rd_ptr_next[2:0]
+     3/10: $2$mem2reg_rd$\mem$golden.v:155$133_DATA[9:0]$167
+     4/10: $2$mem2reg_rd$\mem$golden.v:155$133_ADDR[1:0]$166
+     5/10: $1$mem2reg_rd$\mem$golden.v:155$133_DATA[9:0]$165
+     6/10: $1$mem2reg_rd$\mem$golden.v:155$133_ADDR[1:0]$164
+     7/10: $1\rd_ptr_next[2:0]
+     8/10: $0\data_out_reg[9:0]
+     9/10: $0\rd_ptr_gray[2:0]
+    10/10: $0\rd_ptr[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:139$160'.
+     1/2: $0\rd_ptr_gray_sync2[2:0]
+     2/2: $0\rd_ptr_gray_sync1[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+     1/12: $2\wr_ptr_next[2:0]
+     2/12: $2$mem2reg_wr$\mem$golden.v:131$132_ADDR[1:0]$155
+     3/12: $2$mem2reg_wr$\mem$golden.v:131$132_DATA[9:0]$156
+     4/12: $1$mem2reg_wr$\mem$golden.v:131$132_DATA[9:0]$154
+     5/12: $1$mem2reg_wr$\mem$golden.v:131$132_ADDR[1:0]$153
+     6/12: $1\wr_ptr_next[2:0]
+     7/12: $0\mem[3][9:0]
+     8/12: $0\mem[2][9:0]
+     9/12: $0\mem[1][9:0]
+    10/12: $0\mem[0][9:0]
+    11/12: $0\wr_ptr_gray[2:0]
+    12/12: $0\wr_ptr[2:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:115$149'.
+     1/2: $0\output_rst_sync2[0:0]
+     2/2: $0\output_rst_sync1[0:0]
+Creating decoders for process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:105$148'.
+     1/2: $0\input_rst_sync2[0:0]
+     2/2: $0\input_rst_sync1[0:0]
+
+5.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\output_read' from process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:81$250'.
+No latch inferred for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\output_read' from process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:81$190'.
+
+5.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\output_axis_tvalid_reg' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:172$233'.
+  created $adff cell `$procdff$400' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\wr_ptr_gray_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:161$232'.
+  created $adff cell `$procdff$403' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\wr_ptr_gray_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:161$232'.
+  created $adff cell `$procdff$406' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\rd_ptr' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+  created $adff cell `$procdff$409' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\rd_ptr_next' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+  created $dff cell `$procdff$414' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\rd_ptr_gray' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+  created $dff cell `$procdff$419' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\data_out_reg' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+  created $dff cell `$procdff$424' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$mem2reg_rd$\mem$candidate.v:153$193_ADDR' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+  created $adff cell `$procdff$427' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$mem2reg_rd$\mem$candidate.v:153$193_DATA' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+  created $adff cell `$procdff$430' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\rd_ptr_gray_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:138$220'.
+  created $adff cell `$procdff$433' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\rd_ptr_gray_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:138$220'.
+  created $adff cell `$procdff$436' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\wr_ptr' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $adff cell `$procdff$439' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\wr_ptr_next' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $dff cell `$procdff$444' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\wr_ptr_gray' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $dff cell `$procdff$449' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\mem[0]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $dff cell `$procdff$454' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\mem[1]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $dff cell `$procdff$459' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\mem[2]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $dff cell `$procdff$464' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\mem[3]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $dff cell `$procdff$469' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$mem2reg_wr$\mem$candidate.v:130$192_ADDR' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $adff cell `$procdff$472' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$mem2reg_wr$\mem$candidate.v:130$192_DATA' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+  created $adff cell `$procdff$475' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\output_rst_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:115$209'.
+  created $adff cell `$procdff$478' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\output_rst_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:115$209'.
+  created $adff cell `$procdff$481' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\input_rst_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:105$208'.
+  created $adff cell `$procdff$484' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.\input_rst_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:105$208'.
+  created $adff cell `$procdff$487' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\output_axis_tvalid_reg' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:174$173'.
+  created $adff cell `$procdff$490' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\wr_ptr_gray_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:163$172'.
+  created $adff cell `$procdff$493' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\wr_ptr_gray_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:163$172'.
+  created $adff cell `$procdff$496' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\rd_ptr' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+  created $adff cell `$procdff$499' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\rd_ptr_next' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+  created $dff cell `$procdff$504' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\rd_ptr_gray' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+  created $adff cell `$procdff$507' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\data_out_reg' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+  created $dff cell `$procdff$512' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$mem2reg_rd$\mem$golden.v:155$133_ADDR' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+  created $adff cell `$procdff$515' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$mem2reg_rd$\mem$golden.v:155$133_DATA' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+  created $adff cell `$procdff$518' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\rd_ptr_gray_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:139$160'.
+  created $adff cell `$procdff$521' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\rd_ptr_gray_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:139$160'.
+  created $adff cell `$procdff$524' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\wr_ptr' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $adff cell `$procdff$527' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\wr_ptr_next' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $dff cell `$procdff$532' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\wr_ptr_gray' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $adff cell `$procdff$535' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\mem[0]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $dff cell `$procdff$540' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\mem[1]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $dff cell `$procdff$545' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\mem[2]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $dff cell `$procdff$550' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\mem[3]' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $dff cell `$procdff$555' with positive edge clock.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$mem2reg_wr$\mem$golden.v:131$132_ADDR' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $adff cell `$procdff$558' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$mem2reg_wr$\mem$golden.v:131$132_DATA' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+  created $adff cell `$procdff$561' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\output_rst_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:115$149'.
+  created $adff cell `$procdff$564' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\output_rst_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:115$149'.
+  created $adff cell `$procdff$567' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\input_rst_sync1' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:105$148'.
+  created $adff cell `$procdff$570' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.\input_rst_sync2' using process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:105$148'.
+  created $adff cell `$procdff$573' with positive edge clock and positive level reset.
+
+5.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\miter.$proc$miter.v:17$121'.
+Removing empty process `miter.$proc$miter.v:17$121'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:83$251'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:81$250'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:76$249'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:74$248'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:73$247'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:72$246'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:71$245'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:69$244'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:68$243'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:67$242'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:66$241'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:64$240'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:63$239'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:62$238'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:61$237'.
+Found and cleaned up 1 empty switch in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:172$233'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:172$233'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:161$232'.
+Found and cleaned up 2 empty switches in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:149$221'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:138$220'.
+Found and cleaned up 2 empty switches in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:126$210'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:115$209'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.$proc$candidate.v:105$208'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:83$191'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:81$190'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:76$189'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:74$188'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:73$187'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:72$186'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:71$185'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:69$184'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:68$183'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:67$182'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:66$181'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:64$180'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:63$179'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:62$178'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:61$177'.
+Found and cleaned up 1 empty switch in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:174$173'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:174$173'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:163$172'.
+Found and cleaned up 2 empty switches in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:150$161'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:139$160'.
+Found and cleaned up 2 empty switches in `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:126$150'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:115$149'.
+Removing empty process `$paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.$proc$golden.v:105$148'.
+Cleaned up 11 empty switches.
+
+5.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+Optimizing module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Optimizing module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+
+6. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\axis_async_fifo.
+Deleting now unused module $paramod$650a7c38a3849bf2b2fa73804e3bad4e943532c6\reference_fifo.
+
+7. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 17 cells.
+
+8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\golden.$procmux$337.
+    dead port 1/2 on $mux $flatten\golden.$procmux$343.
+    dead port 2/2 on $mux $flatten\golden.$procmux$343.
+    dead port 1/2 on $mux $flatten\golden.$procmux$346.
+    dead port 2/2 on $mux $flatten\golden.$procmux$346.
+    dead port 1/2 on $mux $flatten\golden.$procmux$361.
+    dead port 2/2 on $mux $flatten\golden.$procmux$361.
+    dead port 1/2 on $mux $flatten\golden.$procmux$364.
+    dead port 2/2 on $mux $flatten\golden.$procmux$364.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$267.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$273.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$273.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$276.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$276.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$291.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$291.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$294.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$294.
+Removed 18 multiplexer ports.
+
+8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 2 cells.
+
+8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\candidate.$procdff$444 ($dff) from module miter (D = $flatten\candidate.$add$candidate.v:131$217_Y [2:0], Q = \candidate.wr_ptr_next).
+Adding EN signal on $flatten\candidate.$procdff$469 ($dff) from module miter (D = { \candidate.input_axis_tlast \candidate.input_axis_tuser \candidate.input_axis_tdata }, Q = \candidate.mem[3]).
+Adding EN signal on $flatten\candidate.$procdff$439 ($adff) from module miter (D = $flatten\candidate.$add$candidate.v:131$217_Y [2:0], Q = \candidate.wr_ptr).
+Adding EN signal on $flatten\candidate.$procdff$464 ($dff) from module miter (D = { \candidate.input_axis_tlast \candidate.input_axis_tuser \candidate.input_axis_tdata }, Q = \candidate.mem[2]).
+Adding EN signal on $flatten\golden.$procdff$535 ($adff) from module miter (D = $flatten\golden.$xor$golden.v:134$159_Y, Q = \golden.wr_ptr_gray).
+Adding EN signal on $flatten\candidate.$procdff$424 ($dff) from module miter (D = $flatten\candidate.$3$mem2reg_rd$\mem$candidate.v:153$193_DATA[9:0]$228, Q = \candidate.data_out_reg).
+Adding EN signal on $flatten\candidate.$procdff$459 ($dff) from module miter (D = { \candidate.input_axis_tlast \candidate.input_axis_tuser \candidate.input_axis_tdata }, Q = \candidate.mem[1]).
+Adding EN signal on $flatten\candidate.$procdff$419 ($dff) from module miter (D = $flatten\candidate.$xor$candidate.v:156$231_Y, Q = \candidate.rd_ptr_gray).
+Adding EN signal on $flatten\candidate.$procdff$414 ($dff) from module miter (D = $flatten\candidate.$add$candidate.v:154$229_Y [2:0], Q = \candidate.rd_ptr_next).
+Adding EN signal on $flatten\candidate.$procdff$454 ($dff) from module miter (D = { \candidate.input_axis_tlast \candidate.input_axis_tuser \candidate.input_axis_tdata }, Q = \candidate.mem[0]).
+Adding EN signal on $flatten\candidate.$procdff$409 ($adff) from module miter (D = $flatten\candidate.$add$candidate.v:154$229_Y [2:0], Q = \candidate.rd_ptr).
+Adding EN signal on $flatten\candidate.$procdff$449 ($dff) from module miter (D = $flatten\candidate.$xor$candidate.v:133$219_Y, Q = \candidate.wr_ptr_gray).
+Adding EN signal on $flatten\candidate.$procdff$400 ($adff) from module miter (D = $flatten\candidate.$not$candidate.v:176$236_Y, Q = \candidate.output_axis_tvalid_reg).
+Adding EN signal on $flatten\golden.$procdff$532 ($dff) from module miter (D = $flatten\golden.$add$golden.v:132$157_Y [2:0], Q = \golden.wr_ptr_next).
+Adding EN signal on $flatten\golden.$procdff$527 ($adff) from module miter (D = $flatten\golden.$add$golden.v:132$157_Y [2:0], Q = \golden.wr_ptr).
+Adding EN signal on $flatten\golden.$procdff$555 ($dff) from module miter (D = { \golden.input_axis_tlast \golden.input_axis_tuser \golden.input_axis_tdata }, Q = \golden.mem[3]).
+Adding EN signal on $flatten\golden.$procdff$550 ($dff) from module miter (D = { \golden.input_axis_tlast \golden.input_axis_tuser \golden.input_axis_tdata }, Q = \golden.mem[2]).
+Adding EN signal on $flatten\golden.$procdff$512 ($dff) from module miter (D = $flatten\golden.$3$mem2reg_rd$\mem$golden.v:155$133_DATA[9:0]$168, Q = \golden.data_out_reg).
+Adding EN signal on $flatten\golden.$procdff$507 ($adff) from module miter (D = $flatten\golden.$xor$golden.v:158$171_Y, Q = \golden.rd_ptr_gray).
+Adding EN signal on $flatten\golden.$procdff$545 ($dff) from module miter (D = { \golden.input_axis_tlast \golden.input_axis_tuser \golden.input_axis_tdata }, Q = \golden.mem[1]).
+Adding EN signal on $flatten\golden.$procdff$504 ($dff) from module miter (D = $flatten\golden.$add$golden.v:156$169_Y [2:0], Q = \golden.rd_ptr_next).
+Adding EN signal on $flatten\golden.$procdff$499 ($adff) from module miter (D = $flatten\golden.$add$golden.v:156$169_Y [2:0], Q = \golden.rd_ptr).
+Adding EN signal on $flatten\golden.$procdff$540 ($dff) from module miter (D = { \golden.input_axis_tlast \golden.input_axis_tuser \golden.input_axis_tdata }, Q = \golden.mem[0]).
+Adding EN signal on $flatten\golden.$procdff$490 ($adff) from module miter (D = $flatten\golden.$not$golden.v:178$176_Y, Q = \golden.output_axis_tvalid_reg).
+Setting constant 1-bit at position 0 on $flatten\golden.$procdff$558 ($adff) from module miter.
+Setting constant 1-bit at position 1 on $flatten\golden.$procdff$558 ($adff) from module miter.
+Setting constant 1-bit at position 0 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 1 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 2 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 3 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 4 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 5 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 6 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 7 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 8 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 9 on $flatten\golden.$procdff$561 ($adff) from module miter.
+Setting constant 1-bit at position 0 on $flatten\golden.$procdff$515 ($adff) from module miter.
+Setting constant 1-bit at position 1 on $flatten\golden.$procdff$515 ($adff) from module miter.
+Setting constant 1-bit at position 0 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 1 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 2 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 3 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 4 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 5 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 6 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 7 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 8 on $flatten\golden.$procdff$518 ($adff) from module miter.
+Setting constant 1-bit at position 9 on $flatten\golden.$procdff$518 ($adff) from module miter.
+
+8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+Removed 60 unused cells and 298 unused wires.
+
+8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 11 cells.
+
+8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+Removed 0 unused cells and 11 unused wires.
+
+8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 0 cells.
+
+8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+
+8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.23. Finished OPT passes. (There is nothing left to do.)
+
+9. Executing CLK2FFLOGIC pass (convert clocked FFs to generic $ff cells).
+
+9.1. Executing PEEPOPT pass (run peephole optimizers).
+Replacing miter.$auto$ff.cc:266:slice$581 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\candidate.mem[3]
+Replacing miter.$auto$ff.cc:266:slice$586 ($adffe): CLK=\input_clk, D=$flatten\candidate.$add$candidate.v:131$217_Y [2:0], Q=\candidate.wr_ptr
+Replacing miter.$auto$ff.cc:266:slice$587 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\candidate.mem[2]
+Replacing miter.$auto$ff.cc:266:slice$592 ($adffe): CLK=\input_clk, D=$flatten\golden.$xor$golden.v:134$159_Y, Q=\golden.wr_ptr_gray
+Replacing miter.$auto$ff.cc:266:slice$593 ($dffe): CLK=\output_clk, D=$flatten\candidate.$3$mem2reg_rd$\mem$candidate.v:153$193_DATA[9:0]$228, Q=\candidate.data_out_reg
+Replacing miter.$auto$ff.cc:266:slice$598 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\candidate.mem[1]
+Replacing miter.$auto$ff.cc:266:slice$603 ($dffe): CLK=\output_clk, D=$flatten\candidate.$xor$candidate.v:156$231_Y, Q=\candidate.rd_ptr_gray
+Replacing miter.$auto$ff.cc:266:slice$613 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\candidate.mem[0]
+Replacing miter.$auto$ff.cc:266:slice$618 ($adffe): CLK=\output_clk, D=$flatten\candidate.$add$candidate.v:154$229_Y [2:0], Q=\candidate.rd_ptr
+Replacing miter.$auto$ff.cc:266:slice$619 ($dffe): CLK=\input_clk, D=$flatten\candidate.$xor$candidate.v:133$219_Y, Q=\candidate.wr_ptr_gray
+Replacing miter.$auto$ff.cc:266:slice$624 ($adffe): CLK=\output_clk, D=$flatten\candidate.$not$candidate.v:176$236_Y, Q=\candidate.output_axis_tvalid_reg
+Replacing miter.$auto$ff.cc:266:slice$630 ($adffe): CLK=\input_clk, D=$flatten\golden.$add$golden.v:132$157_Y [2:0], Q=\golden.wr_ptr
+Replacing miter.$auto$ff.cc:266:slice$631 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\golden.mem[3]
+Replacing miter.$auto$ff.cc:266:slice$636 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\golden.mem[2]
+Replacing miter.$auto$ff.cc:266:slice$641 ($dffe): CLK=\output_clk, D=$flatten\golden.$3$mem2reg_rd$\mem$golden.v:155$133_DATA[9:0]$168, Q=\golden.data_out_reg
+Replacing miter.$auto$ff.cc:266:slice$646 ($adffe): CLK=\output_clk, D=$flatten\golden.$xor$golden.v:158$171_Y, Q=\golden.rd_ptr_gray
+Replacing miter.$auto$ff.cc:266:slice$647 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\golden.mem[1]
+Replacing miter.$auto$ff.cc:266:slice$657 ($adffe): CLK=\output_clk, D=$flatten\golden.$add$golden.v:156$169_Y [2:0], Q=\golden.rd_ptr
+Replacing miter.$auto$ff.cc:266:slice$658 ($dffe): CLK=\input_clk, D={ \input_axis_tlast \input_axis_tuser \input_axis_tdata }, Q=\golden.mem[0]
+Replacing miter.$auto$ff.cc:266:slice$663 ($adffe): CLK=\output_clk, D=$flatten\golden.$not$golden.v:178$176_Y, Q=\golden.output_axis_tvalid_reg
+Replacing miter.$flatten\candidate.$procdff$403 ($adff): CLK=\output_clk, D=\candidate.wr_ptr_gray, Q=\candidate.wr_ptr_gray_sync1
+Replacing miter.$flatten\candidate.$procdff$406 ($adff): CLK=\output_clk, D=\candidate.wr_ptr_gray_sync1, Q=\candidate.wr_ptr_gray_sync2
+Replacing miter.$flatten\candidate.$procdff$433 ($adff): CLK=\input_clk, D=\candidate.rd_ptr_gray, Q=\candidate.rd_ptr_gray_sync1
+Replacing miter.$flatten\candidate.$procdff$436 ($adff): CLK=\input_clk, D=\candidate.rd_ptr_gray_sync1, Q=\candidate.rd_ptr_gray_sync2
+Replacing miter.$flatten\golden.$procdff$493 ($adff): CLK=\output_clk, D=\golden.wr_ptr_gray, Q=\golden.wr_ptr_gray_sync1
+Replacing miter.$flatten\golden.$procdff$496 ($adff): CLK=\output_clk, D=\golden.wr_ptr_gray_sync1, Q=\golden.wr_ptr_gray_sync2
+Replacing miter.$flatten\golden.$procdff$521 ($adff): CLK=\input_clk, D=\golden.rd_ptr_gray, Q=\golden.rd_ptr_gray_sync1
+Replacing miter.$flatten\golden.$procdff$524 ($adff): CLK=\input_clk, D=\golden.rd_ptr_gray_sync1, Q=\golden.rd_ptr_gray_sync2
+Replacing miter.$flatten\golden.$procdff$564 ($adff): CLK=\output_clk, D=1'0, Q=\golden.output_rst_sync1
+Replacing miter.$flatten\golden.$procdff$567 ($adff): CLK=\output_clk, D=\golden.output_rst_sync1, Q=\golden.output_rst_sync2
+Replacing miter.$flatten\golden.$procdff$570 ($adff): CLK=\input_clk, D=1'0, Q=\golden.input_rst_sync1
+Replacing miter.$flatten\golden.$procdff$573 ($adff): CLK=\input_clk, D=\golden.input_rst_sync1, Q=\golden.input_rst_sync2
+
+10. Executing OPT pass (performing simple optimizations).
+
+10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 86 cells.
+
+10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 0 cells.
+
+10.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$clk2fflogic.cc:102:sample_data$1115 ($ff) from module miter.
+
+10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+Removed 8 unused cells and 129 unused wires.
+
+10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 0 cells.
+
+10.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+
+10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+10.16. Finished OPT passes. (There is nothing left to do.)
+
+11. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:69:sample_control$\candidate.joint_rst#sampled$1138 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:69:sample_control$\golden.input_rst_sync2#sampled$1074 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:69:sample_control$\golden.output_rst_sync2#sampled$1042 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:81:sample_control_edge$\input_clk#sampled$1132 = 1'1
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:81:sample_control_edge$\output_clk#sampled$1100 = 1'1
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$665#sampled$668 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$677#sampled$680 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$695#sampled$698 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$707#sampled$710 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$725#sampled$728 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$737#sampled$740 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$749#sampled$752 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$761#sampled$764 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$773#sampled$776 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$791#sampled$794 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$803#sampled$806 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$821#sampled$824 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$839#sampled$842 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$851#sampled$854 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$863#sampled$866 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$875#sampled$878 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$893#sampled$896 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$905#sampled$908 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$923#sampled$926 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$935#sampled$938 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.data_out_reg#sampled$726 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.output_axis_tvalid_reg#sampled$804 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr#sampled$774 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray#sampled$986 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray_sync1#sampled$1002 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray_sync2#sampled$1000 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr#sampled$678 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray#sampled$954 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray_sync1#sampled$970 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray_sync2#sampled$968 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.data_out_reg#sampled$864 = 10'0000000000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync1#sampled$1112 = 1'1
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync1#sampled$1130 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync2#sampled$1128 = 1'1
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.output_axis_tvalid_reg#sampled$936 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync1#sampled$1080 = 1'1
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync1#sampled$1098 = 1'0
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync2#sampled$1096 = 1'1
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr#sampled$906 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray#sampled$1050 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray_sync1#sampled$1066 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray_sync2#sampled$1064 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr#sampled$822 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray#sampled$1018 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray_sync1#sampled$1034 = 3'000
+Import set-constraint from init attribute: $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray_sync2#sampled$1032 = 3'000
+Final init constraint equation: { $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray_sync2#sampled$1032 $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray_sync1#sampled$1034 $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray#sampled$1018 $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr#sampled$822 $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray_sync2#sampled$1064 $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray_sync1#sampled$1066 $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray#sampled$1050 $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr#sampled$906 $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync2#sampled$1096 $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync1#sampled$1098 $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync1#sampled$1080 $auto$clk2fflogic.cc:95:sample_data$\golden.output_axis_tvalid_reg#sampled$936 $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync2#sampled$1128 $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync1#sampled$1130 $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync1#sampled$1112 $auto$clk2fflogic.cc:95:sample_data$\golden.data_out_reg#sampled$864 $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray_sync2#sampled$968 $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray_sync1#sampled$970 $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray#sampled$954 $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr#sampled$678 $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray_sync2#sampled$1000 $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray_sync1#sampled$1002 $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray#sampled$986 $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr#sampled$774 $auto$clk2fflogic.cc:95:sample_data$\candidate.output_axis_tvalid_reg#sampled$804 $auto$clk2fflogic.cc:95:sample_data$\candidate.data_out_reg#sampled$726 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$935#sampled$938 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$923#sampled$926 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$905#sampled$908 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$893#sampled$896 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$875#sampled$878 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$863#sampled$866 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$851#sampled$854 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$839#sampled$842 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$821#sampled$824 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$803#sampled$806 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$791#sampled$794 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$773#sampled$776 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$761#sampled$764 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$749#sampled$752 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$737#sampled$740 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$725#sampled$728 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$707#sampled$710 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$695#sampled$698 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$677#sampled$680 $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$665#sampled$668 $auto$clk2fflogic.cc:81:sample_control_edge$\output_clk#sampled$1100 $auto$clk2fflogic.cc:81:sample_control_edge$\input_clk#sampled$1132 $auto$clk2fflogic.cc:69:sample_control$\golden.output_rst_sync2#sampled$1042 $auto$clk2fflogic.cc:69:sample_control$\golden.input_rst_sync2#sampled$1074 $auto$clk2fflogic.cc:69:sample_control$\candidate.joint_rst#sampled$1138 } = 207'000000000000000000000000101010100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011000
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Imported 230 cells to SAT database.
+Import proof for assert: $eq$miter.v:18$123_Y when 1'1.
+Import proof for assert: $eq$miter.v:19$125_Y when 1'1.
+Import proof for assert: $eq$miter.v:20$127_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$129_Y when $assert$miter.v:20$126_EN.
+Import proof for assert: $eq$miter.v:20$131_Y when $assert$miter.v:20$126_EN.
+Import show expression: \input_axis_tdata
+Import show expression: \input_axis_tlast
+Import show expression: \input_axis_tuser
+Import show expression: \input_axis_tvalid
+Import show expression: \input_clk
+Import show expression: \input_rst
+Import show expression: \output_axis_tready
+Import show expression: \output_clk
+Import show expression: \output_rst
+
+Solving problem with 82290 variables and 217458 clauses..
+SAT proof finished - model found: FAIL!
+
+   ______                   ___       ___       _ _            _ _ 
+  (_____ \                 / __)     / __)     (_) |          | | |
+   _____) )___ ___   ___ _| |__    _| |__ _____ _| | _____  __| | |
+  |  ____/ ___) _ \ / _ (_   __)  (_   __|____ | | || ___ |/ _  |_|
+  | |   | |  | |_| | |_| || |       | |  / ___ | | || ____( (_| |_ 
+  |_|   |_|   \___/ \___/ |_|       |_|  \_____|_|\_)_____)\____|_|
+
+
+  Time Signal Name                                                                                    Dec       Hex           Bin
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+  init $auto$clk2fflogic.cc:69:sample_control$\candidate.joint_rst#sampled$1138                         0         0             0
+  init $auto$clk2fflogic.cc:69:sample_control$\golden.input_rst_sync2#sampled$1074                      0         0             0
+  init $auto$clk2fflogic.cc:69:sample_control$\golden.output_rst_sync2#sampled$1042                     0         0             0
+  init $auto$clk2fflogic.cc:81:sample_control_edge$\input_clk#sampled$1132                              1         1             1
+  init $auto$clk2fflogic.cc:81:sample_control_edge$\output_clk#sampled$1100                             1         1             1
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$665#sampled$668                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$677#sampled$680                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$695#sampled$698                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$707#sampled$710                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$725#sampled$728                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$737#sampled$740                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$749#sampled$752                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$761#sampled$764                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$773#sampled$776                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$791#sampled$794                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$803#sampled$806                      0         0             0
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$821#sampled$824                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$839#sampled$842                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$851#sampled$854                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$863#sampled$866                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$875#sampled$878                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$893#sampled$896                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$905#sampled$908                      0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$923#sampled$926                      0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$$auto$rtlil.cc:2874:Mux$935#sampled$938                      0         0             0
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.data_out_reg#sampled$726                          0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.mem[0]#sampled$762                                0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.mem[1]#sampled$738                                0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.mem[2]#sampled$696                                0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.mem[3]#sampled$666                                0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.output_axis_tvalid_reg#sampled$804                0         0             0
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr#sampled$774                                0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray#sampled$986                           0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray_sync1#sampled$1002                    0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.rd_ptr_gray_sync2#sampled$1000                    0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr#sampled$678                                0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray#sampled$954                           0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray_sync1#sampled$970                     0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\candidate.wr_ptr_gray_sync2#sampled$968                     0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.data_out_reg#sampled$864                             0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync1#sampled$1112                         1         1             1
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync1#sampled$1130                         0         0             0
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.input_rst_sync2#sampled$1128                         1         1             1
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.mem[0]#sampled$924                                   0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.mem[1]#sampled$894                                   0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.mem[2]#sampled$852                                   0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.mem[3]#sampled$840                                   0         0    0000000000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.output_axis_tvalid_reg#sampled$936                   0         0             0
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync1#sampled$1080                        1         1             1
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync1#sampled$1098                        0         0             0
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.output_rst_sync2#sampled$1096                        1         1             1
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr#sampled$906                                   0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray#sampled$1050                             0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray_sync1#sampled$1066                       0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.rd_ptr_gray_sync2#sampled$1064                       0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr#sampled$822                                   0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray#sampled$1018                             0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray_sync1#sampled$1034                       0         0           000
+  init $auto$clk2fflogic.cc:95:sample_data$\golden.wr_ptr_gray_sync2#sampled$1032                       0         0           000
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     1 \input_axis_tdata                                                                                0         0      00000000
+     1 \input_axis_tlast                                                                                0         0             0
+     1 \input_axis_tuser                                                                                0         0             0
+     1 \input_axis_tvalid                                                                               0         0             0
+     1 \input_clk                                                                                       0         0             0
+     1 \input_rst                                                                                       0         0             0
+     1 \output_axis_tready                                                                              0         0             0
+     1 \output_clk                                                                                      0         0             0
+     1 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     2 \input_axis_tdata                                                                                0         0      00000000
+     2 \input_axis_tlast                                                                                0         0             0
+     2 \input_axis_tuser                                                                                0         0             0
+     2 \input_axis_tvalid                                                                               0         0             0
+     2 \input_clk                                                                                       0         0             0
+     2 \input_rst                                                                                       0         0             0
+     2 \output_axis_tready                                                                              0         0             0
+     2 \output_clk                                                                                      0         0             0
+     2 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     3 \input_axis_tdata                                                                                0         0      00000000
+     3 \input_axis_tlast                                                                                0         0             0
+     3 \input_axis_tuser                                                                                0         0             0
+     3 \input_axis_tvalid                                                                               0         0             0
+     3 \input_clk                                                                                       1         1             1
+     3 \input_rst                                                                                       0         0             0
+     3 \output_axis_tready                                                                              0         0             0
+     3 \output_clk                                                                                      1         1             1
+     3 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     4 \input_axis_tdata                                                                                0         0      00000000
+     4 \input_axis_tlast                                                                                0         0             0
+     4 \input_axis_tuser                                                                                0         0             0
+     4 \input_axis_tvalid                                                                               1         1             1
+     4 \input_clk                                                                                       0         0             0
+     4 \input_rst                                                                                       0         0             0
+     4 \output_axis_tready                                                                              0         0             0
+     4 \output_clk                                                                                      0         0             0
+     4 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     5 \input_axis_tdata                                                                                0         0      00000000
+     5 \input_axis_tlast                                                                                0         0             0
+     5 \input_axis_tuser                                                                                0         0             0
+     5 \input_axis_tvalid                                                                               0         0             0
+     5 \input_clk                                                                                       1         1             1
+     5 \input_rst                                                                                       0         0             0
+     5 \output_axis_tready                                                                              0         0             0
+     5 \output_clk                                                                                      0         0             0
+     5 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     6 \input_axis_tdata                                                                              119        77      01110111
+     6 \input_axis_tlast                                                                                1         1             1
+     6 \input_axis_tuser                                                                                1         1             1
+     6 \input_axis_tvalid                                                                               1         1             1
+     6 \input_clk                                                                                       0         0             0
+     6 \input_rst                                                                                       0         0             0
+     6 \output_axis_tready                                                                              0         0             0
+     6 \output_clk                                                                                      1         1             1
+     6 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     7 \input_axis_tdata                                                                                0         0      00000000
+     7 \input_axis_tlast                                                                                0         0             0
+     7 \input_axis_tuser                                                                                0         0             0
+     7 \input_axis_tvalid                                                                               1         1             1
+     7 \input_clk                                                                                       1         1             1
+     7 \input_rst                                                                                       0         0             0
+     7 \output_axis_tready                                                                              0         0             0
+     7 \output_clk                                                                                      0         0             0
+     7 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     8 \input_axis_tdata                                                                                0         0      00000000
+     8 \input_axis_tlast                                                                                0         0             0
+     8 \input_axis_tuser                                                                                0         0             0
+     8 \input_axis_tvalid                                                                               1         1             1
+     8 \input_clk                                                                                       1         1             1
+     8 \input_rst                                                                                       0         0             0
+     8 \output_axis_tready                                                                              0         0             0
+     8 \output_clk                                                                                      0         0             0
+     8 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+     9 \input_axis_tdata                                                                                0         0      00000000
+     9 \input_axis_tlast                                                                                0         0             0
+     9 \input_axis_tuser                                                                                0         0             0
+     9 \input_axis_tvalid                                                                               1         1             1
+     9 \input_clk                                                                                       1         1             1
+     9 \input_rst                                                                                       0         0             0
+     9 \output_axis_tready                                                                              1         1             1
+     9 \output_clk                                                                                      0         0             0
+     9 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    10 \input_axis_tdata                                                                                0         0      00000000
+    10 \input_axis_tlast                                                                                0         0             0
+    10 \input_axis_tuser                                                                                0         0             0
+    10 \input_axis_tvalid                                                                               1         1             1
+    10 \input_clk                                                                                       0         0             0
+    10 \input_rst                                                                                       0         0             0
+    10 \output_axis_tready                                                                              0         0             0
+    10 \output_clk                                                                                      1         1             1
+    10 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    11 \input_axis_tdata                                                                                0         0      00000000
+    11 \input_axis_tlast                                                                                0         0             0
+    11 \input_axis_tuser                                                                                0         0             0
+    11 \input_axis_tvalid                                                                               1         1             1
+    11 \input_clk                                                                                       1         1             1
+    11 \input_rst                                                                                       0         0             0
+    11 \output_axis_tready                                                                              1         1             1
+    11 \output_clk                                                                                      1         1             1
+    11 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    12 \input_axis_tdata                                                                                0         0      00000000
+    12 \input_axis_tlast                                                                                0         0             0
+    12 \input_axis_tuser                                                                                0         0             0
+    12 \input_axis_tvalid                                                                               1         1             1
+    12 \input_clk                                                                                       0         0             0
+    12 \input_rst                                                                                       0         0             0
+    12 \output_axis_tready                                                                              1         1             1
+    12 \output_clk                                                                                      0         0             0
+    12 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    13 \input_axis_tdata                                                                                0         0      00000000
+    13 \input_axis_tlast                                                                                0         0             0
+    13 \input_axis_tuser                                                                                0         0             0
+    13 \input_axis_tvalid                                                                               1         1             1
+    13 \input_clk                                                                                       0         0             0
+    13 \input_rst                                                                                       0         0             0
+    13 \output_axis_tready                                                                              1         1             1
+    13 \output_clk                                                                                      1         1             1
+    13 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    14 \input_axis_tdata                                                                                0         0      00000000
+    14 \input_axis_tlast                                                                                0         0             0
+    14 \input_axis_tuser                                                                                0         0             0
+    14 \input_axis_tvalid                                                                               0         0             0
+    14 \input_clk                                                                                       1         1             1
+    14 \input_rst                                                                                       0         0             0
+    14 \output_axis_tready                                                                              1         1             1
+    14 \output_clk                                                                                      0         0             0
+    14 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    15 \input_axis_tdata                                                                                0         0      00000000
+    15 \input_axis_tlast                                                                                0         0             0
+    15 \input_axis_tuser                                                                                0         0             0
+    15 \input_axis_tvalid                                                                               1         1             1
+    15 \input_clk                                                                                       0         0             0
+    15 \input_rst                                                                                       0         0             0
+    15 \output_axis_tready                                                                              1         1             1
+    15 \output_clk                                                                                      1         1             1
+    15 \output_rst                                                                                      0         0             0
+  ---- -------------------------------------------------------------------------------------- ----------- --------- -------------
+    16 \input_axis_tdata                                                                                0         0      00000000
+    16 \input_axis_tlast                                                                                0         0             0
+    16 \input_axis_tuser                                                                                0         0             0
+    16 \input_axis_tvalid                                                                               0         0             0
+    16 \input_clk                                                                                       1         1             1
+    16 \input_rst                                                                                       0         0             0
+    16 \output_axis_tready                                                                              0         0             0
+    16 \output_clk                                                                                      1         1             1
+    16 \output_rst                                                                                      1         1             1
+Dumping SAT model to VCD file counterexample.vcd
+Dumping SAT model to WaveJSON file 'counterexample.json'.

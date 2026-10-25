@@ -1,0 +1,223 @@
+{
+  "baseline": {
+    "command": {
+      "command": [
+        "./obj_dir/Vaxis_switch"
+      ],
+      "elapsed_seconds": 0.0167,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    "comparisons": 40,
+    "cycles": 14,
+    "expected_sha256": "962b1ed02f3f6e09879a1069c6efc3a153417d7bceb343dc9c2e079d5c035e38",
+    "first_mismatches": [
+      {
+        "actual": 0,
+        "cycle": 4,
+        "expected": 1,
+        "port": "m_axis_tvalid"
+      },
+      {
+        "actual": 0,
+        "cycle": 5,
+        "expected": 1,
+        "port": "m_axis_tvalid"
+      }
+    ],
+    "input_windows": [
+      {
+        "inputs": [
+          "m_axis_tready",
+          "rst",
+          "s_axis_tdata",
+          "s_axis_tdest",
+          "s_axis_tid",
+          "s_axis_tkeep",
+          "s_axis_tlast",
+          "s_axis_tuser",
+          "s_axis_tvalid"
+        ],
+        "samples": [
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            0,
+            0,
+            15
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            8,
+            0,
+            15
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            4,
+            0,
+            7
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            2,
+            0,
+            3
+          ]
+        ],
+        "start_cycle": 0
+      },
+      {
+        "inputs": [
+          "m_axis_tready",
+          "rst",
+          "s_axis_tdata",
+          "s_axis_tdest",
+          "s_axis_tid",
+          "s_axis_tkeep",
+          "s_axis_tlast",
+          "s_axis_tuser",
+          "s_axis_tvalid"
+        ],
+        "samples": [
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            0,
+            0,
+            15
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            8,
+            0,
+            15
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            4,
+            0,
+            7
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            13,
+            16909060,
+            15,
+            2,
+            0,
+            3
+          ],
+          [
+            1,
+            0,
+            2882343476,
+            0,
+            16909060,
+            15,
+            1,
+            0,
+            1
+          ]
+        ],
+        "start_cycle": 0
+      }
+    ],
+    "mismatch_count": 2,
+    "passed": false,
+    "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+    "stimulus_sha256": "c06fcf236942d60fb053c365da6c2861c860ccf4155413a4fa7716c5e3348f07",
+    "trace_label": "published_discovery_trace"
+  },
+  "bug": "d8",
+  "case_data": "/home/hands/Nebius/external_cases/known_bugs_v2/axis-switch-d8_d8",
+  "corrected_control": {
+    "command": {
+      "command": [
+        "./obj_dir/Vaxis_switch"
+      ],
+      "elapsed_seconds": 0.0168,
+      "execution_mode": "bubblewrap",
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "zero_initialization": true
+    },
+    "comparisons": 40,
+    "cycles": 14,
+    "expected_sha256": "962b1ed02f3f6e09879a1069c6efc3a153417d7bceb343dc9c2e079d5c035e38",
+    "first_mismatches": [],
+    "input_windows": [],
+    "mismatch_count": 0,
+    "passed": true,
+    "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+    "stimulus_sha256": "c06fcf236942d60fb053c365da6c2861c860ccf4155413a4fa7716c5e3348f07",
+    "trace_label": "published_discovery_trace"
+  },
+  "id": "axis-switch-d8_d8",
+  "project": "axis-switch-d8",
+  "qualified": true,
+  "reason": null,
+  "top": "axis_switch",
+  "trace_cycles": 14
+}

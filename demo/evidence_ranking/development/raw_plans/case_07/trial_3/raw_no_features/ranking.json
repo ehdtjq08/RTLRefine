@@ -1,0 +1,48 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.013469,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "7ceefe40adbb4c268e3e53bd8fca3244",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_e4d895e08cad",
+    "patch_b3b9f2b1a04b",
+    "patch_3d75e9177240",
+    "patch_5da527582759"
+  ],
+  "proposal": {
+    "explanation": "The trace mismatches cluster around reset release timing across the two clock domains. Cycle 4 shows input_axis_tready asserted (1) when the oracle expects 0 \u2014 this is fixed by gating the ready signal with the input-side reset sync (patch_e4d895e08cad). Cycles 8 and 9 show output_axis_tdata emitting values (2, 3) before the expected sequence (1, 2) \u2014 this indicates the FIFO accepted input data and advanced write pointers while the output domain was still held in reset (output_rst_sync3=1). The three additional patches (b3b9f2b1a04b, 3d75e9177240, 5da527582759) each attack a different point in the same causal chain: preventing writes during output reset, tightening input reset release, and suppressing output valid during output reset. Together they enforce that no data moves until both domains have fully exited reset, which matches the cycle-exact trace.",
+    "ranking": [
+      {
+        "failure_port": "input_axis_tready",
+        "id": "patch_e4d895e08cad",
+        "mechanism": "The original assigns input_axis_tready = ~full. At cycle 0, async_rst is asserted and input_rst_sync3 is still 1 (reset not yet released on input domain), but ~full evaluates to 1 because pointers are zero and FIFO is empty. The oracle expects input_axis_tready = 0 during active reset. Gating readiness with !input_rst_sync3 forces the ready signal low while the input-side reset synchronization chain has not cleared, matching the expected trace at cycle 4 where input_axis_tready mismatched (actual 1 vs expected 0).",
+        "source_line": 105
+      },
+      {
+        "failure_port": "output_axis_tdata",
+        "id": "patch_b3b9f2b1a04b",
+        "mechanism": "The write enable is currently `write = input_axis_tvalid & ~full`. During early cycles after async_rst de-asserts, output_rst_sync3 may still be 1 on the output clock domain while input_rst_sync3 has already cleared. If input_axis_tvalid is asserted before output_rst_sync3 releases, the FIFO accepts data and advances wr_ptr, but the output side is still in reset so rd_ptr stays at zero and output_axis_tvalid_reg stays 0. This causes output_axis_tdata to emit stale/zero data at cycle 8 (actual 2 vs expected 1) and cycle 9 (actual 3 vs expected 2). Qualifying write with `!output_rst_sync3` prevents input-side writes until the output domain has fully exited reset, keeping the FIFO empty until both domains are ready.",
+        "source_line": 139
+      },
+      {
+        "failure_port": "output_axis_tdata",
+        "id": "patch_3d75e9177240",
+        "mechanism": "The input domain reset synchronization chain is initialized with `if (async_rst) input_rst_sync1 <= 1` but the condition uses raw async_rst without waiting for input_rst_sync3 to clear. This can cause the input-side pointers to be released before the output-side reset chain (output_rst_sync3) has cleared, leading to premature writes that corrupt the first output data samples at cycles 8-9. Changing the reset condition to `(async_rst) && (!input_rst_sync3)` ensures the input domain only resets when its own sync chain is still active, improving cross-domain reset ordering.",
+        "source_line": 110
+      },
+      {
+        "failure_port": "output_axis_tdata",
+        "id": "patch_5da527582759",
+        "mechanism": "The output_axis_tvalid_reg update uses `if (output_axis_tready | ~output_axis_tvalid_reg) output_axis_tvalid_reg <= ~empty`. When output_rst_sync3 is still asserted, ~empty may become 1 because wr_ptr_gray has advanced from input-side writes, causing output_axis_tvalid_reg to assert while the output domain is still in reset. This produces early valid with wrong data at cycle 8. Adding `&& (!output_rst_sync3)` to the condition (or gating the read/update with output_rst_sync3) keeps output_axis_tvalid_reg at 0 until the output reset chain clears, aligning the first valid data with the expected cycle.",
+        "source_line": 163
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 6.3976
+}

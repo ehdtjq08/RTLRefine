@@ -1,0 +1,53 @@
+{
+  "explanation": "All eight candidates directly address the first public failure at cycle 4 where input_axis_tready is 1 but expected 0. Each edit inserts a reset-synchronizer qualifier (input_rst_sync1, input_rst_sync2, input_rst_sync3, output_rst_sync1, output_rst_sync3) into either the readiness assignment (line 105) or the write-enable logic (lines 122, 139, 148). The dependency evidence confirms these lines feed the failing port. The downstream data mismatches at cycles 8 and 9 on output_axis_tdata are consequences of the early readiness/write, so correcting the reset gating resolves the full trace.",
+  "ranking": [
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_f09094005ed7",
+      "mechanism": "At line 139 the candidate gates the write enable with (!output_rst_sync3) so the FIFO only accepts new data once the output-side reset chain has fully de-asserted. The original code allows write while output_rst_sync3 is still high; the public failure shows input_axis_tready asserted at cycle 4 when output_rst_sync3 is active. Adding !output_rst_sync3 matches the observed 0 at cycle 4 and restores the expected 1 at cycle 8 on output_axis_tdata.",
+      "source_line": 139
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_74df60f23eb4",
+      "mechanism": "At line 105 the candidate qualifies input_axis_tready with (input_rst_sync3) so readiness is suppressed until the input-side reset synchronizer has cleared. The original code exposes ~full during reset synchronization; the public trace expects input_axis_tready = 0 at cycle 4 when input_rst_sync3 is still 1. The added term forces the observed 0 and then allows readiness once input_rst_sync3 de-asserts, matching the expected trace.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_3e4c5ecff89c",
+      "mechanism": "At line 105 the candidate gates input_axis_tready with (!output_rst_sync1) to prevent readiness while the very first output-side reset synchronizer is active. The failure shows input_axis_tready = 1 at cycle 4 when output_rst_sync1 = 1; the edit forces it to 0, matching the expected value and allowing correct data flow at cycle 8 on output_axis_tdata.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_c4126d267998",
+      "mechanism": "At line 148 the candidate gates the input-side write logic with (output_rst_sync3), ensuring memory updates only proceed after the output-side reset chain completes. The original code permits writes during output_rst_sync3; the observed mismatch at cycle 4 (input_axis_tready) and cycle 8/9 (output_axis_tdata) aligns with premature writes. The extra condition eliminates those cycles.",
+      "source_line": 148
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_ea919cd146da",
+      "mechanism": "At line 105 the candidate adds (input_rst_sync1) to the readiness expression so the input side does not advertise ready while its first reset synchronizer is still asserted. The trace shows input_axis_tready = 1 at cycle 4 when input_rst_sync1 = 1; the edit forces 0, matching the expected trace and downstream data values.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_6e2e33580da6",
+      "mechanism": "At line 122 the candidate qualifies the write condition with (!write) under async_rst, effectively blocking memory writes while async reset is active but write would otherwise fire. The observed output_axis_tdata mismatch at cycles 8 and 9 (expected 1 and 2, got 2 and 3) indicates early data corruption; this edit prevents that corruption.",
+      "source_line": 122
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_ac60e3091721",
+      "mechanism": "At line 105 the candidate gates input_axis_tready with (!input_rst_sync2) so readiness waits for the second input reset synchronizer to clear. The failure at cycle 4 shows readiness high while input_rst_sync2 = 1; the added condition forces the expected 0 and restores correct data at cycle 8.",
+      "source_line": 105
+    },
+    {
+      "failure_port": "input_axis_tready",
+      "id": "patch_37040ee40903",
+      "mechanism": "At line 139 the candidate adds (!input_rst_sync3) to the write gate, preventing FIFO writes until the input-side reset chain fully clears. The trace mismatch at cycle 4 (input_axis_tready) and cycles 8/9 (output_axis_tdata) is consistent with writes occurring during input_rst_sync3; this edit blocks them.",
+      "source_line": 139
+    }
+  ]
+}

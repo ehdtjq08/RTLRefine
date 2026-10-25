@@ -1,0 +1,187 @@
+{
+  "NVIDIA_role": "One pre-execution ranking of existing IDs, never source generation",
+  "SMT_used": false,
+  "audit": "Only after both selections fixed; V2 oracle and data unchanged",
+  "baseline_original_gate_shared": true,
+  "candidate_cap_per_arm": 8,
+  "candidate_order": "Round-robin grammar families, source order inside family; NVIDIA can reorder after common prefix; unlisted IDs retain static order",
+  "common_static_prefix": 2,
+  "controller_hashes": {
+    "configs/budget.json": "915447a9fdee019db7e6ccb1fb74cad5a0583140f055933c669ad47c86263dd2",
+    "configs/pricing.json": "6d0c219e3c023cc76b13732b1a594b9b15b9b9eb5711f41dee863a0007f32a3e",
+    "rtl_agent/budget.py": "99fa5be7fc3067423969a0fe88a3404d7ad28e2ad015e0e9a96908f2d4263fd2",
+    "rtl_agent/common.py": "2ea3cdfa66c0cdca13bf839dd8de1346ef0aeb07c8bfa82ad3c5c62abf2eeaff",
+    "rtl_agent/known_bugs_v2/__init__.py": "73d619790ac1b7693d3874096bc5cdae2b0848171751e38645f8d732d4345aca",
+    "rtl_agent/known_bugs_v2/agent.py": "4d49208ae1daca9e5f1045eabf6b5409241b9e955e138ba373c570dd43ab3d1b",
+    "rtl_agent/known_bugs_v2/cases.py": "be77e2ec38698732426a4927b00b01eba1c636b4e28a13eb49f326cf9695970c",
+    "rtl_agent/known_bugs_v2/engine.py": "172d970175d24ac33c511dec780d7b40967d91e48ff341564538cbd58f173341",
+    "rtl_agent/known_bugs_v2/evaluator.py": "2d7b7eb8e0f4f31e97d7b7ef553ec78d401bbb5d6fb9b42c15b408fd1dbee03f",
+    "rtl_agent/known_bugs_v2/runner.py": "ab3324a46472a0c08f0edb1d2b994c7b07763bfa22cf90281957a1cd6c9f0e9d",
+    "rtl_agent/model_client.py": "375935c18f8cbce43038a10179b35a308b2cf30608bdef32bb31d3e6955c50e1",
+    "rtl_agent/model_settings.py": "0ce64b548fd67b31f2b3d67a9d39536cc89f999937cdf99df3a7054066d06ff7",
+    "rtl_agent/repair_search/__init__.py": "8c305c673cb50226d4a116f287c03f4a8e9b1d69e1d21c49e30f889d9dbf9767",
+    "rtl_agent/repair_search/candidates.py": "5ba80721c1dab6d9b40037ea9c898aa778a9937a50dd86f0188240966612d319",
+    "rtl_agent/repair_search/execution.py": "b61773225d5a1ddd720c24fb8f08e2db56118de1bf52964fca5e28c2ccc1cd84",
+    "rtl_agent/repair_search/planner.py": "51479a444c30f84fa0521f29fbb66aecbb1eab1b100ab332549189b63ee8b494",
+    "rtl_agent/repair_search/retention.py": "098f4e9f9e98927b6a4a7614b71e15b64d703c0b4078bbc2630f5f6177702746",
+    "rtl_agent/tool_paths.py": "3cc3eb22cbf6f58fe2f123ae9dbccf801aba5f217547caf54cf70ab285e74a5f",
+    "rtl_agent/tool_runner.py": "15028b22793eeee90f1dd58e286274434efdfa91665b34dafeeac05e3a540c6b",
+    "scripts/prepare_repair_search.py": "8e2b1b267eda3bb93b67eb9548a786102a786ef527424668b03ac23c2c0e786a",
+    "scripts/run_repair_search_comparison.py": "54a69aeca66cc42baa1ba28018feb0d7241ce601520e8cad5eb1f752bc887229"
+  },
+  "counterfactual_timing": "Cached execution means logical tool time is not measured independent end-to-end speedup",
+  "estimated_spend_cap_usd": 3.0,
+  "invalid_ranking": "Explicit static fallback; not credited as model benefit",
+  "max_model_calls": 9,
+  "max_output_tokens": 4096,
+  "methods": [
+    "static_search",
+    "nvidia_prioritized"
+  ],
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "pool_manifest": {
+    "candidate_simulations_used_to_build_pool": false,
+    "cases": [
+      {
+        "candidate_count": 39,
+        "case_id": "zipcpu-spi-c1-c3-d9_c3",
+        "families": [
+          "ack_pipeline",
+          "condition_gate",
+          "word_byte_order"
+        ],
+        "opaque_id": "case_01",
+        "pool_sha256": "3433efc6a353ff5a998522634ee11f5badac19587bd134b14c64d889fefc816b"
+      },
+      {
+        "candidate_count": 40,
+        "case_id": "zipcpu-spi-c1-c3-d9_d9",
+        "families": [
+          "condition_gate",
+          "word_byte_order"
+        ],
+        "opaque_id": "case_02",
+        "pool_sha256": "719b1b389387b2ca899c04cbf6762afe07a44e29df40991cbfbf3962bc563d4b"
+      },
+      {
+        "candidate_count": 32,
+        "case_id": "zipcpu-spi-c1-c3-d9_c1",
+        "families": [
+          "condition_gate"
+        ],
+        "opaque_id": "case_03",
+        "pool_sha256": "248b2266cee69de8eac4a2730b6680c9b7628cf69671c0ff12b63f92ac9a7cfe"
+      },
+      {
+        "candidate_count": 35,
+        "case_id": "axis-adapter-s3_s3",
+        "families": [
+          "condition_gate",
+          "handshake_reset_gate",
+          "state_retention"
+        ],
+        "opaque_id": "case_04",
+        "pool_sha256": "ffaa026611e447f7853815f6306f31556446abc28e6e106bc14198f4ba26e010"
+      },
+      {
+        "candidate_count": 43,
+        "case_id": "axis-fifo-d12_d12",
+        "families": [
+          "condition_gate",
+          "handshake_reset_gate",
+          "reset_completion",
+          "state_retention"
+        ],
+        "opaque_id": "case_05",
+        "pool_sha256": "b6f0a7be7bfd6e8805e56b46ca36f41a29a6f88fdb92038d3de9156b30bcd5a7"
+      },
+      {
+        "candidate_count": 34,
+        "case_id": "axis-frame-len-d13_d13_normal",
+        "families": [
+          "condition_gate",
+          "reported_value_reset",
+          "state_retention"
+        ],
+        "opaque_id": "case_06",
+        "pool_sha256": "64f51f4248450387ddbc22c8ddbbf02bcfd8d22a0c1f87f3ce435acdbe066d69"
+      },
+      {
+        "candidate_count": 47,
+        "case_id": "axis-async-fifo-c4_c4",
+        "families": [
+          "condition_gate",
+          "handshake_reset_gate",
+          "reset_completion"
+        ],
+        "opaque_id": "case_07",
+        "pool_sha256": "10954e79327005fb50be5fb93073c71437c11e06306505d0881d3d94a48b293c"
+      },
+      {
+        "candidate_count": 32,
+        "case_id": "axis-switch-d8_d8",
+        "families": [
+          "condition_gate",
+          "index_stride",
+          "reset_completion"
+        ],
+        "opaque_id": "case_08",
+        "pool_sha256": "f8f2a462e7ff0f2a46acc3a490da8e4038bfd4194b77f5744cb9843cb23166bd"
+      },
+      {
+        "candidate_count": 38,
+        "case_id": "axis-frame-fifo-d11_d11",
+        "families": [
+          "condition_gate",
+          "handshake_reset_gate",
+          "reset_completion"
+        ],
+        "opaque_id": "case_09",
+        "pool_sha256": "4e77c0ea423e690be6c000d630663f61e32064f477d49ed1c137db4cdd69ac7a"
+      },
+      {
+        "candidate_count": 32,
+        "case_id": "zipcpu-spi-c1-c3-d9_c1_normal",
+        "families": [
+          "condition_gate"
+        ],
+        "opaque_id": "case_10",
+        "pool_sha256": "e484dcba2eec7a8fd4be78350683f71d17760a4360d6cc6acff4f0591eef49fb"
+      },
+      {
+        "candidate_count": 28,
+        "case_id": "axis-frame-len-d13_d13",
+        "families": [
+          "condition_gate",
+          "reported_value_reset",
+          "state_retention"
+        ],
+        "opaque_id": "case_11",
+        "pool_sha256": "083425c93900a731bd812ea622dbf9b83c8fae89274ebb39661026987481fca4"
+      }
+    ],
+    "corrected_RTL_used": false,
+    "data_seal_sha256": "34f0d5e44731d3c0976f6ce9589339d736bde51d2e1ecaf2e8b4f1f0189bf53c",
+    "generator_hashes": {
+      "rtl_agent/repair_search/__init__.py": "8c305c673cb50226d4a116f287c03f4a8e9b1d69e1d21c49e30f889d9dbf9767",
+      "rtl_agent/repair_search/candidates.py": "5ba80721c1dab6d9b40037ea9c898aa778a9937a50dd86f0188240966612d319",
+      "rtl_agent/repair_search/planner.py": "51479a444c30f84fa0521f29fbb66aecbb1eab1b100ab332549189b63ee8b494",
+      "rtl_agent/repair_search/retention.py": "098f4e9f9e98927b6a4a7614b71e15b64d703c0b4078bbc2630f5f6177702746",
+      "scripts/prepare_repair_search.py": "8e2b1b267eda3bb93b67eb9548a786102a786ef527424668b03ac23c2c0e786a"
+    },
+    "model_calls": 0,
+    "scope": "Known development cohort after V2 and one retention pilot; not held-out or novel-algorithm evidence"
+  },
+  "pool_manifest_sha256": "1ca4b68be17c7fa40c42aa9b04f84428b79a36d88e8a6593c94d1f08d70b2c2d",
+  "same_static_pool": true,
+  "scope": "Known development cases after V2 analysis and one retention pilot. Fixed lexical edit grammar; not unseen accuracy, a new algorithm, unbounded proof or a fair same-compute comparison against the older two-call V2 study.",
+  "settings": {
+    "api_timeout_seconds": 240,
+    "enable_thinking": false,
+    "json_mode": true,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "shared_native_cache": "Physical evaluations counted once; each method charged its logical candidate/tool cost",
+  "stop": "First discovery pass; no audit-driven retry"
+}

@@ -1,0 +1,37 @@
+{
+  "edits": [
+    {
+      "after": "                m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}});",
+      "before": "                m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep;"
+    },
+    {
+      "after": "                m_axis_tkeep_reg[seg_reg*SEG_KEEP_WIDTH +: SEG_KEEP_WIDTH] <= (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}});",
+      "before": "                m_axis_tkeep_reg[seg_reg*SEG_KEEP_WIDTH +: SEG_KEEP_WIDTH] <= s_axis_tkeep;"
+    },
+    {
+      "after": "            s_axis_tkeep_reg <= (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}});",
+      "before": "            s_axis_tkeep_reg <= s_axis_tkeep;"
+    },
+    {
+      "after": "            m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}});",
+      "before": "            m_axis_tkeep_reg <= s_axis_tvalid_reg ? s_axis_tkeep_reg : s_axis_tkeep;"
+    },
+    {
+      "after": "                s_axis_tkeep_reg <= (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}}) >> SEG_KEEP_WIDTH;",
+      "before": "                s_axis_tkeep_reg <= s_axis_tkeep >> SEG_KEEP_WIDTH;"
+    },
+    {
+      "after": "                if (((S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}}) >> SEG_KEEP_WIDTH) == 0) begin",
+      "before": "                if ((s_axis_tkeep >> SEG_KEEP_WIDTH) == 0) begin"
+    },
+    {
+      "after": "            s_axis_tkeep_reg <= (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}});",
+      "before": "            s_axis_tkeep_reg <= s_axis_tkeep;"
+    },
+    {
+      "after": "    assign m_axis_tkeep  = M_KEEP_ENABLE ? (S_KEEP_ENABLE ? s_axis_tkeep : {S_KEEP_WIDTH{1'b1}}) : {M_KEEP_WIDTH{1'b1}};",
+      "before": "    assign m_axis_tkeep  = M_KEEP_ENABLE ? s_axis_tkeep : {M_KEEP_WIDTH{1'b1}};"
+    }
+  ],
+  "explanation": "The test failure occurs when the source interface has TKEEP disabled (S_KEEP_ENABLE=0) but the destination has TKEEP enabled (M_KEEP_ENABLE=1). In this case, the source's s_axis_tkeep signal is not meaningful and should be treated as all ones. The original code directly used s_axis_tkeep in the upsize and downsize adaptation logic, causing the output keep mask to be zero when the source drove it low. The fix replaces every use of s_axis_tkeep (and s_axis_tkeep_reg at load time) with a conditional expression that substitutes all-ones when S_KEEP_ENABLE=0. This ensures correct byte-valid masks on the output, including partially filled words at TLAST. The bypass block is also updated for consistency."
+}

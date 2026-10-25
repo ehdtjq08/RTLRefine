@@ -1,0 +1,43 @@
+{
+  "development_note": "Default disables extended reasoning after two earlier 8192-token reasoning-only truncations; earlier outcomes are retained",
+  "historical_case_not_new_discovery": true,
+  "max_output_tokens": 8192,
+  "max_requests": 2,
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "proof_steps": 16,
+  "reference_excluded_from_prompts": true,
+  "settings": {
+    "api_timeout_seconds": 240,
+    "enable_thinking": false,
+    "json_mode": true,
+    "temperature": 1.0,
+    "top_p": 0.95
+  },
+  "source_sha256": {
+    "__init__.py": "aaa32c7d2209627f0280cbdec80e26fa308d1ea4e050fb37d7fa2d07fab37de1",
+    "repair.py": "e3d403e3cc69cb767f460c9c50f89759f508aec2a062a3dbd36f2c6dff26b8a6",
+    "reset_case.py": "a38484925603be2bb037a166dd8643ec1f5efcbc5fd12e7c46daae595bd05188",
+    "runner.py": "bdf71a411911ee437f56622ddd62b08d005f6ad2f25be2e9e623c8ad9f3d7959"
+  },
+  "upstream": {
+    "buggy_commit": "87fe1a561f861366f8999a8ab5c1d3357290fc8a",
+    "files": [
+      {
+        "commit": "87fe1a561f861366f8999a8ab5c1d3357290fc8a",
+        "file": "axis_async_fifo.v",
+        "sha256": "c61b8f2393b8a4691c00e329fc92312e6355f7632e77faf3a92e935a11d81d28"
+      },
+      {
+        "commit": "6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+        "file": "fixed_axis_async_fifo.v",
+        "sha256": "8aca6b233800c0a38fd14be88966741a57ede52bf2f81bf9d3aec2a1744914e4"
+      }
+    ],
+    "fix": "https://github.com/alexforencich/verilog-axis/commit/6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+    "fixed_commit": "6bd7309b9d849b67a59dd6b77e87ae5ef86da0dc",
+    "issue": "https://github.com/alexforencich/verilog-axis/issues/2",
+    "license": "MIT; upstream COPYING and source headers retained",
+    "provenance": "Historical real bug, not a new discovery. PR #4 was not merged; the maintainer fixed the issue independently. Fixed source is evaluation-only.",
+    "repository": "https://github.com/alexforencich/verilog-axis"
+  }
+}

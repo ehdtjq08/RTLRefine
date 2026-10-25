@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.018105,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "99cfc63f94634ac2aa32bd4f1d38960f",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_bdfb4e29768c",
+    "patch_05abffd461ff",
+    "patch_330141055bc5",
+    "patch_4c92a56408a4",
+    "patch_390a7a67ed09",
+    "patch_177e84f089b9",
+    "patch_73d0959c8d78",
+    "patch_f89a1677f767"
+  ],
+  "proposal": {
+    "explanation": "The primary failure is m_axis_tlast stuck at 0, observed at cycles 6, 7, 19, etc. The root cause is m_axis_tlast_int being hardcoded to 0 (line 141), so frame boundaries never enter the pipeline. Patch_bdfb4e29768c directly fixes this by assigning s_axis_tlast. Secondary issues involve premature pause activation stalling frame completion: patch_05abffd461ff guards the accumulator check with !s_axis_tready, patch_330141055bc5 disables pause logic in frame-rate mode, and patches_390a7a67ed09/177e84f089b9 add alternative pause gating. Patch_4c92a56408a4 stabilizes reset handshake. Patches_73d0959c8d78 and _f89a1677f767 ensure frame-boundary state propagates through the two-stage output registers once generated.",
+    "ranking": [
+      {
+        "id": "patch_bdfb4e29768c",
+        "mechanism": "Corrects m_axis_tlast_int to forward the input s_axis_tlast value instead of hardcoding 0, enabling proper frame boundary propagation through the pipeline."
+      },
+      {
+        "id": "patch_05abffd461ff",
+        "mechanism": "Prevents premature accumulator threshold checks when s_axis_tready is asserted, avoiding incorrect pause activation that stalls frame completion."
+      },
+      {
+        "id": "patch_330141055bc5",
+        "mechanism": "Restricts the pause condition to non-frame-rate mode, preventing spurious frame gating when rate_by_frame is active."
+      },
+      {
+        "id": "patch_4c92a56408a4",
+        "mechanism": "Guards s_axis_tready output with rst to avoid premature readiness during reset, indirectly stabilizing frame state initialization."
+      },
+      {
+        "id": "patch_390a7a67ed09",
+        "mechanism": "Uses m_axis_tready backpressure to modulate pause, coupling frame pacing to downstream readiness."
+      },
+      {
+        "id": "patch_177e84f089b9",
+        "mechanism": "Leverages s_axis_tvalid to gate pause, tying frame continuation to active input data presence."
+      },
+      {
+        "id": "patch_73d0959c8d78",
+        "mechanism": "Seeds m_axis_tlast_reg from the temp register, ensuring frame-boundary state can propagate through the two-deep output pipeline."
+      },
+      {
+        "id": "patch_f89a1677f767",
+        "mechanism": "Drives store_axis_temp_to_output using m_axis_tlast, linking frame-boundary assertion to pipeline flush."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 4.8458
+}

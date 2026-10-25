@@ -1,0 +1,16 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 176,
+      "replacement": "assign s_axis[DATA_WIDTH-1:0] = s_axis_tdata;\ngenerate\n    if (KEEP_ENABLE) begin\n        assign s_axis[KEEP_OFFSET +: KEEP_WIDTH] = s_axis_tkeep;\n    end\n    if (LAST_ENABLE) begin\n        assign s_axis[LAST_OFFSET] = s_axis_tlast;\n    end\n    if (ID_ENABLE) begin\n        assign s_axis[ID_OFFSET +: ID_WIDTH] = s_axis_tid;\n    end\n    if (DEST_ENABLE) begin\n        assign s_axis[DEST_OFFSET +: DEST_WIDTH] = s_axis_tdest;\n    end\n    if (USER_ENABLE) begin\n        assign s_axis[USER_OFFSET +: USER_WIDTH] = s_axis_tuser;\n    end\nendgenerate",
+      "start_line": 169
+    },
+    {
+      "end_line": 235,
+      "replacement": "                 if (DROP_BAD_FRAME && (USER_BAD_FRAME_MASK & ~(s_axis_tuser ^ USER_BAD_FRAME_VALUE)) == USER_BAD_FRAME_MASK) begin",
+      "start_line": 235
+    }
+  ],
+  "explanation": "Two functional defects were identified and repaired. First, the `generate` block used non-standard Verilog syntax (`if (COND) assign ...` without `begin/end`), which would cause a syntax error in native Verilator simulation. It has been rewritten with proper SystemVerilog `generate` block syntax including `begin/end` for each conditional assignment. Second, the bad-frame detection condition incorrectly treated a partial match of masked user bits as a bad frame (any masked bit matching would trigger a drop). The condition is now corrected to require all masked bits to match the bad-frame value, ensuring accepted complete frames are preserved."
+}

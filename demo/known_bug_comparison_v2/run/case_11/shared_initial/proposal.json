@@ -1,0 +1,11 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 105,
+      "replacement": "always @* begin\n    i = 0; \n    frame_len_next = frame_len_reg;\n    frame_len_valid_next = 1'b0;\n    frame_next = frame_reg;\n\n    if (monitor_axis_tready && monitor_axis_tvalid) begin\n        if (!frame_reg) begin\n            frame_len_next = 0;\n            frame_next = 1'b1;\n        end\n\n        if (KEEP_ENABLE) begin\n            bit_cnt = 0;\n            for (i = 0; i <= KEEP_WIDTH; i = i + 1) begin\n                if (monitor_axis_tkeep == ({KEEP_WIDTH{1'b1}}) >> (KEEP_WIDTH-i)) bit_cnt = i;\n            end\n            frame_len_next = frame_len_next + bit_cnt;\n        end else begin\n            frame_len_next = frame_len_next + 1;\n        end\n\n        if (monitor_axis_tlast) begin\n            frame_len_valid_next = 1'b1;\n            frame_next = 1'b0;\n        end\n    end\nend\n",
+      "start_line": 75
+    }
+  ],
+  "explanation": "The original combinational logic fails to reset the frame length accumulator for single-word frames (where tlast is asserted while frame_reg is 0). The reset only occurs in the `else if (!frame_reg)` branch, which is skipped when tlast is true. The fix restructures the logic to always reset the accumulator when starting a new frame (frame_reg=0 and tready&&tvalid), then add the byte count, and finally handle tlast to mark frame valid and clear frame_reg."
+}

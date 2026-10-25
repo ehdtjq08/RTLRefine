@@ -1,0 +1,103 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\skidbuffer'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dependencies.v
+Parsing SystemVerilog input from `dependencies.v' to AST representation.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \skidbuffer
+
+3.2. Analyzing design hierarchy..
+Top module:  \skidbuffer
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\skidbuffer.$proc$candidate.v:0$27'.
+Found and cleaned up 1 empty switch in `\skidbuffer.$proc$candidate.v:0$26'.
+Found and cleaned up 1 empty switch in `\skidbuffer.$proc$candidate.v:0$25'.
+Found and cleaned up 1 empty switch in `\skidbuffer.$proc$candidate.v:0$24'.
+Cleaned up 4 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $proc$candidate.v:206$19 in module skidbuffer.
+Marked 1 switch rules as full_case in process $proc$candidate.v:194$15 in module skidbuffer.
+Marked 2 switch rules as full_case in process $proc$candidate.v:147$7 in module skidbuffer.
+Marked 2 switch rules as full_case in process $proc$candidate.v:134$2 in module skidbuffer.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 8 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\skidbuffer.$proc$candidate.v:0$27'.
+  Set init value: \o_data = 8'00000000
+Found init rule in `\skidbuffer.$proc$candidate.v:0$26'.
+  Set init value: \LOGIC.REG_OUTPUT.ro_valid = 1'0
+Found init rule in `\skidbuffer.$proc$candidate.v:0$25'.
+  Set init value: \LOGIC.r_data = 8'00000000
+Found init rule in `\skidbuffer.$proc$candidate.v:0$24'.
+  Set init value: \LOGIC.r_valid = 1'0
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\skidbuffer.$proc$candidate.v:0$27'.
+Creating decoders for process `\skidbuffer.$proc$candidate.v:0$26'.
+Creating decoders for process `\skidbuffer.$proc$candidate.v:0$25'.
+Creating decoders for process `\skidbuffer.$proc$candidate.v:0$24'.
+Creating decoders for process `\skidbuffer.$proc$candidate.v:206$19'.
+     1/1: $0\o_data[7:0]
+Creating decoders for process `\skidbuffer.$proc$candidate.v:194$15'.
+     1/1: $0\LOGIC.REG_OUTPUT.ro_valid[0:0]
+Creating decoders for process `\skidbuffer.$proc$candidate.v:147$7'.
+     1/1: $0\LOGIC.r_data[7:0]
+Creating decoders for process `\skidbuffer.$proc$candidate.v:134$2'.
+     1/1: $0\LOGIC.r_valid[0:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\skidbuffer.\o_data' using process `\skidbuffer.$proc$candidate.v:206$19'.
+  created $dff cell `$procdff$60' with positive edge clock.
+Creating register for signal `\skidbuffer.\LOGIC.REG_OUTPUT.ro_valid' using process `\skidbuffer.$proc$candidate.v:194$15'.
+  created $dff cell `$procdff$61' with positive edge clock.
+Creating register for signal `\skidbuffer.\LOGIC.r_data' using process `\skidbuffer.$proc$candidate.v:147$7'.
+  created $dff cell `$procdff$62' with positive edge clock.
+Creating register for signal `\skidbuffer.\LOGIC.r_valid' using process `\skidbuffer.$proc$candidate.v:134$2'.
+  created $dff cell `$procdff$63' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `skidbuffer.$proc$candidate.v:0$27'.
+Removing empty process `skidbuffer.$proc$candidate.v:0$26'.
+Removing empty process `skidbuffer.$proc$candidate.v:0$25'.
+Removing empty process `skidbuffer.$proc$candidate.v:0$24'.
+Found and cleaned up 4 empty switches in `\skidbuffer.$proc$candidate.v:206$19'.
+Removing empty process `skidbuffer.$proc$candidate.v:206$19'.
+Found and cleaned up 2 empty switches in `\skidbuffer.$proc$candidate.v:194$15'.
+Removing empty process `skidbuffer.$proc$candidate.v:194$15'.
+Found and cleaned up 3 empty switches in `\skidbuffer.$proc$candidate.v:147$7'.
+Removing empty process `skidbuffer.$proc$candidate.v:147$7'.
+Found and cleaned up 3 empty switches in `\skidbuffer.$proc$candidate.v:134$2'.
+Removing empty process `skidbuffer.$proc$candidate.v:134$2'.
+Cleaned up 12 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module skidbuffer.
+
+5. Executing JSON backend.

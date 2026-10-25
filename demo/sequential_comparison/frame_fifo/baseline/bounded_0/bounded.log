@@ -1,0 +1,1523 @@
+
+-- Executing script file `bounded.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing formal SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\axis_fifo'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: golden.v
+Parsing formal SystemVerilog input from `golden.v' to AST representation.
+Generating RTLIL representation for module `\reference_frame_fifo'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: miter.v
+Parsing formal SystemVerilog input from `miter.v' to AST representation.
+Generating RTLIL representation for module `\miter'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \miter
+Used module:     \reference_frame_fifo
+Used module:     \axis_fifo
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 2
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 2
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \FRAME_FIFO = 1
+Parameter \DROP_BAD_FRAME = 0
+Parameter \DROP_WHEN_FULL = 0
+
+4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\reference_frame_fifo'.
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 2
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 2
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \FRAME_FIFO = 1
+Parameter \DROP_BAD_FRAME = 0
+Parameter \DROP_WHEN_FULL = 0
+Generating RTLIL representation for module `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo'.
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 2
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 2
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \FRAME_FIFO = 1
+Parameter \DROP_BAD_FRAME = 0
+Parameter \DROP_WHEN_FULL = 0
+
+4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\axis_fifo'.
+Parameter \ADDR_WIDTH = 2
+Parameter \DATA_WIDTH = 8
+Parameter \KEEP_ENABLE = 1
+Parameter \KEEP_WIDTH = 1
+Parameter \LAST_ENABLE = 1
+Parameter \ID_ENABLE = 1
+Parameter \ID_WIDTH = 2
+Parameter \DEST_ENABLE = 1
+Parameter \DEST_WIDTH = 2
+Parameter \USER_ENABLE = 1
+Parameter \USER_WIDTH = 1
+Parameter \FRAME_FIFO = 1
+Parameter \DROP_BAD_FRAME = 0
+Parameter \DROP_WHEN_FULL = 0
+Generating RTLIL representation for module `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo'.
+
+4.4. Analyzing design hierarchy..
+Top module:  \miter
+Used module:     $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo
+Used module:     $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo
+
+4.5. Analyzing design hierarchy..
+Top module:  \miter
+Used module:     $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo
+Used module:     $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo
+Removing unused module `\reference_frame_fifo'.
+Removing unused module `\axis_fifo'.
+Removed 2 unused modules.
+Module miter directly or indirectly contains formal properties -> setting "keep" attribute.
+
+5. Executing PROC pass (convert processes to netlists).
+
+5.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:0$204'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:0$204'.
+Found and cleaned up 1 empty switch in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+Found and cleaned up 4 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:0$154'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:0$154'.
+Found and cleaned up 1 empty switch in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+Cleaned up 10 empty switches.
+
+5.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$candidate.v:305$203 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:294$200 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$candidate.v:277$198 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Marked 2 switch rules as full_case in process $proc$candidate.v:256$193 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Marked 3 switch rules as full_case in process $proc$candidate.v:225$186 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Marked 6 switch rules as full_case in process $proc$candidate.v:176$176 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:304$153 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:293$150 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+Marked 1 switch rules as full_case in process $proc$golden.v:276$148 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+Marked 2 switch rules as full_case in process $proc$golden.v:255$143 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+Marked 3 switch rules as full_case in process $proc$golden.v:224$136 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+Marked 5 switch rules as full_case in process $proc$golden.v:178$127 in module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+Removed a total of 0 dead cases.
+
+5.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 25 redundant assignments.
+Promoted 59 assignments to connections.
+
+5.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:148$214'.
+  Set init value: \bad_frame_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:147$213'.
+  Set init value: \overflow_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:146$212'.
+  Set init value: \drop_frame_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:130$211'.
+  Set init value: \m_axis_tvalid_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:125$210'.
+  Set init value: \mem_read_data_valid_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:121$209'.
+  Set init value: \rd_addr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:120$208'.
+  Set init value: \rd_ptr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:119$207'.
+  Set init value: \wr_addr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:118$206'.
+  Set init value: \wr_ptr_cur_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:117$205'.
+  Set init value: \wr_ptr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:149$215'.
+  Set init value: \good_frame_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:150$164'.
+  Set init value: \bad_frame_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:149$163'.
+  Set init value: \overflow_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:148$162'.
+  Set init value: \drop_frame_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:130$161'.
+  Set init value: \m_axis_tvalid_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:125$160'.
+  Set init value: \mem_read_data_valid_reg = 1'0
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:121$159'.
+  Set init value: \rd_addr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:120$158'.
+  Set init value: \rd_ptr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:119$157'.
+  Set init value: \wr_addr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:118$156'.
+  Set init value: \wr_ptr_cur_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:117$155'.
+  Set init value: \wr_ptr_reg = 3'000
+Found init rule in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:151$165'.
+  Set init value: \good_frame_reg = 1'0
+
+5.5. Executing PROC_ARST pass (detect async resets in processes).
+
+5.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+5.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\miter.$proc$miter.v:23$90'.
+     1/6: $assert$miter.v:28$111_EN
+     2/6: $assert$miter.v:27$109_EN
+     3/6: $assert$miter.v:27$107_EN
+     4/6: $assert$miter.v:27$105_EN
+     5/6: $assert$miter.v:27$103_EN
+     6/6: $assert$miter.v:27$101_EN
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:148$214'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:147$213'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:146$212'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:130$211'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:125$210'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:121$209'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:120$208'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:119$207'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:118$206'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:117$205'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:149$215'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:305$203'.
+     1/2: $0\m_axis_tvalid_reg[0:0]
+     2/2: $0\m_axis_reg[14:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:294$200'.
+     1/2: $1\m_axis_tvalid_next[0:0]
+     2/2: $1\store_output[0:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+     1/3: $0\mem_read_data_valid_reg[0:0]
+     2/3: $0\rd_ptr_reg[2:0]
+     3/3: $0\mem_read_data_reg[14:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:256$193'.
+     1/6: $2\rd_ptr_next[2:0]
+     2/6: $2\mem_read_data_valid_next[0:0]
+     3/6: $2\read[0:0]
+     4/6: $1\read[0:0]
+     5/6: $1\mem_read_data_valid_next[0:0]
+     6/6: $1\rd_ptr_next[2:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+     1/10: $1$memwr$\mem$candidate.v:251$166_EN[14:0]$192
+     2/10: $1$memwr$\mem$candidate.v:251$166_DATA[14:0]$191
+     3/10: $1$memwr$\mem$candidate.v:251$166_ADDR[1:0]$190
+     4/10: $0\wr_addr_reg[2:0]
+     5/10: $0\good_frame_reg[0:0]
+     6/10: $0\bad_frame_reg[0:0]
+     7/10: $0\overflow_reg[0:0]
+     8/10: $0\drop_frame_reg[0:0]
+     9/10: $0\wr_ptr_cur_reg[2:0]
+    10/10: $0\wr_ptr_reg[2:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+     1/39: $6\bad_frame_next[0:0]
+     2/39: $7\wr_ptr_cur_next[2:0]
+     3/39: $6\good_frame_next[0:0]
+     4/39: $6\wr_ptr_next[2:0]
+     5/39: $5\good_frame_next[0:0]
+     6/39: $5\bad_frame_next[0:0]
+     7/39: $6\wr_ptr_cur_next[2:0]
+     8/39: $5\wr_ptr_next[2:0]
+     9/39: $5\overflow_next[0:0]
+    10/39: $5\drop_frame_next[0:0]
+    11/39: $5\wr_ptr_cur_next[2:0]
+    12/39: $4\overflow_next[0:0]
+    13/39: $4\drop_frame_next[0:0]
+    14/39: $4\wr_ptr_cur_next[2:0]
+    15/39: $4\good_frame_next[0:0]
+    16/39: $4\bad_frame_next[0:0]
+    17/39: $4\write[0:0]
+    18/39: $4\wr_ptr_next[2:0]
+    19/39: $3\good_frame_next[0:0]
+    20/39: $3\bad_frame_next[0:0]
+    21/39: $3\overflow_next[0:0]
+    22/39: $3\drop_frame_next[0:0]
+    23/39: $3\write[0:0]
+    24/39: $3\wr_ptr_cur_next[2:0]
+    25/39: $3\wr_ptr_next[2:0]
+    26/39: $2\good_frame_next[0:0]
+    27/39: $2\bad_frame_next[0:0]
+    28/39: $2\overflow_next[0:0]
+    29/39: $2\drop_frame_next[0:0]
+    30/39: $2\write[0:0]
+    31/39: $2\wr_ptr_cur_next[2:0]
+    32/39: $2\wr_ptr_next[2:0]
+    33/39: $1\good_frame_next[0:0]
+    34/39: $1\bad_frame_next[0:0]
+    35/39: $1\overflow_next[0:0]
+    36/39: $1\drop_frame_next[0:0]
+    37/39: $1\write[0:0]
+    38/39: $1\wr_ptr_cur_next[2:0]
+    39/39: $1\wr_ptr_next[2:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:150$164'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:149$163'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:148$162'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:130$161'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:125$160'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:121$159'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:120$158'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:119$157'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:118$156'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:117$155'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:151$165'.
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:304$153'.
+     1/2: $0\m_axis_tvalid_reg[0:0]
+     2/2: $0\m_axis_reg[14:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:293$150'.
+     1/2: $1\m_axis_tvalid_next[0:0]
+     2/2: $1\store_output[0:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+     1/3: $0\mem_read_data_valid_reg[0:0]
+     2/3: $0\rd_ptr_reg[2:0]
+     3/3: $0\mem_read_data_reg[14:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:255$143'.
+     1/6: $2\rd_ptr_next[2:0]
+     2/6: $2\mem_read_data_valid_next[0:0]
+     3/6: $2\read[0:0]
+     4/6: $1\read[0:0]
+     5/6: $1\mem_read_data_valid_next[0:0]
+     6/6: $1\rd_ptr_next[2:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+     1/10: $1$memwr$\mem$golden.v:250$113_EN[14:0]$142
+     2/10: $1$memwr$\mem$golden.v:250$113_DATA[14:0]$141
+     3/10: $1$memwr$\mem$golden.v:250$113_ADDR[1:0]$140
+     4/10: $0\wr_addr_reg[2:0]
+     5/10: $0\good_frame_reg[0:0]
+     6/10: $0\bad_frame_reg[0:0]
+     7/10: $0\overflow_reg[0:0]
+     8/10: $0\drop_frame_reg[0:0]
+     9/10: $0\wr_ptr_cur_reg[2:0]
+    10/10: $0\wr_ptr_reg[2:0]
+Creating decoders for process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+     1/32: $5\bad_frame_next[0:0]
+     2/32: $6\wr_ptr_cur_next[2:0]
+     3/32: $5\good_frame_next[0:0]
+     4/32: $5\wr_ptr_next[2:0]
+     5/32: $4\good_frame_next[0:0]
+     6/32: $4\bad_frame_next[0:0]
+     7/32: $5\wr_ptr_cur_next[2:0]
+     8/32: $4\wr_ptr_next[2:0]
+     9/32: $4\overflow_next[0:0]
+    10/32: $4\drop_frame_next[0:0]
+    11/32: $4\wr_ptr_cur_next[2:0]
+    12/32: $3\overflow_next[0:0]
+    13/32: $3\drop_frame_next[0:0]
+    14/32: $3\wr_ptr_cur_next[2:0]
+    15/32: $3\good_frame_next[0:0]
+    16/32: $3\bad_frame_next[0:0]
+    17/32: $3\write[0:0]
+    18/32: $3\wr_ptr_next[2:0]
+    19/32: $2\good_frame_next[0:0]
+    20/32: $2\bad_frame_next[0:0]
+    21/32: $2\overflow_next[0:0]
+    22/32: $2\drop_frame_next[0:0]
+    23/32: $2\write[0:0]
+    24/32: $2\wr_ptr_cur_next[2:0]
+    25/32: $2\wr_ptr_next[2:0]
+    26/32: $1\good_frame_next[0:0]
+    27/32: $1\bad_frame_next[0:0]
+    28/32: $1\overflow_next[0:0]
+    29/32: $1\drop_frame_next[0:0]
+    30/32: $1\write[0:0]
+    31/32: $1\wr_ptr_cur_next[2:0]
+    32/32: $1\wr_ptr_next[2:0]
+
+5.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\m_axis_tvalid_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:294$200'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\store_output' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:294$200'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\rd_ptr_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:256$193'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\mem_read_data_valid_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:256$193'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\read' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:256$193'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\wr_ptr_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\wr_ptr_cur_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\write' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\drop_frame_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\overflow_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\bad_frame_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\good_frame_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\m_axis_tvalid_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:293$150'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\store_output' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:293$150'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\rd_ptr_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:255$143'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\mem_read_data_valid_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:255$143'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\read' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:255$143'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\wr_ptr_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\wr_ptr_cur_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\write' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\drop_frame_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\overflow_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\bad_frame_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+No latch inferred for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\good_frame_next' from process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+
+5.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\m_axis_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:305$203'.
+  created $dff cell `$procdff$885' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\m_axis_tvalid_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:305$203'.
+  created $dff cell `$procdff$886' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\rd_ptr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+  created $dff cell `$procdff$887' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\rd_addr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+  created $dff cell `$procdff$888' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\mem_read_data_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+  created $dff cell `$procdff$889' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\mem_read_data_valid_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+  created $dff cell `$procdff$890' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\wr_ptr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$891' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\wr_ptr_cur_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$892' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\wr_addr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$893' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\drop_frame_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$894' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\overflow_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$895' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\bad_frame_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$896' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.\good_frame_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$897' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$memwr$\mem$candidate.v:251$166_ADDR' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$898' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$memwr$\mem$candidate.v:251$166_DATA' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$899' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$memwr$\mem$candidate.v:251$166_EN' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+  created $dff cell `$procdff$900' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\m_axis_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:304$153'.
+  created $dff cell `$procdff$901' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\m_axis_tvalid_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:304$153'.
+  created $dff cell `$procdff$902' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\rd_ptr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+  created $dff cell `$procdff$903' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\rd_addr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+  created $dff cell `$procdff$904' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\mem_read_data_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+  created $dff cell `$procdff$905' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\mem_read_data_valid_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+  created $dff cell `$procdff$906' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\wr_ptr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$907' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\wr_ptr_cur_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$908' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\wr_addr_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$909' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\drop_frame_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$910' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\overflow_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$911' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\bad_frame_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$912' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.\good_frame_reg' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$913' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$memwr$\mem$golden.v:250$113_ADDR' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$914' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$memwr$\mem$golden.v:250$113_DATA' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$915' with positive edge clock.
+Creating register for signal `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$memwr$\mem$golden.v:250$113_EN' using process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+  created $dff cell `$procdff$916' with positive edge clock.
+
+5.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `\miter.$proc$miter.v:23$90'.
+Removing empty process `miter.$proc$miter.v:23$90'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:148$214'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:147$213'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:146$212'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:130$211'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:125$210'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:121$209'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:120$208'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:119$207'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:118$206'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:117$205'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:149$215'.
+Found and cleaned up 2 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:305$203'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:305$203'.
+Found and cleaned up 1 empty switch in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:294$200'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:294$200'.
+Found and cleaned up 2 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:277$198'.
+Found and cleaned up 2 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:256$193'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:256$193'.
+Found and cleaned up 3 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:225$186'.
+Found and cleaned up 6 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.$proc$candidate.v:176$176'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:150$164'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:149$163'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:148$162'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:130$161'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:125$160'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:121$159'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:120$158'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:119$157'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:118$156'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:117$155'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:151$165'.
+Found and cleaned up 2 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:304$153'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:304$153'.
+Found and cleaned up 1 empty switch in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:293$150'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:293$150'.
+Found and cleaned up 2 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:276$148'.
+Found and cleaned up 2 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:255$143'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:255$143'.
+Found and cleaned up 3 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:224$136'.
+Found and cleaned up 5 empty switches in `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+Removing empty process `$paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.$proc$golden.v:178$127'.
+Cleaned up 33 empty switches.
+
+5.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+Optimizing module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Optimizing module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+
+6. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\axis_fifo.
+Deleting now unused module $paramod$8336ce72adb3919f128916da020d9ef60d67e0b0\reference_frame_fifo.
+
+7. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \golden.mem in module \miter:
+  created 4 $dff cells and 0 static cells of width 15.
+  read interface: 0 $dff and 3 $mux cells.
+  write interface: 60 write mux blocks.
+Mapping memory \candidate.mem in module \miter:
+  created 4 $dff cells and 0 static cells of width 15.
+  read interface: 0 $dff and 3 $mux cells.
+  write interface: 60 write mux blocks.
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 5 cells.
+
+8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\golden.$procmux$639.
+    dead port 2/2 on $mux $flatten\golden.$procmux$645.
+    dead port 2/2 on $mux $flatten\golden.$procmux$651.
+    dead port 2/2 on $mux $flatten\golden.$procmux$695.
+    dead port 1/2 on $mux $flatten\golden.$procmux$698.
+    dead port 2/2 on $mux $flatten\golden.$procmux$700.
+    dead port 2/2 on $mux $flatten\golden.$procmux$707.
+    dead port 1/2 on $mux $flatten\golden.$procmux$710.
+    dead port 2/2 on $mux $flatten\golden.$procmux$712.
+    dead port 2/2 on $mux $flatten\golden.$procmux$719.
+    dead port 1/2 on $mux $flatten\golden.$procmux$722.
+    dead port 2/2 on $mux $flatten\golden.$procmux$724.
+    dead port 2/2 on $mux $flatten\golden.$procmux$731.
+    dead port 1/2 on $mux $flatten\golden.$procmux$734.
+    dead port 2/2 on $mux $flatten\golden.$procmux$736.
+    dead port 1/2 on $mux $flatten\golden.$procmux$743.
+    dead port 2/2 on $mux $flatten\golden.$procmux$745.
+    dead port 1/2 on $mux $flatten\golden.$procmux$752.
+    dead port 2/2 on $mux $flatten\golden.$procmux$754.
+    dead port 1/2 on $mux $flatten\golden.$procmux$761.
+    dead port 2/2 on $mux $flatten\golden.$procmux$763.
+    dead port 1/2 on $mux $flatten\golden.$procmux$770.
+    dead port 2/2 on $mux $flatten\golden.$procmux$772.
+    dead port 2/2 on $mux $flatten\golden.$procmux$779.
+    dead port 2/2 on $mux $flatten\golden.$procmux$781.
+    dead port 2/2 on $mux $flatten\golden.$procmux$788.
+    dead port 2/2 on $mux $flatten\golden.$procmux$790.
+    dead port 2/2 on $mux $flatten\golden.$procmux$797.
+    dead port 2/2 on $mux $flatten\golden.$procmux$799.
+    dead port 2/2 on $mux $flatten\golden.$procmux$805.
+    dead port 2/2 on $mux $flatten\golden.$procmux$811.
+    dead port 2/2 on $mux $flatten\golden.$procmux$817.
+    dead port 2/2 on $mux $flatten\golden.$procmux$823.
+    dead port 2/2 on $mux $flatten\golden.$procmux$829.
+    dead port 2/2 on $mux $flatten\golden.$procmux$835.
+    dead port 2/2 on $mux $flatten\golden.$procmux$841.
+    dead port 2/2 on $mux $flatten\golden.$procmux$844.
+    dead port 2/2 on $mux $flatten\golden.$procmux$847.
+    dead port 2/2 on $mux $flatten\golden.$procmux$850.
+    dead port 2/2 on $mux $flatten\golden.$procmux$853.
+    dead port 2/2 on $mux $flatten\golden.$procmux$856.
+    dead port 2/2 on $mux $flatten\golden.$procmux$859.
+    dead port 2/2 on $mux $flatten\golden.$procmux$862.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$253.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$259.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$265.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$310.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$313.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$315.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$317.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$325.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$328.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$330.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$332.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$340.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$343.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$345.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$347.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$355.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$358.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$360.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$362.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$370.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$372.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$374.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$382.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$384.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$386.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$394.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$396.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$398.
+    dead port 1/2 on $mux $flatten\candidate.$procmux$406.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$408.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$410.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$418.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$420.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$422.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$430.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$432.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$434.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$442.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$444.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$446.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$453.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$455.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$462.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$464.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$471.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$473.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$480.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$482.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$489.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$491.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$498.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$500.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$507.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$509.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$513.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$515.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$519.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$521.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$525.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$527.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$531.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$533.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$537.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$539.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$543.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$545.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$549.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$551.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$557.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$563.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$569.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$575.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$581.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$587.
+    dead port 2/2 on $mux $flatten\candidate.$procmux$593.
+Removed 118 multiplexer ports.
+
+8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 14 cells.
+
+8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $flatten\candidate.$procdff$897 ($dff) from module miter (D = \candidate.good_frame_next, Q = \candidate.good_frame_reg, rval = 1'0).
+Adding SRST signal on $flatten\candidate.$procdff$896 ($dff) from module miter (D = \candidate.bad_frame_next, Q = \candidate.bad_frame_reg, rval = 1'0).
+Adding SRST signal on $flatten\candidate.$procdff$895 ($dff) from module miter (D = \candidate.overflow_next, Q = \candidate.overflow_reg, rval = 1'0).
+Adding SRST signal on $flatten\candidate.$procdff$894 ($dff) from module miter (D = \candidate.drop_frame_next, Q = \candidate.drop_frame_reg, rval = 1'0).
+Adding SRST signal on $flatten\candidate.$procdff$892 ($dff) from module miter (D = \candidate.wr_ptr_cur_next, Q = \candidate.wr_ptr_cur_reg, rval = 3'000).
+Adding SRST signal on $flatten\candidate.$procdff$891 ($dff) from module miter (D = \candidate.wr_ptr_next, Q = \candidate.wr_ptr_reg, rval = 3'000).
+Adding SRST signal on $flatten\candidate.$procdff$890 ($dff) from module miter (D = \candidate.mem_read_data_valid_next, Q = \candidate.mem_read_data_valid_reg, rval = 1'0).
+Adding EN signal on $flatten\candidate.$procdff$889 ($dff) from module miter (D = $flatten\candidate.$memrd$\mem$candidate.v:289$199_DATA, Q = \candidate.mem_read_data_reg).
+Adding SRST signal on $flatten\candidate.$procdff$887 ($dff) from module miter (D = \candidate.rd_ptr_next, Q = \candidate.rd_ptr_reg, rval = 3'000).
+Adding SRST signal on $flatten\candidate.$procdff$886 ($dff) from module miter (D = \candidate.m_axis_tvalid_next, Q = \candidate.m_axis_tvalid_reg, rval = 1'0).
+Adding EN signal on $flatten\candidate.$procdff$885 ($dff) from module miter (D = \candidate.mem_read_data_reg, Q = \candidate.m_axis_reg).
+Adding SRST signal on $flatten\golden.$procdff$913 ($dff) from module miter (D = \golden.good_frame_next, Q = \golden.good_frame_reg, rval = 1'0).
+Adding SRST signal on $flatten\golden.$procdff$912 ($dff) from module miter (D = \golden.bad_frame_next, Q = \golden.bad_frame_reg, rval = 1'0).
+Adding SRST signal on $flatten\golden.$procdff$911 ($dff) from module miter (D = \golden.overflow_next, Q = \golden.overflow_reg, rval = 1'0).
+Adding SRST signal on $flatten\golden.$procdff$910 ($dff) from module miter (D = \golden.drop_frame_next, Q = \golden.drop_frame_reg, rval = 1'0).
+Adding SRST signal on $flatten\golden.$procdff$908 ($dff) from module miter (D = \golden.wr_ptr_cur_next, Q = \golden.wr_ptr_cur_reg, rval = 3'000).
+Adding SRST signal on $flatten\golden.$procdff$907 ($dff) from module miter (D = \golden.wr_ptr_next, Q = \golden.wr_ptr_reg, rval = 3'000).
+Adding SRST signal on $flatten\golden.$procdff$906 ($dff) from module miter (D = \golden.mem_read_data_valid_next, Q = \golden.mem_read_data_valid_reg, rval = 1'0).
+Adding EN signal on $flatten\golden.$procdff$905 ($dff) from module miter (D = $flatten\golden.$memrd$\mem$golden.v:288$149_DATA, Q = \golden.mem_read_data_reg).
+Adding SRST signal on $flatten\golden.$procdff$903 ($dff) from module miter (D = \golden.rd_ptr_next, Q = \golden.rd_ptr_reg, rval = 3'000).
+Adding SRST signal on $flatten\golden.$procdff$902 ($dff) from module miter (D = \golden.m_axis_tvalid_next, Q = \golden.m_axis_tvalid_reg, rval = 1'0).
+Adding EN signal on $flatten\golden.$procdff$901 ($dff) from module miter (D = \golden.mem_read_data_reg, Q = \golden.m_axis_reg).
+
+8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+Removed 33 unused cells and 633 unused wires.
+
+8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 0 cells.
+
+8.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [14], Q = \golden.mem[3] [14]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [13], Q = \golden.mem[3] [13]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [12], Q = \golden.mem[3] [12]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [8], Q = \golden.mem[3] [8]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [2], Q = \golden.mem[3] [2]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [11], Q = \golden.mem[3] [11]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [10], Q = \golden.mem[3] [10]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [9], Q = \golden.mem[3] [9]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [7], Q = \golden.mem[3] [7]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [6], Q = \golden.mem[3] [6]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [5], Q = \golden.mem[3] [5]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [4], Q = \golden.mem[3] [4]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [3], Q = \golden.mem[3] [3]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [1], Q = \golden.mem[3] [1]).
+Adding EN signal on $memory\golden.mem[3]$927 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [0], Q = \golden.mem[3] [0]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [11], Q = \golden.mem[2] [11]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [7], Q = \golden.mem[2] [7]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [6], Q = \golden.mem[2] [6]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [14], Q = \golden.mem[2] [14]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [13], Q = \golden.mem[2] [13]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [12], Q = \golden.mem[2] [12]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [10], Q = \golden.mem[2] [10]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [9], Q = \golden.mem[2] [9]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [8], Q = \golden.mem[2] [8]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [5], Q = \golden.mem[2] [5]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [4], Q = \golden.mem[2] [4]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [3], Q = \golden.mem[2] [3]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [2], Q = \golden.mem[2] [2]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [1], Q = \golden.mem[2] [1]).
+Adding EN signal on $memory\golden.mem[2]$925 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [0], Q = \golden.mem[2] [0]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [14], Q = \golden.mem[1] [14]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [13], Q = \golden.mem[1] [13]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [12], Q = \golden.mem[1] [12]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [11], Q = \golden.mem[1] [11]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [10], Q = \golden.mem[1] [10]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [9], Q = \golden.mem[1] [9]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [8], Q = \golden.mem[1] [8]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [7], Q = \golden.mem[1] [7]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [6], Q = \golden.mem[1] [6]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [5], Q = \golden.mem[1] [5]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [4], Q = \golden.mem[1] [4]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [3], Q = \golden.mem[1] [3]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [2], Q = \golden.mem[1] [2]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [1], Q = \golden.mem[1] [1]).
+Adding EN signal on $memory\golden.mem[1]$923 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [0], Q = \golden.mem[1] [0]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [14], Q = \golden.mem[0] [14]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [13], Q = \golden.mem[0] [13]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [12], Q = \golden.mem[0] [12]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [11], Q = \golden.mem[0] [11]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [10], Q = \golden.mem[0] [10]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [9], Q = \golden.mem[0] [9]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [8], Q = \golden.mem[0] [8]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [7], Q = \golden.mem[0] [7]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [6], Q = \golden.mem[0] [6]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [5], Q = \golden.mem[0] [5]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [4], Q = \golden.mem[0] [4]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [3], Q = \golden.mem[0] [3]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [2], Q = \golden.mem[0] [2]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [1], Q = \golden.mem[0] [1]).
+Adding EN signal on $memory\golden.mem[0]$921 ($dff) from module miter (D = $flatten\golden.$0$memwr$\mem$golden.v:250$113_DATA[14:0]$138 [0], Q = \golden.mem[0] [0]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [14], Q = \candidate.mem[3] [14]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [13], Q = \candidate.mem[3] [13]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [12], Q = \candidate.mem[3] [12]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [11], Q = \candidate.mem[3] [11]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [10], Q = \candidate.mem[3] [10]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [9], Q = \candidate.mem[3] [9]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [8], Q = \candidate.mem[3] [8]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [7], Q = \candidate.mem[3] [7]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [6], Q = \candidate.mem[3] [6]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [5], Q = \candidate.mem[3] [5]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [4], Q = \candidate.mem[3] [4]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [3], Q = \candidate.mem[3] [3]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [2], Q = \candidate.mem[3] [2]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [1], Q = \candidate.mem[3] [1]).
+Adding EN signal on $memory\candidate.mem[3]$1200 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [0], Q = \candidate.mem[3] [0]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [13], Q = \candidate.mem[2] [13]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [12], Q = \candidate.mem[2] [12]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [11], Q = \candidate.mem[2] [11]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [10], Q = \candidate.mem[2] [10]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [9], Q = \candidate.mem[2] [9]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [8], Q = \candidate.mem[2] [8]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [7], Q = \candidate.mem[2] [7]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [6], Q = \candidate.mem[2] [6]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [5], Q = \candidate.mem[2] [5]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [4], Q = \candidate.mem[2] [4]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [3], Q = \candidate.mem[2] [3]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [2], Q = \candidate.mem[2] [2]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [14], Q = \candidate.mem[2] [14]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [1], Q = \candidate.mem[2] [1]).
+Adding EN signal on $memory\candidate.mem[2]$1198 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [0], Q = \candidate.mem[2] [0]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [14], Q = \candidate.mem[1] [14]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [13], Q = \candidate.mem[1] [13]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [12], Q = \candidate.mem[1] [12]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [11], Q = \candidate.mem[1] [11]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [10], Q = \candidate.mem[1] [10]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [9], Q = \candidate.mem[1] [9]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [8], Q = \candidate.mem[1] [8]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [7], Q = \candidate.mem[1] [7]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [6], Q = \candidate.mem[1] [6]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [5], Q = \candidate.mem[1] [5]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [4], Q = \candidate.mem[1] [4]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [3], Q = \candidate.mem[1] [3]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [2], Q = \candidate.mem[1] [2]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [1], Q = \candidate.mem[1] [1]).
+Adding EN signal on $memory\candidate.mem[1]$1196 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [0], Q = \candidate.mem[1] [0]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [7], Q = \candidate.mem[0] [7]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [6], Q = \candidate.mem[0] [6]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [5], Q = \candidate.mem[0] [5]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [4], Q = \candidate.mem[0] [4]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [3], Q = \candidate.mem[0] [3]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [2], Q = \candidate.mem[0] [2]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [1], Q = \candidate.mem[0] [1]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [0], Q = \candidate.mem[0] [0]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [14], Q = \candidate.mem[0] [14]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [13], Q = \candidate.mem[0] [13]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [12], Q = \candidate.mem[0] [12]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [11], Q = \candidate.mem[0] [11]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [10], Q = \candidate.mem[0] [10]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [9], Q = \candidate.mem[0] [9]).
+Adding EN signal on $memory\candidate.mem[0]$1194 ($dff) from module miter (D = $flatten\candidate.$0$memwr$\mem$candidate.v:251$166_DATA[14:0]$188 [8], Q = \candidate.mem[0] [8]).
+Adding EN signal on $auto$ff.cc:266:slice$1487 ($sdff) from module miter (D = \golden.mem_read_data_valid_reg, Q = \golden.m_axis_tvalid_reg).
+Adding EN signal on $auto$ff.cc:266:slice$1484 ($sdff) from module miter (D = $flatten\golden.$2\mem_read_data_valid_next[0:0], Q = \golden.mem_read_data_valid_reg).
+Adding EN signal on $auto$ff.cc:266:slice$1483 ($sdff) from module miter (D = $flatten\golden.$5\wr_ptr_next[2:0], Q = \golden.wr_ptr_reg).
+Adding SRST signal on $auto$ff.cc:266:slice$1481 ($sdff) from module miter (D = $flatten\candidate.$5\drop_frame_next[0:0], Q = \golden.drop_frame_reg, rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1480 ($sdff) from module miter (D = $flatten\candidate.$5\overflow_next[0:0], Q = \golden.overflow_reg, rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1479 ($sdff) from module miter (D = $flatten\candidate.$5\bad_frame_next[0:0], Q = \golden.bad_frame_reg, rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1478 ($sdff) from module miter (D = $flatten\candidate.$5\good_frame_next[0:0], Q = \golden.good_frame_reg, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$1476 ($sdff) from module miter (D = \candidate.mem_read_data_valid_reg, Q = \candidate.m_axis_tvalid_reg).
+Adding EN signal on $auto$ff.cc:266:slice$1473 ($sdff) from module miter (D = $flatten\candidate.$2\mem_read_data_valid_next[0:0], Q = \candidate.mem_read_data_valid_reg).
+Adding EN signal on $auto$ff.cc:266:slice$1472 ($sdff) from module miter (D = $flatten\candidate.$6\wr_ptr_next[2:0], Q = \candidate.wr_ptr_reg).
+Adding SRST signal on $auto$ff.cc:266:slice$1470 ($sdff) from module miter (D = $flatten\candidate.$5\drop_frame_next[0:0], Q = \candidate.drop_frame_reg, rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1469 ($sdff) from module miter (D = $flatten\candidate.$5\overflow_next[0:0], Q = \candidate.overflow_reg, rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1468 ($sdff) from module miter (D = $flatten\candidate.$5\bad_frame_next[0:0], Q = \candidate.bad_frame_reg, rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1467 ($sdff) from module miter (D = $flatten\candidate.$5\good_frame_next[0:0], Q = \candidate.good_frame_reg, rval = 1'0).
+
+8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+Removed 151 unused cells and 151 unused wires.
+
+8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 17 cells.
+
+8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+Removed 0 unused cells and 17 unused wires.
+
+8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \miter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \miter.
+Performed a total of 0 changes.
+
+8.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\miter'.
+Removed a total of 0 cells.
+
+8.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \miter..
+
+8.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module miter.
+
+8.30. Finished OPT passes. (There is nothing left to do.)
+
+9. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Import set-constraint for this timestep: \rst = 1'1
+Import set-constraint for this timestep: \s_axis_tvalid = 1'0
+Final constraint equation: { \s_axis_tvalid \rst } = 2'01
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import set-constraint from init attribute: \candidate.bad_frame_reg = 1'0
+Import set-constraint from init attribute: \candidate.drop_frame_reg = 1'0
+Import set-constraint from init attribute: \candidate.good_frame_reg = 1'0
+Import set-constraint from init attribute: \candidate.m_axis_tvalid_reg = 1'0
+Import set-constraint from init attribute: \candidate.mem_read_data_valid_reg = 1'0
+Import set-constraint from init attribute: \candidate.overflow_reg = 1'0
+Import set-constraint from init attribute: \candidate.rd_addr_reg = 3'000
+Import set-constraint from init attribute: \candidate.rd_ptr_reg = 3'000
+Import set-constraint from init attribute: \candidate.wr_addr_reg = 3'000
+Import set-constraint from init attribute: \candidate.wr_ptr_cur_reg = 3'000
+Import set-constraint from init attribute: \candidate.wr_ptr_reg = 3'000
+Import set-constraint from init attribute: \golden.bad_frame_reg = 1'0
+Import set-constraint from init attribute: \golden.drop_frame_reg = 1'0
+Import set-constraint from init attribute: \golden.good_frame_reg = 1'0
+Import set-constraint from init attribute: \golden.m_axis_tvalid_reg = 1'0
+Import set-constraint from init attribute: \golden.mem_read_data_valid_reg = 1'0
+Import set-constraint from init attribute: \golden.overflow_reg = 1'0
+Import set-constraint from init attribute: \golden.rd_addr_reg = 3'000
+Import set-constraint from init attribute: \golden.rd_ptr_reg = 3'000
+Import set-constraint from init attribute: \golden.wr_addr_reg = 3'000
+Import set-constraint from init attribute: \golden.wr_ptr_cur_reg = 3'000
+Import set-constraint from init attribute: \golden.wr_ptr_reg = 3'000
+Final init constraint equation: { \golden.wr_ptr_reg \golden.wr_ptr_cur_reg \golden.wr_addr_reg \golden.rd_ptr_reg \golden.rd_addr_reg \golden.overflow_reg \golden.mem_read_data_valid_reg \golden.m_axis_tvalid_reg \golden.good_frame_reg \golden.drop_frame_reg \golden.bad_frame_reg \candidate.wr_ptr_reg \candidate.wr_ptr_cur_reg \candidate.wr_addr_reg \candidate.rd_ptr_reg \candidate.rd_addr_reg \candidate.overflow_reg \candidate.mem_read_data_valid_reg \candidate.m_axis_tvalid_reg \candidate.good_frame_reg \candidate.drop_frame_reg \candidate.bad_frame_reg } = 42'000000000000000000000000000000000000000000
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 2:
+Import set-constraint for this timestep: \rst = 1'0
+Final constraint equation: \rst = 1'0
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_axis_tkeep
+Import def constraint for this timestep: \s_axis_tvalid
+Import def constraint for this timestep: \m_axis_tready
+Import def constraint for this timestep: \s_axis_tlast
+Import def constraint for this timestep: \s_axis_tuser
+Import def constraint for this timestep: \s_axis_tid
+Import def constraint for this timestep: \s_axis_tdest
+Import def constraint for this timestep: \s_axis_tdata
+Imported 419 cells to SAT database.
+Import proof for assert: $eq$miter.v:28$112_Y when $assert$miter.v:28$111_EN.
+Import proof for assert: $eq$miter.v:27$110_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$108_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$106_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$104_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:27$102_Y when $assert$miter.v:27$101_EN.
+Import proof for assert: $eq$miter.v:25$100_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$98_Y when 1'1.
+Import proof for assert: $eq$miter.v:25$96_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$94_Y when 1'1.
+Import proof for assert: $eq$miter.v:24$92_Y when 1'1.
+Import show expression: \clk
+Import show expression: \m_axis_tready
+Import show expression: \rst
+Import show expression: \s_axis_tdata
+Import show expression: \s_axis_tdest
+Import show expression: \s_axis_tid
+Import show expression: \s_axis_tkeep
+Import show expression: \s_axis_tlast
+Import show expression: \s_axis_tuser
+Import show expression: \s_axis_tvalid
+
+Solving problem with 193935 variables and 524897 clauses..
+SAT proof finished - model found: FAIL!
+
+   ______                   ___       ___       _ _            _ _ 
+  (_____ \                 / __)     / __)     (_) |          | | |
+   _____) )___ ___   ___ _| |__    _| |__ _____ _| | _____  __| | |
+  |  ____/ ___) _ \ / _ (_   __)  (_   __|____ | | || ___ |/ _  |_|
+  | |   | |  | |_| | |_| || |       | |  / ___ | | || ____( (_| |_ 
+  |_|   |_|   \___/ \___/ |_|       |_|  \_____|_|\_)_____)\____|_|
+
+
+  Time Signal Name                                     Dec       Hex                Bin
+  ---- --------------------------------------- ----------- --------- ------------------
+  init \candidate.bad_frame_reg                          0         0                  0
+  init \candidate.drop_frame_reg                         0         0                  0
+  init \candidate.good_frame_reg                         0         0                  0
+  init \candidate.m_axis_reg                          8257      2041    010000001000001
+  init \candidate.m_axis_tvalid_reg                      0         0                  0
+  init \candidate.mem[0] [0]                             0         0                  0
+  init \candidate.mem[0] [10]                            0         0                  0
+  init \candidate.mem[0] [11]                            0         0                  0
+  init \candidate.mem[0] [12]                            0         0                  0
+  init \candidate.mem[0] [13]                            0         0                  0
+  init \candidate.mem[0] [14]                            0         0                  0
+  init \candidate.mem[0] [1]                             0         0                  0
+  init \candidate.mem[0] [2]                             0         0                  0
+  init \candidate.mem[0] [3]                             0         0                  0
+  init \candidate.mem[0] [4]                             0         0                  0
+  init \candidate.mem[0] [5]                             0         0                  0
+  init \candidate.mem[0] [6]                             1         1                  1
+  init \candidate.mem[0] [7]                             1         1                  1
+  init \candidate.mem[0] [8]                             0         0                  0
+  init \candidate.mem[0] [9]                             0         0                  0
+  init \candidate.mem[1] [0]                             0         0                  0
+  init \candidate.mem[1] [10]                            0         0                  0
+  init \candidate.mem[1] [11]                            0         0                  0
+  init \candidate.mem[1] [12]                            0         0                  0
+  init \candidate.mem[1] [13]                            0         0                  0
+  init \candidate.mem[1] [14]                            0         0                  0
+  init \candidate.mem[1] [1]                             0         0                  0
+  init \candidate.mem[1] [2]                             0         0                  0
+  init \candidate.mem[1] [3]                             0         0                  0
+  init \candidate.mem[1] [4]                             0         0                  0
+  init \candidate.mem[1] [5]                             0         0                  0
+  init \candidate.mem[1] [6]                             0         0                  0
+  init \candidate.mem[1] [7]                             0         0                  0
+  init \candidate.mem[1] [8]                             0         0                  0
+  init \candidate.mem[1] [9]                             0         0                  0
+  init \candidate.mem[2] [0]                             1         1                  1
+  init \candidate.mem[2] [10]                            1         1                  1
+  init \candidate.mem[2] [11]                            0         0                  0
+  init \candidate.mem[2] [12]                            0         0                  0
+  init \candidate.mem[2] [13]                            0         0                  0
+  init \candidate.mem[2] [14]                            1         1                  1
+  init \candidate.mem[2] [1]                             0         0                  0
+  init \candidate.mem[2] [2]                             0         0                  0
+  init \candidate.mem[2] [3]                             0         0                  0
+  init \candidate.mem[2] [4]                             0         0                  0
+  init \candidate.mem[2] [5]                             0         0                  0
+  init \candidate.mem[2] [6]                             0         0                  0
+  init \candidate.mem[2] [7]                             0         0                  0
+  init \candidate.mem[2] [8]                             1         1                  1
+  init \candidate.mem[2] [9]                             1         1                  1
+  init \candidate.mem[3] [0]                             0         0                  0
+  init \candidate.mem[3] [10]                            1         1                  1
+  init \candidate.mem[3] [11]                            1         1                  1
+  init \candidate.mem[3] [12]                            0         0                  0
+  init \candidate.mem[3] [13]                            0         0                  0
+  init \candidate.mem[3] [14]                            1         1                  1
+  init \candidate.mem[3] [1]                             0         0                  0
+  init \candidate.mem[3] [2]                             0         0                  0
+  init \candidate.mem[3] [3]                             0         0                  0
+  init \candidate.mem[3] [4]                             0         0                  0
+  init \candidate.mem[3] [5]                             0         0                  0
+  init \candidate.mem[3] [6]                             0         0                  0
+  init \candidate.mem[3] [7]                             1         1                  1
+  init \candidate.mem[3] [8]                             1         1                  1
+  init \candidate.mem[3] [9]                             0         0                  0
+  init \candidate.mem_read_data_reg                  19084      4a8c    100101010001100
+  init \candidate.mem_read_data_valid_reg                0         0                  0
+  init \candidate.overflow_reg                           0         0                  0
+  init \candidate.rd_addr_reg                            0         0                000
+  init \candidate.rd_ptr_reg                             0         0                000
+  init \candidate.wr_addr_reg                            0         0                000
+  init \candidate.wr_ptr_cur_reg                         0         0                000
+  init \candidate.wr_ptr_reg                             0         0                000
+  init \golden.bad_frame_reg                             0         0                  0
+  init \golden.drop_frame_reg                            0         0                  0
+  init \golden.good_frame_reg                            0         0                  0
+  init \golden.m_axis_reg                            18564      4884    100100010000100
+  init \golden.m_axis_tvalid_reg                         0         0                  0
+  init \golden.mem[0] [0]                                0         0                  0
+  init \golden.mem[0] [10]                               0         0                  0
+  init \golden.mem[0] [11]                               0         0                  0
+  init \golden.mem[0] [12]                               0         0                  0
+  init \golden.mem[0] [13]                               0         0                  0
+  init \golden.mem[0] [14]                               0         0                  0
+  init \golden.mem[0] [1]                                0         0                  0
+  init \golden.mem[0] [2]                                0         0                  0
+  init \golden.mem[0] [3]                                0         0                  0
+  init \golden.mem[0] [4]                                0         0                  0
+  init \golden.mem[0] [5]                                0         0                  0
+  init \golden.mem[0] [6]                                0         0                  0
+  init \golden.mem[0] [7]                                1         1                  1
+  init \golden.mem[0] [8]                                0         0                  0
+  init \golden.mem[0] [9]                                0         0                  0
+  init \golden.mem[1] [0]                                0         0                  0
+  init \golden.mem[1] [10]                               0         0                  0
+  init \golden.mem[1] [11]                               0         0                  0
+  init \golden.mem[1] [12]                               0         0                  0
+  init \golden.mem[1] [13]                               0         0                  0
+  init \golden.mem[1] [14]                               0         0                  0
+  init \golden.mem[1] [1]                                0         0                  0
+  init \golden.mem[1] [2]                                0         0                  0
+  init \golden.mem[1] [3]                                0         0                  0
+  init \golden.mem[1] [4]                                0         0                  0
+  init \golden.mem[1] [5]                                0         0                  0
+  init \golden.mem[1] [6]                                0         0                  0
+  init \golden.mem[1] [7]                                0         0                  0
+  init \golden.mem[1] [8]                                0         0                  0
+  init \golden.mem[1] [9]                                0         0                  0
+  init \golden.mem[2] [0]                                1         1                  1
+  init \golden.mem[2] [10]                               1         1                  1
+  init \golden.mem[2] [11]                               1         1                  1
+  init \golden.mem[2] [12]                               0         0                  0
+  init \golden.mem[2] [13]                               0         0                  0
+  init \golden.mem[2] [14]                               1         1                  1
+  init \golden.mem[2] [1]                                0         0                  0
+  init \golden.mem[2] [2]                                0         0                  0
+  init \golden.mem[2] [3]                                0         0                  0
+  init \golden.mem[2] [4]                                0         0                  0
+  init \golden.mem[2] [5]                                0         0                  0
+  init \golden.mem[2] [6]                                0         0                  0
+  init \golden.mem[2] [7]                                0         0                  0
+  init \golden.mem[2] [8]                                1         1                  1
+  init \golden.mem[2] [9]                                1         1                  1
+  init \golden.mem[3] [0]                                0         0                  0
+  init \golden.mem[3] [10]                               1         1                  1
+  init \golden.mem[3] [11]                               1         1                  1
+  init \golden.mem[3] [12]                               0         0                  0
+  init \golden.mem[3] [13]                               0         0                  0
+  init \golden.mem[3] [14]                               1         1                  1
+  init \golden.mem[3] [1]                                0         0                  0
+  init \golden.mem[3] [2]                                0         0                  0
+  init \golden.mem[3] [3]                                0         0                  0
+  init \golden.mem[3] [4]                                0         0                  0
+  init \golden.mem[3] [5]                                0         0                  0
+  init \golden.mem[3] [6]                                0         0                  0
+  init \golden.mem[3] [7]                                1         1                  1
+  init \golden.mem[3] [8]                                1         1                  1
+  init \golden.mem[3] [9]                                0         0                  0
+  init \golden.mem_read_data_reg                         0         0    000000000000000
+  init \golden.mem_read_data_valid_reg                   0         0                  0
+  init \golden.overflow_reg                              0         0                  0
+  init \golden.rd_addr_reg                               0         0                000
+  init \golden.rd_ptr_reg                                0         0                000
+  init \golden.wr_addr_reg                               0         0                000
+  init \golden.wr_ptr_cur_reg                            0         0                000
+  init \golden.wr_ptr_reg                                0         0                000
+  ---- --------------------------------------- ----------- --------- ------------------
+     1 \clk                                              0         0                  0
+     1 \m_axis_tready                                    0         0                  0
+     1 \rst                                              1         1                  1
+     1 \s_axis_tdata                                     0         0           00000000
+     1 \s_axis_tdest                                     0         0                 00
+     1 \s_axis_tid                                       0         0                 00
+     1 \s_axis_tkeep                                     0         0                  0
+     1 \s_axis_tlast                                     0         0                  0
+     1 \s_axis_tuser                                     0         0                  0
+     1 \s_axis_tvalid                                    0         0                  0
+  ---- --------------------------------------- ----------- --------- ------------------
+     2 \clk                                              0         0                  0
+     2 \m_axis_tready                                    0         0                  0
+     2 \rst                                              0         0                  0
+     2 \s_axis_tdata                                   196        c4           11000100
+     2 \s_axis_tdest                                     0         0                 00
+     2 \s_axis_tid                                       0         0                 00
+     2 \s_axis_tkeep                                     0         0                  0
+     2 \s_axis_tlast                                     0         0                  0
+     2 \s_axis_tuser                                     0         0                  0
+     2 \s_axis_tvalid                                    0         0                  0
+  ---- --------------------------------------- ----------- --------- ------------------
+     3 \clk                                              0         0                  0
+     3 \m_axis_tready                                    0         0                  0
+     3 \rst                                              0         0                  0
+     3 \s_axis_tdata                                   204        cc           11001100
+     3 \s_axis_tdest                                     1         1                 01
+     3 \s_axis_tid                                       1         1                 01
+     3 \s_axis_tkeep                                     0         0                  0
+     3 \s_axis_tlast                                     1         1                  1
+     3 \s_axis_tuser                                     0         0                  0
+     3 \s_axis_tvalid                                    1         1                  1
+  ---- --------------------------------------- ----------- --------- ------------------
+     4 \clk                                              0         0                  0
+     4 \m_axis_tready                                    0         0                  0
+     4 \rst                                              0         0                  0
+     4 \s_axis_tdata                                   205        cd           11001101
+     4 \s_axis_tdest                                     2         2                 10
+     4 \s_axis_tid                                       0         0                 00
+     4 \s_axis_tkeep                                     1         1                  1
+     4 \s_axis_tlast                                     0         0                  0
+     4 \s_axis_tuser                                     0         0                  0
+     4 \s_axis_tvalid                                    1         1                  1
+  ---- --------------------------------------- ----------- --------- ------------------
+     5 \clk                                              0         0                  0
+     5 \m_axis_tready                                    0         0                  0
+     5 \rst                                              0         0                  0
+     5 \s_axis_tdata                                   128        80           10000000
+     5 \s_axis_tdest                                     0         0                 00
+     5 \s_axis_tid                                       1         1                 01
+     5 \s_axis_tkeep                                     1         1                  1
+     5 \s_axis_tlast                                     0         0                  0
+     5 \s_axis_tuser                                     1         1                  1
+     5 \s_axis_tvalid                                    1         1                  1
+  ---- --------------------------------------- ----------- --------- ------------------
+     6 \clk                                              0         0                  0
+     6 \m_axis_tready                                    0         0                  0
+     6 \rst                                              0         0                  0
+     6 \s_axis_tdata                                   186        ba           10111010
+     6 \s_axis_tdest                                     0         0                 00
+     6 \s_axis_tid                                       3         3                 11
+     6 \s_axis_tkeep                                     1         1                  1
+     6 \s_axis_tlast                                     1         1                  1
+     6 \s_axis_tuser                                     1         1                  1
+     6 \s_axis_tvalid                                    0         0                  0
+  ---- --------------------------------------- ----------- --------- ------------------
+     7 \clk                                              0         0                  0
+     7 \m_axis_tready                                    0         0                  0
+     7 \rst                                              0         0                  0
+     7 \s_axis_tdata                                     0         0           00000000
+     7 \s_axis_tdest                                     0         0                 00
+     7 \s_axis_tid                                       0         0                 00
+     7 \s_axis_tkeep                                     0         0                  0
+     7 \s_axis_tlast                                     0         0                  0
+     7 \s_axis_tuser                                     0         0                  0
+     7 \s_axis_tvalid                                    0         0                  0
+  ---- --------------------------------------- ----------- --------- ------------------
+     8 \clk                                              0         0                  0
+     8 \m_axis_tready                                    0         0                  0
+     8 \rst                                              0         0                  0
+     8 \s_axis_tdata                                     0         0           00000000
+     8 \s_axis_tdest                                     3         3                 11
+     8 \s_axis_tid                                       3         3                 11
+     8 \s_axis_tkeep                                     0         0                  0
+     8 \s_axis_tlast                                     1         1                  1
+     8 \s_axis_tuser                                     0         0                  0
+     8 \s_axis_tvalid                                    1         1                  1
+  ---- --------------------------------------- ----------- --------- ------------------
+     9 \clk                                              0         0                  0
+     9 \m_axis_tready                                    0         0                  0
+     9 \rst                                              0         0                  0
+     9 \s_axis_tdata                                     0         0           00000000
+     9 \s_axis_tdest                                     3         3                 11
+     9 \s_axis_tid                                       1         1                 01
+     9 \s_axis_tkeep                                     1         1                  1
+     9 \s_axis_tlast                                     1         1                  1
+     9 \s_axis_tuser                                     0         0                  0
+     9 \s_axis_tvalid                                    1         1                  1
+  ---- --------------------------------------- ----------- --------- ------------------
+    10 \clk                                              0         0                  0
+    10 \m_axis_tready                                    0         0                  0
+    10 \rst                                              0         0                  0
+    10 \s_axis_tdata                                    26        1a           00011010
+    10 \s_axis_tdest                                     0         0                 00
+    10 \s_axis_tid                                       0         0                 00
+    10 \s_axis_tkeep                                     1         1                  1
+    10 \s_axis_tlast                                     0         0                  0
+    10 \s_axis_tuser                                     0         0                  0
+    10 \s_axis_tvalid                                    1         1                  1
+  ---- --------------------------------------- ----------- --------- ------------------
+    11 \clk                                              0         0                  0
+    11 \m_axis_tready                                    1         1                  1
+    11 \rst                                              0         0                  0
+    11 \s_axis_tdata                                     0         0           00000000
+    11 \s_axis_tdest                                     0         0                 00
+    11 \s_axis_tid                                       0         0                 00
+    11 \s_axis_tkeep                                     0         0                  0
+    11 \s_axis_tlast                                     1         1                  1
+    11 \s_axis_tuser                                     0         0                  0
+    11 \s_axis_tvalid                                    0         0                  0
+  ---- --------------------------------------- ----------- --------- ------------------
+    12 \clk                                              0         0                  0
+    12 \m_axis_tready                                    1         1                  1
+    12 \rst                                              0         0                  0
+    12 \s_axis_tdata                                     0         0           00000000
+    12 \s_axis_tdest                                     0         0                 00
+    12 \s_axis_tid                                       0         0                 00
+    12 \s_axis_tkeep                                     0         0                  0
+    12 \s_axis_tlast                                     1         1                  1
+    12 \s_axis_tuser                                     0         0                  0
+    12 \s_axis_tvalid                                    0         0                  0
+Dumping SAT model to VCD file counterexample.vcd
+Dumping SAT model to WaveJSON file 'counterexample.json'.

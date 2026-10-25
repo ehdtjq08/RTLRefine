@@ -1,0 +1,1080 @@
+
+-- Executing script file `bounded.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing formal SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\stream_buffer'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: properties.v
+Parsing formal SystemVerilog input from `properties.v' to AST representation.
+Generating RTLIL representation for module `\property_top'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     \stream_buffer
+Parameter \ADDR_WIDTH = 1
+Parameter \DATA_WIDTH = 8
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\stream_buffer'.
+Parameter \ADDR_WIDTH = 1
+Parameter \DATA_WIDTH = 8
+Generating RTLIL representation for module `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     $paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer
+
+3.4. Analyzing design hierarchy..
+Top module:  \property_top
+Used module:     $paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer
+Removing unused module `\stream_buffer'.
+Removed 1 unused modules.
+Module property_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 4 switch rules as full_case in process $proc$properties.v:22$40 in module property_top.
+Marked 3 switch rules as full_case in process $proc$candidate.v:32$130 in module $paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 8 redundant assignments.
+Promoted 31 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\property_top.$proc$properties.v:38$117'.
+  Set init value: \past_bit = 4'0000
+Found init rule in `\property_top.$proc$properties.v:37$116'.
+  Set init value: \past_output = 10'0000000000
+Found init rule in `\property_top.$proc$properties.v:37$115'.
+  Set init value: \past_input = 10'0000000000
+Found init rule in `\property_top.$proc$properties.v:36$114'.
+  Set init value: \past_output_held = 1'0
+Found init rule in `\property_top.$proc$properties.v:36$113'.
+  Set init value: \past_source_held = 1'0
+Found init rule in `\property_top.$proc$properties.v:36$112'.
+  Set init value: \past_valid = 1'0
+Found init rule in `\property_top.$proc$properties.v:15$111'.
+  Set init value: \spec_count = 2'00
+Found init rule in `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:24$146'.
+  Set init value: \count = 2'00
+Found init rule in `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:23$145'.
+  Set init value: \rd_ptr = 1'0
+Found init rule in `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:22$144'.
+  Set init value: \wr_ptr = 1'0
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\property_top.$proc$properties.v:38$117'.
+Creating decoders for process `\property_top.$proc$properties.v:37$116'.
+Creating decoders for process `\property_top.$proc$properties.v:37$115'.
+Creating decoders for process `\property_top.$proc$properties.v:36$114'.
+Creating decoders for process `\property_top.$proc$properties.v:36$113'.
+Creating decoders for process `\property_top.$proc$properties.v:36$112'.
+Creating decoders for process `\property_top.$proc$properties.v:15$111'.
+Creating decoders for process `\property_top.$proc$properties.v:57$105'.
+Creating decoders for process `\property_top.$proc$properties.v:45$70'.
+     1/4: $assume$properties.v:49$80_EN
+     2/4: $assume$properties.v:49$79_EN
+     3/4: $assume$properties.v:48$75_EN
+     4/4: $assume$properties.v:46$72_EN
+Creating decoders for process `\property_top.$proc$properties.v:39$61'.
+Creating decoders for process `\property_top.$proc$properties.v:22$40'.
+     1/13: $2$memwr$\spec_queue$properties.v:28$32_EN[0:0]$56
+     2/13: $2$memwr$\spec_queue$properties.v:28$32_DATA[0:0]$55
+     3/13: $2$memwr$\spec_queue$properties.v:28$32_ADDR[1:0]$54
+     4/13: $2\i[31:0]
+     5/13: $2$memwr$\spec_queue$properties.v:26$31_EN[0:0]$52
+     6/13: $2$memwr$\spec_queue$properties.v:26$31_DATA[0:0]$51
+     7/13: $0\spec_count[1:0]
+     8/13: $1$memwr$\spec_queue$properties.v:28$32_EN[0:0]$50
+     9/13: $1$memwr$\spec_queue$properties.v:28$32_DATA[0:0]$49
+    10/13: $1$memwr$\spec_queue$properties.v:28$32_ADDR[1:0]$48
+    11/13: $1$memwr$\spec_queue$properties.v:26$31_EN[0:0]$47
+    12/13: $1$memwr$\spec_queue$properties.v:26$31_DATA[0:0]$46
+    13/13: $1\i[31:0]
+Creating decoders for process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:24$146'.
+Creating decoders for process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:23$145'.
+Creating decoders for process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:22$144'.
+Creating decoders for process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+     1/9: $2$memwr$\mem$candidate.v:39$118_EN[9:0]$139
+     2/9: $2$memwr$\mem$candidate.v:39$118_DATA[9:0]$138
+     3/9: $2$memwr$\mem$candidate.v:39$118_ADDR[0:0]$137
+     4/9: $0\count[1:0]
+     5/9: $1$memwr$\mem$candidate.v:39$118_EN[9:0]$136
+     6/9: $1$memwr$\mem$candidate.v:39$118_DATA[9:0]$135
+     7/9: $1$memwr$\mem$candidate.v:39$118_ADDR[0:0]$134
+     8/9: $0\rd_ptr[0:0]
+     9/9: $0\wr_ptr[0:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\property_top.\past_valid' using process `\property_top.$proc$properties.v:39$61'.
+  created $dff cell `$procdff$260' with positive edge clock.
+Creating register for signal `\property_top.\past_source_held' using process `\property_top.$proc$properties.v:39$61'.
+  created $dff cell `$procdff$261' with positive edge clock.
+Creating register for signal `\property_top.\past_output_held' using process `\property_top.$proc$properties.v:39$61'.
+  created $dff cell `$procdff$262' with positive edge clock.
+Creating register for signal `\property_top.\past_input' using process `\property_top.$proc$properties.v:39$61'.
+  created $dff cell `$procdff$263' with positive edge clock.
+Creating register for signal `\property_top.\past_output' using process `\property_top.$proc$properties.v:39$61'.
+  created $dff cell `$procdff$264' with positive edge clock.
+Creating register for signal `\property_top.\past_bit' using process `\property_top.$proc$properties.v:39$61'.
+  created $dff cell `$procdff$265' with positive edge clock.
+Creating register for signal `\property_top.\spec_count' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$266' with positive edge clock.
+Creating register for signal `\property_top.\i' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$267' with positive edge clock.
+Creating register for signal `\property_top.$memwr$\spec_queue$properties.v:26$31_DATA' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$268' with positive edge clock.
+Creating register for signal `\property_top.$memwr$\spec_queue$properties.v:26$31_EN' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$269' with positive edge clock.
+Creating register for signal `\property_top.$memwr$\spec_queue$properties.v:28$32_ADDR' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$270' with positive edge clock.
+Creating register for signal `\property_top.$memwr$\spec_queue$properties.v:28$32_DATA' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$271' with positive edge clock.
+Creating register for signal `\property_top.$memwr$\spec_queue$properties.v:28$32_EN' using process `\property_top.$proc$properties.v:22$40'.
+  created $dff cell `$procdff$272' with positive edge clock.
+Creating register for signal `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.\wr_ptr' using process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+  created $dff cell `$procdff$273' with positive edge clock.
+Creating register for signal `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.\rd_ptr' using process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+  created $dff cell `$procdff$274' with positive edge clock.
+Creating register for signal `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.\count' using process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+  created $dff cell `$procdff$275' with positive edge clock.
+Creating register for signal `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$memwr$\mem$candidate.v:39$118_ADDR' using process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+  created $dff cell `$procdff$276' with positive edge clock.
+Creating register for signal `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$memwr$\mem$candidate.v:39$118_DATA' using process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+  created $dff cell `$procdff$277' with positive edge clock.
+Creating register for signal `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$memwr$\mem$candidate.v:39$118_EN' using process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+  created $dff cell `$procdff$278' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `property_top.$proc$properties.v:38$117'.
+Removing empty process `property_top.$proc$properties.v:37$116'.
+Removing empty process `property_top.$proc$properties.v:37$115'.
+Removing empty process `property_top.$proc$properties.v:36$114'.
+Removing empty process `property_top.$proc$properties.v:36$113'.
+Removing empty process `property_top.$proc$properties.v:36$112'.
+Removing empty process `property_top.$proc$properties.v:15$111'.
+Removing empty process `property_top.$proc$properties.v:57$105'.
+Found and cleaned up 3 empty switches in `\property_top.$proc$properties.v:45$70'.
+Removing empty process `property_top.$proc$properties.v:45$70'.
+Removing empty process `property_top.$proc$properties.v:39$61'.
+Found and cleaned up 4 empty switches in `\property_top.$proc$properties.v:22$40'.
+Removing empty process `property_top.$proc$properties.v:22$40'.
+Removing empty process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:24$146'.
+Removing empty process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:23$145'.
+Removing empty process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:22$144'.
+Found and cleaned up 5 empty switches in `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+Removing empty process `$paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.$proc$candidate.v:32$130'.
+Cleaned up 12 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+Optimizing module $paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$dfb61c993c22e0033bb743c46f79dba8906b39f7\stream_buffer.
+
+6. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \dut.mem in module \property_top:
+  created 2 $dff cells and 0 static cells of width 10.
+  read interface: 0 $dff and 1 $mux cells.
+  write interface: 20 write mux blocks.
+Mapping memory \spec_queue in module \property_top:
+  created 2 $dff cells and 0 static cells of width 1.
+  read interface: 0 $dff and 2 $mux cells.
+  write interface: 4 write mux blocks.
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 12 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\dut.$procmux$220.
+    dead port 1/2 on $mux $flatten\dut.$procmux$226.
+    dead port 1/2 on $mux $flatten\dut.$procmux$232.
+    dead port 1/2 on $mux $procmux$189.
+    dead port 1/2 on $mux $procmux$183.
+    dead port 1/2 on $mux $procmux$177.
+    dead port 1/2 on $mux $procmux$171.
+    dead port 1/2 on $mux $procmux$165.
+    dead port 1/2 on $mux $procmux$159.
+Removed 9 multiplexer ports.
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 2 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$266 ($dff) from module property_top (D = $procmux$192_Y, Q = \spec_count, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$434 ($sdff) from module property_top (D = $procmux$192_Y, Q = \spec_count).
+Adding EN signal on $procdff$267 ($dff) from module property_top (D = $2\i[31:0], Q = \i).
+Adding SRST signal on $flatten\dut.$procdff$275 ($dff) from module property_top (D = $flatten\dut.$procmux$235_Y, Q = \dut.count, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$439 ($sdff) from module property_top (D = $flatten\dut.$procmux$235_Y, Q = \dut.count).
+Adding SRST signal on $flatten\dut.$procdff$274 ($dff) from module property_top (D = $flatten\dut.$procmux$250_Y, Q = \dut.rd_ptr, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$443 ($sdff) from module property_top (D = $flatten\dut.$add$candidate.v:42$141_Y, Q = \dut.rd_ptr).
+Adding SRST signal on $flatten\dut.$procdff$273 ($dff) from module property_top (D = $flatten\dut.$procmux$255_Y, Q = \dut.wr_ptr, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$445 ($sdff) from module property_top (D = $flatten\dut.$add$candidate.v:41$140_Y, Q = \dut.wr_ptr).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 18 unused cells and 177 unused wires.
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+7.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\spec_queue[1]$376 ($dff) from module property_top (D = $0$memwr$\spec_queue$properties.v:28$32_DATA[0:0]$44, Q = \spec_queue[1]).
+Adding EN signal on $memory\spec_queue[0]$374 ($dff) from module property_top (D = $memory\spec_queue$wrmux[0][1][0]$y$409, Q = \spec_queue[0]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [3], Q = \dut.mem[1] [3]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [2], Q = \dut.mem[1] [2]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [1], Q = \dut.mem[1] [1]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [0], Q = \dut.mem[1] [0]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [9], Q = \dut.mem[1] [9]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [8], Q = \dut.mem[1] [8]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [7], Q = \dut.mem[1] [7]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [6], Q = \dut.mem[1] [6]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [5], Q = \dut.mem[1] [5]).
+Adding EN signal on $memory\dut.mem[1]$285 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [4], Q = \dut.mem[1] [4]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [9], Q = \dut.mem[0] [9]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [8], Q = \dut.mem[0] [8]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [7], Q = \dut.mem[0] [7]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [6], Q = \dut.mem[0] [6]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [5], Q = \dut.mem[0] [5]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [4], Q = \dut.mem[0] [4]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [3], Q = \dut.mem[0] [3]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [2], Q = \dut.mem[0] [2]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [1], Q = \dut.mem[0] [1]).
+Adding EN signal on $memory\dut.mem[0]$283 ($dff) from module property_top (D = $flatten\dut.$0$memwr$\mem$candidate.v:39$118_DATA[9:0]$132 [0], Q = \dut.mem[0] [0]).
+
+7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+Removed 21 unused cells and 21 unused wires.
+
+7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+7.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+7.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \property_top.
+Performed a total of 0 changes.
+
+7.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\property_top'.
+Removed a total of 0 cells.
+
+7.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \property_top..
+
+7.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module property_top.
+
+7.23. Finished OPT passes. (There is nothing left to do.)
+
+8. Executing SAT pass (solving SAT problems in the circuit).
+
+Setting up time step 1:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import set-constraint from init attribute: \dut.count = 2'00
+Import set-constraint from init attribute: \dut.rd_ptr = 1'0
+Import set-constraint from init attribute: \dut.wr_ptr = 1'0
+Import set-constraint from init attribute: \past_bit = 4'0000
+Import set-constraint from init attribute: \past_input = 10'0000000000
+Import set-constraint from init attribute: \past_output = 10'0000000000
+Import set-constraint from init attribute: \past_output_held = 1'0
+Import set-constraint from init attribute: \past_source_held = 1'0
+Import set-constraint from init attribute: \past_valid = 1'0
+Import set-constraint from init attribute: \spec_count = 2'00
+Final init constraint equation: { \dut.mem[0] [0] \dut.mem[0] [1] \dut.mem[0] [2] \dut.mem[0] [3] \dut.mem[0] [4] \dut.mem[0] [5] \dut.mem[0] [6] \dut.mem[0] [7] \dut.mem[0] [8] \dut.mem[0] [9] \dut.mem[1] [4] \dut.mem[1] [5] \dut.mem[1] [6] \dut.mem[1] [7] \dut.mem[1] [8] \dut.mem[1] [9] \dut.mem[1] [0] \dut.mem[1] [1] \dut.mem[1] [2] \dut.mem[1] [3] \spec_queue[0] \spec_queue[1] \spec_count \past_valid \past_source_held \past_output_held \past_output \past_input \past_bit \dut.wr_ptr \dut.rd_ptr \dut.count } = 55'0000000000000000000000000000000000000000000000000000000
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 2:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 3:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 4:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 5:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 6:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 7:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 8:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 9:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 10:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 11:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 12:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 13:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 14:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 15:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+
+Setting up time step 16:
+Final constraint equation: { } = { }
+Import def constraint for this timestep: \clk
+Import def constraint for this timestep: \rst
+Import def constraint for this timestep: \s_valid
+Import def constraint for this timestep: \s_last
+Import def constraint for this timestep: \s_user
+Import def constraint for this timestep: \m_ready
+Import def constraint for this timestep: \watched_bit
+Import def constraint for this timestep: \s_data
+Imported 168 cells to SAT database.
+Import constraint from assume cell: $eq$properties.v:49$81_Y when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: \s_valid when $assume$properties.v:49$79_EN.
+Import constraint from assume cell: $eq$properties.v:48$76_Y when $assume$properties.v:48$75_EN.
+Import constraint from assume cell: $lt$properties.v:47$74_Y when 1'1.
+Import constraint from assume cell: \rst when $assume$properties.v:46$72_EN.
+Import proof for assert: \property_capacity when 1'1.
+Import proof for assert: \property_stable when 1'1.
+Import proof for assert: \property_payload when 1'1.
+Import proof for assert: \property_ready when 1'1.
+Import proof for assert: \property_valid when 1'1.
+Import show expression: \clk
+Import show expression: \m_ready
+Import show expression: \rst
+Import show expression: \s_data
+Import show expression: \s_last
+Import show expression: \s_user
+Import show expression: \s_valid
+Import show expression: \watched_bit
+Import show expression: \expected_count
+Import show expression: \m_data
+Import show expression: \m_last
+Import show expression: \m_user
+Import show expression: \m_valid
+Import show expression: \property_capacity
+Import show expression: \property_payload
+Import show expression: \property_ready
+Import show expression: \property_stable
+Import show expression: \property_valid
+Import show expression: \s_ready
+
+Solving problem with 89048 variables and 241802 clauses..
+SAT proof finished - model found: FAIL!
+
+   ______                   ___       ___       _ _            _ _ 
+  (_____ \                 / __)     / __)     (_) |          | | |
+   _____) )___ ___   ___ _| |__    _| |__ _____ _| | _____  __| | |
+  |  ____/ ___) _ \ / _ (_   __)  (_   __|____ | | || ___ |/ _  |_|
+  | |   | |  | |_| | |_| || |       | |  / ___ | | || ____( (_| |_ 
+  |_|   |_|   \___/ \___/ |_|       |_|  \_____|_|\_)_____)\____|_|
+
+
+  Time Signal Name                     Dec       Hex           Bin
+  ---- ----------------------- ----------- --------- -------------
+  init \dut.count                        0         0            00
+  init \dut.mem[0] [0]                   0         0             0
+  init \dut.mem[0] [1]                   0         0             0
+  init \dut.mem[0] [2]                   0         0             0
+  init \dut.mem[0] [3]                   0         0             0
+  init \dut.mem[0] [4]                   0         0             0
+  init \dut.mem[0] [5]                   0         0             0
+  init \dut.mem[0] [6]                   0         0             0
+  init \dut.mem[0] [7]                   0         0             0
+  init \dut.mem[0] [8]                   0         0             0
+  init \dut.mem[0] [9]                   0         0             0
+  init \dut.mem[1] [0]                   0         0             0
+  init \dut.mem[1] [1]                   0         0             0
+  init \dut.mem[1] [2]                   0         0             0
+  init \dut.mem[1] [3]                   0         0             0
+  init \dut.mem[1] [4]                   0         0             0
+  init \dut.mem[1] [5]                   0         0             0
+  init \dut.mem[1] [6]                   0         0             0
+  init \dut.mem[1] [7]                   0         0             0
+  init \dut.mem[1] [8]                   0         0             0
+  init \dut.mem[1] [9]                   0         0             0
+  init \dut.rd_ptr                       0         0             0
+  init \dut.wr_ptr                       0         0             0
+  init \past_bit                         0         0          0000
+  init \past_input                       0         0    0000000000
+  init \past_output                      0         0    0000000000
+  init \past_output_held                 0         0             0
+  init \past_source_held                 0         0             0
+  init \past_valid                       0         0             0
+  init \spec_count                       0         0            00
+  init \spec_queue[0]                    0         0             0
+  init \spec_queue[1]                    0         0             0
+  ---- ----------------------- ----------- --------- -------------
+     1 \clk                              0         0             0
+     1 \expected_count                   0         0            00
+     1 \m_data                           0         0      00000000
+     1 \m_last                           0         0             0
+     1 \m_ready                          1         1             1
+     1 \m_user                           0         0             0
+     1 \m_valid                          0         0             0
+     1 \property_capacity                1         1             1
+     1 \property_payload                 1         1             1
+     1 \property_ready                   1         1             1
+     1 \property_stable                  1         1             1
+     1 \property_valid                   1         1             1
+     1 \rst                              1         1             1
+     1 \s_data                         184        b8      10111000
+     1 \s_last                           1         1             1
+     1 \s_ready                          0         0             0
+     1 \s_user                           0         0             0
+     1 \s_valid                          0         0             0
+     1 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     2 \clk                              0         0             0
+     2 \expected_count                   0         0            00
+     2 \m_data                           0         0      00000000
+     2 \m_last                           0         0             0
+     2 \m_ready                          1         1             1
+     2 \m_user                           0         0             0
+     2 \m_valid                          0         0             0
+     2 \property_capacity                1         1             1
+     2 \property_payload                 1         1             1
+     2 \property_ready                   1         1             1
+     2 \property_stable                  1         1             1
+     2 \property_valid                   1         1             1
+     2 \rst                              0         0             0
+     2 \s_data                         144        90      10010000
+     2 \s_last                           1         1             1
+     2 \s_ready                          1         1             1
+     2 \s_user                           1         1             1
+     2 \s_valid                          1         1             1
+     2 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     3 \clk                              0         0             0
+     3 \expected_count                   1         1            01
+     3 \m_data                         144        90      10010000
+     3 \m_last                           1         1             1
+     3 \m_ready                          1         1             1
+     3 \m_user                           1         1             1
+     3 \m_valid                          1         1             1
+     3 \property_capacity                1         1             1
+     3 \property_payload                 1         1             1
+     3 \property_ready                   1         1             1
+     3 \property_stable                  1         1             1
+     3 \property_valid                   1         1             1
+     3 \rst                              0         0             0
+     3 \s_data                         144        90      10010000
+     3 \s_last                           1         1             1
+     3 \s_ready                          1         1             1
+     3 \s_user                           1         1             1
+     3 \s_valid                          1         1             1
+     3 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     4 \clk                              0         0             0
+     4 \expected_count                   1         1            01
+     4 \m_data                         144        90      10010000
+     4 \m_last                           1         1             1
+     4 \m_ready                          1         1             1
+     4 \m_user                           1         1             1
+     4 \m_valid                          1         1             1
+     4 \property_capacity                1         1             1
+     4 \property_payload                 1         1             1
+     4 \property_ready                   1         1             1
+     4 \property_stable                  1         1             1
+     4 \property_valid                   1         1             1
+     4 \rst                              0         0             0
+     4 \s_data                         247        f7      11110111
+     4 \s_last                           1         1             1
+     4 \s_ready                          1         1             1
+     4 \s_user                           1         1             1
+     4 \s_valid                          0         0             0
+     4 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     5 \clk                              0         0             0
+     5 \expected_count                   0         0            00
+     5 \m_data                         144        90      10010000
+     5 \m_last                           1         1             1
+     5 \m_ready                          1         1             1
+     5 \m_user                           1         1             1
+     5 \m_valid                          0         0             0
+     5 \property_capacity                1         1             1
+     5 \property_payload                 1         1             1
+     5 \property_ready                   1         1             1
+     5 \property_stable                  1         1             1
+     5 \property_valid                   1         1             1
+     5 \rst                              0         0             0
+     5 \s_data                         213        d5      11010101
+     5 \s_last                           0         0             0
+     5 \s_ready                          1         1             1
+     5 \s_user                           1         1             1
+     5 \s_valid                          1         1             1
+     5 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     6 \clk                              0         0             0
+     6 \expected_count                   1         1            01
+     6 \m_data                         213        d5      11010101
+     6 \m_last                           1         1             1
+     6 \m_ready                          1         1             1
+     6 \m_user                           0         0             0
+     6 \m_valid                          1         1             1
+     6 \property_capacity                1         1             1
+     6 \property_payload                 0         0             0
+     6 \property_ready                   1         1             1
+     6 \property_stable                  1         1             1
+     6 \property_valid                   1         1             1
+     6 \rst                              0         0             0
+     6 \s_data                          87        57      01010111
+     6 \s_last                           1         1             1
+     6 \s_ready                          1         1             1
+     6 \s_user                           0         0             0
+     6 \s_valid                          1         1             1
+     6 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     7 \clk                              0         0             0
+     7 \expected_count                   1         1            01
+     7 \m_data                          87        57      01010111
+     7 \m_last                           0         0             0
+     7 \m_ready                          0         0             0
+     7 \m_user                           1         1             1
+     7 \m_valid                          1         1             1
+     7 \property_capacity                1         1             1
+     7 \property_payload                 0         0             0
+     7 \property_ready                   1         1             1
+     7 \property_stable                  1         1             1
+     7 \property_valid                   1         1             1
+     7 \rst                              0         0             0
+     7 \s_data                         118        76      01110110
+     7 \s_last                           0         0             0
+     7 \s_ready                          1         1             1
+     7 \s_user                           1         1             1
+     7 \s_valid                          0         0             0
+     7 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     8 \clk                              0         0             0
+     8 \expected_count                   1         1            01
+     8 \m_data                          87        57      01010111
+     8 \m_last                           0         0             0
+     8 \m_ready                          0         0             0
+     8 \m_user                           1         1             1
+     8 \m_valid                          1         1             1
+     8 \property_capacity                1         1             1
+     8 \property_payload                 0         0             0
+     8 \property_ready                   1         1             1
+     8 \property_stable                  1         1             1
+     8 \property_valid                   1         1             1
+     8 \rst                              0         0             0
+     8 \s_data                         119        77      01110111
+     8 \s_last                           0         0             0
+     8 \s_ready                          1         1             1
+     8 \s_user                           1         1             1
+     8 \s_valid                          0         0             0
+     8 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+     9 \clk                              0         0             0
+     9 \expected_count                   1         1            01
+     9 \m_data                          87        57      01010111
+     9 \m_last                           0         0             0
+     9 \m_ready                          0         0             0
+     9 \m_user                           1         1             1
+     9 \m_valid                          1         1             1
+     9 \property_capacity                1         1             1
+     9 \property_payload                 0         0             0
+     9 \property_ready                   1         1             1
+     9 \property_stable                  1         1             1
+     9 \property_valid                   1         1             1
+     9 \rst                              0         0             0
+     9 \s_data                          53        35      00110101
+     9 \s_last                           1         1             1
+     9 \s_ready                          1         1             1
+     9 \s_user                           1         1             1
+     9 \s_valid                          1         1             1
+     9 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    10 \clk                              0         0             0
+    10 \expected_count                   2         2            10
+    10 \m_data                          87        57      01010111
+    10 \m_last                           0         0             0
+    10 \m_ready                          0         0             0
+    10 \m_user                           1         1             1
+    10 \m_valid                          1         1             1
+    10 \property_capacity                1         1             1
+    10 \property_payload                 0         0             0
+    10 \property_ready                   1         1             1
+    10 \property_stable                  1         1             1
+    10 \property_valid                   1         1             1
+    10 \rst                              0         0             0
+    10 \s_data                         230        e6      11100110
+    10 \s_last                           1         1             1
+    10 \s_ready                          0         0             0
+    10 \s_user                           1         1             1
+    10 \s_valid                          0         0             0
+    10 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    11 \clk                              0         0             0
+    11 \expected_count                   2         2            10
+    11 \m_data                          87        57      01010111
+    11 \m_last                           0         0             0
+    11 \m_ready                          1         1             1
+    11 \m_user                           1         1             1
+    11 \m_valid                          0         0             0
+    11 \property_capacity                1         1             1
+    11 \property_payload                 1         1             1
+    11 \property_ready                   1         1             1
+    11 \property_stable                  1         1             1
+    11 \property_valid                   1         1             1
+    11 \rst                              1         1             1
+    11 \s_data                         128        80      10000000
+    11 \s_last                           1         1             1
+    11 \s_ready                          0         0             0
+    11 \s_user                           1         1             1
+    11 \s_valid                          0         0             0
+    11 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    12 \clk                              0         0             0
+    12 \expected_count                   0         0            00
+    12 \m_data                          53        35      00110101
+    12 \m_last                           1         1             1
+    12 \m_ready                          0         0             0
+    12 \m_user                           1         1             1
+    12 \m_valid                          0         0             0
+    12 \property_capacity                1         1             1
+    12 \property_payload                 1         1             1
+    12 \property_ready                   1         1             1
+    12 \property_stable                  1         1             1
+    12 \property_valid                   1         1             1
+    12 \rst                              0         0             0
+    12 \s_data                          23        17      00010111
+    12 \s_last                           1         1             1
+    12 \s_ready                          1         1             1
+    12 \s_user                           1         1             1
+    12 \s_valid                          1         1             1
+    12 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    13 \clk                              0         0             0
+    13 \expected_count                   1         1            01
+    13 \m_data                          23        17      00010111
+    13 \m_last                           1         1             1
+    13 \m_ready                          1         1             1
+    13 \m_user                           1         1             1
+    13 \m_valid                          0         0             0
+    13 \property_capacity                1         1             1
+    13 \property_payload                 1         1             1
+    13 \property_ready                   1         1             1
+    13 \property_stable                  1         1             1
+    13 \property_valid                   1         1             1
+    13 \rst                              1         1             1
+    13 \s_data                          23        17      00010111
+    13 \s_last                           1         1             1
+    13 \s_ready                          0         0             0
+    13 \s_user                           0         0             0
+    13 \s_valid                          0         0             0
+    13 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    14 \clk                              0         0             0
+    14 \expected_count                   0         0            00
+    14 \m_data                          23        17      00010111
+    14 \m_last                           1         1             1
+    14 \m_ready                          0         0             0
+    14 \m_user                           1         1             1
+    14 \m_valid                          0         0             0
+    14 \property_capacity                1         1             1
+    14 \property_payload                 1         1             1
+    14 \property_ready                   1         1             1
+    14 \property_stable                  1         1             1
+    14 \property_valid                   1         1             1
+    14 \rst                              1         1             1
+    14 \s_data                          21        15      00010101
+    14 \s_last                           0         0             0
+    14 \s_ready                          0         0             0
+    14 \s_user                           0         0             0
+    14 \s_valid                          1         1             1
+    14 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    15 \clk                              0         0             0
+    15 \expected_count                   0         0            00
+    15 \m_data                          23        17      00010111
+    15 \m_last                           1         1             1
+    15 \m_ready                          0         0             0
+    15 \m_user                           1         1             1
+    15 \m_valid                          0         0             0
+    15 \property_capacity                1         1             1
+    15 \property_payload                 1         1             1
+    15 \property_ready                   1         1             1
+    15 \property_stable                  1         1             1
+    15 \property_valid                   1         1             1
+    15 \rst                              0         0             0
+    15 \s_data                          17        11      00010001
+    15 \s_last                           0         0             0
+    15 \s_ready                          1         1             1
+    15 \s_user                           0         0             0
+    15 \s_valid                          1         1             1
+    15 \watched_bit                      8         8          1000
+  ---- ----------------------- ----------- --------- -------------
+    16 \clk                              0         0             0
+    16 \expected_count                   1         1            01
+    16 \m_data                          17        11      00010001
+    16 \m_last                           0         0             0
+    16 \m_ready                          0         0             0
+    16 \m_user                           0         0             0
+    16 \m_valid                          1         1             1
+    16 \property_capacity                1         1             1
+    16 \property_payload                 1         1             1
+    16 \property_ready                   1         1             1
+    16 \property_stable                  1         1             1
+    16 \property_valid                   1         1             1
+    16 \rst                              0         0             0
+    16 \s_data                          16        10      00010000
+    16 \s_last                           0         0             0
+    16 \s_ready                          1         1             1
+    16 \s_user                           0         0             0
+    16 \s_valid                          0         0             0
+    16 \watched_bit                      8         8          1000
+Dumping SAT model to VCD file counterexample.vcd
+Dumping SAT model to WaveJSON file 'counterexample.json'.

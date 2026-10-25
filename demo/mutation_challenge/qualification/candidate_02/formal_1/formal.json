@@ -1,0 +1,179 @@
+{
+  "assumptions": "First symbolic step resets; legal stable source while stalled; selector in 0..9 and constant. No assumptions force DUT ready or valid.",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 0.416378,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "fixed_reference_rtl_used": false,
+  "initial_state": "Unspecified state bits start at zero; explicit register initializers are retained",
+  "limitation": "Bounded two-state property check at fixed widths/depths; not unbounded correctness or a power-on/CDC proof",
+  "monitor_sha256": "8964cec4a5812e679666fe92de9f791808683fa294fc2e3ad5d73d8da25614e3",
+  "payload_method": "One unconstrained selector held constant over the bound covers every one of the 10 payload/sideband bits",
+  "profile": {
+    "addr_width": 2,
+    "data_width": 8,
+    "steps": 12
+  },
+  "properties": [
+    "valid_matches_occupancy",
+    "ready_matches_capacity",
+    "payload_order_sidebands",
+    "output_stability",
+    "capacity"
+  ],
+  "public_trace": {
+    "signal": [
+      {
+        "data": [
+          "",
+          "0011"
+        ],
+        "name": "watched_bit",
+        "wave": "4=..........."
+      },
+      {
+        "name": "s_valid",
+        "wave": "41..0..1...0."
+      },
+      {
+        "name": "s_user",
+        "wave": "4101.0....10."
+      },
+      {
+        "name": "s_ready",
+        "wave": "401.........."
+      },
+      {
+        "name": "s_last",
+        "wave": "401.0..1010.."
+      },
+      {
+        "data": [
+          "",
+          "00000000",
+          "00011110",
+          "00001000",
+          "01001011",
+          "10111100",
+          "01000001",
+          "10111110",
+          "00000000",
+          "00011110",
+          "00000001",
+          "00110000",
+          "00100000"
+        ],
+        "name": "s_data",
+        "wave": "4============"
+      },
+      {
+        "name": "rst",
+        "wave": "410.........."
+      },
+      {
+        "name": "property_valid",
+        "wave": "41..........."
+      },
+      {
+        "name": "property_stable",
+        "wave": "41..........."
+      },
+      {
+        "name": "property_ready",
+        "wave": "41.........01"
+      },
+      {
+        "name": "property_payload",
+        "wave": "41..........."
+      },
+      {
+        "name": "property_capacity",
+        "wave": "41..........."
+      },
+      {
+        "name": "m_valid",
+        "wave": "40.1...01...."
+      },
+      {
+        "name": "m_user",
+        "wave": "40....10....."
+      },
+      {
+        "name": "m_ready",
+        "wave": "4010.1.0....1"
+      },
+      {
+        "name": "m_last",
+        "wave": "40.1...01...."
+      },
+      {
+        "data": [
+          "",
+          "00000000",
+          "00011110",
+          "00001000",
+          "00000000",
+          "10111110"
+        ],
+        "name": "m_data",
+        "wave": "4=.=..===...."
+      },
+      {
+        "data": [
+          "",
+          "000",
+          "001",
+          "010",
+          "001",
+          "000",
+          "001",
+          "010",
+          "011",
+          "100"
+        ],
+        "name": "expected_count",
+        "wave": "4=.==.======."
+      }
+    ]
+  },
+  "replay": {
+    "first_violations": [
+      {
+        "actual": 1,
+        "cycle": 10,
+        "expected": 0,
+        "observed": {
+          "cycle": 10,
+          "m_data": "10111110",
+          "m_last": "1",
+          "m_ready": "0",
+          "m_user": "0",
+          "m_valid": "1",
+          "rst": "0",
+          "s_data": "00110000",
+          "s_last": "0",
+          "s_ready": "1",
+          "s_user": "0",
+          "s_valid": "0"
+        },
+        "property": "ready_matches_capacity"
+      }
+    ],
+    "scope": "Same external input sequence replayed in four-state Icarus and independent Python queue; unknown uninitialized memory can differ from SAT zero initialization",
+    "status": "CONTRACT_FAILURE_REPRODUCED",
+    "violation_count": 1
+  },
+  "rtl_sha256": "d7dea20693c2eddc907ea6cc31bd1b9e4057b05fcc5185e5cb634d68c2df9789",
+  "script_sha256": "e13f667cffe34d244387275a977e15a46c355aa6d6d73286e3eec35dd0119d5a",
+  "status": "COUNTEREXAMPLE"
+}

@@ -1,0 +1,522 @@
+{
+  "accepted": true,
+  "after": {
+    "port": "frame_len",
+    "rows": [
+      {
+        "actual": "0",
+        "cycle": 1,
+        "expected": "?",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 2,
+        "expected": "?",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 3,
+        "expected": "?",
+        "match": true
+      },
+      {
+        "actual": "2",
+        "cycle": 4,
+        "expected": "2",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 5,
+        "expected": "1",
+        "match": true
+      }
+    ],
+    "sampling": "After current inputs settle, before the rising edge; hexadecimal values; ? is unqualified data"
+  },
+  "api_requests": 1,
+  "before": {
+    "port": "frame_len",
+    "rows": [
+      {
+        "actual": "0",
+        "cycle": 1,
+        "expected": "?",
+        "match": true
+      },
+      {
+        "actual": "0",
+        "cycle": 2,
+        "expected": "?",
+        "match": true
+      },
+      {
+        "actual": "1",
+        "cycle": 3,
+        "expected": "?",
+        "match": true
+      },
+      {
+        "actual": "2",
+        "cycle": 4,
+        "expected": "2",
+        "match": true
+      },
+      {
+        "actual": "3",
+        "cycle": 5,
+        "expected": "1",
+        "match": false
+      }
+    ],
+    "sampling": "After current inputs settle, before the rising edge; hexadecimal values; ? is unqualified data"
+  },
+  "case_id": "axis-frame-len-d13_d13",
+  "diagnosis": {
+    "api_requests": 1,
+    "cost": {
+      "estimated_usd": 0.004707,
+      "phase": "development",
+      "pricing_verified_on": "2026-10-22",
+      "request_id": "3bec42b416a2476a933d8fe364856a67",
+      "reserved_usd": 1.060864,
+      "state": "settled"
+    },
+    "diagnosis": "The bit-counting loop iterates one index beyond the legal mask range and uses a right-shift width that collapses to zero on the first iteration, so every non-zero tkeep is misclassified as the minimum frame length. Consequently the frame length register accumulates three bytes over cycles 2\u20134 instead of resetting at the frame boundary, producing a value of 3 when the oracle expects the new frame\u2019s first-byte count of 1 at cycle 5.",
+    "display_ids": [
+      "candidate_002",
+      "candidate_006",
+      "candidate_014",
+      "candidate_015",
+      "candidate_017",
+      "candidate_011"
+    ],
+    "ids": [
+      "patch_5e3af25f023e",
+      "patch_1e51d2e21710",
+      "patch_158c82e15fb9",
+      "patch_4d3dbe7613e4",
+      "patch_750e411d6b5a",
+      "patch_43231d1a706e"
+    ],
+    "proposal": {
+      "diagnosis": "The bit-counting loop iterates one index beyond the legal mask range and uses a right-shift width that collapses to zero on the first iteration, so every non-zero tkeep is misclassified as the minimum frame length. Consequently the frame length register accumulates three bytes over cycles 2\u20134 instead of resetting at the frame boundary, producing a value of 3 when the oracle expects the new frame\u2019s first-byte count of 1 at cycle 5.",
+      "ranking": [
+        {
+          "id": "candidate_002",
+          "mechanism": "Clears the reported frame_len after its valid pulse so the next frame starts from zero instead of accumulating stale bytes."
+        },
+        {
+          "id": "candidate_006",
+          "mechanism": "Restricts the frame-start logic to cycles where no frame is currently open, preventing mid-frame tlast from incorrectly re-initializing the counter."
+        },
+        {
+          "id": "candidate_014",
+          "mechanism": "Ensures a new frame is only started when tlast is low, avoiding a false restart on the same cycle a frame ends."
+        },
+        {
+          "id": "candidate_015",
+          "mechanism": "Gates frame-start on tready so that a new frame cannot begin on a cycle where the upstream is not ready to transfer."
+        },
+        {
+          "id": "candidate_017",
+          "mechanism": "Gates frame-start on tvalid so that a new frame cannot begin on a cycle where the upstream has no valid data."
+        },
+        {
+          "id": "candidate_011",
+          "mechanism": "Requires frame_reg to be set before accepting tlast, preventing an isolated tlast from spuriously closing a non-existent frame."
+        }
+      ]
+    },
+    "status": "VALID",
+    "wall_seconds": 3.8920599069679156
+  },
+  "directory": "/home/hands/Nebius/results/batch_repair_length_nebius_v1_20261023",
+  "fast_path_pass": true,
+  "final_check": {
+    "accepted": true,
+    "audit_pass": true,
+    "commands": [
+      {
+        "command": [
+          "/home/hands/Nebius/.tools/bin/verilator",
+          "--cc",
+          "--exe",
+          "-Wno-fatal",
+          "--x-initial",
+          "0",
+          "--x-assign",
+          "0",
+          "--top-module",
+          "axis_frame_len",
+          "--Mdir",
+          "obj_dir",
+          "candidate.v",
+          "dependencies.v",
+          "harness.cpp"
+        ],
+        "elapsed_seconds": 0.0166,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "translate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      {
+        "command": [
+          "/usr/bin/make",
+          "-C",
+          "obj_dir",
+          "-f",
+          "Vaxis_frame_len.mk",
+          "-j1",
+          "OPT_FAST=-O0",
+          "OPT_SLOW=-O0"
+        ],
+        "elapsed_seconds": 1.9183,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "build",
+        "status": "PASS",
+        "zero_initialization": true
+      }
+    ],
+    "corrected_RTL_loaded_for_scoring": false,
+    "directory": "/home/hands/Nebius/results/batch_repair_length_nebius_v1_20261023/independent_check",
+    "discovery_pass": true,
+    "formal_proof": false,
+    "limit": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+    "new_api_calls": 0,
+    "oracle_depends_on_corrected_trace_values": true,
+    "rtl_sha256": "5e3af25f023e306c8cad62b59090088953684117d920536a007d61fab849b132",
+    "status": "ALL_SEALED_TRACES_PASS",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_frame_len"
+          ],
+          "elapsed_seconds": 0.0177,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 8,
+        "cycles": 6,
+        "expected_sha256": "4d7acd167d1c86ef597cf775dfd1c430551e693e08c28a572821cd1317a52ed9",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "f66d69787c8d7064f5825f0fd57a4ceee6f75d9726b5a0b62dd6a51ac0bb9183",
+        "trace_label": "published_discovery_trace"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_frame_len"
+          ],
+          "elapsed_seconds": 0.0176,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 288,
+        "cycles": 256,
+        "expected_sha256": "b9b2d2761e9dab1c4efc7b9eb691ebc04fc9da321f72daf77acf50aab705645d",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "45a8453dfd3d8c3d68001bee43ed5e3b705563afe75b6749c3619c02735ef9d3",
+        "trace_label": "unexposed_payload_transform_7403"
+      },
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_frame_len"
+          ],
+          "elapsed_seconds": 0.0167,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 292,
+        "cycles": 256,
+        "expected_sha256": "63eb5ad8b66260f1467e64a3614718d094c21f694e1df52a37d8ea792c439a29",
+        "first_mismatches": [],
+        "input_windows": [],
+        "mismatch_count": 0,
+        "passed": true,
+        "phase": "unexposed_audit",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "fbf078928e55980aabbd72b0029d18b3e38e27fb7479882a9d0f1e75cab8c179",
+        "trace_label": "unexposed_payload_transform_9601"
+      }
+    ]
+  },
+  "key": "length",
+  "nvidia_prefix_applied": true,
+  "original_discovery": {
+    "commands": [
+      {
+        "command": [
+          "/home/hands/Nebius/.tools/bin/verilator",
+          "--cc",
+          "--exe",
+          "-Wno-fatal",
+          "--x-initial",
+          "0",
+          "--x-assign",
+          "0",
+          "--top-module",
+          "axis_frame_len",
+          "--Mdir",
+          "obj_dir",
+          "candidate.v",
+          "dependencies.v",
+          "harness.cpp"
+        ],
+        "elapsed_seconds": 0.0169,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "translate",
+        "status": "PASS",
+        "zero_initialization": true
+      },
+      {
+        "command": [
+          "/usr/bin/make",
+          "-C",
+          "obj_dir",
+          "-f",
+          "Vaxis_frame_len.mk",
+          "-j1",
+          "OPT_FAST=-O0",
+          "OPT_SLOW=-O0"
+        ],
+        "elapsed_seconds": 1.868,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "build",
+        "status": "PASS",
+        "zero_initialization": true
+      }
+    ],
+    "directory": "/home/hands/Nebius/results/batch_repair_length_nebius_v1_20261023/original_discovery",
+    "discovery_pass": false,
+    "new_api_calls": 0,
+    "rtl_sha256": "911cabce109a87e23a1c3141ed273e29e9f74230ceeace8998f5436e084d1166",
+    "status": "DISCOVERY_TRACE_FAILED",
+    "traces": [
+      {
+        "command": {
+          "command": [
+            "./obj_dir/Vaxis_frame_len"
+          ],
+          "elapsed_seconds": 0.0178,
+          "execution_mode": "bubblewrap",
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "zero_initialization": true
+        },
+        "comparisons": 8,
+        "cycles": 6,
+        "expected_sha256": "4d7acd167d1c86ef597cf775dfd1c430551e693e08c28a572821cd1317a52ed9",
+        "first_mismatches": [
+          {
+            "actual": 3,
+            "cycle": 5,
+            "expected": 1,
+            "port": "frame_len"
+          }
+        ],
+        "input_windows": [
+          {
+            "inputs": [
+              "monitor_axis_tkeep",
+              "monitor_axis_tlast",
+              "monitor_axis_tready",
+              "monitor_axis_tvalid",
+              "rst"
+            ],
+            "samples": [
+              [
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                0
+              ]
+            ],
+            "start_cycle": 0
+          }
+        ],
+        "mismatch_count": 1,
+        "passed": false,
+        "phase": "discovery",
+        "scope": "Fixed-configuration two-state cycle-exact expected trace agreement, not general protocol correctness or unbounded proof",
+        "stimulus_sha256": "f66d69787c8d7064f5825f0fd57a4ceee6f75d9726b5a0b62dd6a51ac0bb9183",
+        "trace_label": "published_discovery_trace"
+      }
+    ]
+  },
+  "pool_candidates": 28,
+  "rank_order": [
+    "candidate_002",
+    "candidate_006",
+    "candidate_014",
+    "candidate_015",
+    "candidate_017",
+    "candidate_011",
+    "candidate_003",
+    "candidate_016",
+    "candidate_012",
+    "candidate_023",
+    "candidate_020",
+    "candidate_022",
+    "candidate_025",
+    "candidate_024",
+    "candidate_010",
+    "candidate_004",
+    "candidate_005",
+    "candidate_009",
+    "candidate_028",
+    "candidate_027",
+    "candidate_019",
+    "candidate_026",
+    "candidate_018",
+    "candidate_007",
+    "candidate_021",
+    "candidate_013",
+    "candidate_008",
+    "candidate_001"
+  ],
+  "ranking": {
+    "heuristic_order": [
+      "patch_5e3af25f023e",
+      "patch_14a0bc3c436d",
+      "patch_158c82e15fb9",
+      "patch_1d987f221cab",
+      "patch_1e51d2e21710",
+      "patch_3b8e3300b085",
+      "patch_3c1bc44ed27f",
+      "patch_43231d1a706e",
+      "patch_4ac42f1009e7",
+      "patch_4d3dbe7613e4",
+      "patch_6ae7345a2b8e",
+      "patch_750e411d6b5a",
+      "patch_9ad7fbc1e607",
+      "patch_a0ac38b154f7",
+      "patch_a35d41de9326",
+      "patch_a5fd054c48a1",
+      "patch_b74cb8524722",
+      "patch_c158090d1b3c",
+      "patch_c1e6cd26e2ef",
+      "patch_c74db19d790f",
+      "patch_c9ea9c7aa521",
+      "patch_cf6e33dc61f7",
+      "patch_e04315a063a5",
+      "patch_e75a1cff7e0b",
+      "patch_e7d230ca8a18",
+      "patch_f178291ef6b5",
+      "patch_f416b40a5aaa",
+      "patch_1bf21575a3be"
+    ],
+    "order": [
+      "patch_5e3af25f023e",
+      "patch_1e51d2e21710",
+      "patch_158c82e15fb9",
+      "patch_4d3dbe7613e4",
+      "patch_750e411d6b5a",
+      "patch_43231d1a706e",
+      "patch_14a0bc3c436d",
+      "patch_1d987f221cab",
+      "patch_3b8e3300b085",
+      "patch_3c1bc44ed27f",
+      "patch_4ac42f1009e7",
+      "patch_6ae7345a2b8e",
+      "patch_9ad7fbc1e607",
+      "patch_a0ac38b154f7",
+      "patch_a35d41de9326",
+      "patch_a5fd054c48a1",
+      "patch_b74cb8524722",
+      "patch_c158090d1b3c",
+      "patch_c1e6cd26e2ef",
+      "patch_c74db19d790f",
+      "patch_c9ea9c7aa521",
+      "patch_cf6e33dc61f7",
+      "patch_e04315a063a5",
+      "patch_e75a1cff7e0b",
+      "patch_e7d230ca8a18",
+      "patch_f178291ef6b5",
+      "patch_f416b40a5aaa",
+      "patch_1bf21575a3be"
+    ],
+    "scope": "Ranks a supplied finite pool from public observations; does not establish correctness or grammar coverage.",
+    "source_sha256": "911cabce109a87e23a1c3141ed273e29e9f74230ceeace8998f5436e084d1166"
+  },
+  "scope": "V2: valid-qualified published outputs and corrected-control audit traces within declared input domain; debug ignored; frame-length expectations independently checked. Not an unbounded/reference-free proof.",
+  "selected_edits": [
+    {
+      "end": 2524,
+      "old": "",
+      "replacement": "if (frame_len_valid_reg) frame_len_next = 0;\n    ",
+      "start": 2524
+    }
+  ],
+  "selected_family": "reported_value_reset",
+  "selected_id": "candidate_002",
+  "selected_sha256": "5e3af25f023e306c8cad62b59090088953684117d920536a007d61fab849b132",
+  "source_sha256": "911cabce109a87e23a1c3141ed273e29e9f74230ceeace8998f5436e084d1166",
+  "status": "ALL_SEALED_TRACES_PASS",
+  "wall_seconds": 10.731016175937839
+}

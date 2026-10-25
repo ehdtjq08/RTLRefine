@@ -1,0 +1,37 @@
+{
+  "explanation": "The simulation mismatches are exclusively on m_axis_tlast, indicating that frame-boundary information is lost inside the two-stage skid-buffer. The root cause is the combinational assignment m_axis_tlast_int = 1'b0, which erases the incoming s_axis_tlast before it reaches either output register. patch_bdfb4e29768c restores that path. A second loss occurs when back-pressure forces the temp register to be forwarded; patch_73d0959c8d78 and patch_004cc266ecdc ensure the temp stage captures and re-emits the correct last flag. The pause logic (patch_330141055bc5, patch_177e84f089b9, patch_390a7a67ed09) incorrectly stalls the pipeline in rate_by_frame mode, preventing the boundary from advancing. Finally, reset and forward-path hygiene patches (patch_4c92a56408a4, patch_f89a1677f767) avoid spurious ready/last behavior during initialization and temp-to-output transfers.",
+  "ranking": [
+    {
+      "id": "patch_bdfb4e29768c",
+      "mechanism": "The combinational logic forces m_axis_tlast_int to 1'b0, which propagates through the two-stage output registers (store_axis_int_to_output / store_axis_temp_to_output) and causes m_axis_tlast_reg to be 0 on cycles 6,7,19,20,27,29,30,33,47,48 instead of the expected 1. The edit at line 216 makes m_axis_tlast_int follow s_axis_tlast so that frame boundaries reach the output when LAST_ENABLE=1."
+    },
+    {
+      "id": "patch_73d0959c8d78",
+      "mechanism": "temp_m_axis_tlast_reg is hardwired to 0 and later transferred to m_axis_tlast_reg via store_axis_temp_to_output. During back-pressure cycles (e.g., 6,7,19,20) the temp register is the one forwarded to the output, so m_axis_tlast stays 0 instead of 1. The edit at line 163 makes the temp register take its last value from the pipeline (temp_m_axis_tlast_reg) instead of a constant."
+    },
+    {
+      "id": "patch_004cc266ecdc",
+      "mechanism": "store_axis_int_to_temp captures the frame boundary into the temp register. The edit makes the captured last flag be the combinational m_axis_tlast_int (which carries s_axis_tlast when patch_bdfb4e29768c is applied), so the temp stage can later emit a correct last pulse."
+    },
+    {
+      "id": "patch_4c92a56408a4",
+      "mechanism": "During reset the design must not present a ready pulse to the upstream side. The edit gates s_axis_tready_reg with rst so that the first post-reset cycles do not spuriously assert ready, which indirectly influences when the first frame boundary is accepted and thus when m_axis_tlast appears."
+    },
+    {
+      "id": "patch_f89a1677f767",
+      "mechanism": "When store_axis_temp_to_output is asserted the output last flag is driven by a constant 1'b0. The replacement makes it follow the module-level m_axis_tlast port (which already reflects m_axis_tlast_reg), so the forwarded frame boundary is preserved instead of being cleared."
+    },
+    {
+      "id": "patch_330141055bc5",
+      "mechanism": "The pause logic asserts pause = 1'b1 whenever acc_next >= rate_num even in rate_by_frame mode, which stalls s_axis_tready and prevents frame boundaries from advancing. Adding !rate_by_frame to the condition suppresses pause in frame-rate mode, allowing the last flag to propagate through the pipeline."
+    },
+    {
+      "id": "patch_177e84f089b9",
+      "mechanism": "pause is driven by a constant 1'b1 in the same rate_by_frame path. Substituting s_axis_tvalid makes pause conditional on an incoming valid transaction, so the frame boundary is not paused away when no data is present."
+    },
+    {
+      "id": "patch_390a7a67ed09",
+      "mechanism": "Same pause assignment as patch_177e84f089b9 but using m_axis_tready as the gating signal; this also prevents pause from suppressing the frame boundary when the downstream is ready to accept data."
+    }
+  ]
+}

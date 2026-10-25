@@ -1,0 +1,138 @@
+{
+  "accepted": true,
+  "design_hashes": {
+    "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf"
+  },
+  "new_model_calls": 0,
+  "phase": "public",
+  "project_id": "1e5e095c98c1daf9d1e6a7e99ff38a15d2dc6f5c352acde00355e15795fb26d0",
+  "shared_compilation_speed_claim_applies": false,
+  "status": "PROVIDED_TESTS_PASS",
+  "tests": [
+    {
+      "checks": 2,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/domain_ticks.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.016398439998738468
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "domain_ticks",
+            "-Pdomain_ticks.WIDTH=80",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.016604652046225965
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-s",
+            "tb_public",
+            "-o",
+            "__rtlrefine/simulation.vvp",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/public.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "compile",
+          "status": "PASS",
+          "wall_seconds": 0.016518107964657247
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/vvp",
+            "__rtlrefine/simulation.vvp"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "wall_seconds": 0.016574284993112087
+        }
+      ],
+      "id": "basic",
+      "interface": [
+        {
+          "instance": "dut",
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk_a",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "clk_b",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "reset",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 3,
+              "name": "count_a",
+              "width": 80
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 4,
+              "name": "count_b",
+              "width": 80
+            }
+          ]
+        }
+      ],
+      "log_tail": "RTLREFINE_PASS nonce=90f9f5824c4dc5a1a927519e50ebcd29 checks=2\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": true,
+      "phase": "public",
+      "source_hashes": {
+        "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf"
+      },
+      "status": "PASS",
+      "testbench_marker_transforms": [],
+      "top": "tb_public",
+      "verification_hashes": {
+        "rtlrefine_check.vh": "229b4fdd5bd986ea0b4c6756775afb538f57a55fa9508df8a8ce7289021ea08f",
+        "tests/public.sv": "9c6c61773f921892b1a4f0a96f6484c853085af6b15eba80f198b137a47d23fd"
+      },
+      "wall_seconds": 0.06609548500273377
+    }
+  ],
+  "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+}

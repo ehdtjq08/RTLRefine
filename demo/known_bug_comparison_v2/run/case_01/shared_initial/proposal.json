@@ -1,0 +1,21 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 270,
+      "replacement": "\tinitial\tr_cmd_busy = 1'b0;\n\tinitial\tr_data_reg = 32'h00;\n\tinitial\tr_last_r_one = 8'hff;\n\tinitial\tll_cmd_stb = 1'b0;\n\tinitial\tll_fifo_rd = 1'b0;\n\tinitial\tll_fifo_wr = 1'b0;\n\tinitial\tr_rsp_state = 3'h0;\n\tinitial\tr_cmd_state = 3'h0;\n\tinitial\tr_use_fifo  = 1'b0;\n\tinitial\tr_data_fil  = 2'b00;\n\tinitial\tr_lgblklen  = LGFIFOLN;\n\tinitial\tr_cmd_err   = 1'b0;\n\tinitial\tpre_cmd_state = 1'b0;\n\tinitial\tpre_rsp_state = 1'b0;\n\tinitial\tready_for_response_token = 1'b0;\n\tinitial\tr_have_data_response_token = 1'b0;\n\tinitial\tnonzero_out = 1'b0;",
+      "start_line": 259
+    },
+    {
+      "end_line": 498,
+      "replacement": "",
+      "start_line": 489
+    },
+    {
+      "end_line": 543,
+      "replacement": "",
+      "start_line": 509
+    }
+  ],
+  "explanation": "Fixed multiple-driver conflict on r_rsp_state by removing duplicate always block (lines 509-543). Added missing initializations for pre_cmd_state, pre_rsp_state, ready_for_response_token, r_have_data_response_token, nonzero_out to avoid X-propagation at reset. Removed dead code second_rsp_state (lines 489-498) which was declared but never used."
+}

@@ -1,0 +1,11 @@
+{
+  "explanation": "The discovery trace shows frame_len=3 at cycle 5 when the oracle expects 1. In the original code, frame_len_reg is only reset on rst; it accumulates across consecutive valid-ready cycles and is not cleared after frame_len_valid pulses. Patch 5e3af25f023e adds `if (frame_len_valid_reg) frame_len_next = 0;` at the top of the combinational block (line 81), so the completed frame's length is emitted for one cycle and then the counter resets. This matches the spec \"report each completed frame\" and eliminates the stale accumulation that produced the mismatch. Other candidates only add extra gating to existing conditions and do not reset the counter, so they cannot fix the over-count observed at cycle 5.",
+  "ranking": [
+    {
+      "failure_port": "frame_len",
+      "id": "patch_5e3af25f023e",
+      "mechanism": "Clears frame_len_next to 0 when frame_len_valid_reg asserted, directly addressing the over-count (actual=3 vs expected=1) by preventing carryover into the next frame window.",
+      "source_line": 81
+    }
+  ]
+}

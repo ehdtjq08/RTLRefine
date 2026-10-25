@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"ranking\": [\n    { \"id\": \"patch_12707f7188ea\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_6f8298dc7749\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_b857ef3ece44\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_fd49deeec05e\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_413743f5dfd2\", \"mechanism\": \"condition_gate\" },\n    { \"id\": \"patch_8c3779849796\", \"mechanism\": \"handshake_reset_gate\" },\n    { \"id\": \"patch_c05548e3a8e5\", \"mechanism\": \"rhs_substitution\" },\n    { \"id\": \"patch_70ab4c75caf9\", \"mechanism\": \"rhs_substitution\" }\n  ],\n  \"explanation\": \"The first-mismatch trace shows m_axis_tvalid=0 at cycle 8 (expected 1) and s_axis_tready=1 at cycle 12 (expected 0), with m_axis_tdata/last/user diverging shortly after. This pattern points to the pause/rate-gating logic (acc_reg vs rate_num) and the early-ready handshake that drives store_axis_int_to_output vs store_axis_int_to_temp. Condition-gate edits on the acc_reg comparison (patch_12707f7188ea) and on the s_axis_tready&&s_axis_tvalid gate (patch_6f8298dc7749) directly affect when pause asserts and when input beats are accepted. The reset-gating on s_axis_tready_reg (patch_8c3779849796) and the m_axis_tready_int_reg qualification (patch_413743f5dfd2) control the initial pipeline fill and the skid-buffer forwarding that produces the early m_axis_tvalid pulse. The rhs_substitution patches (patch_c05548e3a8e5, patch_70ab4c75caf9) adjust the frame_next and m_axis_tready terms used in store_axis_int_to_output logic, which align with the subsequent data/last/user mismatches at cycles 13\u201316.\"\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1792755352,
+  "id": "chatcmpl-6839d52dc8e78251d0c9580f47aee47f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 559,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 10334,
+    "prompt_tokens": 10334,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 10893
+  }
+}

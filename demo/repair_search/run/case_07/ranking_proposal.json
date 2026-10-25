@@ -1,0 +1,13 @@
+{
+  "explanation": "The failing traces show a mismatch at cycle 4 where input_axis_tready is 1 instead of 0 during async reset. Candidate 031 gates the write handshake with !output_rst_sync3, preventing premature writes during output reset. Candidate 029 ensures async_rst blocks writes, avoiding activity during reset. Candidate 013 prevents async_rst from enabling writes, aligning write enable with reset de-assertion. Candidates 034/035/023 add input/output reset sync qualification to handshake gates, ensuring readiness/validity respect domain reset completion. Candidate 018 ties input readiness to output reset state. Candidate 001 clears data_out_reg on output reset, fixing the output_axis_tdata mismatch at cycle 8/9.",
+  "ranked_ids": [
+    "candidate_031",
+    "candidate_029",
+    "candidate_013",
+    "candidate_034",
+    "candidate_035",
+    "candidate_018",
+    "candidate_001",
+    "candidate_023"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "decision": "repair",
+  "edits": [
+    {
+      "end_line": 248,
+      "replacement": "            if (byte_accepted)\n            begin\n                r_byte <= i_byte[7:0];\n                r_state <= LLSDSPI_START;\n                r_idle <= 1'b0;\n                o_mosi <= i_byte[7];\n                o_sclk <= 1'b1;\n            end else",
+      "start_line": 241
+    },
+    {
+      "end_line": 268,
+      "replacement": "        end else if (o_sclk && r_z_counter)\n        begin\n            o_mosi <= r_byte[7];\n            r_byte <= { r_byte[6:0], 1'b1 };\n            r_state <= r_state + 1;\n            o_sclk <= 1'b0;\n            if (r_state >= LLSDSPI_START+8)\n            begin\n                r_state <= LLSDSPI_HOTIDLE;\n                r_idle <= 1'b1;\n                o_stb <= 1'b1;\n                o_byte <= r_ireg;\n                o_sclk <= 1'b1;\n            end else\n                r_state <= r_state + 1;\n        end else if (r_z_counter) begin\n            r_ireg <= { r_ireg[6:0], i_miso };\n            o_sclk <= 1'b1;\n        end",
+      "start_line": 250
+    }
+  ],
+  "explanation": "Two functional defects were repaired in the llsdspi module. First, the HOTIDLE state incorrectly forced the last transmitted bit to 1 and advanced the state machine by one extra step, corrupting the serial bit order for back-to-back bytes. The fix makes the HOTIDLE path identical to the IDLE path: load the full byte, set state to START, and hold SCK high. Second, the SPI clock divider (r_z_counter) was not used to pace the bit transmission loop; the state machine toggled SCK every system clock cycle regardless of the configured divider. The fix gates the SCK toggling and state advancement in the bit-transmission branches with r_z_counter, so the SPI clock frequency respects the i_speed divider. Both changes preserve the public port interface, startup timing, and Wishbone-qualified acknowledgments."
+}

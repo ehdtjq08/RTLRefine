@@ -1,0 +1,37 @@
+{
+  "explanation": "The trace mismatches on o_data show unexpected zeroes during active valid/ready handshake cycles after reset deassertion. This points to conditions incorrectly gating data flow or output registers holding zero due to reset-sensitive qualifiers missing. The top candidates add !i_reset guards to readiness (o_ready), the r_valid set condition, and the o_valid generation path, directly aligning state transitions with the post-reset operational window. The r_valid condition (line 137) and o_ready assignment (line 160) are the most upstream handshake gates; qualifying them with !i_reset prevents premature or stalled valid assertions. The o_valid initial condition (line 133) and the r_valid else-if gate (line 140) are secondary but related. The rhs substitutions (w_data, i_data) address the symptom (zero payload) but not the root gating cause, so they rank lower.",
+  "ranking": [
+    {
+      "id": "patch_41986937eebf",
+      "mechanism": "Qualify condition with nearby scalar !i_reset"
+    },
+    {
+      "id": "patch_6dbbdce74c2f",
+      "mechanism": "Qualify condition with nearby scalar !o_valid"
+    },
+    {
+      "id": "patch_25df7630e139",
+      "mechanism": "Qualify condition with nearby scalar i_reset"
+    },
+    {
+      "id": "patch_97ba2adecc6f",
+      "mechanism": "Qualify condition with nearby scalar i_reset"
+    },
+    {
+      "id": "patch_7790f6f01318",
+      "mechanism": "Qualify readiness with !i_reset"
+    },
+    {
+      "id": "patch_233b0c340b70",
+      "mechanism": "Qualify condition with nearby scalar !i_valid"
+    },
+    {
+      "id": "patch_c9c4ad33c838",
+      "mechanism": "Use existing same-width signal w_data for o_data"
+    },
+    {
+      "id": "patch_6b523645a71e",
+      "mechanism": "Use existing same-width signal i_data for o_data"
+    }
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "assumptions": "First step resets. Setup constant, flow control enabled, CTS=1, write=0. Subsequent reset and BREAK arbitrary.",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 2.169546,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "fixed_reference_rtl_used": false,
+  "initial_state": "Unspecified state bits zero; explicit upstream initial assignments retained",
+  "limitation": "Bounded two-state CTS safety only. Serial-data behavior checked separately in simulations. Not unbounded, all-parameter or CDC proof.",
+  "monitor_sha256": "a8e036db191183243a01c5fc419051875792f21eb936185db062974cb1ffca16",
+  "profile": {
+    "baud_cycles": 4,
+    "steps": 80
+  },
+  "property": "Continuously blocked active-low CTS keeps o_busy high after eight synchronizer warm-up clocks, including BREAK recovery",
+  "public_trace": {
+    "signal": [
+      {
+        "name": "property_blocked",
+        "wave": "41........................................................................01....."
+      },
+      {
+        "name": "o_uart_tx",
+        "wave": "41.......0................................................................1.0...."
+      },
+      {
+        "name": "o_busy",
+        "wave": "41........................................................................01....."
+      },
+      {
+        "name": "i_reset",
+        "wave": "41010...........................................................................1"
+      },
+      {
+        "name": "i_break",
+        "wave": "40......10.................................................................10...1"
+      },
+      {
+        "data": [
+          "",
+          "0000",
+          "0001",
+          "0010",
+          "0011",
+          "0100",
+          "0101",
+          "0110",
+          "0111",
+          "1000",
+          "1001",
+          "1010",
+          "1011",
+          "1100",
+          "1101",
+          "1110",
+          "1111"
+        ],
+        "name": "age",
+        "wave": "4================................................................................"
+      }
+    ]
+  },
+  "replay": {
+    "commands": [
+      {
+        "command": [
+          "iverilog",
+          "-g2012",
+          "-Wall",
+          "-s",
+          "tb",
+          "-o",
+          "simulation.vvp",
+          "candidate.v",
+          "tb.v"
+        ],
+        "elapsed_seconds": 0.033868,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "compile_simulation",
+        "status": "PASS"
+      },
+      {
+        "command": [
+          "vvp",
+          "simulation.vvp"
+        ],
+        "elapsed_seconds": 0.017682,
+        "execution_mode": "bubblewrap",
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS"
+      }
+    ],
+    "exact_external_inputs": [
+      {
+        "i_break": 0,
+        "i_reset": 1
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 1
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 1,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 1,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 0,
+        "i_reset": 0
+      },
+      {
+        "i_break": 1,
+        "i_reset": 1
+      }
+    ],
+    "first_violations": [
+      {
+        "break": 0,
+        "busy_after": 0,
+        "busy_before": 1,
+        "cts_n": 1,
+        "cycle": 72,
+        "data": 0,
+        "phase": 0,
+        "reset": 0,
+        "tx_after": 1,
+        "tx_before": 0,
+        "write": 0
+      }
+    ],
+    "scope": "Same top-level reset/BREAK inputs, fixed blocked CTS, four-state Icarus; not identical internal initial state",
+    "status": "CONTRACT_FAILURE_REPRODUCED",
+    "violation_count": 1
+  },
+  "rtl_sha256": "b8bfbb521b3772e2aa0826112013afe514535ee680b07726954807eb64ef1ecb",
+  "status": "COUNTEREXAMPLE"
+}

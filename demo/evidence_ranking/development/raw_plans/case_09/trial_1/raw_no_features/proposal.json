@@ -1,0 +1,53 @@
+{
+  "explanation": "The five mismatches cluster around reset handling (cycles 7, 13-14, 16) and frame-boundary metadata loss. The top patches address: (1) write-domain reset completeness for drop_frame and wr_ptr_cur (patch_9d300784e043, patch_0df996e92b1b); (2) gating writes/readiness during reset (patch_5290c6328b33, patch_c8cdd17adad4); (3) preventing data/metadata corruption during active drop_frame (patch_984eed6c8fb1, patch_cc5c635bb718); (4) clearing read-domain output register on reset (patch_2091b2021c83). Together they ensure reset flushes all state, drop_frame only toggles at true frame ends, and no spurious transactions occur during reset.",
+  "ranking": [
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_9d300784e043",
+      "mechanism": "During reset, the write-domain block (line 99) resets wr_ptr but leaves drop_frame uninitialized. The trace shows rst=1 at cycle 7 and drop_frame incorrectly asserted at cycles 13-14. Adding 'drop_frame <= 0' in the rst branch of the write always-block ensures the drop state is cleared synchronously with pointer reset, preventing stale drop_frame from persisting across reset boundaries.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "output_axis_tlast",
+      "id": "patch_984eed6c8fb1",
+      "mechanism": "When drop_frame=1 and a new frame arrives (input_axis_tlast=1), the condition at line 103 currently allows wr_ptr to advance because it only checks input_axis_tlast. The trace shows output_axis_tlast=1 expected but 0 actual at cycle 16, indicating frame boundary metadata was lost. Qualifying with '!drop_frame' prevents pointer advancement during active drop, preserving frame alignment until drop_frame clears.",
+      "source_line": 103
+    },
+    {
+      "failure_port": "output_axis_tvalid",
+      "id": "patch_5ca8f64228ff",
+      "mechanism": "The write condition at line 99 triggers on 'write' alone, but write = input_axis_tvalid & (~full | DROP_WHEN_FULL). During reset (rst=1), input_axis_tvalid may be asserted while the FIFO is logically emptying. Adding '&& (rst)' appears incorrect for normal operation, but the inverse '&& (!rst)' at line 99 via patch_5290c6328b33 would gate writes until reset completes. The trace shows output_axis_tvalid=0 actual vs 1 expected at cycle 16, suggesting spurious writes during reset corrupted valid generation.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "output_axis_tvalid",
+      "id": "patch_5290c6328b33",
+      "mechanism": "Gating the write enable with '&& (!rst)' at line 99 prevents input transactions from being accepted while rst=1. The discovery trace shows rst=1 at cycle 7 with input_axis_tvalid=1, and subsequent output_axis_tvalid failure at cycle 16. This ensures the FIFO ignores input during reset, avoiding pointer/metadata corruption that breaks valid generation.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_cc5c635bb718",
+      "mechanism": "The write condition at line 99 lacks a '!drop_frame' guard. When drop_frame=1 (from prior overflow), new writes still execute mem[wr_ptr_cur] updates and wr_ptr_cur increments. The trace shows output_axis_tdata=1 actual vs 6 expected at cycle 16, indicating stale/corrupted data was written during drop state. Adding '&& (!drop_frame)' blocks data writes until drop_frame clears at frame end.",
+      "source_line": 99
+    },
+    {
+      "failure_port": "output_axis_tlast",
+      "id": "patch_0df996e92b1b",
+      "mechanism": "The condition 'full | full_cur | drop_frame' at line 100 enters drop handling for any full-like condition. However, drop logic should only engage at frame boundaries (input_axis_tlast=1) to preserve frame atomicity. The trace shows output_axis_tlast=0 actual vs 1 expected at cycle 16. Qualifying with '&& (input_axis_tlast)' ensures drop_frame only sets/updates at true frame ends, not mid-frame stalls.",
+      "source_line": 100
+    },
+    {
+      "failure_port": "drop_frame",
+      "id": "patch_c8cdd17adad4",
+      "mechanism": "input_axis_tready = (~full | DROP_WHEN_FULL) asserts ready even during rst=1. The trace shows rst=1 at cycle 7 and drop_frame=1 at cycles 13-14. Adding '&& (!rst)' to the ready expression prevents upstream from sending data during reset, eliminating a source of spurious drop_frame assertion from write-domain logic executing with rst=1.",
+      "source_line": 92
+    },
+    {
+      "failure_port": "output_axis_tdata",
+      "id": "patch_2091b2021c83",
+      "mechanism": "The read-domain reset (line 127) clears rd_ptr but not data_out_reg. On reset exit, the first read loads mem[0] into data_out_reg, but if mem[0] was never written (wr_ptr=0), data_out_reg holds stale/X. The trace shows output_axis_tdata=1 vs 6 at cycle 16. Resetting data_out_reg to 0 ensures clean output state after reset, matching the zero-initialization simulation model.",
+      "source_line": 127
+    }
+  ]
+}

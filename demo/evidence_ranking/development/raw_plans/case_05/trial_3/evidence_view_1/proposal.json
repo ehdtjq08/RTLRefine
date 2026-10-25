@@ -1,0 +1,53 @@
+{
+  "explanation": "The discovery trace shows m_axis_tvalid=1 at cycles 13-15 when the FIFO should be empty (s_axis_tvalid=0, m_axis_tready=1). The root causes are: (1) reset leaves rd_addr_reg uninitialized, causing an immediate spurious valid read; (2) frame-commit logic (s_axis_tlast) fires without checking frame FIFO space (!full_cur) or write-pointer collapse (!full_wr); (3) drop/overflow logic runs on idle cycles (s_axis_tvalid=0) because its guard lacks s_axis_tvalid, corrupting drop_frame_reg and pointer state. The top patches address these: patch_4e6435726b71 fixes reset initialization; patch_1a1030a1adc6 and patch_07a65f6c7ebd qualify frame commit with FIFO space and write-pointer status; patch_22b3b83e1afe and patch_a60590ee9d4f restrict drop logic to valid input cycles; patch_e6cf9061c830 preserves drop state across idle cycles; patch_33eda120828e guards non-frame write path. Together they cover the observed failure mechanisms.",
+  "ranking": [
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_07a65f6c7ebd",
+      "mechanism": "The failure at cycles 13-15 shows m_axis_tvalid spuriously asserted while FIFO empty. The s_axis_tlast condition on line 223 unconditionally advances wr_ptr_cur when a frame end arrives, but does not check full_wr. When full_wr is asserted (wr_ptr caught up to wr_ptr_cur), this allows a frame boundary to be committed even though the frame's data may not have been fully written. This creates a phantom frame that the read side then validates, causing m_axis_tvalid=1 with no real data. Adding (!full_wr) prevents committing a frame boundary while the write pointers are collapsed.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_1a1030a1adc6",
+      "mechanism": "The s_axis_tlast check on line 223 fires whenever the input stream asserts tlast, but does not verify that the frame FIFO has space (!full_cur). When full_cur is true, the current frame cannot be accepted; however the original logic still executes the wr_ptr_cur/next updates and can set good_frame_next. This lets a frame boundary be recorded in the pointer logic despite no storage occurring, later yielding a valid read with m_axis_tvalid=1. Qualifying with (!full_cur) ensures frame commit only when the frame FIFO can actually accept it.",
+      "source_line": 223
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_22b3b83e1afe",
+      "mechanism": "The condition (full_cur || full_wr || drop_frame_reg) on line 219 is evaluated even when s_axis_tvalid=0 (idle cycles). In the observed trace, m_axis_tready=1 and s_axis_tvalid=0 around cycles 13-15, yet the logic enters the drop_frame path and sets drop_frame_next=1. This corrupts pointer state (wr_ptr_cur not advancing correctly) and later causes the read side to see a non-empty FIFO, asserting m_axis_tvalid=1 spuriously. Adding && (s_axis_tvalid) restricts the drop/overflow logic to cycles with actual input data.",
+      "source_line": 219
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_a60590ee9d4f",
+      "mechanism": "When s_axis_tvalid=0 and m_axis_tready=1 (cycles 13-15), the condition (full_cur || full_wr || drop_frame_reg) on line 219 still evaluates true if any flag is set, causing drop_frame_next=1. This incorrectly signals an overflowing frame being dropped, which resets wr_ptr_cur to wr_ptr_reg on the next tlast. The pointer mismatch makes the read side believe data exists, driving m_axis_tvalid=1. Requiring s_axis_tlast ensures the drop logic only engages when a frame boundary is actually present on the input.",
+      "source_line": 219
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_4e6435726b71",
+      "mechanism": "The reset block at line 305 initializes rd_ptr_reg but not rd_addr_reg. On reset exit, rd_addr_reg holds an unknown value (X in simulation). The first read uses rd_addr_reg to index mem, producing X data and mem_read_data_valid_reg=1. This directly causes m_axis_tvalid=1 at cycle 13 with garbage data. Adding rd_addr_reg <= 0 in reset ensures the first read address is 0, aligning with wr_ptr_reg=0 so empty detection works and no spurious valid is generated.",
+      "source_line": 305
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_fdb25cd97ea7",
+      "mechanism": "During cycles 13-15, s_axis_tready=1 and s_axis_tvalid=0. The condition (full_cur || full_wr || drop_frame_reg) on line 219 becomes the active branch because s_axis_tvalid=0 makes the prior if false. If drop_frame_reg=1 from earlier, drop_frame_next stays 1, freezing the drop state. This prevents wr_ptr_cur from advancing on subsequent valid frames, leaving the read side with a non-empty indication. Adding (!s_axis_tready) is less direct; the key is that the branch should not run when s_axis_tvalid=0, but this patch inverts ready instead. Still, it alters the control flow that leads to the spurious valid.",
+      "source_line": 219
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_e6cf9061c830",
+      "mechanism": "The always_comb block at line 205 initializes drop_frame_next=1'b0 unconditionally each cycle. When s_axis_tvalid=0 (cycles 13-15), the logic falls through to the drop branch (line 219) which sets drop_frame_next=1 if drop_frame_reg=1. Because the default is 0, a single cycle with s_axis_tvalid=0 can clear a persistent drop_frame_reg that should remain set across idle cycles. Retaining drop_frame_reg as default preserves the drop state through idle cycles, preventing premature clear that would let a phantom frame be committed.",
+      "source_line": 205
+    },
+    {
+      "failure_port": "m_axis_tvalid",
+      "id": "patch_33eda120828e",
+      "mechanism": "The top-level condition on line 213 (s_axis_tready && s_axis_tvalid) enters the write logic. Inside, the !FRAME_FIFO branch (line 215) executes write=1 and advances wr_ptr_next regardless of full_wr. When full_wr=1 (wr_ptr caught up to wr_ptr_cur), this over-advances wr_ptr_next, breaking the frame pointer invariant. The read side then sees wr_ptr != rd_ptr and asserts m_axis_tvalid=1. Qualifying the !FRAME_FIFO branch with (!full_wr) prevents pointer corruption when the frame write pointer has caught up.",
+      "source_line": 213
+    }
+  ]
+}

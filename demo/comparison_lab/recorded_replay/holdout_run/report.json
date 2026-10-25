@@ -1,0 +1,5328 @@
+{
+  "budget_matching": "Matched candidate-check budgets. Model API overhead is attributed; end-to-end compute is unequal.",
+  "candidate_generation_coverage": {
+    "covered": 10,
+    "seeded_pool_track": true,
+    "total": 10
+  },
+  "candidate_policy_errors": 0,
+  "case_rows": [
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_01",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.056379,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.4038,
+          "ranking_wall_seconds": 14.9743,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3732446a2223",
+              "patch_5eb30d5685b3",
+              "patch_e6e9f736fdb3",
+              "patch_45b034608673",
+              "patch_70ab4c75caf9",
+              "patch_70af02d61d6a",
+              "patch_b3939a92f2d2",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.018007,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.373199999999999,
+          "ranking_wall_seconds": 3.7418,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_28182ef789d2",
+              "patch_489a75ddcd7b",
+              "patch_c05548e3a8e5",
+              "patch_6f8298dc7749",
+              "patch_d09dad2fed72",
+              "patch_413743f5dfd2",
+              "patch_b857ef3ece44",
+              "patch_fd49deeec05e"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.056379,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.4077,
+          "ranking_wall_seconds": 14.9743,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_12707f7188ea",
+              "patch_28182ef789d2",
+              "patch_6f8298dc7749",
+              "patch_fd49deeec05e",
+              "patch_e6e9f736fdb3",
+              "patch_3732446a2223",
+              "patch_5eb30d5685b3",
+              "patch_489a75ddcd7b"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.4038,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3732446a2223",
+              "patch_5eb30d5685b3",
+              "patch_e6e9f736fdb3",
+              "patch_45b034608673",
+              "patch_70ab4c75caf9",
+              "patch_70af02d61d6a",
+              "patch_b3939a92f2d2",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.299199999999999,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_5eb30d5685b3",
+              "patch_604d7c1ece0b",
+              "patch_28182ef789d2",
+              "patch_70af02d61d6a",
+              "patch_b857ef3ece44",
+              "patch_fb1371cffbe8",
+              "patch_c05548e3a8e5",
+              "patch_413743f5dfd2"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.012011,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.4215,
+          "ranking_wall_seconds": 6.0549,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_12707f7188ea",
+              "patch_6f8298dc7749",
+              "patch_b857ef3ece44",
+              "patch_fd49deeec05e",
+              "patch_413743f5dfd2",
+              "patch_8c3779849796",
+              "patch_c05548e3a8e5",
+              "patch_70ab4c75caf9"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 13.5348,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3732446a2223",
+              "patch_e6e9f736fdb3",
+              "patch_5eb30d5685b3",
+              "patch_70ab4c75caf9",
+              "patch_c05548e3a8e5",
+              "patch_45b034608673",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 7,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3687,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_c05548e3a8e5",
+              "patch_489a75ddcd7b",
+              "patch_e6e9f736fdb3",
+              "patch_3732446a2223",
+              "patch_5eb30d5685b3",
+              "patch_70ab4c75caf9",
+              "patch_dc6ce9ef83c3",
+              "patch_d09dad2fed72"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3964,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_8c3779849796",
+              "patch_12707f7188ea",
+              "patch_6f8298dc7749",
+              "patch_604d7c1ece0b",
+              "patch_b857ef3ece44",
+              "patch_fd49deeec05e",
+              "patch_fb1371cffbe8",
+              "patch_5eb30d5685b3"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.452,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_3732446a2223",
+              "patch_5eb30d5685b3",
+              "patch_8c3779849796",
+              "patch_e6e9f736fdb3",
+              "patch_12707f7188ea",
+              "patch_28182ef789d2",
+              "patch_413743f5dfd2",
+              "patch_45b034608673"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.4038,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3732446a2223",
+              "patch_5eb30d5685b3",
+              "patch_e6e9f736fdb3",
+              "patch_45b034608673",
+              "patch_70ab4c75caf9",
+              "patch_70af02d61d6a",
+              "patch_b3939a92f2d2",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_rate_limit",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": true,
+      "source_sha256": "9e205deb667e64b6e5e7e1e40d53581e6c5680c8adec1535194e8505c2df3985",
+      "trial": 1,
+      "upstream_case": "holdout_01",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_02",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.055866,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 1.9768,
+          "ranking_wall_seconds": 16.2047,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.019215,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 1.9768,
+          "ranking_wall_seconds": 6.6953,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.055866,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 1.9768,
+          "ranking_wall_seconds": 16.2047,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.2861,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_8053be1dbae4",
+              "patch_9d11758b2afe",
+              "patch_c9bcd0ebf5ab",
+              "patch_ec27a287b3cc",
+              "patch_f2861c6c0e09",
+              "patch_ff59297437c2",
+              "patch_73d0959c8d78",
+              "patch_004cc266ecdc"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.4534,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_f89a1677f767",
+              "patch_5a0af9d51c1a",
+              "patch_390a7a67ed09",
+              "patch_37b9d212adbe",
+              "patch_f2861c6c0e09",
+              "patch_330141055bc5",
+              "patch_687644f7cde1",
+              "patch_53c73d1a2563"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.012042,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 1.9768,
+          "ranking_wall_seconds": 4.0113,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.4024,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_f2861c6c0e09",
+              "patch_53c73d1a2563",
+              "patch_526cd5d1d85b",
+              "patch_ff59297437c2",
+              "patch_004cc266ecdc",
+              "patch_8053be1dbae4",
+              "patch_c9bcd0ebf5ab",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 1.9768,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 13.5176,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_4c92a56408a4",
+              "patch_05abffd461ff",
+              "patch_330141055bc5",
+              "patch_177e84f089b9",
+              "patch_37b9d212adbe",
+              "patch_390a7a67ed09",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 7,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3647,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_73d0959c8d78",
+              "patch_004cc266ecdc",
+              "patch_05abffd461ff",
+              "patch_177e84f089b9",
+              "patch_330141055bc5",
+              "patch_37b9d212adbe",
+              "patch_390a7a67ed09",
+              "patch_4c92a56408a4"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.2861,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_8053be1dbae4",
+              "patch_9d11758b2afe",
+              "patch_c9bcd0ebf5ab",
+              "patch_ec27a287b3cc",
+              "patch_f2861c6c0e09",
+              "patch_ff59297437c2",
+              "patch_73d0959c8d78",
+              "patch_004cc266ecdc"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_rate_limit",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": true,
+      "source_sha256": "41337f1b5ad68b8fbaa0e130ab617ab96771ed030f2a4c58f33667d41a199ee5",
+      "trial": 1,
+      "upstream_case": "holdout_02",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_03",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.055137,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 5.8082,
+          "ranking_wall_seconds": 16.313499999999998,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_12fb0aa7572b",
+              "patch_7f31b59c2569",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.017716,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 5.8082,
+          "ranking_wall_seconds": 4.8275,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_12fb0aa7572b",
+              "patch_7f31b59c2569",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.055137,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 3.8816000000000006,
+          "ranking_wall_seconds": 16.313499999999998,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_12fb0aa7572b",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 5.8082,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_12fb0aa7572b",
+              "patch_7f31b59c2569",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.443100000000001,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_7f31b59c2569",
+              "patch_7c1fb3f808af",
+              "patch_302bdac6f760",
+              "patch_f46dec541b44",
+              "patch_87d9d2ff8bbd",
+              "patch_4fe020af08db",
+              "patch_12fb0aa7572b",
+              "patch_38f5e51918e0"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.011656,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.3589,
+          "ranking_wall_seconds": 3.4127,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_bdf206843497",
+              "patch_f46dec541b44",
+              "patch_c73ed0d6214c",
+              "patch_1d0fba8d5d53",
+              "patch_3642db1cc528",
+              "patch_302bdac6f760",
+              "patch_cde52ea68e59",
+              "patch_87d9d2ff8bbd"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 11.6333,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_7c1fb3f808af",
+              "patch_9cbbf5dc49f3",
+              "patch_12fb0aa7572b",
+              "patch_38f5e51918e0",
+              "patch_c8f0ff63db96",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 6,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.435,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_79e81bb21cc1",
+              "patch_7c1fb3f808af",
+              "patch_8c4f93f7976c",
+              "patch_9cbbf5dc49f3",
+              "patch_c8f0ff63db96",
+              "patch_1d0fba8d5d53",
+              "patch_3642db1cc528",
+              "patch_38f5e51918e0"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3494,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_1d0fba8d5d53",
+              "patch_87d9d2ff8bbd",
+              "patch_bdf206843497",
+              "patch_c73ed0d6214c",
+              "patch_f46dec541b44",
+              "patch_4fe020af08db",
+              "patch_1b1b250a3141",
+              "patch_81a895258238"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 7.7293,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_12fb0aa7572b",
+              "patch_709d4b72f088",
+              "patch_7f31b59c2569",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 4,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 5.8082,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_12fb0aa7572b",
+              "patch_7f31b59c2569",
+              "patch_bdfb4e29768c"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_bdfb4e29768c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_rate_limit",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": true,
+      "source_sha256": "f30fea9af8fdb629b94e68a28e6a1ea2f4fd827c9c1b53aafad41023d46f199b",
+      "trial": 1,
+      "upstream_case": "holdout_03",
+      "view_errors": 2
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_04",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.044619,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 3.9040999999999997,
+          "ranking_wall_seconds": 11.3741,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_17422b8b1575",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.014952,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.3749,
+          "ranking_wall_seconds": 4.3526,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_2c8752251e37",
+              "patch_17422b8b1575",
+              "patch_bdd445d05642",
+              "patch_5d2b925ce50d",
+              "patch_c34f93524a6a",
+              "patch_a55e46059a07",
+              "patch_1bcf966a75b9",
+              "patch_316ca7f541a1"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.044619,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 3.9040999999999997,
+          "ranking_wall_seconds": 11.3741,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_17422b8b1575",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 3.9040999999999997,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_17422b8b1575",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.309000000000001,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_a55e46059a07",
+              "patch_ebce015d5f7b",
+              "patch_a376a140f162",
+              "patch_fdb1ae5c4fe6",
+              "patch_c34f93524a6a",
+              "patch_dead0c3682f0",
+              "patch_139b369af3a2",
+              "patch_c8269c8a6c20"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.008684,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.356300000000001,
+          "ranking_wall_seconds": 3.6878,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_b7c09269741f",
+              "patch_fc89a2456871",
+              "patch_1bcf966a75b9",
+              "patch_316ca7f541a1",
+              "patch_a55e46059a07",
+              "patch_2c8752251e37",
+              "patch_548face3e9ab",
+              "patch_c34f93524a6a"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 7.7458,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_17422b8b1575",
+              "patch_548face3e9ab",
+              "patch_2c8752251e37",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 4,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.368400000000001,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_c8269c8a6c20",
+              "patch_548face3e9ab",
+              "patch_b7c09269741f",
+              "patch_17422b8b1575",
+              "patch_ebce015d5f7b",
+              "patch_a55e46059a07",
+              "patch_1b97a12f1d1e",
+              "patch_fdb1ae5c4fe6"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.352,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_1b97a12f1d1e",
+              "patch_b7c09269741f",
+              "patch_316ca7f541a1",
+              "patch_c34f93524a6a",
+              "patch_fc89a2456871",
+              "patch_ebce015d5f7b",
+              "patch_fdb1ae5c4fe6",
+              "patch_a55e46059a07"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 3.9040999999999997,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_17422b8b1575",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 3.9040999999999997,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_17422b8b1575",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_stat_counter",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": true,
+      "source_sha256": "b4c7bd40aaab3748a722799a65e3a28fe29ca650178f32555996e76c6e90c871",
+      "trial": 1,
+      "upstream_case": "holdout_04",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_05",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.049761,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.3788,
+          "ranking_wall_seconds": 18.8167,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_e653d3aa3b52",
+              "patch_f4772fefedab",
+              "patch_489a6092dfdc",
+              "patch_a92250a89e31",
+              "patch_bf3cb49329ff",
+              "patch_dfe5389f406e",
+              "patch_f2d9d35bb697",
+              "patch_0b3ab7ce9c6c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.017907,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.389100000000001,
+          "ranking_wall_seconds": 8.4903,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_a92250a89e31",
+              "patch_f2d9d35bb697",
+              "patch_7329800dc4a8",
+              "patch_0b3ab7ce9c6c",
+              "patch_c98c57628a2e",
+              "patch_f5b5b7b84f2e",
+              "patch_dcfe3aa1fa32",
+              "patch_a691a4237cc9"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.049761,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.441699999999999,
+          "ranking_wall_seconds": 18.8167,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_f2d9d35bb697",
+              "patch_a92250a89e31",
+              "patch_d85c55cc2e00",
+              "patch_dcfe3aa1fa32",
+              "patch_489a6092dfdc",
+              "patch_bf3cb49329ff",
+              "patch_c98c57628a2e",
+              "patch_7329800dc4a8"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3788,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_e653d3aa3b52",
+              "patch_f4772fefedab",
+              "patch_489a6092dfdc",
+              "patch_a92250a89e31",
+              "patch_bf3cb49329ff",
+              "patch_dfe5389f406e",
+              "patch_f2d9d35bb697",
+              "patch_0b3ab7ce9c6c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.379100000000001,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_75435d38326c",
+              "patch_dfe5389f406e",
+              "patch_d85c55cc2e00",
+              "patch_f4772fefedab",
+              "patch_0b3ab7ce9c6c",
+              "patch_a691a4237cc9",
+              "patch_e653d3aa3b52",
+              "patch_de6f8c13a145"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.009986,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 1.954,
+          "ranking_wall_seconds": 4.0113,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.4159,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_489a6092dfdc",
+              "patch_f4772fefedab",
+              "patch_bf3cb49329ff",
+              "patch_a92250a89e31",
+              "patch_0b3ab7ce9c6c",
+              "patch_d85c55cc2e00",
+              "patch_76d1014d3329",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.416,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_489a6092dfdc",
+              "patch_76d1014d3329",
+              "patch_d85c55cc2e00",
+              "patch_f4772fefedab",
+              "patch_de6f8c13a145",
+              "patch_0b3ab7ce9c6c",
+              "patch_bf3cb49329ff",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3812,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_76d1014d3329",
+              "patch_a691a4237cc9",
+              "patch_75435d38326c",
+              "patch_b246985527c1",
+              "patch_c98c57628a2e",
+              "patch_f2d9d35bb697",
+              "patch_a92250a89e31",
+              "patch_489a6092dfdc"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 5.8050999999999995,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_0b3ab7ce9c6c",
+              "patch_0c142226f776",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3788,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_e653d3aa3b52",
+              "patch_f4772fefedab",
+              "patch_489a6092dfdc",
+              "patch_a92250a89e31",
+              "patch_bf3cb49329ff",
+              "patch_dfe5389f406e",
+              "patch_f2d9d35bb697",
+              "patch_0b3ab7ce9c6c"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_stat_counter",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": true,
+      "source_sha256": "6d22845cb3191ae06ca76e4f9ae43006d70aa6244a01fd1ddbc10cff3f32785d",
+      "trial": 1,
+      "upstream_case": "holdout_05",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_06",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.051237,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.3446,
+          "ranking_wall_seconds": 15.367999999999999,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_25e2bb6b9fbe",
+              "patch_3b7cab0258e3",
+              "patch_6381f0ec9a29",
+              "patch_69ccf5c47bf8",
+              "patch_6ccd792d465f",
+              "patch_8c0a90c6fab4",
+              "patch_bf3e4f0d750f",
+              "patch_dd60dfd654c6"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.016585,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 3.8788,
+          "ranking_wall_seconds": 4.349,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_69ccf5c47bf8",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.051237,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.430900000000001,
+          "ranking_wall_seconds": 15.367999999999999,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_69ccf5c47bf8",
+              "patch_bf3e4f0d750f",
+              "patch_6ccd792d465f",
+              "patch_dd60dfd654c6",
+              "patch_c2632dbfb27f",
+              "patch_c92f21851f42",
+              "patch_f3246935129c",
+              "patch_0ef623a0d576"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3446,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_25e2bb6b9fbe",
+              "patch_3b7cab0258e3",
+              "patch_6381f0ec9a29",
+              "patch_69ccf5c47bf8",
+              "patch_6ccd792d465f",
+              "patch_8c0a90c6fab4",
+              "patch_bf3e4f0d750f",
+              "patch_dd60dfd654c6"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3785,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_6381f0ec9a29",
+              "patch_6ccd792d465f",
+              "patch_07b5fef0b6d0",
+              "patch_c2632dbfb27f",
+              "patch_2271d57523e8",
+              "patch_c92f21851f42",
+              "patch_dd60dfd654c6",
+              "patch_bf3e4f0d750f"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.010644,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.391000000000002,
+          "ranking_wall_seconds": 4.6116,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_69ccf5c47bf8",
+              "patch_c2632dbfb27f",
+              "patch_25e2bb6b9fbe",
+              "patch_aa8ac67bf828",
+              "patch_2830e5edbd13",
+              "patch_f3246935129c",
+              "patch_3b7cab0258e3",
+              "patch_6381f0ec9a29"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3655,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_8c0a90c6fab4",
+              "patch_f3246935129c",
+              "patch_dd60dfd654c6",
+              "patch_6381f0ec9a29",
+              "patch_6ccd792d465f",
+              "patch_2830e5edbd13",
+              "patch_3b7cab0258e3",
+              "patch_bf3e4f0d750f"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 9.6741,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_f3246935129c",
+              "patch_8c0a90c6fab4",
+              "patch_c92f21851f42",
+              "patch_dd60dfd654c6",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 5,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 13.4852,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_aa8ac67bf828",
+              "patch_c359faedbca9",
+              "patch_07b5fef0b6d0",
+              "patch_2d18b6188fc4",
+              "patch_3a2360a4e5d3",
+              "patch_c92f21851f42",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 7,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 13.511600000000001,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_07b5fef0b6d0",
+              "patch_0ef623a0d576",
+              "patch_1a1168a1d7c7",
+              "patch_2271d57523e8",
+              "patch_25e2bb6b9fbe",
+              "patch_2830e5edbd13",
+              "patch_2a431655333c"
+            ],
+            "audit_rejected": false,
+            "checks": 7,
+            "selected": "patch_2a431655333c"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.3446,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_25e2bb6b9fbe",
+              "patch_3b7cab0258e3",
+              "patch_6381f0ec9a29",
+              "patch_69ccf5c47bf8",
+              "patch_6ccd792d465f",
+              "patch_8c0a90c6fab4",
+              "patch_bf3e4f0d750f",
+              "patch_dd60dfd654c6"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_stat_counter",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": true,
+      "source_sha256": "eb29a82a5bdf75c9416c21ea9dc12ce15b04ae294ddd6f202c37945c2f8f0e31",
+      "trial": 1,
+      "upstream_case": "holdout_06",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_07",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.065814,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 5.9910000000000005,
+          "ranking_wall_seconds": 16.8238,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_b426c357ff1e",
+              "patch_1eaa912ddb03",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.02177,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.9561,
+          "ranking_wall_seconds": 5.6676,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_b42f68f8b120",
+              "patch_a614de3b9c24",
+              "patch_40a550fb3580",
+              "patch_353450f10494",
+              "patch_64d2bd7aca6b",
+              "patch_a20388282eab",
+              "patch_1eaa912ddb03",
+              "patch_dd3edbcc7820"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.065814,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.9161,
+          "ranking_wall_seconds": 16.8238,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_b42f68f8b120",
+              "patch_64d2bd7aca6b",
+              "patch_1eaa912ddb03",
+              "patch_a20388282eab",
+              "patch_32397b1f1f5a",
+              "patch_353450f10494",
+              "patch_a614de3b9c24",
+              "patch_b426c357ff1e"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 5.9910000000000005,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_b426c357ff1e",
+              "patch_1eaa912ddb03",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.8728,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_32397b1f1f5a",
+              "patch_64d2bd7aca6b",
+              "patch_b9a0634de3ff",
+              "patch_58d634fc40e4",
+              "patch_db2dce61ec9f",
+              "patch_a20388282eab",
+              "patch_8f0b6eda38a7",
+              "patch_4d9541c17aad"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.016155,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 11.9578,
+          "ranking_wall_seconds": 4.7388,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_a20388282eab",
+              "patch_8f0b6eda38a7",
+              "patch_45d6cb4a55d3",
+              "patch_db2dce61ec9f",
+              "patch_c1bf34953ab3",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 6,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 2.0536000000000003,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 2.0536000000000003,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.9175,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_8f0b6eda38a7",
+              "patch_7eb04e02ec7e",
+              "patch_58d634fc40e4",
+              "patch_4d9541c17aad",
+              "patch_32397b1f1f5a",
+              "patch_b9a0634de3ff",
+              "patch_0729b6683aa8",
+              "patch_047dea8ef5d8"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.937999999999999,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_58d634fc40e4",
+              "patch_b426c357ff1e",
+              "patch_047dea8ef5d8",
+              "patch_0729b6683aa8",
+              "patch_1eaa912ddb03",
+              "patch_32397b1f1f5a",
+              "patch_353450f10494",
+              "patch_40a550fb3580"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 5.9910000000000005,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_b426c357ff1e",
+              "patch_1eaa912ddb03",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 3,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "i2c_master",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-i2c",
+      "solution_seeded": true,
+      "source_sha256": "7fc6e51e92206baa2d60d6d60a948f3fefdee73917e96e2803674f29357bcf4c",
+      "trial": 1,
+      "upstream_case": "holdout_07",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_08",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.067878,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 4.0332,
+          "ranking_wall_seconds": 12.633899999999999,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3457e7486463",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.022718,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.816500000000001,
+          "ranking_wall_seconds": 4.7627,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_ffb9af3e0e36",
+              "patch_896da21b3566",
+              "patch_f946eb483b5d",
+              "patch_ae32ec067fa9",
+              "patch_33b1685bf6d7",
+              "patch_f249dd8b9502",
+              "patch_0ce542feb6cc",
+              "patch_729f3a736c71"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.067878,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.846400000000001,
+          "ranking_wall_seconds": 12.633899999999999,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_896da21b3566",
+              "patch_3457e7486463",
+              "patch_f946eb483b5d",
+              "patch_ffb9af3e0e36",
+              "patch_cd9c456b5c19",
+              "patch_31072fe48c08",
+              "patch_ae32ec067fa9",
+              "patch_ff12fe133e85"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 4.0332,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3457e7486463",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.9454,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_ff12fe133e85",
+              "patch_ffb9af3e0e36",
+              "patch_4346fe4ce953",
+              "patch_c512447e3357",
+              "patch_c8e74ade46dc",
+              "patch_cec5966346b2",
+              "patch_896da21b3566",
+              "patch_ae32ec067fa9"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.01647,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 13.9169,
+          "ranking_wall_seconds": 4.001,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_0ce542feb6cc",
+              "patch_729f3a736c71",
+              "patch_33b1685bf6d7",
+              "patch_ff12fe133e85",
+              "patch_b636b4c69600",
+              "patch_4346fe4ce953",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 7,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 2.0594,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 1,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 4.034800000000001,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_cd9c456b5c19",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.8917,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_ff12fe133e85",
+              "patch_f494d942b989",
+              "patch_ffb9af3e0e36",
+              "patch_896da21b3566",
+              "patch_ae32ec067fa9",
+              "patch_f249dd8b9502",
+              "patch_4346fe4ce953",
+              "patch_19c499f1ae89"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.8627,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_19c499f1ae89",
+              "patch_a506c39785b0",
+              "patch_ae32ec067fa9",
+              "patch_f249dd8b9502",
+              "patch_ff12fe133e85",
+              "patch_0ce542feb6cc",
+              "patch_31072fe48c08",
+              "patch_33b1685bf6d7"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.8333333333333334,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 4.0332,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_3457e7486463",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 2,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "i2c_master",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-i2c",
+      "solution_seeded": true,
+      "source_sha256": "edbdb1198dc1827ced3ae32a1d7acf8f48b3fd6a3a0fe6da043e928aa0e11b83",
+      "trial": 1,
+      "upstream_case": "holdout_08",
+      "view_errors": 1
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_09",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.06855900000000001,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.9653,
+          "ranking_wall_seconds": 12.908000000000001,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_3d82912c89bf",
+              "patch_f7e6f5f52970",
+              "patch_422618d0dee5",
+              "patch_863a54b885b4",
+              "patch_de1628c0e786",
+              "patch_0e09f46d1e35",
+              "patch_3ffee8d0db7d",
+              "patch_de6bffe8e862"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.023286,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.9133,
+          "ranking_wall_seconds": 4.9499,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_422618d0dee5",
+              "patch_f7e6f5f52970",
+              "patch_3d82912c89bf",
+              "patch_de6bffe8e862",
+              "patch_eed1b93eea0f",
+              "patch_32f229fde5f0",
+              "patch_556c4a41a077",
+              "patch_390e473ceb59"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.06855900000000001,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.9653,
+          "ranking_wall_seconds": 12.908000000000001,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_3d82912c89bf",
+              "patch_f7e6f5f52970",
+              "patch_422618d0dee5",
+              "patch_863a54b885b4",
+              "patch_de1628c0e786",
+              "patch_0e09f46d1e35",
+              "patch_3ffee8d0db7d",
+              "patch_de6bffe8e862"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.994299999999999,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_422618d0dee5",
+              "patch_390e473ceb59",
+              "patch_6a5b3ba56c41",
+              "patch_792ae4fa96a9",
+              "patch_ad349fc34413",
+              "patch_3d82912c89bf",
+              "patch_863a54b885b4",
+              "patch_de1628c0e786"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 16.0547,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_de1628c0e786",
+              "patch_cdf880e10e41",
+              "patch_e1dedeaa933a",
+              "patch_863a54b885b4",
+              "patch_8f768e62b60a",
+              "patch_3ffee8d0db7d",
+              "patch_792ae4fa96a9",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.016883,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.9649,
+          "ranking_wall_seconds": 4.4064,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_de1628c0e786",
+              "patch_3d82912c89bf",
+              "patch_e1dedeaa933a",
+              "patch_8f768e62b60a",
+              "patch_cdf880e10e41",
+              "patch_556c4a41a077",
+              "patch_be1dff44a4a9",
+              "patch_0e09f46d1e35"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.9945,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_390e473ceb59",
+              "patch_3d82912c89bf",
+              "patch_8f768e62b60a",
+              "patch_ad349fc34413",
+              "patch_32f229fde5f0",
+              "patch_863a54b885b4",
+              "patch_6a5b3ba56c41",
+              "patch_422618d0dee5"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 14.0311,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_8f768e62b60a",
+              "patch_556c4a41a077",
+              "patch_390e473ceb59",
+              "patch_3d82912c89bf",
+              "patch_de6bffe8e862",
+              "patch_32f229fde5f0",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 7,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 9.986,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_556c4a41a077",
+              "patch_cdf880e10e41",
+              "patch_047338bad634",
+              "patch_0e09f46d1e35",
+              "patch_9c4e05759f35"
+            ],
+            "audit_rejected": false,
+            "checks": 5,
+            "selected": "patch_9c4e05759f35"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.9126,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_3d82912c89bf",
+              "patch_422618d0dee5",
+              "patch_863a54b885b4",
+              "patch_de1628c0e786",
+              "patch_f7e6f5f52970",
+              "patch_047338bad634",
+              "patch_0e09f46d1e35",
+              "patch_1dbd552c3dbe"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.994299999999999,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_422618d0dee5",
+              "patch_390e473ceb59",
+              "patch_6a5b3ba56c41",
+              "patch_792ae4fa96a9",
+              "patch_ad349fc34413",
+              "patch_3d82912c89bf",
+              "patch_863a54b885b4",
+              "patch_de1628c0e786"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "i2c_master",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "alexforencich/verilog-i2c",
+      "solution_seeded": true,
+      "source_sha256": "567ddbc1ae402b3cb66ae1c4d4a80eda4a235ab9d291ba2e07c8eb10828c61b2",
+      "trial": 1,
+      "upstream_case": "holdout_09",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {
+        "1": 0.04166666666666663,
+        "2": 0.08333333333333337,
+        "4": 0.16666666666666663,
+        "8": 0.33333333333333337
+      },
+      "exposure": "previously_examined",
+      "id": "holdout_10",
+      "kind": "synthetic_injected",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.040473,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 7.6591000000000005,
+          "ranking_wall_seconds": 13.2858,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_14fa1671138d",
+              "patch_1f207853dea8",
+              "patch_624c3db76fc0",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 4,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.013356,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 7.6696,
+          "ranking_wall_seconds": 4.9752,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_c9c4ad33c838",
+              "patch_926f4e9c3561",
+              "patch_1f207853dea8",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 4,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.040473,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 3,
+          "logical_replay_eda_seconds": 15.2659,
+          "ranking_wall_seconds": 13.2858,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_c9c4ad33c838",
+              "patch_e9c2e7485e9b",
+              "patch_1f207853dea8",
+              "patch_97ba2adecc6f",
+              "patch_30270cbdad9d",
+              "patch_da55a60398f6",
+              "patch_926f4e9c3561",
+              "patch_14fa1671138d"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 7.6591000000000005,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_14fa1671138d",
+              "patch_1f207853dea8",
+              "patch_624c3db76fc0",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 4,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.1943,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_58a50ec716ac",
+              "patch_7790f6f01318",
+              "patch_44016440aa75",
+              "patch_97ba2adecc6f",
+              "patch_7cbb431518f8",
+              "patch_25df7630e139",
+              "patch_233b0c340b70",
+              "patch_042f4158d3f0"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "available": false,
+          "reason": "Required independent inference views missing"
+        },
+        "raw_single": {
+          "api_cost_usd": 0.007874,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 1,
+          "logical_replay_eda_seconds": 15.1936,
+          "ranking_wall_seconds": 4.3365,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_41986937eebf",
+              "patch_6dbbdce74c2f",
+              "patch_25df7630e139",
+              "patch_97ba2adecc6f",
+              "patch_7790f6f01318",
+              "patch_233b0c340b70",
+              "patch_c9c4ad33c838",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 9.5672,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_14fa1671138d",
+              "patch_1f207853dea8",
+              "patch_624c3db76fc0",
+              "patch_58a50ec716ac",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 5,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 9.5672,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_14fa1671138d",
+              "patch_1f207853dea8",
+              "patch_58a50ec716ac",
+              "patch_624c3db76fc0",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 5,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.0,
+          "failure_category": "ranking_miss",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 15.200899999999999,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": false,
+            "attempted": [
+              "patch_97ba2adecc6f",
+              "patch_25df7630e139",
+              "patch_6dbbdce74c2f",
+              "patch_7790f6f01318",
+              "patch_fda8715728b0",
+              "patch_233b0c340b70",
+              "patch_da55a60398f6",
+              "patch_ea82238c5c7a"
+            ],
+            "audit_rejected": false,
+            "checks": 8,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 0
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.16666666666666666,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 9.5672,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_14fa1671138d",
+              "patch_1f207853dea8",
+              "patch_58a50ec716ac",
+              "patch_624c3db76fc0",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 5,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 0,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 0.5,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 7.6591000000000005,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [
+              "patch_14fa1671138d",
+              "patch_1f207853dea8",
+              "patch_624c3db76fc0",
+              "patch_6b523645a71e"
+            ],
+            "audit_rejected": false,
+            "checks": 4,
+            "selected": "patch_6b523645a71e"
+          },
+          "success_by_checks": {
+            "1": 0,
+            "2": 0,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "skidbuffer",
+      "original_public_pass": false,
+      "pool_has_accepted_candidate": true,
+      "project": "zipcpu/wb2axip",
+      "solution_seeded": true,
+      "source_sha256": "335c5c7f80c01e1c7615641638be882883299859501a52245b75c5f950b5b0a0",
+      "trial": 1,
+      "upstream_case": "holdout_10",
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {},
+      "exposure": "previously_examined",
+      "id": "normal_axis_rate_limit",
+      "kind": "normal_control",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_rate_limit",
+      "original_public_pass": true,
+      "pool_has_accepted_candidate": false,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": false,
+      "source_sha256": "bdfb4e29768c5224c543098765b8d648f3fe774eb42643c289d85b446414d155",
+      "trial": 1,
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {},
+      "exposure": "previously_examined",
+      "id": "normal_axis_stat_counter",
+      "kind": "normal_control",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "axis_stat_counter",
+      "original_public_pass": true,
+      "pool_has_accepted_candidate": false,
+      "project": "alexforencich/verilog-axis",
+      "solution_seeded": false,
+      "source_sha256": "2a431655333c6d4b8daad55a80eb2b22b9796e92b15a2c295a6b5d2f5e0e2ce1",
+      "trial": 1,
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {},
+      "exposure": "previously_examined",
+      "id": "normal_i2c_master",
+      "kind": "normal_control",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "i2c_master",
+      "original_public_pass": true,
+      "pool_has_accepted_candidate": false,
+      "project": "alexforencich/verilog-i2c",
+      "solution_seeded": false,
+      "source_sha256": "9c4e05759f356e9ddd91af6981a1fcc10466cad0af6e5afb6553787fe9ea0328",
+      "trial": 1,
+      "view_errors": 0
+    },
+    {
+      "candidate_policy_error": null,
+      "exact_random_curve": {},
+      "exposure": "previously_examined",
+      "id": "normal_skidbuffer",
+      "kind": "normal_control",
+      "methods": {
+        "evidence_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "evidence_ungated": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "heuristic_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "random_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_consensus": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "raw_single": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_circuit_rrf": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "size_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "source_order": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_dependency": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        },
+        "without_scope": {
+          "api_cost_usd": 0.0,
+          "available": true,
+          "budget_auc": 1.0,
+          "failure_category": "accepted",
+          "logical_model_calls": 0,
+          "logical_replay_eda_seconds": 0,
+          "ranking_wall_seconds": 0.0,
+          "selection_at_max_budget": {
+            "accepted": true,
+            "attempted": [],
+            "audit_rejected": false,
+            "checks": 0,
+            "selected": null
+          },
+          "success_by_checks": {
+            "1": 1,
+            "2": 1,
+            "4": 1,
+            "8": 1
+          },
+          "timing_limit": "EDA durations are shared-record serial attribution, not independently measured arm runtime."
+        }
+      },
+      "module": "skidbuffer",
+      "original_public_pass": true,
+      "pool_has_accepted_candidate": false,
+      "project": "zipcpu/wb2axip",
+      "solution_seeded": false,
+      "source_sha256": "6b523645a71ecf97c8ac8aadaae5752121fd6e26a461126eb69092b30ca940a7",
+      "trial": 1,
+      "view_errors": 0
+    }
+  ],
+  "cohort": "synthetic_seeded_development",
+  "decision": {
+    "primary_metric": "normalized_trapezoid_auc_over_log2_check_budget",
+    "reasons": [
+      "DEVELOPMENT_DATA",
+      "OUTCOMES_PREVIOUSLY_EXAMINED",
+      "RECORDED_REPLAY",
+      "TOO_FEW_INDEPENDENT_PROJECTS",
+      "INCOMPLETE_PRIMARY_COMPARISON",
+      "NOT_BETTER_THAN_ALL_PRIMARY_BASELINES"
+    ],
+    "scope": "conditional_seeded_pool_ranking",
+    "statistical_gate_passes": false,
+    "status": "ADVANTAGE_NOT_ESTABLISHED",
+    "universal_rtl_superiority": false
+  },
+  "defect_cases": 10,
+  "independent_project_groups": 3,
+  "methods": {
+    "evidence_consensus": {
+      "accepted_task_trials_at_max_budget": 7,
+      "api_cost_usd_sum": 0.555723,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 7,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 3
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 30,
+      "project_macro_budget_auc": 0.4537037037037037,
+      "ranking_wall_seconds_sum": 148.7028,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0,
+        "0.01": 0,
+        "0.03": 0,
+        "0.1": 0.7
+      },
+      "success_by_checks": {
+        "1": 0.1,
+        "2": 0.3,
+        "4": 0.6,
+        "8": 0.7
+      }
+    },
+    "evidence_single": {
+      "accepted_task_trials_at_max_budget": 4,
+      "api_cost_usd_sum": 0.185512,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 4,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 6
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 10,
+      "project_macro_budget_auc": 0.2962962962962963,
+      "ranking_wall_seconds_sum": 52.8119,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0,
+        "0.01": 0,
+        "0.03": 0.4,
+        "0.1": 0.4
+      },
+      "success_by_checks": {
+        "1": 0.1,
+        "2": 0.2,
+        "4": 0.4,
+        "8": 0.4
+      }
+    },
+    "evidence_ungated": {
+      "accepted_task_trials_at_max_budget": 3,
+      "api_cost_usd_sum": 0.555723,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 3,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 7
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 30,
+      "project_macro_budget_auc": 0.14814814814814817,
+      "ranking_wall_seconds_sum": 148.7028,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0,
+        "0.01": 0,
+        "0.03": 0,
+        "0.1": 0.3
+      },
+      "success_by_checks": {
+        "1": 0.1,
+        "2": 0.3,
+        "4": 0.3,
+        "8": 0.3
+      }
+    },
+    "heuristic_order": {
+      "accepted_task_trials_at_max_budget": 6,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 6,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 4
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.39814814814814814,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.6,
+        "0.01": 0.6,
+        "0.03": 0.6,
+        "0.1": 0.6
+      },
+      "success_by_checks": {
+        "1": 0,
+        "2": 0.2,
+        "4": 0.5,
+        "8": 0.6
+      }
+    },
+    "random_order": {
+      "accepted_task_trials_at_max_budget": 1,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 1,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 9
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.018518518518518517,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.1,
+        "0.01": 0.1,
+        "0.03": 0.1,
+        "0.1": 0.1
+      },
+      "success_by_checks": {
+        "1": 0,
+        "2": 0,
+        "4": 0,
+        "8": 0.1
+      }
+    },
+    "raw_consensus": {
+      "accepted_task_trials_at_max_budget": 0,
+      "api_cost_usd_sum": 0,
+      "available_task_trials": 0,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": false,
+      "failure_categories": {
+        "accepted": 0,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 0
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": null,
+      "ranking_wall_seconds_sum": 0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": null,
+        "0.01": null,
+        "0.03": null,
+        "0.1": null
+      },
+      "success_by_checks": {
+        "1": null,
+        "2": null,
+        "4": null,
+        "8": null
+      }
+    },
+    "raw_single": {
+      "accepted_task_trials_at_max_budget": 5,
+      "api_cost_usd_sum": 0.122405,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 5,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 5
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 10,
+      "project_macro_budget_auc": 0.2037037037037037,
+      "ranking_wall_seconds_sum": 43.2723,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0,
+        "0.01": 0.2,
+        "0.03": 0.5,
+        "0.1": 0.5
+      },
+      "success_by_checks": {
+        "1": 0.2,
+        "2": 0.2,
+        "4": 0.2,
+        "8": 0.5
+      }
+    },
+    "size_circuit_rrf": {
+      "accepted_task_trials_at_max_budget": 8,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 8,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 2
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.34259259259259256,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.8,
+        "0.01": 0.8,
+        "0.03": 0.8,
+        "0.1": 0.8
+      },
+      "success_by_checks": {
+        "1": 0.2,
+        "2": 0.2,
+        "4": 0.3,
+        "8": 0.8
+      }
+    },
+    "size_order": {
+      "accepted_task_trials_at_max_budget": 7,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 7,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 3
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.35185185185185186,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.7,
+        "0.01": 0.7,
+        "0.03": 0.7,
+        "0.1": 0.7
+      },
+      "success_by_checks": {
+        "1": 0.2,
+        "2": 0.3,
+        "4": 0.3,
+        "8": 0.7
+      }
+    },
+    "source_order": {
+      "accepted_task_trials_at_max_budget": 3,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 3,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 7
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.037037037037037035,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.3,
+        "0.01": 0.3,
+        "0.03": 0.3,
+        "0.1": 0.3
+      },
+      "success_by_checks": {
+        "1": 0,
+        "2": 0,
+        "4": 0,
+        "8": 0.3
+      }
+    },
+    "without_dependency": {
+      "accepted_task_trials_at_max_budget": 5,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 5,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 5
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.16666666666666666,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.5,
+        "0.01": 0.5,
+        "0.03": 0.5,
+        "0.1": 0.5
+      },
+      "success_by_checks": {
+        "1": 0,
+        "2": 0.1,
+        "4": 0.3,
+        "8": 0.5
+      }
+    },
+    "without_scope": {
+      "accepted_task_trials_at_max_budget": 6,
+      "api_cost_usd_sum": 0.0,
+      "available_task_trials": 10,
+      "common_original_gate_not_model_health_recognition": true,
+      "complete": true,
+      "failure_categories": {
+        "accepted": 6,
+        "audit_trap": 0,
+        "pool_miss": 0,
+        "ranking_miss": 4
+      },
+      "healthy_controls_accepted": 4,
+      "logical_model_calls": 0,
+      "project_macro_budget_auc": 0.39814814814814814,
+      "ranking_wall_seconds_sum": 0.0,
+      "required_task_trials": 10,
+      "success_at_max_checks_under_accounted_api_ceiling": {
+        "0": 0.6,
+        "0.01": 0.6,
+        "0.03": 0.6,
+        "0.1": 0.6
+      },
+      "success_by_checks": {
+        "1": 0,
+        "2": 0.2,
+        "4": 0.5,
+        "8": 0.6
+      }
+    }
+  },
+  "missing_primary_methods": [
+    "raw_consensus"
+  ],
+  "necessary_best_case_discordant_project_bound": 7,
+  "new_model_calls_in_analysis": 0,
+  "normal_control_cases": 4,
+  "paired_outcomes_at_max_checks": {
+    "heuristic_order": {
+      "descriptive_only": "Repeated trials are not independent statistical samples.",
+      "failure_transitions": {
+        "accepted -> accepted": 6,
+        "ranking_miss -> accepted": 1,
+        "ranking_miss -> ranking_miss": 3
+      },
+      "task_trial_losses": 0,
+      "task_trial_ties": 9,
+      "task_trial_wins": 1,
+      "unavailable_task_trials": 0
+    },
+    "raw_consensus": {
+      "descriptive_only": "Repeated trials are not independent statistical samples.",
+      "failure_transitions": {},
+      "task_trial_losses": 0,
+      "task_trial_ties": 0,
+      "task_trial_wins": 0,
+      "unavailable_task_trials": 10
+    },
+    "raw_single": {
+      "descriptive_only": "Repeated trials are not independent statistical samples.",
+      "failure_transitions": {
+        "accepted -> accepted": 4,
+        "accepted -> ranking_miss": 1,
+        "ranking_miss -> accepted": 3,
+        "ranking_miss -> ranking_miss": 2
+      },
+      "task_trial_losses": 1,
+      "task_trial_ties": 6,
+      "task_trial_wins": 3,
+      "unavailable_task_trials": 0
+    },
+    "size_circuit_rrf": {
+      "descriptive_only": "Repeated trials are not independent statistical samples.",
+      "failure_transitions": {
+        "accepted -> accepted": 7,
+        "accepted -> ranking_miss": 1,
+        "ranking_miss -> ranking_miss": 2
+      },
+      "task_trial_losses": 1,
+      "task_trial_ties": 9,
+      "task_trial_wins": 0,
+      "unavailable_task_trials": 0
+    },
+    "size_order": {
+      "descriptive_only": "Repeated trials are not independent statistical samples.",
+      "failure_transitions": {
+        "accepted -> accepted": 4,
+        "accepted -> ranking_miss": 3,
+        "ranking_miss -> accepted": 3
+      },
+      "task_trial_losses": 3,
+      "task_trial_ties": 4,
+      "task_trial_wins": 3,
+      "unavailable_task_trials": 0
+    }
+  },
+  "paired_primary_comparisons": {
+    "heuristic_order": {
+      "assumptions": "Independent project clusters; paired method-label exchangeability under the null; bootstrap intervals are approximate.",
+      "effect": 0.05555555555555556,
+      "familywise_percentile_ci": [
+        0.0,
+        0.16666666666666669
+      ],
+      "holm_p": 1.0,
+      "incomplete_registered_family": true,
+      "min_practical_effect": 0.05,
+      "one_sided_sign_flip_p": 0.5,
+      "passes_statistical_gate": false,
+      "project_differences": {
+        "alexforencich/verilog-axis": 0.16666666666666669,
+        "alexforencich/verilog-i2c": 0.0,
+        "zipcpu/wb2axip": 0.0
+      },
+      "projects": 3
+    },
+    "raw_single": {
+      "assumptions": "Independent project clusters; paired method-label exchangeability under the null; bootstrap intervals are approximate.",
+      "effect": 0.25000000000000006,
+      "familywise_percentile_ci": [
+        0.08333333333333337,
+        0.33333333333333337
+      ],
+      "holm_p": 0.625,
+      "incomplete_registered_family": true,
+      "min_practical_effect": 0.05,
+      "one_sided_sign_flip_p": 0.125,
+      "passes_statistical_gate": false,
+      "project_differences": {
+        "alexforencich/verilog-axis": 0.08333333333333337,
+        "alexforencich/verilog-i2c": 0.33333333333333337,
+        "zipcpu/wb2axip": 0.33333333333333337
+      },
+      "projects": 3
+    },
+    "size_circuit_rrf": {
+      "assumptions": "Independent project clusters; paired method-label exchangeability under the null; bootstrap intervals are approximate.",
+      "effect": 0.11111111111111115,
+      "familywise_percentile_ci": [
+        -0.22222222222222215,
+        0.33333333333333337
+      ],
+      "holm_p": 1.0,
+      "incomplete_registered_family": true,
+      "min_practical_effect": 0.05,
+      "one_sided_sign_flip_p": 0.375,
+      "passes_statistical_gate": false,
+      "project_differences": {
+        "alexforencich/verilog-axis": 0.22222222222222224,
+        "alexforencich/verilog-i2c": -0.22222222222222215,
+        "zipcpu/wb2axip": 0.33333333333333337
+      },
+      "projects": 3
+    },
+    "size_order": {
+      "assumptions": "Independent project clusters; paired method-label exchangeability under the null; bootstrap intervals are approximate.",
+      "effect": 0.1018518518518519,
+      "familywise_percentile_ci": [
+        -0.22222222222222215,
+        0.33333333333333337
+      ],
+      "holm_p": 1.0,
+      "incomplete_registered_family": true,
+      "min_practical_effect": 0.05,
+      "one_sided_sign_flip_p": 0.375,
+      "passes_statistical_gate": false,
+      "project_differences": {
+        "alexforencich/verilog-axis": 0.19444444444444448,
+        "alexforencich/verilog-i2c": -0.22222222222222215,
+        "zipcpu/wb2axip": 0.33333333333333337
+      },
+      "projects": 3
+    }
+  },
+  "project_values": {
+    "alexforencich/verilog-axis": {
+      "evidence_consensus": 0.4166666666666667,
+      "evidence_single": 0.3888888888888889,
+      "evidence_ungated": 0.4444444444444445,
+      "heuristic_order": 0.25,
+      "random_order": 0.0,
+      "raw_consensus": null,
+      "raw_single": 0.3333333333333333,
+      "size_circuit_rrf": 0.19444444444444445,
+      "size_order": 0.2222222222222222,
+      "source_order": 0.05555555555555555,
+      "without_dependency": 0.3333333333333333,
+      "without_scope": 0.25
+    },
+    "alexforencich/verilog-i2c": {
+      "evidence_consensus": 0.4444444444444445,
+      "evidence_single": 0.0,
+      "evidence_ungated": 0.0,
+      "heuristic_order": 0.4444444444444445,
+      "random_order": 0.05555555555555555,
+      "raw_consensus": null,
+      "raw_single": 0.1111111111111111,
+      "size_circuit_rrf": 0.6666666666666666,
+      "size_order": 0.6666666666666666,
+      "source_order": 0.05555555555555555,
+      "without_dependency": 0.0,
+      "without_scope": 0.4444444444444445
+    },
+    "zipcpu/wb2axip": {
+      "evidence_consensus": 0.5,
+      "evidence_single": 0.5,
+      "evidence_ungated": 0.0,
+      "heuristic_order": 0.5,
+      "random_order": 0.0,
+      "raw_consensus": null,
+      "raw_single": 0.16666666666666666,
+      "size_circuit_rrf": 0.16666666666666666,
+      "size_order": 0.16666666666666666,
+      "source_order": 0.0,
+      "without_dependency": 0.16666666666666666,
+      "without_scope": 0.5
+    }
+  },
+  "protocol_sha256": "3734575ff01103ff4e45a27752ec139c4c08331e329a1b03fc28c4ae02d50099",
+  "resource_limit": "Accounted API cost ceilings are secondary. Shared EDA timing is a replay attribution; no measured end-to-end speed or equal total-compute claim.",
+  "schema_version": 1,
+  "statistical_limit": "Project-cluster percentile intervals are approximate. Sign-flip inference assumes exchangeability. No repeated-trial pseudoreplication.",
+  "status": "COMPLETE",
+  "trials_per_case": 1
+}

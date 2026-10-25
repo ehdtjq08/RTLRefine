@@ -1,0 +1,96 @@
+{
+  "clock": "i_clk",
+  "id": "holdout_10",
+  "module_id": "skidbuffer",
+  "ports": {
+    "i_clk": {
+      "direction": "input",
+      "width": 1
+    },
+    "i_data": {
+      "direction": "input",
+      "width": 8
+    },
+    "i_ready": {
+      "direction": "input",
+      "width": 1
+    },
+    "i_reset": {
+      "direction": "input",
+      "width": 1
+    },
+    "i_valid": {
+      "direction": "input",
+      "width": 1
+    },
+    "o_data": {
+      "direction": "output",
+      "width": 8
+    },
+    "o_ready": {
+      "direction": "output",
+      "width": 1
+    },
+    "o_valid": {
+      "direction": "output",
+      "width": 1
+    }
+  },
+  "top": "skidbuffer",
+  "traces": [
+    {
+      "cycles": 256,
+      "expected": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/skidbuffer/trace_0/expected.hex",
+      "inputs": [
+        "i_data",
+        "i_ready",
+        "i_reset",
+        "i_valid"
+      ],
+      "label": "discovery",
+      "outputs": [
+        "o_data",
+        "o_ready",
+        "o_valid"
+      ],
+      "seed": 1103,
+      "stimulus": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/skidbuffer/trace_0/stimulus.hex"
+    },
+    {
+      "cycles": 512,
+      "expected": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/skidbuffer/trace_1/expected.hex",
+      "inputs": [
+        "i_data",
+        "i_ready",
+        "i_reset",
+        "i_valid"
+      ],
+      "label": "sealed_audit_1",
+      "outputs": [
+        "o_data",
+        "o_ready",
+        "o_valid"
+      ],
+      "seed": 7403,
+      "stimulus": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/skidbuffer/trace_1/stimulus.hex"
+    },
+    {
+      "cycles": 768,
+      "expected": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/skidbuffer/trace_2/expected.hex",
+      "inputs": [
+        "i_data",
+        "i_ready",
+        "i_reset",
+        "i_valid"
+      ],
+      "label": "sealed_audit_2",
+      "outputs": [
+        "o_data",
+        "o_ready",
+        "o_valid"
+      ],
+      "seed": 9601,
+      "stimulus": "/home/hands/Nebius/results/ranking_holdout_inputs_v1_20261023/skidbuffer/trace_2/stimulus.hex"
+    }
+  ]
+}

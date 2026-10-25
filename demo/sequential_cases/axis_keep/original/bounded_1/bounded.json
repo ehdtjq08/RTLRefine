@@ -1,0 +1,32 @@
+{
+  "clock_model": "Single synchronous clock; one active edge per symbolic step",
+  "command": {
+    "command": [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "bounded.ys"
+    ],
+    "elapsed_seconds": 1.368394,
+    "execution_mode": "bubblewrap",
+    "returncode": 0,
+    "stage": "bounded",
+    "status": "PASS"
+  },
+  "compared_output_bits": 26,
+  "config": {
+    "output_width": 16,
+    "source_keep_enabled": false,
+    "source_width": 8
+  },
+  "data_comparison": "Payload bytes compared only when reference valid and corresponding reference TKEEP bit set",
+  "limitation": "20-step two-state reference comparison at the listed parameters; not an unbounded proof or coverage of all parameterizations",
+  "reference": "Historical maintainer fix; evaluation-only, excluded from prompts",
+  "reference_sha256": "42e8a1289d4aa2dfd90785c983d3f5790c9c4a2cb957cfd42ea1d39435032c67",
+  "reset_constraints": "Reset asserted at step 1, released at step 2; unconstrained thereafter",
+  "rtl_sha256": "4b9b6649f12e374c24d36f2d42680ecf1f38cca8ae4fda7fd68dbf722b6c8140",
+  "script_sha256": "680620d54c8b8761c2f348b7e23a83eebd475235cd31e85ea34763ed7cc708aa",
+  "status": "COUNTEREXAMPLE",
+  "steps": 20
+}

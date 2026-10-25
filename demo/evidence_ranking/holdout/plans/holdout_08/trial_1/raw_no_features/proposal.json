@@ -1,0 +1,37 @@
+{
+  "explanation": "Ranked by direct overlap with observed port failures: busy (cycle 13), s_axis_cmd_ready (cycle 13), sda_o/t (cycle 14/15), scl_o (cycle 26406). The top patches target rhs_substitution in regions driving start/stop timing, bus_active assertion, SCL/SDA drive, and PHY state release logic. The condition_gate patch (896da21b3566) qualifies the command valid check that gates all sequences. The state_retention patch (f249dd8b9502) preserves s_axis_data_tready across cycles to avoid premature deassertion. Lower candidates address narrower substitutions or lines distant from mismatch cycles.",
+  "ranking": [
+    {
+      "id": "patch_0ce542feb6cc",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_729f3a736c71",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_33b1685bf6d7",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_ff12fe133e85",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_b636b4c69600",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_4346fe4ce953",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_9c4e05759f35",
+      "mechanism": "rhs_substitution"
+    },
+    {
+      "id": "patch_31072fe48c08",
+      "mechanism": "rhs_substitution"
+    }
+  ]
+}

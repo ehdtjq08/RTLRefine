@@ -1,0 +1,60 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.015792,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "5522f493cb4d46669acb42150ce24e70",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_f2d9d35bb697",
+    "patch_a92250a89e31",
+    "patch_dcfe3aa1fa32",
+    "patch_489a6092dfdc",
+    "patch_0c142226f776",
+    "patch_c98c57628a2e",
+    "patch_d85c55cc2e00",
+    "patch_de6f8c13a145"
+  ],
+  "proposal": {
+    "explanation": "The earliest failure at cycle 35 shows m_axis_tdata=0 when 1 is expected, indicating the first output byte is missing. The trigger fires but the output pipeline isn't ready (m_axis_tready_int_reg=0), yet store_output=1 captures stale zero counters. patch_f2d9d35bb697 fixes this by requiring m_axis_tready_int_reg before store_output. patch_a92250a89e31 provides a related guard using m_axis_tvalid. patch_dcfe3aa1fa32 ensures busy_reg tracks actual output activity. The remaining patches address secondary counter resets and state assignments observed in the same failure window.",
+    "ranking": [
+      {
+        "id": "patch_f2d9d35bb697",
+        "mechanism": "Qualify trigger with m_axis_tready_int_reg to prevent store_output when output pipeline not ready, fixing missing first output byte"
+      },
+      {
+        "id": "patch_a92250a89e31",
+        "mechanism": "Replace constant store_output=1 with m_axis_tvalid signal to gate storage on output channel readiness"
+      },
+      {
+        "id": "patch_dcfe3aa1fa32",
+        "mechanism": "Use store_axis_int_to_output for busy_reg to align busy with actual output activity"
+      },
+      {
+        "id": "patch_489a6092dfdc",
+        "mechanism": "Use loop variable i for frame_count_next reset in STATE_IDLE when trigger fires"
+      },
+      {
+        "id": "patch_0c142226f776",
+        "mechanism": "Reset byte_count_output_reg during synchronous reset block"
+      },
+      {
+        "id": "patch_c98c57628a2e",
+        "mechanism": "Use m_axis_tvalid for store_output initialization in STATE_IDLE"
+      },
+      {
+        "id": "patch_d85c55cc2e00",
+        "mechanism": "Use loop variable i for frame_count_reg reset"
+      },
+      {
+        "id": "patch_de6f8c13a145",
+        "mechanism": "Use busy_reg for frame_next assignment"
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 5.214
+}

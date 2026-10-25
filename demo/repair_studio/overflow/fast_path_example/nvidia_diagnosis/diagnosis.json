@@ -1,0 +1,59 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.008214,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "cf96bbf76ed04bb490fad4f702026852",
+    "reserved_usd": 1.060864,
+    "state": "settled"
+  },
+  "diagnosis": "In FRAME_FIFO mode, drop_frame_reg should remain asserted across the full frame until s_axis_tlast is observed, but the current code unconditionally clears it each cycle (drop_frame_next defaults to 1'b0). Once the frame ends, wr_ptr_cur_reg must snap back to wr_ptr_reg to discard the partial frame, yet the reset path only clears wr_ptr_cur_reg without reloading it from wr_ptr_reg. Together these cause the FIFO to accept the tail of an overflowed frame as a new valid frame, so m_axis_tvalid stays asserted after the input stream ends.",
+  "display_ids": [
+    "candidate_001",
+    "candidate_026",
+    "candidate_043",
+    "candidate_035",
+    "candidate_017",
+    "candidate_002"
+  ],
+  "ids": [
+    "patch_e6cf9061c830",
+    "patch_5c0b9ffe4584",
+    "patch_07a65f6c7ebd",
+    "patch_2428910b6a74",
+    "patch_bdae4e000e5d",
+    "patch_f32354795268"
+  ],
+  "proposal": {
+    "diagnosis": "In FRAME_FIFO mode, drop_frame_reg should remain asserted across the full frame until s_axis_tlast is observed, but the current code unconditionally clears it each cycle (drop_frame_next defaults to 1'b0). Once the frame ends, wr_ptr_cur_reg must snap back to wr_ptr_reg to discard the partial frame, yet the reset path only clears wr_ptr_cur_reg without reloading it from wr_ptr_reg. Together these cause the FIFO to accept the tail of an overflowed frame as a new valid frame, so m_axis_tvalid stays asserted after the input stream ends.",
+    "ranking": [
+      {
+        "id": "candidate_001",
+        "mechanism": "Retains drop_frame_reg instead of defaulting to 1'b0, keeping the drop state asserted until the frame's tlast arrives."
+      },
+      {
+        "id": "candidate_026",
+        "mechanism": "Requires s_axis_tready before evaluating full_cur/full_wr/drop_frame_reg, preventing spurious frame-drop decisions when the upstream is not ready."
+      },
+      {
+        "id": "candidate_043",
+        "mechanism": "Qualifies the !FRAME_FIFO branch with !full_wr, avoiding pointer updates that corrupt FRAME_FIFO state."
+      },
+      {
+        "id": "candidate_035",
+        "mechanism": "Gates the overflow/drop condition on s_axis_tlast so wr_ptr_cur_reg only rolls back at frame boundaries."
+      },
+      {
+        "id": "candidate_017",
+        "mechanism": "Adds !s_axis_tready to the USER_ENABLE condition, reducing write-side activity during back-pressure."
+      },
+      {
+        "id": "candidate_002",
+        "mechanism": "Resets wr_addr_reg on rst, ensuring the write address used in the same cycle as reset is clean."
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 2.9758863219758496
+}

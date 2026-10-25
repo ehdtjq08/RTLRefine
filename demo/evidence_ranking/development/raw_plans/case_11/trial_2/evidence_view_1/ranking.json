@@ -1,0 +1,76 @@
+{
+  "api_requests": 1,
+  "cost": {
+    "estimated_usd": 0.014675,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "29787692d9964ea8a4babe5a8528155a",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "ids": [
+    "patch_5e3af25f023e",
+    "patch_6ae7345a2b8e",
+    "patch_c1e6cd26e2ef",
+    "patch_4ac42f1009e7",
+    "patch_3b8e3300b085",
+    "patch_1bf21575a3be",
+    "patch_14a0bc3c436d",
+    "patch_1e51d2e21710"
+  ],
+  "proposal": {
+    "explanation": "The discovery trace shows a two-transfer frame: cycle 2 (tvalid=1, tready=1, tkeep=1, tlast=0) and cycle 3 (tvalid=1, tready=1, tkeep=1, tlast=1). The module outputs frame_len=3 at cycle 5, but the oracle expects 1. The original code counts tkeep on every valid/ready transfer, including the tlast one. The expected value 1 implies only the first transfer's enabled bytes are counted, or the tlast transfer's bytes are excluded. Patches that suppress the byte-counting loop on the tlast cycle (patch_6ae7345a2b8e via !tlast, patch_c1e6cd26e2ef via !frame_reg at the pattern match, patch_4ac42f1009e7 via !frame_reg at the loop guard) all produce frame_len=1 for this trace. Patch_6ae7345a2b8e is most directly tied to the tlast signal, which marks the frame boundary. Patch_5e3af25f023e resets the accumulator after valid, but at the wrong point in the cycle and would affect the next frame. The remaining patches either gate the wrong condition or would prevent frame start/valid assertion.",
+    "ranking": [
+      {
+        "failure_port": "frame_len",
+        "id": "patch_5e3af25f023e",
+        "mechanism": "The failure at cycle 5 shows frame_len=3 when 1 is expected. The trace shows a single valid transfer at cycle 2 (tkeep=1, tlast=0) starting a frame, then a valid transfer at cycle 3 (tkeep=1, tlast=1) ending it. The correct length is 1+1=2, but the spec says count only enabled bytes on valid AND ready transfers. The patch adds a reset of frame_len_next to 0 when frame_len_valid_reg is asserted, which clears the accumulator after a frame is reported. However, this edit is placed at line 81 (before the combinational block) and unconditionally clears frame_len_next every cycle after a valid pulse, which would zero the length for the next frame's first transfer. The observed failure is an overcount, not an undercount, so this mechanism does not match the symptom.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_6ae7345a2b8e",
+        "mechanism": "The patch changes the KEEP_ENABLE guard at line 95 to also require !monitor_axis_tlast. At the failing cycle 3, monitor_axis_tlast=1, so the byte-counting loop would be skipped. The transfer at cycle 3 has tkeep=1 (one enabled byte) and tlast=1. Skipping the count would make the frame length 1 (from cycle 2) instead of 2, but the expected output is 1. This suggests the spec expects the last word's enabled bytes not to be counted, or the frame length to be 1 for a two-transfer frame. The patch directly suppresses the tkeep count on the tlast cycle, aligning with the expected 1.",
+        "source_line": 95
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_c1e6cd26e2ef",
+        "mechanism": "The patch adds && (!frame_reg) to the tkeep pattern match at line 98. At cycle 2, frame_reg becomes 1 after the first transfer. At cycle 3, frame_reg=1, so the pattern match is disabled and bit_cnt stays 0. This also suppresses the tkeep count on the second transfer, yielding frame_len=1. The mechanism is equivalent to patch_6ae7345a2b8e but gated by frame_reg instead of tlast. Since frame_reg is 1 during the frame, it has the same effect at cycle 3.",
+        "source_line": 98
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_4ac42f1009e7",
+        "mechanism": "The patch changes the KEEP_ENABLE guard to require !frame_reg. At cycle 3, frame_reg=1, so the byte-counting loop is skipped. This produces the same effect as patch_c1e6cd26e2ef: the tkeep count on the last transfer is suppressed, giving frame_len=1. The mechanism is plausible but less directly tied to the tlast signal.",
+        "source_line": 95
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_3b8e3300b085",
+        "mechanism": "The patch adds && (!frame_reg) to the tlast condition at line 84. At cycle 3, frame_reg=1, so the tlast branch is not taken. This would prevent frame_len_valid_next from asserting and frame_next from clearing, causing the frame to continue. That would not produce the expected frame_len=1 at cycle 5, so this patch is inconsistent with the failure.",
+        "source_line": 84
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_1bf21575a3be",
+        "mechanism": "The patch changes the default frame_len_valid_next from 1'b0 to frame_len_valid_reg, making the valid pulse sticky. This does not affect frame_len counting and cannot explain the overcount.",
+        "source_line": 78
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_14a0bc3c436d",
+        "mechanism": "The patch adds && (monitor_axis_tlast) to the outer valid/ready condition. This would make the combinational block execute only on tlast cycles. At cycle 2 (tlast=0), the block would not run, so frame_len would not be initialized and the frame would not start. This contradicts the trace where a frame starts at cycle 2.",
+        "source_line": 81
+      },
+      {
+        "failure_port": "frame_len",
+        "id": "patch_1e51d2e21710",
+        "mechanism": "The patch adds && (!frame_reg) to the outer condition. This would allow the block to run only when not already in a frame. At cycle 2, frame_reg=0, so it runs. At cycle 3, frame_reg=1, so it would not run, skipping the tkeep count and frame_len_valid. This would leave frame_len at the cycle 2 value (1) and not assert valid. The expected valid pulse at cycle 3 would be missing, so this does not match.",
+        "source_line": 81
+      }
+    ]
+  },
+  "status": "VALID",
+  "wall_seconds": 6.9474
+}

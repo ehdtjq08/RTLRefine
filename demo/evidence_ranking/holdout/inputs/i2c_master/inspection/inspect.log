@@ -1,0 +1,485 @@
+
+-- Executing script file `inspect.ys' --
+
+1. Executing Verilog-2005 frontend: candidate.v
+Parsing SystemVerilog input from `candidate.v' to AST representation.
+Generating RTLIL representation for module `\i2c_master'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: dependencies.v
+Parsing SystemVerilog input from `dependencies.v' to AST representation.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \i2c_master
+
+3.2. Analyzing design hierarchy..
+Top module:  \i2c_master
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$candidate.v:829$69 in module i2c_master.
+Marked 10 switch rules as full_case in process $proc$candidate.v:599$61 in module i2c_master.
+Marked 25 switch rules as full_case in process $proc$candidate.v:293$11 in module i2c_master.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 70 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\i2c_master.$proc$candidate.v:265$108'.
+  Set init value: \missed_ack_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:264$107'.
+  Set init value: \bus_control_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:263$106'.
+  Set init value: \bus_active_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:262$105'.
+  Set init value: \busy_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:260$104'.
+  Set init value: \last_sda_i_reg = 1'1
+Found init rule in `\i2c_master.$proc$candidate.v:259$103'.
+  Set init value: \last_scl_i_reg = 1'1
+Found init rule in `\i2c_master.$proc$candidate.v:257$102'.
+  Set init value: \sda_o_reg = 1'1
+Found init rule in `\i2c_master.$proc$candidate.v:256$101'.
+  Set init value: \scl_o_reg = 1'1
+Found init rule in `\i2c_master.$proc$candidate.v:254$100'.
+  Set init value: \sda_i_reg = 1'1
+Found init rule in `\i2c_master.$proc$candidate.v:253$99'.
+  Set init value: \scl_i_reg = 1'1
+Found init rule in `\i2c_master.$proc$candidate.v:251$98'.
+  Set init value: \m_axis_data_tlast_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:250$97'.
+  Set init value: \m_axis_data_tvalid_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:249$96'.
+  Set init value: \m_axis_data_tdata_reg = 8'00000000
+Found init rule in `\i2c_master.$proc$candidate.v:247$95'.
+  Set init value: \s_axis_data_tready_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:245$94'.
+  Set init value: \s_axis_cmd_ready_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:243$93'.
+  Set init value: \bit_count_reg = 4'0000
+Found init rule in `\i2c_master.$proc$candidate.v:241$92'.
+  Set init value: \delay_sda_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:240$91'.
+  Set init value: \delay_scl_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:239$90'.
+  Set init value: \delay_reg = 17'00000000000000000
+Found init rule in `\i2c_master.$proc$candidate.v:237$89'.
+  Set init value: \mode_stop_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:236$88'.
+  Set init value: \mode_write_multiple_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:235$87'.
+  Set init value: \mode_read_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:233$86'.
+  Set init value: \last_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:232$85'.
+  Set init value: \data_reg = 8'00000000
+Found init rule in `\i2c_master.$proc$candidate.v:231$84'.
+  Set init value: \addr_reg = 7'0000000
+Found init rule in `\i2c_master.$proc$candidate.v:229$83'.
+  Set init value: \phy_rx_data_reg = 1'0
+Found init rule in `\i2c_master.$proc$candidate.v:219$82'.
+  Set init value: \phy_state_reg = 5'00000
+Found init rule in `\i2c_master.$proc$candidate.v:199$81'.
+  Set init value: \state_reg = 5'00000
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\i2c_master.$proc$candidate.v:265$108'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:264$107'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:263$106'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:262$105'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:260$104'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:259$103'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:257$102'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:256$101'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:254$100'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:253$99'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:251$98'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:250$97'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:249$96'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:247$95'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:245$94'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:243$93'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:241$92'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:240$91'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:239$90'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:237$89'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:236$88'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:235$87'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:233$86'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:232$85'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:231$84'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:229$83'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:219$82'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:199$81'.
+Creating decoders for process `\i2c_master.$proc$candidate.v:829$69'.
+     1/14: $0\bus_active_reg[0:0]
+     2/14: $0\missed_ack_reg[0:0]
+     3/14: $0\bus_control_reg[0:0]
+     4/14: $0\busy_reg[0:0]
+     5/14: $0\sda_o_reg[0:0]
+     6/14: $0\scl_o_reg[0:0]
+     7/14: $0\m_axis_data_tvalid_reg[0:0]
+     8/14: $0\s_axis_data_tready_reg[0:0]
+     9/14: $0\s_axis_cmd_ready_reg[0:0]
+    10/14: $0\delay_sda_reg[0:0]
+    11/14: $0\delay_scl_reg[0:0]
+    12/14: $0\delay_reg[16:0]
+    13/14: $0\phy_state_reg[4:0]
+    14/14: $0\state_reg[4:0]
+Creating decoders for process `\i2c_master.$proc$candidate.v:599$61'.
+     1/53: $10\phy_state_next[4:0]
+     2/53: $10\delay_next[16:0]
+     3/53: $10\sda_o_next[0:0]
+     4/53: $9\phy_state_next[4:0]
+     5/53: $9\delay_next[16:0]
+     6/53: $9\sda_o_next[0:0]
+     7/53: $8\phy_state_next[4:0]
+     8/53: $8\delay_next[16:0]
+     9/53: $8\sda_o_next[0:0]
+    10/53: $7\phy_state_next[4:0]
+    11/53: $7\delay_next[16:0]
+    12/53: $7\sda_o_next[0:0]
+    13/53: $6\phy_state_next[4:0]
+    14/53: $6\delay_next[16:0]
+    15/53: $6\sda_o_next[0:0]
+    16/53: $5\sda_o_next[0:0]
+    17/53: $5\delay_next[16:0]
+    18/53: $5\phy_state_next[4:0]
+    19/53: $5\scl_o_next[0:0]
+    20/53: $5\bus_control_next[0:0]
+    21/53: $5\delay_scl_next[0:0]
+    22/53: $5\phy_rx_data_next[0:0]
+    23/53: $4\phy_state_next[4:0]
+    24/53: $4\delay_next[16:0]
+    25/53: $4\bus_control_next[0:0]
+    26/53: $4\sda_o_next[0:0]
+    27/53: $4\scl_o_next[0:0]
+    28/53: $4\delay_scl_next[0:0]
+    29/53: $4\phy_rx_data_next[0:0]
+    30/53: $3\phy_state_next[4:0]
+    31/53: $3\delay_sda_next[0:0]
+    32/53: $3\bus_control_next[0:0]
+    33/53: $3\sda_o_next[0:0]
+    34/53: $3\scl_o_next[0:0]
+    35/53: $3\delay_scl_next[0:0]
+    36/53: $3\delay_next[16:0]
+    37/53: $3\phy_rx_data_next[0:0]
+    38/53: $2\phy_state_next[4:0]
+    39/53: $2\delay_scl_next[0:0]
+    40/53: $2\bus_control_next[0:0]
+    41/53: $2\sda_o_next[0:0]
+    42/53: $2\scl_o_next[0:0]
+    43/53: $2\delay_sda_next[0:0]
+    44/53: $2\delay_next[16:0]
+    45/53: $2\phy_rx_data_next[0:0]
+    46/53: $1\phy_state_next[4:0]
+    47/53: $1\delay_next[16:0]
+    48/53: $1\delay_sda_next[0:0]
+    49/53: $1\delay_scl_next[0:0]
+    50/53: $1\scl_o_next[0:0]
+    51/53: $1\sda_o_next[0:0]
+    52/53: $1\bus_control_next[0:0]
+    53/53: $1\phy_rx_data_next[0:0]
+Creating decoders for process `\i2c_master.$proc$candidate.v:293$11'.
+     1/155: $25\state_next[4:0]
+     2/155: $12\phy_tx_data[0:0]
+     3/155: $12\phy_write_bit[0:0]
+     4/155: $4\m_axis_data_tlast_next[0:0]
+     5/155: $24\state_next[4:0]
+     6/155: $6\phy_read_bit[0:0]
+     7/155: $3\m_axis_data_tlast_next[0:0]
+     8/155: $3\m_axis_data_tvalid_next[0:0]
+     9/155: $3\m_axis_data_tdata_next[7:0]
+    10/155: $11\phy_tx_data[0:0]
+    11/155: $11\phy_write_bit[0:0]
+    12/155: $23\state_next[4:0]
+    13/155: $8\phy_stop_bit[0:0]
+    14/155: $22\state_next[4:0]
+    15/155: $7\phy_stop_bit[0:0]
+    16/155: $21\state_next[4:0]
+    17/155: $10\phy_tx_data[0:0]
+    18/155: $10\phy_write_bit[0:0]
+    19/155: $5\phy_read_bit[0:0]
+    20/155: $20\state_next[4:0]
+    21/155: $7\s_axis_data_tready_next[0:0]
+    22/155: $14\bit_count_next[3:0]
+    23/155: $3\last_next[0:0]
+    24/155: $7\data_next[7:0]
+    25/155: $19\state_next[4:0]
+    26/155: $6\data_next[7:0]
+    27/155: $13\bit_count_next[3:0]
+    28/155: $6\s_axis_data_tready_next[0:0]
+    29/155: $18\state_next[4:0]
+    30/155: $9\phy_tx_data[0:0]
+    31/155: $9\phy_write_bit[0:0]
+    32/155: $4\phy_read_bit[0:0]
+    33/155: $17\state_next[4:0]
+    34/155: $8\phy_tx_data[0:0]
+    35/155: $8\phy_write_bit[0:0]
+    36/155: $3\phy_read_bit[0:0]
+    37/155: $16\state_next[4:0]
+    38/155: $12\bit_count_next[3:0]
+    39/155: $9\phy_start_bit[0:0]
+    40/155: $15\state_next[4:0]
+    41/155: $7\phy_tx_data[0:0]
+    42/155: $7\phy_write_bit[0:0]
+    43/155: $14\state_next[4:0]
+    44/155: $6\phy_tx_data[0:0]
+    45/155: $6\phy_write_bit[0:0]
+    46/155: $13\state_next[4:0]
+    47/155: $5\phy_tx_data[0:0]
+    48/155: $5\phy_write_bit[0:0]
+    49/155: $11\bit_count_next[3:0]
+    50/155: $5\data_next[7:0]
+    51/155: $10\bit_count_next[3:0]
+    52/155: $4\data_next[7:0]
+    53/155: $4\phy_tx_data[0:0]
+    54/155: $4\phy_write_bit[0:0]
+    55/155: $12\state_next[4:0]
+    56/155: $8\s_axis_cmd_ready_next[0:0]
+    57/155: $8\mode_stop_next[0:0]
+    58/155: $8\mode_write_multiple_next[0:0]
+    59/155: $8\mode_read_next[0:0]
+    60/155: $8\addr_next[6:0]
+    61/155: $7\s_axis_cmd_ready_next[0:0]
+    62/155: $9\bit_count_next[3:0]
+    63/155: $7\mode_stop_next[0:0]
+    64/155: $7\mode_write_multiple_next[0:0]
+    65/155: $7\mode_read_next[0:0]
+    66/155: $3\data_next[7:0]
+    67/155: $7\addr_next[6:0]
+    68/155: $3\phy_tx_data[0:0]
+    69/155: $3\phy_write_bit[0:0]
+    70/155: $11\state_next[4:0]
+    71/155: $10\state_next[4:0]
+    72/155: $6\phy_stop_bit[0:0]
+    73/155: $9\state_next[4:0]
+    74/155: $5\phy_stop_bit[0:0]
+    75/155: $8\state_next[4:0]
+    76/155: $8\bit_count_next[3:0]
+    77/155: $8\phy_start_bit[0:0]
+    78/155: $5\s_axis_data_tready_next[0:0]
+    79/155: $4\s_axis_data_tready_next[0:0]
+    80/155: $7\bit_count_next[3:0]
+    81/155: $7\phy_start_bit[0:0]
+    82/155: $7\state_next[4:0]
+    83/155: $6\s_axis_cmd_ready_next[0:0]
+    84/155: $6\mode_stop_next[0:0]
+    85/155: $6\mode_write_multiple_next[0:0]
+    86/155: $6\mode_read_next[0:0]
+    87/155: $6\addr_next[6:0]
+    88/155: $4\phy_stop_bit[0:0]
+    89/155: $3\s_axis_data_tready_next[0:0]
+    90/155: $5\s_axis_cmd_ready_next[0:0]
+    91/155: $6\bit_count_next[3:0]
+    92/155: $5\mode_stop_next[0:0]
+    93/155: $5\mode_write_multiple_next[0:0]
+    94/155: $5\mode_read_next[0:0]
+    95/155: $5\addr_next[6:0]
+    96/155: $3\phy_stop_bit[0:0]
+    97/155: $6\phy_start_bit[0:0]
+    98/155: $6\state_next[4:0]
+    99/155: $5\state_next[4:0]
+   100/155: $5\bit_count_next[3:0]
+   101/155: $5\phy_start_bit[0:0]
+   102/155: $4\bit_count_next[3:0]
+   103/155: $4\phy_start_bit[0:0]
+   104/155: $4\state_next[4:0]
+   105/155: $4\s_axis_cmd_ready_next[0:0]
+   106/155: $4\mode_stop_next[0:0]
+   107/155: $4\mode_write_multiple_next[0:0]
+   108/155: $4\mode_read_next[0:0]
+   109/155: $4\addr_next[6:0]
+   110/155: $3\s_axis_cmd_ready_next[0:0]
+   111/155: $3\bit_count_next[3:0]
+   112/155: $3\mode_stop_next[0:0]
+   113/155: $3\mode_write_multiple_next[0:0]
+   114/155: $3\mode_read_next[0:0]
+   115/155: $3\addr_next[6:0]
+   116/155: $3\phy_start_bit[0:0]
+   117/155: $3\state_next[4:0]
+   118/155: $2\s_axis_cmd_ready_next[0:0]
+   119/155: $2\bit_count_next[3:0]
+   120/155: $2\mode_stop_next[0:0]
+   121/155: $2\mode_write_multiple_next[0:0]
+   122/155: $2\mode_read_next[0:0]
+   123/155: $2\addr_next[6:0]
+   124/155: $2\phy_start_bit[0:0]
+   125/155: $2\state_next[4:0]
+   126/155: $2\missed_ack_next[0:0]
+   127/155: $2\m_axis_data_tlast_next[0:0]
+   128/155: $2\m_axis_data_tvalid_next[0:0]
+   129/155: $2\m_axis_data_tdata_next[7:0]
+   130/155: $2\s_axis_data_tready_next[0:0]
+   131/155: $2\last_next[0:0]
+   132/155: $2\data_next[7:0]
+   133/155: $2\phy_tx_data[0:0]
+   134/155: $2\phy_read_bit[0:0]
+   135/155: $2\phy_write_bit[0:0]
+   136/155: $2\phy_stop_bit[0:0]
+   137/155: $1\state_next[4:0]
+   138/155: $1\missed_ack_next[0:0]
+   139/155: $1\m_axis_data_tlast_next[0:0]
+   140/155: $1\m_axis_data_tvalid_next[0:0]
+   141/155: $1\m_axis_data_tdata_next[7:0]
+   142/155: $1\s_axis_data_tready_next[0:0]
+   143/155: $1\s_axis_cmd_ready_next[0:0]
+   144/155: $1\bit_count_next[3:0]
+   145/155: $1\mode_stop_next[0:0]
+   146/155: $1\mode_write_multiple_next[0:0]
+   147/155: $1\mode_read_next[0:0]
+   148/155: $1\last_next[0:0]
+   149/155: $1\data_next[7:0]
+   150/155: $1\addr_next[6:0]
+   151/155: $1\phy_tx_data[0:0]
+   152/155: $1\phy_read_bit[0:0]
+   153/155: $1\phy_write_bit[0:0]
+   154/155: $1\phy_stop_bit[0:0]
+   155/155: $1\phy_start_bit[0:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\i2c_master.\phy_state_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\phy_rx_data_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\delay_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\delay_scl_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\delay_sda_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\scl_o_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\sda_o_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\bus_control_next' from process `\i2c_master.$proc$candidate.v:599$61'.
+No latch inferred for signal `\i2c_master.\state_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\phy_start_bit' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\phy_stop_bit' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\phy_write_bit' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\phy_read_bit' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\phy_release_bus' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\phy_tx_data' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\addr_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\data_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\last_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\mode_read_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\mode_write_multiple_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\mode_stop_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\bit_count_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\s_axis_cmd_ready_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\s_axis_data_tready_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\m_axis_data_tdata_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\m_axis_data_tvalid_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\m_axis_data_tlast_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+No latch inferred for signal `\i2c_master.\missed_ack_next' from process `\i2c_master.$proc$candidate.v:293$11'.
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\i2c_master.\state_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3548' with positive edge clock.
+Creating register for signal `\i2c_master.\phy_state_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3549' with positive edge clock.
+Creating register for signal `\i2c_master.\phy_rx_data_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3550' with positive edge clock.
+Creating register for signal `\i2c_master.\addr_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3551' with positive edge clock.
+Creating register for signal `\i2c_master.\data_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3552' with positive edge clock.
+Creating register for signal `\i2c_master.\last_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3553' with positive edge clock.
+Creating register for signal `\i2c_master.\mode_read_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3554' with positive edge clock.
+Creating register for signal `\i2c_master.\mode_write_multiple_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3555' with positive edge clock.
+Creating register for signal `\i2c_master.\mode_stop_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3556' with positive edge clock.
+Creating register for signal `\i2c_master.\delay_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3557' with positive edge clock.
+Creating register for signal `\i2c_master.\delay_scl_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3558' with positive edge clock.
+Creating register for signal `\i2c_master.\delay_sda_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3559' with positive edge clock.
+Creating register for signal `\i2c_master.\bit_count_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3560' with positive edge clock.
+Creating register for signal `\i2c_master.\s_axis_cmd_ready_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3561' with positive edge clock.
+Creating register for signal `\i2c_master.\s_axis_data_tready_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3562' with positive edge clock.
+Creating register for signal `\i2c_master.\m_axis_data_tdata_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3563' with positive edge clock.
+Creating register for signal `\i2c_master.\m_axis_data_tvalid_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3564' with positive edge clock.
+Creating register for signal `\i2c_master.\m_axis_data_tlast_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3565' with positive edge clock.
+Creating register for signal `\i2c_master.\scl_i_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3566' with positive edge clock.
+Creating register for signal `\i2c_master.\sda_i_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3567' with positive edge clock.
+Creating register for signal `\i2c_master.\scl_o_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3568' with positive edge clock.
+Creating register for signal `\i2c_master.\sda_o_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3569' with positive edge clock.
+Creating register for signal `\i2c_master.\last_scl_i_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3570' with positive edge clock.
+Creating register for signal `\i2c_master.\last_sda_i_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3571' with positive edge clock.
+Creating register for signal `\i2c_master.\busy_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3572' with positive edge clock.
+Creating register for signal `\i2c_master.\bus_active_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3573' with positive edge clock.
+Creating register for signal `\i2c_master.\bus_control_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3574' with positive edge clock.
+Creating register for signal `\i2c_master.\missed_ack_reg' using process `\i2c_master.$proc$candidate.v:829$69'.
+  created $dff cell `$procdff$3575' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `i2c_master.$proc$candidate.v:265$108'.
+Removing empty process `i2c_master.$proc$candidate.v:264$107'.
+Removing empty process `i2c_master.$proc$candidate.v:263$106'.
+Removing empty process `i2c_master.$proc$candidate.v:262$105'.
+Removing empty process `i2c_master.$proc$candidate.v:260$104'.
+Removing empty process `i2c_master.$proc$candidate.v:259$103'.
+Removing empty process `i2c_master.$proc$candidate.v:257$102'.
+Removing empty process `i2c_master.$proc$candidate.v:256$101'.
+Removing empty process `i2c_master.$proc$candidate.v:254$100'.
+Removing empty process `i2c_master.$proc$candidate.v:253$99'.
+Removing empty process `i2c_master.$proc$candidate.v:251$98'.
+Removing empty process `i2c_master.$proc$candidate.v:250$97'.
+Removing empty process `i2c_master.$proc$candidate.v:249$96'.
+Removing empty process `i2c_master.$proc$candidate.v:247$95'.
+Removing empty process `i2c_master.$proc$candidate.v:245$94'.
+Removing empty process `i2c_master.$proc$candidate.v:243$93'.
+Removing empty process `i2c_master.$proc$candidate.v:241$92'.
+Removing empty process `i2c_master.$proc$candidate.v:240$91'.
+Removing empty process `i2c_master.$proc$candidate.v:239$90'.
+Removing empty process `i2c_master.$proc$candidate.v:237$89'.
+Removing empty process `i2c_master.$proc$candidate.v:236$88'.
+Removing empty process `i2c_master.$proc$candidate.v:235$87'.
+Removing empty process `i2c_master.$proc$candidate.v:233$86'.
+Removing empty process `i2c_master.$proc$candidate.v:232$85'.
+Removing empty process `i2c_master.$proc$candidate.v:231$84'.
+Removing empty process `i2c_master.$proc$candidate.v:229$83'.
+Removing empty process `i2c_master.$proc$candidate.v:219$82'.
+Removing empty process `i2c_master.$proc$candidate.v:199$81'.
+Found and cleaned up 3 empty switches in `\i2c_master.$proc$candidate.v:829$69'.
+Removing empty process `i2c_master.$proc$candidate.v:829$69'.
+Found and cleaned up 10 empty switches in `\i2c_master.$proc$candidate.v:599$61'.
+Removing empty process `i2c_master.$proc$candidate.v:599$61'.
+Found and cleaned up 25 empty switches in `\i2c_master.$proc$candidate.v:293$11'.
+Removing empty process `i2c_master.$proc$candidate.v:293$11'.
+Cleaned up 38 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module i2c_master.
+
+5. Executing JSON backend.
