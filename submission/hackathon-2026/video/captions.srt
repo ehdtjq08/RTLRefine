@@ -1,0 +1,75 @@
+1
+00:00:00,000 --> 00:00:08,003
+RTLRefine: checked RTL repair with NVIDIA Nemotron on Nebius.
+Inspect the failure, source diff and verification evidence in one browser.
+
+2
+00:00:08,722 --> 00:00:16,725
+Bring a Verilog/SystemVerilog ZIP and your own self-checking benches.
+Select file roles in the browser, or include a manifest.
+
+3
+00:00:17,095 --> 00:00:26,096
+This authored integration example has two files and a 129-bit function.
+Its result should be a+b, but the implementation subtracts.
+
+4
+00:00:26,124 --> 00:00:30,204
+First reproduce the public failure using isolated native tools.
+Checking the original makes no model request.
+
+5
+00:00:30,204 --> 00:00:34,284
+The original fails its public test. No checked project is offered.
+The tests remain immutable throughout the repair.
+
+6
+00:00:34,284 --> 00:00:40,284
+A fresh NVIDIA request through Nebius Token Factory.
+The model sees public checks; audit benches stay hidden.
+
+7
+00:00:40,284 --> 00:00:49,292
+Nemotron changes the subtraction to addition. The exact patch is rebuilt.
+Both the public bench and the withheld 40-check audit pass.
+
+8
+00:00:49,444 --> 00:00:53,952
+Reimport the exported ZIP and run both benches again.
+This fresh check makes no model request.
+
+9
+00:00:53,952 --> 00:00:58,459
+The exported project passes again. Its evidence includes logs and hashes.
+Original test files and the project license are preserved.
+
+10
+00:00:58,574 --> 00:01:06,578
+Now upload an intentionally incomplete developer-written patch.
+Changing the project removes the previous successful verdict immediately.
+
+11
+00:01:06,578 --> 00:01:12,028
+The partial patch passes the public bench and fails the audit.
+A checked download is blocked.
+
+12
+00:01:12,028 --> 00:01:17,478
+Rejected with the failing observations retained.
+Acceptance covers only the supplied tests, not unbounded hardware correctness.
+
+13
+00:01:18,433 --> 00:01:30,437
+Historical examples: the same 118 candidates take 208.08s vs 13.87s.
+15.0x screening throughput; matching results, one paired run per profile.
+
+14
+00:01:30,437 --> 00:01:38,440
+This screening measurement does not apply to uploaded projects.
+Their exact files are compiled independently using the supplied benches.
+
+15
+00:01:39,044 --> 00:01:47,048
+Public source and a Docker test build: github.com/ehdtjq08/RTLRefine
+Recorded NVIDIA runs and fresh native checks work without an API key.
+

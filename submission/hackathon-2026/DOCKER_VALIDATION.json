@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "network": "none",
+  "api_key_present": false,
+  "examples": [
+    {
+      "example": "fixed",
+      "accepted": true,
+      "api_requests": 0,
+      "tests": [
+        {
+          "id": "basic",
+          "status": "PASS",
+          "checks": 2
+        },
+        {
+          "id": "stress",
+          "status": "PASS",
+          "checks": 40
+        }
+      ]
+    },
+    {
+      "example": "original",
+      "accepted": false,
+      "api_requests": 0,
+      "tests": [
+        {
+          "id": "basic",
+          "status": "ASSERTION_FAILED",
+          "checks": 0
+        }
+      ]
+    },
+    {
+      "example": "partial",
+      "accepted": false,
+      "api_requests": 0,
+      "tests": [
+        {
+          "id": "basic",
+          "status": "PASS",
+          "checks": 2
+        },
+        {
+          "id": "stress",
+          "status": "ASSERTION_FAILED",
+          "checks": 0
+        }
+      ]
+    }
+  ]
+}

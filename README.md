@@ -2,6 +2,9 @@
 
 **A browser workspace that turns a failing RTL trace into an exact checked patch.**
 
+[Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
+[Submission materials and demo](submission/hackathon-2026/README.md)
+
 **User project mode is available at `/project`.** Upload Verilog/SystemVerilog
 sources and their own self-checking testbenches, with a manifest or the web file-role
 wizard. Multiple files, functions, parameters, wide signals and testbench-driven

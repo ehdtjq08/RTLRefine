@@ -1,4 +1,9 @@
-# Run and deploy the focused RTL application
+# Run and deploy RTLRefine
+
+For the current submission, start with [the judge quickstart](JUDGE_QUICKSTART.md).
+The homepage is the repair studio, and `/project` accepts uploaded multi-file
+Verilog/SystemVerilog designs with their own self-checking benches. The Docker
+test build supports both paths. Earlier archive pages have narrower contracts.
 
 The current homepage is the guided repair studio. The image now installs g++,
 make and checksum-pinned Verilator 4.038 through
@@ -9,7 +14,7 @@ volume is executable. When testing a read-only image with tmpfs, explicitly use
 binary but cannot execute it. See [the current studio](REPAIR_STUDIO.md).
 
 The current submission entry is `rtl_app.py`. The existing `app.py` retains older
-experiments; the focused app includes only the editable sequential workspace,
+experiments. Archive pages include the editable sequential workspace,
 three historical stream cases, a synthetic queue challenge, an external ZipCPU
 UART case and the frozen NVIDIA comparison. UART runtime checks need its public
 contract and candidate, not maintainer-fixed RTL. The image excludes the corrected
@@ -71,7 +76,8 @@ Set the server's `NEBIUS_API_KEY` and `RTLREFINE_ENABLE_LIVE_MODEL=1` through th
 hosting platform's secret/environment settings. Never place the key in a source
 file, image, browser bundle or evidence ZIP. The supported case agent uses
 `nvidia/Nemotron-3-Ultra-550b-a55b` through Nebius Token Factory; the catalog is
-verified before inference. It sends one bounded request per explicit repair action.
+verified before inference. A repair action permits at most two bounded requests,
+with only public feedback available for the second attempt.
 
 Persist the existing `.state/spend.json` when reusing the development account
 key, and keep that state across restarts and replicas. Do not reset or publicly
@@ -80,9 +86,12 @@ rates, not an account billing API. Unknown requests retain reservations.
 
 ## Public release status
 
-The local browser and local container are test builds. A public repository,
-durable hosted URL and publicly visible YouTube upload require the owner's
-chosen accounts/destination. None is represented as published by this document.
+The source repository is public at https://github.com/ehdtjq08/RTLRefine .
+The versioned Docker test build has [judge instructions](JUDGE_QUICKSTART.md).
+Saved model runs and fresh local checks require no key. A separately hosted
+application and public YouTube upload have not been provided. Do not describe
+this local owner instance as a public inference endpoint.
+
 The final submission must keep the free test build accessible through judging
 and include the actual public repository/video links. The official requirements
 are at https://nebiusglobalaihackathon.devpost.com/rules .
