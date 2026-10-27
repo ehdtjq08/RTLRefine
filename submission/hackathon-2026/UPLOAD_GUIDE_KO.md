@@ -1,8 +1,11 @@
 # 최종 제출 순서
 
-1. `video/RTLRefine-demo.mp4`를 YouTube에 올리고 공개 상태를 **공개(Public)**로
-   설정합니다. 제목과 설명은 `YOUTUBE.md`에서 복사합니다.
-2. 영상 주소를 로그아웃 브라우저에서 열어 재생되는지 확인합니다.
+영상 주소: https://youtu.be/JEvktXDIUd0
+
+1. 영상 업로드와 비로그인 재생 가능 상태를 확인했습니다. 확인 당시에는
+   **일부 공개(Unlisted)**였으므로 YouTube Studio에서 **공개(Public)**로
+   변경합니다. 제목·설명을 다듬으려면 `YOUTUBE.md`를 사용합니다.
+2. 위 영상 주소를 로그아웃 브라우저에서 열어 재생되는지 다시 확인합니다.
 3. Devpost에서 `PROJECT_FIELDS.md`의 이름, 피치, 트랙, 저장소 주소와 테스트
    빌드 주소를 입력합니다. Video URL에는 실제 YouTube 주소를 넣습니다.
 4. About the project에는 `DEVPOST_ABOUT.md`, 도구 피드백에는
@@ -16,8 +19,8 @@
 공식 규정: https://nebiusglobalaihackathon.devpost.com/rules
 
 공개 저장소와 실행 안내가 있는 테스트 빌드 경로를 사용합니다. 별도 유료
-호스팅 가입은 필요하지 않습니다. 영상 파일은 준비되어도 YouTube 게시가
-끝난 것은 아니며, 최종 제출 전 실제 YouTube 링크가 반드시 필요합니다.
+호스팅 가입은 필요하지 않습니다. Devpost의 Video URL에는 위 YouTube 주소를
+입력합니다. 로컬 MP4 경로나 GitHub의 MP4 주소를 입력하지 않습니다.
 
 기본 빌드는 저장된 NVIDIA 응답 열람과 로컬 재검증, 업로드 프로젝트 검증을
 키 없이 제공합니다. 새 추론은 운영자 키가 있어야 활성화됩니다. 이를

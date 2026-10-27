@@ -28,9 +28,7 @@ links the versioned source download and explains credential-free verification.
 
 # Video URL
 
-Upload video/RTLRefine-demo.mp4 to YouTube with visibility set to Public, then
-paste the resulting YouTube URL here. A GitHub MP4 link does not replace the
-required YouTube link.
+https://youtu.be/JEvktXDIUd0
 
 # Testing instructions
 

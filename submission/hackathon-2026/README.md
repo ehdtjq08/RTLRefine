@@ -23,5 +23,9 @@ examples using the default build.
 
 Source repository: https://github.com/ehdtjq08/RTLRefine
 
-YouTube publication and the account owner's final Devpost submission remain
-separate actions. The local MP4 is not a YouTube URL.
+YouTube demo: https://youtu.be/JEvktXDIUd0
+
+The uploaded video was accessible without sign-in when checked; its observed
+visibility was Unlisted. Change it to Public before final submission. The account
+owner's final Devpost submission remains pending. See PUBLICATION.json for the
+latest recorded checks.

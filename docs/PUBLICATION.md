@@ -12,9 +12,14 @@ captioned actual-run video, gallery screenshots and copy for Devpost. The
 [versioned test-build instructions](JUDGE_QUICKSTART.md) explain credential-free
 native checking and the separately configured fresh-inference path.
 
-A durable public demo URL and public YouTube upload are not yet provided.
-No localhost address is a public judging endpoint. The earlier publication flags
-inside experiment records are historical snapshots; they are not rewritten.
+YouTube video: https://youtu.be/JEvktXDIUd0 . Its 106-second duration and
+unauthenticated playback availability were checked. Visibility was Unlisted;
+the owner should change it to Public before final submission. Current checks
+are in [the publication receipt](../submission/hackathon-2026/PUBLICATION.json).
+
+A separately hosted application has not been provided. No localhost address is
+a public judging endpoint. Earlier publication flags inside experiment records
+are historical snapshots; they are not rewritten.
 
 The source was imported from the validated 1.2.0 package. Original dataset and
 checker seals remain unchanged. Private keys, .env, personal spending state,

@@ -88,9 +88,11 @@ rates, not an account billing API. Unknown requests retain reservations.
 
 The source repository is public at https://github.com/ehdtjq08/RTLRefine .
 The versioned Docker test build has [judge instructions](JUDGE_QUICKSTART.md).
-Saved model runs and fresh local checks require no key. A separately hosted
-application and public YouTube upload have not been provided. Do not describe
-this local owner instance as a public inference endpoint.
+Saved model runs and fresh local checks require no key. The
+[YouTube demonstration](https://youtu.be/JEvktXDIUd0) has been uploaded. See
+[publication status](PUBLICATION.md) for its latest visibility check. A separately
+hosted application has not been provided. Do not describe this local owner
+instance as a public inference endpoint.
 
 The final submission must keep the free test build accessible through judging
 and include the actual public repository/video links. The official requirements

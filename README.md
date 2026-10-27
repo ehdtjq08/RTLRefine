@@ -3,7 +3,8 @@
 **A browser workspace that turns a failing RTL trace into an exact checked patch.**
 
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
-[Submission materials and demo](submission/hackathon-2026/README.md)
+[Watch the demo](https://youtu.be/JEvktXDIUd0) ·
+[Submission materials](submission/hackathon-2026/README.md)
 
 **User project mode is available at `/project`.** Upload Verilog/SystemVerilog
 sources and their own self-checking testbenches, with a manifest or the web file-role
@@ -106,6 +107,6 @@ appeared in model training. Source licenses and artifact attribution are retaine
 - [Earlier project README and result interpretations](README.research.md)
 
 Earlier source/data seals and negative studies remain unchanged. This repository
-publishes the reproducible source and local Docker test build. A durable hosted
-demo and a public YouTube upload are still pending; localhost addresses are
-local setup instructions, not public submission URLs.
+publishes the reproducible source and local Docker test build. The demonstration
+video is [on YouTube](https://youtu.be/JEvktXDIUd0). A separately hosted application
+has not been provided; localhost addresses are local setup instructions.

@@ -1,8 +1,17 @@
-# Title
+# Uploaded video
+
+https://youtu.be/JEvktXDIUd0
+
+The uploaded video is titled `RTLRefine demo` and is 106 seconds long.
+Unauthenticated playback was available when checked. Its visibility was
+Unlisted; change it to Public before final submission. Current observations
+are recorded in PUBLICATION.json.
+
+# Suggested title
 
 RTLRefine: Checked RTL Repair with NVIDIA Nemotron on Nebius
 
-# Description
+# Suggested description
 
 RTLRefine brings RTL source, failing simulations and independently checked
 repairs into one browser workspace. NVIDIA Nemotron 3 Ultra proposes design
