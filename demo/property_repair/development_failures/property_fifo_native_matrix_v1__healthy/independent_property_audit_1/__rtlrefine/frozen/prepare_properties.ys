@@ -1,0 +1,11 @@
+read_verilog -sv __rtlrefine/frozen/design.v
+read_verilog -formal -sv __rtlrefine/frozen/properties.v
+hierarchy -check -top __rtlrefine_property_top
+proc
+flatten
+memory_map
+opt
+chformal -lower
+check -assert
+write_rtlil __rtlrefine/prepared.il
+write_json __rtlrefine/prepared.json

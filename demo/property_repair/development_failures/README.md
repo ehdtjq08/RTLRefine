@@ -1,0 +1,1 @@
+Native-only development trials before the first model request. The 28-step checks timed out and remain UNPROVEN. The initial full-queue monitor and exploratory SMT engine are superseded, not counted as successes. Current defaults are discovery 12, final bounds 16 and 20.

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/home/hands/anaconda3/bin/yosys-smtbmc",
+    "-s",
+    "z3",
+    "--presat",
+    "--timeout",
+    "45",
+    "-t",
+    "28",
+    "--dump-vcd",
+    "__rtlrefine/smt-counterexample.vcd",
+    "--dump-yw",
+    "__rtlrefine/smt-counterexample.yw",
+    "__rtlrefine/frozen/prepared.smt2"
+  ],
+  "execution_mode": "bubblewrap",
+  "network": false,
+  "returncode": 1,
+  "stage": "smt_properties",
+  "status": "FAIL",
+  "wall_seconds": 45.104524919064716
+}

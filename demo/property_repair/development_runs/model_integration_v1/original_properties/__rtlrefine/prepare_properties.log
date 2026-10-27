@@ -1,0 +1,424 @@
+
+-- Executing script file `__rtlrefine/frozen/prepare_properties.ys' --
+
+1. Executing Verilog-2005 frontend: __rtlrefine/frozen/design.v
+Parsing SystemVerilog input from `__rtlrefine/frozen/design.v' to AST representation.
+Generating RTLIL representation for module `\packet_queue'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: __rtlrefine/frozen/properties.v
+Parsing formal SystemVerilog input from `__rtlrefine/frozen/properties.v' to AST representation.
+Generating RTLIL representation for module `\__rtlrefine_property_top'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \__rtlrefine_property_top
+Used module:     \packet_queue
+Parameter \WIDTH = 4
+Parameter \DEPTH = 4
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\packet_queue'.
+Parameter \WIDTH = 4
+Parameter \DEPTH = 4
+Generating RTLIL representation for module `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \__rtlrefine_property_top
+Used module:     $paramod$81485298bde83e692495130650532cc431b3c071\packet_queue
+
+3.4. Analyzing design hierarchy..
+Top module:  \__rtlrefine_property_top
+Used module:     $paramod$81485298bde83e692495130650532cc431b3c071\packet_queue
+Removing unused module `\packet_queue'.
+Removed 1 unused modules.
+Module __rtlrefine_property_top directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $proc$__rtlrefine/frozen/properties.v:25$44 in module __rtlrefine_property_top.
+Marked 2 switch rules as full_case in process $proc$__rtlrefine/frozen/properties.v:12$41 in module __rtlrefine_property_top.
+Marked 3 switch rules as full_case in process $proc$__rtlrefine/frozen/design.v:20$135 in module $paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 7 redundant assignments.
+Promoted 29 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:55$122'.
+  Set init value: \total_pops = 3'000
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$121'.
+  Set init value: \seen_reset = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$120'.
+  Set init value: \seen_stall = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$119'.
+  Set init value: \seen_overlap = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$118'.
+  Set init value: \seen_full = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$117'.
+  Set init value: \seen_pop = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$116'.
+  Set init value: \seen_push = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:37$115'.
+  Set init value: \previous_data = 4'0000
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:36$114'.
+  Set init value: \was_stalled = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:36$113'.
+  Set init value: \past_valid = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:24$112'.
+  Set init value: \watched_data = 4'0000
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:23$111'.
+  Set init value: \position = 3'000
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:22$110'.
+  Set init value: \seen_watched_pop = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:22$109'.
+  Set init value: \tracking = 1'0
+Found init rule in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:9$108'.
+  Set init value: \occupancy = 3'000
+Found init rule in `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:14$156'.
+  Set init value: \count = 3'000
+Found init rule in `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:13$155'.
+  Set init value: \read_ptr = 2'00
+Found init rule in `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:13$154'.
+  Set init value: \write_ptr = 2'00
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:55$122'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$121'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$120'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$119'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$118'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$117'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$116'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:37$115'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:36$114'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:36$113'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:24$112'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:23$111'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:22$110'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:22$109'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:9$108'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+     1/7: $0\total_pops[2:0]
+     2/7: $0\seen_reset[0:0]
+     3/7: $0\seen_stall[0:0]
+     4/7: $0\seen_overlap[0:0]
+     5/7: $0\seen_full[0:0]
+     6/7: $0\seen_pop[0:0]
+     7/7: $0\seen_push[0:0]
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:50$82'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:43$56'.
+     1/1: $assume$__rtlrefine/frozen/properties.v:43$58_EN
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:38$51'.
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+     1/4: $0\watched_data[3:0]
+     2/4: $0\position[2:0]
+     3/4: $0\seen_watched_pop[0:0]
+     4/4: $0\tracking[0:0]
+Creating decoders for process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:12$41'.
+     1/1: $0\occupancy[2:0]
+Creating decoders for process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:14$156'.
+Creating decoders for process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:13$155'.
+Creating decoders for process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:13$154'.
+Creating decoders for process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+     1/9: $2$memwr$\memory$__rtlrefine/frozen/design.v:27$123_EN[3:0]$144
+     2/9: $2$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$143
+     3/9: $2$memwr$\memory$__rtlrefine/frozen/design.v:27$123_ADDR[1:0]$142
+     4/9: $0\count[2:0]
+     5/9: $1$memwr$\memory$__rtlrefine/frozen/design.v:27$123_EN[3:0]$141
+     6/9: $1$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$140
+     7/9: $1$memwr$\memory$__rtlrefine/frozen/design.v:27$123_ADDR[1:0]$139
+     8/9: $0\read_ptr[1:0]
+     9/9: $0\write_ptr[1:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\__rtlrefine_property_top.\seen_push' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$273' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\seen_pop' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$274' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\seen_full' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$275' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\seen_overlap' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$276' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\seen_stall' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$277' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\seen_reset' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$278' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\total_pops' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+  created $dff cell `$procdff$279' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\past_valid' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:38$51'.
+  created $dff cell `$procdff$280' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\was_stalled' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:38$51'.
+  created $dff cell `$procdff$281' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\previous_data' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:38$51'.
+  created $dff cell `$procdff$282' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\tracking' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+  created $dff cell `$procdff$283' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\seen_watched_pop' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+  created $dff cell `$procdff$284' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\position' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+  created $dff cell `$procdff$285' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\watched_data' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+  created $dff cell `$procdff$286' with positive edge clock.
+Creating register for signal `\__rtlrefine_property_top.\occupancy' using process `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:12$41'.
+  created $dff cell `$procdff$287' with positive edge clock.
+Creating register for signal `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.\write_ptr' using process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+  created $dff cell `$procdff$288' with positive edge clock.
+Creating register for signal `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.\read_ptr' using process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+  created $dff cell `$procdff$289' with positive edge clock.
+Creating register for signal `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.\count' using process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+  created $dff cell `$procdff$290' with positive edge clock.
+Creating register for signal `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$memwr$\memory$__rtlrefine/frozen/design.v:27$123_ADDR' using process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+  created $dff cell `$procdff$291' with positive edge clock.
+Creating register for signal `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA' using process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+  created $dff cell `$procdff$292' with positive edge clock.
+Creating register for signal `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$memwr$\memory$__rtlrefine/frozen/design.v:27$123_EN' using process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+  created $dff cell `$procdff$293' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:55$122'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$121'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$120'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$119'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$118'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$117'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:54$116'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:37$115'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:36$114'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:36$113'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:24$112'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:23$111'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:22$110'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:22$109'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:9$108'.
+Found and cleaned up 7 empty switches in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:56$88'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:50$82'.
+Found and cleaned up 1 empty switch in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:43$56'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:43$56'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:38$51'.
+Found and cleaned up 5 empty switches in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:25$44'.
+Found and cleaned up 2 empty switches in `\__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:12$41'.
+Removing empty process `__rtlrefine_property_top.$proc$__rtlrefine/frozen/properties.v:12$41'.
+Removing empty process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:14$156'.
+Removing empty process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:13$155'.
+Removing empty process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:13$154'.
+Found and cleaned up 4 empty switches in `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+Removing empty process `$paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.$proc$__rtlrefine/frozen/design.v:20$135'.
+Cleaned up 19 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module __rtlrefine_property_top.
+Optimizing module $paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.
+
+5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$81485298bde83e692495130650532cc431b3c071\packet_queue.
+
+6. Executing WREDUCE pass (reducing word size of cells).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$add$__rtlrefine/frozen/properties.v:16$42 ($add).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$add$__rtlrefine/frozen/properties.v:16$42 ($add).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:17$43 ($sub).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:17$43 ($sub).
+Removed top 31 bits (of 32) from mux cell __rtlrefine_property_top.$ternary$__rtlrefine/frozen/properties.v:29$47 ($mux).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:29$48 ($sub).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:29$48 ($sub).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:33$50 ($sub).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:33$50 ($sub).
+Removed top 29 bits (of 32) from port B of cell __rtlrefine_property_top.$lt$__rtlrefine/frozen/properties.v:46$64 ($lt).
+Removed top 29 bits (of 32) from port B of cell __rtlrefine_property_top.$le$__rtlrefine/frozen/properties.v:49$81 ($le).
+Removed top 29 bits (of 32) from port B of cell __rtlrefine_property_top.$le$__rtlrefine/frozen/properties.v:58$89 ($le).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$add$__rtlrefine/frozen/properties.v:58$90 ($add).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$add$__rtlrefine/frozen/properties.v:58$90 ($add).
+Removed top 29 bits (of 32) from port B of cell __rtlrefine_property_top.$gt$__rtlrefine/frozen/properties.v:64$106 ($gt).
+Removed top 1 bits (of 2) from port B of cell __rtlrefine_property_top.$procmux$222_CMP0 ($eq).
+Removed cell __rtlrefine_property_top.$flatten\dut.$procdff$293 ($dff).
+Removed cell __rtlrefine_property_top.$flatten\dut.$procdff$292 ($dff).
+Removed cell __rtlrefine_property_top.$flatten\dut.$procdff$291 ($dff).
+Removed top 1 bits (of 2) from port B of cell __rtlrefine_property_top.$flatten\dut.$procmux$248_CMP0 ($eq).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:35$153 ($add).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:35$153 ($add).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$flatten\dut.$sub$__rtlrefine/frozen/design.v:34$152 ($sub).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$flatten\dut.$sub$__rtlrefine/frozen/design.v:34$152 ($sub).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:33$151 ($add).
+Removed top 29 bits (of 32) from port Y of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:33$151 ($add).
+Removed top 30 bits (of 32) from mux cell __rtlrefine_property_top.$flatten\dut.$ternary$__rtlrefine/frozen/design.v:31$150 ($mux).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:31$149 ($add).
+Removed top 30 bits (of 32) from port Y of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:31$149 ($add).
+Removed top 30 bits (of 32) from mux cell __rtlrefine_property_top.$flatten\dut.$ternary$__rtlrefine/frozen/design.v:28$147 ($mux).
+Removed top 31 bits (of 32) from port B of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:28$146 ($add).
+Removed top 30 bits (of 32) from port Y of cell __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:28$146 ($add).
+Removed top 29 bits (of 32) from port B of cell __rtlrefine_property_top.$flatten\dut.$lt$__rtlrefine/frozen/design.v:16$128 ($lt).
+Removed top 30 bits (of 32) from wire __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:28$146_Y.
+Removed top 30 bits (of 32) from wire __rtlrefine_property_top.$flatten\dut.$ternary$__rtlrefine/frozen/design.v:28$147_Y.
+Removed top 30 bits (of 32) from wire __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:31$149_Y.
+Removed top 30 bits (of 32) from wire __rtlrefine_property_top.$flatten\dut.$ternary$__rtlrefine/frozen/design.v:31$150_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$flatten\dut.$add$__rtlrefine/frozen/design.v:33$151_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$flatten\dut.$sub$__rtlrefine/frozen/design.v:34$152_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$add$__rtlrefine/frozen/properties.v:58$90_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:33$50_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:29$48_Y.
+Removed top 31 bits (of 32) from wire __rtlrefine_property_top.$ternary$__rtlrefine/frozen/properties.v:29$47_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$sub$__rtlrefine/frozen/properties.v:17$43_Y.
+Removed top 29 bits (of 32) from wire __rtlrefine_property_top.$add$__rtlrefine/frozen/properties.v:16$42_Y.
+
+7. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \dut.memory in module \__rtlrefine_property_top:
+  created 4 $dff cells and 0 static cells of width 4.
+  read interface: 0 $dff and 3 $mux cells.
+  write interface: 16 write mux blocks.
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module __rtlrefine_property_top.
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\__rtlrefine_property_top'.
+Removed a total of 16 cells.
+
+8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \__rtlrefine_property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $procmux$210: \tracking -> 1'1
+      Replacing known input bits on port A of cell $procmux$208: \tracking -> 1'1
+      Replacing known input bits on port A of cell $procmux$213: \tracking -> 1'0
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\dut.$procmux$231.
+    dead port 1/2 on $mux $flatten\dut.$procmux$237.
+    dead port 1/2 on $mux $flatten\dut.$procmux$243.
+Removed 3 multiplexer ports.
+
+8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \__rtlrefine_property_top.
+    New ctrl vector for $pmux cell $flatten\dut.$procmux$246: { $flatten\dut.$procmux$248_CMP $auto$opt_reduce.cc:137:opt_pmux$406 }
+  Optimizing cells in module \__rtlrefine_property_top.
+Performed a total of 1 changes.
+
+8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\__rtlrefine_property_top'.
+Removed a total of 0 cells.
+
+8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$273 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_push).
+Adding EN signal on $procdff$274 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_pop).
+Adding EN signal on $procdff$275 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_full).
+Adding EN signal on $procdff$276 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_overlap).
+Adding EN signal on $procdff$277 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_stall).
+Adding EN signal on $procdff$278 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_reset).
+Adding EN signal on $procdff$279 ($dff) from module __rtlrefine_property_top (D = $auto$wreduce.cc:513:run$302 [2:0], Q = \total_pops).
+Adding SRST signal on $procdff$283 ($dff) from module __rtlrefine_property_top (D = $procmux$215_Y, Q = \tracking, rval = 1'0).
+Adding EN signal on $procdff$284 ($dff) from module __rtlrefine_property_top (D = 1'1, Q = \seen_watched_pop).
+Adding SRST signal on $procdff$285 ($dff) from module __rtlrefine_property_top (D = $procmux$191_Y, Q = \position, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$422 ($sdff) from module __rtlrefine_property_top (D = $procmux$191_Y, Q = \position).
+Adding SRST signal on $procdff$286 ($dff) from module __rtlrefine_property_top (D = $procmux$178_Y, Q = \watched_data, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$432 ($sdff) from module __rtlrefine_property_top (D = \s_data, Q = \watched_data).
+Adding SRST signal on $procdff$287 ($dff) from module __rtlrefine_property_top (D = $procmux$221_Y, Q = \occupancy, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$438 ($sdff) from module __rtlrefine_property_top (D = $procmux$221_Y, Q = \occupancy).
+Adding SRST signal on $flatten\dut.$procdff$290 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$procmux$246_Y, Q = \dut.count, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$442 ($sdff) from module __rtlrefine_property_top (D = $flatten\dut.$procmux$246_Y, Q = \dut.count).
+Adding SRST signal on $flatten\dut.$procdff$289 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$procmux$262_Y, Q = \dut.read_ptr, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$446 ($sdff) from module __rtlrefine_property_top (D = $auto$wreduce.cc:513:run$299 [1:0], Q = \dut.read_ptr).
+Adding SRST signal on $flatten\dut.$procdff$288 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$procmux$268_Y, Q = \dut.write_ptr, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$448 ($sdff) from module __rtlrefine_property_top (D = $auto$wreduce.cc:513:run$297 [1:0], Q = \dut.write_ptr).
+
+8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \__rtlrefine_property_top..
+Removed 24 unused cells and 172 unused wires.
+
+8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module __rtlrefine_property_top.
+
+8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \__rtlrefine_property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \__rtlrefine_property_top.
+Performed a total of 0 changes.
+
+8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\__rtlrefine_property_top'.
+Removed a total of 0 cells.
+
+8.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\dut.memory[3]$314 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [3], Q = \dut.memory[3] [3]).
+Adding EN signal on $memory\dut.memory[3]$314 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [2], Q = \dut.memory[3] [2]).
+Adding EN signal on $memory\dut.memory[3]$314 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [1], Q = \dut.memory[3] [1]).
+Adding EN signal on $memory\dut.memory[3]$314 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [0], Q = \dut.memory[3] [0]).
+Adding EN signal on $memory\dut.memory[2]$312 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [3], Q = \dut.memory[2] [3]).
+Adding EN signal on $memory\dut.memory[2]$312 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [2], Q = \dut.memory[2] [2]).
+Adding EN signal on $memory\dut.memory[2]$312 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [1], Q = \dut.memory[2] [1]).
+Adding EN signal on $memory\dut.memory[2]$312 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [0], Q = \dut.memory[2] [0]).
+Adding EN signal on $memory\dut.memory[1]$310 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [3], Q = \dut.memory[1] [3]).
+Adding EN signal on $memory\dut.memory[1]$310 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [2], Q = \dut.memory[1] [2]).
+Adding EN signal on $memory\dut.memory[1]$310 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [1], Q = \dut.memory[1] [1]).
+Adding EN signal on $memory\dut.memory[1]$310 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [0], Q = \dut.memory[1] [0]).
+Adding EN signal on $memory\dut.memory[0]$308 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [3], Q = \dut.memory[0] [3]).
+Adding EN signal on $memory\dut.memory[0]$308 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [2], Q = \dut.memory[0] [2]).
+Adding EN signal on $memory\dut.memory[0]$308 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [1], Q = \dut.memory[0] [1]).
+Adding EN signal on $memory\dut.memory[0]$308 ($dff) from module __rtlrefine_property_top (D = $flatten\dut.$0$memwr$\memory$__rtlrefine/frozen/design.v:27$123_DATA[3:0]$137 [0], Q = \dut.memory[0] [0]).
+
+8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \__rtlrefine_property_top..
+Removed 16 unused cells and 16 unused wires.
+
+8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module __rtlrefine_property_top.
+
+8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \__rtlrefine_property_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \__rtlrefine_property_top.
+Performed a total of 0 changes.
+
+8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\__rtlrefine_property_top'.
+Removed a total of 0 cells.
+
+8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \__rtlrefine_property_top..
+
+8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module __rtlrefine_property_top.
+
+8.23. Finished OPT passes. (There is nothing left to do.)
+
+9. Executing CHECK pass (checking for obvious problems).
+Checking module __rtlrefine_property_top...
+Found and reported 0 problems.
+
+10. Executing RTLIL backend.
+Output filename: __rtlrefine/prepared.il
+
+11. Executing JSON backend.

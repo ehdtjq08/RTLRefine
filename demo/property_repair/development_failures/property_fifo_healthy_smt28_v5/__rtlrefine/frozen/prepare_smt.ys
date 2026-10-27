@@ -1,0 +1,4 @@
+read_rtlil __rtlrefine/frozen/prepared.il
+dffunmap
+setundef -init -zero
+write_smt2 -wires __rtlrefine/prepared.smt2

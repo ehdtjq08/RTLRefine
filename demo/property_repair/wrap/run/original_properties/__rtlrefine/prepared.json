@@ -1,0 +1,5170 @@
+{
+  "creator": "Yosys 0.51 (git sha1 c4b5190229616f7ebf8197f43990b4429de3e420, g++ 13.3.0-2 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/yosys_1741800146432/work=/usr/local/src/conda/yosys-0.51 -fdebug-prefix-map=/home/hands/anaconda3=/usr/local/src/conda-prefix -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/yosys_1741800146432/work=/usr/local/src/conda/yosys-0.51 -fdebug-prefix-map=/home/hands/anaconda3=/usr/local/src/conda-prefix -fPIC -O3)",
+  "modules": {
+    "__rtlrefine_property_top": {
+      "attributes": {
+        "keep": "00000000000000000000000000000001",
+        "dynports": "00000000000000000000000000000001",
+        "top": "00000000000000000000000000000001",
+        "src": "__rtlrefine/frozen/properties.v:1.1-65.10"
+      },
+      "ports": {
+        "clk": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "rst": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "s_valid": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "m_ready": {
+          "direction": "input",
+          "bits": [ 5 ]
+        },
+        "watch_this": {
+          "direction": "input",
+          "bits": [ 6 ]
+        },
+        "s_data": {
+          "direction": "input",
+          "bits": [ 7, 8, 9, 10 ]
+        },
+        "s_ready": {
+          "direction": "output",
+          "bits": [ 11 ]
+        },
+        "m_valid": {
+          "direction": "output",
+          "bits": [ 12 ]
+        },
+        "m_data": {
+          "direction": "output",
+          "bits": [ 13, 14, 15, 16 ]
+        },
+        "expected_count": {
+          "direction": "output",
+          "bits": [ 17, 18, 19, "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ]
+        },
+        "property_valid": {
+          "direction": "output",
+          "bits": [ 20 ]
+        },
+        "property_ready": {
+          "direction": "output",
+          "bits": [ 21 ]
+        },
+        "property_payload": {
+          "direction": "output",
+          "bits": [ 22 ]
+        },
+        "property_stable": {
+          "direction": "output",
+          "bits": [ 23 ]
+        },
+        "property_capacity": {
+          "direction": "output",
+          "bits": [ 24 ]
+        },
+        "cover_progress": {
+          "direction": "output",
+          "bits": [ 25 ]
+        }
+      },
+      "cells": {
+        "$add$__rtlrefine/frozen/properties.v:16$41": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:16.30-16.41"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "B": [ "1" ],
+            "Y": [ 26, 27, 28 ]
+          }
+        },
+        "$add$__rtlrefine/frozen/properties.v:58$89": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:58.66-58.78"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 29, 30, 31 ],
+            "B": [ "1" ],
+            "Y": [ 32, 33, 34 ]
+          }
+        },
+        "$assert$__rtlrefine/frozen/properties.v:51$82": {
+          "hide_name": 1,
+          "type": "$assert",
+          "parameters": {
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:51.5-51.27"
+          },
+          "port_directions": {
+            "A": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "A": [ 20 ],
+            "EN": [ "1" ]
+          }
+        },
+        "$assert$__rtlrefine/frozen/properties.v:51$83": {
+          "hide_name": 1,
+          "type": "$assert",
+          "parameters": {
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:51.28-51.50"
+          },
+          "port_directions": {
+            "A": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "A": [ 21 ],
+            "EN": [ "1" ]
+          }
+        },
+        "$assert$__rtlrefine/frozen/properties.v:51$84": {
+          "hide_name": 1,
+          "type": "$assert",
+          "parameters": {
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:51.51-51.75"
+          },
+          "port_directions": {
+            "A": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "A": [ 22 ],
+            "EN": [ "1" ]
+          }
+        },
+        "$assert$__rtlrefine/frozen/properties.v:52$85": {
+          "hide_name": 1,
+          "type": "$assert",
+          "parameters": {
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:52.5-52.28"
+          },
+          "port_directions": {
+            "A": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "A": [ 23 ],
+            "EN": [ "1" ]
+          }
+        },
+        "$assert$__rtlrefine/frozen/properties.v:52$86": {
+          "hide_name": 1,
+          "type": "$assert",
+          "parameters": {
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:52.29-52.54"
+          },
+          "port_directions": {
+            "A": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "A": [ 24 ],
+            "EN": [ "1" ]
+          }
+        },
+        "$assume$__rtlrefine/frozen/properties.v:43$57": {
+          "hide_name": 1,
+          "type": "$assume",
+          "parameters": {
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:43.27-43.38"
+          },
+          "port_directions": {
+            "A": "input",
+            "EN": "input"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "EN": [ 35 ]
+          }
+        },
+        "$auto$chformal.cc:414:execute$463": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 20 ],
+            "Y": [ 36 ]
+          }
+        },
+        "$auto$chformal.cc:414:execute$468": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 21 ],
+            "Y": [ 37 ]
+          }
+        },
+        "$auto$chformal.cc:414:execute$473": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 22 ],
+            "Y": [ 38 ]
+          }
+        },
+        "$auto$chformal.cc:414:execute$478": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 23 ],
+            "Y": [ 39 ]
+          }
+        },
+        "$auto$chformal.cc:414:execute$483": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 24 ],
+            "Y": [ 40 ]
+          }
+        },
+        "$auto$chformal.cc:414:execute$488": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "Y": [ 41 ]
+          }
+        },
+        "$auto$chformal.cc:416:execute$465": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 36 ],
+            "B": [ "1" ],
+            "Y": [ 42 ]
+          }
+        },
+        "$auto$chformal.cc:416:execute$470": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 37 ],
+            "B": [ "1" ],
+            "Y": [ 43 ]
+          }
+        },
+        "$auto$chformal.cc:416:execute$475": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 38 ],
+            "B": [ "1" ],
+            "Y": [ 44 ]
+          }
+        },
+        "$auto$chformal.cc:416:execute$480": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 39 ],
+            "B": [ "1" ],
+            "Y": [ 45 ]
+          }
+        },
+        "$auto$chformal.cc:416:execute$485": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 40 ],
+            "B": [ "1" ],
+            "Y": [ 46 ]
+          }
+        },
+        "$auto$chformal.cc:416:execute$490": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 41 ],
+            "B": [ 35 ],
+            "Y": [ 47 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$403": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 48 ],
+            "Q": [ 49 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$404": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 50 ],
+            "Q": [ 51 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$405": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 52 ],
+            "Q": [ 53 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$406": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 54 ],
+            "Q": [ 55 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$407": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 56 ],
+            "Q": [ 57 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$408": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 58 ],
+            "Q": [ 59 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$409": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:56.1-63.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 32, 33, 34 ],
+            "EN": [ 60 ],
+            "Q": [ 29, 30, 31 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$412": {
+          "hide_name": 1,
+          "type": "$sdff",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "0",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:25.1-35.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 61 ],
+            "Q": [ 62 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$413": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:25.1-35.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "EN": [ 63 ],
+            "Q": [ 64 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$419": {
+          "hide_name": 1,
+          "type": "$sdffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "000",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:25.1-35.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 65, 66, 67 ],
+            "EN": [ 68 ],
+            "Q": [ 69, 70, 71 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$429": {
+          "hide_name": 1,
+          "type": "$sdffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "0000",
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:25.1-35.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 7, 8, 9, 10 ],
+            "EN": [ 72 ],
+            "Q": [ 73, 74, 75, 76 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$435": {
+          "hide_name": 1,
+          "type": "$sdffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "000",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:12.1-21.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 77, 78, 79 ],
+            "EN": [ 80 ],
+            "Q": [ 17, 18, 19 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$439": {
+          "hide_name": 1,
+          "type": "$sdffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "000",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 81, 82, 83 ],
+            "EN": [ 84 ],
+            "Q": [ 85, 86, 87 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$443": {
+          "hide_name": 1,
+          "type": "$sdffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "00",
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 88, 89 ],
+            "EN": [ 90 ],
+            "Q": [ 91, 92 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$445": {
+          "hide_name": 1,
+          "type": "$sdffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "SRST_POLARITY": "00000000000000000000000000000001",
+            "SRST_VALUE": "00",
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output",
+            "SRST": "input"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 93, 94 ],
+            "EN": [ 95 ],
+            "Q": [ 96, 97 ],
+            "SRST": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$446": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 98 ],
+            "EN": [ 99 ],
+            "Q": [ 100 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$447": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 101 ],
+            "EN": [ 102 ],
+            "Q": [ 103 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$448": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 104 ],
+            "EN": [ 105 ],
+            "Q": [ 106 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$449": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 107 ],
+            "EN": [ 108 ],
+            "Q": [ 109 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$450": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 98 ],
+            "EN": [ 110 ],
+            "Q": [ 111 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$451": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 101 ],
+            "EN": [ 112 ],
+            "Q": [ 113 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$452": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 104 ],
+            "EN": [ 114 ],
+            "Q": [ 115 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$453": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 107 ],
+            "EN": [ 116 ],
+            "Q": [ 117 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$454": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 98 ],
+            "EN": [ 118 ],
+            "Q": [ 119 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$455": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 101 ],
+            "EN": [ 120 ],
+            "Q": [ 121 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$456": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 104 ],
+            "EN": [ 122 ],
+            "Q": [ 123 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$457": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 107 ],
+            "EN": [ 124 ],
+            "Q": [ 125 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$458": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 98 ],
+            "EN": [ 126 ],
+            "Q": [ 127 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$459": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 101 ],
+            "EN": [ 128 ],
+            "Q": [ 129 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$460": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 104 ],
+            "EN": [ 130 ],
+            "Q": [ 131 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$461": {
+          "hide_name": 1,
+          "type": "$dffe",
+          "parameters": {
+            "CLK_POLARITY": "00000000000000000000000000000001",
+            "EN_POLARITY": "00000000000000000000000000000001",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "EN": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 107 ],
+            "EN": [ 132 ],
+            "Q": [ 133 ]
+          }
+        },
+        "$auto$memory_map.cc:92:addr_decode$323": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 134 ],
+            "Y": [ 135 ]
+          }
+        },
+        "$auto$memory_map.cc:92:addr_decode$325": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 136 ],
+            "Y": [ 137 ]
+          }
+        },
+        "$auto$memory_map.cc:97:addr_decode$327": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 135 ],
+            "B": [ 137 ],
+            "Y": [ 138 ]
+          }
+        },
+        "$auto$memory_map.cc:97:addr_decode$347": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 134 ],
+            "B": [ 137 ],
+            "Y": [ 139 ]
+          }
+        },
+        "$auto$memory_map.cc:97:addr_decode$367": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 135 ],
+            "B": [ 136 ],
+            "Y": [ 140 ]
+          }
+        },
+        "$auto$memory_map.cc:97:addr_decode$385": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 134 ],
+            "B": [ 136 ],
+            "Y": [ 141 ]
+          }
+        },
+        "$auto$opt_dff.cc:195:make_patterns_logic$421": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 62, 142 ],
+            "Y": [ 143 ]
+          }
+        },
+        "$auto$opt_dff.cc:195:make_patterns_logic$423": {
+          "hide_name": 1,
+          "type": "$ne",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 62, 50 ],
+            "B": [ "1", "0" ],
+            "Y": [ 144 ]
+          }
+        },
+        "$auto$opt_dff.cc:195:make_patterns_logic$425": {
+          "hide_name": 1,
+          "type": "$ne",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 62, 50, 145 ],
+            "B": [ "1", "1", "1" ],
+            "Y": [ 146 ]
+          }
+        },
+        "$auto$opt_dff.cc:195:make_patterns_logic$437": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 147, 148 ],
+            "Y": [ 80 ]
+          }
+        },
+        "$auto$opt_dff.cc:195:make_patterns_logic$441": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 149, 150 ],
+            "Y": [ 84 ]
+          }
+        },
+        "$auto$opt_dff.cc:210:make_patterns_logic$414": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "Y": [ 151 ]
+          }
+        },
+        "$auto$opt_dff.cc:210:make_patterns_logic$430": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 62 ],
+            "Y": [ 152 ]
+          }
+        },
+        "$auto$opt_dff.cc:220:make_patterns_logic$411": {
+          "hide_name": 1,
+          "type": "$reduce_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 50, 153 ],
+            "Y": [ 60 ]
+          }
+        },
+        "$auto$opt_dff.cc:220:make_patterns_logic$417": {
+          "hide_name": 1,
+          "type": "$reduce_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 50, 62, 151, 145 ],
+            "Y": [ 63 ]
+          }
+        },
+        "$auto$opt_dff.cc:220:make_patterns_logic$427": {
+          "hide_name": 1,
+          "type": "$reduce_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 143, 144, 146 ],
+            "Y": [ 68 ]
+          }
+        },
+        "$auto$opt_dff.cc:220:make_patterns_logic$433": {
+          "hide_name": 1,
+          "type": "$reduce_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 142, 152 ],
+            "Y": [ 72 ]
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:32$48": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:32.12-32.23"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 69, 70, 71 ],
+            "Y": [ 145 ]
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:45$61": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:45.24-45.55"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 12 ],
+            "B": [ 154 ],
+            "Y": [ 20 ]
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:46$68": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.24-46.91"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 11 ],
+            "B": [ 155 ],
+            "Y": [ 21 ]
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:47$73": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.61-47.81"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 13, 14, 15, 16 ],
+            "B": [ 73, 74, 75, 76 ],
+            "Y": [ 156 ]
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:48$77": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.59-48.80"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 13, 14, 15, 16 ],
+            "B": [ 157, 158, 159, 160 ],
+            "Y": [ 161 ]
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:59$91": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:59.16-59.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 162 ]
+          }
+        },
+        "$flatten\\dut.$add$__rtlrefine/frozen/design.v:28$145": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:28.53-28.64"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 96, 97 ],
+            "B": [ "1" ],
+            "Y": [ 163, 164 ]
+          }
+        },
+        "$flatten\\dut.$add$__rtlrefine/frozen/design.v:31$148": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.51-31.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 91, 92 ],
+            "B": [ "1" ],
+            "Y": [ 165, 166 ]
+          }
+        },
+        "$flatten\\dut.$add$__rtlrefine/frozen/design.v:33$150": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 85, 86, 87 ],
+            "B": [ "1" ],
+            "Y": [ 167, 168, 169 ]
+          }
+        },
+        "$flatten\\dut.$eq$__rtlrefine/frozen/design.v:28$144": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:28.26-28.46"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 96, 97 ],
+            "B": [ "1", "1" ],
+            "Y": [ 170 ]
+          }
+        },
+        "$flatten\\dut.$eq$__rtlrefine/frozen/design.v:31$147": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.25-31.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 91, 92 ],
+            "B": [ "0", "1" ],
+            "Y": [ 171 ]
+          }
+        },
+        "$flatten\\dut.$logic_and$__rtlrefine/frozen/design.v:15$125": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:15.18-15.36"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 173 ],
+            "Y": [ 12 ]
+          }
+        },
+        "$flatten\\dut.$logic_and$__rtlrefine/frozen/design.v:16$128": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.45-16.63"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 12 ],
+            "B": [ 5 ],
+            "Y": [ 90 ]
+          }
+        },
+        "$flatten\\dut.$logic_and$__rtlrefine/frozen/design.v:16$130": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.18-16.65"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 174 ],
+            "Y": [ 11 ]
+          }
+        },
+        "$flatten\\dut.$logic_and$__rtlrefine/frozen/design.v:18$132": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:18.13-18.31"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 4 ],
+            "B": [ 11 ],
+            "Y": [ 95 ]
+          }
+        },
+        "$flatten\\dut.$logic_not$__rtlrefine/frozen/design.v:16$126": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.18-16.22"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "Y": [ 172 ]
+          }
+        },
+        "$flatten\\dut.$logic_or$__rtlrefine/frozen/design.v:16$129": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.27-16.64"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 175 ],
+            "B": [ 90 ],
+            "Y": [ 174 ]
+          }
+        },
+        "$flatten\\dut.$lt$__rtlrefine/frozen/design.v:16$127": {
+          "hide_name": 1,
+          "type": "$lt",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.27-16.40"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 85, 86, 87 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 175 ]
+          }
+        },
+        "$flatten\\dut.$ne$__rtlrefine/frozen/design.v:15$124": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:15.26-15.36"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 85, 86, 87 ],
+            "Y": [ 173 ]
+          }
+        },
+        "$flatten\\dut.$procmux$226": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:26.13-26.17|__rtlrefine/frozen/design.v:26.9-29.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0", "0" ],
+            "B": [ "1", "1", "1", "1" ],
+            "S": [ 95 ],
+            "Y": [ 176, 177, 178, 179 ]
+          }
+        },
+        "$flatten\\dut.$procmux$232": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:26.13-26.17|__rtlrefine/frozen/design.v:26.9-29.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x", "x" ],
+            "B": [ 7, 8, 9, 10 ],
+            "S": [ 95 ],
+            "Y": [ 180, 181, 182, 183 ]
+          }
+        },
+        "$flatten\\dut.$procmux$238": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:26.13-26.17|__rtlrefine/frozen/design.v:26.9-29.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x" ],
+            "B": [ 96, 97 ],
+            "S": [ 95 ],
+            "Y": [ 184, 185 ]
+          }
+        },
+        "$flatten\\dut.$procmux$245": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:0.0-0.0|__rtlrefine/frozen/design.v:32.9-37.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x" ],
+            "B": [ 186, 187, 188, 167, 168, 169 ],
+            "S": [ 150, 149 ],
+            "Y": [ 81, 82, 83 ]
+          }
+        },
+        "$flatten\\dut.$procmux$246_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:0.0-0.0|__rtlrefine/frozen/design.v:32.9-37.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 90, 95 ],
+            "B": [ "1" ],
+            "Y": [ 150 ]
+          }
+        },
+        "$flatten\\dut.$procmux$247_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:0.0-0.0|__rtlrefine/frozen/design.v:32.9-37.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 90, 95 ],
+            "B": [ "0", "1" ],
+            "Y": [ 149 ]
+          }
+        },
+        "$flatten\\dut.$procmux$252": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:21.9-21.12|__rtlrefine/frozen/design.v:21.5-38.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 176, 177, 178, 179 ],
+            "B": [ "0", "0", "0", "0" ],
+            "S": [ 3 ],
+            "Y": [ 189, 190, 191, 192 ]
+          }
+        },
+        "$flatten\\dut.$procmux$255": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:21.9-21.12|__rtlrefine/frozen/design.v:21.5-38.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 180, 181, 182, 183 ],
+            "B": [ "x", "x", "x", "x" ],
+            "S": [ 3 ],
+            "Y": [ 107, 104, 101, 98 ]
+          }
+        },
+        "$flatten\\dut.$procmux$258": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:21.9-21.12|__rtlrefine/frozen/design.v:21.5-38.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 184, 185 ],
+            "B": [ "x", "x" ],
+            "S": [ 3 ],
+            "Y": [ 134, 136 ]
+          }
+        },
+        "$flatten\\dut.$sub$__rtlrefine/frozen/design.v:34$151": {
+          "hide_name": 1,
+          "type": "$sub",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:34.29-34.38"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 85, 86, 87 ],
+            "B": [ "1" ],
+            "Y": [ 186, 187, 188 ]
+          }
+        },
+        "$flatten\\dut.$ternary$__rtlrefine/frozen/design.v:28$146": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:28.26-28.64"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 163, 164 ],
+            "B": [ "0", "0" ],
+            "S": [ 170 ],
+            "Y": [ 93, 94 ]
+          }
+        },
+        "$flatten\\dut.$ternary$__rtlrefine/frozen/design.v:31$149": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.25-31.61"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 165, 166 ],
+            "B": [ "0", "0" ],
+            "S": [ 171 ],
+            "Y": [ 88, 89 ]
+          }
+        },
+        "$gt$__rtlrefine/frozen/properties.v:64$105": {
+          "hide_name": 1,
+          "type": "$gt",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.125-64.141"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 29, 30, 31 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 193 ]
+          }
+        },
+        "$le$__rtlrefine/frozen/properties.v:49$80": {
+          "hide_name": 1,
+          "type": "$le",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:49.27-49.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 24 ]
+          }
+        },
+        "$le$__rtlrefine/frozen/properties.v:58$88": {
+          "hide_name": 1,
+          "type": "$le",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:58.35-58.52"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 29, 30, 31 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 153 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:10$35": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:10.11-10.26"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 4 ],
+            "Y": [ 194 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:10$36": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:10.11-10.37"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 194 ],
+            "B": [ 11 ],
+            "Y": [ 48 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:11$39": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:11.10-11.36"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 195 ],
+            "B": [ 5 ],
+            "Y": [ 50 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:28$45": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:28.12-28.30"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 48 ],
+            "B": [ 6 ],
+            "Y": [ 142 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:45$60": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:45.34-45.54"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 196 ],
+            "Y": [ 154 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:46$65": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.65-46.88"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 196 ],
+            "B": [ 5 ],
+            "Y": [ 197 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:46$67": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.34-46.90"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 198 ],
+            "Y": [ 155 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:48$78": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.48-48.80"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 12 ],
+            "B": [ 161 ],
+            "Y": [ 199 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:59$92": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:59.8-59.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 162 ],
+            "Y": [ 52 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:60$93": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:60.8-60.19"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 48 ],
+            "B": [ 50 ],
+            "Y": [ 54 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:61$95": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:61.8-61.23"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 172 ],
+            "B": [ 12 ],
+            "Y": [ 195 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:61$97": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:61.8-61.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 195 ],
+            "B": [ 200 ],
+            "Y": [ 56 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:62$98": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:62.8-62.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "B": [ 49 ],
+            "Y": [ 58 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$100": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.57"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 201 ],
+            "B": [ 53 ],
+            "Y": [ 202 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$101": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.73"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 202 ],
+            "B": [ 55 ],
+            "Y": [ 203 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$102": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.87"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 203 ],
+            "B": [ 57 ],
+            "Y": [ 204 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$103": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.101"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 204 ],
+            "B": [ 59 ],
+            "Y": [ 205 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$104": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.121"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 205 ],
+            "B": [ 64 ],
+            "Y": [ 206 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$106": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.141"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 206 ],
+            "B": [ 193 ],
+            "Y": [ 25 ]
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$99": {
+          "hide_name": 1,
+          "type": "$logic_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 49 ],
+            "B": [ 51 ],
+            "Y": [ 201 ]
+          }
+        },
+        "$logic_not$__rtlrefine/frozen/properties.v:47$69": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.32-47.41"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 62 ],
+            "Y": [ 207 ]
+          }
+        },
+        "$logic_not$__rtlrefine/frozen/properties.v:48$75": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.31-48.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 208 ],
+            "Y": [ 209 ]
+          }
+        },
+        "$logic_not$__rtlrefine/frozen/properties.v:61$96": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:61.27-61.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 5 ],
+            "Y": [ 200 ]
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:46$66": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.43-46.89"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 210 ],
+            "B": [ 197 ],
+            "Y": [ 198 ]
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:47$70": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.25-47.41"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "B": [ 207 ],
+            "Y": [ 211 ]
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:47$72": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.25-47.56"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 211 ],
+            "B": [ 212 ],
+            "Y": [ 213 ]
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:47$74": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.25-47.82"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 213 ],
+            "B": [ 156 ],
+            "Y": [ 22 ]
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:48$76": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.24-48.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "B": [ 209 ],
+            "Y": [ 214 ]
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:48$79": {
+          "hide_name": 1,
+          "type": "$logic_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.24-48.81"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 214 ],
+            "B": [ 199 ],
+            "Y": [ 23 ]
+          }
+        },
+        "$lt$__rtlrefine/frozen/properties.v:46$63": {
+          "hide_name": 1,
+          "type": "$lt",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.44-46.59"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "B": [ "0", "0", "1" ],
+            "Y": [ 210 ]
+          }
+        },
+        "$memory\\dut.memory$rdmux[0][0][0]$314": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 215, 216, 217, 218 ],
+            "B": [ 219, 220, 221, 222 ],
+            "S": [ 92 ],
+            "Y": [ 13, 14, 15, 16 ]
+          }
+        },
+        "$memory\\dut.memory$rdmux[0][1][0]$317": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 133, 131, 129, 127 ],
+            "B": [ 125, 123, 121, 119 ],
+            "S": [ 91 ],
+            "Y": [ 215, 216, 217, 218 ]
+          }
+        },
+        "$memory\\dut.memory$rdmux[0][1][1]$320": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 117, 115, 113, 111 ],
+            "B": [ 109, 106, 103, 100 ],
+            "S": [ 91 ],
+            "Y": [ 219, 220, 221, 222 ]
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][0]$329": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138 ],
+            "B": [ 189 ],
+            "Y": [ 132 ]
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][1]$333": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138 ],
+            "B": [ 190 ],
+            "Y": [ 130 ]
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][2]$337": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138 ],
+            "B": [ 191 ],
+            "Y": [ 128 ]
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][3]$341": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138 ],
+            "B": [ 192 ],
+            "Y": [ 126 ]
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][0]$349": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 139 ],
+            "B": [ 189 ],
+            "Y": [ 124 ]
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][1]$353": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 139 ],
+            "B": [ 190 ],
+            "Y": [ 122 ]
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][2]$357": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 139 ],
+            "B": [ 191 ],
+            "Y": [ 120 ]
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][3]$361": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 139 ],
+            "B": [ 192 ],
+            "Y": [ 118 ]
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][0]$369": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 140 ],
+            "B": [ 189 ],
+            "Y": [ 116 ]
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][1]$373": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 140 ],
+            "B": [ 190 ],
+            "Y": [ 114 ]
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][2]$377": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 140 ],
+            "B": [ 191 ],
+            "Y": [ 112 ]
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][3]$381": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 140 ],
+            "B": [ 192 ],
+            "Y": [ 110 ]
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][0]$387": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 141 ],
+            "B": [ 189 ],
+            "Y": [ 108 ]
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][1]$391": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 141 ],
+            "B": [ 190 ],
+            "Y": [ 105 ]
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][2]$395": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 141 ],
+            "B": [ 191 ],
+            "Y": [ 102 ]
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][3]$399": {
+          "hide_name": 1,
+          "type": "$and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 141 ],
+            "B": [ 192 ],
+            "Y": [ 99 ]
+          }
+        },
+        "$ne$__rtlrefine/frozen/properties.v:46$64": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.65-46.77"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "Y": [ 196 ]
+          }
+        },
+        "$ne$__rtlrefine/frozen/properties.v:47$71": {
+          "hide_name": 1,
+          "type": "$reduce_bool",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.45-47.56"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 69, 70, 71 ],
+            "Y": [ 212 ]
+          }
+        },
+        "$procdff$278": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:38.1-42.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ "1" ],
+            "Q": [ 223 ]
+          }
+        },
+        "$procdff$279": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:38.1-42.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 56 ],
+            "Q": [ 208 ]
+          }
+        },
+        "$procdff$280": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:38.1-42.4"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 13, 14, 15, 16 ],
+            "Q": [ 157, 158, 159, 160 ]
+          }
+        },
+        "$procmux$171": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:43.14-43.25|__rtlrefine/frozen/properties.v:43.11-43.39"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 223 ],
+            "Y": [ 35 ]
+          }
+        },
+        "$procmux$182": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:32.12-32.23|__rtlrefine/frozen/properties.v:32.9-33.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 224, 225, 226 ],
+            "B": [ "x", "x", "x" ],
+            "S": [ 145 ],
+            "Y": [ 227, 228, 229 ]
+          }
+        },
+        "$procmux$184": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:31.17-31.20|__rtlrefine/frozen/properties.v:31.14-34.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x" ],
+            "B": [ 227, 228, 229 ],
+            "S": [ 50 ],
+            "Y": [ 230, 231, 232 ]
+          }
+        },
+        "$procmux$187": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:28.12-28.30|__rtlrefine/frozen/properties.v:28.9-30.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x" ],
+            "B": [ 233, 234, 235 ],
+            "S": [ 142 ],
+            "Y": [ 236, 237, 238 ]
+          }
+        },
+        "$procmux$189": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:27.13-27.22|__rtlrefine/frozen/properties.v:27.10-34.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 236, 237, 238 ],
+            "B": [ 230, 231, 232 ],
+            "S": [ 62 ],
+            "Y": [ 65, 66, 67 ]
+          }
+        },
+        "$procmux$206": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:32.12-32.23|__rtlrefine/frozen/properties.v:32.9-33.35"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 145 ],
+            "Y": [ 239 ]
+          }
+        },
+        "$procmux$208": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:31.17-31.20|__rtlrefine/frozen/properties.v:31.14-34.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ 239 ],
+            "S": [ 50 ],
+            "Y": [ 240 ]
+          }
+        },
+        "$procmux$211": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:28.12-28.30|__rtlrefine/frozen/properties.v:28.9-30.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 142 ],
+            "Y": [ 241 ]
+          }
+        },
+        "$procmux$213": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:27.13-27.22|__rtlrefine/frozen/properties.v:27.10-34.8"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 241 ],
+            "B": [ 240 ],
+            "S": [ 62 ],
+            "Y": [ 61 ]
+          }
+        },
+        "$procmux$219": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:0.0-0.0|__rtlrefine/frozen/properties.v:15.9-19.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x", "x", "x" ],
+            "B": [ 242, 243, 244, 26, 27, 28 ],
+            "S": [ 147, 148 ],
+            "Y": [ 77, 78, 79 ]
+          }
+        },
+        "$procmux$220_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:0.0-0.0|__rtlrefine/frozen/properties.v:15.9-19.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 50, 48 ],
+            "B": [ "1" ],
+            "Y": [ 147 ]
+          }
+        },
+        "$procmux$221_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/properties.v:0.0-0.0|__rtlrefine/frozen/properties.v:15.9-19.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 50, 48 ],
+            "B": [ "0", "1" ],
+            "Y": [ 148 ]
+          }
+        },
+        "$sub$__rtlrefine/frozen/properties.v:17$42": {
+          "hide_name": 1,
+          "type": "$sub",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:17.30-17.41"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "B": [ "1" ],
+            "Y": [ 242, 243, 244 ]
+          }
+        },
+        "$sub$__rtlrefine/frozen/properties.v:29$47": {
+          "hide_name": 1,
+          "type": "$sub",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:29.35-29.58"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 17, 18, 19 ],
+            "B": [ 245 ],
+            "Y": [ 233, 234, 235 ]
+          }
+        },
+        "$sub$__rtlrefine/frozen/properties.v:33$49": {
+          "hide_name": 1,
+          "type": "$sub",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000011"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:33.24-33.34"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 69, 70, 71 ],
+            "B": [ "1" ],
+            "Y": [ 224, 225, 226 ]
+          }
+        },
+        "$ternary$__rtlrefine/frozen/properties.v:29$46": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:29.46-29.57"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 50 ],
+            "Y": [ 245 ]
+          }
+        },
+        "dut": {
+          "hide_name": 0,
+          "type": "$scopeinfo",
+          "parameters": {
+            "TYPE": "module"
+          },
+          "attributes": {
+            "cell_src": "__rtlrefine/frozen/properties.v:6.37-6.165",
+            "module": "$paramod$81485298bde83e692495130650532cc431b3c071\\packet_queue",
+            "module_dynports": "00000000000000000000000000000001",
+            "module_hdlname": "packet_queue",
+            "module_src": "__rtlrefine/frozen/design.v:2.1-40.10"
+          },
+          "port_directions": {
+          },
+          "connections": {
+          }
+        }
+      },
+      "netnames": {
+        "$0\\was_stalled[0:0]": {
+          "hide_name": 1,
+          "bits": [ 56 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:38.1-42.4"
+          }
+        },
+        "$add$__rtlrefine/frozen/properties.v:16$41_Y": {
+          "hide_name": 1,
+          "bits": [ 26, 27, 28 ],
+          "attributes": {
+          }
+        },
+        "$add$__rtlrefine/frozen/properties.v:58$89_Y": {
+          "hide_name": 1,
+          "bits": [ 32, 33, 34 ],
+          "attributes": {
+          }
+        },
+        "$assume$__rtlrefine/frozen/properties.v:43$57_EN": {
+          "hide_name": 1,
+          "bits": [ 35 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:43.27-43.38"
+          }
+        },
+        "$auto$opt_dff.cc:194:make_patterns_logic$420": {
+          "hide_name": 1,
+          "bits": [ 143 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:194:make_patterns_logic$422": {
+          "hide_name": 1,
+          "bits": [ 144 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:194:make_patterns_logic$424": {
+          "hide_name": 1,
+          "bits": [ 146 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:194:make_patterns_logic$436": {
+          "hide_name": 1,
+          "bits": [ 80 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:194:make_patterns_logic$440": {
+          "hide_name": 1,
+          "bits": [ 84 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:219:make_patterns_logic$410": {
+          "hide_name": 1,
+          "bits": [ 60 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:219:make_patterns_logic$416": {
+          "hide_name": 1,
+          "bits": [ 63 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:219:make_patterns_logic$426": {
+          "hide_name": 1,
+          "bits": [ 68 ],
+          "attributes": {
+          }
+        },
+        "$auto$opt_dff.cc:219:make_patterns_logic$432": {
+          "hide_name": 1,
+          "bits": [ 72 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$415": {
+          "hide_name": 1,
+          "bits": [ 151 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$431": {
+          "hide_name": 1,
+          "bits": [ 152 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$464": {
+          "hide_name": 1,
+          "bits": [ 36 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$469": {
+          "hide_name": 1,
+          "bits": [ 37 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$474": {
+          "hide_name": 1,
+          "bits": [ 38 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$479": {
+          "hide_name": 1,
+          "bits": [ 39 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$484": {
+          "hide_name": 1,
+          "bits": [ 40 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2739:Not$489": {
+          "hide_name": 1,
+          "bits": [ 41 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$328": {
+          "hide_name": 1,
+          "bits": [ 138 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$348": {
+          "hide_name": 1,
+          "bits": [ 139 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$368": {
+          "hide_name": 1,
+          "bits": [ 140 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$386": {
+          "hide_name": 1,
+          "bits": [ 141 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$466": {
+          "hide_name": 1,
+          "bits": [ 42 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$471": {
+          "hide_name": 1,
+          "bits": [ 43 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$476": {
+          "hide_name": 1,
+          "bits": [ 44 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$481": {
+          "hide_name": 1,
+          "bits": [ 45 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$486": {
+          "hide_name": 1,
+          "bits": [ 46 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2786:And$491": {
+          "hide_name": 1,
+          "bits": [ 47 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2793:Eq$324": {
+          "hide_name": 1,
+          "bits": [ 135 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2793:Eq$326": {
+          "hide_name": 1,
+          "bits": [ 137 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2793:Eq$346": {
+          "hide_name": 1,
+          "bits": [ 134 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2793:Eq$366": {
+          "hide_name": 1,
+          "bits": [ 136 ],
+          "attributes": {
+          }
+        },
+        "$auto$wreduce.cc:513:run$294": {
+          "hide_name": 1,
+          "bits": [ 163, 164, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:28.53-28.64",
+            "unused_bits": "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$auto$wreduce.cc:513:run$295": {
+          "hide_name": 1,
+          "bits": [ 93, 94, "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x" ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:28.26-28.64"
+          }
+        },
+        "$auto$wreduce.cc:513:run$296": {
+          "hide_name": 1,
+          "bits": [ 165, 166, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.51-31.61",
+            "unused_bits": "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$auto$wreduce.cc:513:run$297": {
+          "hide_name": 1,
+          "bits": [ 88, 89, "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x" ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.25-31.61"
+          }
+        },
+        "$auto$wreduce.cc:513:run$298": {
+          "hide_name": 1,
+          "bits": [ 167, 168, 169, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38",
+            "unused_bits": "3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$auto$wreduce.cc:513:run$299": {
+          "hide_name": 1,
+          "bits": [ 186, 187, 188, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:34.29-34.38",
+            "unused_bits": "3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$auto$wreduce.cc:513:run$301": {
+          "hide_name": 1,
+          "bits": [ 224, 225, 226, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:33.24-33.34",
+            "unused_bits": "3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$auto$wreduce.cc:513:run$302": {
+          "hide_name": 1,
+          "bits": [ 233, 234, 235, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:29.35-29.58",
+            "unused_bits": "3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$auto$wreduce.cc:513:run$303": {
+          "hide_name": 1,
+          "bits": [ 245, "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:29.46-29.57"
+          }
+        },
+        "$auto$wreduce.cc:513:run$304": {
+          "hide_name": 1,
+          "bits": [ 242, 243, 244, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:17.30-17.41",
+            "unused_bits": "3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:32$48_Y": {
+          "hide_name": 1,
+          "bits": [ 145 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:32.12-32.23"
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:47$73_Y": {
+          "hide_name": 1,
+          "bits": [ 156 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.61-47.81"
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:48$77_Y": {
+          "hide_name": 1,
+          "bits": [ 161 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.59-48.80"
+          }
+        },
+        "$eq$__rtlrefine/frozen/properties.v:59$91_Y": {
+          "hide_name": 1,
+          "bits": [ 162 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:59.16-59.32"
+          }
+        },
+        "$flatten\\dut.$0$memwr$\\memory$__rtlrefine/frozen/design.v:27$122_DATA[3:0]$136": {
+          "hide_name": 1,
+          "bits": [ 107, 104, 101, 98 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          }
+        },
+        "$flatten\\dut.$0$memwr$\\memory$__rtlrefine/frozen/design.v:27$122_EN[3:0]$137": {
+          "hide_name": 1,
+          "bits": [ 189, 190, 191, 192 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          }
+        },
+        "$flatten\\dut.$2$memwr$\\memory$__rtlrefine/frozen/design.v:27$122_ADDR[1:0]$141": {
+          "hide_name": 1,
+          "bits": [ 184, 185 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          }
+        },
+        "$flatten\\dut.$2$memwr$\\memory$__rtlrefine/frozen/design.v:27$122_DATA[3:0]$142": {
+          "hide_name": 1,
+          "bits": [ 180, 181, 182, 183 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          }
+        },
+        "$flatten\\dut.$2$memwr$\\memory$__rtlrefine/frozen/design.v:27$122_EN[3:0]$143": {
+          "hide_name": 1,
+          "bits": [ 176, 177, 178, 179 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          }
+        },
+        "$flatten\\dut.$eq$__rtlrefine/frozen/design.v:28$144_Y": {
+          "hide_name": 1,
+          "bits": [ 170 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:28.26-28.46"
+          }
+        },
+        "$flatten\\dut.$eq$__rtlrefine/frozen/design.v:31$147_Y": {
+          "hide_name": 1,
+          "bits": [ 171 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.25-31.44"
+          }
+        },
+        "$flatten\\dut.$logic_not$__rtlrefine/frozen/design.v:15$123_Y": {
+          "hide_name": 1,
+          "bits": [ 172 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:15.18-15.22"
+          }
+        },
+        "$flatten\\dut.$logic_or$__rtlrefine/frozen/design.v:16$129_Y": {
+          "hide_name": 1,
+          "bits": [ 174 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.27-16.64"
+          }
+        },
+        "$flatten\\dut.$lt$__rtlrefine/frozen/design.v:16$127_Y": {
+          "hide_name": 1,
+          "bits": [ 175 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:16.27-16.40"
+          }
+        },
+        "$flatten\\dut.$ne$__rtlrefine/frozen/design.v:15$124_Y": {
+          "hide_name": 1,
+          "bits": [ 173 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:15.26-15.36"
+          }
+        },
+        "$flatten\\dut.$procmux$245_Y": {
+          "hide_name": 1,
+          "bits": [ 81, 82, 83 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\dut.$procmux$246_CMP": {
+          "hide_name": 1,
+          "bits": [ 150 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\dut.$procmux$247_CMP": {
+          "hide_name": 1,
+          "bits": [ 149 ],
+          "attributes": {
+          }
+        },
+        "$gt$__rtlrefine/frozen/properties.v:64$105_Y": {
+          "hide_name": 1,
+          "bits": [ 193 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.125-64.141"
+          }
+        },
+        "$le$__rtlrefine/frozen/properties.v:58$88_Y": {
+          "hide_name": 1,
+          "bits": [ 153 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:58.35-58.52"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:10$35_Y": {
+          "hide_name": 1,
+          "bits": [ 194 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:10.11-10.26"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:11$38_Y": {
+          "hide_name": 1,
+          "bits": [ 195 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:11.10-11.25"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:28$45_Y": {
+          "hide_name": 1,
+          "bits": [ 142 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:28.12-28.30"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:45$60_Y": {
+          "hide_name": 1,
+          "bits": [ 154 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:45.34-45.54"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:46$65_Y": {
+          "hide_name": 1,
+          "bits": [ 197 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.65-46.88"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:46$67_Y": {
+          "hide_name": 1,
+          "bits": [ 155 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.34-46.90"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:48$78_Y": {
+          "hide_name": 1,
+          "bits": [ 199 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.48-48.80"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:59$92_Y": {
+          "hide_name": 1,
+          "bits": [ 52 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:59.8-59.32"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:60$93_Y": {
+          "hide_name": 1,
+          "bits": [ 54 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:60.8-60.19"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:62$98_Y": {
+          "hide_name": 1,
+          "bits": [ 58 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:62.8-62.24"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$100_Y": {
+          "hide_name": 1,
+          "bits": [ 202 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.57"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$101_Y": {
+          "hide_name": 1,
+          "bits": [ 203 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.73"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$102_Y": {
+          "hide_name": 1,
+          "bits": [ 204 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.87"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$103_Y": {
+          "hide_name": 1,
+          "bits": [ 205 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.101"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$104_Y": {
+          "hide_name": 1,
+          "bits": [ 206 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.121"
+          }
+        },
+        "$logic_and$__rtlrefine/frozen/properties.v:64$99_Y": {
+          "hide_name": 1,
+          "bits": [ 201 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:64.23-64.44"
+          }
+        },
+        "$logic_not$__rtlrefine/frozen/properties.v:27$44_Y": {
+          "hide_name": 1,
+          "bits": [ 207 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:27.13-27.22"
+          }
+        },
+        "$logic_not$__rtlrefine/frozen/properties.v:40$53_Y": {
+          "hide_name": 1,
+          "bits": [ 200 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:40.37-40.45"
+          }
+        },
+        "$logic_not$__rtlrefine/frozen/properties.v:48$75_Y": {
+          "hide_name": 1,
+          "bits": [ 209 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.31-48.43"
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:46$66_Y": {
+          "hide_name": 1,
+          "bits": [ 198 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.43-46.89"
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:47$70_Y": {
+          "hide_name": 1,
+          "bits": [ 211 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.25-47.41"
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:47$72_Y": {
+          "hide_name": 1,
+          "bits": [ 213 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.25-47.56"
+          }
+        },
+        "$logic_or$__rtlrefine/frozen/properties.v:48$76_Y": {
+          "hide_name": 1,
+          "bits": [ 214 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:48.24-48.43"
+          }
+        },
+        "$lt$__rtlrefine/frozen/properties.v:46$63_Y": {
+          "hide_name": 1,
+          "bits": [ 210 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:46.44-46.59"
+          }
+        },
+        "$memory\\dut.memory$rdmux[0][0][0]$a$315": {
+          "hide_name": 1,
+          "bits": [ 215, 216, 217, 218 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$rdmux[0][0][0]$b$316": {
+          "hide_name": 1,
+          "bits": [ 219, 220, 221, 222 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][0]$y$330": {
+          "hide_name": 1,
+          "bits": [ 132 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][1]$y$334": {
+          "hide_name": 1,
+          "bits": [ 130 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][2]$y$338": {
+          "hide_name": 1,
+          "bits": [ 128 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[0][0][3]$y$342": {
+          "hide_name": 1,
+          "bits": [ 126 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][0]$y$350": {
+          "hide_name": 1,
+          "bits": [ 124 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][1]$y$354": {
+          "hide_name": 1,
+          "bits": [ 122 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][2]$y$358": {
+          "hide_name": 1,
+          "bits": [ 120 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[1][0][3]$y$362": {
+          "hide_name": 1,
+          "bits": [ 118 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][0]$y$370": {
+          "hide_name": 1,
+          "bits": [ 116 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][1]$y$374": {
+          "hide_name": 1,
+          "bits": [ 114 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][2]$y$378": {
+          "hide_name": 1,
+          "bits": [ 112 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[2][0][3]$y$382": {
+          "hide_name": 1,
+          "bits": [ 110 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][0]$y$388": {
+          "hide_name": 1,
+          "bits": [ 108 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][1]$y$392": {
+          "hide_name": 1,
+          "bits": [ 105 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][2]$y$396": {
+          "hide_name": 1,
+          "bits": [ 102 ],
+          "attributes": {
+          }
+        },
+        "$memory\\dut.memory$wren[3][0][3]$y$400": {
+          "hide_name": 1,
+          "bits": [ 99 ],
+          "attributes": {
+          }
+        },
+        "$ne$__rtlrefine/frozen/properties.v:45$59_Y": {
+          "hide_name": 1,
+          "bits": [ 196 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:45.42-45.54"
+          }
+        },
+        "$ne$__rtlrefine/frozen/properties.v:47$71_Y": {
+          "hide_name": 1,
+          "bits": [ 212 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:47.45-47.56"
+          }
+        },
+        "$procmux$182_Y": {
+          "hide_name": 1,
+          "bits": [ 227, 228, 229 ],
+          "attributes": {
+          }
+        },
+        "$procmux$184_Y": {
+          "hide_name": 1,
+          "bits": [ 230, 231, 232 ],
+          "attributes": {
+          }
+        },
+        "$procmux$187_Y": {
+          "hide_name": 1,
+          "bits": [ 236, 237, 238 ],
+          "attributes": {
+          }
+        },
+        "$procmux$189_Y": {
+          "hide_name": 1,
+          "bits": [ 65, 66, 67 ],
+          "attributes": {
+          }
+        },
+        "$procmux$206_Y": {
+          "hide_name": 1,
+          "bits": [ 239 ],
+          "attributes": {
+          }
+        },
+        "$procmux$208_Y": {
+          "hide_name": 1,
+          "bits": [ 240 ],
+          "attributes": {
+          }
+        },
+        "$procmux$211_Y": {
+          "hide_name": 1,
+          "bits": [ 241 ],
+          "attributes": {
+          }
+        },
+        "$procmux$213_Y": {
+          "hide_name": 1,
+          "bits": [ 61 ],
+          "attributes": {
+          }
+        },
+        "$procmux$219_Y": {
+          "hide_name": 1,
+          "bits": [ 77, 78, 79 ],
+          "attributes": {
+          }
+        },
+        "$procmux$220_CMP": {
+          "hide_name": 1,
+          "bits": [ 147 ],
+          "attributes": {
+          }
+        },
+        "$procmux$221_CMP": {
+          "hide_name": 1,
+          "bits": [ 148 ],
+          "attributes": {
+          }
+        },
+        "clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:1.39-1.42"
+          }
+        },
+        "cover_progress": {
+          "hide_name": 0,
+          "bits": [ 25 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:4.89-4.103"
+          }
+        },
+        "dut.clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "dut clk",
+            "src": "__rtlrefine/frozen/design.v:3.16-3.19"
+          }
+        },
+        "dut.count": {
+          "hide_name": 0,
+          "bits": [ 85, 86, 87 ],
+          "attributes": {
+            "hdlname": "dut count",
+            "init": "000",
+            "src": "__rtlrefine/frozen/design.v:14.12-14.17"
+          }
+        },
+        "dut.m_data": {
+          "hide_name": 0,
+          "bits": [ 13, 14, 15, 16 ],
+          "attributes": {
+            "hdlname": "dut m_data",
+            "src": "__rtlrefine/frozen/design.v:9.29-9.35"
+          }
+        },
+        "dut.m_ready": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "hdlname": "dut m_ready",
+            "src": "__rtlrefine/frozen/design.v:8.16-8.23"
+          }
+        },
+        "dut.m_valid": {
+          "hide_name": 0,
+          "bits": [ 12 ],
+          "attributes": {
+            "hdlname": "dut m_valid",
+            "src": "__rtlrefine/frozen/design.v:7.17-7.24"
+          }
+        },
+        "dut.memory[0]": {
+          "hide_name": 0,
+          "bits": [ 133, 131, 129, 127 ],
+          "attributes": {
+          }
+        },
+        "dut.memory[1]": {
+          "hide_name": 0,
+          "bits": [ 125, 123, 121, 119 ],
+          "attributes": {
+          }
+        },
+        "dut.memory[2]": {
+          "hide_name": 0,
+          "bits": [ 117, 115, 113, 111 ],
+          "attributes": {
+          }
+        },
+        "dut.memory[3]": {
+          "hide_name": 0,
+          "bits": [ 109, 106, 103, 100 ],
+          "attributes": {
+          }
+        },
+        "dut.pop": {
+          "hide_name": 0,
+          "bits": [ 90 ],
+          "attributes": {
+            "hdlname": "dut pop",
+            "src": "__rtlrefine/frozen/design.v:19.6-19.9"
+          }
+        },
+        "dut.push": {
+          "hide_name": 0,
+          "bits": [ 95 ],
+          "attributes": {
+            "hdlname": "dut push",
+            "src": "__rtlrefine/frozen/design.v:18.6-18.10"
+          }
+        },
+        "dut.read_ptr": {
+          "hide_name": 0,
+          "bits": [ 91, 92 ],
+          "attributes": {
+            "hdlname": "dut read_ptr",
+            "init": "00",
+            "src": "__rtlrefine/frozen/design.v:13.27-13.35"
+          }
+        },
+        "dut.rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "dut rst",
+            "src": "__rtlrefine/frozen/design.v:3.21-3.24"
+          }
+        },
+        "dut.s_data": {
+          "hide_name": 0,
+          "bits": [ 7, 8, 9, 10 ],
+          "attributes": {
+            "hdlname": "dut s_data",
+            "src": "__rtlrefine/frozen/design.v:6.28-6.34"
+          }
+        },
+        "dut.s_ready": {
+          "hide_name": 0,
+          "bits": [ 11 ],
+          "attributes": {
+            "hdlname": "dut s_ready",
+            "src": "__rtlrefine/frozen/design.v:5.17-5.24"
+          }
+        },
+        "dut.s_valid": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "hdlname": "dut s_valid",
+            "src": "__rtlrefine/frozen/design.v:4.16-4.23"
+          }
+        },
+        "dut.write_ptr": {
+          "hide_name": 0,
+          "bits": [ 96, 97 ],
+          "attributes": {
+            "hdlname": "dut write_ptr",
+            "init": "00",
+            "src": "__rtlrefine/frozen/design.v:13.14-13.23"
+          }
+        },
+        "expected_count": {
+          "hide_name": 0,
+          "bits": [ 17, 18, 19, "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:3.15-3.29"
+          }
+        },
+        "m_data": {
+          "hide_name": 0,
+          "bits": [ 13, 14, 15, 16 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:2.68-2.74"
+          }
+        },
+        "m_ready": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:1.55-1.62"
+          }
+        },
+        "m_valid": {
+          "hide_name": 0,
+          "bits": [ 12 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:2.41-2.48"
+          }
+        },
+        "occupancy": {
+          "hide_name": 0,
+          "bits": [ 17, 18, 19 ],
+          "attributes": {
+            "init": "000",
+            "src": "__rtlrefine/frozen/properties.v:9.14-9.23"
+          }
+        },
+        "past_valid": {
+          "hide_name": 0,
+          "bits": [ 223 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:36.5-36.15"
+          }
+        },
+        "pop": {
+          "hide_name": 0,
+          "bits": [ 50 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:11.6-11.9"
+          }
+        },
+        "position": {
+          "hide_name": 0,
+          "bits": [ 69, 70, 71 ],
+          "attributes": {
+            "init": "000",
+            "src": "__rtlrefine/frozen/properties.v:23.14-23.22"
+          }
+        },
+        "previous_data": {
+          "hide_name": 0,
+          "bits": [ 157, 158, 159, 160 ],
+          "attributes": {
+            "init": "0000",
+            "src": "__rtlrefine/frozen/properties.v:37.17-37.30"
+          }
+        },
+        "property_capacity": {
+          "hide_name": 0,
+          "bits": [ 24 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:4.71-4.88"
+          }
+        },
+        "property_payload": {
+          "hide_name": 0,
+          "bits": [ 22 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:4.38-4.54"
+          }
+        },
+        "property_ready": {
+          "hide_name": 0,
+          "bits": [ 21 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:4.23-4.37"
+          }
+        },
+        "property_stable": {
+          "hide_name": 0,
+          "bits": [ 23 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:4.55-4.70"
+          }
+        },
+        "property_valid": {
+          "hide_name": 0,
+          "bits": [ 20 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:4.8-4.22"
+          }
+        },
+        "push": {
+          "hide_name": 0,
+          "bits": [ 48 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:10.6-10.10"
+          }
+        },
+        "rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:1.43-1.46"
+          }
+        },
+        "s_data": {
+          "hide_name": 0,
+          "bits": [ 7, 8, 9, 10 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:2.19-2.25"
+          }
+        },
+        "s_ready": {
+          "hide_name": 0,
+          "bits": [ 11 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:2.33-2.40"
+          }
+        },
+        "s_valid": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:1.47-1.54"
+          }
+        },
+        "seen_full": {
+          "hide_name": 0,
+          "bits": [ 53 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:54.28-54.37"
+          }
+        },
+        "seen_overlap": {
+          "hide_name": 0,
+          "bits": [ 55 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:54.40-54.52"
+          }
+        },
+        "seen_pop": {
+          "hide_name": 0,
+          "bits": [ 51 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:54.17-54.25"
+          }
+        },
+        "seen_push": {
+          "hide_name": 0,
+          "bits": [ 49 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:54.5-54.14"
+          }
+        },
+        "seen_reset": {
+          "hide_name": 0,
+          "bits": [ 59 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:54.68-54.78"
+          }
+        },
+        "seen_stall": {
+          "hide_name": 0,
+          "bits": [ 57 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:54.55-54.65"
+          }
+        },
+        "seen_watched_pop": {
+          "hide_name": 0,
+          "bits": [ 64 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:22.16-22.32"
+          }
+        },
+        "total_pops": {
+          "hide_name": 0,
+          "bits": [ 29, 30, 31 ],
+          "attributes": {
+            "init": "000",
+            "src": "__rtlrefine/frozen/properties.v:55.14-55.24"
+          }
+        },
+        "tracking": {
+          "hide_name": 0,
+          "bits": [ 62 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:22.5-22.13"
+          }
+        },
+        "was_stalled": {
+          "hide_name": 0,
+          "bits": [ 208 ],
+          "attributes": {
+            "init": "0",
+            "src": "__rtlrefine/frozen/properties.v:36.18-36.29"
+          }
+        },
+        "watch_this": {
+          "hide_name": 0,
+          "bits": [ 6 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/properties.v:1.63-1.73"
+          }
+        },
+        "watched_data": {
+          "hide_name": 0,
+          "bits": [ 73, 74, 75, 76 ],
+          "attributes": {
+            "init": "0000",
+            "src": "__rtlrefine/frozen/properties.v:24.17-24.29"
+          }
+        }
+      }
+    }
+  }
+}

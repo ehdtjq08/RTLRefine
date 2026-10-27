@@ -1,0 +1,30 @@
+{
+  "all_prefix_assumptions_satisfiable": false,
+  "command": {
+    "command": [
+      "/home/hands/anaconda3/bin/yosys-smtbmc",
+      "-s",
+      "z3",
+      "--presat",
+      "--timeout",
+      "45",
+      "-t",
+      "28",
+      "--dump-vcd",
+      "__rtlrefine/smt-counterexample.vcd",
+      "--dump-yw",
+      "__rtlrefine/smt-counterexample.yw",
+      "__rtlrefine/frozen/prepared.smt2"
+    ],
+    "execution_mode": "bubblewrap",
+    "network": false,
+    "returncode": 1,
+    "stage": "smt_properties",
+    "status": "FAIL",
+    "wall_seconds": 45.104524919064716
+  },
+  "engine": "smtbmc_z3",
+  "smt_sha256": "4a0f101691192f18d2adddcf987724e1e3eaaf6327d2f037a59c73c46f3d500c",
+  "status": "UNPROVEN",
+  "steps": 28
+}

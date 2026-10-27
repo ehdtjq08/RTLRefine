@@ -1,0 +1,98 @@
+{
+  "contract": "Single positive-edge clock; synchronous active-high reset flushes the queue. Transfers occur only with valid && ready outside reset. Output valid exactly matches nonempty occupancy. Input ready when capacity exists or a simultaneous output transfer frees space. Accepted payloads leave in FIFO order. Output remains valid and stable while stalled. No fall-through on an empty queue.",
+  "contract_id": "ab002fd6f96964011a2886ecfb99184e9038bb1e08d85efd0dff4b4e2ced3e70",
+  "design_hashes": {
+    "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+  },
+  "fixed_corrected_rtl_used": false,
+  "interface": [
+    {
+      "instance": "packet_queue",
+      "numeric_parameters": {
+        "DEPTH": "32'sb00000000000000000000000000000100",
+        "PW": "32'sb00000000000000000000000000000010",
+        "WIDTH": "32'sb00000000000000000000000000000100"
+      },
+      "ports": [
+        {
+          "direction": "INPUT",
+          "index": 0,
+          "name": "clk",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 1,
+          "name": "rst",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 2,
+          "name": "s_valid",
+          "width": 1
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 3,
+          "name": "s_ready",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 4,
+          "name": "s_data",
+          "width": 4
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 5,
+          "name": "m_valid",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 6,
+          "name": "m_ready",
+          "width": 1
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 7,
+          "name": "m_data",
+          "width": 4
+        }
+      ]
+    }
+  ],
+  "minimal_counterexample_confirmed": false,
+  "monitor_sha256": "87556b10cc84688f0cffa6e5628b32cc6e028d4f1a35e58f4001d6f5a6be0695",
+  "new_model_calls": 0,
+  "prepared_sha256": "cf628fcc1de8dff0592eb2dd4168ef13fed66abadd02fd932caf4bd2295f6096",
+  "queries": [
+    {
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/solve_properties.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "solve_properties",
+        "status": "PASS",
+        "wall_seconds": 3.170982426032424
+      },
+      "cover_query": false,
+      "script_sha256": "21b3fa9eece07a270eca2f41861d3010f8634d97da787d93a043170c59d835f0",
+      "status": "BOUNDED_PASS",
+      "steps": 12
+    }
+  ],
+  "scope": "Bounded two-state synchronous positive-edge FIFO contract; reset at first step; arbitrary defined external inputs; zero initial state. Not unbounded correctness or physical CDC.",
+  "status": "BOUNDED_PASS",
+  "steps": 12
+}

@@ -1,0 +1,135 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/iverilog",
+        "-g2012",
+        "-s",
+        "tb",
+        "-o",
+        "__rtlrefine/replay.vvp",
+        "./rtl/packet_queue.sv",
+        "tb.v"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "compile",
+      "status": "PASS",
+      "wall_seconds": 0.034464248921722174
+    },
+    {
+      "command": [
+        "/home/hands/anaconda3/bin/vvp",
+        "__rtlrefine/replay.vvp"
+      ],
+      "execution_mode": "bubblewrap",
+      "network": false,
+      "returncode": 0,
+      "stage": "simulate",
+      "status": "PASS",
+      "wall_seconds": 0.018131845863536
+    }
+  ],
+  "observations": [
+    {
+      "cycle": 0,
+      "expected_count": 0,
+      "expected_data": null,
+      "m_data": null,
+      "m_ready": 0,
+      "m_valid": 0,
+      "rst": 1,
+      "s_data": 0,
+      "s_ready": 0,
+      "s_valid": 0,
+      "violations": []
+    },
+    {
+      "cycle": 1,
+      "expected_count": 0,
+      "expected_data": null,
+      "m_data": null,
+      "m_ready": 0,
+      "m_valid": 0,
+      "rst": 0,
+      "s_data": 8,
+      "s_ready": 1,
+      "s_valid": 1,
+      "violations": []
+    },
+    {
+      "cycle": 2,
+      "expected_count": 1,
+      "expected_data": 8,
+      "m_data": 8,
+      "m_ready": 1,
+      "m_valid": 1,
+      "rst": 0,
+      "s_data": 10,
+      "s_ready": 1,
+      "s_valid": 0,
+      "violations": []
+    },
+    {
+      "cycle": 3,
+      "expected_count": 0,
+      "expected_data": null,
+      "m_data": null,
+      "m_ready": 1,
+      "m_valid": 0,
+      "rst": 1,
+      "s_data": 7,
+      "s_ready": 0,
+      "s_valid": 1,
+      "violations": []
+    },
+    {
+      "cycle": 4,
+      "expected_count": 0,
+      "expected_data": null,
+      "m_data": null,
+      "m_ready": 1,
+      "m_valid": 0,
+      "rst": 0,
+      "s_data": 4,
+      "s_ready": 1,
+      "s_valid": 1,
+      "violations": []
+    },
+    {
+      "cycle": 5,
+      "expected_count": 1,
+      "expected_data": 4,
+      "m_data": null,
+      "m_ready": 0,
+      "m_valid": 1,
+      "rst": 0,
+      "s_data": 0,
+      "s_ready": 1,
+      "s_valid": 0,
+      "violations": [
+        "payload_order"
+      ]
+    }
+  ],
+  "oracle": "Independent Python transaction queue and four-state Icarus; no corrected RTL",
+  "status": "FAILURE_REPRODUCED",
+  "violations": [
+    {
+      "cycle": 5,
+      "expected_count": 1,
+      "expected_data": 4,
+      "m_data": null,
+      "m_ready": 0,
+      "m_valid": 1,
+      "rst": 0,
+      "s_data": 0,
+      "s_ready": 1,
+      "s_valid": 0,
+      "violations": [
+        "payload_order"
+      ]
+    }
+  ]
+}

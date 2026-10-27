@@ -34,6 +34,7 @@ def archive():
 page = st.navigation([
     st.Page(home, title="RTLRefine", default=True),
     st.Page("project_app.py", title="Your RTL project", url_path="project"),
+    st.Page("property_app.py", title="Independent FIFO properties", url_path="properties"),
     st.Page("evidence_ranking_app.py", title="Evidence ranking", url_path="ranking"),
     st.Page("workspace_app.py", title="Review your RTL", url_path="workspace"),
     st.Page("mutation_app.py", title="Synthetic property challenge", url_path="mutation"),

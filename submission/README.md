@@ -1,7 +1,9 @@
 # 개발·제출 자료
 
-현재 제출 자료는 [hackathon-2026](hackathon-2026/README.md)입니다. 최신 사용자
-프로젝트 기능 영상, Devpost 영문 설명, 스크린샷과 실행 안내를 포함합니다.
+현재 제출 자료는 [property-v1](property-v1/README.md)입니다. 독립 FIFO 속성
+검증·반례 재현·실제 NVIDIA 수리 영상과 개인 참가 기준 설명을 포함합니다.
+이전 사용자 프로젝트 제출 자료는 [hackathon-2026](hackathon-2026/README.md)에
+보존했습니다.
 아래 자료들은 이전 개발 단계의 기록으로 보존합니다.
 
 이전 확장은 [제한된 패치 탐색 비교](search-v1/)입니다.

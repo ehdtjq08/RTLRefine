@@ -7,7 +7,7 @@ the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.2.1.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.3.0.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -44,6 +44,18 @@ The examples are authored integration demonstrations, not a repair-accuracy
 benchmark. You can also upload your own Icarus-compatible project and meaningful
 self-checking benches. Configure roles in the browser or include `rtlrefine.json`.
 See [the project format and supported subset](USER_PROJECTS.md).
+
+## Find a failure missed by a FIFO smoke test
+
+With the current source build, open `/properties`. The default authored FIFO
+passes its original smoke test but fails the independent contract in five
+symbolic states. Run **Find hidden failures without NVIDIA**, inspect the
+reproduced failure, then use **Show saved repair and evidence** to inspect the
+actual NVIDIA correction. Recheck the exported project with zero model calls.
+The separate healthy control is accepted without requesting a repair.
+
+The original `v1.2.1` test build predates this extension. Download the current
+`v1.3.0` source to try it. See [the FIFO contract and limits](PROPERTY_REPAIR.md).
 
 ## Model access and verification scope
 

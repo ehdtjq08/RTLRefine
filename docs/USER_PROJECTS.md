@@ -1,5 +1,10 @@
 # User-supplied RTL projects
 
+For compatible single-clock ready/valid FIFOs, `/properties` adds an independent
+contract and replayed counterexamples beyond the supplied tests. See
+[FIFO property repair](PROPERTY_REPAIR.md). The general workflow below continues
+to use the user's own benches without assuming that FIFO contract.
+
 Open `/project` to upload an RTL ZIP and its own self-checking Verilog/SystemVerilog
 testbenches. This path does not select a built-in module, load a corrected RTL
 oracle or use the three-example trace harness. The existing example workspace

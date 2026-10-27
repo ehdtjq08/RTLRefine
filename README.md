@@ -2,9 +2,17 @@
 
 **A browser workspace that turns a failing RTL trace into an exact checked patch.**
 
+**Independent FIFO checks are available at `/properties`.** A passing smoke
+test can still hide a simultaneous-transfer, wrap or reset defect. The new mode
+finds a symbolic counterexample from a fixed external-port contract, reproduces
+it in Icarus against a Python queue, and gives NVIDIA that public failure.
+Selected source must pass final tests, deeper bounded checks and reachable
+progress before export. See [the supported contract and actual evidence](docs/PROPERTY_REPAIR.md).
+
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
-[Watch the demo](https://youtu.be/JEvktXDIUd0) ·
-[Submission materials](submission/hackathon-2026/README.md)
+[Earlier project demo](https://youtu.be/JEvktXDIUd0) ·
+[FIFO property walkthrough](submission/property-v1/video/RTLRefine-independent-properties-demo.mp4) ·
+[Current submission materials](submission/property-v1/README.md)
 
 **User project mode is available at `/project`.** Upload Verilog/SystemVerilog
 sources and their own self-checking testbenches, with a manifest or the web file-role

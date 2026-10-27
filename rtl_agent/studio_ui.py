@@ -185,6 +185,7 @@ def render_studio():
             st.title('An AI fix needs evidence.')
             st.html('<p class="studio-intro-copy">Inspect the failure. Review the change. Keep the exact source<br>only after its independent checks pass.</p>')
             st.page_link('project_app.py',label='Open your own RTL project',icon=':material/folder_open:')
+            st.page_link('property_app.py',label='Find FIFO failures beyond a passing test',icon=':material/fact_check:')
         with hero_right:
             if measured:st.html('<div class="studio-performance"><strong>'+f"{measured['speedup']:.1f}×"+'</strong>measured screening throughput<br>'+str(measured['total_candidates'])+' hypotheses · '+str(len(measured['cases']))+' profiles</div>')
         step_slot=st.empty()

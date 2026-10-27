@@ -17,6 +17,7 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER repair_search_app.py /app/repair_search_app
 COPY --chown=$MAMBA_USER:$MAMBA_USER evidence_ranking_app.py /app/evidence_ranking_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER repair_studio_app.py /app/repair_studio_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER project_app.py /app/project_app.py
+COPY --chown=$MAMBA_USER:$MAMBA_USER property_app.py /app/property_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/run_known_bug_comparison_v2.py /app/scripts/run_known_bug_comparison_v2.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER rtl_agent /app/rtl_agent
 COPY --chown=$MAMBA_USER:$MAMBA_USER configs /app/configs
@@ -35,12 +36,14 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER demo/known_bug_comparison_v2 /app/demo/know
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/repair_search /app/demo/repair_search
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/evidence_ranking /app/demo/evidence_ranking
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/repair_studio /app/demo/repair_studio
+COPY --chown=$MAMBA_USER:$MAMBA_USER demo/property_repair /app/demo/property_repair
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/install_verilator_pinned.py /app/scripts/install_verilator_pinned.py
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends g++ make && rm -rf /var/lib/apt/lists/*
 USER $MAMBA_USER
 RUN python /app/scripts/install_verilator_pinned.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER assets /app/assets
+COPY --chown=$MAMBA_USER:$MAMBA_USER .streamlit/config.toml /app/.streamlit/config.toml
 RUN mkdir -p /app/results /app/.state
 ENV RTLREFINE_ENABLE_LIVE_MODEL=0
 EXPOSE 8501
