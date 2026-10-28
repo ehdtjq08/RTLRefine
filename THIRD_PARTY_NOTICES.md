@@ -73,3 +73,17 @@ by the controller.
 The Nangate45 library is fetched separately under its recorded platform license.
 Library binaries/data and installed EDA tools are excluded from source bundles;
 the pinned URL, hash and setup helper are supplied for reproduction.
+
+The source in `external_cases/axis_register_external/*/rtl/axis_register.v` is
+commit-pinned Alex Forencich verilog-axis RTL, copyright 2014–2018, under its
+retained MIT header and `UPSTREAM_LICENSE`. Original and NVIDIA-edited copies in
+`demo/external_rtl_validation` retain that header. The selected edit repairs a
+known upstream early-ready throughput regression, not a newly discovered bug.
+
+`external_cases/zipcpu_skid_external/rtl/skidbuffer.v` is unmodified ZipCPU
+wb2axip RTL, copyright 2019–2025 Gisselquist Technology, LLC. Its header specifies
+Apache License 2.0; the official license text accompanies it. The stateless
+adapter's verilog-axis-derived interface retains the MIT notice and the
+RTLRefine-authored adapter body is MIT. The repository's MIT license does not
+replace the Apache terms of the upstream skid buffer. Exact revisions, hashes
+and validation scope are in `docs/EXTERNAL_RTL_VALIDATION.md`.

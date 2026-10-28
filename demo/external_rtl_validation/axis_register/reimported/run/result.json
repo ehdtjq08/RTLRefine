@@ -1,0 +1,2524 @@
+{
+  "accepted": true,
+  "api_requests": 0,
+  "attempts": [],
+  "audit_tests": 7,
+  "baseline": {
+    "accepted": true,
+    "design_hashes": {
+      "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+    },
+    "new_model_calls": 0,
+    "phase": "public",
+    "project_id": "fedc2ddc205443bdf7f9234b251b15690765991fed9422ba9e649512ba617272",
+    "shared_compilation_speed_claim_applies": false,
+    "status": "PROVIDED_TESTS_PASS",
+    "tests": [
+      {
+        "checks": 79,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016816489165648818
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.03294764901511371
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016973476856946945
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_public",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_public.NEGATIVE_DATA_CONTROL=0",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03307293588295579
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000001",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.033057887805625796
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.017076953081414104
+          }
+        ],
+        "id": "capacity_public",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "RTLREFINE_PASS nonce=f1b4f4b42ebee365d95e2394083ad47a checks=79\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "public",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_public",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "6860047f89c4e6f799c216e1a15b0cfa96b5a823a75e5c5c3141458f19162b61",
+          "tests/public.sv": "4ac3eb8facdc1b1bc2a626dcaacbe4b6bff89887cd52f5ffe56b38f3dab37e66"
+        },
+        "wall_seconds": 0.14994539180770516
+      }
+    ],
+    "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+  },
+  "batch_speed_claim_applies": false,
+  "changes": {},
+  "checked_archive_sha256": "9c92b1dd4b0209b93f6f20b3ba1573ff8327c6b2afcc6cb32b91d5a64fe083c9",
+  "directory": "/home/hands/Nebius/results/external_axis_register_export_recheck_v1",
+  "final_check": {
+    "accepted": true,
+    "design_hashes": {
+      "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+    },
+    "new_model_calls": 0,
+    "phase": "all",
+    "project_id": "fedc2ddc205443bdf7f9234b251b15690765991fed9422ba9e649512ba617272",
+    "shared_compilation_speed_claim_applies": false,
+    "status": "PROVIDED_TESTS_PASS",
+    "tests": [
+      {
+        "checks": 79,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.01769903185777366
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.018018817994743586
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016979889012873173
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_public",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_public.NEGATIVE_DATA_CONTROL=0",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03308529988862574
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000001",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017077744007110596
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.017927154898643494
+          }
+        ],
+        "id": "capacity_public",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "RTLREFINE_PASS nonce=63f276d97b985f8586f872959449bed8 checks=79\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "public",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_public",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "eb762d8c321d7e0eba54524176a0d43b8b40b15f9ddaf694e5b992cf5d58e131",
+          "tests/public.sv": "4ac3eb8facdc1b1bc2a626dcaacbe4b6bff89887cd52f5ffe56b38f3dab37e66"
+        },
+        "wall_seconds": 0.12078793765977025
+      },
+      {
+        "checks": 4930,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016688856994733214
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.0167292938567698
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.01714740600436926
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=8",
+              "-Ptb_audit.REG_TYPE=2",
+              "-Ptb_audit.ALL_ENABLE=1",
+              "-Ptb_audit.SEED=324508639",
+              "-Ptb_audit.CYCLES=1024",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03299131221137941
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000001",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017017811071127653
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.033146325033158064
+          }
+        ],
+        "id": "skid8",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=586 out=584 reset_discarded=2 stalls=378 overlap=379 max_pending=2\nRTLREFINE_PASS nonce=ef2ac93c6f310895e2436d1f0e51ba11 checks=4930\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "373296c3eaa61490717bda54aafd3805b5d2dab8b94905296ef591594d23a36f",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.1337210051715374
+      },
+      {
+        "checks": 4923,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016723511973395944
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.01678446913138032
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016970911994576454
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=32",
+              "-Ptb_audit.REG_TYPE=2",
+              "-Ptb_audit.ALL_ENABLE=1",
+              "-Ptb_audit.SEED=2597191971",
+              "-Ptb_audit.CYCLES=1024",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03308491897769272
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000100000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000100",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.03310256311669946
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.033155624056234956
+          }
+        ],
+        "id": "skid32",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000100000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000100",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 32
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 4
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 32
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 4
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=586 out=584 reset_discarded=2 stalls=370 overlap=373 max_pending=2\nRTLREFINE_PASS nonce=1f2c33bca38d0b6d3e32e0551dc2739a checks=4923\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "99f29b299083118453a23963a35a5b507a77913f01dd7f4318b4a51848587e5d",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.14982199924997985
+      },
+      {
+        "checks": 7131,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016686904011294246
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.016682615038007498
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017236405052244663
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=64",
+              "-Ptb_audit.REG_TYPE=2",
+              "-Ptb_audit.ALL_ENABLE=1",
+              "-Ptb_audit.SEED=826366247",
+              "-Ptb_audit.CYCLES=1536",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03304592496715486
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000001000000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000001000",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.033117320854216814
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.06524589681066573
+          }
+        ],
+        "id": "skid64",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000001000000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000001000",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 64
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 64
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=840 out=837 reset_discarded=3 stalls=537 overlap=522 max_pending=2\nRTLREFINE_PASS nonce=a6951210251752926ab363588f661147 checks=7131\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "58e57165f371df6b2d2e0a0783ab8c4dfa56cea24edfeb52b197db34bd18afe1",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.1820150667335838
+      },
+      {
+        "checks": 3338,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017408952116966248
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.03285655612125993
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.018306483048945665
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=16",
+              "-Ptb_audit.REG_TYPE=1",
+              "-Ptb_audit.ALL_ENABLE=1",
+              "-Ptb_audit.SEED=610839777",
+              "-Ptb_audit.CYCLES=768",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03294917196035385
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000010000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000010",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.016978956991806626
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.0331999568734318
+          }
+        ],
+        "id": "simple16",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000010000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000010",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000001",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 16
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 2
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 16
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=284 out=282 reset_discarded=2 stalls=225 overlap=0 max_pending=1\nRTLREFINE_PASS nonce=af280a98967e4a91ffd8a81fd413cfde checks=3338\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "020735b4ccdf29a39a6f682604dd887a9bdc1c93c273772cdcea196bda4beee6",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.15170007711276412
+      },
+      {
+        "checks": 2542,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016755494056269526
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.016750574111938477
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017001850064843893
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=8",
+              "-Ptb_audit.REG_TYPE=0",
+              "-Ptb_audit.ALL_ENABLE=1",
+              "-Ptb_audit.SEED=271136839",
+              "-Ptb_audit.CYCLES=512",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.033046275144442916
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000001",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000000",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.01695202593691647
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.032965491991490126
+          }
+        ],
+        "id": "bypass8",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000000",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=282 out=282 reset_discarded=0 stalls=197 overlap=282 max_pending=0\nRTLREFINE_PASS nonce=7559c998ef1bac0863d500d5277ddfc1 checks=2542\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "0833582d644159afb8e0ea0777cc51ac3be69de7b87622325a45b724c15c93d3",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.1334717113059014
+      },
+      {
+        "checks": 4900,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016663027927279472
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.016808162909001112
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.018202236155048013
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=32",
+              "-Ptb_audit.REG_TYPE=2",
+              "-Ptb_audit.ALL_ENABLE=0",
+              "-Ptb_audit.SEED=422065990",
+              "-Ptb_audit.CYCLES=1024",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03296483191661537
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000100000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000000",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000000",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000000",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000100",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000000",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000000",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.033204396022483706
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.033224363811314106
+          }
+        ],
+        "id": "disabled32",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000100000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000000",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000000",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000000",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000100",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000000",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000000",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 32
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 4
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 32
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 4
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=587 out=585 reset_discarded=2 stalls=345 overlap=370 max_pending=2\nRTLREFINE_PASS nonce=a047825f95330b3840b59624959ce6c8 checks=4900\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "d809d06b836869258ad87b139e6cdfe9aca89f343a9dd9f307a7d5dec04273a1",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.15106701874174178
+      },
+      {
+        "checks": 2650,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/axis_register.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017798730870708823
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=8",
+              "-Paxis_register.KEEP_WIDTH=1",
+              "-Paxis_register.KEEP_ENABLE=1",
+              "-Paxis_register.LAST_ENABLE=1",
+              "-Paxis_register.ID_ENABLE=1",
+              "-Paxis_register.ID_WIDTH=3",
+              "-Paxis_register.DEST_ENABLE=1",
+              "-Paxis_register.DEST_WIDTH=5",
+              "-Paxis_register.USER_ENABLE=1",
+              "-Paxis_register.USER_WIDTH=2",
+              "-Paxis_register.REG_TYPE=2",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.03289097105152905
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016962166177108884
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_audit.DATA_WIDTH=8",
+              "-Ptb_audit.REG_TYPE=2",
+              "-Ptb_audit.ALL_ENABLE=1",
+              "-Ptb_audit.SEED=655894553",
+              "-Ptb_audit.CYCLES=512",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.03300509718246758
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "axis_register",
+              "-Paxis_register.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "-Paxis_register.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Paxis_register.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Paxis_register.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.KEEP_WIDTH=32'sb00000000000000000000000000000001",
+              "-Paxis_register.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Paxis_register.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Paxis_register.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017096670111641288
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.033090098993852735
+          }
+        ],
+        "id": "reset_stall8",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "EXTERNAL_COVERAGE in=306 out=303 reset_discarded=3 stalls=196 overlap=193 max_pending=2\nRTLREFINE_PASS nonce=d0a17467b275775cfe083d12ab7ab198 checks=2650\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "c749ed4cfe1876eca8b96db8afbaae0cb105f3b2a569954670d123f47cfdacb3",
+          "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798"
+        },
+        "wall_seconds": 0.15084373438730836
+      }
+    ],
+    "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+  },
+  "mode": "user_testbench_project",
+  "project_id": "fedc2ddc205443bdf7f9234b251b15690765991fed9422ba9e649512ba617272",
+  "project_name": "External verilog-axis AXI register regressed",
+  "public_tests": 1,
+  "scope": "Passes only the provided immutable self-checking testbenches; no arbitrary-design completeness, synthesis-timing or physical CDC guarantee",
+  "selected_design_hashes": {
+    "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad"
+  },
+  "status": "PROVIDED_TESTS_PASS",
+  "wall_seconds": 1.4175549750216305
+}

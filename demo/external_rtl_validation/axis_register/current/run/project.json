@@ -1,0 +1,187 @@
+{
+  "contract": "REG_TYPE=2 is a two-entry skid buffer: after one accepted word, an input idle gap while output is stalled must not make the second slot unavailable. Preserve accepted AXI4-Stream payload order and enabled sidebands, stability during output stalls, reset flushing and documented register modes. No corrected RTL reference is supplied.",
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "DATA_WIDTH": "8",
+    "DEST_ENABLE": "1",
+    "DEST_WIDTH": "5",
+    "ID_ENABLE": "1",
+    "ID_WIDTH": "3",
+    "KEEP_ENABLE": "1",
+    "KEEP_WIDTH": "1",
+    "LAST_ENABLE": "1",
+    "REG_TYPE": "2",
+    "USER_ENABLE": "1",
+    "USER_WIDTH": "2"
+  },
+  "dut_top": "axis_register",
+  "editable_files": [
+    "rtl/axis_register.v"
+  ],
+  "include_dirs": [],
+  "include_files": [],
+  "name": "External verilog-axis AXI register current",
+  "rtl_files": [
+    "rtl/axis_register.v"
+  ],
+  "schema_version": 1,
+  "tests": [
+    {
+      "data_files": [],
+      "files": [
+        "tests/public.sv"
+      ],
+      "id": "capacity_public",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "NEGATIVE_DATA_CONTROL": "0"
+      },
+      "phase": "public",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_public"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "skid8",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "1",
+        "CYCLES": "1024",
+        "DATA_WIDTH": "8",
+        "REG_TYPE": "2",
+        "SEED": "324508639"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "skid32",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "1",
+        "CYCLES": "1024",
+        "DATA_WIDTH": "32",
+        "REG_TYPE": "2",
+        "SEED": "2597191971"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "skid64",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "1",
+        "CYCLES": "1536",
+        "DATA_WIDTH": "64",
+        "REG_TYPE": "2",
+        "SEED": "826366247"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "simple16",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "1",
+        "CYCLES": "768",
+        "DATA_WIDTH": "16",
+        "REG_TYPE": "1",
+        "SEED": "610839777"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "bypass8",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "1",
+        "CYCLES": "512",
+        "DATA_WIDTH": "8",
+        "REG_TYPE": "0",
+        "SEED": "271136839"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "disabled32",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "0",
+        "CYCLES": "1024",
+        "DATA_WIDTH": "32",
+        "REG_TYPE": "2",
+        "SEED": "422065990"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "reset_stall8",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "ALL_ENABLE": "1",
+        "CYCLES": "512",
+        "DATA_WIDTH": "8",
+        "REG_TYPE": "2",
+        "SEED": "655894553"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    }
+  ]
+}

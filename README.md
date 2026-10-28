@@ -15,8 +15,15 @@ See [the supported contract](docs/PROPERTY_REPAIR.md) and
 
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
 [Earlier project demo](https://youtu.be/JEvktXDIUd0) ·
-[Functional walkthrough](submission/functional-v1/video/RTLRefine-functional-demo.mp4) ·
-[Current submission materials](submission/functional-v1/README.md)
+[Functional and external walkthrough](submission/external-v1/video/RTLRefine-external-validation-demo.mp4) ·
+[Current submission materials](submission/external-v1/README.md)
+
+**Real external RTL validation is available at `/external-validation`.** One
+known upstream verilog-axis early-ready throughput regression was reproduced,
+repaired by an actual NVIDIA request and rechecked across eight profiles. A
+second author's unmodified ZipCPU skid buffer passes eight compatibility
+profiles. Original source, licenses, pinned revisions and finite-test limits are
+retained. See [external results](docs/EXTERNAL_RTL_VALIDATION.md).
 
 **User project mode is available at `/project`.** Upload Verilog/SystemVerilog
 sources and their own self-checking testbenches, with a manifest or the web file-role

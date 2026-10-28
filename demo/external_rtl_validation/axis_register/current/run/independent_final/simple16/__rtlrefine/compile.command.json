@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/home/hands/anaconda3/bin/iverilog",
+    "-g2012",
+    "-s",
+    "tb_audit",
+    "-o",
+    "__rtlrefine/simulation.vvp",
+    "-I.",
+    "-Ptb_audit.DATA_WIDTH=16",
+    "-Ptb_audit.REG_TYPE=1",
+    "-Ptb_audit.ALL_ENABLE=1",
+    "-Ptb_audit.SEED=610839777",
+    "-Ptb_audit.CYCLES=768",
+    "./__rtlrefine/design.v",
+    "./tests/audit.sv"
+  ],
+  "execution_mode": "bubblewrap",
+  "network": false,
+  "returncode": 0,
+  "stage": "compile",
+  "status": "PASS",
+  "wall_seconds": 0.03297911607660353
+}

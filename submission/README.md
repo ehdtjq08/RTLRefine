@@ -1,7 +1,8 @@
 # 개발·제출 자료
 
-현재 제출 자료는 [functional-v1](functional-v1/README.md)입니다. 독립 검증,
-실행 가능한 회귀 테스트 내보내기, JSON 없는 설정과 합성 자원 비교를 포함합니다.
+현재 제출 자료는 [external-v1](external-v1/README.md)입니다. 실제 외부 RTL
+회귀 수리와 다른 개발자의 정상 모듈 검증을 기존 기능 영상에 추가했습니다.
+이전 기능 완성본은 [functional-v1](functional-v1/README.md)에 보존했습니다.
 이전 독립 FIFO 속성 제출 자료는 [property-v1](property-v1/README.md)에 보존했습니다.
 이전 사용자 프로젝트 제출 자료는 [hackathon-2026](hackathon-2026/README.md)에
 보존했습니다.

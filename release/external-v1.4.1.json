@@ -1,0 +1,92 @@
+{
+  "version": "1.4.1",
+  "summary": "Validate two independently developed RTL modules through the ordinary project path; repair one known upstream throughput regression with one actual NVIDIA request.",
+  "external_validation": {
+    "status": "PASS",
+    "prepared_at_utc": "2026-10-28T11:12:00.096203+00:00",
+    "release_tag": "v1.4.1",
+    "independent_upstream_modules": 2,
+    "known_upstream_throughput_regression_repaired": 1,
+    "new_external_model_requests": 1,
+    "estimated_external_inference_cost_usd": 0.007886,
+    "axis_repair_benches": 8,
+    "axis_assertion_evaluations": 30493,
+    "axis_export_reimport_recheck": "PASS",
+    "second_author_leaf_unmodified": true,
+    "second_author_stateless_adapter_disclosed": true,
+    "second_author_benches": 8,
+    "second_author_assertion_evaluations": 30847,
+    "second_author_model_requests": 0,
+    "negative_observed_data_controls_rejected": 2,
+    "current_parent_and_revert_same_healthy_file": true,
+    "corrected_rtl_used_as_acceptance_oracle": false,
+    "audit_source_sent_to_model": false,
+    "existing_published_suite_tests_passed": 167,
+    "frozen_verifiers_changed": false,
+    "video_seconds": 145.567,
+    "video_sha256": "fd0b9f840a854ea127390e7d6620c5db03b51b21f98b251b23580e9695537526",
+    "new_model_calls_in_recording": 0,
+    "scope": "Exposed known historical capacity/throughput regression and healthy compatibility control; finite simulation only. Not new discovery, unbounded proof or unseen model accuracy.",
+    "new_video_youtube_url": null,
+    "devpost_submitted_by_agent": false,
+    "cold_public_source_docker_native_recheck": "PASS",
+    "cold_native_network": "none",
+    "cold_native_new_model_calls": 0,
+    "cold_public_source_docker_browser_recheck": "PASS"
+  },
+  "cold_native_validation": {
+    "status": "PASS",
+    "image": "rtlrefine-external-release:1.4.1",
+    "image_id": "sha256:83567b5b2592be2760587f3c1e79331303c5ebed512fa661d3c5655c9256ca37",
+    "public_source_only_image": true,
+    "network": "none",
+    "api_key_present": false,
+    "new_model_calls": 0,
+    "cases": [
+      {
+        "case": "checked_axis",
+        "accepted": true,
+        "status": "PROVIDED_TESTS_PASS",
+        "testbenches": 8,
+        "assertion_evaluations": 30493,
+        "api_requests": 0,
+        "input_sha256": "8283f57c419eb530245351a4582efba94f19c6b00dde4b0e15ae8725e70aac3b"
+      },
+      {
+        "case": "original_axis",
+        "accepted": false,
+        "status": "PUBLIC_TESTS_FAILED",
+        "testbenches": 1,
+        "assertion_evaluations": 0,
+        "api_requests": 0,
+        "input_sha256": "da2e809d1ba36177d0d4e10ddcf0814f43ecc8494eb1dad378c4ad5f3a97bda8"
+      },
+      {
+        "case": "healthy_zipcpu",
+        "accepted": true,
+        "status": "PROVIDED_TESTS_PASS",
+        "testbenches": 8,
+        "assertion_evaluations": 30847,
+        "api_requests": 0,
+        "input_sha256": "2bc3c5427ba0b87e22b1f9d5446ee639b950b859cae30cba1a1a4c2e48de3020"
+      }
+    ]
+  },
+  "cold_browser_validation": {
+    "status": "PASS",
+    "browser_errors": [],
+    "new_model_calls": 0,
+    "exact_checked_zip_download": true,
+    "selected_external_recheck_passed": true,
+    "genuine_upstream_regression_reproduced": true,
+    "second_author_healthy_recheck_passed": true,
+    "public_source_docker_ui": true
+  },
+  "submission_zip": {
+    "path": "submission/RTLRefine-external-submit-ready.zip",
+    "sha256": "5742624235a96ba3853a48b54decd105e54c70e6d2675c44ab07f16d7e19e61d",
+    "bytes": 3742863
+  },
+  "new_youtube_url": null,
+  "devpost_submitted_by_agent": false
+}

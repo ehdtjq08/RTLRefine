@@ -7,7 +7,7 @@ the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.4.0.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.4.1.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -19,6 +19,19 @@ The first build downloads the Python/native dependencies and checksum-pinned
 Verilator binary. Allow several minutes and keep the terminal open. Then open
 http://127.0.0.1:8501. This localhost address is the application on your machine;
 the public URL above supplies its test build.
+
+## Recheck real external RTL
+
+Open `/external-validation`. The first tab shows a pinned, known upstream
+verilog-axis throughput regression and an actual NVIDIA-selected repair that
+passes eight profiles. Recheck the repaired ZIP, then reproduce the original
+failure without inference. The second tab rechecks an unmodified ZipCPU skid
+buffer with a disclosed stateless adapter. Downloadable projects also work in
+the ordinary `/project` route. No API key is needed for these rechecks.
+
+These are two independent upstream modules, one exposed historical repair and
+one healthy compatibility control. They are not newly discovered defects or
+unseen repair accuracy. See [source and scope](EXTERNAL_RTL_VALIDATION.md).
 
 ## Review a recorded NVIDIA repair
 
@@ -67,7 +80,7 @@ designer edits preserve ports, parameters and clock/reset forms. A source change
 or changed contract requires a fresh check.
 
 The original `v1.2.1` test build predates this extension. Download the current
-`v1.4.0` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
+`v1.4.1` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
 and [portable regressions](PORTABLE_REGRESSIONS.md).
 
 ## Model access and verification scope

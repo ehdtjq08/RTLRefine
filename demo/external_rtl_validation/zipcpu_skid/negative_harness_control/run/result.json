@@ -1,0 +1,305 @@
+{
+  "accepted": false,
+  "api_requests": 0,
+  "attempts": [],
+  "baseline": {
+    "accepted": false,
+    "design_hashes": {
+      "rtl/skid_axis_adapter.v": "dbe3cc38655013a1fdb943e3a17f31dbfd4f189b3d3021911e1f79ec2cc57897",
+      "rtl/skidbuffer.v": "ed1fda9192563fd7fd7033b564e8cf47ad6cb63ba4f578ed2c302037d47a5389"
+    },
+    "new_model_calls": 0,
+    "phase": "public",
+    "project_id": "a908e20eb34739c214da3e097391dffdbfd40d1a5c7fb2b2cec7324d87a92509",
+    "shared_compilation_speed_claim_applies": false,
+    "status": "PROVIDED_TESTS_NOT_PASSED",
+    "tests": [
+      {
+        "checks": 0,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/skidbuffer.v",
+              "./rtl/skid_axis_adapter.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.016711700009182096
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "skid_axis_adapter",
+              "-Pskid_axis_adapter.DATA_WIDTH=8",
+              "-Pskid_axis_adapter.KEEP_WIDTH=1",
+              "-Pskid_axis_adapter.KEEP_ENABLE=1",
+              "-Pskid_axis_adapter.LAST_ENABLE=1",
+              "-Pskid_axis_adapter.ID_ENABLE=1",
+              "-Pskid_axis_adapter.ID_WIDTH=3",
+              "-Pskid_axis_adapter.DEST_ENABLE=1",
+              "-Pskid_axis_adapter.DEST_WIDTH=5",
+              "-Pskid_axis_adapter.USER_ENABLE=1",
+              "-Pskid_axis_adapter.USER_WIDTH=2",
+              "-Pskid_axis_adapter.REG_TYPE=2",
+              "-Pskid_axis_adapter.LOWPOWER=1",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.016762857092544436
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.01702219992876053
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_public",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_public.NEGATIVE_DATA_CONTROL=1",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.033043340081349015
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "skid_axis_adapter",
+              "-Pskid_axis_adapter.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "-Pskid_axis_adapter.DEST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.DEST_WIDTH=32'sb00000000000000000000000000000101",
+              "-Pskid_axis_adapter.ID_ENABLE=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.ID_WIDTH=32'sb00000000000000000000000000000011",
+              "-Pskid_axis_adapter.KEEP_ENABLE=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.KEEP_WIDTH=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.LAST_ENABLE=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.LOWPOWER=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.REG_TYPE=32'sb00000000000000000000000000000010",
+              "-Pskid_axis_adapter.USER_ENABLE=32'sb00000000000000000000000000000001",
+              "-Pskid_axis_adapter.USER_WIDTH=32'sb00000000000000000000000000000010",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017116297967731953
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 1,
+            "stage": "simulate",
+            "status": "FAIL",
+            "wall_seconds": 0.01719288295134902
+          }
+        ],
+        "id": "capacity_public",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+              "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+              "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+              "ID_ENABLE": "32'sb00000000000000000000000000000001",
+              "ID_WIDTH": "32'sb00000000000000000000000000000011",
+              "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+              "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+              "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+              "LOWPOWER": "32'sb00000000000000000000000000000001",
+              "REG_TYPE": "32'sb00000000000000000000000000000010",
+              "USER_ENABLE": "32'sb00000000000000000000000000000001",
+              "USER_WIDTH": "32'sb00000000000000000000000000000010"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "s_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "s_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "s_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "s_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "INPUT",
+                "index": 8,
+                "name": "s_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "INPUT",
+                "index": 9,
+                "name": "s_axis_tuser",
+                "width": 2
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 10,
+                "name": "m_axis_tdata",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "m_axis_tkeep",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "m_axis_tvalid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 13,
+                "name": "m_axis_tready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 14,
+                "name": "m_axis_tlast",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 15,
+                "name": "m_axis_tid",
+                "width": 3
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 16,
+                "name": "m_axis_tdest",
+                "width": 5
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 17,
+                "name": "m_axis_tuser",
+                "width": 2
+              }
+            ]
+          }
+        ],
+        "log_tail": "FATAL: ./tests/public.sv:96: ORDER_OR_SIDEBAND mismatch received=00102 expected=00103\n       Time: 82000 Scope: tb_public.tick\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": false,
+        "phase": "public",
+        "source_hashes": {
+          "rtl/skid_axis_adapter.v": "dbe3cc38655013a1fdb943e3a17f31dbfd4f189b3d3021911e1f79ec2cc57897",
+          "rtl/skidbuffer.v": "ed1fda9192563fd7fd7033b564e8cf47ad6cb63ba4f578ed2c302037d47a5389"
+        },
+        "status": "ASSERTION_FAILED",
+        "testbench_marker_transforms": [],
+        "top": "tb_public",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "a7079f332551fe0e36195dbdcfbbaefa5f1fb407ec856e89e7ba42f0dd0d3965",
+          "tests/public.sv": "43230042f10ab5378809a43502291150aa2af82a761a9ca470bb2c17aeed96b5"
+        },
+        "wall_seconds": 0.11784927803091705
+      }
+    ],
+    "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+  },
+  "batch_speed_claim_applies": false,
+  "directory": "/home/hands/Nebius/results/external_zipcpu_skid_qualification_v1/negative_harness_control",
+  "mode": "user_testbench_project",
+  "project_id": "a908e20eb34739c214da3e097391dffdbfd40d1a5c7fb2b2cec7324d87a92509",
+  "project_name": "External ZipCPU skid buffer \u00b7 unmodified healthy control \u00b7 negative harness control",
+  "scope": "Passes only the provided immutable self-checking testbenches; no arbitrary-design completeness, synthesis-timing or physical CDC guarantee",
+  "status": "PUBLIC_TESTS_FAILED",
+  "wall_seconds": 0.13765556598082185
+}

@@ -18,6 +18,7 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER evidence_ranking_app.py /app/evidence_ranki
 COPY --chown=$MAMBA_USER:$MAMBA_USER repair_studio_app.py /app/repair_studio_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER project_app.py /app/project_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER property_app.py /app/property_app.py
+COPY --chown=$MAMBA_USER:$MAMBA_USER external_validation_app.py /app/external_validation_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/run_known_bug_comparison_v2.py /app/scripts/run_known_bug_comparison_v2.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER rtl_agent /app/rtl_agent
 COPY --chown=$MAMBA_USER:$MAMBA_USER configs /app/configs
@@ -38,6 +39,7 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER demo/evidence_ranking /app/demo/evidence_ra
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/repair_studio /app/demo/repair_studio
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/property_repair /app/demo/property_repair
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/functional_repair /app/demo/functional_repair
+COPY --chown=$MAMBA_USER:$MAMBA_USER demo/external_rtl_validation /app/demo/external_rtl_validation
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/install_verilator_pinned.py /app/scripts/install_verilator_pinned.py
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends g++ make && rm -rf /var/lib/apt/lists/*

@@ -6,9 +6,10 @@ The repository contains source, licenses, setup instructions, current UI assets,
 user-project examples and recorded verification evidence. Run the Docker test
 build using the README. New model requests are disabled by default.
 
-The current v1.4.0 submission materials are in
-[submission/functional-v1](../submission/functional-v1/README.md), with portable
-regression exports, JSON-free setup and mapped-resource diagnostics. The video
+The current v1.4.1 submission materials are in
+[submission/external-v1](../submission/external-v1/README.md), with actual external
+RTL validation added to the portable-regression, JSON-free setup and resource
+diagnostic workflow. The earlier v1.4 materials remain in `submission/functional-v1`. The video
 labels its actual recorded NVIDIA result and executes native checks fresh.
 It still needs its own YouTube upload. Earlier v1.3.0 and v1.2.1 materials remain
 in `submission/property-v1` and `submission/hackathon-2026`. The
