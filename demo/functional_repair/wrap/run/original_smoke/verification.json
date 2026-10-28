@@ -1,0 +1,198 @@
+{
+  "accepted": true,
+  "design_hashes": {
+    "rtl/packet_queue.sv": "6929f5c6bece888a1cd89d9960d45b4b91a79e314650531cc37a8880002bed27"
+  },
+  "new_model_calls": 0,
+  "phase": "public",
+  "project_id": "f5ef1862eff80f5016f360f5e4652e8147083f22af379add1362e39565f6e4ee",
+  "shared_compilation_speed_claim_applies": false,
+  "status": "PROVIDED_TESTS_PASS",
+  "tests": [
+    {
+      "checks": 4,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/packet_queue.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.01712458487600088
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "packet_queue",
+            "-Ppacket_queue.WIDTH=4",
+            "-Ppacket_queue.DEPTH=4",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.01673013810068369
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/test_expanded.v",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/smoke.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "test_preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.01730469590984285
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-s",
+            "tb_smoke",
+            "-o",
+            "__rtlrefine/simulation.vvp",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/smoke.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "compile",
+          "status": "PASS",
+          "wall_seconds": 0.0331250608433038
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "packet_queue",
+            "-Ppacket_queue.DEPTH=32'sb00000000000000000000000000000100",
+            "-Ppacket_queue.WIDTH=32'sb00000000000000000000000000000100",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.03473254619166255
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/vvp",
+            "__rtlrefine/simulation.vvp"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "wall_seconds": 0.017383024096488953
+        }
+      ],
+      "id": "smoke",
+      "interface": [
+        {
+          "instance": "dut",
+          "numeric_parameters": {
+            "DEPTH": "32'sb00000000000000000000000000000100",
+            "WIDTH": "32'sb00000000000000000000000000000100"
+          },
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "rst",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "s_valid",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 3,
+              "name": "s_ready",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 4,
+              "name": "s_data",
+              "width": 4
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 5,
+              "name": "m_valid",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 6,
+              "name": "m_ready",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 7,
+              "name": "m_data",
+              "width": 4
+            }
+          ]
+        }
+      ],
+      "log_tail": "RTLREFINE_PASS nonce=c7a4cba316588f761f020eeb9662b404 checks=4\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": true,
+      "phase": "public",
+      "source_hashes": {
+        "rtl/packet_queue.sv": "6929f5c6bece888a1cd89d9960d45b4b91a79e314650531cc37a8880002bed27"
+      },
+      "status": "PASS",
+      "testbench_marker_transforms": [],
+      "top": "tb_smoke",
+      "verification_hashes": {
+        "rtlrefine_check.vh": "b9a497824284d9864b3a604a33c0fe984ab13441124503f3ab0a1a4f50e4b46d",
+        "tests/smoke.sv": "6395dbc5f8ae2a889fe0f335537a9e8b14c024f5591715356a3163a0bbbfcd3f"
+      },
+      "wall_seconds": 0.13640005001798272
+    }
+  ],
+  "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+}

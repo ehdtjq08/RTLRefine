@@ -1,0 +1,52 @@
+[
+  {
+    "elapsed_seconds": 0.00424999394454062,
+    "message": "Run the existing public testbench before inspecting independent properties",
+    "stage": "smoke"
+  },
+  {
+    "elapsed_seconds": 0.12324816500768065,
+    "message": "Search the fixed independent FIFO contract, then minimize and replay any counterexample",
+    "stage": "discovery"
+  },
+  {
+    "elapsed_seconds": 1.212102757068351,
+    "message": "Generate executable public regressions from the contract and retain any earlier counterexamples",
+    "stage": "regressions"
+  },
+  {
+    "elapsed_seconds": 1.3449364299885929,
+    "message": "Give NVIDIA only the public contract and reproduced failure; attempt 1",
+    "stage": "model"
+  },
+  {
+    "elapsed_seconds": 4.647872481029481,
+    "message": "Rebuild the proposed source and rerun public tests and the public property bound",
+    "stage": "public_recheck"
+  },
+  {
+    "elapsed_seconds": 7.912462526001036,
+    "message": "Independently rebuild the selected files and run every supplied testbench, including audits",
+    "stage": "final_tests"
+  },
+  {
+    "elapsed_seconds": 8.172626241110265,
+    "message": "Check the fixed deeper bounds and require reachable full, stalled, overlapping, wrapped and reset activity",
+    "stage": "final_properties"
+  },
+  {
+    "elapsed_seconds": 32.12848491710611,
+    "message": "Rebuild the exact export and run every retained regression with the standalone runner",
+    "stage": "export_regressions"
+  },
+  {
+    "elapsed_seconds": 32.3491419760976,
+    "message": "Compare mapped logic LUT, register and memory primitives under the same Xilinx 7-series synthesis settings",
+    "stage": "resources"
+  },
+  {
+    "elapsed_seconds": 35.619983442127705,
+    "message": "The exact project passed tests, bounded properties, progress and the portable regression suite",
+    "stage": "complete"
+  }
+]

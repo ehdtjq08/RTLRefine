@@ -121,11 +121,14 @@ def test_healthy_fifo_passes_deeper_bounds_and_progress_without_model(native,tmp
     import rtl_agent.property_repair.workflow as workflow
     def no_model(*a,**kw):raise AssertionError('Healthy source must not request a repair')
     monkeypatch.setattr(workflow,'propose',no_model)
+    def unavailable(*a,**kw):raise RuntimeError('mapping backend deliberately unavailable')
+    monkeypatch.setattr(workflow,'compare_resources',unavailable)
     r=run_repair(sample('healthy'),repair=True,output=tmp_path/'healthy')
     assert r['accepted'] and r['api_requests']==0
     assert [a['steps'] for a in r['property_audits']]==[16,20]
     assert all(a['status']=='BOUNDED_PASS' for a in r['property_audits'])
     assert r['property_audits'][-1]['progress']['status']=='REACHABLE'
+    assert r['resource_comparison']['status']=='UNAVAILABLE'
     assert (tmp_path/'healthy/checked-project.zip').exists()
 
 

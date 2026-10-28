@@ -27,7 +27,7 @@ class PropertyRunner(ProjectRunner):
         return args[:position]+bindings+args[position:]
 
     def run(self,stage,arguments,directory,*,timeout=35):
-        if stage not in ('prepare_properties','solve_properties'):
+        if stage not in ('prepare_properties','solve_properties','measure_resources'):
             return super().run(stage,arguments,directory,timeout=timeout)
         tool=find_tool('yosys');limiter=find_tool('prlimit')
         if not tool or not limiter:raise RuntimeError('Yosys and prlimit are required')

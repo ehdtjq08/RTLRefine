@@ -1,0 +1,89 @@
+{
+  "accepted": false,
+  "elaboration": {
+    "api_credentials_inherited": false,
+    "log_tail": "",
+    "network": false,
+    "returncode": 0,
+    "seconds": 0.016342012910172343,
+    "stage": "elaborate",
+    "status": "PASS"
+  },
+  "new_model_calls": 0,
+  "preprocess": {
+    "api_credentials_inherited": false,
+    "log_tail": "",
+    "network": false,
+    "returncode": 0,
+    "seconds": 0.01606655097566545,
+    "stage": "preprocess",
+    "status": "PASS"
+  },
+  "recorded_source_hashes": {
+    "rtl/packet_queue.sv": "353a4cce39b54d615f8aebee3442ea3c1672ade52b6deb6a40353cba23dcdad2"
+  },
+  "scope": "Only the bundled finite input regressions, not a fresh formal proof",
+  "source_changed": false,
+  "source_hashes": {
+    "rtl/packet_queue.sv": "353a4cce39b54d615f8aebee3442ea3c1672ade52b6deb6a40353cba23dcdad2"
+  },
+  "status": "REGRESSION_FAILED",
+  "tests": [
+    {
+      "compile": {
+        "api_credentials_inherited": false,
+        "log_tail": "",
+        "network": false,
+        "returncode": 0,
+        "seconds": 0.032357055926695466,
+        "stage": "case_7374ea256cbf48de_compile",
+        "status": "PASS"
+      },
+      "executed_bench_sha256": "730431de98b1e960d069f232ea9057b9a09fae8c58d50ca0ba28cc3e7fdacabf",
+      "expected_checks": 28,
+      "id": "case_7374ea256cbf48de",
+      "origin": "public_counterexample",
+      "original_bench_sha256": "1c16fc08fde2d1e80059c448ba28ed0a0864c68ee3ddcd8b393a62720d45dab2",
+      "passed": false,
+      "simulation": {
+        "api_credentials_inherited": false,
+        "log_tail": "FATAL: __rtlrefine/frozen/case_7374ea256cbf48de.sv:28: step=5 post-edge payload actual=x expected=00000009\n       Time: 19 Scope: __rtlrefine_regression_case_7374ea256cbf48de.step\n",
+        "network": false,
+        "returncode": 1,
+        "seconds": 0.016542984172701836,
+        "stage": "case_7374ea256cbf48de_simulate",
+        "status": "FAIL"
+      },
+      "status": "ASSERTION_FAILED",
+      "steps": 6
+    },
+    {
+      "compile": {
+        "api_credentials_inherited": false,
+        "log_tail": "",
+        "network": false,
+        "returncode": 0,
+        "seconds": 0.03280454408377409,
+        "stage": "case_ba416a4fb8c8574a_compile",
+        "status": "PASS"
+      },
+      "executed_bench_sha256": "7f9383f4f5b7bab8d19f04749a9f5f4e2deb82aeb07a668f9d1923a162b7fff7",
+      "expected_checks": 167,
+      "id": "case_ba416a4fb8c8574a",
+      "origin": "contract_sequence",
+      "original_bench_sha256": "fc31d1dcff3ddbdd2f9c17afa074d3c81518546f0c99c9ee30671c8d6e2c7cdf",
+      "passed": false,
+      "simulation": {
+        "api_credentials_inherited": false,
+        "log_tail": "FATAL: __rtlrefine/frozen/case_ba416a4fb8c8574a.sv:28: step=22 post-edge payload actual=3 expected=00000005\n       Time: 87 Scope: __rtlrefine_regression_case_ba416a4fb8c8574a.step\n",
+        "network": false,
+        "returncode": 1,
+        "seconds": 0.016679842956364155,
+        "stage": "case_ba416a4fb8c8574a_simulate",
+        "status": "FAIL"
+      },
+      "status": "ASSERTION_FAILED",
+      "steps": 30
+    }
+  ]
+}

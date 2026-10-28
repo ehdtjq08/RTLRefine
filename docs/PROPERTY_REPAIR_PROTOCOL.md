@@ -75,3 +75,37 @@ development experiment; no hidden audit is recycled into a new selection.
 Formal counterexample-guided refinement is an established method. This product
 extension does not claim scientific novelty or general superiority. Further
 quality comparisons require independent projects and matched budgets.
+
+## v1.4 functional extension, specified before its inference run
+
+Public counterexamples and an upfront contract sequence become self-checking
+regressions. Expected state advances on transfers permitted by the contract,
+not transfers observed from a buggy DUT. Benches sample before and after each
+positive edge. A reproduced public property failure must also fail its generated
+regression; a disagreement stops with an oracle-mismatch status.
+
+Inherited regressions are immutable inputs and stay active through the generic
+project route. Candidate feedback can add public counterexamples within the
+existing two-request limit. No final audit is recycled into diagnosis. Selection
+remains fixed before all original benches, deeper bounds, progress and a fresh
+execution of the exact standalone regression script included in the export.
+
+Only the canonical runner executes, in isolated Python; arbitrary uploaded
+Python is never invoked. Native namespaces, readonly inputs, credential-free
+environments and resource limits remain active. Fresh completion markers,
+expected assertion counts and successful exits must agree. Timeouts and missing
+completion are UNPROVEN, not counterexamples.
+
+Original and selected source receive identical Xilinx 7-series synthesis
+settings. Logic LUT cells, registers and memory/SRL/DSP primitives are separate
+mapped estimates. This diagnostic does not alter correctness acceptance or imply
+placement, routing, timing, power or board measurements. An unavailable mapper
+does not invent counts or invalidate a separately checked functional result.
+Historical source seals and comparison graders remain unchanged.
+
+The first v1.4 development inference run produced two invalid broad line edits;
+neither compiled, and no accepted export was created. Those public-only failures
+are retained. Compiler diagnostics were then explicitly routed into revision
+feedback, with pre-edge/post-edge state sampling explained and smaller edits
+requested. This change uses no private audit observation and precedes the next
+separately recorded development run; it is not an unseen accuracy comparison.

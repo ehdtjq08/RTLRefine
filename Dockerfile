@@ -37,6 +37,7 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER demo/repair_search /app/demo/repair_search
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/evidence_ranking /app/demo/evidence_ranking
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/repair_studio /app/demo/repair_studio
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/property_repair /app/demo/property_repair
+COPY --chown=$MAMBA_USER:$MAMBA_USER demo/functional_repair /app/demo/functional_repair
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/install_verilator_pinned.py /app/scripts/install_verilator_pinned.py
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends g++ make && rm -rf /var/lib/apt/lists/*
@@ -44,6 +45,7 @@ USER $MAMBA_USER
 RUN python /app/scripts/install_verilator_pinned.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER assets /app/assets
 COPY --chown=$MAMBA_USER:$MAMBA_USER .streamlit/config.toml /app/.streamlit/config.toml
+COPY --chown=$MAMBA_USER:$MAMBA_USER docs/PROPERTY_REPAIR_PROTOCOL.md /app/docs/PROPERTY_REPAIR_PROTOCOL.md
 RUN mkdir -p /app/results /app/.state
 ENV RTLREFINE_ENABLE_LIVE_MODEL=0
 EXPOSE 8501

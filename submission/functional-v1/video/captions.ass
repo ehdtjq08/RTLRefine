@@ -1,0 +1,20 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,DejaVu Sans,28,&H00F4F1EB,&H00F4F1EB,&H000B1117,&H000B1117,0,0,0,0,100,100,0,0,1,0,0,2,70,70,22,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:07.00,Default,,0,0,0,,RTLRefine: repair RTL, export its checks, and catch the bug if it returns.\NThe NVIDIA result is a recorded actual run; native checks below run fresh.
+Dialogue: 0,0:00:08.85,0:00:17.86,Default,,0,0,0,,The original passes four smoke expectations. Independent checks find a hidden failure.\NIts public counterexample becomes a self-checking regression.
+Dialogue: 0,0:00:18.38,0:00:27.38,Default,,0,0,0,,Run the included Python script against the original: exit 1, both cases fail.\NExpectations come from the contract, never from the broken design output.
+Dialogue: 0,0:00:27.84,0:00:39.84,Default,,0,0,0,,Recorded actual Nemotron repair on Nebius: one request corrects the state update.\NThe selected file passes the original tests and fixed final bounds 16 and 20.
+Dialogue: 0,0:00:40.74,0:00:50.75,Default,,0,0,0,,The checked export carries two regressions with 191 assertions.\NIts standalone runner returns exit 0, with no API key or application dependency.
+Dialogue: 0,0:00:50.92,0:01:00.92,Default,,0,0,0,,Same 7-series synthesis settings: logic LUT cells 12 to 11; registers and LUTRAM unchanged.\NThese are mapped estimates, not placement, timing, power or board measurements.
+Dialogue: 0,0:01:01.21,0:01:09.21,Default,,0,0,0,,Reintroduce the original bug into the exported source. The prior acceptance disappears.\NThe retained tests remain unchanged and will run against a fresh source snapshot.
+Dialogue: 0,0:01:11.59,0:01:21.60,Default,,0,0,0,,The restored defect fails again: no checked download, exit 1.\NReopening through the general project route also retains the FIFO checks.
+Dialogue: 0,0:01:22.17,0:01:34.18,Default,,0,0,0,,Bring your own source and benches without writing JSON. Inspect actual DUT ports,\Nmap signals and set capacity. Port inspection alone is not a correctness check.
+Dialogue: 0,0:01:34.26,0:01:42.26,Default,,0,0,0,,The FIFO profile is bounded and synchronous; these examples are authored integration cases.\NSource, Docker build and evidence: github.com/ehdtjq08/RTLRefine

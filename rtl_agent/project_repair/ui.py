@@ -103,12 +103,18 @@ def evidence(folder):
 
 
 def render_result(project,result):
+    if result.get('mode')=='independent_fifo_properties':
+        from ..property_repair.ui import receipt
+        from ..property_repair.contract import load_contract
+        receipt(project,load_contract(project),result,Path(result['directory']))
+        return
     st.subheader('Project verification')
     final=result.get('final_check') or result.get('baseline',{})
     rows=final.get('tests',[]);passed=sum(t['passed'] for t in rows)
     a,b,c=st.columns(3);a.metric('Provided testbenches' if result.get('final_check') else 'Public discovery tests',f'{passed}/{len(rows)}');b.metric('NVIDIA requests',result['api_requests']);c.metric('Editable files',len(project.config['editable_files']))
     if result['accepted']:st.success('The exact project source passed every provided testbench.')
     else:st.warning('This source was not accepted: '+result['status'])
+    if result.get('error'):st.error(result['error'])
     st.table([{'Test':t['id'],'Phase':t['phase'],'Status':t['status'],'Reported checks':t['checks'] if t['checks'] is not None else 'completion marker',
                'Seconds':round(t['wall_seconds'],3)} for t in rows])
     if not project.audit_tests:st.caption('No additional audit testbench was supplied. The verdict covers only the supplied public checks.')
@@ -155,6 +161,9 @@ def render_project():
                 config=wizard(files,identity)
                 if config is None:return
                 project=load_project(files,config)
+            if any(p=='rtlrefine_regressions' or p.startswith('rtlrefine_regressions/') for p in project.files):
+                from ..property_repair.contract import load_contract,bind_contract
+                project=bind_contract(project,load_contract(project))
         except (ValueError,UnicodeError,KeyError,TypeError) as exc:st.error(str(exc));return
         st.html('<div class="studio-section-head"><span class="studio-eyebrow">'+escape(project.config['name'])+'</span>'+badge('User testbench project','saved')+'</div>')
         st.caption('DUT: '+project.config['dut_top']+' · '+str(len(project.config['rtl_files']))+' RTL files · '+str(len(project.public_tests))+' public tests · '+str(len(project.audit_tests))+' additional tests')
@@ -163,6 +172,9 @@ def render_project():
             try:st.code(project.files[path].decode(),language='verilog' if Path(path).suffix in ('.v','.sv','.vh','.svh') else 'text')
             except UnicodeDecodeError:st.caption('Binary data asset · '+str(len(project.files[path]))+' bytes')
         missing=[name for name in ('iverilog','vvp','bwrap','prlimit') if not find_tool(name)]
+        if 'rtlrefine_regressions/manifest.json' in project.files:
+            st.info('This export retains its FIFO contract and regression suite. A full check runs both as well as the supplied benches.')
+            if not find_tool('yosys'):missing.append('yosys')
         owner=os.getenv('RTLREFINE_ENABLE_LIVE_MODEL')=='1';a,b=st.columns(2)
         check=a.button('Check this project',type='primary',disabled=bool(missing),width='stretch')
         fix=b.button('Repair this project with NVIDIA',disabled=bool(missing) or not owner,width='stretch')

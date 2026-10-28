@@ -6,11 +6,12 @@ The repository contains source, licenses, setup instructions, current UI assets,
 user-project examples and recorded verification evidence. Run the Docker test
 build using the README. New model requests are disabled by default.
 
-The current v1.3.0 submission materials are in
-[submission/property-v1](../submission/property-v1/README.md), including the
-captioned FIFO actual-run video, gallery screenshots and solo-entry Devpost copy.
-That new video still needs its own YouTube upload. The earlier v1.2.1 materials
-remain in `submission/hackathon-2026`. The
+The current v1.4.0 submission materials are in
+[submission/functional-v1](../submission/functional-v1/README.md), with portable
+regression exports, JSON-free setup and mapped-resource diagnostics. The video
+labels its actual recorded NVIDIA result and executes native checks fresh.
+It still needs its own YouTube upload. Earlier v1.3.0 and v1.2.1 materials remain
+in `submission/property-v1` and `submission/hackathon-2026`. The
 [versioned test-build instructions](JUDGE_QUICKSTART.md) explain credential-free
 native checking and the separately configured fresh-inference path.
 

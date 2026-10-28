@@ -15,6 +15,11 @@ def public_feedback(result):
 
 
 def run_project(project,*,repair=False,output=None,on_event=None):
+    if any(p=='rtlrefine_regressions' or p.startswith('rtlrefine_regressions/') for p in project.files):
+        # Exported FIFO projects retain their stronger contract and regressions
+        # even when reopened through the general project route.
+        from ..property_repair.workflow import run_repair
+        return run_repair(project,repair=repair,output=output,on_event=on_event)
     start=time.monotonic();root=new_run_dir('user_project_repair',output);events=[]
     def event(stage,message):
         e={'stage':stage,'message':message,'elapsed_seconds':time.monotonic()-start};events.append(e);write_json(root/'events.json',events)
@@ -37,7 +42,10 @@ def run_project(project,*,repair=False,output=None,on_event=None):
         prior=None;observations=public_feedback(baseline)
         for attempt in range(2):
             event('model_patch','Ask NVIDIA for a design-only multi-file patch, attempt '+str(attempt+1))
-            proposal=propose(project,observations,root/f'proposal_{attempt+1}',previous=prior)
+            try:proposal=propose(project,observations,root/f'proposal_{attempt+1}',previous=prior)
+            except (ValueError,RuntimeError,OSError) as exc:
+                result.update(status='MODEL_SETUP_REQUIRED',error=str(exc),wall_seconds=time.monotonic()-start)
+                write_json(root/'result.json',result);return result
             result['api_requests']+=proposal['api_requests'];entry={'number':attempt+1,**proposal};result['attempts'].append(entry)
             if proposal['status']!='VALID_PATCH':
                 if proposal['status']!='PATCH_REJECTED' or not proposal['api_requests']:break

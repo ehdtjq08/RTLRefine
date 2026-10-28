@@ -1,7 +1,8 @@
 # 개발·제출 자료
 
-현재 제출 자료는 [property-v1](property-v1/README.md)입니다. 독립 FIFO 속성
-검증·반례 재현·실제 NVIDIA 수리 영상과 개인 참가 기준 설명을 포함합니다.
+현재 제출 자료는 [functional-v1](functional-v1/README.md)입니다. 독립 검증,
+실행 가능한 회귀 테스트 내보내기, JSON 없는 설정과 합성 자원 비교를 포함합니다.
+이전 독립 FIFO 속성 제출 자료는 [property-v1](property-v1/README.md)에 보존했습니다.
 이전 사용자 프로젝트 제출 자료는 [hackathon-2026](hackathon-2026/README.md)에
 보존했습니다.
 아래 자료들은 이전 개발 단계의 기록으로 보존합니다.

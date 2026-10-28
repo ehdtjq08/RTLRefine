@@ -1,0 +1,2 @@
+read_rtlil __rtlrefine/frozen/prepared.il
+sat -seq 12 -set-assumes -prove-asserts -set-init-zero -set-def-inputs -timeout 25 -show-ports -dump_json __rtlrefine/counterexample.json -dump_vcd __rtlrefine/counterexample.vcd

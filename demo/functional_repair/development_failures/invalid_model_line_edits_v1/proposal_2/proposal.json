@@ -1,0 +1,33 @@
+{
+  "api_requests": 1,
+  "changes": {
+    "rtl/packet_queue.sv": "// RTLRefine independent-property example. MIT; authored defect fixture.\nmodule packet_queue #(parameter WIDTH=4, DEPTH=4)(\n    input wire clk, rst,\n    input wire s_valid,\n    output wire s_ready,\n    input wire [WIDTH-1:0] s_data,\n    output wire m_valid,\n    input wire m_ready,\n    output wire [WIDTH-1:0] m_data\n);\nlocalparam PW=$clog2(DEPTH);\nreg [WIDTH-1:0] memory [0:DEPTH-1];\nreg [PW-1:0] write_ptr=0, read_ptr=0;\nreg [PW:0] count=0;\nwire [PW:0] count_next = count + (push && !pop) - (pop && !push);\nassign m_valid = !rst && count_next != 0;\nassign s_ready = !rst && (count_next < DEPTH || (m_valid && m_ready));\nassign m_data = memory[read_ptr];\nwire push = s_valid && s_ready;\nwire pop = m_valid && m_ready;\nalways @(posedge clk) begin\n    if (rst) begin\n        write_ptr <= 0;\n        read_ptr <= 0;\n        count <= 0;\n    end else begin\n        if (push) begin\n            memory[write_ptr] <= s_data;\n            write_ptr <= write_ptr == DEPTH-1 ? 0 : write_ptr+1;\n        end\n        if (pop)\n            read_ptr <= read_ptr == DEPTH-1 ? 0 : read_ptr+1;\n        count <= count_next;\n    end\nend\nendmodule\nendmodule\n"
+  },
+  "cost": {
+    "estimated_usd": 0.005189,
+    "phase": "development",
+    "pricing_verified_on": "2026-10-22",
+    "request_id": "86f781e3865f4a2f8837b53e6a6fe3d7",
+    "reserved_usd": 1.067008,
+    "state": "settled"
+  },
+  "proposal": {
+    "diagnosis": "The FIFO's `m_valid` and `s_ready` signals are combinational assignments that read the `count` register before it is updated for the current cycle. This causes a one-cycle latency where outputs reflect the previous cycle's occupancy. Specifically: when pushing into an empty queue with simultaneous pop, `m_valid` incorrectly asserts before data is written; when popping the last element without a simultaneous push, `m_valid` stays asserted for an extra cycle after the queue becomes empty. The fix is to compute the next-cycle occupancy (`count_next`) combinationally from current `count`, `push`, and `pop`, then drive `m_valid` and `s_ready` from `count_next` so outputs reflect the state after the current cycle's transfers.",
+    "edits": [
+      {
+        "end_line": 19,
+        "file": "rtl/packet_queue.sv",
+        "replacement": "reg [PW:0] count=0;\nwire [PW:0] count_next = count + (push && !pop) - (pop && !push);\nassign m_valid = !rst && count_next != 0;\nassign s_ready = !rst && (count_next < DEPTH || (m_valid && m_ready));\nassign m_data = memory[read_ptr];\nwire push = s_valid && s_ready;\nwire pop = m_valid && m_ready;",
+        "start_line": 14
+      },
+      {
+        "end_line": 39,
+        "file": "rtl/packet_queue.sv",
+        "replacement": "always @(posedge clk) begin\n    if (rst) begin\n        write_ptr <= 0;\n        read_ptr <= 0;\n        count <= 0;\n    end else begin\n        if (push) begin\n            memory[write_ptr] <= s_data;\n            write_ptr <= write_ptr == DEPTH-1 ? 0 : write_ptr+1;\n        end\n        if (pop)\n            read_ptr <= read_ptr == DEPTH-1 ? 0 : read_ptr+1;\n        count <= count_next;\n    end\nend\nendmodule",
+        "start_line": 20
+      }
+    ]
+  },
+  "status": "VALID_PATCH",
+  "wall_seconds": 2.588017076952383
+}

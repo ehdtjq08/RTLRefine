@@ -5,6 +5,10 @@ contract and replayed counterexamples beyond the supplied tests. See
 [FIFO property repair](PROPERTY_REPAIR.md). The general workflow below continues
 to use the user's own benches without assuming that FIFO contract.
 
+Exports containing `rtlrefine_regressions/` keep their independent FIFO contract
+and retained regressions when reopened here. The generic page routes them through
+the stronger check; it does not silently ignore the bundled tests.
+
 Open `/project` to upload an RTL ZIP and its own self-checking Verilog/SystemVerilog
 testbenches. This path does not select a built-in module, load a corrected RTL
 oracle or use the three-example trace harness. The existing example workspace

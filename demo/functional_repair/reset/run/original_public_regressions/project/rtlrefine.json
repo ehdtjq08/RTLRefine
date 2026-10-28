@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "FIFO reset \u00b7 authored fixture",
+  "dut_top": "packet_queue",
+  "rtl_files": [
+    "rtl/packet_queue.sv"
+  ],
+  "include_files": [],
+  "editable_files": [
+    "rtl/packet_queue.sv"
+  ],
+  "include_dirs": [],
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "WIDTH": "4",
+    "DEPTH": "4"
+  },
+  "tests": [
+    {
+      "id": "smoke",
+      "top": "tb_smoke",
+      "phase": "public",
+      "files": [
+        "tests/smoke.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {},
+      "success_marker": null
+    },
+    {
+      "id": "sequence_audit",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {},
+      "success_marker": null
+    }
+  ],
+  "contract": "Ready/valid FIFO with synchronous reset, ordered data, capacity four and full-cycle replacement."
+}

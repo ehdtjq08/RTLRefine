@@ -9,15 +9,26 @@ from ..project_repair.agent import propose
 from ..project_repair.workflow import public_feedback
 from .contract import TEXT,load_contract,bind_contract,contract_id
 from .formal import check_properties
+from .regressions import (inherited_cases,contract_sequence,public_case,merge_cases,
+                          with_bundle,check_bundle,failed_public_feedback)
+from .resources import compare as compare_resources
 
 
-def feedback(smoke,properties,c):
+def feedback(smoke,properties,c,regressions=None,cases=None):
     value={'public_testbenches':public_feedback(smoke),'independent_public_contract':TEXT,
            'fifo_configuration':{k:c[k] for k in ('kind','ports','data_width','depth','discovery_steps')},
            'public_property_status':properties['status'],'public_property_steps':properties['steps']}
+    value['clock_state_semantics']=(
+        'Before a rising edge, ready/valid are functions of the CURRENT registered occupancy. '
+        'Transfers are decided from those current outputs and inputs. At the edge the occupancy '
+        'register updates; the post-edge regression check observes the NEW registered state. '
+        'Do not drive handshake outputs from a predicted next occupancy that itself depends '
+        'on those outputs: that introduces combinational feedback. Prefer a small local edit '
+        'to the state transition rather than replacing working handshake logic.')
     if properties.get('replay'):
         value['counterexample_inputs_and_observations']=properties['replay']['observations']
         value['independent_replay_violations']=properties['replay']['violations']
+    if regressions is not None:value['public_regressions']=failed_public_feedback(regressions,cases or [])
     return value
 
 
@@ -41,6 +52,15 @@ def run_repair(project,*,contract=None,repair=False,output=None,on_event=None):
     def finish(status):
         result.update(status=status,wall_seconds=time.monotonic()-start)
         write_json(root/'result.json',result);return result
+    try:
+        retained=inherited_cases(project,c)
+        if retained:
+            import json
+            previous_export=json.loads(project.files['rtlrefine_regressions/manifest.json'])
+            current_hashes={p:sha256(project.files[p]) for p in previous_export['source_hashes']}
+            result['previous_export_source_changed']=current_hashes!=previous_export['source_hashes']
+    except (ValueError,KeyError,TypeError) as exc:
+        result['error']=str(exc);return finish('REGRESSION_SETUP_REQUIRED')
     event('smoke','Run the existing public testbench before inspecting independent properties')
     smoke=check_project(project,{},root/'original_smoke',phase='public');result['original_smoke']=smoke
     if any(t['status'] not in {'PASS','ASSERTION_FAILED'} for t in smoke['tests']):
@@ -51,14 +71,31 @@ def run_repair(project,*,contract=None,repair=False,output=None,on_event=None):
         result['error']=str(exc);return finish('PROPERTY_SETUP_REQUIRED')
     result['original_properties']=properties
     if properties['status'] not in {'BOUNDED_PASS','COUNTEREXAMPLE'}:return finish(properties['status'])
-    selected={};needs_repair=not smoke['accepted'] or properties['status']=='COUNTEREXAMPLE'
+    cases=merge_cases(retained,[public_case(properties)],[contract_sequence(c)])
+    event('regressions','Generate executable public regressions from the contract and retain any earlier counterexamples')
+    try:
+        reproduction=with_bundle(project,c,cases)
+        regressions=check_bundle(reproduction,root/'original_public_regressions')
+    except (ValueError,RuntimeError,OSError) as exc:
+        result['error']=str(exc);return finish('REGRESSION_SETUP_REQUIRED')
+    result['original_regressions']=regressions
+    if regressions['status'] not in {'REGRESSIONS_PASS','REGRESSION_FAILED'}:return finish('REGRESSION_SETUP_REQUIRED')
+    discovered=public_case(properties)
+    if discovered and any(t['id']==discovered['id'] and t['passed'] for t in regressions['tests']):
+        return finish('REGRESSION_ORACLE_MISMATCH')
+    if not regressions['accepted']:
+        reproduction_blob=archive_project(reproduction);(root/'reproduction-project.zip').write_bytes(reproduction_blob)
+        result['reproduction_archive_sha256']=sha256(reproduction_blob)
+    selected={};needs_repair=not smoke['accepted'] or properties['status']=='COUNTEREXAMPLE' or not regressions['accepted']
     if needs_repair and not repair:return finish('INDEPENDENT_FAILURE_FOUND')
     interfaces={t['id']:t.get('interface') for t in smoke['tests'] if t.get('interface')}
     if needs_repair:
-        observations=feedback(smoke,properties,c);previous=None;found=False
+        observations=feedback(smoke,properties,c,regressions,cases);previous=None;found=False
         for attempt in range(2):
             event('model','Give NVIDIA only the public contract and reproduced failure; attempt '+str(attempt+1))
-            proposal=propose(project,observations,root/f'proposal_{attempt+1}',previous=previous)
+            try:proposal=propose(project,observations,root/f'proposal_{attempt+1}',previous=previous)
+            except (ValueError,RuntimeError,OSError) as exc:
+                result['error']=str(exc);return finish('MODEL_SETUP_REQUIRED')
             result['api_requests']+=proposal['api_requests'];entry={'number':attempt+1,**proposal};result['attempts'].append(entry)
             if proposal['status']!='VALID_PATCH':
                 if proposal['status']!='PATCH_REJECTED' or not proposal['api_requests']:break
@@ -66,14 +103,35 @@ def run_repair(project,*,contract=None,repair=False,output=None,on_event=None):
             changes=proposal['changes'];previous=proposal['proposal']
             event('public_recheck','Rebuild the proposed source and rerun public tests and the public property bound')
             checked=check_project(project,changes,root/f'candidate_{attempt+1}_smoke',phase='public',interfaces=interfaces)
+            entry['public_smoke']=checked
+            source_errors={'PREPROCESS_FAILED','DUT_COMPILE_FAILED','TEST_COMPILE_FAILED','UNSUPPORTED_DUT','MISSING_DEPENDENCY','CHECKER_DEPENDENCY','INTERFACE_CHANGED'}
+            if any(t['status'] in source_errors for t in checked['tests']):
+                observations=feedback(checked,{'status':'NOT_RUN_BECAUSE_PROPOSAL_DID_NOT_COMPILE','steps':c['discovery_steps']},c)
+                observations['original_counterexample_replay']=properties.get('replay',{}).get('observations',[])
+                observations['proposal_feedback_note']='The compiler diagnostics describe the previous proposed patch. Fix those errors, with all replacement ranges still relative to the ORIGINAL uploaded files.'
+                continue
+            if any(t['status'] not in {'PASS','ASSERTION_FAILED'} for t in checked['tests']):return finish('CANDIDATE_UNPROVEN')
             try:formal=check_properties(project,changes,c,root/f'candidate_{attempt+1}_properties',minimize=True)
             except (ValueError,RuntimeError,OSError) as exc:
-                entry['property_error']=str(exc);observations={**observations,'patch_rejected':str(exc)};continue
+                entry['property_error']=str(exc)
+                observations=feedback(checked,{'status':'PUBLIC_PROPERTY_SETUP_REJECTED','steps':c['discovery_steps']},c)
+                observations['patch_rejected']=str(exc)
+                observations['original_counterexample_replay']=properties.get('replay',{}).get('observations',[])
+                continue
             entry.update(public_smoke=checked,public_properties=formal)
             if formal['status'] not in {'BOUNDED_PASS','COUNTEREXAMPLE'}:return finish('CANDIDATE_UNPROVEN')
-            if checked['accepted'] and formal['status']=='BOUNDED_PASS':
+            cases=merge_cases(cases,[public_case(formal)])
+            try:regression_check=check_bundle(with_bundle(project,c,cases,changes),root/f'candidate_{attempt+1}_regressions')
+            except (ValueError,RuntimeError,OSError) as exc:
+                entry['regression_error']=str(exc);return finish('CANDIDATE_REGRESSION_UNPROVEN')
+            entry['public_regressions']=regression_check
+            if regression_check['status'] not in {'REGRESSIONS_PASS','REGRESSION_FAILED'}:return finish('CANDIDATE_REGRESSION_UNPROVEN')
+            discovered=public_case(formal)
+            if discovered and any(t['id']==discovered['id'] and t['passed'] for t in regression_check['tests']):
+                return finish('REGRESSION_ORACLE_MISMATCH')
+            if checked['accepted'] and formal['status']=='BOUNDED_PASS' and regression_check['accepted']:
                 selected=changes;result['diagnosis']=proposal['proposal']['diagnosis'];found=True;break
-            observations=feedback(checked,formal,c)
+            observations=feedback(checked,formal,c,regression_check,cases)
         if not found:return finish('NO_PUBLIC_PASS')
     # Selection is now immutable. No audit result can select another candidate.
     result['changes']=selected;result['selection_frozen']=True
@@ -88,11 +146,25 @@ def run_repair(project,*,contract=None,repair=False,output=None,on_event=None):
             checked={'status':'UNPROVEN','steps':bound,'error':str(exc)}
         audits.append(checked)
     result['property_audits']=audits
-    result['accepted']=final['accepted'] and all(a['status']=='BOUNDED_PASS' for a in audits)
+    event('export_regressions','Rebuild the exact export and run every retained regression with the standalone runner')
+    try:
+        exported=with_bundle(project,c,cases,selected)
+        portable_check=check_bundle(exported,root/'independent_export_regressions',standalone=True)
+    except (ValueError,RuntimeError,OSError) as exc:
+        portable_check={'status':'UNPROVEN','accepted':False,'error':str(exc),'tests':[]}
+    result['final_regressions']=portable_check
+    result['regression_cases']=[{'id':case['id'],'origin':case['origin'],'steps':len(case['inputs'])} for case in cases]
+    result['accepted']=final['accepted'] and all(a['status']=='BOUNDED_PASS' for a in audits) and portable_check['accepted']
     if result['accepted']:
-        blob=archive_project(project,selected);(root/'checked-project.zip').write_bytes(blob)
+        event('resources','Compare mapped logic LUT, register and memory primitives under the same Xilinx 7-series synthesis settings')
+        try:
+            result['resource_comparison']=compare_resources(project,root/'original_properties/__rtlrefine/frozen/design.v',
+                root/f'independent_property_audit_{len(c["audit_steps"])}/__rtlrefine/frozen/design.v',root/'resource_comparison')
+        except (ValueError,RuntimeError,OSError,KeyError,TypeError) as exc:
+            result['resource_comparison']={'status':'UNAVAILABLE','error':str(exc),'affects_correctness_acceptance':False}
+        blob=archive_project(exported);(root/'checked-project.zip').write_bytes(blob)
         result['checked_archive_sha256']=sha256(blob)
-        event('complete','The exact project passed supplied tests, deeper bounded properties and progress reachability')
+        event('complete','The exact project passed tests, bounded properties, progress and the portable regression suite')
         return finish('CHECKED_WITH_PROPERTIES')
     event('rejected','Final audit rejected the selected source; no checked export and no further model request')
     return finish('FINAL_AUDIT_REJECTED')

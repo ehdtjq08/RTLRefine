@@ -1,0 +1,1 @@
+Two real NVIDIA proposals failed public compilation. No private audit was run and no checked export was created. Actual compiler diagnostics and clock-state guidance were improved before a separately recorded follow-up run. These failures remain part of the development record.

@@ -1,0 +1,421 @@
+{
+  "contract": "Single positive-edge clock; synchronous active-high reset flushes the queue. Transfers occur only with valid && ready outside reset. Output valid exactly matches nonempty occupancy. Input ready when capacity exists or a simultaneous output transfer frees space. Accepted payloads leave in FIFO order. Output remains valid and stable while stalled. No fall-through on an empty queue.",
+  "contract_id": "ab002fd6f96964011a2886ecfb99184e9038bb1e08d85efd0dff4b4e2ced3e70",
+  "design_hashes": {
+    "rtl/packet_queue.sv": "6929f5c6bece888a1cd89d9960d45b4b91a79e314650531cc37a8880002bed27"
+  },
+  "fixed_corrected_rtl_used": false,
+  "interface": [
+    {
+      "instance": "packet_queue",
+      "numeric_parameters": {
+        "DEPTH": "32'sb00000000000000000000000000000100",
+        "PW": "32'sb00000000000000000000000000000010",
+        "WIDTH": "32'sb00000000000000000000000000000100"
+      },
+      "ports": [
+        {
+          "direction": "INPUT",
+          "index": 0,
+          "name": "clk",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 1,
+          "name": "rst",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 2,
+          "name": "s_valid",
+          "width": 1
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 3,
+          "name": "s_ready",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 4,
+          "name": "s_data",
+          "width": 4
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 5,
+          "name": "m_valid",
+          "width": 1
+        },
+        {
+          "direction": "INPUT",
+          "index": 6,
+          "name": "m_ready",
+          "width": 1
+        },
+        {
+          "direction": "OUTPUT",
+          "index": 7,
+          "name": "m_data",
+          "width": 4
+        }
+      ]
+    }
+  ],
+  "minimal_counterexample_confirmed": true,
+  "monitor_sha256": "87556b10cc84688f0cffa6e5628b32cc6e028d4f1a35e58f4001d6f5a6be0695",
+  "new_model_calls": 0,
+  "prepared_sha256": "9319f6edb6489cff284f3156f2f622bebebb63472dfe225d4a927766fc61689f",
+  "queries": [
+    {
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/solve_properties.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "solve_properties",
+        "status": "PASS",
+        "wall_seconds": 0.317919691093266
+      },
+      "cover_query": false,
+      "script_sha256": "21b3fa9eece07a270eca2f41861d3010f8634d97da787d93a043170c59d835f0",
+      "status": "COUNTEREXAMPLE",
+      "steps": 12
+    },
+    {
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/solve_properties.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "solve_properties",
+        "status": "PASS",
+        "wall_seconds": 0.1684010629542172
+      },
+      "cover_query": false,
+      "script_sha256": "4d5fa49cdc3c1bb5916be81e44110a90005be64dd1b9d7cd2fdb0c097179184d",
+      "status": "COUNTEREXAMPLE",
+      "steps": 6
+    },
+    {
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/solve_properties.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "solve_properties",
+        "status": "PASS",
+        "wall_seconds": 0.06814305786974728
+      },
+      "cover_query": false,
+      "script_sha256": "201bc7e9b089e4e88c5663bd0ea3d50db9ae18c4332f9cdddc8bbce66f9a6e6d",
+      "status": "BOUNDED_PASS",
+      "steps": 3
+    },
+    {
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/solve_properties.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "solve_properties",
+        "status": "PASS",
+        "wall_seconds": 0.11832773103378713
+      },
+      "cover_query": false,
+      "script_sha256": "eccc70eee99825ade63a159dd47e1cd1cee055f98add148cadd7570f6abd042b",
+      "status": "BOUNDED_PASS",
+      "steps": 5
+    },
+    {
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/solve_properties.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "solve_properties",
+        "status": "PASS",
+        "wall_seconds": 0.1682313410565257
+      },
+      "cover_query": false,
+      "script_sha256": "4d5fa49cdc3c1bb5916be81e44110a90005be64dd1b9d7cd2fdb0c097179184d",
+      "status": "COUNTEREXAMPLE",
+      "steps": 6
+    }
+  ],
+  "replay": {
+    "commands": [
+      {
+        "command": [
+          "/home/hands/anaconda3/bin/iverilog",
+          "-g2012",
+          "-s",
+          "__rtlrefine_replay_tb",
+          "-o",
+          "__rtlrefine/replay.vvp",
+          "./rtl/packet_queue.sv",
+          "__rtlrefine/frozen/replay_tb.v"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "compile",
+        "status": "PASS",
+        "wall_seconds": 0.03338771918788552
+      },
+      {
+        "command": [
+          "/home/hands/anaconda3/bin/vvp",
+          "__rtlrefine/replay.vvp"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "simulate",
+        "status": "PASS",
+        "wall_seconds": 0.017405306920409203
+      }
+    ],
+    "observations": [
+      {
+        "cycle": 0,
+        "expected_count": 0,
+        "expected_data": null,
+        "m_data": null,
+        "m_ready": 0,
+        "m_valid": 0,
+        "rst": 1,
+        "s_data": 0,
+        "s_ready": 0,
+        "s_valid": 0,
+        "violations": []
+      },
+      {
+        "cycle": 1,
+        "expected_count": 0,
+        "expected_data": null,
+        "m_data": null,
+        "m_ready": 0,
+        "m_valid": 0,
+        "rst": 0,
+        "s_data": 2,
+        "s_ready": 1,
+        "s_valid": 1,
+        "violations": []
+      },
+      {
+        "cycle": 2,
+        "expected_count": 1,
+        "expected_data": 2,
+        "m_data": 2,
+        "m_ready": 1,
+        "m_valid": 1,
+        "rst": 0,
+        "s_data": 0,
+        "s_ready": 1,
+        "s_valid": 1,
+        "violations": []
+      },
+      {
+        "cycle": 3,
+        "expected_count": 1,
+        "expected_data": 0,
+        "m_data": 0,
+        "m_ready": 1,
+        "m_valid": 1,
+        "rst": 0,
+        "s_data": 10,
+        "s_ready": 1,
+        "s_valid": 1,
+        "violations": []
+      },
+      {
+        "cycle": 4,
+        "expected_count": 1,
+        "expected_data": 10,
+        "m_data": 10,
+        "m_ready": 1,
+        "m_valid": 1,
+        "rst": 0,
+        "s_data": 6,
+        "s_ready": 1,
+        "s_valid": 1,
+        "violations": []
+      },
+      {
+        "cycle": 5,
+        "expected_count": 1,
+        "expected_data": 6,
+        "m_data": 2,
+        "m_ready": 0,
+        "m_valid": 1,
+        "rst": 0,
+        "s_data": 0,
+        "s_ready": 1,
+        "s_valid": 0,
+        "violations": [
+          "payload_order"
+        ]
+      }
+    ],
+    "oracle": "Independent Python transaction queue and four-state Icarus; no corrected RTL",
+    "status": "FAILURE_REPRODUCED",
+    "violations": [
+      {
+        "cycle": 5,
+        "expected_count": 1,
+        "expected_data": 6,
+        "m_data": 2,
+        "m_ready": 0,
+        "m_valid": 1,
+        "rst": 0,
+        "s_data": 0,
+        "s_ready": 1,
+        "s_valid": 0,
+        "violations": [
+          "payload_order"
+        ]
+      }
+    ]
+  },
+  "scope": "Bounded two-state synchronous positive-edge FIFO contract; reset at first step; arbitrary defined external inputs; zero initial state. Not unbounded correctness or physical CDC.",
+  "status": "COUNTEREXAMPLE",
+  "steps": 6,
+  "witness": [
+    {
+      "cover_progress": 0,
+      "expected_count": 0,
+      "m_data": 0,
+      "m_ready": 0,
+      "m_valid": 0,
+      "property_capacity": 1,
+      "property_payload": 1,
+      "property_ready": 1,
+      "property_stable": 1,
+      "property_valid": 1,
+      "rst": 1,
+      "s_data": 0,
+      "s_ready": 0,
+      "s_valid": 0,
+      "watch_this": 0
+    },
+    {
+      "cover_progress": 0,
+      "expected_count": 0,
+      "m_data": 0,
+      "m_ready": 0,
+      "m_valid": 0,
+      "property_capacity": 1,
+      "property_payload": 1,
+      "property_ready": 1,
+      "property_stable": 1,
+      "property_valid": 1,
+      "rst": 0,
+      "s_data": 2,
+      "s_ready": 1,
+      "s_valid": 1,
+      "watch_this": 1
+    },
+    {
+      "cover_progress": 0,
+      "expected_count": 1,
+      "m_data": 2,
+      "m_ready": 1,
+      "m_valid": 1,
+      "property_capacity": 1,
+      "property_payload": 1,
+      "property_ready": 1,
+      "property_stable": 1,
+      "property_valid": 1,
+      "rst": 0,
+      "s_data": 0,
+      "s_ready": 1,
+      "s_valid": 1,
+      "watch_this": 0
+    },
+    {
+      "cover_progress": 0,
+      "expected_count": 1,
+      "m_data": 0,
+      "m_ready": 1,
+      "m_valid": 1,
+      "property_capacity": 1,
+      "property_payload": 1,
+      "property_ready": 1,
+      "property_stable": 1,
+      "property_valid": 1,
+      "rst": 0,
+      "s_data": 10,
+      "s_ready": 1,
+      "s_valid": 1,
+      "watch_this": 0
+    },
+    {
+      "cover_progress": 0,
+      "expected_count": 1,
+      "m_data": 10,
+      "m_ready": 1,
+      "m_valid": 1,
+      "property_capacity": 1,
+      "property_payload": 1,
+      "property_ready": 1,
+      "property_stable": 1,
+      "property_valid": 1,
+      "rst": 0,
+      "s_data": 6,
+      "s_ready": 1,
+      "s_valid": 1,
+      "watch_this": 1
+    },
+    {
+      "cover_progress": 0,
+      "expected_count": 1,
+      "m_data": 2,
+      "m_ready": 0,
+      "m_valid": 1,
+      "property_capacity": 1,
+      "property_payload": 0,
+      "property_ready": 1,
+      "property_stable": 1,
+      "property_valid": 1,
+      "rst": 0,
+      "s_data": 0,
+      "s_ready": 1,
+      "s_valid": 0,
+      "watch_this": 0
+    }
+  ]
+}

@@ -1,0 +1,807 @@
+{
+  "creator": "Yosys 0.51 (git sha1 c4b5190229616f7ebf8197f43990b4429de3e420, g++ 13.3.0-2 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/yosys_1741800146432/work=/usr/local/src/conda/yosys-0.51 -fdebug-prefix-map=/home/hands/anaconda3=/usr/local/src/conda-prefix -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/yosys_1741800146432/work=/usr/local/src/conda/yosys-0.51 -fdebug-prefix-map=/home/hands/anaconda3=/usr/local/src/conda-prefix -fPIC -O3)",
+  "modules": {
+    "packet_queue": {
+      "attributes": {
+        "src": "__rtlrefine/frozen/design.v:2.1-40.10",
+        "top": "00000000000000000000000000000001",
+        "dynports": "00000000000000000000000000000001",
+        "hdlname": "packet_queue"
+      },
+      "parameter_default_values": {
+        "DEPTH": "00000000000000000000000000000100",
+        "WIDTH": "00000000000000000000000000000100"
+      },
+      "ports": {
+        "clk": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "rst": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "s_valid": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "s_ready": {
+          "direction": "output",
+          "bits": [ 5 ]
+        },
+        "s_data": {
+          "direction": "input",
+          "bits": [ 6, 7, 8, 9 ]
+        },
+        "m_valid": {
+          "direction": "output",
+          "bits": [ 10 ]
+        },
+        "m_ready": {
+          "direction": "input",
+          "bits": [ 11 ]
+        },
+        "m_data": {
+          "direction": "output",
+          "bits": [ 12, 13, 14, 15 ]
+        }
+      },
+      "cells": {
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2155": {
+          "hide_name": 1,
+          "type": "LUT5",
+          "parameters": {
+            "INIT": "00000000111111100000000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:56.26-58.30"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "I4": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 16 ],
+            "I1": [ 17 ],
+            "I2": [ 18 ],
+            "I3": [ 3 ],
+            "I4": [ 11 ],
+            "O": [ 19 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2156": {
+          "hide_name": 1,
+          "type": "LUT6",
+          "parameters": {
+            "INIT": "0000000000000000000000000000000011111111111111100000000010101010"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:61.26-63.41"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "I4": "input",
+            "I5": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 4 ],
+            "I1": [ 17 ],
+            "I2": [ 18 ],
+            "I3": [ 16 ],
+            "I4": [ 11 ],
+            "I5": [ 3 ],
+            "O": [ 20 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2157": {
+          "hide_name": 1,
+          "type": "LUT3",
+          "parameters": {
+            "INIT": "00001011"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:47.26-48.41"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 11 ],
+            "I1": [ 16 ],
+            "I2": [ 3 ],
+            "O": [ 5 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2158": {
+          "hide_name": 1,
+          "type": "LUT4",
+          "parameters": {
+            "INIT": "0000000011111110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:51.26-53.19"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 17 ],
+            "I1": [ 16 ],
+            "I2": [ 18 ],
+            "I3": [ 3 ],
+            "O": [ 10 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2159": {
+          "hide_name": 1,
+          "type": "LUT2",
+          "parameters": {
+            "INIT": "0110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:43.26-44.30"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 21 ],
+            "I1": [ 22 ],
+            "O": [ 23 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2161": {
+          "hide_name": 1,
+          "type": "LUT5",
+          "parameters": {
+            "INIT": "00001101000000001111001011111111"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:56.26-58.30"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "I4": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 16 ],
+            "I1": [ 11 ],
+            "I2": [ 3 ],
+            "I3": [ 4 ],
+            "I4": [ 17 ],
+            "O": [ 24 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2162": {
+          "hide_name": 1,
+          "type": "LUT4",
+          "parameters": {
+            "INIT": "0010000011001111"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:51.26-53.19"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 11 ],
+            "I1": [ 3 ],
+            "I2": [ 4 ],
+            "I3": [ 16 ],
+            "O": [ 25 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2163": {
+          "hide_name": 1,
+          "type": "INV",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:36.13-36.48"
+          },
+          "port_directions": {
+            "I": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I": [ 18 ],
+            "O": [ 26 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2166": {
+          "hide_name": 1,
+          "type": "LUT4",
+          "parameters": {
+            "INIT": "1111010011111111"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:51.26-53.19"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 11 ],
+            "I1": [ 16 ],
+            "I2": [ 3 ],
+            "I3": [ 4 ],
+            "O": [ 27 ]
+          }
+        },
+        "$abc$2153$auto$blifparse.cc:535:parse_blif$2167": {
+          "hide_name": 1,
+          "type": "LUT4",
+          "parameters": {
+            "INIT": "0000101100000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:51.26-53.19"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 11 ],
+            "I1": [ 16 ],
+            "I2": [ 3 ],
+            "I3": [ 4 ],
+            "O": [ 28 ]
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.genblk1.slice[0].genblk1.carry4": {
+          "hide_name": 1,
+          "type": "CARRY4",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:176.11-184.5"
+          },
+          "port_directions": {
+            "CI": "input",
+            "CO": "output",
+            "CYINIT": "input",
+            "DI": "input",
+            "O": "output",
+            "S": "input"
+          },
+          "connections": {
+            "CI": [ "0" ],
+            "CO": [ 29, 30, 31, 32 ],
+            "CYINIT": [ "0" ],
+            "DI": [ "1", 27, 27, "0" ],
+            "O": [ 33, 34, 35, 36 ],
+            "S": [ 26, 24, 25, "0" ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1986": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ "1" ],
+            "D": [ 37 ],
+            "Q": [ 38 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1987": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ "1" ],
+            "D": [ 39 ],
+            "Q": [ 40 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1988": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ "1" ],
+            "D": [ 41 ],
+            "Q": [ 22 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1989": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ 19 ],
+            "D": [ 23 ],
+            "Q": [ 21 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1990": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ 20 ],
+            "D": [ 33 ],
+            "Q": [ 18 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1991": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ 20 ],
+            "D": [ 34 ],
+            "Q": [ 17 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$ff.cc:266:slice$1992": {
+          "hide_name": 1,
+          "type": "FDRE",
+          "parameters": {
+            "INIT": "0"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4|/home/hands/anaconda3/bin/../share/yosys/xilinx/ff_map.v:68.41-68.95"
+          },
+          "port_directions": {
+            "C": "input",
+            "CE": "input",
+            "D": "input",
+            "Q": "output",
+            "R": "input"
+          },
+          "connections": {
+            "C": [ 2 ],
+            "CE": [ 20 ],
+            "D": [ 35 ],
+            "Q": [ 16 ],
+            "R": [ 3 ]
+          }
+        },
+        "$auto$xilinx_dffopt.cc:338:execute$2194": {
+          "hide_name": 1,
+          "type": "LUT5",
+          "parameters": {
+            "INIT": "11011101111111010010001000000010"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:36.13-36.48"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "I4": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 4 ],
+            "I1": [ 3 ],
+            "I2": [ 16 ],
+            "I3": [ 11 ],
+            "I4": [ 38 ],
+            "O": [ 37 ]
+          }
+        },
+        "$auto$xilinx_dffopt.cc:341:execute$2192": {
+          "hide_name": 1,
+          "type": "LUT6",
+          "parameters": {
+            "INIT": "1101110111111101111111111111111100100010000000100000000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:43.26-44.30"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "I4": "input",
+            "I5": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 4 ],
+            "I1": [ 3 ],
+            "I2": [ 16 ],
+            "I3": [ 11 ],
+            "I4": [ 38 ],
+            "I5": [ 40 ],
+            "O": [ 39 ]
+          }
+        },
+        "$auto$xilinx_dffopt.cc:341:execute$2196": {
+          "hide_name": 1,
+          "type": "LUT6",
+          "parameters": {
+            "INIT": "1101110111011101110111011101111100100010001000100010001000100000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lut_map.v:36.13-36.48"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "I4": "input",
+            "I5": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ 11 ],
+            "I1": [ 3 ],
+            "I2": [ 18 ],
+            "I3": [ 17 ],
+            "I4": [ 16 ],
+            "I5": [ 22 ],
+            "O": [ 41 ]
+          }
+        },
+        "memory.0.0": {
+          "hide_name": 0,
+          "type": "RAM32M",
+          "parameters": {
+            "INIT_A": "0000000000000000000000000000000000000000000000000000000000000000",
+            "INIT_B": "0000000000000000000000000000000000000000000000000000000000000000",
+            "INIT_C": "0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/hands/anaconda3/bin/../share/yosys/xilinx/lutrams_xc5v_map.v:693.2-707.3"
+          },
+          "port_directions": {
+            "ADDRA": "input",
+            "ADDRB": "input",
+            "ADDRC": "input",
+            "ADDRD": "input",
+            "DIA": "input",
+            "DIB": "input",
+            "DIC": "input",
+            "DOA": "output",
+            "DOB": "output",
+            "DOC": "output",
+            "WCLK": "input",
+            "WE": "input"
+          },
+          "connections": {
+            "ADDRA": [ 22, 21, "0", "0", "0" ],
+            "ADDRB": [ 22, 21, "0", "0", "0" ],
+            "ADDRC": [ 22, 21, "0", "0", "0" ],
+            "ADDRD": [ 38, 40, "0", "0", "0" ],
+            "DIA": [ "x", "x" ],
+            "DIB": [ 8, 9 ],
+            "DIC": [ 6, 7 ],
+            "DOA": [ 42, 43 ],
+            "DOB": [ 14, 15 ],
+            "DOC": [ 12, 13 ],
+            "WCLK": [ 2 ],
+            "WE": [ 28 ]
+          }
+        }
+      },
+      "netnames": {
+        "$0$memwr$\\memory$__rtlrefine/frozen/design.v:27$69_EN[3:0]$82": {
+          "hide_name": 1,
+          "bits": [ 28, 28, 28, 28 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:20.1-39.4"
+          }
+        },
+        "$abc$2153$auto$opt_dff.cc:194:make_patterns_logic$1419": {
+          "hide_name": 1,
+          "bits": [ 20 ],
+          "attributes": {
+          }
+        },
+        "$abc$2153$ternary$__rtlrefine/frozen/design.v:31$96_Y[1]": {
+          "hide_name": 1,
+          "bits": [ 23 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:31.25-31.61"
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.A": {
+          "hide_name": 1,
+          "bits": [ "1", 27, 27 ],
+          "attributes": {
+            "force_downto": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:108.22-108.23"
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.CO": {
+          "hide_name": 1,
+          "bits": [ 29, 30, 31 ],
+          "attributes": {
+            "force_downto": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:116.23-116.25",
+            "unused_bits": "0 1 2"
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.X": {
+          "hide_name": 1,
+          "bits": [ 26, 24, 25 ],
+          "attributes": {
+            "force_downto": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:112.23-112.24"
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.Y": {
+          "hide_name": 1,
+          "bits": [ 33, 34, 35 ],
+          "attributes": {
+            "force_downto": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:112.26-112.27"
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.genblk1.C": {
+          "hide_name": 1,
+          "bits": [ 29, 30, 31, 32 ],
+          "attributes": {
+            "force_downto": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:170.23-170.24",
+            "unused_bits": "0 1 2 3"
+          }
+        },
+        "$auto$alumacc.cc:495:replace_alu$1460.genblk1.O": {
+          "hide_name": 1,
+          "bits": [ 33, 34, 35, 36 ],
+          "attributes": {
+            "force_downto": "00000000000000000000000000000001",
+            "src": "__rtlrefine/frozen/design.v:33.29-33.38|/home/hands/anaconda3/bin/../share/yosys/xilinx/arith_map.v:168.23-168.24",
+            "unused_bits": "3"
+          }
+        },
+        "$auto$memory_libmap.cc:1950:emit_port$1475": {
+          "hide_name": 1,
+          "bits": [ 12, 13, 14, 15, 42, 43 ],
+          "attributes": {
+            "unused_bits": "4 5"
+          }
+        },
+        "$auto$xilinx_dffopt.cc:347:execute$2193": {
+          "hide_name": 1,
+          "bits": [ 39 ],
+          "attributes": {
+          }
+        },
+        "$auto$xilinx_dffopt.cc:347:execute$2195": {
+          "hide_name": 1,
+          "bits": [ 37 ],
+          "attributes": {
+          }
+        },
+        "$auto$xilinx_dffopt.cc:347:execute$2197": {
+          "hide_name": 1,
+          "bits": [ 41 ],
+          "attributes": {
+          }
+        },
+        "clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:3.16-3.19"
+          }
+        },
+        "count": {
+          "hide_name": 0,
+          "bits": [ 18, 17, 16 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:14.12-14.17"
+          }
+        },
+        "m_data": {
+          "hide_name": 0,
+          "bits": [ 12, 13, 14, 15 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:9.29-9.35"
+          }
+        },
+        "m_ready": {
+          "hide_name": 0,
+          "bits": [ 11 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:8.16-8.23"
+          }
+        },
+        "m_valid": {
+          "hide_name": 0,
+          "bits": [ 10 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:7.17-7.24"
+          }
+        },
+        "pop": {
+          "hide_name": 0,
+          "bits": [ 19 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:19.6-19.9"
+          }
+        },
+        "read_ptr": {
+          "hide_name": 0,
+          "bits": [ 22, 21 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:13.27-13.35"
+          }
+        },
+        "rst": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:3.21-3.24"
+          }
+        },
+        "s_data": {
+          "hide_name": 0,
+          "bits": [ 6, 7, 8, 9 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:6.28-6.34"
+          }
+        },
+        "s_ready": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:5.17-5.24"
+          }
+        },
+        "s_valid": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:4.16-4.23"
+          }
+        },
+        "write_ptr": {
+          "hide_name": 0,
+          "bits": [ 38, 40 ],
+          "attributes": {
+            "src": "__rtlrefine/frozen/design.v:13.14-13.23"
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,29 +6,82 @@ from pathlib import Path
 
 import streamlit as st
 
-from ..common import ROOT,sha256
+from ..common import ROOT,sha256,new_run_dir
 from ..studio_theme import apply_theme,topbar
 from ..tool_paths import find_tool
 from ..project_repair.project import load_project,read_archive,archive_project
-from ..project_repair.ui import evidence
+from ..project_repair.ui import evidence,wizard
 from .examples import example_files
 from .contract import load_contract,bind_contract,TEXT,contract_id
 from .workflow import run_repair
+from .regressions import inherited_cases,public_case,contract_sequence,merge_cases,with_bundle,check_bundle
+from .setup_ui import configure_contract
+from .source_ui import source_editor
 from workspace_service import execution_slot
 
-DEMO=ROOT/'demo/property_repair'
+DEMO=ROOT/'demo/functional_repair'
 TITLES={'simultaneous':'Simultaneous transfers change occupancy','wrap':'Read pointer wraps too early','reset':'Reset retains stale read position','healthy':'Healthy FIFO control'}
+
+
+def portable_action(blob,*,expected_failure=False):
+    cache='portable_original' if expected_failure else 'portable_selected';anchor=sha256(blob)
+    label='Run original failing regressions' if expected_failure else 'Run standalone regressions without NVIDIA'
+    if st.button(label,width='stretch'):
+        try:
+            p=load_project(read_archive(blob))
+            if 'rtlrefine_regressions/manifest.json' not in p.files:raise ValueError('Recheck this older export first to add portable regressions')
+            with st.status('Running the bundled script in isolated Python…',expanded=False) as status:
+                with execution_slot():result=check_bundle(p,new_run_dir('standalone_regressions')/'run',standalone=True)
+                status.update(label='Standalone run finished',state='complete')
+            st.session_state[cache]={'anchor':anchor,'result':result}
+        except (ValueError,RuntimeError,OSError) as exc:st.error(str(exc))
+    current=st.session_state.get(cache)
+    if current and current['anchor']==anchor:
+        r=current['result'];code=r.get('standalone_exit_code','—')
+        passed=sum(t['passed'] for t in r.get('tests',[]));total=len(r.get('tests',[]))
+        if expected_failure and r['status']=='REGRESSION_FAILED':st.warning(f'Original bug reproduced · exit {code} · {total-passed} failing regression cases. Zero model calls.')
+        elif r['accepted']:st.success(f'Standalone regressions passed · exit {code} · {passed}/{total} cases. Zero model calls.')
+        else:st.error('Standalone run was not accepted: '+r['status'])
+        with st.expander('Standalone regression result'):
+            st.json(r)
 
 
 def receipt(project,c,result,folder):
     st.subheader('Independent verification')
     original=result.get('original_properties',{});smoke=result.get('original_smoke',{})
     a,b,d=st.columns(3)
-    a.metric('Original smoke test','PASS' if smoke.get('accepted') else 'FAIL')
+    a.metric('Original smoke test','—' if 'accepted' not in smoke else 'PASS' if smoke['accepted'] else 'FAIL')
     b.metric('Original property check',str(original.get('steps','—'))+' steps' if original.get('status')=='COUNTEREXAMPLE' else original.get('status','—'))
     d.metric('NVIDIA requests',result.get('api_requests',0))
     if result['accepted']:st.success('The exact project passed tests, bounded properties and progress checks.')
     else:st.warning('No checked export: '+result.get('status','UNKNOWN'))
+    if result.get('error'):st.error(result['error'])
+    source_failures=[t for t in smoke.get('tests',[]) if not t['passed'] and t['status']!='ASSERTION_FAILED']
+    if source_failures:
+        with st.expander('Original compilation or setup diagnostics',expanded=True):
+            for test in source_failures:st.code(test.get('log_tail') or test.get('error') or test['status'],language='text')
+    if result.get('attempts'):
+        with st.expander('Repair attempts and compiler feedback'):
+            for attempt in result['attempts']:
+                st.markdown('**Attempt '+str(attempt['number'])+' · '+attempt['status']+'**')
+                for test in attempt.get('public_smoke',{}).get('tests',[]):
+                    if not test['passed']:st.code(test.get('log_tail') or test.get('error') or test['status'],language='text')
+                if attempt.get('property_error'):st.code(attempt['property_error'],language='text')
+                if attempt.get('error'):st.write(attempt['error'])
+                if attempt.get('proposal',{}).get('diagnosis'):st.caption('Unverified model hypothesis: '+attempt['proposal']['diagnosis'])
+    original_regressions=result.get('original_regressions')
+    if original_regressions and not original_regressions['accepted']:
+        st.markdown('**Original source: executable regressions fail**')
+        with st.expander('Reproduced regression failures'):
+            for test in original_regressions.get('tests',[]):
+                if not test['passed']:
+                    st.caption(test['origin']+' · '+str(test['steps'])+' input steps')
+                    st.code((test.get('simulation') or test['compile'])['log_tail'],language='text')
+        reproduction=folder/'reproduction-project.zip'
+        if reproduction.exists() and sha256(reproduction.read_bytes())==result.get('reproduction_archive_sha256'):
+            st.download_button('Download failing reproduction and tests',reproduction.read_bytes(),file_name='failing-regression-project.zip',on_click='ignore')
+            st.caption('This is the original failing design, not an accepted patch. Its standalone regression command should fail until the design is repaired.')
+            portable_action(reproduction.read_bytes(),expected_failure=True)
     replay=original.get('replay',{})
     if replay:
         label='Shortest reproduced counterexample' if original.get('minimal_counterexample_confirmed') else 'Reproduced counterexample'
@@ -42,18 +95,47 @@ def receipt(project,c,result,folder):
         st.code(''.join(difflib.unified_diff(project.files[name].decode().splitlines(True),new.splitlines(True),fromfile=name,tofile=name)),language='diff')
     if result.get('property_audits'):
         st.table([{'Final bound':a['steps'],'Result':a['status'],'Progress':a.get('progress',{}).get('status','Checked at deepest bound')} for a in result['property_audits']])
+    if result.get('final_regressions'):
+        st.markdown('**Portable regression verification'+(' · included in the checked export' if result['accepted'] else '')+'**')
+        st.table([{'Origin':t['origin'],'Steps':t['steps'],'Checks':t['expected_checks'],'Status':'PASS' if t['passed'] else 'FAIL'} for t in result['final_regressions'].get('tests',[])])
+        st.code('python3 -I rtlrefine_regressions/run.py --report regression-report.json',language='bash')
+        st.caption('Runs outside this app with Python, Icarus, bubblewrap and prlimit. No API key or Yosys is needed. Source edits are compiled afresh; changed test/oracle files are rejected.')
+    elif result['accepted']:
+        st.info('This saved record predates portable regression exports. Recheck it below to generate a current export with retained public counterexamples.')
+    resources=result.get('resource_comparison')
+    if resources:
+        with st.expander('Mapped resource comparison · synthesis estimate'):
+            if resources['status']=='AVAILABLE':
+                names={'logic_lut_cells':'Logic LUT cells','flip_flop_cells':'Flip-flop cells','lutram_primitive_cells':'LUTRAM primitives',
+                       'srl_primitive_cells':'SRL primitives','bram18_primitive_cells':'BRAM18 primitives','bram36_primitive_cells':'BRAM36 primitives','dsp_primitive_cells':'DSP primitives'}
+                st.table([{'Resource':name,'Original':resources['before']['counts'][key],'Selected':resources['after']['counts'][key],'Change':resources['delta'][key]} for key,name in names.items()])
+                st.caption('Xilinx 7-series mapped cells with identical settings. Logic LUT counts exclude the separately listed memory/SRL primitives. No placement, routing, timing, power or board result is implied.')
+            else:st.info('Resource mapping was unavailable. Correctness checks remain separate; see evidence logs.')
     archive=folder/'checked-project.zip'
     if result['accepted'] and archive.exists():
         blob=archive.read_bytes()
         if sha256(blob)!=result.get('checked_archive_sha256'):st.error('Checked archive changed. Recheck the exact project.')
         else:
             st.download_button('Download property-checked project',blob,file_name='property-checked-project.zip',type='primary',on_click='ignore')
+            portable_action(blob)
             if st.button('Recheck exported project without NVIDIA',width='stretch'):
-                with st.status('Rebuilding the exported source and running final checks…',expanded=True) as status:
-                    exported=load_project(read_archive(blob))
-                    with execution_slot():rechecked=run_repair(exported,on_event=lambda e:st.write(e['message']))
-                    status.update(label='Fresh export recheck passed' if rechecked['accepted'] else 'Fresh export recheck rejected',state='complete')
-                if rechecked['accepted']:st.success('Exported ZIP passed a fresh independent recheck. Zero model requests.')
+                try:
+                    with st.status('Rebuilding the exported source and running final checks…',expanded=True) as status:
+                        exported=load_project(read_archive(blob))
+                        cases=merge_cases(inherited_cases(exported,c),[public_case(original)],[contract_sequence(c)])
+                        exported=with_bundle(exported,c,cases)
+                        with execution_slot():rechecked=run_repair(exported,on_event=lambda e:st.write(e['message']))
+                        status.update(label='Fresh export recheck passed' if rechecked['accepted'] else 'Fresh export recheck rejected',state='complete')
+                    st.session_state['property_rechecked_export']={'anchor':sha256(blob)+contract_id(c),'result':rechecked}
+                except (ValueError,RuntimeError,OSError,KeyError) as exc:st.error('Export recheck could not complete: '+str(exc))
+            checked=st.session_state.get('property_rechecked_export')
+            if checked and checked['anchor']==sha256(blob)+contract_id(c):
+                rechecked=checked['result']
+                if rechecked['accepted']:
+                    current=(Path(rechecked['directory'])/'checked-project.zip').read_bytes()
+                    if sha256(current)==rechecked['checked_archive_sha256']:
+                        st.success('Exported ZIP passed a fresh independent recheck. Zero model requests.')
+                        st.download_button('Download freshly rechecked project',current,file_name='rechecked-project.zip',on_click='ignore')
                 else:st.error('Exported ZIP was not accepted: '+rechecked['status'])
     st.download_button('Download property evidence',evidence(folder),file_name='property-verification-evidence.zip',on_click='ignore')
     with st.expander('Model hypothesis and raw verification records'):
@@ -72,17 +154,28 @@ def render_properties():
         st.caption('These are intentionally constructed defects and a healthy control. They demonstrate this verification flow; they do not establish repair accuracy on unseen projects.')
         upload=st.file_uploader('Or upload your FIFO project ZIP',type=['zip'])
         try:
-            project=load_project(read_archive(upload.getvalue())) if upload else load_project(example_files(case))
-            c=load_contract(project)
-            with st.expander('Independent FIFO contract · fixed before the run'):
-                st.write(TEXT)
-                raw=st.text_area('Contract JSON',json.dumps(c,indent=2),height=280,key='fifo_contract_'+project.identity[:12])
-                c=load_contract(project,json.loads(raw))
+            if upload:
+                uploaded=upload.getvalue();files=read_archive(uploaded)
+                if 'rtlrefine.json' in files:project=load_project(files)
+                else:
+                    config=wizard(files,'fifo_project_'+sha256(uploaded)[:16])
+                    if config is None:return
+                    project=load_project(files,config)
+                use_form=st.checkbox('Configure FIFO contract from inspected ports',value='fifo_contract.json' not in files,key='fifo_use_form_'+project.identity[:12])
+            else:project=load_project(example_files(case));use_form=False
+            project=source_editor(project)
+            if use_form:
+                c=configure_contract(project)
+                if c is None:return
+            else:
+                c=load_contract(project)
+                with st.expander('Independent FIFO contract · fixed before the run'):
+                    st.write(TEXT)
+                    raw=st.text_area('Contract JSON',json.dumps(c,indent=2),height=280,key='fifo_contract_'+project.identity[:12])
+                    c=load_contract(project,json.loads(raw))
             project=bind_contract(project,c)
         except (ValueError,KeyError,TypeError) as exc:st.error(str(exc));return
         st.caption('DUT: '+project.config['dut_top']+' · '+str(c['data_width'])+'-bit data · capacity '+str(c['depth'])+' · public bound '+str(c['discovery_steps']))
-        with st.expander('Original design source'):
-            for path,text in project.editable.items():st.caption(path);st.code(text,language='verilog',line_numbers=True)
         missing=[t for t in ['yosys','iverilog','vvp','bwrap','prlimit'] if not find_tool(t)]
         owner=os.getenv('RTLREFINE_ENABLE_LIVE_MODEL')=='1';a,b=st.columns(2)
         check=a.button('Find hidden failures without NVIDIA',type='primary',disabled=bool(missing),width='stretch')

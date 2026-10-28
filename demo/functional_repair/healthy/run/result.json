@@ -1,0 +1,1142 @@
+{
+  "accepted": true,
+  "api_requests": 0,
+  "attempts": [],
+  "authored_example_is_accuracy_benchmark": false,
+  "changes": {},
+  "checked_archive_sha256": "67e0a62b6981ff2a34675ab3c17735502e14e1b52da392e062df320db2e01306",
+  "contract_id": "ab002fd6f96964011a2886ecfb99184e9038bb1e08d85efd0dff4b4e2ced3e70",
+  "directory": "/home/hands/Nebius/results/functional_native_controls_v1/healthy",
+  "final_regressions": {
+    "accepted": true,
+    "canonical_runner_verified": true,
+    "elaboration": {
+      "api_credentials_inherited": false,
+      "log_tail": "",
+      "network": false,
+      "returncode": 0,
+      "seconds": 0.01670492091216147,
+      "stage": "elaborate",
+      "status": "PASS"
+    },
+    "new_model_calls": 0,
+    "preprocess": {
+      "api_credentials_inherited": false,
+      "log_tail": "",
+      "network": false,
+      "returncode": 0,
+      "seconds": 0.01623684400692582,
+      "stage": "preprocess",
+      "status": "PASS"
+    },
+    "python_isolated": true,
+    "recorded_source_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "scope": "Only the bundled finite input regressions, not a fresh formal proof",
+    "source_changed": false,
+    "source_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "standalone_exit_code": 0,
+    "status": "REGRESSIONS_PASS",
+    "tests": [
+      {
+        "compile": {
+          "api_credentials_inherited": false,
+          "log_tail": "",
+          "network": false,
+          "returncode": 0,
+          "seconds": 0.03240175289101899,
+          "stage": "case_ba416a4fb8c8574a_compile",
+          "status": "PASS"
+        },
+        "executed_bench_sha256": "dd3b6e1978094722c6303626ebe329a06a23649b936a7b4c807809de1961206f",
+        "expected_checks": 167,
+        "id": "case_ba416a4fb8c8574a",
+        "origin": "contract_sequence",
+        "original_bench_sha256": "fc31d1dcff3ddbdd2f9c17afa074d3c81518546f0c99c9ee30671c8d6e2c7cdf",
+        "passed": true,
+        "simulation": {
+          "api_credentials_inherited": false,
+          "log_tail": "RTLREFINE_REGRESSION_PASS nonce=caf4d464b3a4dcc9d994a61699484430 checks=167\n",
+          "network": false,
+          "returncode": 0,
+          "seconds": 0.01672719302587211,
+          "stage": "case_ba416a4fb8c8574a_simulate",
+          "status": "PASS"
+        },
+        "status": "PASS",
+        "steps": 30
+      }
+    ]
+  },
+  "final_tests": {
+    "accepted": true,
+    "design_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "new_model_calls": 0,
+    "phase": "all",
+    "project_id": "fd81f71d75342cf86c4b0996de4584269d64758c0e4d848804d0487710ab15eb",
+    "shared_compilation_speed_claim_applies": false,
+    "status": "PROVIDED_TESTS_PASS",
+    "tests": [
+      {
+        "checks": 4,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/packet_queue.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.0166634120978415
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "packet_queue",
+              "-Ppacket_queue.WIDTH=4",
+              "-Ppacket_queue.DEPTH=4",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.01705218805000186
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/smoke.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.01691581984050572
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_smoke",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/smoke.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.01688254694454372
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "packet_queue",
+              "-Ppacket_queue.DEPTH=32'sb00000000000000000000000000000100",
+              "-Ppacket_queue.WIDTH=32'sb00000000000000000000000000000100",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.033255698857828975
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.017240756191313267
+          }
+        ],
+        "id": "smoke",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DEPTH": "32'sb00000000000000000000000000000100",
+              "WIDTH": "32'sb00000000000000000000000000000100"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_valid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 3,
+                "name": "s_ready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_data",
+                "width": 4
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "m_valid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "m_ready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 7,
+                "name": "m_data",
+                "width": 4
+              }
+            ]
+          }
+        ],
+        "log_tail": "RTLREFINE_PASS nonce=3f26a13859040b85772879f3ca9860aa checks=4\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "public",
+        "source_hashes": {
+          "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_smoke",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "cf53f166a2e2751f2de4de9701c8a1161ea0b7e839706ad930e1a18f2de91928",
+          "tests/smoke.sv": "6395dbc5f8ae2a889fe0f335537a9e8b14c024f5591715356a3163a0bbbfcd3f"
+        },
+        "wall_seconds": 0.11801042198203504
+      },
+      {
+        "checks": 65,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/packet_queue.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.01672719302587211
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "packet_queue",
+              "-Ppacket_queue.WIDTH=4",
+              "-Ppacket_queue.DEPTH=4",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.016863600816577673
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.018221653066575527
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_audit",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/audit.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.01724478299729526
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "packet_queue",
+              "-Ppacket_queue.DEPTH=32'sb00000000000000000000000000000100",
+              "-Ppacket_queue.WIDTH=32'sb00000000000000000000000000000100",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.03308368311263621
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.017407121136784554
+          }
+        ],
+        "id": "sequence_audit",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DEPTH": "32'sb00000000000000000000000000000100",
+              "WIDTH": "32'sb00000000000000000000000000000100"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_valid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 3,
+                "name": "s_ready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_data",
+                "width": 4
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "m_valid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "m_ready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 7,
+                "name": "m_data",
+                "width": 4
+              }
+            ]
+          }
+        ],
+        "log_tail": "RTLREFINE_PASS nonce=8143b9dc2565378fb6ded49efcd40849 checks=65\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "audit",
+        "source_hashes": {
+          "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_audit",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "6f3152c346d2a16cd34dea7b9239667e2de22544bb4797c5c9154edadb8963e6",
+          "tests/audit.sv": "55c3786e702d1a8b955f017bfcb6cecfb014dfaad862bf84ae121152c93f23ac"
+        },
+        "wall_seconds": 0.11954803415574133
+      }
+    ],
+    "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+  },
+  "mode": "independent_fifo_properties",
+  "original_properties": {
+    "contract": "Single positive-edge clock; synchronous active-high reset flushes the queue. Transfers occur only with valid && ready outside reset. Output valid exactly matches nonempty occupancy. Input ready when capacity exists or a simultaneous output transfer frees space. Accepted payloads leave in FIFO order. Output remains valid and stable while stalled. No fall-through on an empty queue.",
+    "contract_id": "ab002fd6f96964011a2886ecfb99184e9038bb1e08d85efd0dff4b4e2ced3e70",
+    "design_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "fixed_corrected_rtl_used": false,
+    "interface": [
+      {
+        "instance": "packet_queue",
+        "numeric_parameters": {
+          "DEPTH": "32'sb00000000000000000000000000000100",
+          "PW": "32'sb00000000000000000000000000000010",
+          "WIDTH": "32'sb00000000000000000000000000000100"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 3,
+            "name": "s_ready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_data",
+            "width": 4
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "m_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "m_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 7,
+            "name": "m_data",
+            "width": 4
+          }
+        ]
+      }
+    ],
+    "minimal_counterexample_confirmed": false,
+    "monitor_sha256": "87556b10cc84688f0cffa6e5628b32cc6e028d4f1a35e58f4001d6f5a6be0695",
+    "new_model_calls": 0,
+    "prepared_sha256": "cf628fcc1de8dff0592eb2dd4168ef13fed66abadd02fd932caf4bd2295f6096",
+    "queries": [
+      {
+        "command": {
+          "command": [
+            "/home/hands/anaconda3/bin/yosys",
+            "-Q",
+            "-T",
+            "-s",
+            "__rtlrefine/frozen/solve_properties.ys"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "solve_properties",
+          "status": "PASS",
+          "wall_seconds": 3.122626167954877
+        },
+        "cover_query": false,
+        "script_sha256": "21b3fa9eece07a270eca2f41861d3010f8634d97da787d93a043170c59d835f0",
+        "status": "BOUNDED_PASS",
+        "steps": 12
+      }
+    ],
+    "scope": "Bounded two-state synchronous positive-edge FIFO contract; reset at first step; arbitrary defined external inputs; zero initial state. Not unbounded correctness or physical CDC.",
+    "status": "BOUNDED_PASS",
+    "steps": 12
+  },
+  "original_regressions": {
+    "accepted": true,
+    "elaboration": {
+      "api_credentials_inherited": false,
+      "log_tail": "",
+      "network": false,
+      "returncode": 0,
+      "seconds": 0.032923870952799916,
+      "stage": "elaborate",
+      "status": "PASS"
+    },
+    "new_model_calls": 0,
+    "preprocess": {
+      "api_credentials_inherited": false,
+      "log_tail": "",
+      "network": false,
+      "returncode": 0,
+      "seconds": 0.01674496615305543,
+      "stage": "preprocess",
+      "status": "PASS"
+    },
+    "recorded_source_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "scope": "Only the bundled finite input regressions, not a fresh formal proof",
+    "source_changed": false,
+    "source_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "status": "REGRESSIONS_PASS",
+    "tests": [
+      {
+        "compile": {
+          "api_credentials_inherited": false,
+          "log_tail": "",
+          "network": false,
+          "returncode": 0,
+          "seconds": 0.033208639128133655,
+          "stage": "case_ba416a4fb8c8574a_compile",
+          "status": "PASS"
+        },
+        "executed_bench_sha256": "d03f5d99ecf82439ee700dbda011eadfb8b1a40e7085cb207918f52098478396",
+        "expected_checks": 167,
+        "id": "case_ba416a4fb8c8574a",
+        "origin": "contract_sequence",
+        "original_bench_sha256": "fc31d1dcff3ddbdd2f9c17afa074d3c81518546f0c99c9ee30671c8d6e2c7cdf",
+        "passed": true,
+        "simulation": {
+          "api_credentials_inherited": false,
+          "log_tail": "RTLREFINE_REGRESSION_PASS nonce=ac4d74718bd6037b8e48f67de9a92398 checks=167\n",
+          "network": false,
+          "returncode": 0,
+          "seconds": 0.016979631036520004,
+          "stage": "case_ba416a4fb8c8574a_simulate",
+          "status": "PASS"
+        },
+        "status": "PASS",
+        "steps": 30
+      }
+    ]
+  },
+  "original_smoke": {
+    "accepted": true,
+    "design_hashes": {
+      "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+    },
+    "new_model_calls": 0,
+    "phase": "public",
+    "project_id": "fd81f71d75342cf86c4b0996de4584269d64758c0e4d848804d0487710ab15eb",
+    "shared_compilation_speed_claim_applies": false,
+    "status": "PROVIDED_TESTS_PASS",
+    "tests": [
+      {
+        "checks": 4,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/packet_queue.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.01731677888892591
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "packet_queue",
+              "-Ppacket_queue.WIDTH=4",
+              "-Ppacket_queue.DEPTH=4",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017287363996729255
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/smoke.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017803390976041555
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_smoke",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/smoke.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.017261285101994872
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "packet_queue",
+              "-Ppacket_queue.DEPTH=32'sb00000000000000000000000000000100",
+              "-Ppacket_queue.WIDTH=32'sb00000000000000000000000000000100",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017204266972839832
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "simulate",
+            "status": "PASS",
+            "wall_seconds": 0.01766885700635612
+          }
+        ],
+        "id": "smoke",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DEPTH": "32'sb00000000000000000000000000000100",
+              "WIDTH": "32'sb00000000000000000000000000000100"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "s_valid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 3,
+                "name": "s_ready",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 4,
+                "name": "s_data",
+                "width": 4
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "m_valid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 6,
+                "name": "m_ready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 7,
+                "name": "m_data",
+                "width": 4
+              }
+            ]
+          }
+        ],
+        "log_tail": "RTLREFINE_PASS nonce=f31ec69d36072e6d599c98736312859b checks=4\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": true,
+        "phase": "public",
+        "source_hashes": {
+          "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+        },
+        "status": "PASS",
+        "testbench_marker_transforms": [],
+        "top": "tb_smoke",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "0de4b812afa96c029524b3268d7b4c1555f7d32794b99275a14361c5ad0bb652",
+          "tests/smoke.sv": "6395dbc5f8ae2a889fe0f335537a9e8b14c024f5591715356a3163a0bbbfcd3f"
+        },
+        "wall_seconds": 0.10454194294288754
+      }
+    ],
+    "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+  },
+  "project_id": "fd81f71d75342cf86c4b0996de4584269d64758c0e4d848804d0487710ab15eb",
+  "property_audits": [
+    {
+      "contract": "Single positive-edge clock; synchronous active-high reset flushes the queue. Transfers occur only with valid && ready outside reset. Output valid exactly matches nonempty occupancy. Input ready when capacity exists or a simultaneous output transfer frees space. Accepted payloads leave in FIFO order. Output remains valid and stable while stalled. No fall-through on an empty queue.",
+      "contract_id": "ab002fd6f96964011a2886ecfb99184e9038bb1e08d85efd0dff4b4e2ced3e70",
+      "design_hashes": {
+        "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+      },
+      "fixed_corrected_rtl_used": false,
+      "interface": [
+        {
+          "instance": "packet_queue",
+          "numeric_parameters": {
+            "DEPTH": "32'sb00000000000000000000000000000100",
+            "PW": "32'sb00000000000000000000000000000010",
+            "WIDTH": "32'sb00000000000000000000000000000100"
+          },
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "rst",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "s_valid",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 3,
+              "name": "s_ready",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 4,
+              "name": "s_data",
+              "width": 4
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 5,
+              "name": "m_valid",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 6,
+              "name": "m_ready",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 7,
+              "name": "m_data",
+              "width": 4
+            }
+          ]
+        }
+      ],
+      "minimal_counterexample_confirmed": false,
+      "monitor_sha256": "87556b10cc84688f0cffa6e5628b32cc6e028d4f1a35e58f4001d6f5a6be0695",
+      "new_model_calls": 0,
+      "prepared_sha256": "cf628fcc1de8dff0592eb2dd4168ef13fed66abadd02fd932caf4bd2295f6096",
+      "queries": [
+        {
+          "command": {
+            "command": [
+              "/home/hands/anaconda3/bin/yosys",
+              "-Q",
+              "-T",
+              "-s",
+              "__rtlrefine/frozen/solve_properties.ys"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "solve_properties",
+            "status": "PASS",
+            "wall_seconds": 8.183597523951903
+          },
+          "cover_query": false,
+          "script_sha256": "e5976d9c349886d6ce9bfc2461e9175f7723b9ce9e9d3b0e06705db1daf2be4d",
+          "status": "BOUNDED_PASS",
+          "steps": 16
+        }
+      ],
+      "scope": "Bounded two-state synchronous positive-edge FIFO contract; reset at first step; arbitrary defined external inputs; zero initial state. Not unbounded correctness or physical CDC.",
+      "status": "BOUNDED_PASS",
+      "steps": 16
+    },
+    {
+      "contract": "Single positive-edge clock; synchronous active-high reset flushes the queue. Transfers occur only with valid && ready outside reset. Output valid exactly matches nonempty occupancy. Input ready when capacity exists or a simultaneous output transfer frees space. Accepted payloads leave in FIFO order. Output remains valid and stable while stalled. No fall-through on an empty queue.",
+      "contract_id": "ab002fd6f96964011a2886ecfb99184e9038bb1e08d85efd0dff4b4e2ced3e70",
+      "design_hashes": {
+        "rtl/packet_queue.sv": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3"
+      },
+      "fixed_corrected_rtl_used": false,
+      "interface": [
+        {
+          "instance": "packet_queue",
+          "numeric_parameters": {
+            "DEPTH": "32'sb00000000000000000000000000000100",
+            "PW": "32'sb00000000000000000000000000000010",
+            "WIDTH": "32'sb00000000000000000000000000000100"
+          },
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "rst",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "s_valid",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 3,
+              "name": "s_ready",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 4,
+              "name": "s_data",
+              "width": 4
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 5,
+              "name": "m_valid",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 6,
+              "name": "m_ready",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 7,
+              "name": "m_data",
+              "width": 4
+            }
+          ]
+        }
+      ],
+      "minimal_counterexample_confirmed": false,
+      "monitor_sha256": "87556b10cc84688f0cffa6e5628b32cc6e028d4f1a35e58f4001d6f5a6be0695",
+      "new_model_calls": 0,
+      "prepared_sha256": "cf628fcc1de8dff0592eb2dd4168ef13fed66abadd02fd932caf4bd2295f6096",
+      "progress": {
+        "command": {
+          "command": [
+            "/home/hands/anaconda3/bin/yosys",
+            "-Q",
+            "-T",
+            "-s",
+            "__rtlrefine/frozen/solve_properties.ys"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "solve_properties",
+          "status": "PASS",
+          "wall_seconds": 0.518370547099039
+        },
+        "cover_query": true,
+        "script_sha256": "8923ba983a1af51d67ec97a56181da3490392a0856f5abb7f274eec1a87851fd",
+        "status": "REACHABLE",
+        "steps": 20
+      },
+      "queries": [
+        {
+          "command": {
+            "command": [
+              "/home/hands/anaconda3/bin/yosys",
+              "-Q",
+              "-T",
+              "-s",
+              "__rtlrefine/frozen/solve_properties.ys"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "solve_properties",
+            "status": "PASS",
+            "wall_seconds": 14.142142784083262
+          },
+          "cover_query": false,
+          "script_sha256": "520a4e323e6e345534e4a467b476dc7790aebfb18750b65d60948e1cd804f7a6",
+          "status": "BOUNDED_PASS",
+          "steps": 20
+        }
+      ],
+      "scope": "Bounded two-state synchronous positive-edge FIFO contract; reset at first step; arbitrary defined external inputs; zero initial state. Not unbounded correctness or physical CDC.",
+      "status": "BOUNDED_PASS",
+      "steps": 20
+    }
+  ],
+  "regression_cases": [
+    {
+      "id": "case_ba416a4fb8c8574a",
+      "origin": "contract_sequence",
+      "steps": 30
+    }
+  ],
+  "resource_comparison": {
+    "affects_correctness_acceptance": false,
+    "after": {
+      "board_executed": false,
+      "cells_by_type": {
+        "CARRY4": 1,
+        "FDRE": 7,
+        "LUT2": 1,
+        "LUT3": 1,
+        "LUT4": 2,
+        "LUT5": 2,
+        "LUT6": 5,
+        "RAM32M": 1
+      },
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/measure_resources.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "measure_resources",
+        "status": "PASS",
+        "wall_seconds": 1.61776326992549
+      },
+      "counts": {
+        "bram18_primitive_cells": 0,
+        "bram36_primitive_cells": 0,
+        "dsp_primitive_cells": 0,
+        "flip_flop_cells": 7,
+        "logic_lut_cells": 11,
+        "lutram_primitive_cells": 1,
+        "srl_primitive_cells": 0
+      },
+      "expanded_source_sha256": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3",
+      "scope": "Mapped primitive cell estimates with no I/O pads or clock buffer. Not placement/routing, timing, power or a physical resource guarantee.",
+      "script_sha256": "f15c8613df77f3cdab783455b1b40236904c0400a5acb77f5ab7243978443c0d",
+      "status": "MAPPED_ESTIMATE",
+      "target": "Xilinx 7-series (xc7)"
+    },
+    "before": {
+      "board_executed": false,
+      "cells_by_type": {
+        "CARRY4": 1,
+        "FDRE": 7,
+        "LUT2": 1,
+        "LUT3": 1,
+        "LUT4": 2,
+        "LUT5": 2,
+        "LUT6": 5,
+        "RAM32M": 1
+      },
+      "command": {
+        "command": [
+          "/home/hands/anaconda3/bin/yosys",
+          "-Q",
+          "-T",
+          "-s",
+          "__rtlrefine/frozen/measure_resources.ys"
+        ],
+        "execution_mode": "bubblewrap",
+        "network": false,
+        "returncode": 0,
+        "stage": "measure_resources",
+        "status": "PASS",
+        "wall_seconds": 1.618419277947396
+      },
+      "counts": {
+        "bram18_primitive_cells": 0,
+        "bram36_primitive_cells": 0,
+        "dsp_primitive_cells": 0,
+        "flip_flop_cells": 7,
+        "logic_lut_cells": 11,
+        "lutram_primitive_cells": 1,
+        "srl_primitive_cells": 0
+      },
+      "expanded_source_sha256": "5b60f401cc2962bef8036f4624e96effc8ded176686fe9e7d83729c60befcbe3",
+      "scope": "Mapped primitive cell estimates with no I/O pads or clock buffer. Not placement/routing, timing, power or a physical resource guarantee.",
+      "script_sha256": "f15c8613df77f3cdab783455b1b40236904c0400a5acb77f5ab7243978443c0d",
+      "status": "MAPPED_ESTIMATE",
+      "target": "Xilinx 7-series (xc7)"
+    },
+    "delta": {
+      "bram18_primitive_cells": 0,
+      "bram36_primitive_cells": 0,
+      "dsp_primitive_cells": 0,
+      "flip_flop_cells": 0,
+      "logic_lut_cells": 0,
+      "lutram_primitive_cells": 0,
+      "srl_primitive_cells": 0
+    },
+    "status": "AVAILABLE"
+  },
+  "scope": "Provided testbenches plus bounded FIFO properties and reachable progress; not unbounded correctness, arbitrary protocols or physical CDC.",
+  "selection_frozen": true,
+  "status": "CHECKED_WITH_PROPERTIES",
+  "wall_seconds": 30.26305419788696
+}

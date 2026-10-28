@@ -1,13 +1,13 @@
 # RTLRefine test build
 
-This is the runnable test build for RTLRefine. It runs on a Linux Docker host
+This is the runnable test build for RTLRefine. It is tested on an x86-64 Linux Docker host
 with unprivileged user namespaces enabled. No FPGA board or vendor tools are
 needed. Restricted container hosts may block the nested isolation required by
 the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.3.0.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.4.0.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -15,8 +15,8 @@ and the Docker Compose plugin if they are not already available, then run:
 docker compose up --build
 ```
 
-The first build downloads the Python and native-tool dependencies and builds
-pinned Verilator. Allow several minutes and keep the terminal open. Then open
+The first build downloads the Python/native dependencies and checksum-pinned
+Verilator binary. Allow several minutes and keep the terminal open. Then open
 http://127.0.0.1:8501. This localhost address is the application on your machine;
 the public URL above supplies its test build.
 
@@ -54,8 +54,21 @@ reproduced failure, then use **Show saved repair and evidence** to inspect the
 actual NVIDIA correction. Recheck the exported project with zero model calls.
 The separate healthy control is accepted without requesting a repair.
 
+Run **Run standalone regressions without NVIDIA** to execute the exact exported
+script in isolated Python. The checked example returns exit 0; its original
+failing reproduction returns exit 1. Download the checked ZIP and run
+`python3 -I rtlrefine_regressions/run.py` from its extracted root to repeat the
+finite suite without the app, an API key or Yosys. It requires Linux, Python,
+Icarus, bubblewrap and prlimit; the Docker build supplies these tools.
+
+Sources and benches can also be uploaded without JSON manifests. Choose file
+roles, inspect actual ports, map signals and set the FIFO capacity. Optional
+designer edits preserve ports, parameters and clock/reset forms. A source change
+or changed contract requires a fresh check.
+
 The original `v1.2.1` test build predates this extension. Download the current
-`v1.3.0` source to try it. See [the FIFO contract and limits](PROPERTY_REPAIR.md).
+`v1.4.0` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
+and [portable regressions](PORTABLE_REGRESSIONS.md).
 
 ## Model access and verification scope
 

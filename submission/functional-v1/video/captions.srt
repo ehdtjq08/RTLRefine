@@ -1,0 +1,50 @@
+1
+00:00:00,000 --> 00:00:07,002
+RTLRefine: repair RTL, export its checks, and catch the bug if it returns.
+The NVIDIA result is a recorded actual run; native checks below run fresh.
+
+2
+00:00:08,851 --> 00:00:17,855
+The original passes four smoke expectations. Independent checks find a hidden failure.
+Its public counterexample becomes a self-checking regression.
+
+3
+00:00:18,379 --> 00:00:27,385
+Run the included Python script against the original: exit 1, both cases fail.
+Expectations come from the contract, never from the broken design output.
+
+4
+00:00:27,839 --> 00:00:39,842
+Recorded actual Nemotron repair on Nebius: one request corrects the state update.
+The selected file passes the original tests and fixed final bounds 16 and 20.
+
+5
+00:00:40,740 --> 00:00:50,745
+The checked export carries two regressions with 191 assertions.
+Its standalone runner returns exit 0, with no API key or application dependency.
+
+6
+00:00:50,916 --> 00:01:00,923
+Same 7-series synthesis settings: logic LUT cells 12 to 11; registers and LUTRAM unchanged.
+These are mapped estimates, not placement, timing, power or board measurements.
+
+7
+00:01:01,208 --> 00:01:09,209
+Reintroduce the original bug into the exported source. The prior acceptance disappears.
+The retained tests remain unchanged and will run against a fresh source snapshot.
+
+8
+00:01:11,593 --> 00:01:21,598
+The restored defect fails again: no checked download, exit 1.
+Reopening through the general project route also retains the FIFO checks.
+
+9
+00:01:22,172 --> 00:01:34,179
+Bring your own source and benches without writing JSON. Inspect actual DUT ports,
+map signals and set capacity. Port inspection alone is not a correctness check.
+
+10
+00:01:34,259 --> 00:01:42,265
+The FIFO profile is bounded and synchronous; these examples are authored integration cases.
+Source, Docker build and evidence: github.com/ehdtjq08/RTLRefine
+

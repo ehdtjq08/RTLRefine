@@ -5,6 +5,11 @@ The homepage is the repair studio, and `/project` accepts uploaded multi-file
 Verilog/SystemVerilog designs with their own self-checking benches. The Docker
 test build supports both paths. Earlier archive pages have narrower contracts.
 
+The current `/properties` path also configures FIFO ports from elaboration,
+checks an independent contract and exports portable regressions. The standalone
+runner needs Linux, Python, Icarus, bubblewrap and prlimit, but no API key, app
+package or Yosys. Checked exports keep their stronger checks through `/project`.
+
 The current homepage is the guided repair studio. The image now installs g++,
 make and checksum-pinned Verilator 4.038 through
 `scripts/install_verilator_pinned.py`, and can run the new native checks.

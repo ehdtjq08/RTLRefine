@@ -1,0 +1,6 @@
+read_verilog -sv __rtlrefine/frozen/design.v
+chparam -set DEPTH 4 packet_queue
+chparam -set WIDTH 4 packet_queue
+synth_xilinx -family xc7 -top packet_queue -flatten -noiopad -noclkbuf
+select -module packet_queue
+write_json -selected -noscopeinfo __rtlrefine/mapped.json

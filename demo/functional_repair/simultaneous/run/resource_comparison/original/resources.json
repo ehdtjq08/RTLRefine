@@ -1,0 +1,43 @@
+{
+  "board_executed": false,
+  "cells_by_type": {
+    "CARRY4": 1,
+    "FDRE": 7,
+    "INV": 1,
+    "LUT2": 1,
+    "LUT3": 1,
+    "LUT4": 4,
+    "LUT5": 3,
+    "LUT6": 3,
+    "RAM32M": 1
+  },
+  "command": {
+    "command": [
+      "/home/hands/anaconda3/bin/yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "__rtlrefine/frozen/measure_resources.ys"
+    ],
+    "execution_mode": "bubblewrap",
+    "network": false,
+    "returncode": 0,
+    "stage": "measure_resources",
+    "status": "PASS",
+    "wall_seconds": 1.6198842120356858
+  },
+  "counts": {
+    "bram18_primitive_cells": 0,
+    "bram36_primitive_cells": 0,
+    "dsp_primitive_cells": 0,
+    "flip_flop_cells": 7,
+    "logic_lut_cells": 12,
+    "lutram_primitive_cells": 1,
+    "srl_primitive_cells": 0
+  },
+  "expanded_source_sha256": "a18515d712f8cedf90b1c3dcf590a7ecd838a85f5cdd03a5c508c6b8d1d59b12",
+  "scope": "Mapped primitive cell estimates with no I/O pads or clock buffer. Not placement/routing, timing, power or a physical resource guarantee.",
+  "script_sha256": "f15c8613df77f3cdab783455b1b40236904c0400a5acb77f5ab7243978443c0d",
+  "status": "MAPPED_ESTIMATE",
+  "target": "Xilinx 7-series (xc7)"
+}

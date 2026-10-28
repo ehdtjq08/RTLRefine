@@ -25,7 +25,13 @@ sequence bench, deeper bounds and a reachable progress sequence.
   must share the same positive-edge clock. Asynchronous state, latches and
   multiple clocks are unsupported here.
 
-Include `fifo_contract.json` alongside `rtlrefine.json` and your sources/benches:
+Include `fifo_contract.json` alongside `rtlrefine.json` and your sources/benches.
+Alternatively upload sources and benches without either JSON file. The browser
+can configure file roles, inspect the actual DUT ports without a model request,
+map the eight signals and set capacity. It writes both configurations into the
+downloadable project. Port inspection alone does not verify the contract.
+
+Example contract:
 
 ```json
 {
@@ -62,6 +68,17 @@ NVIDIA result and native checks. Run **Find hidden failures without NVIDIA** to
 reproduce the original defect, **Show saved repair and evidence** to inspect the
 recorded response, and **Recheck exported project without NVIDIA** to verify the
 downloaded source again. A changed project or contract hides old acceptance.
+
+Checked exports retain executable public regressions. Run the included script
+outside the app or use the standalone-run button. Source changes compile afresh;
+changed checker files or configuration stop validation. Both project routes
+honor an inherited regression suite. The original failing project is separately
+downloadable for reproduction. See [portable regressions](PORTABLE_REGRESSIONS.md).
+
+Optional designer edits preserve the input interface, parameters, clock/reset
+forms and license header. Compiler diagnostics are shown directly and guide a
+model revision. Original and selected sources also have mapped 7-series resource
+diagnostics; these estimates are independent of correctness acceptance.
 
 ```sh
 python3 -m rtl_agent.property_repair example --output fifo.zip

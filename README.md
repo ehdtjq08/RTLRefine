@@ -1,18 +1,22 @@
 # RTLRefine
 
-**A browser workspace that turns a failing RTL trace into an exact checked patch.**
+**Repair RTL, independently check the patch, and keep executable regressions with the project.**
 
 **Independent FIFO checks are available at `/properties`.** A passing smoke
 test can still hide a simultaneous-transfer, wrap or reset defect. The new mode
 finds a symbolic counterexample from a fixed external-port contract, reproduces
 it in Icarus against a Python queue, and gives NVIDIA that public failure.
-Selected source must pass final tests, deeper bounded checks and reachable
-progress before export. See [the supported contract and actual evidence](docs/PROPERTY_REPAIR.md).
+Selected source must pass final tests, deeper bounded checks, reachable progress
+and an actual standalone regression run before export. Checked ZIPs include
+self-checking benches and a standard-library Python runner. Reintroducing the
+bug makes the exported suite fail again, without an API key or this application.
+See [the supported contract](docs/PROPERTY_REPAIR.md) and
+[portable regression workflow](docs/PORTABLE_REGRESSIONS.md).
 
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
 [Earlier project demo](https://youtu.be/JEvktXDIUd0) ·
-[FIFO property walkthrough](submission/property-v1/video/RTLRefine-independent-properties-demo.mp4) ·
-[Current submission materials](submission/property-v1/README.md)
+[Functional walkthrough](submission/functional-v1/video/RTLRefine-functional-demo.mp4) ·
+[Current submission materials](submission/functional-v1/README.md)
 
 **User project mode is available at `/project`.** Upload Verilog/SystemVerilog
 sources and their own self-checking testbenches, with a manifest or the web file-role
