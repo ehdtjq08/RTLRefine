@@ -9,6 +9,7 @@ external validation and independent FIFO contract remain available.
 - [Platform feedback](NEBIUS_FEEDBACK.md)
 - [Combined normal-speed video](video/RTLRefine-project-ci-demo.mp4)
 - [CI workflow and boundaries](https://github.com/ehdtjq08/RTLRefine/blob/v1.5.0/docs/GENERAL_PROJECT_CI.md)
+- [Successful hosted CI run](https://github.com/ehdtjq08/RTLRefine/actions/runs/40812665016)
 - [Repository CI runs](https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml)
 - [Update guide](UPDATE_GUIDE_KO.md)
 
