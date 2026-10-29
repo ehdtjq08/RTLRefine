@@ -26,7 +26,7 @@ UART's author also wrote verilog-axis; no extra independent-author sample is
 claimed. Original source and licenses are preserved.
 
 Source: https://github.com/ehdtjq08/RTLRefine
-Test build: https://github.com/ehdtjq08/RTLRefine/blob/v1.6.0/docs/JUDGE_QUICKSTART.md
+Test build: https://github.com/ehdtjq08/RTLRefine/blob/v1.6.1/docs/JUDGE_QUICKSTART.md
 
 Upload video/RTLRefine-UART-peer-demo.mp4 as Public and use the new URL in Devpost.
 English captions are embedded in a separate band and included as SRT.

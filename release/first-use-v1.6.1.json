@@ -1,0 +1,228 @@
+{
+  "version": "1.6.1",
+  "summary": "Fix no-manifest first-use file roles, existing completion suggestions, visible failure diagnostics and stale-result cleanup.",
+  "baseline": {
+    "status": "FRICTION_REPRODUCED",
+    "baseline_build": "Published v1.6.0 Docker image",
+    "entered_from_homepage": true,
+    "hdl_and_benches_unchanged": true,
+    "observed_message": "Include a self-checking testbench in the ZIP.",
+    "cause": "Root sim/*_tb.sv files were guessed as RTL and no bench remained.",
+    "check_button_available": false,
+    "new_model_calls": 0
+  },
+  "automated_audit": {
+    "status": "PASS",
+    "automated_workflow_audit": true,
+    "external_human_user_study": false,
+    "new_repair_sample": false,
+    "fixture_origin": "Existing public 129-bit importer fixture and its already-tested literal-completion variant; conventional file paths only.",
+    "browser_errors": [],
+    "new_model_calls": 0,
+    "wall_seconds": 13.860243466915563,
+    "scenarios": [
+      {
+        "input": "unchanged_macro_benches",
+        "entered_from_homepage": true,
+        "no_manifest_or_json_edit": true,
+        "rtl_and_test_roles_selected": true,
+        "existing_completion_recognized": true,
+        "public_and_audit_passed": true,
+        "all_original_input_bytes_preserved": true,
+        "exact_checked_zip_and_evidence_downloaded": true,
+        "standalone_cycle": [
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "checked"
+          },
+          {
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "bug_reintroduced"
+          },
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "restored"
+          }
+        ],
+        "changed_source_hides_old_download": true,
+        "failing_assertion_visible_without_log_expansion": true,
+        "checked_export_reimport_passed": true,
+        "controlled_backend_error_clears_old_success": true,
+        "new_model_calls": 0
+      },
+      {
+        "input": "existing_literal_variant",
+        "entered_from_homepage": true,
+        "no_manifest_or_json_edit": true,
+        "rtl_and_test_roles_selected": true,
+        "existing_completion_recognized": true,
+        "public_and_audit_passed": true,
+        "all_original_input_bytes_preserved": true,
+        "exact_checked_zip_and_evidence_downloaded": true,
+        "standalone_cycle": [
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "checked"
+          },
+          {
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "bug_reintroduced"
+          },
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "restored"
+          }
+        ],
+        "changed_source_hides_old_download": true,
+        "failing_assertion_visible_without_log_expansion": true,
+        "checked_export_reimport_passed": true,
+        "controlled_backend_error_clears_old_success": true,
+        "new_model_calls": 0
+      }
+    ]
+  },
+  "relevant_backend_regression_tests_passed": 42,
+  "new_model_calls": 0,
+  "external_human_user_study": false,
+  "new_hardware_or_repair_sample": false,
+  "frozen_native_checker_or_ci_engine_changed": false,
+  "video_unchanged_from_v1_6_0": true,
+  "video_sha256": "d5fd9397686603a90b8f49483ee89daec57804f51c9fe8327ca6cd414895894a",
+  "submission_zip": {
+    "path": "submission/RTLRefine-first-use-submit-ready.zip",
+    "sha256": "e07966b59c02f4617ec0f44daba02e92b407e855f2d828a6199dd10c480982c2",
+    "bytes": 4261669
+  },
+  "cold_browser_audit": {
+    "status": "PASS",
+    "automated_workflow_audit": true,
+    "external_human_user_study": false,
+    "new_repair_sample": false,
+    "fixture_origin": "Existing public 129-bit importer fixture and its already-tested literal-completion variant; conventional file paths only.",
+    "browser_errors": [],
+    "new_model_calls": 0,
+    "wall_seconds": 16.151992295170203,
+    "scenarios": [
+      {
+        "input": "unchanged_macro_benches",
+        "entered_from_homepage": true,
+        "no_manifest_or_json_edit": true,
+        "rtl_and_test_roles_selected": true,
+        "existing_completion_recognized": true,
+        "public_and_audit_passed": true,
+        "all_original_input_bytes_preserved": true,
+        "exact_checked_zip_and_evidence_downloaded": true,
+        "standalone_cycle": [
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "checked"
+          },
+          {
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "bug_reintroduced"
+          },
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "restored"
+          }
+        ],
+        "changed_source_hides_old_download": true,
+        "failing_assertion_visible_without_log_expansion": true,
+        "checked_export_reimport_passed": true,
+        "controlled_backend_error_clears_old_success": false,
+        "new_model_calls": 0
+      },
+      {
+        "input": "existing_literal_variant",
+        "entered_from_homepage": true,
+        "no_manifest_or_json_edit": true,
+        "rtl_and_test_roles_selected": true,
+        "existing_completion_recognized": true,
+        "public_and_audit_passed": true,
+        "all_original_input_bytes_preserved": true,
+        "exact_checked_zip_and_evidence_downloaded": true,
+        "standalone_cycle": [
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "checked"
+          },
+          {
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "bug_reintroduced"
+          },
+          {
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "testbenches": 2,
+            "junit_report": true,
+            "new_model_calls": 0,
+            "phase": "restored"
+          }
+        ],
+        "changed_source_hides_old_download": true,
+        "failing_assertion_visible_without_log_expansion": true,
+        "checked_export_reimport_passed": true,
+        "controlled_backend_error_clears_old_success": false,
+        "new_model_calls": 0
+      }
+    ],
+    "runtime_fault_injection": "Not requested on production Docker image; separately tested in the private instrumented server."
+  },
+  "cold_image_id": "sha256:7e2005ba2f026b4c17ef569847dcb0b1880d559e99ac94dd1115f7d41ca7495f"
+}

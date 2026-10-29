@@ -21,7 +21,7 @@ https://github.com/ehdtjq08/RTLRefine
 
 # Try it out / test build
 
-https://github.com/ehdtjq08/RTLRefine/blob/v1.6.0/docs/JUDGE_QUICKSTART.md
+https://github.com/ehdtjq08/RTLRefine/blob/v1.6.1/docs/JUDGE_QUICKSTART.md
 
 # Video URL
 

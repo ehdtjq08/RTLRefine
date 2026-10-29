@@ -47,9 +47,43 @@ def referenced_headers(files,paths):
     return sorted(found)
 
 
+def likely_testbench(path,source):
+    parts=Path(path).parts
+    if any(p.lower() in {'tb','test','tests','testbench','testbenches','sim','simulation'} for p in parts[:-1]):return True
+    name=Path(path).stem.lower()
+    if re.search(r'(?:^|[_-])(?:tb|test|bench)(?:$|[_-])',name) or 'testbench' in name:return True
+    return any(n.lower()=='tb' or n.lower().startswith(('tb_','test_')) or n.lower().endswith('_tb') for n in modules({path:source},[path]))
+
+
+def completion_options(text):
+    ts=tokens(text);words=[t[0] for t in ts];has_macro=False;markers=[]
+    for i,word in enumerate(words):
+        if words[i:i+3]==['`','RTLREFINE_DONE','(']:has_macro=True
+        if word not in ('$display','$write') or i+3>=len(ts):continue
+        if words[i+1]!='(' or ts[i+2][3]!='string' or words[i+3]!=')':continue
+        value=words[i+2][1:-1]
+        if not 1<=len(value)<=100 or any(c in value for c in '\n\r"\\%'):continue
+        if re.search(r'(?:^|[\W_])(?:FAIL|FAILED|ERROR|NOT)(?:$|[\W_])',value,re.I):continue
+        if re.search(r'(?:^|[\W_])(?:PASS|PASSED|SUCCESS|SUCCEEDED|DONE|COMPLETE|COMPLETED)(?:$|[\W_])',value,re.I):markers.append(value)
+    return has_macro,list(dict.fromkeys(markers))
+
+
+def completion_field(files,paths,label,key):
+    text='\n'.join(files[p].decode() for p in paths)
+    macro,options=completion_options(text)
+    if macro:return None
+    value=options[0] if len(options)==1 else 'PASS'
+    marker=st.text_input(label,value=value,key=key,
+        help='Exact one-argument $display/$write text executed only after the assertions pass. A clean $finish alone is insufficient.')
+    if len(options)==1:st.caption('Suggested from an existing literal in the supplied bench; review it. No assertion or completion call is inserted.')
+    elif options:st.caption('Possible existing completion literals: '+', '.join(options))
+    return marker
+
+
 def wizard(files,identity):
     hdl=[p for p in sorted(files) if Path(p).suffix in ('.v','.sv')]
-    default=[p for p in hdl if not any(x in p.lower() for x in ('test','tb_','/sim/'))]
+    default=[p for p in hdl if not likely_testbench(p,files[p])]
+    st.caption('File roles are suggested from paths and module names. Review the RTL list and choose the benches you want to run.')
     name=st.text_input('Project name',value='My RTL project',key=identity+'name')
     rtl=st.multiselect('RTL files (compile order)',hdl,default=default,key=identity+'rtl')
     if not rtl:st.info('Choose the design files before selecting its top module.');return None
@@ -58,13 +92,14 @@ def wizard(files,identity):
     top=st.selectbox('DUT top module',top_options,key=identity+'top')
     editable=st.multiselect('Files NVIDIA may edit',rtl,default=rtl[:12],key=identity+'editable')
     candidates=sorted([p for p in hdl if p not in rtl],key=lambda p:('audit' in p.lower() or 'stress' in p.lower(),'public' not in p.lower(),p))
-    if not candidates:st.error('Include a self-checking testbench in the ZIP.');return None
+    if not candidates:st.error('No testbench file remains outside the RTL list. Remove bench files from that list, or include a self-checking bench in the ZIP.');return None
     public=st.selectbox('Public testbench file',candidates,key=identity+'public')
     test_tops=modules(files,[public])
     if not test_tops:st.error('The testbench file has no top module.');return None
     tb=st.selectbox('Public testbench top',test_tops,key=identity+'tb')
-    text=files[public].decode();uses_macro='RTLREFINE_DONE' in text
-    marker=None if uses_macro else st.text_input('Success text printed only after all public checks pass',value='PASS',key=identity+'marker')
+    with st.expander('Preview the selected public testbench'):
+        st.code(files[public].decode(),language='verilog')
+    marker=completion_field(files,[public]+referenced_headers(files,[public]),'Success text printed only after all public checks pass',identity+'marker')
     headers=referenced_headers(files,rtl)
     tests=[{'id':'public','top':tb,'files':[public],'include_files':[p for p in referenced_headers(files,[public]) if p not in headers],
         'phase':'public','success_marker':marker}]
@@ -73,7 +108,7 @@ def wizard(files,identity):
         choices=modules(files,[path])
         if not choices:st.error('No testbench top in '+path);return None
         audit_top=st.selectbox('Additional top: '+path,choices,key=identity+f'audit_top_{index}')
-        audit_marker=None if 'RTLREFINE_DONE' in files[path].decode() else st.text_input('Additional success text: '+path,value='PASS',key=identity+f'audit_marker_{index}')
+        audit_marker=completion_field(files,[path]+referenced_headers(files,[path]),'Additional success text: '+path,identity+f'audit_marker_{index}')
         tests.append({'id':f'audit_{index+1}','top':audit_top,'files':[path],
             'include_files':[p for p in referenced_headers(files,[path]) if p not in headers],'phase':'audit','success_marker':audit_marker})
     dirs=sorted({str(Path(p).parent) for p in headers+[p for t in tests for p in t['include_files']]})
@@ -114,6 +149,13 @@ def render_result(project,result):
     a,b,c=st.columns(3);a.metric('Provided testbenches' if result.get('final_check') else 'Public discovery tests',f'{passed}/{len(rows)}');b.metric('NVIDIA requests',result['api_requests']);c.metric('Editable files',len(project.config['editable_files']))
     if result['accepted']:st.success('The exact project source passed every provided testbench.')
     else:st.warning('This source was not accepted: '+result['status'])
+    first_failed=next((t for t in rows if not t['passed']),None)
+    if first_failed:
+        st.markdown('**First failing test: '+escape(first_failed['id'])+' · '+first_failed['phase']+'**')
+        if first_failed['status']=='ASSERTION_FAILED':st.write('A supplied test assertion failed. Inspect its message below; this source has no checked export.')
+        elif first_failed['status']=='INCONCLUSIVE':st.write('The bench did not provide the required completion evidence. Review its success marker and normal exit before treating the result as verified.')
+        else:st.write('This check did not complete successfully. Review the diagnostic below and the selected files, compile order, parameters and supported simulator features.')
+        st.code((first_failed.get('log_tail') or first_failed.get('error') or first_failed['status'])[-3000:],language='text')
     if result.get('error'):st.error(result['error'])
     ci=result.get('ci_regressions')
     if ci:
@@ -202,10 +244,11 @@ def render_project():
         st.caption('Checking makes no model request. Repair sends editable RTL, declared design dependencies and public testbench text to Nebius, at most twice. Additional testbench source/results are withheld until selection is fixed.')
         if missing:st.info('Native tools required: '+', '.join(missing))
         if check or fix:
+            st.session_state.pop('generic_project_result',None)
             try:
                 with st.status('Working on the submitted project…',expanded=True) as status:
                     with execution_slot():result=run_project(project,repair=fix,on_event=lambda e:st.write(e['message']))
-                    status.update(label='Project checked' if result['accepted'] else 'Finished; inspect verification results',state='complete')
+                    status.update(label='Project checked' if result['accepted'] else 'Finished; inspect verification results',state='complete' if result['accepted'] else 'error',expanded=False)
                 st.session_state['generic_project_result']=result
             except (ValueError,RuntimeError,OSError,KeyError) as exc:st.error(str(exc))
         current=st.session_state.get('generic_project_result')

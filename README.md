@@ -41,7 +41,9 @@ sources and their own self-checking testbenches, with a manifest or the web file
 wizard. Multiple files, functions, parameters, wide signals and testbench-driven
 clocks are supported within the installed simulator's subset. NVIDIA proposes
 design-only multi-file edits; original tests are protected and additional audit
-benches are withheld until final selection. See [user project setup](docs/USER_PROJECTS.md).
+benches are withheld until final selection. See [user project setup](docs/USER_PROJECTS.md). The [automated first-use audit](docs/FIRST_USE_AUDIT.md)
+covers no-manifest setup, byte-preserving export, standalone regressions and
+failed-recheck cleanup; it is not an external human user study.
 
 NVIDIA Nemotron on Nebius diagnoses a failure and prioritizes source-generated
 repair hypotheses. A shared-compilation engine screens a family of patches

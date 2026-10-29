@@ -40,8 +40,11 @@ user. A natural-language contract helps diagnosis but does not replace an oracle
 ## ZIP format
 
 Include `rtlrefine.json` at the ZIP root. A single enclosing directory is also
-accepted. Without a manifest, the web importer lets you select file roles, top
-modules, completion markers and additional benches, then inspect/override JSON.
+accepted. Without a manifest, the web importer suggests roles for common `src/`, `sim/`
+and `*_tb` layouts and lets you review file roles, top modules, completion markers
+and additional benches. An existing unambiguous completion literal is suggested;
+you can preview the public bench and override choices or advanced JSON. These
+are setup suggestions, not additional assertions or a test-completeness claim.
 
 ```json
 {

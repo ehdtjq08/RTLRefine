@@ -6,7 +6,10 @@ The repository contains source, licenses, setup instructions, current UI assets,
 user-project examples and recorded verification evidence. Run the Docker test
 build using the README. New model requests are disabled by default.
 
-The current v1.6.0 submission materials are in
+The current test build is v1.6.1, with first-use setup and result-display fixes.
+The native checker, model case records and 2-minute-17-second video are unchanged.
+[The automated workflow audit](FIRST_USE_AUDIT.md) is explicitly not an external
+human user study. Current submission materials are in
 [submission/uart-peer-v1](../submission/uart-peer-v1/README.md). They add the
 historical UART peer case and a continuous normal-speed video showing fresh
 checks, an actual recorded model result, exported CI and the separate FIFO

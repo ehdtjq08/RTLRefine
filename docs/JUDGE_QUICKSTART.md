@@ -7,7 +7,7 @@ the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.6.0.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.6.1.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -103,7 +103,7 @@ designer edits preserve ports, parameters and clock/reset forms. A source change
 or changed contract requires a fresh check.
 
 The original `v1.2.1` test build predates this extension. Download the current
-`v1.6.0` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
+`v1.6.1` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
 and [portable regressions](PORTABLE_REGRESSIONS.md).
 
 ## Model access and verification scope
@@ -119,3 +119,11 @@ User-project verification covers only the supplied immutable testbenches. It
 does not establish unbounded correctness, timing or physical CDC safety. The
 homepage's 15.0x number measures complete-pool screening for three historical
 profiles; it does not apply to user-project repair.
+
+## First-use setup
+
+Without a manifest, the importer suggests source/bench roles from conventional
+paths and module names and suggests an existing unambiguous success literal.
+Review both choices. The selected bench can be previewed before validation
+succeeds; failed assertions are shown directly in results. See
+[the automated first-use audit](FIRST_USE_AUDIT.md), which is not a human study.
