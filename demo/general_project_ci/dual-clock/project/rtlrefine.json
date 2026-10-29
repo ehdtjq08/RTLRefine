@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Two-clock user counters",
+  "dut_top": "domain_ticks",
+  "rtl_files": [
+    "rtl/domain_ticks.sv"
+  ],
+  "include_files": [],
+  "editable_files": [
+    "rtl/domain_ticks.sv"
+  ],
+  "include_dirs": [],
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "WIDTH": "80"
+  },
+  "tests": [
+    {
+      "id": "basic",
+      "top": "tb_public",
+      "phase": "public",
+      "files": [
+        "tests/public.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 2,
+      "parameters": {},
+      "success_marker": null
+    },
+    {
+      "id": "stress",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 20,
+      "parameters": {},
+      "success_marker": null
+    }
+  ],
+  "contract": "Each counter increments by exactly one on its own clock edge and clears on reset. Simulation does not establish metastability/CDC safety."
+}

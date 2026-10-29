@@ -1,5 +1,7 @@
 # RTLRefine
 
+[![General RTL regression cycles](https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml/badge.svg)](https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml)
+
 **Repair RTL, independently check the patch, and keep executable regressions with the project.**
 
 **Independent FIFO checks are available at `/properties`.** A passing smoke
@@ -13,10 +15,14 @@ bug makes the exported suite fail again, without an API key or this application.
 See [the supported contract](docs/PROPERTY_REPAIR.md) and
 [portable regression workflow](docs/PORTABLE_REGRESSIONS.md).
 
+**General projects now export reusable CI checks too.** Checked ZIPs include
+a standalone runner, JSON/JUnit reporting and a pinned GitHub Actions workflow.
+The exact exported runner must pass before download. See [project CI](docs/GENERAL_PROJECT_CI.md).
+
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
 [Earlier project demo](https://youtu.be/JEvktXDIUd0) ·
-[Functional and external walkthrough](submission/external-v1/video/RTLRefine-external-validation-demo.mp4) ·
-[Current submission materials](submission/external-v1/README.md)
+[Functional, external and CI walkthrough](submission/ci-v1/video/RTLRefine-project-ci-demo.mp4) ·
+[Current submission materials](submission/ci-v1/README.md)
 
 **Real external RTL validation is available at `/external-validation`.** One
 known upstream verilog-axis early-ready throughput regression was reproduced,

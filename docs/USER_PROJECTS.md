@@ -1,5 +1,9 @@
 # User-supplied RTL projects
 
+Newly checked general projects include a separately executed standalone checker
+and GitHub Actions workflow. Reintroducing a defect fails the same provided
+tests without the app or an API key. See [reusable project CI](GENERAL_PROJECT_CI.md).
+
 For compatible single-clock ready/valid FIFOs, `/properties` adds an independent
 contract and replayed counterexamples beyond the supplied tests. See
 [FIFO property repair](PROPERTY_REPAIR.md). The general workflow below continues

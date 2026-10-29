@@ -1,0 +1,96 @@
+{
+  "editable_files": [
+    "rtl/domain_ticks.sv"
+  ],
+  "input_hashes": {
+    "rtl/domain_ticks.sv": "c0129be0edafe2988ad780fa6501a36518064d7f291627624376f235fc3fd3cf",
+    "rtlrefine.json": "19ffc61236ed46aeb393641466687f0a602a9173a98adf947f066ee8397409ad",
+    "tests/audit.sv": "6c0976ba9346c359c79fbca4ffb22a5e52d7c356ea2c12a2c12fc53fa54bbffa",
+    "tests/public.sv": "9c6c61773f921892b1a4f0a96f6484c853085af6b15eba80f198b137a47d23fd"
+  },
+  "interfaces": {
+    "basic": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "WIDTH": "32'sb00000000000000000000000001010000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk_a",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "clk_b",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "reset",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 3,
+            "name": "count_a",
+            "width": 80
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "count_b",
+            "width": 80
+          }
+        ]
+      }
+    ],
+    "stress": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "WIDTH": "32'sb00000000000000000000000001010000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk_a",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "clk_b",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "reset",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 3,
+            "name": "count_a",
+            "width": 80
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "count_b",
+            "width": 80
+          }
+        ]
+      }
+    ]
+  },
+  "producer": "RTLRefine",
+  "schema_version": 1,
+  "scope": "Provided finite testbenches and elaborated interfaces; no model call."
+}

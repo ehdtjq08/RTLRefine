@@ -1,0 +1,181 @@
+{
+  "version": "1.5.0",
+  "summary": "Export general RTL projects with the byte-preserving existing checker, a separately executed acceptance gate, JSON/JUnit and a pinned GitHub Actions workflow.",
+  "new_model_calls": 0,
+  "relevant_regression_tests_passed": 84,
+  "native_validation": {
+    "status": "PASS",
+    "image_id": "sha256:1c84f8b5b2fd698eb8e3e9206edcc1a1e27ef55031002cf227b12cb5fa09b93e",
+    "public_source_only_image": true,
+    "network": "none",
+    "api_key_present": false,
+    "new_model_calls": 0,
+    "fresh_external_ci_export_accepted": true,
+    "cycle": {
+      "status": "PASS",
+      "new_model_calls": 0,
+      "third_party_python_required": false,
+      "cases": [
+        {
+          "case": "axis-register",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 30493,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 5880,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/axis_register.v"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 30493,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        },
+        {
+          "case": "wide-math",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 42,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 0,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/word_math.sv"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 42,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        },
+        {
+          "case": "dual-clock",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 27,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 0,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/domain_ticks.sv"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 27,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        }
+      ],
+      "github_actions": false,
+      "github_sha": null,
+      "scope": "Finite supplied-test regression checks; not repair accuracy or physical CDC proof."
+    }
+  },
+  "browser_validation": {
+    "status": "PASS",
+    "browser_errors": [],
+    "new_model_calls": 0,
+    "actual_checked_zip_downloaded": true,
+    "standalone_export_gate_passed": true,
+    "stale_download_hidden": true,
+    "changed_audit_rejected": true
+  },
+  "video_validation": {
+    "status": "PASS",
+    "video_seconds": 169.834,
+    "video_sha256": "4aff60ea370519905829951e9053e4cda10850df216b7627b072d8e50b3304be",
+    "normal_speed_ui_segments": 3,
+    "prior_segments_preserved": true,
+    "base_video_sha256": "fd0b9f840a854ea127390e7d6620c5db03b51b21f98b251b23580e9695537526",
+    "new_model_calls_during_recording": 0,
+    "fresh_export_download_recorded": true,
+    "browser_errors": [],
+    "youtube_uploaded": false
+  },
+  "submission_zip": {
+    "path": "submission/RTLRefine-ci-submit-ready.zip",
+    "sha256": "657384451286e30ea9eac556613c0e7885dc5488d794dbe33605445949be1e2b",
+    "bytes": 4308603
+  },
+  "github_actions_url": "https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml",
+  "hosted_ci_receipt": "Recorded after publication; consult live Actions status.",
+  "new_youtube_url": null,
+  "devpost_submitted_by_agent": false
+}

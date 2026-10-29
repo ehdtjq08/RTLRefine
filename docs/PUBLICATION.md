@@ -6,7 +6,14 @@ The repository contains source, licenses, setup instructions, current UI assets,
 user-project examples and recorded verification evidence. Run the Docker test
 build using the README. New model requests are disabled by default.
 
-The current v1.4.1 submission materials are in
+The current v1.5.0 submission materials are in
+[submission/ci-v1](../submission/ci-v1/README.md), with general-project standalone
+checking, JSON/JUnit and generated GitHub Actions workflows. The exact exported
+runner is an additional acceptance gate. The repository's own CI reproduces
+three checked/bug-reintroduced/restored cycles. Its live status is visible in
+[GitHub Actions](https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml).
+The current 2-minute-50-second video includes fresh CI export and needs a public
+YouTube upload. Earlier v1.4.1 materials are in
 [submission/external-v1](../submission/external-v1/README.md), with actual external
 RTL validation added to the portable-regression, JSON-free setup and resource
 diagnostic workflow. The earlier v1.4 materials remain in `submission/functional-v1`. The video

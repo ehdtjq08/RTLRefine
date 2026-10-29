@@ -44,6 +44,11 @@ def recheck(label,project_path,*,expected=True):
             for t in result.get('baseline',{}).get('tests',[])
         ):st.warning('Known upstream capacity/throughput regression reproduced. No checked export. Zero model requests.')
         else:st.error('The recheck did not match the recorded outcome: '+result['status'])
+        if result['accepted'] and result.get('ci_regressions',{}).get('accepted'):
+            archive=Path(result['directory'])/'checked-project.zip'
+            blob=archive.read_bytes()
+            if sha256(blob)==result['checked_archive_sha256']:
+                st.download_button('Download freshly checked project with CI',blob,file_name='external-project-with-ci.zip',key=key+'ci',on_click='ignore')
         with st.expander('Fresh check record'):st.json(result)
 
 

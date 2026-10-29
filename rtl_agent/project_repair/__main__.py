@@ -18,7 +18,7 @@ def main():
         if args.command=='example':Path(args.output).write_bytes(example_zip(args.kind));print(args.output);return 0
         project=load_project(read_archive(Path(args.project).read_bytes()))
         result=run_project(project,repair=args.command=='repair',output=args.output,on_event=lambda e:print(e,flush=True))
-        print(json.dumps({k:result.get(k) for k in ('status','accepted','api_requests','public_tests','audit_tests','wall_seconds','error')},indent=2))
+        print(json.dumps({k:result.get(k) for k in ('status','accepted','api_requests','public_tests','audit_tests','ci_status','wall_seconds','error')},indent=2))
         return 0 if result['accepted'] else 1
     except (ValueError,RuntimeError,OSError,KeyError) as exc:
         print(json.dumps({'status':'SETUP_ERROR','accepted':False,'error':str(exc)},indent=2));return 2

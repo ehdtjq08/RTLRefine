@@ -21,6 +21,7 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER property_app.py /app/property_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER external_validation_app.py /app/external_validation_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/run_known_bug_comparison_v2.py /app/scripts/run_known_bug_comparison_v2.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER rtl_agent /app/rtl_agent
+COPY --chown=$MAMBA_USER:$MAMBA_USER LICENSE /app/LICENSE
 COPY --chown=$MAMBA_USER:$MAMBA_USER configs /app/configs
 COPY --chown=$MAMBA_USER:$MAMBA_USER third_party/verilog_axis_reset /app/third_party/verilog_axis_reset
 COPY --chown=$MAMBA_USER:$MAMBA_USER third_party/verilog_axis_adapter_keep /app/third_party/verilog_axis_adapter_keep
@@ -40,6 +41,7 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER demo/repair_studio /app/demo/repair_studio
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/property_repair /app/demo/property_repair
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/functional_repair /app/demo/functional_repair
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/external_rtl_validation /app/demo/external_rtl_validation
+COPY --chown=$MAMBA_USER:$MAMBA_USER demo/general_project_ci /app/demo/general_project_ci
 COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/install_verilator_pinned.py /app/scripts/install_verilator_pinned.py
 USER root
 RUN apt-get update && apt-get install -y --no-install-recommends g++ make && rm -rf /var/lib/apt/lists/*
@@ -48,6 +50,7 @@ RUN python /app/scripts/install_verilator_pinned.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER assets /app/assets
 COPY --chown=$MAMBA_USER:$MAMBA_USER .streamlit/config.toml /app/.streamlit/config.toml
 COPY --chown=$MAMBA_USER:$MAMBA_USER docs/PROPERTY_REPAIR_PROTOCOL.md /app/docs/PROPERTY_REPAIR_PROTOCOL.md
+COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/check_general_project_ci.py /app/scripts/check_general_project_ci.py
 RUN mkdir -p /app/results /app/.state
 ENV RTLREFINE_ENABLE_LIVE_MODEL=0
 EXPOSE 8501

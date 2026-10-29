@@ -115,6 +115,13 @@ def render_result(project,result):
     if result['accepted']:st.success('The exact project source passed every provided testbench.')
     else:st.warning('This source was not accepted: '+result['status'])
     if result.get('error'):st.error(result['error'])
+    ci=result.get('ci_regressions')
+    if ci:
+        if ci['accepted']:
+            st.success('The exact exported CI runner also passed. No model request.')
+            st.code('python3 -I rtlrefine_ci/run.py',language='bash')
+            st.caption('The checked ZIP includes the standalone checker and .github/workflows/rtlrefine.yml. Commit it at your repository root to recheck pushes and pull requests. JSON and JUnit reports are included in CI artifacts.')
+        else:st.error('Standalone CI export rejected: '+ci['status'])
     st.table([{'Test':t['id'],'Phase':t['phase'],'Status':t['status'],'Reported checks':t['checks'] if t['checks'] is not None else 'completion marker',
                'Seconds':round(t['wall_seconds'],3)} for t in rows])
     if not project.audit_tests:st.caption('No additional audit testbench was supplied. The verdict covers only the supplied public checks.')
@@ -132,7 +139,14 @@ def render_result(project,result):
     if result['accepted'] and archive.exists():
         blob=archive.read_bytes()
         if sha256(blob)!=result['checked_archive_sha256']:st.error('Checked archive changed. Run a new check.')
-        else:st.download_button('Download checked project ZIP',blob,file_name='checked-project.zip',type='primary',on_click='ignore')
+        else:
+            st.download_button('Download checked project ZIP',blob,file_name='checked-project.zip',type='primary',on_click='ignore')
+            if ci and ci['accepted']:
+                with zipfile.ZipFile(io.BytesIO(blob)) as zipped:
+                    workflow=zipped.read('.github/workflows/rtlrefine.yml')
+                with st.expander('Included GitHub Actions workflow'):
+                    st.code(workflow.decode(),language='yaml')
+                    st.download_button('Download CI workflow',workflow,file_name='rtlrefine.yml',on_click='ignore')
     st.download_button('Download project evidence',evidence(root),file_name='project-verification-evidence.zip',on_click='ignore')
     st.caption('Only the submitted tests and configuration were verified. Simulation does not prove unbounded behavior, synthesis timing or physical CDC safety. The earlier 15× screening result does not apply to this mode.')
 
@@ -147,9 +161,13 @@ def render_project():
             st.caption('These demonstrate the importer; the runner does not restrict projects to these module names or interfaces.')
             st.download_button('Download 129-bit multi-file example',example_zip('wide_math'),file_name='wide-math.zip',on_click='ignore')
             st.download_button('Download two-clock example',example_zip('dual_clock'),file_name='dual-clock.zip',on_click='ignore')
+            checked=ROOT/'demo/general_project_ci/axis-register/checked-project.zip'
+            if checked.exists():
+                st.download_button('Download externally checked project with CI',checked.read_bytes(),file_name='external-rtl-with-ci.zip',on_click='ignore')
+                st.caption('The prior actual NVIDIA-selected external repair, now packaged with reusable checks. No new repair request was made.')
         upload=st.file_uploader('RTL project ZIP',type=['zip'],help='10 MiB compressed, 32 MiB expanded, up to 256 entries. Never include credentials or .env files.')
         if upload is None:
-            st.info('Include rtlrefine.json for an existing configuration, or choose the file roles after upload. Testbenches must use a literal success marker or `RTLREFINE_DONE(check_count).')
+            st.info('Include rtlrefine.json for an existing configuration, or choose the file roles after upload. Testbenches must use a literal success marker or `RTLREFINE_DONE(check_count). Passing general projects export standalone checks and a GitHub Actions workflow.')
             return
         blob=upload.getvalue();identity=sha256(blob)[:16]
         try:

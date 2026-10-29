@@ -1,6 +1,8 @@
 # 개발·제출 자료
 
-현재 제출 자료는 [external-v1](external-v1/README.md)입니다. 실제 외부 RTL
+현재 제출 자료는 [ci-v1](ci-v1/README.md)입니다. 일반 RTL의 독립 실행·CI 회귀
+검사를 추가했습니다. 이전 외부 실증 자료는 [external-v1](external-v1/README.md)에
+보존했습니다. 실제 외부 RTL
 회귀 수리와 다른 개발자의 정상 모듈 검증을 기존 기능 영상에 추가했습니다.
 이전 기능 완성본은 [functional-v1](functional-v1/README.md)에 보존했습니다.
 이전 독립 FIFO 속성 제출 자료는 [property-v1](property-v1/README.md)에 보존했습니다.

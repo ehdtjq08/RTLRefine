@@ -7,7 +7,7 @@ the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.4.1.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.5.0.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -32,6 +32,21 @@ the ordinary `/project` route. No API key is needed for these rechecks.
 These are two independent upstream modules, one exposed historical repair and
 one healthy compatibility control. They are not newly discovered defects or
 unseen repair accuracy. See [source and scope](EXTERNAL_RTL_VALIDATION.md).
+
+## Keep general RTL checks in CI
+
+Open `/project`, expand **Try a portable example ZIP**, and download the external
+checked project with CI. It contains the prior actual NVIDIA-selected repair;
+packaging used no additional inference. Upload that ZIP, click **Check this
+project**, and inspect both the native verdict and the standalone export gate.
+The included Actions workflow can be inspected before downloading the checked ZIP.
+
+Extract the ZIP and run `python3 -I rtlrefine_ci/run.py`. JSON/JUnit reports and
+exit codes are 0 for pass, 1 for a design regression and 2 for setup/integrity or
+unproven checking. Commit the project including `.github/workflows/rtlrefine.yml`
+at your own repository root to repeat this command on pushes and pull requests.
+The native tools are required; there is no app installation or API credential.
+See [general-project CI](GENERAL_PROJECT_CI.md) for installation and boundaries.
 
 ## Review a recorded NVIDIA repair
 
@@ -80,7 +95,7 @@ designer edits preserve ports, parameters and clock/reset forms. A source change
 or changed contract requires a fresh check.
 
 The original `v1.2.1` test build predates this extension. Download the current
-`v1.4.1` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
+`v1.5.0` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
 and [portable regressions](PORTABLE_REGRESSIONS.md).
 
 ## Model access and verification scope

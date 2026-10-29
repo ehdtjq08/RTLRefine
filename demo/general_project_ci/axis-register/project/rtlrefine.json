@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "name": "External verilog-axis AXI register regressed",
+  "dut_top": "axis_register",
+  "rtl_files": [
+    "rtl/axis_register.v"
+  ],
+  "include_files": [],
+  "editable_files": [
+    "rtl/axis_register.v"
+  ],
+  "include_dirs": [],
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "DATA_WIDTH": "8",
+    "KEEP_WIDTH": "1",
+    "KEEP_ENABLE": "1",
+    "LAST_ENABLE": "1",
+    "ID_ENABLE": "1",
+    "ID_WIDTH": "3",
+    "DEST_ENABLE": "1",
+    "DEST_WIDTH": "5",
+    "USER_ENABLE": "1",
+    "USER_WIDTH": "2",
+    "REG_TYPE": "2"
+  },
+  "tests": [
+    {
+      "id": "capacity_public",
+      "top": "tb_public",
+      "phase": "public",
+      "files": [
+        "tests/public.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "NEGATIVE_DATA_CONTROL": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "skid8",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "REG_TYPE": "2",
+        "ALL_ENABLE": "1",
+        "SEED": "324508639",
+        "CYCLES": "1024"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "skid32",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "32",
+        "REG_TYPE": "2",
+        "ALL_ENABLE": "1",
+        "SEED": "2597191971",
+        "CYCLES": "1024"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "skid64",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "64",
+        "REG_TYPE": "2",
+        "ALL_ENABLE": "1",
+        "SEED": "826366247",
+        "CYCLES": "1536"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "simple16",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "16",
+        "REG_TYPE": "1",
+        "ALL_ENABLE": "1",
+        "SEED": "610839777",
+        "CYCLES": "768"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "bypass8",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "REG_TYPE": "0",
+        "ALL_ENABLE": "1",
+        "SEED": "271136839",
+        "CYCLES": "512"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "disabled32",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "32",
+        "REG_TYPE": "2",
+        "ALL_ENABLE": "0",
+        "SEED": "422065990",
+        "CYCLES": "1024"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "reset_stall8",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "REG_TYPE": "2",
+        "ALL_ENABLE": "1",
+        "SEED": "655894553",
+        "CYCLES": "512"
+      },
+      "success_marker": null
+    }
+  ],
+  "contract": "REG_TYPE=2 is a two-entry skid buffer: after one accepted word, an input idle gap while output is stalled must not make the second slot unavailable. Preserve accepted AXI4-Stream payload order and enabled sidebands, stability during output stalls, reset flushing and documented register modes. No corrected RTL reference is supplied."
+}

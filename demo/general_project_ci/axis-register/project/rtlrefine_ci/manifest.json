@@ -1,0 +1,1042 @@
+{
+  "editable_files": [
+    "rtl/axis_register.v"
+  ],
+  "input_hashes": {
+    "PROVENANCE.json": "b14fea2ac4730405cd482b40bb172381711a80012e2628e6c33bcac19c47114d",
+    "UPSTREAM_LICENSE": "8ea57f95365e9b16a5b516f422b71269183a1ae53bab5878ae6d69039e58fe77",
+    "rtl/axis_register.v": "77572c3cd5648616a8465b746f6ae46def4e29c8545e8f6572a810f3537de9ad",
+    "rtlrefine.json": "61e8c7d1703f17a12b3322806d11300164cf140dec012cd66eb4d6b1326c54fe",
+    "tests/audit.sv": "9cccbdc7046b5885d288cf354ae01bbea1d3a29064755e9faa6d6343213a7798",
+    "tests/public.sv": "4ac3eb8facdc1b1bc2a626dcaacbe4b6bff89887cd52f5ffe56b38f3dab37e66"
+  },
+  "interfaces": {
+    "bypass8": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000000",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "capacity_public": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000010",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "disabled32": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000100000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000000",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000000",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000000",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000100",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000000",
+          "REG_TYPE": "32'sb00000000000000000000000000000010",
+          "USER_ENABLE": "32'sb00000000000000000000000000000000",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 32
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 4
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 32
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 4
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "reset_stall8": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000010",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "simple16": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000010000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000010",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000001",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 16
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 2
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 16
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "skid32": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000100000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000100",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000010",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 32
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 4
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 32
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 4
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "skid64": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000001000000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000001000",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000010",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 64
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 64
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ],
+    "skid8": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000",
+          "DEST_ENABLE": "32'sb00000000000000000000000000000001",
+          "DEST_WIDTH": "32'sb00000000000000000000000000000101",
+          "ID_ENABLE": "32'sb00000000000000000000000000000001",
+          "ID_WIDTH": "32'sb00000000000000000000000000000011",
+          "KEEP_ENABLE": "32'sb00000000000000000000000000000001",
+          "KEEP_WIDTH": "32'sb00000000000000000000000000000001",
+          "LAST_ENABLE": "32'sb00000000000000000000000000000001",
+          "REG_TYPE": "32'sb00000000000000000000000000000010",
+          "USER_ENABLE": "32'sb00000000000000000000000000000001",
+          "USER_WIDTH": "32'sb00000000000000000000000000000010"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "s_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "s_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 4,
+            "name": "s_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "s_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 6,
+            "name": "s_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "s_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "INPUT",
+            "index": 8,
+            "name": "s_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 9,
+            "name": "s_axis_tuser",
+            "width": 2
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 10,
+            "name": "m_axis_tdata",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "m_axis_tkeep",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "m_axis_tvalid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 13,
+            "name": "m_axis_tready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 14,
+            "name": "m_axis_tlast",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 15,
+            "name": "m_axis_tid",
+            "width": 3
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 16,
+            "name": "m_axis_tdest",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 17,
+            "name": "m_axis_tuser",
+            "width": 2
+          }
+        ]
+      }
+    ]
+  },
+  "producer": "RTLRefine",
+  "schema_version": 1,
+  "scope": "Provided finite testbenches and elaborated interfaces; no model call."
+}

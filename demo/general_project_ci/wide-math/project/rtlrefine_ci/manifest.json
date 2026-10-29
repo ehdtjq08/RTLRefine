@@ -1,0 +1,73 @@
+{
+  "editable_files": [
+    "rtl/word_math.sv"
+  ],
+  "input_hashes": {
+    "rtl/customer_top.sv": "48eed9e08e55350d5f80c2600cec4aceb6c55c09999919febcd2856364caa2ab",
+    "rtl/word_math.sv": "e5b06e6fb5c130bec0afed31044aa0bcc97de2fde1edd65d0767fd9bf033a9af",
+    "rtlrefine.json": "4ff6914813d782c7c67afe9b8db7854e47adcd65d3aa92c2371b827d23d5a3d3",
+    "tests/audit.sv": "56777ec06ba0d74e6f0f2473590b416227efba7faa5f8759460ae1d171747d98",
+    "tests/public.sv": "9e6292aaa3f51063de7f2125f12f7f0ccc30fcefc61d28c0134e943e85ce783d"
+  },
+  "interfaces": {
+    "basic": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "WIDTH": "32'sb00000000000000000000000010000001"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "a",
+            "width": 129
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "b",
+            "width": 129
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 2,
+            "name": "result",
+            "width": 129
+          }
+        ]
+      }
+    ],
+    "stress": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "WIDTH": "32'sb00000000000000000000000010000001"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "a",
+            "width": 129
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "b",
+            "width": 129
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 2,
+            "name": "result",
+            "width": 129
+          }
+        ]
+      }
+    ]
+  },
+  "producer": "RTLRefine",
+  "schema_version": 1,
+  "scope": "Provided finite testbenches and elaborated interfaces; no model call."
+}
