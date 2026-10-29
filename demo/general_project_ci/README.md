@@ -10,5 +10,11 @@ repair. Packaging it used no new inference. The other two are authored healthy
 integration fixtures. They are not additional external repair successes.
 
 Run `python3 -I scripts/check_general_project_ci.py` from the repository root
-for all three 0 → 1 → 0 cycles and protected-audit rejection. See
+for all four 0 → 1 → 0 cycles and protected-audit rejection. See
 `docs/GENERAL_PROJECT_CI.md` for the contract and limitations.
+
+The added UART pair is an actual prior NVIDIA-selected correction of a known
+historical bit-order case. Its six development requests and failures are in
+`demo/uart_peer`; packaging and CI make zero additional requests. The earlier
+`validation.json` retains the three-case v1.5 snapshot; the four-case result is
+`UART_PEER_VALIDATION.json`.

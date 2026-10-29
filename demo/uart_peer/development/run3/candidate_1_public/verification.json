@@ -1,0 +1,71 @@
+{
+  "accepted": false,
+  "design_hashes": {
+    "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+    "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+    "rtl/uart_tx.v": "16ea18f8b708a629ee6859b26b7e02d3a248c4156c9d77614905c1eeb944c628"
+  },
+  "new_model_calls": 0,
+  "phase": "public",
+  "project_id": "a170d24aa67b52949d9be7bbb96635603c06428a8b1ff0b821c93ea997159a06",
+  "shared_compilation_speed_claim_applies": false,
+  "status": "PROVIDED_TESTS_NOT_PASSED",
+  "tests": [
+    {
+      "checks": 0,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/uart_tx.v",
+            "./rtl/uart_rx.v",
+            "./rtl/uart_pair.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.01701419521123171
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "uart_pair",
+            "-Puart_pair.DATA_WIDTH=8",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 55,
+          "stage": "elaborate",
+          "status": "FAIL",
+          "wall_seconds": 0.03434230317361653
+        }
+      ],
+      "id": "public_peer",
+      "log_tail": "./__rtlrefine/design.v:120: syntax error\n./__rtlrefine/design.v:184: error: malformed statement\n./__rtlrefine/design.v:186: syntax error\n./__rtlrefine/design.v:186: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:187: syntax error\n./__rtlrefine/design.v:187: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:189: syntax error\n./__rtlrefine/design.v:189: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:190: syntax error\n./__rtlrefine/design.v:190: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:191: syntax error\n./__rtlrefine/design.v:191: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:193: syntax error\n./__rtlrefine/design.v:193: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:194: syntax error\n./__rtlrefine/design.v:194: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:195: syntax error\n./__rtlrefine/design.v:195: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:204: syntax error\n./__rtlrefine/design.v:206: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:213: syntax error\n./__rtlrefine/design.v:214: error: invalid module item.\n./__rtlrefine/design.v:215: syntax error\n./__rtlrefine/design.v:215: error: Invalid module instantiation\n./__rtlrefine/design.v:218: syntax error\n./__rtlrefine/design.v:218: error: Invalid module instantiation\n./__rtlrefine/design.v:222: syntax error\n./__rtlrefine/design.v:222: error: Invalid module instantiation\n./__rtlrefine/design.v:226: syntax error\n./__rtlrefine/design.v:226: error: Invalid module instantiation\n./__rtlrefine/design.v:227: error: Invalid module instantiation\n./__rtlrefine/design.v:229: syntax error\n./__rtlrefine/design.v:229: error: Invalid module instantiation\n./__rtlrefine/design.v:230: error: Invalid module instantiation\n./__rtlrefine/design.v:233: syntax error\n./__rtlrefine/design.v:233: error: Invalid module instantiation\n./__rtlrefine/design.v:234: error: Invalid module instantiation\n./__rtlrefine/design.v:235: error: Invalid module instantiation\n./__rtlrefine/design.v:237: syntax error\n./__rtlrefine/design.v:237: error: Invalid module instantiation\n./__rtlrefine/design.v:239: syntax error\n./__rtlrefine/design.v:239: error: Invalid module instantiation\n./__rtlrefine/design.v:240: error: Invalid module instantiation\n./__rtlrefine/design.v:241: error: Invalid module instantiation\n./__rtlrefine/design.v:243: syntax error\n./__rtlrefine/design.v:243: error: Invalid module instantiation\n./__rtlrefine/design.v:247: syntax error\n./__rtlrefine/design.v:247: error: Invalid module instantiation\n./__rtlrefine/design.v:249: syntax error\n./__rtlrefine/design.v:249: error: Invalid module instantiation\n./__rtlrefine/design.v:250: error: Invalid module instantiation\n./__rtlrefine/design.v:251: error: Invalid module instantiation\n./__rtlrefine/design.v:252: error: Invalid module instantiation\n./__rtlrefine/design.v:255: syntax error\n./__rtlrefine/design.v:271: error: invalid module item.\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": false,
+      "phase": "public",
+      "source_hashes": {
+        "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+        "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+        "rtl/uart_tx.v": "16ea18f8b708a629ee6859b26b7e02d3a248c4156c9d77614905c1eeb944c628"
+      },
+      "status": "DUT_COMPILE_FAILED",
+      "top": "tb_public",
+      "wall_seconds": 0.05135649838484824
+    }
+  ],
+  "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+}

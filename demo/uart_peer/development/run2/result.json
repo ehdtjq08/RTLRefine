@@ -1,0 +1,380 @@
+{
+  "accepted": false,
+  "api_requests": 2,
+  "attempts": [
+    {
+      "api_requests": 1,
+      "changes": {
+        "rtl/uart_rx.v": "/*\n\nCopyright (c) 2014 Alex Forencich\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\n*/\n\n// Language: Verilog 2001\n\n`timescale 1ns / 1ps\n\n/*\n * AXI4-Stream UART\n */\nmodule uart_rx #\n(\n    parameter DATA_WIDTH = 8\n)\n(\n    input  wire                   clk,\n    input  wire                   rst,\n\n    /*\n     * AXI output\n     */\n    output wire [DATA_WIDTH-1:0]  output_axi_tdata,\n    output wire                   output_axi_tvalid,\n    input  wire                   output_axi_tready,\n\n    /*\n     * UART interface\n     */\n    input  wire                   rxd,\n\n    /*\n     * Status\n     */\n    output wire                   busy,\n    output wire                   overrun_error,\n    output wire                   frame_error,\n\n    /*\n     * Configuration\n     */\n    input  wire [15:0]            prescale\n\n);\n\nreg [DATA_WIDTH-1:0] output_axi_tdata_reg = 0;\nreg output_axi_tvalid_reg = 0;\n\nreg busy_reg = 0;\nreg overrun_error_reg = 0;\nreg frame_error_reg = 0;\n\nreg [DATA_WIDTH-1:0] data_reg = 0;\nreg [18:0] prescale_reg = 0;\nreg [3:0] bit_cnt = 0;\n\nassign output_axi_tdata = output_axi_tdata_reg;\nassign output_axi_tvalid = output_axi_tvalid_reg;\n\nassign busy = busy_reg;\nassign overrun_error = overrun_error_reg;\nassign frame_error = frame_error_reg;\n\nalways @(posedge clk or posedge rst) begin\n    if (rst) begin\n        output_axi_tdata_reg <= 0;\n        output_axi_tvalid_reg <= 0;\n        prescale_reg <= 0;\n        bit_cnt <= 0;\n        busy_reg <= 0;\n        overrun_error_reg <= 0;\n        frame_error_reg <= 0;\n    end else begin\n        overrun_error_reg <= 0;\n        frame_error_reg <= 0;\n\n        if (output_axi_tvalid & output_axi_tready) begin\n            output_axi_tvalid_reg <= 0;\n        end\n\n        if (prescale_reg > 0) begin\n            prescale_reg <= prescale_reg - 1;\n        end else if (bit_cnt > 0) begin\n            if (bit_cnt > DATA_WIDTH+1) begin\n                if (~rxd) begin\n                    bit_cnt <= bit_cnt - 1;\n                    prescale_reg <= (prescale << 3)-1;\n                end else begin\n                    bit_cnt <= 0;\n                    prescale_reg <= 0;\n                end\n            end else if (bit_cnt > 1) begin\n                bit_cnt <= bit_cnt - 1;\n            end else if (bit_cnt > 1) begin\n                bit_cnt <= bit_cnt - 1;\n                prescale_reg <= (prescale << 3)-1;\n                data_reg <= {rxd, data_reg[DATA_WIDTH-1:1]};\n            end\n                bit_cnt <= bit_cnt - 1;\n                if (rxd) begin\n                    output_axi_tdata_reg <= data_reg;\n                    output_axi_tvalid_reg <= 1;\n                    overrun_error_reg <= output_axi_tvalid_reg;\n                end else begin\n                    frame_error_reg <= 1;\n                end\n            end\n        end else begin\n            busy_reg <= 0;\n            if (~rxd) begin\n                prescale_reg <= (prescale << 2)-2;\n                bit_cnt <= DATA_WIDTH+2;\n                data_reg <= 0;\n                busy_reg <= 1;\n            end\n        end\n    end\nend\n\nendmodule\n"
+      },
+      "cost": {
+        "estimated_usd": 0.007754,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "2a37ceeab2394d1eb563efe7d87f1ca8",
+        "reserved_usd": 1.067008,
+        "state": "settled"
+      },
+      "number": 1,
+      "proposal": {
+        "diagnosis": "The TX sends bits LSB first correctly, but the RX shifts data LSB-first into an array and later publishes the register as-is, yielding a bit-reversed byte. The RX must accumulate bits MSB-first (i.e., shift left and insert at LSB) so that the first received bit becomes bit 0 of the output byte. Additionally, the start-bit detection timing is one cycle early; it should sample the line at mid-bit after a half-bit delay to meet the independent peer's framing.",
+        "edits": [
+          {
+            "end_line": 116,
+            "file": "rtl/uart_rx.v",
+            "replacement": "            end else if (bit_cnt > 1) begin\n                bit_cnt <= bit_cnt - 1;\n                prescale_reg <= (prescale << 3)-1;\n                data_reg <= {rxd, data_reg[DATA_WIDTH-1:1]};\n            end",
+            "start_line": 114
+          }
+        ]
+      },
+      "public_check": {
+        "accepted": false,
+        "design_hashes": {
+          "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+          "rtl/uart_rx.v": "3c455b65e1f271ba10a77360e1d5545dbea206072e3f7fb40ddedde99344e8bb",
+          "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d"
+        },
+        "new_model_calls": 0,
+        "phase": "public",
+        "project_id": "a170d24aa67b52949d9be7bbb96635603c06428a8b1ff0b821c93ea997159a06",
+        "shared_compilation_speed_claim_applies": false,
+        "status": "PROVIDED_TESTS_NOT_PASSED",
+        "tests": [
+          {
+            "checks": 0,
+            "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+            "commands": [
+              {
+                "command": [
+                  "/home/hands/anaconda3/bin/iverilog",
+                  "-g2012",
+                  "-E",
+                  "-o",
+                  "__rtlrefine/design.v",
+                  "./rtl/uart_tx.v",
+                  "./rtl/uart_rx.v",
+                  "./rtl/uart_pair.v"
+                ],
+                "execution_mode": "bubblewrap",
+                "network": false,
+                "returncode": 0,
+                "stage": "preprocess",
+                "status": "PASS",
+                "wall_seconds": 0.018103507114574313
+              },
+              {
+                "command": [
+                  "/home/hands/anaconda3/bin/iverilog",
+                  "-g2012",
+                  "-t",
+                  "null",
+                  "-s",
+                  "uart_pair",
+                  "-Puart_pair.DATA_WIDTH=8",
+                  "./__rtlrefine/design.v"
+                ],
+                "execution_mode": "bubblewrap",
+                "network": false,
+                "returncode": 4,
+                "stage": "elaborate",
+                "status": "FAIL",
+                "wall_seconds": 0.01820492697879672
+              }
+            ],
+            "id": "public_peer",
+            "log_tail": "./__rtlrefine/design.v:243: syntax error\n./__rtlrefine/design.v:244: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:252: syntax error\n./__rtlrefine/design.v:268: error: invalid module item.\n",
+            "oracle": "User-supplied immutable self-checking testbench",
+            "passed": false,
+            "phase": "public",
+            "source_hashes": {
+              "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+              "rtl/uart_rx.v": "3c455b65e1f271ba10a77360e1d5545dbea206072e3f7fb40ddedde99344e8bb",
+              "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d"
+            },
+            "status": "DUT_COMPILE_FAILED",
+            "top": "tb_public",
+            "wall_seconds": 0.036308434093371034
+          }
+        ],
+        "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+      },
+      "reasoning_enabled": false,
+      "status": "VALID_PATCH",
+      "wall_seconds": 2.816419873153791
+    },
+    {
+      "api_requests": 1,
+      "changes": {},
+      "cost": {
+        "estimated_usd": 0.025664,
+        "phase": "development",
+        "pricing_verified_on": "2026-10-22",
+        "request_id": "aa3054e6bcbb434a8dc6c09f411fe00e",
+        "reserved_usd": 1.067008,
+        "state": "settled"
+      },
+      "error": "ValueError: Project patch response incomplete",
+      "number": 2,
+      "reasoning_enabled": true,
+      "status": "PATCH_REJECTED",
+      "wall_seconds": 19.532806226052344
+    }
+  ],
+  "baseline": {
+    "accepted": false,
+    "design_hashes": {
+      "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+      "rtl/uart_rx.v": "236a4fc1822fafac080b89f883bfe6fc4cada6ae5ed191393d715556dcb49b8c",
+      "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d"
+    },
+    "new_model_calls": 0,
+    "phase": "public",
+    "project_id": "a170d24aa67b52949d9be7bbb96635603c06428a8b1ff0b821c93ea997159a06",
+    "shared_compilation_speed_claim_applies": false,
+    "status": "PROVIDED_TESTS_NOT_PASSED",
+    "tests": [
+      {
+        "checks": 0,
+        "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+        "commands": [
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/design.v",
+              "./rtl/uart_tx.v",
+              "./rtl/uart_rx.v",
+              "./rtl/uart_pair.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017051174072548747
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "uart_pair",
+              "-Puart_pair.DATA_WIDTH=8",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.032981690019369125
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-E",
+              "-o",
+              "__rtlrefine/test_expanded.v",
+              "-I.",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "test_preprocess",
+            "status": "PASS",
+            "wall_seconds": 0.017306173918768764
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-s",
+              "tb_public",
+              "-o",
+              "__rtlrefine/simulation.vvp",
+              "-I.",
+              "-Ptb_public.DATA_WIDTH=8",
+              "-Ptb_public.PRESCALE=2",
+              "-Ptb_public.WORDS=3",
+              "-Ptb_public.SEED=927050163",
+              "-Ptb_public.LOOPBACK_ONLY=0",
+              "-Ptb_public.STRESS=0",
+              "./__rtlrefine/design.v",
+              "./tests/public.sv"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "compile",
+            "status": "PASS",
+            "wall_seconds": 0.0332421800121665
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/iverilog",
+              "-g2012",
+              "-t",
+              "null",
+              "-s",
+              "uart_pair",
+              "-Puart_pair.DATA_WIDTH=32'sb00000000000000000000000000001000",
+              "./__rtlrefine/design.v"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 0,
+            "stage": "elaborate",
+            "status": "PASS",
+            "wall_seconds": 0.017291607102379203
+          },
+          {
+            "command": [
+              "/home/hands/anaconda3/bin/vvp",
+              "__rtlrefine/simulation.vvp"
+            ],
+            "execution_mode": "bubblewrap",
+            "network": false,
+            "returncode": 1,
+            "stage": "simulate",
+            "status": "FAIL",
+            "wall_seconds": 0.03410352091304958
+          }
+        ],
+        "id": "public_peer",
+        "interface": [
+          {
+            "instance": "dut",
+            "numeric_parameters": {
+              "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+            },
+            "ports": [
+              {
+                "direction": "INPUT",
+                "index": 0,
+                "name": "clk",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 1,
+                "name": "rst",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 2,
+                "name": "tx_data",
+                "width": 8
+              },
+              {
+                "direction": "INPUT",
+                "index": 3,
+                "name": "tx_valid",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 4,
+                "name": "tx_ready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 5,
+                "name": "txd",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 6,
+                "name": "tx_busy",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 7,
+                "name": "rxd",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 8,
+                "name": "rx_data",
+                "width": 8
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 9,
+                "name": "rx_valid",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 10,
+                "name": "rx_ready",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 11,
+                "name": "rx_busy",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 12,
+                "name": "overrun_error",
+                "width": 1
+              },
+              {
+                "direction": "OUTPUT",
+                "index": 13,
+                "name": "frame_error",
+                "width": 1
+              },
+              {
+                "direction": "INPUT",
+                "index": 14,
+                "name": "prescale",
+                "width": 16
+              }
+            ]
+          }
+        ],
+        "log_tail": "UART_LOOPBACK_RESULT frames=3 failures=0\nUART_TX_FRAME offered=01 observed_lsb=80 bit_errors=32\nUART_TX_FRAME offered=80 observed_lsb=01 bit_errors=32\nUART_TX_FRAME offered=96 observed_lsb=69 bit_errors=128\nUART_RX_FRAME sent_lsb=01 decoded=80\nUART_RX_FRAME sent_lsb=80 decoded=01\nUART_RX_FRAME sent_lsb=96 decoded=69\nUART_SUMMARY tx_mismatches=3 rx_mismatches=3 loopback_mismatches=0 control_mismatches=0 checks=2328\nFATAL: ./tests/public.sv:205: UART_PEER_CONTRACT_FAILED independent LSB-first serial peer disagrees\n       Time: 18220000 Scope: tb_public\n",
+        "oracle": "User-supplied immutable self-checking testbench",
+        "passed": false,
+        "phase": "public",
+        "source_hashes": {
+          "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+          "rtl/uart_rx.v": "236a4fc1822fafac080b89f883bfe6fc4cada6ae5ed191393d715556dcb49b8c",
+          "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d"
+        },
+        "status": "ASSERTION_FAILED",
+        "testbench_marker_transforms": [],
+        "top": "tb_public",
+        "verification_hashes": {
+          "rtlrefine_check.vh": "fe8a0e2cb8616ff715e7824e0947760f317824defe24d1cdf3dcffa1a0c45879",
+          "tests/public.sv": "ba59b1437182b5f2f4c88827e268dc8bbd434b3f1c1796c396b0cf95e9504098"
+        },
+        "wall_seconds": 0.15197634603828192
+      }
+    ],
+    "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+  },
+  "batch_speed_claim_applies": false,
+  "directory": "/home/hands/Nebius/results/uart_bitorder_nebius_v2/run",
+  "mode": "user_testbench_project",
+  "project_id": "a170d24aa67b52949d9be7bbb96635603c06428a8b1ff0b821c93ea997159a06",
+  "project_name": "External UART: loopback versus independent LSB-first peers",
+  "scope": "Passes only the provided immutable self-checking testbenches; no arbitrary-design completeness, synthesis-timing or physical CDC guarantee",
+  "status": "NO_PUBLIC_PASS",
+  "wall_seconds": 24.37617040006444
+}

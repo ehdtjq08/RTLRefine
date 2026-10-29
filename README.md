@@ -4,6 +4,11 @@
 
 **Repair RTL, independently check the patch, and keep executable regressions with the project.**
 
+**A historical UART pair can pass loopback and still reverse bytes at an external
+peer.** The new `/external-validation` tab shows actual bit samples, a two-file
+NVIDIA repair, all six development requests and an executable 0 → 1 → 0 CI
+cycle. See [the UART evidence and limits](docs/UART_PEER_VALIDATION.md).
+
 **Independent FIFO checks are available at `/properties`.** A passing smoke
 test can still hide a simultaneous-transfer, wrap or reset defect. The new mode
 finds a symbolic counterexample from a fixed external-port contract, reproduces
@@ -21,8 +26,8 @@ The exact exported runner must pass before download. See [project CI](docs/GENER
 
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
 [Earlier project demo](https://youtu.be/JEvktXDIUd0) ·
-[Functional, external and CI walkthrough](submission/ci-v1/video/RTLRefine-project-ci-demo.mp4) ·
-[Current submission materials](submission/ci-v1/README.md)
+[UART, CI and FIFO walkthrough](submission/uart-peer-v1/video/RTLRefine-UART-peer-demo.mp4) ·
+[Current submission materials](submission/uart-peer-v1/README.md)
 
 **Real external RTL validation is available at `/external-validation`.** One
 known upstream verilog-axis early-ready throughput regression was reproduced,

@@ -1,0 +1,52 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"diagnosis\": \"Both TX and RX serialize bits in reverse order. TX sends data_reg[DATA_WIDTH] first (MSB) instead of the LSB; RX shifts incoming bits left and appends at LSB, also yielding MSB-first. The start/stop bit logic and prescale*8 timing are otherwise correct, so only the bit ordering inside the frame needs fixing.\",\n  \"edits\": [\n    {\n      \"file\": \"rtl/uart_tx.v\",\n      \"start_line\": 97,\n      \"end_line\": 105,\n      \"replacement\": \"            if (input_axi_tvalid) begin\\n                input_axi_tready_reg <= ~input_axi_tready_reg;\\n                prescale_reg <= (prescale << 3)-1;\\n                bit_cnt <= DATA_WIDTH+1;\\n                data_reg <= {1'b1, input_axi_tdata};\\n                txd_reg <= 0;\\n                busy_reg <= 1;\\n            end\\n        end else begin\\n            if (bit_cnt > 1) begin\\n                bit_cnt <= bit_cnt - 1;\\n                prescale_reg <= (prescale << 3)-1;\\n                {data_reg, txd_reg} <= {data_reg[DATA_WIDTH-1:0], data_reg[DATA_WIDTH]};\\n            end else if (bit_cnt == 1) begin\"\n    },\n    {\n      \"file\": \"rtl/uart_rx.v\",\n      \"start_line\": 115,\n      \"end_line\": 115,\n      \"replacement\": \"                data_reg <= {rxd, data_reg[DATA_WIDTH-1:1]};\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning_content": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1793256244,
+  "id": "chatcmpl-968514d7cac6e76f",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g93e2486b7-tp8-062d09e8",
+  "usage": {
+    "completion_tokens": 371,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 7121,
+    "prompt_tokens": 7121,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 7492
+  }
+}

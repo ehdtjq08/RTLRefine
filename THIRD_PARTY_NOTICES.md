@@ -1,5 +1,12 @@
 # Third-party RTL
 
+The historical UART pair under `external_cases/uart_bitorder_external` comes
+from Alex Forencich's MIT-licensed verilog-uart at commits 62eb6f5d45b6 and
+db0017a22c57. Original headers and the full `UPSTREAM_LICENSE` are retained.
+The same notices accompany derived selected source in `demo/uart_peer` and
+`demo/general_project_ci/uart-peer`. The stateless packaging adapter and peer
+testbench are RTLRefine-authored; see `docs/UART_PEER_VALIDATION.md` for scope.
+
 The repair studio uses locally bundled Inter and IBM Plex Mono fonts from
 Google Fonts under the SIL Open Font License. Original notices, source URLs,
 hashes and generated WOFF2 assets are retained in `assets/fonts`. Runtime font

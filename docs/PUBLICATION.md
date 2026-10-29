@@ -6,7 +6,15 @@ The repository contains source, licenses, setup instructions, current UI assets,
 user-project examples and recorded verification evidence. Run the Docker test
 build using the README. New model requests are disabled by default.
 
-The current v1.5.0 submission materials are in
+The current v1.6.0 submission materials are in
+[submission/uart-peer-v1](../submission/uart-peer-v1/README.md). They add the
+historical UART peer case and a continuous normal-speed video showing fresh
+checks, an actual recorded model result, exported CI and the separate FIFO
+contract. Six actual UART requests and both failed runs are disclosed. The new
+video still needs a public YouTube upload. No final Devpost submission by the
+agent is claimed. See [the protocol and limits](UART_PEER_VALIDATION.md).
+
+The earlier v1.5.0 submission materials are in
 [submission/ci-v1](../submission/ci-v1/README.md), with general-project standalone
 checking, JSON/JUnit and generated GitHub Actions workflows. The exact exported
 runner is an additional acceptance gate. The repository's own CI reproduces

@@ -165,6 +165,9 @@ def render_project():
             if checked.exists():
                 st.download_button('Download externally checked project with CI',checked.read_bytes(),file_name='external-rtl-with-ci.zip',on_click='ignore')
                 st.caption('The prior actual NVIDIA-selected external repair, now packaged with reusable checks. No new repair request was made.')
+            uart=ROOT/'demo/uart_peer/projects/uart-nvidia-checked-ci.zip'
+            if uart.exists():
+                st.download_button('Download checked external UART pair with CI',uart.read_bytes(),file_name='uart-peer-checked-ci.zip',on_click='ignore')
         upload=st.file_uploader('RTL project ZIP',type=['zip'],help='10 MiB compressed, 32 MiB expanded, up to 256 entries. Never include credentials or .env files.')
         if upload is None:
             st.info('Include rtlrefine.json for an existing configuration, or choose the file roles after upload. Testbenches must use a literal success marker or `RTLREFINE_DONE(check_count). Passing general projects export standalone checks and a GitHub Actions workflow.')

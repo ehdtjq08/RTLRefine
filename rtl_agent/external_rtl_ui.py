@@ -56,9 +56,12 @@ def render_external():
     st.set_page_config(page_title='RTLRefine · External RTL',layout='wide',initial_sidebar_state='collapsed');apply_theme()
     with st.container(key='studio_shell'):
         topbar();st.title('Validated on independently developed RTL.')
-        st.write('A real upstream regression repaired through the ordinary ZIP workflow, plus an unmodified healthy module from a second author. Recheck the exact projects without a model request.')
+        st.write('Real external RTL through the ordinary ZIP workflow: UART peer interoperability, an AXI-stream throughput regression and an unmodified healthy module from a second author. Recheck the exact projects without a model request.')
         st.page_link('project_app.py',label='Open the general project workspace',icon=':material/folder_open:')
-        summary=read(DATA/'summary.json');first,second=st.tabs(['Known upstream regression repair','Second-author healthy control'])
+        summary=read(DATA/'summary.json');uart,first,second=st.tabs(['UART serial peers','Known upstream regression repair','Second-author healthy control'])
+        with uart:
+            from .uart_peer_ui import render_uart_peer
+            render_uart_peer()
         with first:
             r=summary['axis_register'];folder=DATA/'axis_register/repaired/run';record=read(folder/'result.json')
             st.subheader('verilog-axis · AXI4-Stream register')

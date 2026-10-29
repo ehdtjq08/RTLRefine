@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/home/hands/anaconda3/bin/iverilog",
+    "-g2012",
+    "-s",
+    "tb_public",
+    "-o",
+    "__rtlrefine/simulation.vvp",
+    "-I.",
+    "-Ptb_public.DATA_WIDTH=8",
+    "-Ptb_public.PRESCALE=2",
+    "-Ptb_public.WORDS=3",
+    "-Ptb_public.SEED=927050163",
+    "-Ptb_public.LOOPBACK_ONLY=0",
+    "-Ptb_public.STRESS=0",
+    "./__rtlrefine/design.v",
+    "./tests/public.sv"
+  ],
+  "execution_mode": "bubblewrap",
+  "network": false,
+  "returncode": 0,
+  "stage": "compile",
+  "status": "PASS",
+  "wall_seconds": 0.034712088061496615
+}

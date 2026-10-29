@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "External UART: loopback versus independent LSB-first peers",
+  "dut_top": "uart_pair",
+  "rtl_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v",
+    "rtl/uart_pair.v"
+  ],
+  "include_files": [],
+  "editable_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v"
+  ],
+  "include_dirs": [],
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "DATA_WIDTH": "8"
+  },
+  "tests": [
+    {
+      "id": "loopback_smoke",
+      "top": "tb_public",
+      "phase": "public",
+      "files": [
+        "tests/public.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "PRESCALE": "2",
+        "WORDS": "3",
+        "SEED": "927050163",
+        "LOOPBACK_ONLY": "1",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    }
+  ],
+  "contract": "UART data bits must be serialized and decoded LSB first, framed by a low start and high stop bit; prescale*8 clocks per bit, 5-8 data bits, no parity. Both directions are checked against independently generated serial peer bits. A TX/RX closed loopback is insufficient: the original pair shares the wrong order and can agree with itself. Preserve byte handshakes, framing/overrun reporting, asynchronous reset, and pending RX output when its consumer pauses and no new frame arrives. Wrapper and tests are read-only. No corrected reference implementation is supplied."
+}

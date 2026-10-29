@@ -93,6 +93,13 @@ parameters, type declarations, preprocessor directives and clock/reset event
 forms. The user can supply a different configuration in a new project; the
 repair agent cannot silently redefine that configuration.
 
+The initial proposal uses at most 6,144 completion tokens without reasoning.
+When a rejected proposal is available, the revision enables reasoning with a
+12,288-token cap and places the latest public failure after the old hypothesis.
+The two-request limit and persistent budget guard remain active. See
+[the exposed UART development example](UART_PEER_VALIDATION.md), including all
+failed requests; this is not a general superiority or unseen-accuracy claim.
+
 ## Explicit test completion
 
 A zero simulator exit by itself is **not** an accepted test. Use either:

@@ -1,0 +1,192 @@
+{
+  "contract": "UART data bits must be serialized and decoded LSB first, framed by a low start and high stop bit; prescale*8 clocks per bit, 5-8 data bits, no parity. Both directions are checked against independently generated serial peer bits. A TX/RX closed loopback is insufficient: the original pair shares the wrong order and can agree with itself. Preserve byte handshakes, framing/overrun reporting, asynchronous reset, and pending RX output when its consumer pauses and no new frame arrives. Wrapper and tests are read-only. No corrected reference implementation is supplied.",
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "DATA_WIDTH": "8"
+  },
+  "dut_top": "uart_pair",
+  "editable_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v"
+  ],
+  "include_dirs": [],
+  "include_files": [],
+  "name": "External UART: loopback versus independent LSB-first peers",
+  "rtl_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v",
+    "rtl/uart_pair.v"
+  ],
+  "schema_version": 1,
+  "tests": [
+    {
+      "data_files": [],
+      "files": [
+        "tests/public.sv"
+      ],
+      "id": "public_peer",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "2",
+        "SEED": "927050163",
+        "STRESS": "0",
+        "WORDS": "3"
+      },
+      "phase": "public",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_public"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "uart8_fast",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "1",
+        "SEED": "1251029615",
+        "STRESS": "0",
+        "WORDS": "48"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "uart5",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "5",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "3",
+        "SEED": "1899727905",
+        "STRESS": "0",
+        "WORDS": "32"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "uart6",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "6",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "2",
+        "SEED": "1483854499",
+        "STRESS": "0",
+        "WORDS": "40"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "uart7",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "7",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "4",
+        "SEED": "1808236883",
+        "STRESS": "0",
+        "WORDS": "40"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "uart8_slow",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "5",
+        "SEED": "492751731",
+        "STRESS": "0",
+        "WORDS": "48"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "framing_reset",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "3",
+        "SEED": "1109039921",
+        "STRESS": "1",
+        "WORDS": "12"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    },
+    {
+      "data_files": [],
+      "files": [
+        "tests/audit.sv"
+      ],
+      "id": "flow_overrun",
+      "include_files": [],
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "7",
+        "LOOPBACK_ONLY": "0",
+        "PRESCALE": "2",
+        "SEED": "1966723777",
+        "STRESS": "1",
+        "WORDS": "16"
+      },
+      "phase": "audit",
+      "success_marker": null,
+      "timeout_seconds": 10.0,
+      "top": "tb_audit"
+    }
+  ]
+}

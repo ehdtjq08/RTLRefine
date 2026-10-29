@@ -41,16 +41,23 @@ def main():
             ('axis-register', 'rtl/axis_register.v', None, 30493),
             ('wide-math', 'rtl/word_math.sv', (b'lhs + rhs', b'lhs - rhs'), 42),
             ('dual-clock', 'rtl/domain_ticks.sv', (b'count_b + 1', b'count_b + 2'), 27),
+            ('uart-peer', 'rtl/uart_tx.v', None, 186772),
         ]:
             project = Path(temp) / name
             shutil.copytree(base / name / 'project', project)
             target = project / design
             original = target.read_bytes()
-            bad = (ROOT / 'external_cases/axis_register_external/regressed/rtl/axis_register.v').read_bytes() if mutation is None else original.replace(*mutation)
+            if name=='uart-peer':
+                bad=(ROOT/'external_cases/uart_bitorder_external/original/rtl/uart_tx.v').read_bytes()
+                other=project/'rtl/uart_rx.v';other_original=other.read_bytes()
+                other_bad=(ROOT/'external_cases/uart_bitorder_external/original/rtl/uart_rx.v').read_bytes()
+            else:
+                bad = (ROOT / 'external_cases/axis_register_external/regressed/rtl/axis_register.v').read_bytes() if mutation is None else original.replace(*mutation)
             assert bad != original, name
             rows = []
             for phase, source in [('checked', original), ('bug_reintroduced', bad), ('restored', original)]:
                 target.write_bytes(source)
+                if name=='uart-peer':other.write_bytes(other_bad if phase=='bug_reintroduced' else other_original)
                 row = {'phase': phase, **invoke(project, out / (name + '-' + phase))}
                 if phase == 'bug_reintroduced':
                     assert row['exit_code'] == 1 and row['status'] == 'REGRESSION_FAILED', (name, row)

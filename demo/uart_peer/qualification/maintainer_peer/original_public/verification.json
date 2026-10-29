@@ -1,0 +1,249 @@
+{
+  "accepted": true,
+  "design_hashes": {
+    "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+    "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+    "rtl/uart_tx.v": "2ad5a8973c541bc4249afd2f07335c6e3b835d36c3ed7467e55b01881f49e337"
+  },
+  "new_model_calls": 0,
+  "phase": "public",
+  "project_id": "4db9e6f308119b612ecdd519f4ccd93ecf7d36168efe447debd1c3c072049e27",
+  "shared_compilation_speed_claim_applies": false,
+  "status": "PROVIDED_TESTS_PASS",
+  "tests": [
+    {
+      "checks": 2328,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/uart_tx.v",
+            "./rtl/uart_rx.v",
+            "./rtl/uart_pair.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.017000178107991815
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "uart_pair",
+            "-Puart_pair.DATA_WIDTH=8",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.017155256820842624
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/test_expanded.v",
+            "-I.",
+            "./__rtlrefine/design.v",
+            "./tests/public.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "test_preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.017338588135316968
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-s",
+            "tb_public",
+            "-o",
+            "__rtlrefine/simulation.vvp",
+            "-I.",
+            "-Ptb_public.DATA_WIDTH=8",
+            "-Ptb_public.PRESCALE=2",
+            "-Ptb_public.WORDS=3",
+            "-Ptb_public.SEED=927050163",
+            "-Ptb_public.LOOPBACK_ONLY=0",
+            "-Ptb_public.STRESS=0",
+            "./__rtlrefine/design.v",
+            "./tests/public.sv"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "compile",
+          "status": "PASS",
+          "wall_seconds": 0.03325843391939998
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "uart_pair",
+            "-Puart_pair.DATA_WIDTH=32'sb00000000000000000000000000001000",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "elaborate",
+          "status": "PASS",
+          "wall_seconds": 0.0334301448892802
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/vvp",
+            "__rtlrefine/simulation.vvp"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "simulate",
+          "status": "PASS",
+          "wall_seconds": 0.03363398392684758
+        }
+      ],
+      "id": "public_peer",
+      "interface": [
+        {
+          "instance": "dut",
+          "numeric_parameters": {
+            "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+          },
+          "ports": [
+            {
+              "direction": "INPUT",
+              "index": 0,
+              "name": "clk",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 1,
+              "name": "rst",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 2,
+              "name": "tx_data",
+              "width": 8
+            },
+            {
+              "direction": "INPUT",
+              "index": 3,
+              "name": "tx_valid",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 4,
+              "name": "tx_ready",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 5,
+              "name": "txd",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 6,
+              "name": "tx_busy",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 7,
+              "name": "rxd",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 8,
+              "name": "rx_data",
+              "width": 8
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 9,
+              "name": "rx_valid",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 10,
+              "name": "rx_ready",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 11,
+              "name": "rx_busy",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 12,
+              "name": "overrun_error",
+              "width": 1
+            },
+            {
+              "direction": "OUTPUT",
+              "index": 13,
+              "name": "frame_error",
+              "width": 1
+            },
+            {
+              "direction": "INPUT",
+              "index": 14,
+              "name": "prescale",
+              "width": 16
+            }
+          ]
+        }
+      ],
+      "log_tail": "UART_LOOPBACK_RESULT frames=3 failures=0\nUART_TX_FRAME offered=01 observed_lsb=01 bit_errors=0\nUART_TX_FRAME offered=80 observed_lsb=80 bit_errors=0\nUART_TX_FRAME offered=96 observed_lsb=96 bit_errors=0\nUART_RX_FRAME sent_lsb=01 decoded=01\nUART_RX_FRAME sent_lsb=80 decoded=80\nUART_RX_FRAME sent_lsb=96 decoded=96\nUART_SUMMARY tx_mismatches=0 rx_mismatches=0 loopback_mismatches=0 control_mismatches=0 checks=2328\nRTLREFINE_PASS nonce=b212e94aebcc67cde54059327d0a744d checks=2328\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": true,
+      "phase": "public",
+      "source_hashes": {
+        "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+        "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+        "rtl/uart_tx.v": "2ad5a8973c541bc4249afd2f07335c6e3b835d36c3ed7467e55b01881f49e337"
+      },
+      "status": "PASS",
+      "testbench_marker_transforms": [],
+      "top": "tb_public",
+      "verification_hashes": {
+        "rtlrefine_check.vh": "0f8387083ac7df4be03e9aeddf257d158b32ae2e2e22ac289bfcad6dad6323bc",
+        "tests/public.sv": "ba59b1437182b5f2f4c88827e268dc8bbd434b3f1c1796c396b0cf95e9504098"
+      },
+      "wall_seconds": 0.15181658579967916
+    }
+  ],
+  "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+}

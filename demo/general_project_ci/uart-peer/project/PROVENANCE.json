@@ -1,0 +1,45 @@
+{
+  "revision": "original",
+  "upstream": {
+    "repository": "https://github.com/alexforencich/verilog-uart",
+    "license": "MIT",
+    "classification": "Known upstream change from MSB-first to LSB-first UART interoperability, not a new discovery or an introduced regression.",
+    "source_modified": false,
+    "revision": {
+      "original": {
+        "commit": "62eb6f5d45b62be3029308da58c64bafbdb3aac6",
+        "files": {
+          "uart_tx.v": {
+            "sha256": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d",
+            "bytes": 3126,
+            "url": "https://github.com/alexforencich/verilog-uart/blob/62eb6f5d45b62be3029308da58c64bafbdb3aac6/rtl/uart_tx.v"
+          },
+          "uart_rx.v": {
+            "sha256": "236a4fc1822fafac080b89f883bfe6fc4cada6ae5ed191393d715556dcb49b8c",
+            "bytes": 3986,
+            "url": "https://github.com/alexforencich/verilog-uart/blob/62eb6f5d45b62be3029308da58c64bafbdb3aac6/rtl/uart_rx.v"
+          }
+        }
+      },
+      "fixed": {
+        "commit": "db0017a22c57731d69a4a2844bc1e4f3f36abd10",
+        "files": {
+          "uart_tx.v": {
+            "sha256": "2ad5a8973c541bc4249afd2f07335c6e3b835d36c3ed7467e55b01881f49e337",
+            "bytes": 3126,
+            "url": "https://github.com/alexforencich/verilog-uart/blob/db0017a22c57731d69a4a2844bc1e4f3f36abd10/rtl/uart_tx.v"
+          },
+          "uart_rx.v": {
+            "sha256": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+            "bytes": 3986,
+            "url": "https://github.com/alexforencich/verilog-uart/blob/db0017a22c57731d69a4a2844bc1e4f3f36abd10/rtl/uart_rx.v"
+          }
+        }
+      }
+    },
+    "independent_author_count_for_project": 1,
+    "scope": "Selected historical source against an explicit LSB-first peer contract. Both TX and RX are independently checked; closed loopback alone can conceal a shared bit-order mismatch."
+  },
+  "stateless_readonly_adapter": true,
+  "scope": "Explicit LSB-first peer contract; not new discovery, unbounded proof or unseen repair accuracy."
+}

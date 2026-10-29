@@ -1,0 +1,71 @@
+{
+  "accepted": false,
+  "design_hashes": {
+    "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+    "rtl/uart_rx.v": "3c455b65e1f271ba10a77360e1d5545dbea206072e3f7fb40ddedde99344e8bb",
+    "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d"
+  },
+  "new_model_calls": 0,
+  "phase": "public",
+  "project_id": "a170d24aa67b52949d9be7bbb96635603c06428a8b1ff0b821c93ea997159a06",
+  "shared_compilation_speed_claim_applies": false,
+  "status": "PROVIDED_TESTS_NOT_PASSED",
+  "tests": [
+    {
+      "checks": 0,
+      "clock_semantics": "Testbench-driven Icarus four-state simulation; no port-width or single-clock trace harness",
+      "commands": [
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-E",
+            "-o",
+            "__rtlrefine/design.v",
+            "./rtl/uart_tx.v",
+            "./rtl/uart_rx.v",
+            "./rtl/uart_pair.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 0,
+          "stage": "preprocess",
+          "status": "PASS",
+          "wall_seconds": 0.018103507114574313
+        },
+        {
+          "command": [
+            "/home/hands/anaconda3/bin/iverilog",
+            "-g2012",
+            "-t",
+            "null",
+            "-s",
+            "uart_pair",
+            "-Puart_pair.DATA_WIDTH=8",
+            "./__rtlrefine/design.v"
+          ],
+          "execution_mode": "bubblewrap",
+          "network": false,
+          "returncode": 4,
+          "stage": "elaborate",
+          "status": "FAIL",
+          "wall_seconds": 0.01820492697879672
+        }
+      ],
+      "id": "public_peer",
+      "log_tail": "./__rtlrefine/design.v:243: syntax error\n./__rtlrefine/design.v:244: Syntax in assignment statement l-value.\n./__rtlrefine/design.v:252: syntax error\n./__rtlrefine/design.v:268: error: invalid module item.\n",
+      "oracle": "User-supplied immutable self-checking testbench",
+      "passed": false,
+      "phase": "public",
+      "source_hashes": {
+        "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+        "rtl/uart_rx.v": "3c455b65e1f271ba10a77360e1d5545dbea206072e3f7fb40ddedde99344e8bb",
+        "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d"
+      },
+      "status": "DUT_COMPILE_FAILED",
+      "top": "tb_public",
+      "wall_seconds": 0.036308434093371034
+    }
+  ],
+  "verification_scope": "Only the supplied testbenches and configuration; not unbounded correctness, synthesis timing or physical CDC safety"
+}

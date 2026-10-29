@@ -55,12 +55,15 @@ workflow; these hashes are not a signed or tamper-proof policy.
 
 ## Reproducible examples
 
-`demo/general_project_ci` contains three checked exports:
+`demo/general_project_ci` contains four checked exports:
 
 - An actual prior NVIDIA-selected repair of the known upstream verilog-axis
   early-ready regression: eight benches, 30,493 assertion evaluations.
 - An authored 129-bit, two-file arithmetic example: two benches, 42 assertions.
 - An authored 80-bit example driven by two clocks: two benches, 27 assertions.
+- The known historical UART pair corrected in a separate actual NVIDIA
+  development exercise: eight profiles, 186,772 evaluations. All six requests
+  and earlier failures are disclosed in [UART evidence](UART_PEER_VALIDATION.md).
 
 No new model request was used to package these. The arithmetic and counter fixes
 are supplied healthy integration fixtures, not new AI repair results. The

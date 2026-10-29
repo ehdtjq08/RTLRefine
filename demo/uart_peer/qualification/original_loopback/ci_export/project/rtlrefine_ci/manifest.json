@@ -1,0 +1,120 @@
+{
+  "editable_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v"
+  ],
+  "input_hashes": {
+    "LICENSE.upstream": "54d83488a615e3b49749cab0f0a76dadcebe97da94610f966a66e03adbe8dfb9",
+    "PROVENANCE.json": "c03b5b7d28c3433f0e1631f37352e38ecfcbd0529ebf5cedd62f4ea4d2b93f0b",
+    "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+    "rtl/uart_rx.v": "236a4fc1822fafac080b89f883bfe6fc4cada6ae5ed191393d715556dcb49b8c",
+    "rtl/uart_tx.v": "716558e09cc28e60efa4e0146727899ee81cd2f3310347f3d8b812b030fecd9d",
+    "rtlrefine.json": "10e50c3c596662e9bdceb2977364d6421c77d517126cf4264da145011b88b7dd",
+    "tests/public.sv": "ba59b1437182b5f2f4c88827e268dc8bbd434b3f1c1796c396b0cf95e9504098"
+  },
+  "interfaces": {
+    "loopback_smoke": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ]
+  },
+  "producer": "RTLRefine",
+  "schema_version": 1,
+  "scope": "Provided finite testbenches and elaborated interfaces; no model call."
+}

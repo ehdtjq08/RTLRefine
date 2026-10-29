@@ -1,0 +1,348 @@
+{
+  "version": "1.6.0",
+  "summary": "Validate historical UART TX/RX against independent serial peers after loopback passes; retain all failures, improve bounded public-evidence revision and export reusable CI.",
+  "validation": {
+    "status": "PASS",
+    "release_tag": "v1.6.0",
+    "relevant_tests_passed": 86,
+    "uart_profiles": 8,
+    "uart_assertion_evaluations": 186772,
+    "limited_original_loopback_pass": true,
+    "independent_original_peer_rejected": true,
+    "tx_only_and_rx_only_controls_rejected": true,
+    "all_uart_development_requests": 6,
+    "failed_development_runs": 2,
+    "successful_run_requests": 2,
+    "uart_development_estimated_usd": 0.085415,
+    "successful_run_estimated_usd": 0.027018,
+    "test_inputs_unchanged_after_qualification": true,
+    "frozen_native_checker_changed": false,
+    "native_ci_cycle_projects": 4,
+    "ci_exit_codes": [
+      0,
+      1,
+      0
+    ],
+    "cold_network": "none",
+    "cold_native_validation": "PASS",
+    "browser_validation": "PASS",
+    "video_seconds": 137.267,
+    "video_sha256": "d5fd9397686603a90b8f49483ee89daec57804f51c9fe8327ca6cd414895894a",
+    "new_model_calls_in_recording": 0,
+    "hosted_ci_url": "https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml",
+    "new_video_youtube_url": null,
+    "devpost_submitted_by_agent": false
+  },
+  "uart_development": {
+    "classification": "Known upstream MSB-first to LSB-first interoperability change; not new discovery or an introduced regression.",
+    "original_loopback_passes": true,
+    "loopback_checks": 678,
+    "original_peer_rejected": true,
+    "tx_only_and_rx_only_controls_rejected": true,
+    "selected_repair_accepted": true,
+    "selected_run": 3,
+    "successful_run_model_requests": 2,
+    "development_model_requests": 6,
+    "development_estimated_cost_usd": 0.085415,
+    "development_runs": [
+      {
+        "run": 1,
+        "accepted": false,
+        "status": "NO_PUBLIC_PASS",
+        "model_requests": 2,
+        "estimated_cost_usd": 0.024979,
+        "reasoning_enabled": [
+          false,
+          false
+        ],
+        "max_completion_tokens": [
+          6144,
+          6144
+        ]
+      },
+      {
+        "run": 2,
+        "accepted": false,
+        "status": "NO_PUBLIC_PASS",
+        "model_requests": 2,
+        "estimated_cost_usd": 0.033417999999999996,
+        "reasoning_enabled": [
+          false,
+          true
+        ],
+        "max_completion_tokens": [
+          6144,
+          6144
+        ]
+      },
+      {
+        "run": 3,
+        "accepted": true,
+        "status": "PROVIDED_TESTS_PASS",
+        "model_requests": 2,
+        "estimated_cost_usd": 0.027018,
+        "reasoning_enabled": [
+          false,
+          true
+        ],
+        "max_completion_tokens": [
+          6144,
+          12288
+        ]
+      }
+    ],
+    "profiles": 8,
+    "assertion_evaluations": 186772,
+    "standalone_ci_status": "REGRESSIONS_PASS",
+    "selected_design_hashes": {
+      "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+      "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+      "rtl/uart_tx.v": "2ad5a8973c541bc4249afd2f07335c6e3b835d36c3ed7467e55b01881f49e337"
+    },
+    "test_inputs_sealed_before_inference": true,
+    "corrected_rtl_is_acceptance_oracle": false,
+    "public_and_audit_share_declared_monitor": true,
+    "additional_parameter_profiles_withheld": true,
+    "not_a_blinded_benchmark": true,
+    "manual_functional_patch_to_model_output": false
+  },
+  "cold_native_validation": {
+    "status": "PASS",
+    "public_source_only_image": true,
+    "network": "none",
+    "api_key_present": false,
+    "new_model_calls": 0,
+    "uart_checks": [
+      {
+        "project": "uart-original-loopback-only.zip",
+        "accepted": true,
+        "status": "PROVIDED_TESTS_PASS",
+        "checks": 678,
+        "api_requests": 0
+      },
+      {
+        "project": "uart-original-peer.zip",
+        "accepted": false,
+        "status": "PUBLIC_TESTS_FAILED",
+        "checks": 0,
+        "api_requests": 0
+      },
+      {
+        "project": "uart-nvidia-checked-ci.zip",
+        "accepted": true,
+        "status": "PROVIDED_TESTS_PASS",
+        "checks": 186772,
+        "api_requests": 0
+      }
+    ],
+    "four_project_ci_cycles": {
+      "status": "PASS",
+      "new_model_calls": 0,
+      "third_party_python_required": false,
+      "cases": [
+        {
+          "case": "axis-register",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 30493,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 5880,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/axis_register.v"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 30493,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        },
+        {
+          "case": "wide-math",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 42,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 0,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/word_math.sv"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 42,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        },
+        {
+          "case": "dual-clock",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 27,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 0,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/domain_ticks.sv"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 2,
+              "assertion_evaluations": 27,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        },
+        {
+          "case": "uart-peer",
+          "cycle": [
+            {
+              "phase": "checked",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 186772,
+              "junit_exists": true,
+              "changed_editable_files": []
+            },
+            {
+              "phase": "bug_reintroduced",
+              "exit_code": 1,
+              "status": "REGRESSION_FAILED",
+              "accepted": false,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 0,
+              "junit_exists": true,
+              "changed_editable_files": [
+                "rtl/uart_tx.v",
+                "rtl/uart_rx.v"
+              ]
+            },
+            {
+              "phase": "restored",
+              "exit_code": 0,
+              "status": "REGRESSIONS_PASS",
+              "accepted": true,
+              "new_model_calls": 0,
+              "testbenches": 8,
+              "assertion_evaluations": 186772,
+              "junit_exists": true,
+              "changed_editable_files": []
+            }
+          ],
+          "changed_audit_exit_code": 2,
+          "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+        }
+      ],
+      "github_actions": false,
+      "github_sha": null,
+      "scope": "Finite supplied-test regression checks; not repair accuracy or physical CDC proof."
+    }
+  },
+  "video_validation": {
+    "status": "PASS",
+    "video_seconds": 137.267,
+    "video_sha256": "d5fd9397686603a90b8f49483ee89daec57804f51c9fe8327ca6cd414895894a",
+    "continuous_normal_speed_recording": true,
+    "recorded_model_results_labeled": true,
+    "uart_development_requests_disclosed": 6,
+    "uart_final_run_requests": 2,
+    "new_model_calls_during_recording": 0,
+    "fresh_peer_failure_and_limited_loopback_pass": true,
+    "fresh_uart_repair_and_ci": true,
+    "fresh_exported_ci_cycle": [
+      0,
+      1,
+      0
+    ],
+    "same_zip_general_import_rechecked": true,
+    "fresh_fifo_counterexample": true,
+    "authored_bounded_scope_disclosed": true,
+    "browser_errors": [],
+    "youtube_uploaded": false
+  },
+  "submission_zip": {
+    "path": "submission/RTLRefine-uart-peer-submit-ready.zip",
+    "bytes": 4259508,
+    "sha256": "0655bed4f193352614fab5678b17c4da13c11f0c3bc308b99d555f2585857016"
+  },
+  "hosted_ci_status_url": "https://github.com/ehdtjq08/RTLRefine/actions/workflows/general-project-ci.yml",
+  "new_youtube_url": null,
+  "devpost_submitted_by_agent": false
+}

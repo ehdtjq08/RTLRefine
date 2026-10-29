@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "public_source_only_image": true,
+  "network": "none",
+  "api_key_present": false,
+  "new_model_calls": 0,
+  "uart_checks": [
+    {
+      "project": "uart-original-loopback-only.zip",
+      "accepted": true,
+      "status": "PROVIDED_TESTS_PASS",
+      "checks": 678,
+      "api_requests": 0
+    },
+    {
+      "project": "uart-original-peer.zip",
+      "accepted": false,
+      "status": "PUBLIC_TESTS_FAILED",
+      "checks": 0,
+      "api_requests": 0
+    },
+    {
+      "project": "uart-nvidia-checked-ci.zip",
+      "accepted": true,
+      "status": "PROVIDED_TESTS_PASS",
+      "checks": 186772,
+      "api_requests": 0
+    }
+  ],
+  "four_project_ci_cycles": {
+    "status": "PASS",
+    "new_model_calls": 0,
+    "third_party_python_required": false,
+    "cases": [
+      {
+        "case": "axis-register",
+        "cycle": [
+          {
+            "phase": "checked",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 8,
+            "assertion_evaluations": 30493,
+            "junit_exists": true,
+            "changed_editable_files": []
+          },
+          {
+            "phase": "bug_reintroduced",
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "new_model_calls": 0,
+            "testbenches": 8,
+            "assertion_evaluations": 5880,
+            "junit_exists": true,
+            "changed_editable_files": [
+              "rtl/axis_register.v"
+            ]
+          },
+          {
+            "phase": "restored",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 8,
+            "assertion_evaluations": 30493,
+            "junit_exists": true,
+            "changed_editable_files": []
+          }
+        ],
+        "changed_audit_exit_code": 2,
+        "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+      },
+      {
+        "case": "wide-math",
+        "cycle": [
+          {
+            "phase": "checked",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 2,
+            "assertion_evaluations": 42,
+            "junit_exists": true,
+            "changed_editable_files": []
+          },
+          {
+            "phase": "bug_reintroduced",
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "new_model_calls": 0,
+            "testbenches": 2,
+            "assertion_evaluations": 0,
+            "junit_exists": true,
+            "changed_editable_files": [
+              "rtl/word_math.sv"
+            ]
+          },
+          {
+            "phase": "restored",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 2,
+            "assertion_evaluations": 42,
+            "junit_exists": true,
+            "changed_editable_files": []
+          }
+        ],
+        "changed_audit_exit_code": 2,
+        "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+      },
+      {
+        "case": "dual-clock",
+        "cycle": [
+          {
+            "phase": "checked",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 2,
+            "assertion_evaluations": 27,
+            "junit_exists": true,
+            "changed_editable_files": []
+          },
+          {
+            "phase": "bug_reintroduced",
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "new_model_calls": 0,
+            "testbenches": 2,
+            "assertion_evaluations": 0,
+            "junit_exists": true,
+            "changed_editable_files": [
+              "rtl/domain_ticks.sv"
+            ]
+          },
+          {
+            "phase": "restored",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 2,
+            "assertion_evaluations": 27,
+            "junit_exists": true,
+            "changed_editable_files": []
+          }
+        ],
+        "changed_audit_exit_code": 2,
+        "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+      },
+      {
+        "case": "uart-peer",
+        "cycle": [
+          {
+            "phase": "checked",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 8,
+            "assertion_evaluations": 186772,
+            "junit_exists": true,
+            "changed_editable_files": []
+          },
+          {
+            "phase": "bug_reintroduced",
+            "exit_code": 1,
+            "status": "REGRESSION_FAILED",
+            "accepted": false,
+            "new_model_calls": 0,
+            "testbenches": 8,
+            "assertion_evaluations": 0,
+            "junit_exists": true,
+            "changed_editable_files": [
+              "rtl/uart_tx.v",
+              "rtl/uart_rx.v"
+            ]
+          },
+          {
+            "phase": "restored",
+            "exit_code": 0,
+            "status": "REGRESSIONS_PASS",
+            "accepted": true,
+            "new_model_calls": 0,
+            "testbenches": 8,
+            "assertion_evaluations": 186772,
+            "junit_exists": true,
+            "changed_editable_files": []
+          }
+        ],
+        "changed_audit_exit_code": 2,
+        "engine_sha256": "4259d42270af42ab593129fd1a7171dc9805349f20f3de3afc0afe4b8fd743a0"
+      }
+    ],
+    "github_actions": false,
+    "github_sha": null,
+    "scope": "Finite supplied-test regression checks; not repair accuracy or physical CDC proof."
+  }
+}

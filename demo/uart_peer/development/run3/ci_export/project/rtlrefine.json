@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "name": "External UART: loopback versus independent LSB-first peers",
+  "dut_top": "uart_pair",
+  "rtl_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v",
+    "rtl/uart_pair.v"
+  ],
+  "include_files": [],
+  "editable_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v"
+  ],
+  "include_dirs": [],
+  "data_files": [],
+  "defines": {},
+  "dut_parameters": {
+    "DATA_WIDTH": "8"
+  },
+  "tests": [
+    {
+      "id": "public_peer",
+      "top": "tb_public",
+      "phase": "public",
+      "files": [
+        "tests/public.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "PRESCALE": "2",
+        "WORDS": "3",
+        "SEED": "927050163",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "uart8_fast",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "PRESCALE": "1",
+        "WORDS": "48",
+        "SEED": "1251029615",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "uart5",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "5",
+        "PRESCALE": "3",
+        "WORDS": "32",
+        "SEED": "1899727905",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "uart6",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "6",
+        "PRESCALE": "2",
+        "WORDS": "40",
+        "SEED": "1483854499",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "uart7",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "7",
+        "PRESCALE": "4",
+        "WORDS": "40",
+        "SEED": "1808236883",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "uart8_slow",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "PRESCALE": "5",
+        "WORDS": "48",
+        "SEED": "492751731",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "0"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "framing_reset",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "8",
+        "PRESCALE": "3",
+        "WORDS": "12",
+        "SEED": "1109039921",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "1"
+      },
+      "success_marker": null
+    },
+    {
+      "id": "flow_overrun",
+      "top": "tb_audit",
+      "phase": "audit",
+      "files": [
+        "tests/audit.sv"
+      ],
+      "include_files": [],
+      "data_files": [],
+      "timeout_seconds": 10.0,
+      "minimum_checks": 1,
+      "parameters": {
+        "DATA_WIDTH": "7",
+        "PRESCALE": "2",
+        "WORDS": "16",
+        "SEED": "1966723777",
+        "LOOPBACK_ONLY": "0",
+        "STRESS": "1"
+      },
+      "success_marker": null
+    }
+  ],
+  "contract": "UART data bits must be serialized and decoded LSB first, framed by a low start and high stop bit; prescale*8 clocks per bit, 5-8 data bits, no parity. Both directions are checked against independently generated serial peer bits. A TX/RX closed loopback is insufficient: the original pair shares the wrong order and can agree with itself. Preserve byte handshakes, framing/overrun reporting, asynchronous reset, and pending RX output when its consumer pauses and no new frame arrives. Wrapper and tests are read-only. No corrected reference implementation is supplied."
+}

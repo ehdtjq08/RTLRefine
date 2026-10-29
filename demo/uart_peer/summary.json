@@ -1,0 +1,73 @@
+{
+  "classification": "Known upstream MSB-first to LSB-first interoperability change; not new discovery or an introduced regression.",
+  "original_loopback_passes": true,
+  "loopback_checks": 678,
+  "original_peer_rejected": true,
+  "tx_only_and_rx_only_controls_rejected": true,
+  "selected_repair_accepted": true,
+  "selected_run": 3,
+  "successful_run_model_requests": 2,
+  "development_model_requests": 6,
+  "development_estimated_cost_usd": 0.085415,
+  "development_runs": [
+    {
+      "run": 1,
+      "accepted": false,
+      "status": "NO_PUBLIC_PASS",
+      "model_requests": 2,
+      "estimated_cost_usd": 0.024979,
+      "reasoning_enabled": [
+        false,
+        false
+      ],
+      "max_completion_tokens": [
+        6144,
+        6144
+      ]
+    },
+    {
+      "run": 2,
+      "accepted": false,
+      "status": "NO_PUBLIC_PASS",
+      "model_requests": 2,
+      "estimated_cost_usd": 0.033417999999999996,
+      "reasoning_enabled": [
+        false,
+        true
+      ],
+      "max_completion_tokens": [
+        6144,
+        6144
+      ]
+    },
+    {
+      "run": 3,
+      "accepted": true,
+      "status": "PROVIDED_TESTS_PASS",
+      "model_requests": 2,
+      "estimated_cost_usd": 0.027018,
+      "reasoning_enabled": [
+        false,
+        true
+      ],
+      "max_completion_tokens": [
+        6144,
+        12288
+      ]
+    }
+  ],
+  "profiles": 8,
+  "assertion_evaluations": 186772,
+  "standalone_ci_status": "REGRESSIONS_PASS",
+  "selected_design_hashes": {
+    "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+    "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+    "rtl/uart_tx.v": "2ad5a8973c541bc4249afd2f07335c6e3b835d36c3ed7467e55b01881f49e337"
+  },
+  "test_inputs_sealed_before_inference": true,
+  "corrected_rtl_is_acceptance_oracle": false,
+  "public_and_audit_share_declared_monitor": true,
+  "additional_parameter_profiles_withheld": true,
+  "not_a_blinded_benchmark": true,
+  "manual_functional_patch_to_model_output": false
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "elapsed_seconds": 0.0025637559592723846,
+    "message": "Compile the submitted design and run public testbenches",
+    "stage": "public_check"
+  },
+  {
+    "elapsed_seconds": 0.1755998560693115,
+    "message": "Ask NVIDIA for a design-only multi-file patch, attempt 1",
+    "stage": "model_patch"
+  },
+  {
+    "elapsed_seconds": 4.2000896639656276,
+    "message": "Compile the exact patch and run public tests; private tests stay hidden",
+    "stage": "public_candidate"
+  },
+  {
+    "elapsed_seconds": 4.2690346201416105,
+    "message": "Ask NVIDIA for a design-only multi-file patch, attempt 2",
+    "stage": "model_patch"
+  },
+  {
+    "elapsed_seconds": 25.761316287098452,
+    "message": "Compile the exact patch and run public tests; private tests stay hidden",
+    "stage": "public_candidate"
+  },
+  {
+    "elapsed_seconds": 25.948025668039918,
+    "message": "Rebuild selected uninstrumented files independently and run every provided testbench",
+    "stage": "final_check"
+  },
+  {
+    "elapsed_seconds": 27.911781188100576,
+    "message": "Run the exact exported CI runner in isolated Python; no model request",
+    "stage": "ci_export"
+  },
+  {
+    "elapsed_seconds": 29.889636144042015,
+    "message": "All provided tests and exported CI checks passed",
+    "stage": "complete"
+  }
+]

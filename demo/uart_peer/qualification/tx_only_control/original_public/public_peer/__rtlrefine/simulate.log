@@ -1,0 +1,10 @@
+UART_LOOPBACK_RESULT frames=3 failures=3
+UART_TX_FRAME offered=01 observed_lsb=01 bit_errors=0
+UART_TX_FRAME offered=80 observed_lsb=80 bit_errors=0
+UART_TX_FRAME offered=96 observed_lsb=96 bit_errors=0
+UART_RX_FRAME sent_lsb=01 decoded=80
+UART_RX_FRAME sent_lsb=80 decoded=01
+UART_RX_FRAME sent_lsb=96 decoded=69
+UART_SUMMARY tx_mismatches=0 rx_mismatches=3 loopback_mismatches=3 control_mismatches=0 checks=2328
+FATAL: ./tests/public.sv:205: UART_PEER_CONTRACT_FAILED independent LSB-first serial peer disagrees
+       Time: 18220000 Scope: tb_public

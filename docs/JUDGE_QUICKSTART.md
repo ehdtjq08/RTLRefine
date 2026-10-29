@@ -7,7 +7,7 @@ the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.5.0.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.6.0.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -22,21 +22,29 @@ the public URL above supplies its test build.
 
 ## Recheck real external RTL
 
-Open `/external-validation`. The first tab shows a pinned, known upstream
-verilog-axis throughput regression and an actual NVIDIA-selected repair that
-passes eight profiles. Recheck the repaired ZIP, then reproduce the original
-failure without inference. The second tab rechecks an unmodified ZipCPU skid
-buffer with a disclosed stateless adapter. Downloadable projects also work in
-the ordinary `/project` route. No API key is needed for these rechecks.
+Open `/external-validation`, where **UART serial peers** is the default tab.
+The pinned original TX/RX pair passes a limited closed-loop smoke but reverses
+bytes at an explicit LSB-first peer. Inspect the actual captured bits and saved
+NVIDIA request metadata. Run the original loopback-only smoke, reproduce the
+original independent-peer failure, and recheck the selected two-file repair.
+All buttons make zero model requests. The separate exported CI cycle runs the
+exact bundled script against checked source, both original vendor files and
+restored source, requiring exit codes 0 → 1 → 0.
 
-These are two independent upstream modules, one exposed historical repair and
-one healthy compatibility control. They are not newly discovered defects or
-unseen repair accuracy. See [source and scope](EXTERNAL_RTL_VALIDATION.md).
+Six actual development requests, including two failed runs, are retained. The
+last two-request run passes eight fixed profiles and the standalone runner.
+This is a known historical bit-order change, not new discovery, an introduced
+regression or unseen accuracy. See [UART source and scope](UART_PEER_VALIDATION.md).
+
+The other two tabs retain the verilog-axis early-ready throughput regression
+and another author's unmodified ZipCPU skid buffer with a disclosed adapter.
+Their exact older ZIPs can still be downloaded and rechecked. See
+[those earlier external results](EXTERNAL_RTL_VALIDATION.md).
 
 ## Keep general RTL checks in CI
 
-Open `/project`, expand **Try a portable example ZIP**, and download the external
-checked project with CI. It contains the prior actual NVIDIA-selected repair;
+Open `/project`, expand **Try a portable example ZIP**, and download the checked external UART pair with CI. It contains the prior actual
+NVIDIA-selected repair;
 packaging used no additional inference. Upload that ZIP, click **Check this
 project**, and inspect both the native verdict and the standalone export gate.
 The included Actions workflow can be inspected before downloading the checked ZIP.
@@ -95,7 +103,7 @@ designer edits preserve ports, parameters and clock/reset forms. A source change
 or changed contract requires a fresh check.
 
 The original `v1.2.1` test build predates this extension. Download the current
-`v1.5.0` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
+`v1.6.0` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
 and [portable regressions](PORTABLE_REGRESSIONS.md).
 
 ## Model access and verification scope

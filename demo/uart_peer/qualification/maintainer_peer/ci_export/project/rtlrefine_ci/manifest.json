@@ -1,0 +1,821 @@
+{
+  "editable_files": [
+    "rtl/uart_tx.v",
+    "rtl/uart_rx.v"
+  ],
+  "input_hashes": {
+    "LICENSE.upstream": "54d83488a615e3b49749cab0f0a76dadcebe97da94610f966a66e03adbe8dfb9",
+    "PROVENANCE.json": "3102bc8afdefd91d764a1290ab2e290f30c0b0fcbf1d2922ddc5b26df168a395",
+    "rtl/uart_pair.v": "aa6f52fda97e76c830047586bcfb557958323225ac0467da5c0c2498f678d32d",
+    "rtl/uart_rx.v": "981bf5153ad88d41b49e6fb2955f911f6d46bcf60464d0ffbcf697c52de6ab10",
+    "rtl/uart_tx.v": "2ad5a8973c541bc4249afd2f07335c6e3b835d36c3ed7467e55b01881f49e337",
+    "rtlrefine.json": "686308062482de132e6a3e37d07d0ba860e0a2a2c603b1e25f3b48ca433e881f",
+    "tests/audit.sv": "a48011c6e4ac61e295f897b5743492cc5284091c4ac298e7fbe48ef14b95e4f6",
+    "tests/public.sv": "ba59b1437182b5f2f4c88827e268dc8bbd434b3f1c1796c396b0cf95e9504098"
+  },
+  "interfaces": {
+    "flow_overrun": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000000111"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 7
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 7
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "framing_reset": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "public_peer": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "uart5": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000000101"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 5
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 5
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "uart6": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000000110"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 6
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 6
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "uart7": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000000111"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 7
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 7
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "uart8_fast": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ],
+    "uart8_slow": [
+      {
+        "instance": "dut",
+        "numeric_parameters": {
+          "DATA_WIDTH": "32'sb00000000000000000000000000001000"
+        },
+        "ports": [
+          {
+            "direction": "INPUT",
+            "index": 0,
+            "name": "clk",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 1,
+            "name": "rst",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 2,
+            "name": "tx_data",
+            "width": 8
+          },
+          {
+            "direction": "INPUT",
+            "index": 3,
+            "name": "tx_valid",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 4,
+            "name": "tx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 5,
+            "name": "txd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 6,
+            "name": "tx_busy",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 7,
+            "name": "rxd",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 8,
+            "name": "rx_data",
+            "width": 8
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 9,
+            "name": "rx_valid",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 10,
+            "name": "rx_ready",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 11,
+            "name": "rx_busy",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 12,
+            "name": "overrun_error",
+            "width": 1
+          },
+          {
+            "direction": "OUTPUT",
+            "index": 13,
+            "name": "frame_error",
+            "width": 1
+          },
+          {
+            "direction": "INPUT",
+            "index": 14,
+            "name": "prescale",
+            "width": 16
+          }
+        ]
+      }
+    ]
+  },
+  "producer": "RTLRefine",
+  "schema_version": 1,
+  "scope": "Provided finite testbenches and elaborated interfaces; no model call."
+}
