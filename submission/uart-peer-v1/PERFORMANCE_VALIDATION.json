@@ -1,0 +1,64 @@
+{
+  "version": "1.6.2",
+  "status": "PASS",
+  "runtime_summary": [
+    {
+      "case": "axis-register",
+      "reference_median_seconds": 2.7087988833663985,
+      "optimized_median_seconds": 2.1838231548899785,
+      "speed_ratio": 1.2403929673979799,
+      "elapsed_reduction_percent": 19.38038780583071,
+      "all_decisions_and_export_payloads_equal": true
+    },
+    {
+      "case": "wide-math",
+      "reference_median_seconds": 0.7195993199711666,
+      "optimized_median_seconds": 0.6349419048056006,
+      "speed_ratio": 1.1333309622893537,
+      "elapsed_reduction_percent": 11.764521285117112,
+      "all_decisions_and_export_payloads_equal": true
+    },
+    {
+      "case": "dual-clock",
+      "reference_median_seconds": 0.6848100329516456,
+      "optimized_median_seconds": 0.6002504209754989,
+      "speed_ratio": 1.1408738903318458,
+      "elapsed_reduction_percent": 12.347893270733879,
+      "all_decisions_and_export_payloads_equal": true
+    },
+    {
+      "case": "uart-peer",
+      "reference_median_seconds": 4.128767142537981,
+      "optimized_median_seconds": 3.415002503548749,
+      "speed_ratio": 1.2090085258349046,
+      "elapsed_reduction_percent": 17.287597346806937,
+      "all_decisions_and_export_payloads_equal": true
+    }
+  ],
+  "build_measurement": {
+    "status": "PASS",
+    "same_pinned_native_compiler_and_dependency_definitions": true,
+    "new_model_calls": 0,
+    "reference_code_only_rebuild": {
+      "seconds": 46.710010402137414,
+      "compiler_install_step_cached": false,
+      "tag": "rtlrefine-build-reference-probe:1.6.2"
+    },
+    "optimized_first_build": {
+      "seconds": 34.92643619608134,
+      "compiler_install_step_cached": false,
+      "tag": "rtlrefine-performance:1.6.2"
+    },
+    "optimized_code_only_rebuild": {
+      "seconds": 5.022559755947441,
+      "compiler_install_step_cached": true,
+      "tag": "rtlrefine-build-optimized-probe:1.6.2"
+    },
+    "rebuild_ratio": 9.30004075050097,
+    "probe_comment_not_in_published_source": true,
+    "scope": "One paired code-only rebuild, local Docker cache available. Not cold first installation or model inference latency."
+  },
+  "new_model_calls": 0,
+  "new_hardware_examples": 0,
+  "video_unchanged": true
+}

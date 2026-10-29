@@ -9,6 +9,11 @@ ARG MAMBA_DOCKERFILE_ACTIVATE=1
 WORKDIR /app
 COPY --chown=$MAMBA_USER:$MAMBA_USER requirements-ui.lock /app/requirements-ui.lock
 RUN python -m pip install --no-cache-dir -r requirements-ui.lock
+COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/install_verilator_pinned.py /app/scripts/install_verilator_pinned.py
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends g++ make && rm -rf /var/lib/apt/lists/*
+USER $MAMBA_USER
+RUN python /app/scripts/install_verilator_pinned.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER rtl_app.py workspace_app.py workspace_service.py case_gallery_app.py comparison_app.py /app/
 COPY --chown=$MAMBA_USER:$MAMBA_USER mutation_app.py /app/mutation_app.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER uart_app.py /app/uart_app.py
@@ -43,11 +48,6 @@ COPY --chown=$MAMBA_USER:$MAMBA_USER demo/functional_repair /app/demo/functional
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/external_rtl_validation /app/demo/external_rtl_validation
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/general_project_ci /app/demo/general_project_ci
 COPY --chown=$MAMBA_USER:$MAMBA_USER demo/uart_peer /app/demo/uart_peer
-COPY --chown=$MAMBA_USER:$MAMBA_USER scripts/install_verilator_pinned.py /app/scripts/install_verilator_pinned.py
-USER root
-RUN apt-get update && apt-get install -y --no-install-recommends g++ make && rm -rf /var/lib/apt/lists/*
-USER $MAMBA_USER
-RUN python /app/scripts/install_verilator_pinned.py
 COPY --chown=$MAMBA_USER:$MAMBA_USER assets /app/assets
 COPY --chown=$MAMBA_USER:$MAMBA_USER .streamlit/config.toml /app/.streamlit/config.toml
 COPY --chown=$MAMBA_USER:$MAMBA_USER docs/PROPERTY_REPAIR_PROTOCOL.md /app/docs/PROPERTY_REPAIR_PROTOCOL.md

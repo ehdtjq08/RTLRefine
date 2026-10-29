@@ -189,3 +189,10 @@ NVIDIA repair, send as public context. Remove credential files from archives;
 known `.env`, `.git`, `.ssh` and `.aws` paths are rejected. Licenses and unexecuted
 project assets are retained for round-trip export. The checked-project download
 is offered only after every provided bench passes and its archive hash matches.
+
+## Execution performance
+
+Application checks use a phase-local execution adapter while retaining the
+original admission checker and exported standalone engine. Tests and final
+actual-configuration elaboration execute fresh. Original/candidate/final calls
+have separate caches. See [measurements and invariants](PERFORMANCE.md).

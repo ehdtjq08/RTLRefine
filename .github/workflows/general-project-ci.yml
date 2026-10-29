@@ -20,6 +20,10 @@ jobs:
           sudo apt-get install -y --no-install-recommends iverilog bubblewrap util-linux
       - name: Run exported runners, reintroduce bugs and restore source
         run: python3 -I scripts/check_general_project_ci.py --output ci-results
+      - name: Check optimized runner against the frozen grader
+        run: |
+          python3 -m pip install --disable-pip-version-check pytest==8.4.2
+          python3 -m pytest -q tests/test_project_execution.py
       - name: Save every phase and its JUnit report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

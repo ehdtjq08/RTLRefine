@@ -25,6 +25,7 @@ a standalone runner, JSON/JUnit reporting and a pinned GitHub Actions workflow.
 The exact exported runner must pass before download. See [project CI](docs/GENERAL_PROJECT_CI.md).
 
 [Run the judging test build](docs/JUDGE_QUICKSTART.md) ·
+[Measured application latency and rebuild improvements](docs/PERFORMANCE.md) ·
 [Earlier project demo](https://youtu.be/JEvktXDIUd0) ·
 [UART, CI and FIFO walkthrough](submission/uart-peer-v1/video/RTLRefine-UART-peer-demo.mp4) ·
 [Current submission materials](submission/uart-peer-v1/README.md)

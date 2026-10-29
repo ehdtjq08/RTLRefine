@@ -4,7 +4,7 @@ from pathlib import Path
 import time
 
 from ..common import new_run_dir,sha256,write_json
-from .checker import check_project
+from .execution import check_project
 from .project import archive_project
 from .agent import propose
 

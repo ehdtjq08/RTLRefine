@@ -6,7 +6,7 @@ The repository contains source, licenses, setup instructions, current UI assets,
 user-project examples and recorded verification evidence. Run the Docker test
 build using the README. New model requests are disabled by default.
 
-The current test build is v1.6.1, with first-use setup and result-display fixes.
+The current test build is v1.6.2, with first-use setup and result-display fixes.
 The native checker, model case records and 2-minute-17-second video are unchanged.
 [The automated workflow audit](FIRST_USE_AUDIT.md) is explicitly not an external
 human user study. Current submission materials are in
@@ -46,3 +46,6 @@ are historical snapshots; they are not rewritten.
 The source was imported from the validated 1.2.0 package. Original dataset and
 checker seals remain unchanged. Private keys, .env, personal spending state,
 installed tool binaries and private user uploads are excluded.
+
+The v1.6.2 performance patch preserves the frozen grader and standalone engine;
+its timing and source-rebuild scope are documented in [PERFORMANCE.md](PERFORMANCE.md).

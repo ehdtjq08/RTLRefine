@@ -7,7 +7,7 @@ the native workers; execution stops explicitly in that case.
 
 ## Download and start
 
-[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.6.1.zip),
+[Download the versioned test build](https://github.com/ehdtjq08/RTLRefine/archive/refs/tags/v1.6.2.zip),
 extract it, and open a terminal in the extracted directory. Install Docker Engine
 and the Docker Compose plugin if they are not already available, then run:
 
@@ -103,7 +103,7 @@ designer edits preserve ports, parameters and clock/reset forms. A source change
 or changed contract requires a fresh check.
 
 The original `v1.2.1` test build predates this extension. Download the current
-`v1.6.1` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
+`v1.6.2` source to try all current features. See [the FIFO contract](PROPERTY_REPAIR.md)
 and [portable regressions](PORTABLE_REGRESSIONS.md).
 
 ## Model access and verification scope
@@ -127,3 +127,10 @@ paths and module names and suggests an existing unambiguous success literal.
 Review both choices. The selected bench can be previewed before validation
 succeeds; failed assertions are shown directly in results. See
 [the automated first-use audit](FIRST_USE_AUDIT.md), which is not a human study.
+
+## Execution latency
+
+The application reuses identical DUT-only compiler work within a single checker
+call and uses blocking process completion waiting. Actual test compilation,
+profile elaboration and simulation remain fresh. Exported CI stays on the
+original engine. See [paired measurements and scope](PERFORMANCE.md).
